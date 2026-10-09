@@ -10,7 +10,7 @@ const SPORT={
   tagline:"Nine innings. One winner.",units:"runs",maxTotal:80}
 };
 const MODES={straight:"Straight Picks",confidence:"Confidence",spread:"Against the Spread",h2h:"Head to Head"};
-let feed={sports:{}},feedUpdated=null,feedIssue="",lastFeed=0;
+let feed={sports:{}},feedUpdated=null,feedIssue="",lastFeed=0,baseballSeries=null,seriesLoading=false;
 const cache={basketball:{},baseball:{}};
 const loading={basketball:false,baseball:false};
 const selectedWeeks={basketball:0,baseball:0};
@@ -59,7 +59,7 @@ const banner=(text,cls="sport-note")=>'<div class="'+cls+'" role="status">'+esc(
 function renderHub(){
  const root=byId("sports-hub");if(!root)return;
  const active=recommended();
- const choices=["football","basketball","baseball"];
+ const choices=["football","basketball","baseball"].sort((a,b)=>{const newest=seasons();return newest.find(x=>x.sport===b).since-newest.find(x=>x.sport===a).since;});
  const info={
  football:{emoji:"🏈",title:"Football",period:"Fall · Aug–Dec",detail:"The original SEC Pick'em. Leagues, chat, rivalry trophies and four modes."},
  basketball:{emoji:"🏀",title:"Basketball",period:"Winter · Nov–Apr",detail:"SEC men's basketball. Weekly winner picks and private leagues."},
@@ -70,7 +70,7 @@ function renderHub(){
    '<div class="sport-auto-current">✦ Most recently started season: <strong>'+esc(nameOf(active))+'</strong></div></div>'+
    '<div class="sport-hub-grid">'+choices.map(s=>{
     const b=info[s];
-    const count=feed.sports?.[s]?.games?.length;
+    const count=Math.max(feed.sports?.[s]?.games?.length||0,cache[s]?.games?.filter?.(g=>g.sport===s&&g.season===year(s))?.length||0);
     return '<button type="button" class="sport-selection '+(s===active?"is-current":"")+'" data-go-sport="'+s+'">'+
      '<div class="sport-selection-top"><span class="sport-large-icon">'+b.emoji+'</span>'+
      (s===active?'<span class="sport-current-badge">LATEST SEASON</span>':'')+'</div>'+
@@ -93,6 +93,43 @@ async function fetchFeed(force=false){
   feed=data;feedUpdated=data.updated_at||null;feedIssue="";lastFeed=Date.now();
  }catch(e){feedIssue=e.message||"Schedule updates temporarily unavailable";}
  renderHub();return feed;
+}
+async function getBaseballSeries(){
+ if(baseballSeries||seriesLoading)return;
+ seriesLoading=true;
+ try{
+  const res=await fetch("./baseball-2027-series.json",{cache:"no-store"});
+  if(!res.ok)throw Error("Conference series preview unavailable");
+  const data=await res.json();
+  if(data.season===2027&&Array.isArray(data.series)){
+   baseballSeries=data;
+  }
+ }catch(error){console.warn("Baseball series schedule:",error.message);}
+ finally{seriesLoading=false;if(window.SEC_BRIDGE?.view?.()==="baseball")renderSport("baseball");}
+}
+function renderSeries(s){
+ if(s!=="baseball"||!baseballSeries||baseballSeries.season!==year("baseball"))return "";
+ const all=baseballSeries.series;
+ const weekends=[...new Set(all.map(x=>x.weekend))];
+ const today=Date.now();
+ const next=weekends.find(w=>all.some(x=>x.weekend===w&&Date.parse(x.end_date+"T23:59:59Z")>=today))||weekends.at(-1);
+ const chosen=cache.baseball.seriesWeek||next;
+ const group=all.filter(x=>x.weekend===chosen);
+ return '<section class="sport-series-preview" aria-label="Official SEC baseball series schedule">'+
+  '<div class="card-kicker">⚾ SEC BASEBALL · OFFICIAL 2027 SERIES</div>'+
+  '<h3>Conference series preview <span>80 verified pairings</span></h3>'+
+  '<p>Ten SEC weekends, eight series each. The SEC has released the opponents and weekend windows, but not every individual first pitch. '+
+  'These series previews are <strong>not pickable games</strong>. Winner picks unlock when individual games have verified start dates.</p>'+
+  '<div class="sport-week-list" role="group" aria-label="Baseball conference weekends">'+
+  weekends.map(n=>'<button type="button" class="sport-week-button '+(chosen===n?"active":"")+
+   '" data-series-week="'+n+'" aria-pressed="'+(chosen===n)+'">Series '+n+'</button>').join("")+'</div>'+
+  '<div class="sport-series-grid">'+group.map(x=>'<article class="sport-series-card">'+
+   '<strong>'+esc(x.away)+' <span>at</span> '+esc(x.home)+'</strong>'+
+   '<small>SEC Weekend '+x.weekend+' · '+esc(x.start_date)+'–'+esc(x.end_date)+'</small>'+
+   '<div class="sport-series-pending">Game dates &amp; first-pitch times pending</div></article>').join("")+'</div>'+
+  '<p class="sport-series-source">Source: <a href="'+esc(baseballSeries.source_url)+
+   '" target="_blank" rel="noopener noreferrer">SEC 2027 conference schedule ↗</a>. '+
+  'Games may be rescheduled for TV, weather, travel or doubleheaders.</p></section>';
 }
 const allGames=(s)=>{
  const publicList=Array.isArray(feed.sports?.[s]?.games)?feed.sports[s].games:[];
@@ -155,7 +192,7 @@ function renderSport(s){
    '<div class="sport-games-grid">'+w.games.map(g=>gameCard(s,g,active,picks)).join("")+'</div>'+
    renderTiebreak(s,w,active,saved);
  }
- root.innerHTML=header+note+status+stale+loadingText+leagues+games+
+ root.innerHTML=header+note+status+stale+loadingText+leagues+games+renderSeries(s)+
   '<p class="sport-data-note">Official SEC and university schedules, with ESPN updates where available · Central time. '+ 
   'When a tipoff is not announced, a conservative 10 AM Central provisional lock is shown. '+
   'Basketball and baseball leagues have their own memberships and standings, separate from football.</p>';
@@ -386,7 +423,9 @@ document.addEventListener("click",ev=>{
  if(to){ev.preventDefault();window.SEC_BRIDGE?.setView(to.dataset.goSport==="football"?"picks":to.dataset.goSport);return;}
  const button=ev.target.closest?.("[data-sport-action]");
  if(button){ev.preventDefault();void action(button);return;}
- const week=ev.target.closest?.("[data-sport-week]");
+ const series=ev.target.closest?.("[data-series-week]");
+ if(series){cache.baseball.seriesWeek=Number(series.dataset.seriesWeek);renderSport("baseball");return;}
+  const week=ev.target.closest?.("[data-sport-week]");
  if(week){selectedWeeks[week.dataset.sport]=Number(week.dataset.sportWeek);renderSport(week.dataset.sport);void load(week.dataset.sport); }
 });
 document.addEventListener("change",ev=>{
@@ -400,6 +439,7 @@ function mount(route){
  renderHub();
  if(!SPORT[route]){void fetchFeed();return;}
  renderSport(route);
+ if(route==="baseball")void getBaseballSeries();
  void load(route);
 }
 setInterval(()=>{
