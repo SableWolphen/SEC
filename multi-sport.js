@@ -134,6 +134,8 @@ function renderSport(s){
   '<div><div class="card-kicker">SEC '+conf.name.toUpperCase()+' · '+year(s)+'</div>'+
   '<h2>'+esc(conf.tagline)+'</h2><p>Pick each winner. Score points together. Win your league.</p></div>'+
   '<button type="button" class="sport-change-btn" data-go-sport="sports">All sports ↗</button></div>';
+ const note=feed.sports?.[s]?.warning&&allGames(s).length===0?
+   banner(feed.sports[s].warning,"sport-warning"):"";
  const status=feedIssue?banner(feedIssue,"sport-warning"):"";
  const stale=data.error?banner(data.error,"sport-warning"):"";
  const loadingText=loading[s]?banner("Checking verified games and league results…"):"";
@@ -153,8 +155,9 @@ function renderSport(s){
    '<div class="sport-games-grid">'+w.games.map(g=>gameCard(s,g,active,picks)).join("")+'</div>'+
    renderTiebreak(s,w,active,saved);
  }
- root.innerHTML=header+status+stale+loadingText+leagues+games+
-  '<p class="sport-data-note">ESPN schedules and final scores · Central time. Picks lock at the server-recorded start time. '+
+ root.innerHTML=header+note+status+stale+loadingText+leagues+games+
+  '<p class="sport-data-note">Official SEC and university schedules, with ESPN updates where available · Central time. '+ 
+  'When a tipoff is not announced, a conservative 10 AM Central provisional lock is shown. '+
   'Basketball and baseball leagues have their own memberships and standings, separate from football.</p>';
 }
 function renderLeagues(s,signed,league){
@@ -232,7 +235,9 @@ function gameCard(s,g,league,picks){
    '<option value="'+n+'" '+(n===old?.confidence_points?'selected':'')+' '+(used.has(n)?'disabled':'')+'>'+n+' point'+(n===1?'':'s')+'</option>').join("");
  return '<article class="sport-game-card"><div class="sport-game-top"><span>GAME · WEEK '+g.week+'</span>'+
   '<span class="'+(g.game_status==="live"?"sport-live":"")+'">'+esc(result)+'</span></div>'+
-  '<p class="sport-kickoff">'+esc(prettyTime(g.kickoff_at))+
+  '<p class="sport-kickoff">'+esc(String(g.source||"").includes("provisional")?
+   "Tipoff TBA · provisional pick lock "+prettyTime(g.kickoff_at):
+   prettyTime(g.kickoff_at))+
   (g.away_score!==null&&g.away_score!==undefined&&g.home_score!==null&&g.home_score!==undefined?
     ' · '+Number(g.away_score)+'–'+Number(g.home_score):'')+'</p>'+
   '<div class="sport-team-options">'+opt(g.away_code)+'<span class="sport-vs">VS</span>'+opt(g.home_code)+'</div>'+
@@ -267,7 +272,12 @@ async function load(s,force=false){
   await fetchFeed(force);
   const c=client(),u=user(),yr=year(s);
   if(!c||!u){
-   cache[s]={games:[],leagues:[],picks:{},standings:[],tiebreakers:{},pairings:[],active:null};
+   let games=[];
+   if(c){
+    const list=await c.from("sec_sport_games").select("*").eq("sport",s).eq("season",yr).order("kickoff_at");
+    if(!list.error)games=list.data||[];
+   }
+   cache[s]={games,leagues:[],picks:{},standings:[],tiebreakers:{},pairings:[],active:null};
    return;
   }
   // Authenticated data only; schedule writes are performed by the server, never by browser-supplied games.
@@ -395,4 +405,5 @@ setInterval(()=>{
  if(SPORT[active]&&document.visibilityState==="visible"&&!document.activeElement?.matches?.("input,textarea,select"))void load(active,true);
 },5*60000);
 window.SEC_SPORTS=Object.freeze({mount,recommended,year,groups,renderHub,load,getState:s=>cache[s]});
+if(["sports","basketball","baseball"].includes(window.SEC_BRIDGE?.view?.()))mount(window.SEC_BRIDGE.view());
 })();
