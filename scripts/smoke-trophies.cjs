@@ -156,15 +156,41 @@ function element(tag){
  return {tag,className:"",children:[],attrs:{},events:{},dataset:{},style:{setProperty(){}},isConnected:true,
  setAttribute(name,value){this.attrs[name]=String(value);},
  addEventListener(name,fn){this.events[name]=fn;},
- append(...items){this.children.push(...items);},
- appendChild(item){this.children.push(item);},
- replaceChildren(...items){this.children=items;},
+ append(...items){items.forEach(item=>{if(item&&typeof item==="object")item.parent=this;});this.children.push(...items);},
+ appendChild(item){if(item&&typeof item==="object")item.parent=this;this.children.push(item);},
+ replaceChildren(...items){this.children=[];this.append(...items);},
+ replaceWith(item){if(!this.parent)return;const at=this.parent.children.indexOf(this);if(at<0)return;item.parent=this.parent;this.parent.children.splice(at,1,item);},
  focus(){}};
 }
 const trophyRoot=element("section");
 harness.document.createElement=element;
 harness.document.getElementById=id=>id==="sds-trophy-case"?trophyRoot:null;
 const descendants=(node,match)=>[...(match(node)?[node]:[]),...(node.children||[]).flatMap(child=>child&&typeof child==="object"?descendants(child,match):[])];
+
+win.SEC_SOCIAL={renderChampionship:()=>'<div class="sec-championship-heading"><h3>League Championship</h3></div><button data-sec-social="crown" disabled>Crown 2026 Champion</button>'};
+win.SEC_FEATURES={leagueAchievements:()=>'<section class="sec-honors-achievements"><h3>League Achievements</h3></section>'};
+trophy.sync({games,picks,schedule,authenticated:true,leagueId:"league-a",leagueName:"Testing Crew",userId:"player-a"});
+trophy.mount();
+let honors=descendants(trophyRoot,n=>n.id==="sds-league-honors");
+assert.equal(honors.length,1,"championship and achievements rendered once in Trophy Case");
+let champ=descendants(trophyRoot,n=>n.id==="sec-championship-content");
+let badges=descendants(trophyRoot,n=>n.id==="sec-achievements-content");
+assert.equal(champ.length,1,"dedicated championship card near the top");
+assert.equal(badges.length,1,"dedicated league achievements card near the top");
+assert.match(champ[0].innerHTML,/League Championship/,"championship card displays");
+assert.match(badges[0].innerHTML,/League Achievements/,"achievements card displays");
+assert.ok(trophyRoot.children.indexOf(honors[0])<trophyRoot.children.findIndex(c=>c.className==="sds-school-directory"),"honors are above school collection");
+const previewCount=descendants(trophyRoot,n=>n.className?.includes?.("sds-school-preview-icon")).length;
+win.SEC_SOCIAL.renderChampionship=()=>'<div>Updated championship after standings refresh</div>';
+trophy.refreshHonors();
+champ=descendants(trophyRoot,n=>n.id==="sec-championship-content");
+assert.match(champ[0].innerHTML,/Updated championship/,"async standings update refreshes honor cards");
+assert.equal(descendants(trophyRoot,n=>n.className?.includes?.("sds-school-preview-icon")).length,previewCount,"honors refresh does not reset school dropdowns");
+trophy.sync({authenticated:false,userId:null});
+honors=descendants(trophyRoot,n=>n.id==="sds-league-honors");
+assert.equal(honors.length,1,"Trophy Case keeps honor entry point for signed-out visitors");
+assert.equal(descendants(honors[0],n=>n.className==="sds-honors-go-league").length,1,"sign-in call to action is available");
+
 trophy.selectSchool("schools");
 trophy.mount();
 let controls=descendants(trophyRoot,n=>n.className==="sds-school-disclosure");
