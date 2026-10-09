@@ -1,4 +1,4 @@
-name: Refresh SEC football headlines
+name: Refresh SEC football baseball basketball news
 on:
   schedule:
     - cron: '21 * * * *'
@@ -11,7 +11,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: sec-football-news
+  group: sec-three-sport-news
   cancel-in-progress: false
 jobs:
   update:
@@ -26,7 +26,7 @@ jobs:
           python-version: '3.12'
       - name: Test source parsing and headline integrity
         run: python3 -m unittest discover -s tests -p test_news.py -v
-      - name: Fetch current college football news and filter to SEC
+      - name: Fetch SEC football baseball basketball headlines
         run: python3 scripts/update_news.py
       - name: Validate real news story URLs and published dates
         run: |
@@ -38,11 +38,15 @@ jobs:
           assert isinstance(d.get('sources'),list)
           for row in d['articles']:
               assert row['source'] in ('ESPN','NCAA')
+              assert row['sport'] in ('football','basketball','baseball')
               assert row['url'].startswith(('https://www.espn.com/','https://www.ncaa.com/','https://espn.com/','https://ncaa.com/'))
               assert row['title'] and row['published_at']
               stamp=dt.datetime.fromisoformat(row['published_at'].replace('Z','+00:00'))
               assert stamp.tzinfo is not None
-          print('Validated',len(d['articles']),'verified source-linked SEC stories')
+          from collections import Counter
+          sport_counts=Counter(row['sport'] for row in d['articles'])
+          assert all(count<=50 for count in sport_counts.values())
+          print('Validated',len(d['articles']),'verified SEC stories across',dict(sport_counts))
           PY
       - name: Publish news feed to GitHub Pages
         run: |
