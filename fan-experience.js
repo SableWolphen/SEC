@@ -8,7 +8,7 @@ const date=x=>Number.isFinite(Date.parse(x))?new Date(x).toLocaleDateString("en-
 const sports=[["picks","🏈","Football"],["basketball","🏀","Basketball"],["baseball","⚾","Baseball"]];
 let leagues=[],clubId=null,rows=[],problem="",lastClub=0,clubLoading=false,identity=null;
 let gameRows={},revealed={},myPicks=[],gamesAt=0,gamesLoading=false;
-let teamRows={football:[],basketball:[],baseball:[]},teamAt=0,teamLoading=false,teamSport="football";
+let teamRows={football:[],basketball:[],baseball:[]},teamAt=0,teamLoading=false,teamSport="picks";
 const openDetails=new Set();
 const safeNumber=n=>Number.isFinite(Number(n))?Number(n):0;
 const store=(k,v)=>{try{localStorage.setItem(k,v);}catch(e){}};
@@ -200,6 +200,7 @@ function enhanceTeam(){
     (g.game_status==="final"&&scored?" · "+my+"–"+their:"")+'</small></li>';
  };
  target.innerHTML='<div class="card-kicker">★ YOUR FAVORITE TEAM</div><h3>Recent form & next games</h3>'+
+ '<button type="button" data-fan="team-news" class="fan-small">📰 My team news ↗</button>'+
  '<div class="fan-sport-links">'+sports.map(([s,e,label])=>'<button type="button" data-fan="team-sport" data-sport="'+s+'" class="fan-small '+(s===teamSport?"is-current":"")+'">'+e+' '+label+'</button>').join("")+'</div>'+
  '<div class="fan-team-columns"><div><strong>Last five</strong><ol>'+(past.length?past.map(line).join(""):'<li>No verified finals yet.</li>')+
  '</ol></div><div><strong>Upcoming</strong><ol>'+(next.length?next.map(line).join(""):'<li>No verified upcoming fixtures yet.</li>')+
@@ -259,6 +260,13 @@ document.addEventListener("click",e=>{
  if(cmd==="go-picks")app()?.setView?.("picks");
  if(cmd==="go-baseball")app()?.setView?.("baseball");
  if(cmd==="team-sport"){teamSport=b.dataset.sport;enhanceTeam();}
+ if(cmd==="team-news"){
+   const schoolNames={ALA:"Alabama",ARK:"Arkansas",AUB:"Auburn",FLA:"Florida",UGA:"Georgia",UK:"Kentucky",
+    LSU:"LSU",MISS:"Ole Miss",MSST:"Mississippi State",MIZ:"Missouri",OU:"Oklahoma",SC:"South Carolina",
+    TENN:"Tennessee",TEX:"Texas",TAMU:"Texas A&M",VAN:"Vanderbilt"};
+   const selected=app()?.state?.()?.favorite;
+   if(schoolNames[selected])window.SEC_NEWS?.showSchool?.(schoolNames[selected],teamSport==="picks"?"football":teamSport);
+ }
  if(cmd==="alerts")void toggleAlerts();
 });
 document.addEventListener("change",e=>{if(e.target.id==="fan-club-select")void changeClub("select",e.target);});
