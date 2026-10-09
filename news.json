@@ -1,11 +1,25 @@
 {
-  "updated_at": "2026-10-09T20:20:13.487987Z",
-  "checked_at": "2026-10-09T20:20:13.487987Z",
+  "updated_at": "2026-10-09T21:12:46.325201Z",
+  "checked_at": "2026-10-09T21:12:46.325201Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "b7e40453d895bcf7",
+      "title": "Trump will not attend Georgia-Alabama game due to Hurricane Isaias",
+      "summary": "President Trump will no longer attend Saturday's SEC clash between Georgia and Alabama, which remains on schedule despite approaching Hurricane Isaias.",
+      "url": "https://www.espn.com/college-football/story/_/id/50142513/trump-not-attend-georgia-alabama-game-due-hurricane-isaias",
+      "source": "ESPN",
+      "published_at": "2026-10-09T21:05:54Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
     {
       "id": "44496c3c6cf58e06",
       "title": "Sources: South Carolina's Dylan Stewart to return against Florida",
@@ -13,12 +27,12 @@
       "url": "https://www.espn.com/college-football/story/_/id/50141924/sources-south-carolina-dylan-stewart-return-florida",
       "source": "ESPN",
       "published_at": "2026-10-09T19:11:42Z",
+      "sport": "football",
       "teams": [
         "Florida",
         "South Carolina"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "9ab0d574a7d05181",
@@ -27,12 +41,12 @@
       "url": "https://www.espn.com/college-football/story/_/id/50133135/connelly-week-6-preview-sec-big-ten-alabama-georgia",
       "source": "ESPN",
       "published_at": "2026-10-09T16:05:51Z",
+      "sport": "football",
       "teams": [
         "Alabama",
         "Georgia"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "59f00712b756276c",
@@ -41,11 +55,11 @@
       "url": "https://www.espn.com/college-football/story/_/id/50133938/college-football-alabama-ryan-coleman-williams-drops",
       "source": "ESPN",
       "published_at": "2026-10-09T13:55:11Z",
+      "sport": "football",
       "teams": [
         "Alabama"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "bbabb20709223eef",
@@ -54,11 +68,11 @@
       "url": "https://www.espn.com/college-football/story/_/id/50134026/college-football-best-uniforms-week-6-oregon-florida-notre-dame",
       "source": "ESPN",
       "published_at": "2026-10-09T13:38:23Z",
+      "sport": "football",
       "teams": [
         "Florida"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "cf6ad493bda5ff75",
@@ -67,12 +81,12 @@
       "url": "https://www.espn.com/video/clip/_/id/50139833/kirby-smart-georgia-alabama-problem",
       "source": "ESPN",
       "published_at": "2026-10-09T13:14:28Z",
+      "sport": "football",
       "teams": [
         "Alabama",
         "Georgia"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "79af8af1c33cca16",
@@ -81,11 +95,11 @@
       "url": "https://www.espn.com/college-football/story/_/id/50135168/texas-oklahoma-state-fair-red-river-guide",
       "source": "ESPN",
       "published_at": "2026-10-09T13:03:43Z",
+      "sport": "football",
       "teams": [
         "Texas"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "549ce46ee8d24305",
@@ -94,11 +108,24 @@
       "url": "https://www.espn.com/college-football/story/_/id/50126123/gunner-stockton-back-spotlight-georgia-faces-alabama",
       "source": "ESPN",
       "published_at": "2026-10-09T10:25:09Z",
+      "sport": "football",
       "teams": [
         "Georgia"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
+    },
+    {
+      "id": "b22b2a3947d028f6",
+      "title": "Alabama's Aden Holloway begins 5-game ban following arrest",
+      "summary": "Alabama guard Aden Holloway will miss three exhibition games and two regular-season games during a five-game suspension following his arrest on a drug charge, coach Nate Oats said Thursday.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50137284/alabama-aden-holloway-begins-5-game-ban-following-arrest",
+      "source": "ESPN",
+      "published_at": "2026-10-09T03:01:43Z",
+      "sport": "basketball",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
     },
     {
       "id": "c84ab9bdf8201de7",
@@ -107,11 +134,11 @@
       "url": "https://www.espn.com/college-football/story/_/id/50134848/nick-carroll-no-4-overall-safety-28-commits-georgia",
       "source": "ESPN",
       "published_at": "2026-10-08T20:40:23Z",
+      "sport": "football",
       "teams": [
         "Georgia"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "38d2a6f8812c4bc9",
@@ -120,11 +147,11 @@
       "url": "https://www.espn.com/video/clip/_/id/50134145/how-kirby-smart-preparing-alabama-amid-weather-concerns",
       "source": "ESPN",
       "published_at": "2026-10-08T17:40:13Z",
+      "sport": "football",
       "teams": [
         "Alabama"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "b5404ab7ff31940c",
@@ -133,12 +160,12 @@
       "url": "https://www.espn.com/college-football/story/_/id/50133318/2026-college-gameday-week-6-georgia-vs-alabama",
       "source": "ESPN",
       "published_at": "2026-10-08T16:39:56Z",
+      "sport": "football",
       "teams": [
         "Alabama",
         "Georgia"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "7481f321bfd7a20b",
@@ -147,12 +174,12 @@
       "url": "https://www.espn.com/video/clip/_/id/50133199/stephen-issues-warning-texas-ahead-oklahoma-showdown",
       "source": "ESPN",
       "published_at": "2026-10-08T15:07:51Z",
+      "sport": "football",
       "teams": [
         "Oklahoma",
         "Texas"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "e227c0ffb9757168",
@@ -161,12 +188,12 @@
       "url": "https://www.espn.com/espn/betting/story/_/id/50106943/2026-college-football-week-6-top-25-betting-lines-odds",
       "source": "ESPN",
       "published_at": "2026-10-08T13:57:07Z",
+      "sport": "football",
       "teams": [
         "Alabama",
         "Georgia"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "520e533fb23fd3f3",
@@ -175,11 +202,11 @@
       "url": "https://www.espn.com/college-football/story/_/id/50132416/missouri-johnnie-dj-jones-receives-heart-transplant",
       "source": "ESPN",
       "published_at": "2026-10-08T13:27:17Z",
+      "sport": "football",
       "teams": [
         "Missouri"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "11e8f594eb05d693",
@@ -188,12 +215,12 @@
       "url": "https://www.espn.com/college-football/story/_/id/50128870/georgia-bulldogs-chauncey-bowens-vs-alabama-crimson-tide",
       "source": "ESPN",
       "published_at": "2026-10-08T11:59:54Z",
+      "sport": "football",
       "teams": [
         "Alabama",
         "Georgia"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "0c79562e55fe4057",
@@ -202,11 +229,11 @@
       "url": "https://www.espn.com/video/clip/_/id/50130306/full-highlights",
       "source": "ESPN",
       "published_at": "2026-10-08T03:47:58Z",
+      "sport": "football",
       "teams": [
         "Texas A&M"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "ee5c6a9c1ff1f342",
@@ -215,13 +242,13 @@
       "url": "https://www.espn.com/video/clip/_/id/50129446/no-9-ole-miss-needs-fix-run-defense",
       "source": "ESPN",
       "published_at": "2026-10-08T02:12:39Z",
+      "sport": "football",
       "teams": [
         "Florida",
         "Ole Miss",
         "Vanderbilt"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "727ef1aad7ea6012",
@@ -230,11 +257,11 @@
       "url": "https://www.espn.com/video/clip/_/id/50128869/gene-chizik-breaks-no-2-georgia-ferocious-run-defense",
       "source": "ESPN",
       "published_at": "2026-10-08T02:00:29Z",
+      "sport": "football",
       "teams": [
         "Georgia"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "ac8e1965b840d2f9",
@@ -243,12 +270,12 @@
       "url": "https://www.espn.com/video/clip/_/id/50128599/no-1-texas-hero-kanu-details-experience-red-river-rivalry",
       "source": "ESPN",
       "published_at": "2026-10-08T02:00:20Z",
+      "sport": "football",
       "teams": [
         "Oklahoma",
         "Texas"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "d40ad1270ce7c0f8",
@@ -257,13 +284,13 @@
       "url": "https://www.espn.com/video/clip/_/id/50128738/willie-rodriguez-breaks-game-winning-catch-uk-win-sc",
       "source": "ESPN",
       "published_at": "2026-10-08T02:00:09Z",
+      "sport": "football",
       "teams": [
         "Kentucky",
         "LSU",
         "South Carolina"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "5afa4d49b3350deb",
@@ -272,13 +299,13 @@
       "url": "https://www.espn.com/video/clip/_/id/50128739/gene-chizik-outlines-no-14-mizzou-texas-keys-winning",
       "source": "ESPN",
       "published_at": "2026-10-08T00:12:17Z",
+      "sport": "football",
       "teams": [
         "Florida",
         "Missouri",
         "Texas A&M"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "1de5a0b183515b3c",
@@ -287,12 +314,12 @@
       "url": "https://www.espn.com/video/clip/_/id/50128598/gene-chizik-says-week-6-game-uk-dangerous-no-10-lsu",
       "source": "ESPN",
       "published_at": "2026-10-07T23:51:46Z",
+      "sport": "football",
       "teams": [
         "Kentucky",
         "LSU"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "2d3fd03a7ae053ae",
@@ -301,12 +328,12 @@
       "url": "https://www.espn.com/video/clip/_/id/50128398/football-legends-history-red-river-rivalry",
       "source": "ESPN",
       "published_at": "2026-10-07T23:28:33Z",
+      "sport": "football",
       "teams": [
         "Oklahoma",
         "Texas"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
     },
     {
       "id": "30d4ae62c7eb2db1",
@@ -315,12 +342,52 @@
       "url": "https://www.espn.com/video/clip/_/id/50128025/vols-rb-desean-bishop-looks-forward-hogs-thinks-football",
       "source": "ESPN",
       "published_at": "2026-10-07T22:27:17Z",
+      "sport": "football",
       "teams": [
         "Arkansas",
         "Tennessee"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
+    },
+    {
+      "id": "e12674b00a2c19e8",
+      "title": "Men's college basketball 2026-27 preseason top 25 rankings",
+      "summary": "Florida remains No. 1 whether or not Denzel Aberdeen can play. Other teams with eligibility questions aren't as lucky.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50117086/mens-college-basketball-2026-27-preseason-top-25-rankings",
+      "source": "ESPN",
+      "published_at": "2026-10-07T13:55:37Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "2bea6f10e6566889",
+      "title": "Georgia lands top-25 recruit in shooting guard Jarvis Hayes Jr.",
+      "summary": "Jarvis Hayes Jr., a 6-foot-5 shooting guard, has committed to play for the Georgia Bulldogs. The No. 4 shooting guard in the country is ranked No. 22 in the SC Next 100 for the Class of 2027.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50111056/georgia-lands-top-25-recruit-shooting-guard-jarvis-hayes-jr",
+      "source": "ESPN",
+      "published_at": "2026-10-06T18:06:40Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6e042e098bb85af8",
+      "title": "LSU's Will Wade lands first 2027 5-star in guard King Gibson",
+      "summary": "LSU landed five-star guard King Gibson after the No. 13-ranked prospect in 2027 chose the Tigers over Arkansas, Louisville and Providence.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50106762/lsu-wade-lands-first-2027-5-star-guard-king-gibson",
+      "source": "ESPN",
+      "published_at": "2026-10-06T17:55:55Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas",
+        "LSU"
+      ],
+      "breaking": false
     },
     {
       "id": "1e245eaf82b3da2b",
@@ -329,11 +396,64 @@
       "url": "https://www.ncaa.com/news/football/article/2026-10-04/top-five-holds-alabama-rises-latest-ap-top-25-college-football-rankings",
       "source": "NCAA",
       "published_at": "2026-10-04T18:32:17Z",
+      "sport": "football",
       "teams": [
         "Alabama"
       ],
-      "breaking": false,
-      "sport": "football"
+      "breaking": false
+    },
+    {
+      "id": "2a39836bcc074371",
+      "title": "Mississippi State's Chris Jans speaks on current state of college athletics",
+      "summary": "The Bulldogs' Jans joins The Paul Finebaum Show describing how he's navigating through the different changes in collegiate athletics.",
+      "url": "https://www.espn.com/video/clip/_/id/50086246/mississippi-state-chris-jans-speaks-current-state-college-athletics",
+      "source": "ESPN",
+      "published_at": "2026-10-02T20:26:42Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia",
+        "Mississippi State"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0fa04a6864eb35e6",
+      "title": "College basketball eligibility: What to know about latest rulings",
+      "summary": "With a month to go until the 2026-27 season begins, we check in on the NCAA's player eligibility cases -- and LSU.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/49692764/college-basketball-eligibility-know-latest-rulings-ncaa",
+      "source": "ESPN",
+      "published_at": "2026-10-02T11:13:23Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0201623495fe30bd",
+      "title": "Florida's Denzel Aberdeen: Only 'fair' to be granted 5th year",
+      "summary": "Denzel Aberdeen says it's \"fair\" that he's been granted a fifth year of eligibility to play for Florida.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50078729/florida-denzel-aberdeen-only-fair-granted-5th-year",
+      "source": "ESPN",
+      "published_at": "2026-10-01T20:03:51Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "675aed132e334524",
+      "title": "Florida leads Andy Katz's men's basketball Power 44 rankings ahead of the 2026-27 season",
+      "summary": "With the NCAA tournament field expanding from 68 to 76 teams beginning with the 2026-27 season, Andy Katz has expanded his weekly power rankings from 37 to 44.",
+      "url": "https://www.ncaa.com/news/basketball-men/article/2026-10-01/florida-leads-andy-katzs-mens-basketball-power-44-rankings-ahead-2026-27-season",
+      "source": "NCAA",
+      "published_at": "2026-10-01T14:00:00Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
     }
   ],
   "warning": null
