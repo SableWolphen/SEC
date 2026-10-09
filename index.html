@@ -49,6 +49,17 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 
 
 .sec-avatar{display:inline-grid;place-items:center;width:25px;height:25px;min-width:25px;border-radius:50%;margin-right:8px;background:#35584b;color:#d7fa65;font-size:11px;font-weight:900;vertical-align:middle}.sec-h2h-records{border:1px solid #35534e;background:#12272d;padding:12px;border-radius:13px}.sec-h2h-records .sec-manage-row{padding:8px;border-bottom:1px solid #2b4646}.sec-h2h-records .sec-manage-row:last-child{border:0}
+
+/* Quick pick slip and mobile-friendly progress filters */
+.slate-pick-tools{border:1px solid #354957;background:linear-gradient(125deg,#172a31,#172633);border-radius:15px;padding:13px;margin:12px 0 17px}
+.slate-progress{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:11px;font-size:12px}
+.slate-progress strong{color:var(--lime);font-size:14px}.slate-progress span{color:#adc0ce;font-size:11px}
+.slate-filter-row{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.slate-filter{border:1px solid #465b69;border-radius:999px;color:#ccdae3;background:#20323f;padding:9px 12px;min-height:40px;font-size:11px;font-weight:850}
+.slate-filter.active{background:var(--lime);border-color:var(--lime);color:#13211b}
+.slate-filter small{opacity:.7;margin-left:4px}.slate-next{background:none;border:1px solid #5f806a;border-radius:9px;color:var(--lime);font-size:11px;font-weight:800;padding:10px 11px;margin-left:auto;min-height:40px}
+.slate-next:disabled{opacity:.45}.slate-empty{border:1px dashed #496075;background:#172230;padding:28px 15px;text-align:center;border-radius:13px;color:#c8d5dd}.slate-empty strong{color:var(--lime)}.slate-empty p{font-size:12px;margin:8px 0}.game-card[data-game-id]{scroll-margin-top:20px}.game-card[data-game-id]:focus{outline:2px solid var(--lime);outline-offset:3px}
+@media(max-width:590px){.slate-filter{padding:8px 10px}.slate-next{width:100%;margin-left:0}.slate-progress{align-items:flex-start;flex-direction:column;gap:2px}}
 </style>
   <title>Saturdays Down South · SEC Pick'em</title>
 </head>
@@ -77,12 +88,13 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       <div class="picks-layout">
         <div class="primary-column">
           <div id="hero-slot"></div>
-          <div class="section-title-row"><div><div class="overline">THE SLATE</div><h2>Game day matchups <span id="matchup-count"></span></h2></div><div class="section-caption">Straight-up winners · 1 point per correct pick</div></div>
-          <div id="games-list" class="games-list"></div>
+          <div class="section-title-row"><div><div class="overline">THE SLATE</div><h2>Game day matchups <span id="matchup-count"></span></h2></div><div class="section-caption" id="slate-mode-caption">Straight Picks · 1 point per correct pick</div></div>
+          <div id="slate-pick-tools" class="slate-pick-tools" role="group" aria-label="Filter matchups"></div>
+           <div id="games-list" class="games-list"></div>
         </div>
         <aside class="side-column" aria-label="Your weekly summary">
           <div id="summary-slot"></div>
-          <div class="side-card rules-card"><div class="card-kicker">HOW TO PLAY</div><h3>Simple picks.<br><span>Big bragging rights.</span></h3><div class="rule-item"><span class="rule-number">01</span><p>Pick the winner of each game involving an SEC team.</p></div><div class="rule-item"><span class="rule-number">02</span><p>Picks lock at kickoff (early provisional lock for TBD games).</p></div><div class="rule-item"><span class="rule-number">03</span><p>Earn a point for each correct call. Most wins takes the week.</p></div><button type="button" data-nav="league" class="inline-link">Bring your friends <span aria-hidden="true">↗</span></button></div>
+          <div class="side-card rules-card"><div class="card-kicker">HOW TO PLAY</div><h3>Simple picks.<br><span>Big bragging rights.</span></h3><div class="rule-item"><span class="rule-number">01</span><p>Pick the winner of each game involving an SEC team.</p></div><div class="rule-item"><span class="rule-number">02</span><p>Picks lock at kickoff (early provisional lock for TBD games).</p></div><div class="rule-item"><span class="rule-number">03</span><p>Each league chooses a scoring mode. Correct picks earn points according to that mode.</p></div><button type="button" data-nav="league" class="inline-link">Bring your friends <span aria-hidden="true">↗</span></button></div>
           <div class="source-note">Schedule sourced from the <a href="https://www.secsports.com/fbtv" target="_blank" rel="noopener noreferrer">SEC's official broadcast schedule</a>. Future kickoff times may change. No affiliation with the SEC.</div>
         </aside>
       </div>
@@ -256,6 +268,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   const defaults = {v:1,name:'You',favorite:null,league:'Saturdays Down South Crew',picks:{},results:{},members:[]};
   let state = load();
   let currentWeek = initialWeek();
+   let slateFilter = "all";
   let currentView = 'picks';
   let installPrompt = null;
   let toastTimeout = null;
@@ -287,7 +300,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   function setView(v){if(!['picks','league','teams','settings'].includes(v))return;currentView=v;for(const id of ['picks','league','teams','settings']){document.getElementById(`${id}-view`).classList.toggle('hidden',id!==v);}document.querySelectorAll('[data-nav]').forEach(el=>{const on=el.dataset.nav===v;el.classList.toggle('active',on);if(el.classList.contains('nav-link'))el.setAttribute('aria-current',on?'page':'false');});if(v==='picks')renderPicks();if(v==='league')renderLeague();if(v==='teams')renderTeams();if(v==='settings')renderSettings();if(location.hash!==`#${v}`)history.replaceState(null,'',`#${v}`);window.scrollTo({top:0,behavior:'instant'});}
   function renderHeader(){document.getElementById('header-name').textContent=getName();document.getElementById('header-avatar').textContent=getName().slice(0,1).toUpperCase();}
   function renderWeekPicker(){document.getElementById('week-picker').innerHTML=WEEKS.map(w=>`<button type="button" class="week-pill ${w.num===currentWeek?'active':''}" data-week="${w.num}" aria-pressed="${w.num===currentWeek}"><strong>WEEK ${w.num}</strong><small>${displayDate(w.date)}</small></button>`).join('');const bar=document.getElementById('week-picker');const active=bar.querySelector('.week-pill.active');if(active)bar.scrollLeft=Math.max(0,active.offsetLeft-bar.offsetLeft-10);}
-  function makeTeamButton(g,id,hero=false){const t=team(id), sel=selected(g,id);const decided=state.results[g.id];if(hero)return `<button class="spotlight-team ${sel?'chosen':''}" type="button" data-pick="${g.id}" data-team="${id}" aria-pressed="${sel}" ${isLocked(g)?'disabled':''}>${logo(id)}<b>${esc(t.name)}</b>${sel?' ✓':''}</button>`;return `<button type="button" class="team-choice ${sel?'selected':''} ${decided===id?'winner':''} ${decided&&decided!==id?'loser':''}" data-pick="${g.id}" data-team="${id}" aria-label="Pick ${esc(t.name)} to win" aria-pressed="${sel}" ${isLocked(g)?'disabled':''}>${logo(id)}<span class="team-copy"><span class="team-name">${esc(t.name)}</span><span class="team-nick">${esc(t.nick)}</span></span><span class="select-mark">${sel?'✓':''}</span></button>`;}
+  function makeTeamButton(g,id,hero=false){const t=team(id), sel=selected(g,id);const decided=state.results[g.id];const blocked=isLocked(g)||Boolean(window.SEC_FEATURES?.isUnavailable?.(g));if(hero)return `<button class="spotlight-team ${sel?'chosen':''}" type="button" data-pick="${g.id}" data-team="${id}" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<b>${esc(t.name)}</b>${sel?' ✓':''}</button>`;return `<button type="button" class="team-choice ${sel?'selected':''} ${decided===id?'winner':''} ${decided&&decided!==id?'loser':''}" data-pick="${g.id}" data-team="${id}" aria-label="Pick ${esc(t.name)} to win" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<span class="team-copy"><span class="team-name">${esc(t.name)}</span><span class="team-nick">${esc(t.nick)}</span></span><span class="select-mark">${sel?'✓':''}</span></button>`;}
   // Editorial fallback for weeks without ranking data. The featured matchup is NEVER selected from favorites.
   const EDITORIAL_FEATURED={
     1:'CLEM-LSU',2:'OHST-TEX',3:'LSU-MISS',4:'OU-UGA',5:'VAN-UGA',
@@ -301,10 +314,41 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     return w.games.find(g=>g.id.endsWith('-'+preferred))||w.games[0];
   }
   function renderHero(w){const featured=featuredGame(w);document.getElementById('hero-slot').innerHTML=`<div class="spotlight"><div class="spotlight-inner"><div class="spotlight-top"><span class="line"></span>MATCHUP OF THE WEEK <span class="line"></span></div><h2 class="spotlight-title">Big games. <span>Bigger calls.</span></h2><p class="spotlight-sub">${esc(team(featured.away).name)} vs ${esc(team(featured.home).name)} · ${esc(gameTime(featured))} · ${esc(featured.network)}${featured.neutral?' · '+esc(featured.neutral):''}</p><div class="spotlight-game">${makeTeamButton(featured,featured.away,true)}<span class="spotlight-versus">VS</span>${makeTeamButton(featured,featured.home,true)}</div><div class="spotlight-label">${state.picks[featured.id]?'Your pick: '+esc(team(state.picks[featured.id]).name):'Who are you backing? Tap to choose.'} ${isLocked(featured)?' · Locked':''}</div></div></div>`;}
-  function renderGame(g,index){const pick=state.picks[g.id],winner=state.results[g.id];const note=winner ? !pick ? 'Final result entered · no pick made' : pick===winner ? '<span class="earned">✓ Correct pick · +1 point</span>' : '<span class="missed">✕ Incorrect pick · 0 points</span>' : pick ? `Your pick: <span class="text-strong">${esc(team(pick).name)}</span>`:'Choose a team to make your pick';return `<article class="game-card"><div class="game-header"><div class="game-index"><strong>${String(index+1).padStart(2,'0')}</strong> / MATCHUP</div><div class="game-meta"><span>${displayDate(g.date,g.date!==week().date)}</span><span class="meta-separator">·</span><span>${esc(gameTime(g))}</span><span class="meta-separator">·</span><span>${esc(g.network)}</span></div></div><div class="team-choices">${makeTeamButton(g,g.away)}<span class="versus">VS</span>${makeTeamButton(g,g.home)}</div><div class="game-note"><span>${note}</span><span class="lock-tag ${isLocked(g)?'locked':''}">${esc(timeNote(g))}</span></div>${g.neutral?`<div class="helper" style="margin-top:7px">${esc(g.neutral)}</div>`:''}${window.SEC_STATS?window.SEC_STATS.render(g):''}${window.SEC_FEATURES?.extras?.(g)||''}</article>`;}
-  function renderSummary(w){const made=activePicks(w),total=w.games.length,allFinal=resultsCount(w),open=pendingLocks(w).length;document.getElementById('summary-slot').innerHTML=`<div class="summary-card"><div class="card-kicker">YOUR WEEKLY CARD</div><h3>Week ${w.num} <span>recap.</span></h3><p class="summary-sub">${made===total?'Your slip is full. Bring on Saturday.':`${total-made} picks left on the board.`}</p><div class="progress-top"><span class="progress-big">${made}<small>/${total}</small></span><span class="progress-label">${Math.round(made/total*100)}% COMPLETE</span></div><div class="progress-track" aria-label="${made} of ${total} picks made"><span style="width:${made/total*100}%"></span></div><div class="summary-stats"><div><strong>${correctCount(w)}</strong><small>Correct picks</small></div><div><strong>${allFinal}<small> / ${total}</small></strong><small>Games scored</small></div></div><button class="primary-btn" type="button" data-action="share-picks" ${made===0?'disabled':''}>${made===total?'Share your picks ↗':'Copy pick slip ↗'}</button><p class="helper" style="margin:10px 0 0">${open?'Unpicked games can be selected until their lock time.':'This week’s picks are locked.'}</p></div>`;}
-  function renderPicks(){const w=week();renderHeader();renderWeekPicker();document.getElementById('matchup-count').textContent=`(${w.games.length})`;const nearest=pendingLocks(w)[0];document.getElementById('countdown-badge').innerHTML=nearest?`◷ NEXT LOCK <strong>${relativeTime(Date.parse(lockTimestamp(nearest))-Date.now())}</strong> <span>· Central time shown</span>`:'<strong>ALL PICKS LOCKED</strong>';renderHero(w);document.getElementById('games-list').innerHTML=w.games.map((g,i)=>renderGame(g,i)).join('');renderSummary(w);}
-
+  function renderGame(g,index){const pick=state.picks[g.id],winner=state.results[g.id];const fallbackNote=winner ? !pick ? 'Final result entered · no pick made' : pick===winner ? '<span class="earned">✓ Correct pick · +1 point</span>' : '<span class="missed">✕ Incorrect pick · 0 points</span>' : pick ? `Your pick: <span class="text-strong">${esc(team(pick).name)}</span>`:'Choose a team to make your pick';const note=window.SEC_FEATURES?.pickResult?.(g)??fallbackNote;return `<article class="game-card" data-game-id="${esc(g.id)}" tabindex="-1"><div class="game-header"><div class="game-index"><strong>${String(index+1).padStart(2,'0')}</strong> / MATCHUP</div><div class="game-meta"><span>${displayDate(g.date,g.date!==week().date)}</span><span class="meta-separator">·</span><span>${esc(gameTime(g))}</span><span class="meta-separator">·</span><span>${esc(g.network)}</span></div></div><div class="team-choices">${makeTeamButton(g,g.away)}<span class="versus">VS</span>${makeTeamButton(g,g.home)}</div><div class="game-note"><span>${note}</span><span class="lock-tag ${isLocked(g)?'locked':''}">${esc(timeNote(g))}</span></div>${g.neutral?`<div class="helper" style="margin-top:7px">${esc(g.neutral)}</div>`:''}${window.SEC_STATS?window.SEC_STATS.render(g):''}${window.SEC_FEATURES?.extras?.(g)||''}</article>`;}
+  function renderSummary(w){const scoring=window.SEC_FEATURES?.summaryPoints?.(w);const made=activePicks(w),total=w.games.length,allFinal=resultsCount(w),open=pendingLocks(w).length;document.getElementById('summary-slot').innerHTML=`<div class="summary-card"><div class="card-kicker">YOUR WEEKLY CARD</div><h3>Week ${w.num} <span>recap.</span></h3><p class="summary-sub">${made===total?'Your slip is full. Bring on Saturday.':`${total-made} picks left on the board.`}</p><div class="progress-top"><span class="progress-big">${made}<small>/${total}</small></span><span class="progress-label">${Math.round(made/total*100)}% COMPLETE</span></div><div class="progress-track" aria-label="${made} of ${total} picks made"><span style="width:${made/total*100}%"></span></div><div class="summary-stats"><div><strong>${scoring?scoring.score:correctCount(w)}</strong><small>${esc(scoring?scoring.label:"Correct picks")}</small></div><div><strong>${allFinal}<small> / ${total}</small></strong><small>Games scored</small></div></div><button class="primary-btn" type="button" data-action="share-picks" ${made===0?'disabled':''}>${made===total?'Share your picks ↗':'Copy pick slip ↗'}</button><p class="helper" style="margin:10px 0 0">${open?'Unpicked games can be selected until their lock time.':'This week’s picks are locked.'}</p></div>`;}
+  function renderPicks(){
+  const w=week();renderHeader();renderWeekPicker();
+  document.getElementById('matchup-count').textContent=`(${w.games.length})`;
+  const nearest=pendingLocks(w)[0];
+  document.getElementById('countdown-badge').innerHTML=nearest?
+   `◷ NEXT LOCK <strong>${relativeTime(Date.parse(lockTimestamp(nearest))-Date.now())}</strong> <span>· Central time shown</span>`:
+   '<strong>ALL PICKS LOCKED</strong>';
+  const caption=document.getElementById('slate-mode-caption');
+  if(caption)caption.textContent=window.SEC_FEATURES?.modeDescription?.()||'Straight Picks · 1 point per correct pick';
+  renderHero(w);
+  const made=w.games.filter(g=>state.picks[g.id]===g.away||state.picks[g.id]===g.home);
+  const openUnpicked=w.games.filter(g=>!state.picks[g.id]&&!isLocked(g)&&!window.SEC_FEATURES?.isUnavailable?.(g));
+  const views=[
+   ['all','All games',w.games.length],
+   ['unpicked','Need picks',openUnpicked.length],
+   ['picked','My picks',made.length]
+  ];
+  document.getElementById('slate-pick-tools').innerHTML=
+   '<div class="slate-progress"><strong>'+made.length+' of '+w.games.length+' picked</strong><span>'+openUnpicked.length+' still open and unpicked</span></div>'+
+   '<div class="slate-filter-row">'+views.map(([key,label,count])=>
+     '<button type="button" class="slate-filter '+(slateFilter===key?'active':'')+'" data-slate-filter="'+key+
+     '" aria-pressed="'+(slateFilter===key)+'">'+esc(label)+' <small>'+count+'</small></button>').join('')+
+   '<button type="button" class="slate-next" data-slate-next '+(!openUnpicked.length?'disabled':'')+'>Jump to next pick ↓</button></div>';
+  const filtered=w.games.filter(g=>
+    slateFilter==='picked' ? Boolean(state.picks[g.id]) :
+    slateFilter==='unpicked' ? openUnpicked.includes(g) : true
+  );
+  document.getElementById('games-list').innerHTML=filtered.length?
+   filtered.map((g)=>renderGame(g,w.games.indexOf(g))).join(''):
+   '<div class="slate-empty"><strong>'+(slateFilter==='unpicked'?'All available games are picked!':'No matches in this view.')+
+   '</strong><p>Switch to All games to review every matchup.</p><button type="button" class="ghost-btn" data-slate-filter="all">Show all games</button></div>';
+  renderSummary(w);
+}
   function scoreFor(picks,requestedWeek){const w=WEEKS.find(w=>w.num===requestedWeek);return correctCount(w,picks||{});}
   function peopleForWeek(w){const rows=[{id:'me',name:getName(),picks:state.picks,local:true}];for(const m of state.members){const weekPicks=m.weeks?.[w.num]?.picks||{};rows.push({id:m.id,name:m.name,picks:weekPicks,local:false,hasSlip:!!m.weeks?.[w.num]});}rows.forEach(r=>{r.score=scoreFor(r.picks,w.num);r.total=w.games.filter(g=>r.picks[g.id]).length;r.fullScore=points(r.local?state.picks:Object.assign({},...Object.values(state.members.find(m=>m.id===r.id)?.weeks||{}).map(v=>v.picks||{})));});rows.sort((a,b)=>b.score-a.score||b.total-a.total||a.name.localeCompare(b.name));return rows;}
   function renderStandings(w){const rows=peopleForWeek(w);return `<div class="leaderboard"><div class="standing-row head"><span>#</span><span>PLAYER</span><span>PICKS</span><span>PTS</span></div>${rows.map((r,i)=>`<div class="standing-row ${r.local?'':''}"><span class="rank">${String(i+1).padStart(2,'0')}</span><span class="name">${esc(r.name)} ${r.local?'<span class="subtitle-pill">YOU</span>':''}</span><span class="muted">${r.total}/${w.games.length}</span><span class="score">${r.score}</span></div>`).join('')}</div>`;}
@@ -326,6 +370,17 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   document.addEventListener('click', e=>{
     const nav=e.target.closest('[data-nav]');if(nav){e.preventDefault();setView(nav.dataset.nav);return;}
     const weekEl=e.target.closest('[data-week]');if(weekEl){currentWeek=Number(weekEl.dataset.week);if(currentView==='picks')renderPicks();else if(currentView==='league')renderLeague();else if(currentView==='settings')renderSettings();return;}
+    const filter=e.target.closest('[data-slate-filter]');
+    if(filter){slateFilter=filter.dataset.slateFilter;renderPicks();return;}
+    const next=e.target.closest('[data-slate-next]');
+    if(next){
+      const candidate=week().games.find(g=>!state.picks[g.id]&&!isLocked(g)&&!window.SEC_FEATURES?.isUnavailable?.(g));
+      if(!candidate){toast('No available unpicked games.');return;}
+      if(slateFilter==='picked'){slateFilter='all';renderPicks();}
+      const card=[...document.querySelectorAll('[data-game-id]')].find(el=>el.dataset.gameId===candidate.id);
+      if(card){card.scrollIntoView({behavior:'smooth',block:'start'});card.focus({preventScroll:true});}
+      return;
+    }
     const pick=e.target.closest('[data-pick]');if(pick){const g=GAME_BY_ID[pick.dataset.pick],id=pick.dataset.team;if(!g||isLocked(g)){toast('This game is locked.');return;}if(g.away!==id&&g.home!==id)return;if(window.secOnline?.configured){void window.secOnline.pick(g,id);return;}state.picks[g.id]=id;save();renderPicks();toast(`${team(id).name} selected!`);return;}
     const fav=e.target.closest('[data-fav]');if(fav){const id=fav.dataset.fav;if(!TEAMS[id])return;state.favorite=state.favorite===id?null:id;save();renderTeams();toast(state.favorite?`${team(id).name} is your favorite!`:'Favorite cleared.');return;}
     const result=e.target.closest('[data-result]');if(result){if(window.secOnline?.configured){toast('Online winners are managed by the site administrator.');return;}const g=GAME_BY_ID[result.dataset.result];const id=result.dataset.team;if(!g)return;if(id==='clear')delete state.results[g.id];else if(id===g.away||id===g.home)state.results[g.id]=id;else return;save();renderSettings();toast(id==='clear'?'Result cleared.':`Winner set: ${team(id).name}`);return;}
