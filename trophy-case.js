@@ -81,7 +81,28 @@
  "#sds-trophy-case .sds-trophy-placeholder span{display:block;margin-top:6px;color:var(--sds-trophy-accent);letter-spacing:.8px}",
  "#sds-trophy-case .sds-trophy-category{color:#d5ff65;font-size:10px;font-weight:800;margin-top:9px}",
  "#sds-trophy-case .sds-trophy-schedule{color:#7e9aae;font-size:10px;margin-top:5px}",
-  "#sds-trophy-case .sds-trophy-disclaimer{margin-top:20px;color:#93a7b9;font-size:11px;line-height:1.5}",
+  "#sds-trophy-case .sds-trophy-tabs{flex-wrap:wrap}",
+ "#sds-trophy-case .sds-trophy-tab{flex:1 1 calc(50% - 8px)}",
+ "#sds-trophy-case .sds-rivalry-lead{padding:17px;border:1px solid #5f7544;background:linear-gradient(130deg,#1f3930,#122834);border-radius:13px}",
+ "#sds-trophy-case .sds-rivalry-kicker{font-size:10px;letter-spacing:1.7px;font-weight:900;color:#d5ff65}",
+ "#sds-trophy-case .sds-rivalry-lead h3{font-size:24px;margin:7px 0}",
+ "#sds-trophy-case .sds-rivalry-lead p{font-size:12px;color:#b1c4d0;line-height:1.5;margin:0 0 11px}",
+ "#sds-trophy-case .sds-rivalry-progress{color:#d5ff65;font-size:12px}",
+ "#sds-trophy-case .sds-rivalry-badges{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0 18px}",
+ "#sds-trophy-case .sds-rivalry-badge{border:1px solid #41546a;background:#1c2e3a;padding:12px;border-radius:11px;opacity:.78}",
+ "#sds-trophy-case .sds-rivalry-badge.earned{border-color:#77944f;background:#293d30;opacity:1}",
+ "#sds-trophy-case .sds-rivalry-badge strong{display:block;color:#d5ff65;font-size:12px;margin-bottom:5px}",
+ "#sds-trophy-case .sds-rivalry-badge small{font-size:10px;color:#b6c8d1;line-height:1.5}",
+ "#sds-trophy-case .sds-rivalry-list-heading{font-size:16px;margin:15px 0 11px}",
+ "#sds-trophy-case .sds-rivalry-entries{display:grid;gap:8px}",
+ "#sds-trophy-case .sds-rivalry-entry{display:flex;gap:12px;align-items:center;padding:12px;background:#142637;border:1px solid #34495b;border-radius:12px}",
+ "#sds-trophy-case .sds-rivalry-emblem{font-size:27px;min-width:35px}",
+ "#sds-trophy-case .sds-rivalry-entry-detail{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}",
+ "#sds-trophy-case .sds-rivalry-entry-detail strong{font-size:12px}",
+ "#sds-trophy-case .sds-rivalry-entry-detail small{color:#a7b8c7;font-size:10px}",
+ "#sds-trophy-case .sds-rivalry-entry-status{color:#d5ff65;font-size:10px}",
+ "#sds-trophy-case .sds-rivalry-go{background:#d5ff65;color:#13211e;border:0;border-radius:9px;min-height:38px;padding:8px 11px;font-size:11px;font-weight:900}",
+ "#sds-trophy-case .sds-trophy-disclaimer{margin-top:20px;color:#93a7b9;font-size:11px;line-height:1.5}",
  "@media(min-width:890px){#sds-trophy-case .sds-trophy-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}",
  "@media(max-width:365px){#sds-trophy-case{padding:18px 10px 85px}#sds-trophy-case .sds-trophy-display{height:145px}#sds-trophy-case .sds-trophy-placeholder strong{font-size:44px}}"
  ];
@@ -149,9 +170,74 @@
   }
   card.append(display,info);attachModel(display,t,version);return card;
  }
+ function rivalryChallenges(){
+  const wrap=document.createElement("section");wrap.className="sds-rivalry-challenge";
+  const lead=document.createElement("div");lead.className="sds-rivalry-lead";
+  const onSlate=TROPHIES.map(t=>{
+   const games=Object.values(schedule).filter(g=>g&&t.codes.includes(g.away)&&t.codes.includes(g.home));
+   const game=games.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date)))[0]||null;
+   const result=game?verified.find(g=>g.id===game.id):null;
+   return {t,game,result,pick:game?myPicks[game.id]:null};
+  });
+  const scheduled=onSlate.filter(item=>Boolean(item.game));
+  const picked=scheduled.filter(item=>Boolean(item.pick));
+  const complete=scheduled.filter(item=>item.result?.game_status==="final");
+  const correct=complete.filter(item=>item.pick===item.result?.winner).length;
+  lead.innerHTML='<div class="sds-rivalry-kicker">RIVALRY WEEK QUESTS</div>'+
+   '<h3>Every rivalry. Every year.</h3>'+
+   '<p>Make your rivalry predictions before kickoff, then earn collectibles from verified finals. Classics not played this season still stay in the collection.</p>'+
+   '<div class="sds-rivalry-progress"><b>'+picked.length+' / '+scheduled.length+'</b> scheduled rivalry games picked · <b>'+correct+'</b> correct finals</div>';
+  wrap.append(lead);
+  const badges=document.createElement("div");badges.className="sds-rivalry-badges";
+  const ownedCount=owned().length;
+  const completeSweep=scheduled.length>=2&&complete.length===scheduled.length&&correct===scheduled.length;
+  const goals=[
+   ["🏈 Rivalry Starter",picked.length>=1,"Pick a scheduled rivalry game"],
+   ["⚡ Rivalry Specialist",ownedCount>=3,"Collect 3 different rivalry trophies"],
+   ["👑 Rivalry Sweep",completeSweep,"Correctly predict every scheduled rivalry this season"],
+   ["🏆 All 15 Club",ownedCount===TROPHIES.length,"Collect all 15 named rivalries across seasons"]
+  ];
+  for(const [name,earned,info] of goals){
+   const card=document.createElement("div");card.className="sds-rivalry-badge"+(earned?" earned":"");
+   const title=document.createElement("strong");title.textContent=(earned?"✓ ":"◯ ")+name;
+   const desc=document.createElement("small");desc.textContent=info;
+   card.append(title,desc);badges.append(card);
+  }
+  wrap.append(badges);
+  const heading=document.createElement("h3");heading.className="sds-rivalry-list-heading";
+  heading.textContent="All 15 rivalry matchups";wrap.append(heading);
+  const entries=document.createElement("div");entries.className="sds-rivalry-entries";
+  for(const {t,game,result,pick} of onSlate.sort((a,b)=>Number(Boolean(b.game))-Number(Boolean(a.game)))){
+   const row=document.createElement("article");row.className="sds-rivalry-entry";
+   const emblem=document.createElement("span");emblem.className="sds-rivalry-emblem";emblem.textContent=t.symbol;
+   const detail=document.createElement("div");detail.className="sds-rivalry-entry-detail";
+   const title=document.createElement("strong");title.textContent=t.name;
+   const teams=document.createElement("small");teams.textContent=t.teams;
+   const status=document.createElement("span");status.className="sds-rivalry-entry-status";
+   if(!game)status.textContent="Not scheduled this season · stays collectible";
+   else if(result?.game_status==="final")status.textContent=pick===result.winner?"🏆 Correct rivalry call":pick?"Missed this rivalry":"No pick saved before kickoff";
+   else if(pick)status.textContent="✓ Your pick: "+pick+" · Week "+game.week;
+   else status.textContent="Scheduled · Week "+game.week+" · Pick a team";
+   detail.append(title,teams,status);
+   row.append(emblem,detail);
+   if(game && result?.game_status!=="final"){
+    const button=document.createElement("button");button.type="button";button.className="sds-rivalry-go";
+    button.textContent="Pick ↗";
+    button.setAttribute("aria-label","Go to "+t.name+" picks");
+    button.addEventListener("click",()=>{
+     window.SEC_BRIDGE?.setView?.("picks");
+     document.querySelector('[data-week="'+game.week+'"]')?.click();
+    });
+    row.append(button);
+   }
+   entries.append(row);
+  }
+  wrap.append(entries);
+  return wrap;
+ }
  function render(next=tab){
   const root=document.getElementById(rootId);if(!root)return;
-  tab=["all","mine","history"].includes(next)?next:"all";
+  tab=["all","mine","history","rivalries"].includes(next)?next:"all";
   const version=++renderId;root.replaceChildren();
   const h=document.createElement("h2");h.className="sds-trophy-heading";h.innerHTML="Trophy <span>Case</span>";
   const subtitle=document.createElement("p");subtitle.className="sds-trophy-subtitle";
@@ -164,13 +250,14 @@
   summary.append(big,small);
   const tabs=document.createElement("div");tabs.className="sds-trophy-tabs";
   tabs.setAttribute("role","group");tabs.setAttribute("aria-label","Trophy Case views");
-  for(const [id,label] of [["all","All Trophies"],["mine","My Trophies"],["history","History"]]){
+  for(const [id,label] of [["all","All Trophies"],["mine","My Trophies"],["history","History"],["rivalries","Rivalry Week"]]){
    const btn=document.createElement("button");btn.type="button";btn.className="sds-trophy-tab"+(tab===id?" active":"");
    btn.textContent=label;btn.setAttribute("aria-pressed",String(tab===id));btn.addEventListener("click",()=>render(id));
    tabs.append(btn);
   }
   root.append(h,subtitle,rivalryNotice,summary,tabs);
-  if(tab==="history"){
+  if(tab==="rivalries"){root.append(rivalryChallenges());}
+  else if(tab==="history"){
    const history=document.createElement("div");history.className="sds-trophy-history";
    if(!records.length)history.append(empty(signedIn?"No verified rivalry predictions yet.":"Log in to track your rivalry predictions.",!signedIn));
    for(const result of records.slice().sort((a,b)=>b.year-a.year)){
