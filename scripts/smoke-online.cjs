@@ -153,5 +153,29 @@ function click(action){
  pickState.picks={};
  await env.window.secOnline.refresh();
  assert.equal(pickState.picks[sampleGame.id],'ALA','signed-in picks restore from backend');
+ // Mode-aware display and scoring regressions: never show straight-winner points in spread mode.
+ const features=env.window.SEC_FEATURES;
+ const scored={id:sampleGame.id,game_status:'final',winner:'ALA',away_score:24,home_score:28,
+   kickoff_at:sampleGame.kickoff,spread_home:-7.5,spread_source:'ESPN'};
+ features.updateGames([scored],env.window.SEC_BRIDGE);
+ assert.match(features.pickResult(sampleGame),/Correct.*\+1/,'straight winner is one point');
+ assert.equal(features.summaryPoints({games:[sampleGame]}).score,'1','straight score');
+ state.leagues[0].mode='spread';
+ await env.window.secOnline.refresh();
+ assert.match(features.pickResult(sampleGame),/Did not cover/,'spread uses line, not winning team');
+ assert.equal(features.summaryPoints({games:[sampleGame]}).score,'0','spread underdog comparison');
+ features.updateGames([{...scored,spread_home:null}],env.window.SEC_BRIDGE);
+ assert.equal(features.isUnavailable(sampleGame),true,'missing sourced spread disables picks');
+ features.updateGames([scored],env.window.SEC_BRIDGE);
+ state.leagues[0].mode='confidence';
+ state.picks[0].confidence_points=7;
+ await env.window.secOnline.refresh();
+ assert.match(features.pickResult(sampleGame),/\+7 pts/,'confidence correct pick earns selected points');
+ assert.equal(features.summaryPoints({games:[sampleGame]}).score,'7','weighted confidence score');
+ const html=fs.readFileSync('index.html','utf8');
+ assert.match(html,/data-slate-filter/,'slate includes filtering');
+ assert.match(html,/data-slate-next/,'slate includes jump-to-next-pick');
+ assert.match(html,/SEC_FEATURES\?\.pickResult/,'matchup results use mode-specific logic');
+ console.log('SEC mode scoring (straight/spread/confidence), unavailable lines, filters, and pick progress passed.');
  console.log('SEC signup → account profile → create private league → invite → logout → password login → pick + change winner + refresh smoke tests passed.');
 })().catch(err=>{console.error(err);process.exitCode=1;});
