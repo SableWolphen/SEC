@@ -357,7 +357,7 @@
   window.secOnline={
     configured:!!client,renderLeague:renderLeague,renderSettings:renderSettings,
     pick:choose,copyInvite:copyInvite,refreshStandings:refreshStandings,refresh:refresh,
-    isSignedIn:function(){return !!user;}
+    isSignedIn:function(){return !!user;},getClient:function(){return client;},getUser:function(){return user;},getLeague:function(){return currentLeague();}
   };
   document.addEventListener("click",function(ev){
     var el=ev.target.closest("[data-online]");
