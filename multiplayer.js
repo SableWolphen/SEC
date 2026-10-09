@@ -137,6 +137,7 @@
       if(!user){
         leagues=[];active=null;profile=null;standings=[];standingsError='';
         app.state().picks={};app.state().results={};
+        window.SDSTrophyCase?.sync({authenticated:false,schedule:app.gameById});
         if(window.SEC_FEATURES?.reload)await window.SEC_FEATURES.reload(client,null,null,app);
         try{
           var publicGames=extract(await client.from("sec_games").select("id,kickoff_at,winner,provisional,game_status,status_detail,away_score,home_score,spread_home,spread_source,score_updated_at"))||[];
@@ -184,6 +185,11 @@
       }
       if(active)localStorage.setItem("ss-sec-league",active);
       if(window.SEC_FEATURES?.reload)await window.SEC_FEATURES.reload(client,currentLeague(),user,app);
+      window.SDSTrophyCase?.sync({
+        games:results[3].data||[],picks:app.state().picks,schedule:app.gameById,
+        leagueId:currentLeague()?.id||null,leagueName:currentLeague()?.name||"",
+        authenticated:!!user
+      });
       await refreshStandings(false);
       window.SEC_FEATURES?.remind?.();
       show();
