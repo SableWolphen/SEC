@@ -378,6 +378,7 @@ function remind(){
  if("Notification" in window&&Notification.permission==="granted")try{new Notification("SEC Pick'em",{body:msg,tag:k});}catch(e){}
 }
 async function onView(v){
+ if(v==="league")return window.SEC_LEAGUE_SETTINGS?.onView?.();
  resetAccount();
  if(v==="league"){
   renderClub();renderLeagueChoice();extras();
@@ -460,8 +461,8 @@ document.addEventListener("change",e=>{
  if(!k||!["2-1","3-0"].includes(e.target.value))return;
  saveSeries(k,null,e.target.value);
 });
-window.SEC_FAN=Object.freeze({onView,renderLeagueChoice,readLeaguePreference,choosePlay,getPlayChoice:()=>({...playChoice}),gameCenter,sportCenter,seriesPreviewCard,enhanceRecap,enhanceTeam,honors,
- loadClubs,getClub:activeClub,getStandings:()=>rows.slice()});
+window.SEC_FAN=Object.freeze({onView,renderLeagueChoice:()=>window.SEC_LEAGUE_SETTINGS?.render?.(),readLeaguePreference,choosePlay,getPlayChoice:()=>({...playChoice}),gameCenter,sportCenter,seriesPreviewCard,enhanceRecap,enhanceTeam,honors,
+ loadClubs,getClub:()=>window.SEC_LEAGUE_SETTINGS?.getClub?.()||null,getStandings:()=>window.SEC_LEAGUE_SETTINGS?.getStandings?.()||[]});
 if(app()?.view?.())void onView(app().view());
 setInterval(()=>{if(document.visibilityState!=="visible")return;
  if(app()?.view?.()==="picks")void loadGames().then(remind);
