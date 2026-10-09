@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b111b">
-  <meta name="sec-build" content="2026.10.09-sec-news.1">
+  <meta name="sec-build" content="2026.10.09-three-sports.1">
   <link rel="manifest" href="./manifest.webmanifest">
   <meta name="description" content="A friendly, unofficial SEC football pick'em game. Make weekly picks, share your slip and keep score with friends.">
   <meta property="og:title" content="Saturdays Down South — SEC Pick'em">
@@ -181,6 +181,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 
 </style>
   <title>Saturdays Down South · SEC Pick'em</title>
+<link rel="stylesheet" href="./multi-sport.css?v=20261009-multisport-v1">
 </head>
 <body>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
@@ -191,7 +192,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       <span class="brand-title">SATURDAYS<span>DOWN SOUTH</span><small>THE SEC PICK'EM CLUB</small></span>
     </a>
     <nav class="desktop-nav" aria-label="Main navigation">
-      <button type="button" data-nav="picks" class="nav-link active">Pick games</button>
+      <button type="button" data-nav="sports" class="nav-link active">Choose Sport</button>
       <button type="button" data-nav="league" class="nav-link">My league</button>
       <button type="button" data-nav="trophies" class="nav-link">Trophy Case</button>
       <button type="button" data-nav="news" class="nav-link">SEC News</button>
@@ -202,8 +203,23 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   </header>
 
   <main id="main-content">
-    <section id="picks-view" class="view" aria-labelledby="picks-heading">
-      <div class="eyebrow"><span class="eyebrow-dot"></span> 2026 SEC FOOTBALL SEASON <span class="eyebrow-slash">/</span> UNOFFICIAL FAN GAME</div>
+    <section id="sports-view" class="view" aria-labelledby="sports-heading">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> SATURDAYS DOWN SOUTH <span class="eyebrow-slash">/</span> ALL SPORTS</div>
+      <div class="page-intro"><div><h1 id="sports-heading">Your sport. <em>Your call.</em></h1><p>Pick SEC winners across football, basketball and baseball.</p></div></div>
+      <div id="sports-hub"></div>
+    </section>
+    <section id="basketball-view" class="view hidden" aria-labelledby="basketball-heading">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> THE COURT <span class="eyebrow-slash">/</span> SEC MEN’S BASKETBALL</div>
+      <div class="page-intro"><div><h1 id="basketball-heading">Court <em>vision.</em></h1><p>Make your picks, then watch the scoreboard.</p></div></div>
+      <div id="sport-basketball-content"></div>
+    </section>
+    <section id="baseball-view" class="view hidden" aria-labelledby="baseball-heading">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> THE DIAMOND <span class="eyebrow-slash">/</span> SEC BASEBALL</div>
+      <div class="page-intro"><div><h1 id="baseball-heading">Call the <em>diamond.</em></h1><p>Pick the winner of each SEC baseball game.</p></div></div>
+      <div id="sport-baseball-content"></div>
+    </section>
+    <section id="picks-view" class="view hidden" aria-labelledby="picks-heading">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> 2026 SEC FOOTBALL SEASON <span class="eyebrow-slash">/</span> UNOFFICIAL FAN GAME <button type="button" data-nav="sports" class="sport-inline-switch">↗ Change sport</button></div>
       <div class="page-intro"><div><h1 id="picks-heading">Call your <em>shots.</em></h1><p>Every SEC game counts. Make your picks and challenge your friends.</p></div><div class="intro-side" id="countdown-badge"></div></div>
       <div class="week-picker" id="week-picker" aria-label="Choose football week"></div>
       <div class="picks-layout">
@@ -257,7 +273,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 </div>
 
 <nav class="bottom-nav" aria-label="Mobile navigation">
- <button type="button" data-nav="picks" class="mobile-nav-btn active"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM8 10l2.5 2.5L16 7"/></svg><span>Picks</span></button>
+ <button type="button" data-nav="sports" class="mobile-nav-btn active"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM8 10l2.5 2.5L16 7"/></svg><span>Sports</span></button>
  <button type="button" data-nav="league" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19v-2a5.5 5.5 0 0 1 11 0v2M17 6a3 3 0 0 1 0 6M17 14a5 5 0 0 1 3.5 5"/></svg><span>League</span></button>
  <button type="button" data-nav="trophies" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10v6a5 5 0 0 1-10 0V3ZM7 5H4v4a4 4 0 0 0 4 4m9-8h3v4a4 4 0 0 1-4 4M12 14v5m-5 2h10M9 19h6"/></svg><span>Trophies</span></button>
   <button type="button" data-nav="news" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h16v16H6a3 3 0 0 1-3-3V4zm16 4h2v9a3 3 0 0 1-3 3M7 8h7M7 12h8M7 16h7"/></svg><span>News</span></button>
@@ -433,7 +449,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   function points(picks){let n=0;for(const w of WEEKS)n+=correctCount(w,picks);return n;}
   function toast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>el.classList.remove('show'),3100);}
 
-  function setView(v){if(!['picks','league','trophies','news','teams','settings'].includes(v))return;currentView=v;for(const id of ['picks','league','trophies','news','teams','settings']){document.getElementById(`${id}-view`).classList.toggle('hidden',id!==v);}document.querySelectorAll('[data-nav]').forEach(el=>{const on=el.dataset.nav===v;el.classList.toggle('active',on);if(el.classList.contains('nav-link'))el.setAttribute('aria-current',on?'page':'false');});if(v==='picks')renderPicks();if(v==='league')renderLeague();if(v==='trophies')window.SDSTrophyCase?.mount();if(v==='news')window.SEC_NEWS?.mount();if(v==='teams')renderTeams();if(v==='settings')renderSettings();if(location.hash!==`#${v}`)history.replaceState(null,'',`#${v}`);window.scrollTo({top:0,behavior:'instant'});}
+  function setView(v){if(!['sports','picks','basketball','baseball','league','trophies','news','teams','settings'].includes(v))return;currentView=v;for(const id of ['sports','picks','basketball','baseball','league','trophies','news','teams','settings']){document.getElementById(`${id}-view`).classList.toggle('hidden',id!==v);}document.querySelectorAll('[data-nav]').forEach(el=>{const on=el.dataset.nav===v;el.classList.toggle('active',on);if(el.classList.contains('nav-link'))el.setAttribute('aria-current',on?'page':'false');});if(v==='sports'||v==='basketball'||v==='baseball')window.SEC_SPORTS?.mount(v);if(v==='picks')renderPicks();if(v==='league')renderLeague();if(v==='trophies')window.SDSTrophyCase?.mount();if(v==='news')window.SEC_NEWS?.mount();if(v==='teams')renderTeams();if(v==='settings')renderSettings();if(location.hash!==`#${v}`)history.replaceState(null,'',`#${v}`);window.scrollTo({top:0,behavior:'instant'});}
   function renderHeader(){document.getElementById('header-name').textContent=getName();document.getElementById('header-avatar').textContent=getName().slice(0,1).toUpperCase();}
   function renderWeekPicker(){document.getElementById('week-picker').innerHTML=WEEKS.map(w=>`<button type="button" class="week-pill ${w.num===currentWeek?'active':''}" data-week="${w.num}" aria-pressed="${w.num===currentWeek}"><strong>WEEK ${w.num}</strong><small>${displayDate(w.date)}</small></button>`).join('');const bar=document.getElementById('week-picker');const active=bar.querySelector('.week-pill.active');if(active)bar.scrollLeft=Math.max(0,active.offsetLeft-bar.offsetLeft-10);}
   function makeTeamButton(g,id,hero=false){const t=team(id), sel=selected(g,id);const decided=state.results[g.id];const blocked=isLocked(g)||Boolean(window.SEC_FEATURES?.isUnavailable?.(g));if(hero)return `<button class="spotlight-team ${sel?'chosen':''}" type="button" data-pick="${g.id}" data-team="${id}" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<b>${esc(t.name)}</b>${sel?' ✓':''}</button>`;return `<button type="button" class="team-choice ${sel?'selected':''} ${decided===id?'winner':''} ${decided&&decided!==id?'loser':''}" data-pick="${g.id}" data-team="${id}" aria-label="Pick ${esc(t.name)} to win" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<span class="team-copy"><span class="team-name">${esc(t.name)}</span><span class="team-nick">${esc(t.nick)}</span></span><span class="select-mark">${sel?'✓':''}</span></button>`;}
@@ -538,9 +554,9 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   document.addEventListener('change',e=>{if(e.target.id==='league-week'){currentWeek=Number(e.target.value);renderLeague();}});
   document.addEventListener('keydown',e=>{if(e.key==='Enter' && (e.target.id==='display-name'||e.target.id==='league-name')){const a=e.target.id==='display-name'?'save-profile':'save-league';document.querySelector(`[data-action="${a}"]`)?.click();}});
   window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;});
-  window.addEventListener('hashchange',()=>{const v=location.hash.slice(1);if(['picks','league','trophies','news','teams','settings'].includes(v)&&v!==currentView)setView(v);});
+  window.addEventListener('hashchange',()=>{const v=location.hash.slice(1);if(['sports','picks','basketball','baseball','league','trophies','news','teams','settings'].includes(v)&&v!==currentView)setView(v);});
   if('serviceWorker'in navigator && /^https?:$/.test(location.protocol))navigator.serviceWorker.register('./sw.js').catch(err=>console.warn('Service worker unavailable',err));
-  renderHeader();setView(['picks','league','trophies','news','teams','settings'].includes(location.hash.slice(1))?location.hash.slice(1):'picks');
+  renderHeader();setView(['sports','picks','basketball','baseball','league','trophies','news','teams','settings'].includes(location.hash.slice(1))?location.hash.slice(1):'sports');
   setInterval(()=>{if(currentView==='picks'&&document.activeElement?.id!=='sec-total-guess')renderPicks();},60000);
   // Expose the narrow integration surface used by the separate hosted league module.
   window.SEC_BRIDGE={weeks:WEEKS,gameById:GAME_BY_ID,state:()=>state,week:week,view:()=>currentView,setView:setView,renderPicks:renderPicks,renderLeague:renderLeague,renderSettings:renderSettings,esc:esc,toast:toast};
@@ -557,6 +573,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./league-social.js?v=20261009-chat-scoreboard-v1"></script>
 <script src="./multiplayer.js?v=20261009-chat-scoreboard-v1"></script>
 <script src="./matchup-stats.js"></script>
+<script src="./multi-sport.js?v=20261009-multisport-v1"></script>
 <script src="./sec-news.js?v=20261009-news-v1"></script>
 </body>
 </html>
