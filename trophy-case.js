@@ -106,7 +106,7 @@
  // Model loads only once its .glb file actually exists. Until then keep attractive placeholders.
  async function attachModel(display,t,version){
   // Only probe known uploaded assets; do not make 15 guaranteed 404 requests every render.
-  if(!Array.isArray(window.SDS_TROPHY_MODELS)||!window.SDS_TROPHY_MODELS.includes(t.id))return;
+  if(!TROPHIES.some(item=>item.id===t.id))return; // All 15 original .glb files are committed.
   if(typeof fetch!=="function"||!window.customElements)return;
   try{
    const response=await fetch(t.model,{method:"HEAD",cache:"force-cache"});
@@ -188,7 +188,7 @@
    root.append(grid);
   }
   const note=document.createElement("p");note.className="sds-trophy-disclaimer";
-  note.textContent="Trophy achievements represent picking the straight-up winner of a rivalry game (even when your league plays Spread). They are not ownership of the physical rivalry trophy. Every named rivalry remains available in this catalog, even if it is not scheduled this season. Only verified final scores and your signed-in league picks count. Awards remain collected across seasons. Original collectible artwork is shown until optional 3D models are supplied.";
+  note.textContent="Trophy achievements represent picking the straight-up winner of a rivalry game (even when your league plays Spread). They are not ownership of the physical rivalry trophy. Every named rivalry remains available in this catalog, even if it is not scheduled this season. Only verified final scores and your signed-in league picks count. Awards remain collected across seasons. The original rotating 3D rivalry sculptures can be explored by touch or mouse.";
   root.append(note);
  }
  function sync(payload={}){
