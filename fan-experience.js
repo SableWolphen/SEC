@@ -98,6 +98,7 @@ async function choosePlay(format,sport=playChoice.sport){
  store(key("format"),format);store(key("single-sport"),sport);
  renderLeagueChoice();
  if(format==="all"){
+  renderClub(); // Guests still see the combined-league explanation before signing in.
   void loadClubs();void window.SEC_BRACKETS?.mount?.();
  }else if(sport!=="picks"&&id){
   void window.SEC_SPORTS?.load?.(sport);
