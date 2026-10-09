@@ -17,6 +17,7 @@ jobs:
       - name: JavaScript syntax
         run: |
           node --check multiplayer.js
+          node --check league-features.js
           node --check config.js
           node --check sw.js
           node --check matchup-stats.js
@@ -48,6 +49,13 @@ jobs:
           assert "./manifest.webmanifest" in html
           assert Path("sw.js").exists() and Path("icon.svg").exists()
           assert "./matchup-stats.js" in html and Path("stats.json").exists()
+          assert "./league-features.js" in html and Path("league-features.js").exists()
+          assert "sec_league_standings_v3" in Path("multiplayer.js").read_text()
+          modes=Path("supabase/migrations/20261009_four_modes.sql").read_text()
+          for symbol in ("sec_save_league_pick","sec_h2h_history","sec_league_standings_v3","sec_revealed_league_picks","sec_rotate_league_invite","sec_week_tiebreakers"):
+              assert symbol in modes, "Missing game mode database function/table: "+symbol
+          assert Path("supabase/enable-score-automation.sql").exists()
+          assert Path("supabase/functions/sec-scores/index.ts").exists()
           data=json.loads(Path("stats.json").read_text())
           assert isinstance(data.get("games"),dict)
           assert manifest["display"] == "standalone"
