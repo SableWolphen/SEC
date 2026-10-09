@@ -15,6 +15,14 @@ An **unofficial fan-made SEC football pick’em website** in [SableWolphen/SEC](
 - The existing device-only preview remains usable while online configuration is absent.
 - No gambling, payments or betting.
 
+## Matchup insights and what they mean
+
+Each game card now includes season win-loss records, Top-25 ranking when available, and a clearly labeled forecast. A published ESPN game projection is used when ESPN supplies one. Otherwise, a simple record-based estimate uses the two teams' win percentage plus a small home-field adjustment; **it is not a validated forecasting model** and is never presented as an ESPN projection or betting line.
+
+Data is sourced from ESPN's public college football game feed. `scripts/update_stats.py` refreshes `stats.json`; `.github/workflows/update-stats.yml` automatically runs three times per day and supports manual runs. The script refuses to overwrite the feed when the upstream source cannot be matched reliably. Unavailable data is labeled unavailable, not fabricated. Only publicly available team records, rankings and predictions are used.
+
+**Online leagues are not live until a dedicated Supabase project is created and linked.** The `supabase/setup.sql` and `multiplayer.js` source are ready, but `config.js` currently has no project URL or publishable key. A linked Supabase account contains PlushList and Baby PupFit projects; keep SEC data separate.
+
 ## Deployment status / activation
 
 The GitHub Pages site and the online multiplayer service are **two different components**.
