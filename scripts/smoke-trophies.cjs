@@ -12,7 +12,8 @@ assert.equal(trophy.schools.length,16,"the 16 SEC schools each get a Trophy Case
 assert.equal(trophy.getSelectedSchool(),"schools","Trophy Case opens on clean school directory");
 const schoolNames=trophy.getSchoolOverview();
 assert.equal(schoolNames.length,16,"school directory has one card per program");
-assert.deepEqual([...schoolNames.map(s=>s.name)].sort(),schoolNames.map(s=>s.name),
+const schoolLabels=Array.from(schoolNames,s=>s.name);
+assert.deepEqual([...schoolLabels].sort(),schoolLabels,
  "school cards display alphabetically");
 for(const school of schoolNames){
  assert.ok(school.count>0,"no SEC program omitted: "+school.name);
