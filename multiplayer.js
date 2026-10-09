@@ -11,7 +11,7 @@
   }) : null;
   var user = null, leagues = [], active = null, standings = [], profile = null;
   var working = false, lastError = "", loginEmail = "";
-  var authMode = "signup", draftEmail = "";
+  var authMode = "signup", draftEmail = "", recoveryMode = false;
   var inviteCode = new URLSearchParams(location.search).get("league");
   if (inviteCode && !/^[A-Z0-9]{10}$/i.test(inviteCode)) inviteCode = null;
   var safe = function(s){return app.esc(String(s == null ? "" : s));};
@@ -29,6 +29,17 @@
       host.innerHTML = '<div class="secondary-grid">'+
         card('Bring your friends online.','<p>This website can host shared leagues, accounts, invite links and real standings. The website owner must finish the separate Supabase setup before online play is available.</p><div class="help-note">The local-only pick’em preview is still available on this device. It does not synchronize between players.</div>')+
         card('What happens next?','<p>The multiplayer database and security rules are in the GitHub repository under <code>supabase/setup.sql</code>. See the README for instructions to activate it.</p>')+'</div>';
+      return;
+    }
+    if(recoveryMode){
+      host.innerHTML=card('Set your new password',
+        '<p>Create a new password for your Saturdays Down South account.</p>'+
+        '<label class="input-label" for="online-password">New password</label>'+
+        '<input class="field" id="online-password" type="password" autocomplete="new-password" minlength="8" maxlength="72" placeholder="At least 8 characters">'+
+        '<label class="input-label" for="online-password-confirm">Confirm new password</label>'+
+        '<input class="field" id="online-password-confirm" type="password" autocomplete="new-password" minlength="8" maxlength="72">'+
+        '<div class="auth-actions">'+button('Save new password','change-password','primary-btn')+'</div>'+
+        '<p id="online-status" class="helper auth-status" role="status" aria-live="polite">'+safe(lastError)+'</p>');
       return;
     }
     if (!user){
@@ -176,7 +187,18 @@
     if(action==="logout"){await client.auth.signOut();location.reload();return;}
     working=true;status("");
     try{
-      if(action==="register"||action==="login"){
+      if(action==="change-password"){
+        if(!recoveryMode)throw Error("Open the password reset link before changing your password.");
+        var password=document.getElementById("online-password")?.value||"";
+        var repeated=document.getElementById("online-password-confirm")?.value||"";
+        if(password.length<8)throw Error("Use a password of at least 8 characters.");
+        if(password!==repeated)throw Error("Passwords don't match.");
+        extract(await client.auth.updateUser({password:password}));
+        recoveryMode=false;
+        lastError="";
+        await refresh();
+        app.toast("Password updated. You're now signed in.");
+      }else if(action==="register"||action==="login"){
         var email=document.getElementById("online-email")?.value.trim()||"";
         var password=document.getElementById("online-password")?.value||"";
         draftEmail=email;
@@ -294,7 +316,12 @@
   });
   if(client){
     client.auth.onAuthStateChange(function(event){
-      if(event==="SIGNED_IN"||event==="SIGNED_OUT"){setTimeout(function(){void refresh();},0);}
+      if(event==="PASSWORD_RECOVERY"){
+        recoveryMode=true;
+        setTimeout(function(){app.setView("league");renderLeague();},0);
+      }else if(event==="SIGNED_IN"||event==="SIGNED_OUT"){
+        setTimeout(function(){void refresh();},0);
+      }
     });
     void refresh();
     setInterval(function(){if(user && document.visibilityState==="visible")void refresh();},45000);
