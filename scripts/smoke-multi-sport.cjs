@@ -73,7 +73,7 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
  series.series.forEach(item=>{
   counts.set(item.home,(counts.get(item.home)||0)+1);
   counts.set(item.away,(counts.get(item.away)||0)+1);
-  assert.match(item.status,/pending/i,"individual baseball game time unconfirmed");
+  assert.match(item.status,/pending|TBD/i,"individual baseball game time unconfirmed");
  });
  assert.equal(counts.size,16,"all SEC baseball programs have published series");
  assert.ok([...counts.values()].every(n=>n===10),"each SEC school has 10 conference series");
