@@ -76,14 +76,14 @@ def story(title,desc,url,date,source,now,sport="football"):
   'summary':digest(desc,title),'url':url,'source':source,
   'published_at':published.isoformat().replace('+00:00','Z'),
   'sport':sport,'teams':teams,'breaking':age<=6*3600 and bool(BREAKING.search(title))}
-def from_rss(raw,now,sport="football")
+def from_rss(raw,now,sport="football"):
  root=ET.fromstring(raw);items=[]
  for node in root.findall('.//channel/item'):
   field=lambda key:node.findtext(key,default='')
   item=story(field('title'),field('description'),field('link'),field('pubDate'),'NCAA',now,sport)
   if item:items.append(item)
  return items
-def from_espn(raw,now,sport="football")
+def from_espn(raw,now,sport="football"):
  obj=json.loads(raw);items=[]
  for record in obj.get('articles',[]):
   if not isinstance(record,dict):continue
