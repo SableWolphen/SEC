@@ -60,6 +60,42 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 .slate-filter small{opacity:.7;margin-left:4px}.slate-next{background:none;border:1px solid #5f806a;border-radius:9px;color:var(--lime);font-size:11px;font-weight:800;padding:10px 11px;margin-left:auto;min-height:40px}
 .slate-next:disabled{opacity:.45}.slate-empty{border:1px dashed #496075;background:#172230;padding:28px 15px;text-align:center;border-radius:13px;color:#c8d5dd}.slate-empty strong{color:var(--lime)}.slate-empty p{font-size:12px;margin:8px 0}.game-card[data-game-id]{scroll-margin-top:20px}.game-card[data-game-id]:focus{outline:2px solid var(--lime);outline-offset:3px}
 @media(max-width:590px){.slate-filter{padding:8px 10px}.slate-next{width:100%;margin-left:0}.slate-progress{align-items:flex-start;flex-direction:column;gap:2px}}
+
+/* 2026 league locker room and season championships */
+.sec-social-root{display:grid;gap:15px;margin-top:15px}
+.sec-chat-card,.sec-championship-card{border:1px solid #354b58;border-radius:16px;padding:17px;background:linear-gradient(145deg,#14232e,#10202b)}
+.sec-chat-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px}
+.sec-chat-heading h3,.sec-championship-heading h3{font-size:22px;font-weight:950;letter-spacing:-.6px;margin:4px 0 5px;color:#f4f9f7}
+.sec-chat-heading>span{font-size:10px;color:#d5ff65;white-space:nowrap}
+.sec-chat-lead,.sec-championship-heading p{font-size:12px;color:#aabdcf;line-height:1.5;margin:0 0 12px}
+.sec-chat-feed{max-height:370px;overflow-y:auto;display:flex;flex-direction:column;gap:9px;margin:10px 0 15px;border-radius:12px;scrollbar-width:thin}
+.sec-chat-empty{display:flex;flex-direction:column;gap:5px;align-items:center;padding:25px 10px;background:#1c303d;border:1px dashed #3d5b62;border-radius:11px;color:#d5ff65}
+.sec-chat-empty strong{color:#eef5f5}.sec-chat-empty span{color:#a1b5c4;font-size:12px}
+.sec-chat-message{background:#223543;border:1px solid #395166;border-radius:13px;padding:12px}
+.sec-chat-message.mine{background:#253b36;border-color:#466955}
+.sec-chat-message-title{display:flex;justify-content:space-between;gap:9px;align-items:center;font-size:12px}
+.sec-chat-message-title strong{color:#d5ff65}
+.sec-chat-message-title time{color:#a9bac5;font-size:10px}
+.sec-chat-message>p{white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0 10px;color:#edf6f6;font-size:12px;line-height:1.55}
+.sec-chat-message-footer{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.sec-chat-reaction,.sec-chat-delete{background:#152732;color:#bcd0d7;border:1px solid #455d6b;padding:5px 7px;border-radius:9px;font-size:11px;min-height:32px}
+.sec-chat-reaction.mine{color:#17211c;background:#d5ff65;border-color:#d5ff65}
+.sec-chat-delete{color:#ffbcc3;margin-left:auto}
+.sec-chat-input{width:100%;min-height:68px;resize:vertical}
+.sec-chat-controls{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:9px}
+.sec-chat-controls span{font-size:10px;color:#9db0bf}
+.sec-chat-controls button{padding:10px 16px;min-height:43px}
+.sec-chat-error{padding:12px;color:#ffccd2;border:1px solid #a8445a;border-radius:11px;font-size:12px}
+.sec-championship-heading{display:flex;align-items:center;gap:11px}
+.sec-championship-cup,.sec-champion-trophy{font-size:38px;filter:drop-shadow(0 3px 9px #d5ff6540)}
+.sec-championship-pending{padding:13px;border:1px solid #43566b;background:#1c303e;border-radius:12px}
+.sec-championship-pending strong{color:#d5ff65}.sec-championship-pending p{color:#a8b7c4;font-size:12px;margin:8px 0 0}
+.sec-championship-winner{display:flex;align-items:center;gap:10px;border:1px solid #7c814b;background:#2c3f2c;padding:14px;border-radius:12px}
+.sec-championship-winner strong{color:#d5ff65;font-size:14px}.sec-championship-winner p{margin:6px 0 0;color:#d3dfd5;font-size:11px}
+.sec-championship-action{min-height:42px;background:#d5ff65;border:0;border-radius:9px;color:#132019;font-weight:900;padding:10px 14px;margin-top:12px}
+.sec-championship-action:disabled{opacity:.5}
+@media(max-width:490px){.sec-chat-card,.sec-championship-card{padding:13px}.sec-chat-heading h3{font-size:19px}.sec-chat-controls button{width:100%}.sec-social-root{margin-bottom:26px}}
+
 </style>
   <title>Saturdays Down South · SEC Pick'em</title>
 </head>
@@ -423,6 +459,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.75.0"></script>
 <script src="./trophy-case.js?v=20261009-trophies-all15"></script>
 <script src="./league-features.js?v=20261009-modes-v4"></script>
+<script src="./league-social.js?v=20261009-social-v1"></script>
 <script src="./multiplayer.js?v=20261009-modes-v4"></script>
 <script src="./matchup-stats.js"></script>
 </body>
