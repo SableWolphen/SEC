@@ -138,3 +138,7 @@
 .sport-account-banner{display:flex;align-items:center;gap:7px;flex-wrap:wrap;color:#d5ff65;background:#d5ff650c;border:1px solid #577a5e;border-radius:11px;padding:10px 13px;margin:0 0 14px;font-size:12px;font-weight:750;overflow-wrap:anywhere}
 .sport-account-banner strong{color:#f4f8ee;font-weight:900}
 .sport-account-banner>span:last-child{color:#b9d0c2;font-size:11px}
+
+/* Keep sport choice beneath the headline and description, never above the title. */
+.view > .global-sport-switch{margin:-8px 0 24px}
+@media(max-width:540px){.view > .global-sport-switch{margin:-7px 0 22px}}
