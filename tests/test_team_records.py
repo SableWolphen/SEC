@@ -27,6 +27,39 @@ class TeamRecordTests(unittest.TestCase):
   self.assertEqual(tracker.record_parts({"record":{"summary":"19-8"}}),("19-8",None))
   self.assertEqual(tracker.record_parts({"record":[]}),(None,None))
   self.assertIsNone(tracker.valid_record("12-0<script>"))
+ def test_baseball_conference_standings_source(self):
+  payload={'season':{'year':2026},'children':[{'name':'SEC','standings':{'entries':[
+   {'team':{'id':'2633','location':'Tennessee'},'stats':[
+    {'name':'overall','displayValue':'46-15'},
+    {'name':'conference','displayValue':'18-12'}]},
+   {'team':{'id':'333','location':'Alabama'},'stats':[
+    {'name':'wins','value':34},{'name':'losses','value':21},
+    {'name':'conferenceWins','value':14},{'name':'conferenceLosses','value':16}]},
+   {'team':{'id':'251','location':'Texas A&M'},'stats':[
+    {'name':'overall','displayValue':'99-0'}]},
+   {'team':{'id':'1','location':'Oregon'},'stats':[
+    {'name':'overall','displayValue':'23-1'}]}
+  ]}}]}
+  rows=tracker.standings_records(payload,'baseball',2026)
+  self.assertEqual(rows['TENN']['overall'],'46-15')
+  self.assertEqual(rows['TENN']['conference'],'18-12')
+  self.assertEqual(rows['ALA']['overall'],'34-21')
+  self.assertEqual(rows['ALA']['conference'],'14-16')
+  self.assertNotIn('TEX',rows)
+  self.assertEqual(len(rows),2)
+  self.assertEqual(tracker.standings_records({'season':{'year':2027},'children':payload['children']},'baseball',2026),{})
+ def test_build_fills_missing_baseball_from_espn_standings(self):
+  def get(url):
+   if '/standings?' in url:
+    return {'season':{'year':2026},'groups':[
+     {'standings':{'entries':[{'team':{'id':'333','location':'Alabama'},
+        'stats':[{'name':'overall','displayValue':'43-16'},
+                 {'name':'vsconf','displayValue':'20-10'}]}]}}]}
+   raise OSError('Other requests missing')
+  result=tracker.build(NOW,get=get)
+  self.assertEqual(result['teams']['ALA']['baseball']['overall'],'43-16')
+  self.assertEqual(result['teams']['ALA']['baseball']['conference'],'20-10')
+  self.assertNotIn('baseball',result['teams']['TENN'])
  def test_no_cross_school_records(self):
   self.assertTrue(tracker.identity_ok("TEX",{"location":"Texas","shortDisplayName":"Texas"}))
   self.assertFalse(tracker.identity_ok("TEX",{"location":"Texas A&M","shortDisplayName":"Texas A&M"}))
