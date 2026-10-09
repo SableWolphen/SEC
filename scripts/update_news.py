@@ -19,10 +19,10 @@ SOURCES=[
  ('ESPN','https://site.api.espn.com/apis/site/v2/sports/football/college-football/news?limit=100','json')
 ]
 TEAMS={
- 'Alabama':r'\bAlabama\b|\bCrimson Tide\b|\bBama\b',
- 'Arkansas':r'\bArkansas\b|\bRazorbacks?\b',
+ 'Alabama':r'(?<!South )\bAlabama\b|\bCrimson Tide\b|\bBama\b',
+ 'Arkansas':r'\bArkansas(?! State)\b|\bRazorbacks?\b',
  'Auburn':r'\bAuburn\b|\bWar Eagles?\b',
- 'Florida':r'\bFlorida(?! State| Atlantic| International)\b|\bGators?\b',
+ 'Florida':r'(?<!South )\bFlorida(?! State| Atlantic| International)\b|\bGators?\b',
  'Georgia':r'\bGeorgia(?! Tech| State| Southern)\b|\bBulldogs?\b',
  'Kentucky':r'\bKentucky\b|\bWildcats?\b',
  'LSU':r'\bLSU\b|\bLouisiana State\b',
@@ -32,7 +32,7 @@ TEAMS={
  'Ole Miss':r'\bOle Miss\b|\bMississippi Rebels?\b',
  'South Carolina':r'\bSouth Carolina(?! State)\b|\bGamecocks?\b',
  'Tennessee':r'\bTennessee\b|\bVolunteers?\b|\bVols\b',
- 'Texas':r'\bTexas(?! Tech| State| A&M| Christian| Southern| San Antonio| El Paso| Rio Grande)\b|\bLonghorns?\b',
+ 'Texas':r'(?<!North )(?<!West )(?<!East )\bTexas(?! Tech| State| A&M| Christian| Southern| San Antonio| El Paso| Rio Grande)\b|\bLonghorns?\b',
  'Texas A&M':r'\bTexas A&M\b|\bAggies\b',
  'Vanderbilt':r'\bVanderbilt\b|\bCommodores?\b'
 }
