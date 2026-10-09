@@ -1,0 +1,101 @@
+/* Test three-sport season selection, public schedules, modes and backend calls.
+ * All Supabase calls are mocked; no actual leagues or picks created.
+ */
+"use strict";
+const fs=require("node:fs"),vm=require("node:vm"),assert=require("node:assert/strict");
+const events={},roots={
+ "sports-hub":{innerHTML:""},
+ "sport-basketball-content":{innerHTML:""},
+ "sport-baseball-content":{innerHTML:""}
+};
+const now=Date.now();
+const kickoff=new Date(now+4*86400000).toISOString();
+const game={id:"basketball-2027-sec-test",sport:"basketball",season:2027,week:1,
+ kickoff_at:kickoff,home_code:"333",home_name:"Alabama",away_code:"2633",away_name:"Tennessee",
+ game_status:"scheduled",source:"SEC official conference schedule · provisional tipoff",winner_code:null};
+let signed=false,syncCalls=0,pickCalls=[],standCalls=0,createCalls=0;
+const me={id:"person-123"};
+const league={id:"league-123",sport:"basketball",season:2027,owner_id:me.id,name:"Hoops Crew",
+ mode:"straight",invite_code:"K3J59G7L4Z"};
+const db={
+ from(table){
+  return {
+   select(){return this;},eq(){return this;},order(){return Promise.resolve({data:table==="sec_sport_games"?[game]:
+    table==="sec_sport_leagues"?[league]:table==="sec_sport_picks"?[]:table==="sec_sport_tiebreakers"?[]:[]});}
+  };
+ },
+ rpc(name,args){
+  if(name==="sec_sport_standings"){standCalls++;return Promise.resolve({data:[{user_id:me.id,display_name:"Tester",picked:0,week_points:0,season_points:0}]});}
+  if(name==="sec_sport_save_pick"){pickCalls.push(args);return Promise.resolve({data:null});}
+  if(name==="sec_sport_create_league"){createCalls++;return Promise.resolve({data:[{league_id:league.id,invite_code:league.invite_code}]});}
+  if(name==="sec_sport_h2h_week")return Promise.resolve({data:[]});
+  return Promise.resolve({data:[]});
+ },
+ functions:{invoke(){syncCalls++;return Promise.resolve({data:{ok:true}});}}
+};
+let activeView="sports",selected="";
+const window={
+ SEC_BRIDGE:{view:()=>activeView,setView:x=>{selected=x;activeView=x;}},
+ secOnline:{getUser:()=>signed?me:null,getClient:()=>db},
+ location:{hash:"#sports"}
+};
+const document={
+ addEventListener(type,handler){events[type]=handler;},
+ getElementById:id=>roots[id]||null,
+ querySelector(){return null;},visibilityState:"visible",
+ activeElement:{matches(){return false;}}
+};
+const localStorage={getItem(){return null;},setItem(){}};
+const fixture={updated_at:"2026-10-09T20:00:00Z",
+ sports:{basketball:{season:2027,games:[game]},baseball:{season:2027,games:[]}}};
+const context={window,document,localStorage,URL,Date,console,
+ navigator:{clipboard:{writeText:async()=>{}}},location:{hash:"#sports",href:"https://sablewolphen.github.io/SEC/#sports"},
+ history:{replaceState(){}},setInterval(){},setTimeout,
+ fetch:async()=>({ok:true,json:async()=>fixture})};
+vm.runInNewContext(fs.readFileSync("multi-sport.js","utf8"),context,{filename:"multi-sport.js"});
+const app=window.SEC_SPORTS;
+async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmediate(resolve));}
+(async()=>{
+ assert.ok(app,"sport manager loads");
+ assert.equal(app.recommended(new Date("2026-10-09T18:00:00Z")),"football");
+ assert.equal(app.recommended(new Date("2026-12-09T18:00:00Z")),"basketball");
+ assert.equal(app.recommended(new Date("2027-05-09T18:00:00Z")),"baseball");
+ assert.equal(app.recommended(new Date("2027-09-09T18:00:00Z")),"football");
+ await settle();
+ assert.match(roots["sports-hub"].innerHTML,/Choose your/);
+ assert.match(roots["sports-hub"].innerHTML,/LATEST SEASON/);
+ for(const sport of ["football","basketball","baseball"])
+  assert.match(roots["sports-hub"].innerHTML,new RegExp('data-go-sport="'+sport+'"'));
+ app.mount("basketball");await settle();
+ assert.match(roots["sport-basketball-content"].innerHTML,/Alabama/,"real upcoming basketball fixture visible even to guests");
+ assert.match(roots["sport-basketball-content"].innerHTML,/provisional pick lock/,"provisional lock clearly distinguished from actual tipoff");
+ assert.match(roots["sport-basketball-content"].innerHTML,/Sign in/,"signed-out view prompts account access");
+ signed=true;await app.load("basketball",true);await settle();
+ assert.ok(syncCalls>0,"signed-in app requests verified ESPN server sync");
+ assert.ok(standCalls>0,"standings query scoped to new league");
+ assert.match(roots["sport-basketball-content"].innerHTML,/Hoops Crew/,"player sees only basketball league");
+ assert.match(roots["sport-basketball-content"].innerHTML,/League standings/,"new sport scoreboard visible");
+ assert.match(roots["sport-basketball-content"].innerHTML,/SEC official/,"source attribution");
+ const btn={dataset:{sportAction:"pick",sport:"basketball",game:game.id,pick:game.away_code}};
+ events.click({target:{closest:key=>key==="[data-sport-action]"?btn:null},preventDefault(){}});
+ await settle();
+ assert.equal(pickCalls.length,1,"basketball picks saved through server RPC");
+ assert.equal(pickCalls[0].p_game,game.id);
+ assert.equal(pickCalls[0].p_pick,game.away_code);
+ assert.equal(pickCalls[0].p_league,league.id);
+ app.mount("baseball");await settle();
+ assert.match(roots["sport-baseball-content"].innerHTML,/Waiting for the official schedule/,"no fabricated baseball games");
+ assert.equal(app.getState("baseball").games.length,0,"baseball table isolated");
+ const html=fs.readFileSync("index.html","utf8");
+ for(const id of ["sports-view","picks-view","basketball-view","baseball-view"])
+  assert.ok(html.includes('id="'+id+'"'),"Sport route exists: "+id);
+ assert.ok(html.includes("SEC_SPORTS?.mount"),"route calls multi-sport manager");
+ assert.ok(html.includes(":'sports'"),"first website visit defaults to three-sport hub");
+ assert.ok(html.includes('data-nav="sports"'),"six-tab mobile navigation includes sport selector");
+ const sql=fs.readFileSync("supabase/migrations/20261009_basketball_baseball.sql","utf8");
+ for(const name of ["sec_sport_games","sec_sport_leagues","sec_sport_picks","sec_sport_save_pick","sec_sport_standings","sec_sport_tiebreakers"])
+  assert.ok(sql.includes(name),"secure sport backend includes "+name);
+ assert.doesNotMatch(sql,/alter table public\.sec_games/,"football game table never migrated");
+ assert.doesNotMatch(sql,/alter table public\.sec_league_picks/,"football picks never touched");
+ console.log("Three-sport SEC Pick'em tests passed: calendar default, public games, league isolation, authenticated server saves and empty baseball.");
+})().catch(error=>{console.error(error);process.exitCode=1;});
