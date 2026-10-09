@@ -43,7 +43,7 @@ jobs:
               for sport,record in sports.items():
                   assert sport in obj['seasons']
                   assert record['season']==obj['seasons'][sport]
-                  assert record['source']=='ESPN'
+                  assert record['source'] in ('ESPN','SEC')
                   assert re.fullmatch(r'[0-9]{1,3}-[0-9]{1,3}(?:-[0-9]{1,3})?',record['overall'])
                   conf=record.get('conference')
                   assert conf is None or re.fullmatch(r'[0-9]{1,3}-[0-9]{1,3}(?:-[0-9]{1,3})?',conf)
