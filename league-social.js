@@ -59,7 +59,6 @@ function championshipHtml(){
 function render(){
  if(!league)return "";
  return '<div class="sec-social-root" id="sec-social-root">'+
-  '<section class="sec-championship-card" aria-label="League champions"><div id="sec-championship-content">'+championshipHtml()+'</div></section>'+
   '<section class="sec-chat-card" aria-label="Private league chat">'+
   '<div class="sec-chat-heading"><div><span class="card-kicker">LEAGUE LOCKER ROOM</span><h3>Chat & Trash Talk</h3></div>'+
   '<span>🔒 League only</span></div>'+
@@ -74,8 +73,7 @@ function render(){
 function update(){
  const a=document.getElementById("sec-chat-feed");
  if(a)a.innerHTML=messageHtml();
- const b=document.getElementById("sec-championship-content");
- if(b)b.innerHTML=championshipHtml();
+ window.SDSTrophyCase?.refreshHonors?.();
 }
 async function load(force=false){
  if(!client||!league||!user||inFlight)return;
@@ -153,7 +151,7 @@ document.addEventListener("keydown",event=>{
  document.querySelector('[data-sec-social="send"]')?.click();
 });
 setInterval(()=>{
- if(document.visibilityState==="visible"&&window.SEC_BRIDGE?.view?.()==="league"&&league&&user)void load();
+ if(document.visibilityState==="visible"&&["league","trophies"].includes(window.SEC_BRIDGE?.view?.())&&league&&user)void load();
 },15000);
-window.SEC_SOCIAL={connect,setStandings,render,load};
+window.SEC_SOCIAL={connect,setStandings,render,renderChampionship:championshipHtml,load};
 })();
