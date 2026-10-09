@@ -165,15 +165,20 @@
  function rivalryChallenges(){
   const wrap=document.createElement("section");wrap.className="sds-rivalry-challenge";
   const lead=document.createElement("div");lead.className="sds-rivalry-lead";
-  const onSlate=TROPHIES.filter(t=>
-    (category==="all"||t.category===category)&&
-    (!searchTerm||(t.name+" "+t.teams).toLowerCase().includes(searchTerm))
-  ).map(t=>{
+  const fullSlate=TROPHIES.map(t=>{
    const games=Object.values(schedule).filter(g=>g&&t.codes.includes(g.away)&&t.codes.includes(g.home));
    const game=games.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date)))[0]||null;
    const result=game?verified.find(g=>g.id===game.id):null;
    return {t,game,result,pick:game?myPicks[game.id]:null};
   });
+  const onSlate=fullSlate.filter(({t})=>
+    (category==="all"||t.category===category)&&
+    (!searchTerm||(t.name+" "+t.teams).toLowerCase().includes(searchTerm))
+  );
+  const allScheduled=fullSlate.filter(item=>Boolean(item.game));
+  const allPicked=allScheduled.filter(item=>Boolean(item.pick));
+  const allComplete=allScheduled.filter(item=>item.result?.game_status==="final");
+  const allCorrect=allComplete.filter(item=>item.pick===item.result?.winner).length;
   const scheduled=onSlate.filter(item=>Boolean(item.game));
   const picked=scheduled.filter(item=>Boolean(item.pick));
   const complete=scheduled.filter(item=>item.result?.game_status==="final");
@@ -185,9 +190,9 @@
   wrap.append(lead);
   const badges=document.createElement("div");badges.className="sds-rivalry-badges";
   const ownedCount=owned().length;
-  const completeSweep=scheduled.length>=2&&complete.length===scheduled.length&&correct===scheduled.length;
+  const completeSweep=allScheduled.length>=2&&allComplete.length===allScheduled.length&&allCorrect===allScheduled.length;
   const goals=[
-   ["🏈 Rivalry Starter",picked.length>=1,"Pick a scheduled rivalry game"],
+   ["🏈 Rivalry Starter",allPicked.length>=1,"Pick a scheduled rivalry game"],
    ["⚡ Rivalry Specialist",ownedCount>=3,"Collect 3 different rivalry trophies"],
    ["👑 Rivalry Sweep",completeSweep,"Correctly predict every scheduled rivalry this season"],
    ["🏆 Archive Legend",ownedCount===TROPHIES.length,"Collect every rivalry across seasons"]
