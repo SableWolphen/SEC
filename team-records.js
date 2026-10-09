@@ -99,4 +99,6 @@
  window.SEC_TEAM_RECORDS=Object.freeze({
   spotlight,compact,refresh,entry,getSnapshot:()=>snapshot
  });
+ // Deep-linked #teams is mounted by the inline script before this module is loaded.
+ if(window.SEC_BRIDGE?.view?.()==="teams")void refresh();
 })();
