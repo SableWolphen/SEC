@@ -5,23 +5,8 @@
 */
 (() => {
  "use strict";
- const TROPHIES=Object.freeze([
-  {id:"iron-bowl",name:"The Iron Bowl",teams:"Alabama vs Auburn",codes:["ALA","AUB"],model:"trophies/iron-bowl.glb",symbol:"🏈",short:"IRON BOWL",tone:"#c94857",nonconference:false},
-  {id:"third-saturday",name:"Third Saturday in October",teams:"Alabama vs Tennessee",codes:["ALA","TENN"],model:"trophies/third-saturday.glb",symbol:"🍂",short:"THIRD SATURDAY",tone:"#e9a044",nonconference:false},
-  {id:"golden-boot",name:"The Golden Boot",teams:"LSU vs Arkansas",codes:["LSU","ARK"],model:"trophies/golden-boot.glb",symbol:"🥾",short:"GOLDEN BOOT",tone:"#caa954",nonconference:false},
-  {id:"southwest-classic",name:"The Southwest Classic",teams:"Arkansas vs Texas A&M",codes:["ARK","TAMU"],model:"trophies/southwest-classic.glb",symbol:"⭐",short:"SOUTHWEST CLASSIC",tone:"#9b636c",nonconference:false},
-  {id:"deep-south",name:"Deep South’s Oldest Rivalry",teams:"Auburn vs Georgia",codes:["AUB","UGA"],model:"trophies/deep-south.glb",symbol:"🏛️",short:"DEEP SOUTH",tone:"#bd775b",nonconference:false},
-  {id:"cocktail-party",name:"World’s Largest Outdoor Cocktail Party",teams:"Florida vs Georgia",codes:["FLA","UGA"],model:"trophies/cocktail-party.glb",symbol:"🍊",short:"FLORIDA–GEORGIA",tone:"#d88439",nonconference:false},
-  {id:"governors-cup",name:"The Governor’s Cup",teams:"Kentucky vs Louisville",codes:["UK","LOU"],model:"trophies/governors-cup.glb",symbol:"🏆",short:"GOVERNOR’S CUP",tone:"#5f9fd0",nonconference:true},
-  {id:"magnolia-bowl",name:"The Magnolia Bowl",teams:"LSU vs Ole Miss",codes:["LSU","MISS"],model:"trophies/magnolia-bowl.glb",symbol:"🌸",short:"MAGNOLIA BOWL",tone:"#ac76c2",nonconference:false},
-  {id:"golden-egg",name:"The Golden Egg (Egg Bowl)",teams:"Mississippi State vs Ole Miss",codes:["MSST","MISS"],model:"trophies/golden-egg.glb",symbol:"🥚",short:"EGG BOWL",tone:"#d4b45e",nonconference:false},
-  {id:"battle-line",name:"Battle Line Rivalry",teams:"Arkansas vs Missouri",codes:["ARK","MIZ"],model:"trophies/battle-line.glb",symbol:"⚔️",short:"BATTLE LINE",tone:"#bb6f52",nonconference:false},
-  {id:"mayors-cup",name:"The Mayor’s Cup",teams:"Missouri vs South Carolina",codes:["MIZ","SC"],model:"trophies/mayors-cup.glb",symbol:"🏙️",short:"MAYOR’S CUP",tone:"#b99e4c",nonconference:false},
-  {id:"red-river",name:"Red River Rivalry",teams:"Oklahoma vs Texas",codes:["OU","TEX"],model:"trophies/red-river.glb",symbol:"🌉",short:"RED RIVER",tone:"#c35d4b",nonconference:false},
-  {id:"palmetto-showdown",name:"Palmetto Showdown",teams:"South Carolina vs Clemson",codes:["SC","CLEM"],model:"trophies/palmetto-showdown.glb",symbol:"🌴",short:"PALMETTO",tone:"#b58364",nonconference:true},
-  {id:"lone-star",name:"Lone Star Showdown",teams:"Texas vs Texas A&M",codes:["TEX","TAMU"],model:"trophies/lone-star.glb",symbol:"🌟",short:"LONE STAR",tone:"#cb8b4f",nonconference:false},
-  {id:"tennessee-vanderbilt",name:"Tennessee–Vanderbilt Rivalry",teams:"Tennessee vs Vanderbilt",codes:["TENN","VAN"],model:"trophies/tennessee-vanderbilt.glb",symbol:"🎸",short:"TENNESSEE",tone:"#dbb265",nonconference:false}
- ]);
+ const TROPHIES=window.SDS_RIVALRIES;
+ if(!Array.isArray(TROPHIES)||TROPHIES.length<15)throw Error("Rivalry catalog missing");
  const byId=new Map(TROPHIES.map(t=>[t.id,t]));
  function deriveResults(games,picks,schedule,authenticated=false,leagueId=null){
   if(!authenticated||!leagueId||!Array.isArray(games)||!picks||!schedule)return [];
@@ -81,7 +66,13 @@
  "#sds-trophy-case .sds-trophy-placeholder span{display:block;margin-top:6px;color:var(--sds-trophy-accent);letter-spacing:.8px}",
  "#sds-trophy-case .sds-trophy-category{color:#d5ff65;font-size:10px;font-weight:800;margin-top:9px}",
  "#sds-trophy-case .sds-trophy-schedule{color:#7e9aae;font-size:10px;margin-top:5px}",
-  "#sds-trophy-case .sds-trophy-tabs{flex-wrap:wrap}",
+  "#sds-trophy-case .sds-rivalry-filters{margin-bottom:16px;display:grid;gap:10px}",
+ "#sds-trophy-case .sds-rivalry-chips{display:flex;flex-wrap:wrap;gap:6px}",
+ "#sds-trophy-case .sds-rivalry-chip{border:1px solid #3d5865;background:#182c37;color:#abc4ca;font-size:11px;font-weight:800;padding:8px 10px;border-radius:999px;min-height:36px;cursor:pointer}",
+ "#sds-trophy-case .sds-rivalry-chip.active{background:#d5ff65;color:#10221b;border-color:#d5ff65}",
+ "#sds-trophy-case .sds-rivalry-search{border:1px solid #3b5364;background:#091b27;border-radius:12px;padding:12px 13px;color:#f5fbff;font:inherit;font-size:13px;width:100%;min-height:45px}",
+ "#sds-trophy-case .sds-rivalry-search::placeholder{color:#879eac}",
+ "#sds-trophy-case .sds-trophy-tabs{flex-wrap:wrap}",
  "#sds-trophy-case .sds-trophy-tab{flex:1 1 calc(50% - 8px)}",
  "#sds-trophy-case .sds-rivalry-lead{padding:17px;border:1px solid #5f7544;background:linear-gradient(130deg,#1f3930,#122834);border-radius:13px}",
  "#sds-trophy-case .sds-rivalry-kicker{font-size:10px;letter-spacing:1.7px;font-weight:900;color:#d5ff65}",
@@ -107,7 +98,7 @@
  "@media(max-width:365px){#sds-trophy-case{padding:18px 10px 85px}#sds-trophy-case .sds-trophy-display{height:145px}#sds-trophy-case .sds-trophy-placeholder strong{font-size:44px}}"
  ];
  const style=document.createElement("style");style.textContent=rules.join("\n");document.head.appendChild(style);
- let verified=[],myPicks={},schedule={},records=[],permanent=[],derived=[],historyUser=null,signedIn=false,leagueId=null,leagueName="",tab="all",rootId="sds-trophy-case",renderId=0,viewerLoading=false;
+ let verified=[],myPicks={},schedule={},records=[],permanent=[],derived=[],historyUser=null,signedIn=false,leagueId=null,leagueName="",tab="all",category="all",searchTerm="",rootId="sds-trophy-case",renderId=0,viewerLoading=false;
  function last(id){return records.filter(r=>r.trophyId===id).sort((a,b)=>b.year-a.year)[0];}
  function lastWin(id){return records.filter(r=>r.trophyId===id&&r.correct).sort((a,b)=>b.year-a.year)[0];}
  function owned(){return TROPHIES.filter(t=>Boolean(lastWin(t.id)));}
@@ -127,7 +118,7 @@
  // Model loads only once its .glb file actually exists. Until then keep attractive placeholders.
  async function attachModel(display,t,version){
   // Only probe known uploaded assets; do not make 15 guaranteed 404 requests every render.
-  if(!TROPHIES.some(item=>item.id===t.id))return; // All 15 original .glb files are committed.
+  if(!t.model)return; // Original 15 have real GLBs, newer entries have archival emblems. // All 15 original .glb files are committed.
   if(typeof fetch!=="function"||!window.customElements)return;
   try{
    const response=await fetch(t.model,{method:"HEAD",cache:"force-cache"});
@@ -156,7 +147,8 @@
   const year=document.createElement("div");year.className="sds-trophy-year"+(earned?" sds-trophy-owned":"");
   year.textContent=earned?"🏆 "+won.year+" · EARNED":result?"Last picked: "+result.year:"Not yet earned";
   const category=document.createElement("div");category.className="sds-trophy-category";
-  category.textContent=t.nonconference?"SEC vs nonconference":"SEC rivalry";
+  category.textContent=t.category==="SEC"?(t.kind==="trophy"?"SEC · Trophy game":"SEC · Traditional rivalry"):
+    t.category==="Historic"?"Historic rivalry":(t.kind==="trophy"?"Nonconference · Trophy game":"Nonconference rivalry");
   const matching=Object.values(schedule).filter(g=>g&&t.codes.includes(g.home)&&t.codes.includes(g.away));
   if(matching.length){
     const next=matching.sort((a,b)=>String(b.date).localeCompare(String(a.date)))[0];
@@ -173,7 +165,10 @@
  function rivalryChallenges(){
   const wrap=document.createElement("section");wrap.className="sds-rivalry-challenge";
   const lead=document.createElement("div");lead.className="sds-rivalry-lead";
-  const onSlate=TROPHIES.map(t=>{
+  const onSlate=TROPHIES.filter(t=>
+    (category==="all"||t.category===category)&&
+    (!searchTerm||(t.name+" "+t.teams).toLowerCase().includes(searchTerm))
+  ).map(t=>{
    const games=Object.values(schedule).filter(g=>g&&t.codes.includes(g.away)&&t.codes.includes(g.home));
    const game=games.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date)))[0]||null;
    const result=game?verified.find(g=>g.id===game.id):null;
@@ -195,7 +190,7 @@
    ["🏈 Rivalry Starter",picked.length>=1,"Pick a scheduled rivalry game"],
    ["⚡ Rivalry Specialist",ownedCount>=3,"Collect 3 different rivalry trophies"],
    ["👑 Rivalry Sweep",completeSweep,"Correctly predict every scheduled rivalry this season"],
-   ["🏆 All 15 Club",ownedCount===TROPHIES.length,"Collect all 15 named rivalries across seasons"]
+   ["🏆 Archive Legend",ownedCount===TROPHIES.length,"Collect every rivalry across seasons"]
   ];
   for(const [name,earned,info] of goals){
    const card=document.createElement("div");card.className="sds-rivalry-badge"+(earned?" earned":"");
@@ -205,7 +200,7 @@
   }
   wrap.append(badges);
   const heading=document.createElement("h3");heading.className="sds-rivalry-list-heading";
-  heading.textContent="All 15 rivalry matchups";wrap.append(heading);
+  heading.textContent="All "+TROPHIES.length+" rivalry matchups";wrap.append(heading);
   const entries=document.createElement("div");entries.className="sds-rivalry-entries";
   for(const {t,game,result,pick} of onSlate.sort((a,b)=>Number(Boolean(b.game))-Number(Boolean(a.game)))){
    const row=document.createElement("article");row.className="sds-rivalry-entry";
@@ -235,6 +230,22 @@
   wrap.append(entries);
   return wrap;
  }
+ function updateFiltered(){
+  const root=document.getElementById(rootId);if(!root)return;
+  if(tab==="rivalries"){
+   const prior=root.querySelector(".sds-rivalry-challenge");
+   if(prior)prior.replaceWith(rivalryChallenges());
+  }else if(tab==="all"||tab==="mine"){
+   const grid=root.querySelector(".sds-trophy-grid");if(!grid)return;
+   const entries=(tab==="mine"?owned():TROPHIES).filter(t=>
+      (category==="all"||t.category===category)&&
+      (!searchTerm||(t.name+" "+t.teams+" "+(t.physical||"")).toLowerCase().includes(searchTerm))
+   );
+   grid.replaceChildren();
+   if(!entries.length)grid.append(empty("No rivalries match this search."));
+   else entries.forEach(t=>grid.append(trophyCard(t,renderId)));
+  }
+ }
  function render(next=tab){
   const root=document.getElementById(rootId);if(!root)return;
   tab=["all","mine","history","rivalries"].includes(next)?next:"all";
@@ -243,7 +254,7 @@
   const subtitle=document.createElement("p");subtitle.className="sds-trophy-subtitle";
   subtitle.textContent="Win it. Keep it. Brag about it."+(leagueName?" · "+leagueName:"");
   const rivalryNotice=document.createElement("p");rivalryNotice.className="sds-trophy-subtitle";
-  rivalryNotice.textContent="All 15 classic rivalries stay here—even when the matchup isn't played this year.";
+  rivalryNotice.textContent="All "+TROPHIES.length+" SEC, nonconference and historic rivalries stay here—even when they are not played this season.";
    const summary=document.createElement("div");summary.className="sds-trophy-stats";
   const big=document.createElement("strong");big.textContent=owned().length+" / "+TROPHIES.length;
   const small=document.createElement("span");small.textContent="Rivalry picks correctly called from verified finals";
@@ -255,7 +266,21 @@
    btn.textContent=label;btn.setAttribute("aria-pressed",String(tab===id));btn.addEventListener("click",()=>render(id));
    tabs.append(btn);
   }
-  root.append(h,subtitle,rivalryNotice,summary,tabs);
+  const filterBar=document.createElement("div");filterBar.className="sds-rivalry-filters";
+  const chips=document.createElement("div");chips.className="sds-rivalry-chips";
+  for(const [key,label] of [["all","All "+TROPHIES.length],["SEC","SEC vs SEC"],["Nonconference","Nonconference"],["Historic","Historic"]]){
+   const button=document.createElement("button");button.type="button";
+   button.className="sds-rivalry-chip"+(category===key?" active":"");
+   button.textContent=label;button.setAttribute("aria-pressed",String(category===key));
+   button.addEventListener("click",()=>{category=key;render();});
+   chips.append(button);
+  }
+  const search=document.createElement("input");search.type="search";search.className="sds-rivalry-search";
+  search.setAttribute("aria-label","Search rivalries and opponents");
+  search.placeholder="Search Highway 82, Bedlam, Alabama…";search.value=searchTerm;
+  search.addEventListener("input",ev=>{searchTerm=String(ev.target.value).toLowerCase();updateFiltered();});
+  filterBar.append(chips,search);
+  root.append(h,subtitle,rivalryNotice,summary,tabs,filterBar);
   if(tab==="rivalries"){root.append(rivalryChallenges());}
   else if(tab==="history"){
    const history=document.createElement("div");history.className="sds-trophy-history";
@@ -271,13 +296,16 @@
    }root.append(history);
   }else{
    const grid=document.createElement("div");grid.className="sds-trophy-grid";
-   const items=tab==="mine"?owned():TROPHIES;
+   const items=(tab==="mine"?owned():TROPHIES).filter(t=>
+      (category==="all"||t.category===category)&&
+      (!searchTerm||(t.name+" "+t.teams+" "+(t.physical||"")).toLowerCase().includes(searchTerm))
+   );
    if(!items.length)grid.append(empty(signedIn?"You haven't earned a rivalry trophy yet.":"Sign in to earn your first rivalry trophy.",!signedIn));
    else items.forEach(t=>grid.append(trophyCard(t,version)));
    root.append(grid);
   }
   const note=document.createElement("p");note.className="sds-trophy-disclaimer";
-  note.textContent="Trophy achievements represent picking the straight-up winner of a rivalry game (even when your league plays Spread). They are not ownership of the physical rivalry trophy. Every named rivalry remains available in this catalog, even if it is not scheduled this season. Only verified final scores and your signed-in league picks count. Awards remain collected across seasons. The original rotating 3D rivalry sculptures can be explored by touch or mouse.";
+  note.textContent="Trophy achievements represent picking the straight-up winner of a rivalry game (even when your league plays Spread). They are not ownership of the physical rivalry trophy. Every named rivalry remains available in this catalog, even if it is not scheduled this season. Only verified final scores and your signed-in league picks count. Awards remain collected across seasons. The original 15 collectibles use interactive 3D sculptures; archive additions use distinct emblems until new models are created. Not every traditional rivalry has an official physical trophy.";
   root.append(note);
  }
  function reconcile(){
