@@ -156,13 +156,59 @@
   }
   async function act(action){
     if(working)return;
+    if(action==="mode-signup"||action==="mode-login"){
+      authMode=action==="mode-signup"?"signup":"login";
+      status("");renderLeague();return;
+    }
     if(action==="go-league"){app.setView("league");return;}
     if(action==="copy-invite"){return copyInvite();}
     if(action==="refresh"){await refresh();return;}
     if(action==="logout"){await client.auth.signOut();location.reload();return;}
     working=true;status("");
     try{
-      if(action==="send-link"){
+      if(action==="register"||action==="login"){
+        var email=document.getElementById("online-email")?.value.trim()||"";
+        var password=document.getElementById("online-password")?.value||"";
+        draftEmail=email;
+        if(!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email))throw Error("Enter a valid email address.");
+        if(password.length<8)throw Error("Use a password of at least 8 characters.");
+        if(action==="register"){
+          var name=document.getElementById("online-signup-name")?.value.trim()||"";
+          var confirmed=document.getElementById("online-password-confirm")?.value||"";
+          if(name.length<2||name.length>32)throw Error("Your display name must be 2–32 characters.");
+          if(password!==confirmed)throw Error("Passwords don't match.");
+          var data=extract(await client.auth.signUp({
+            email:email,password:password,options:{
+              emailRedirectTo:location.origin+location.pathname+location.search+"#league",
+              data:{display_name:name}
+            }
+          }));
+          if(data.session?.user){
+            user=data.session.user;
+            extract(await client.from("sec_profiles").upsert({user_id:user.id,display_name:name},{onConflict:"user_id"}));
+            profile={user_id:user.id,display_name:name};
+            app.state().name=name;
+            await refresh();
+            app.toast("Account created! Create a league to invite friends.");
+          }else{
+            // Supabase may require email confirmation. Never imply a session exists without one.
+            authMode="login";
+            lastError="If your account was created, check your email to confirm it, then log in here. If no email arrives, the site owner must enable confirmation email delivery.";
+            renderLeague();
+          }
+        }else{
+          var signedIn=extract(await client.auth.signInWithPassword({email:email,password:password}));
+          if(!signedIn.session?.user)throw Error("Could not start a sign-in session. Check whether your email must be confirmed.");
+          user=signedIn.session.user;
+          await refresh();
+          app.toast("Welcome back! You can create or join a league.");
+        }
+      }else if(action==="reset-password"){
+        var email=document.getElementById("online-email")?.value.trim()||"";
+        if(!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email))throw Error("Enter your email above to reset your password.");
+        extract(await client.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname+"#league"}));
+        status("If that account exists, a password reset email has been requested. Follow the link in your inbox.");
+      }else if(action==="send-link"){
         var email=document.getElementById("online-email")?.value.trim();
         if(!email||!email.includes("@"))throw Error("Enter a valid email address.");
         loginEmail=email;
@@ -216,6 +262,17 @@
     if(!el)return;
     ev.preventDefault();ev.stopImmediatePropagation();void act(el.dataset.online);
   },true);
+  document.addEventListener("input",function(ev){
+    if(ev.target.id==="online-email")draftEmail=ev.target.value;
+  });
+  document.addEventListener("keydown",function(ev){
+    var id=ev.target&&ev.target.id;
+    if(ev.key==="Enter"&&["online-email","online-password","online-password-confirm","online-signup-name"].includes(id)){
+      ev.preventDefault();
+      var target=document.querySelector('[data-online="'+(authMode==="signup"?"register":"login")+'"]');
+      if(target)target.click();
+    }
+  });
   document.addEventListener("change",function(ev){
     if(ev.target.id==="online-league-select"){
       active=ev.target.value;localStorage.setItem("ss-sec-league",active);
