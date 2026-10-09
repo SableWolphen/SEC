@@ -8,6 +8,84 @@
  const TROPHIES=window.SDS_RIVALRIES;
  if(!Array.isArray(TROPHIES)||TROPHIES.length<15)throw Error("Rivalry catalog missing");
  const byId=new Map(TROPHIES.map(t=>[t.id,t]));
+
+ // Each school gets a room. An SEC-vs-SEC matchup is listed under BOTH schools,
+ // while the underlying trophy and saved award remain one unique record.
+ const SEC_SCHOOLS=Object.freeze([
+  {code:"ALA",name:"Alabama",monogram:"A"},
+  {code:"ARK",name:"Arkansas",monogram:"AR"},
+  {code:"AUB",name:"Auburn",monogram:"AU"},
+  {code:"FLA",name:"Florida",monogram:"UF"},
+  {code:"UGA",name:"Georgia",monogram:"G"},
+  {code:"UK",name:"Kentucky",monogram:"UK"},
+  {code:"LSU",name:"LSU",monogram:"LSU"},
+  {code:"MSST",name:"Mississippi State",monogram:"MS"},
+  {code:"MIZ",name:"Missouri",monogram:"MU"},
+  {code:"OU",name:"Oklahoma",monogram:"OU"},
+  {code:"MISS",name:"Ole Miss",monogram:"OM"},
+  {code:"SC",name:"South Carolina",monogram:"SC"},
+  {code:"TENN",name:"Tennessee",monogram:"T"},
+  {code:"TEX",name:"Texas",monogram:"TX"},
+  {code:"TAMU",name:"Texas A&M",monogram:"ATM"},
+  {code:"VAN",name:"Vanderbilt",monogram:"V"}
+ ]);
+ const SCHOOL_BY_CODE=new Map(SEC_SCHOOLS.map(s=>[s.code,s]));
+ function inSchool(t,code){return code==="all"||t.codes.includes(code);}
+ function schoolTrophies(code){return TROPHIES.filter(t=>inSchool(t,code));}
+ function schoolOverviewData(){return SEC_SCHOOLS.map(s=>({
+  ...s,count:schoolTrophies(s.code).length,
+  earned:schoolTrophies(s.code).filter(t=>Boolean(lastWin(t.id))).length
+ }));}
+ function visibleTrophies(list){
+  return list.filter(t=>inSchool(t,school)&&
+   (category==="all"||t.category===category)&&
+   (!searchTerm||(t.name+" "+t.teams+" "+(t.physical||"")).toLowerCase().includes(searchTerm))
+  );
+ }
+ function changeSchool(code){
+  if(code!=="all"&&code!=="schools"&&!SCHOOL_BY_CODE.has(code))return;
+  school=code;category="all";searchTerm="";tab="all";render();
+ }
+ function schoolPicker(){
+  const section=document.createElement("section");section.className="sds-school-directory";
+  const top=document.createElement("div");top.className="sds-school-directory-heading";
+  const heading=document.createElement("h3");heading.textContent="Choose your SEC school";
+  const help=document.createElement("p");
+  help.textContent="Select a school to see its rivalry trophy collection. Every classic and off-season matchup stays included.";
+  top.append(heading,help);
+  const grid=document.createElement("div");grid.className="sds-school-grid";
+  for(const entry of schoolOverviewData()){
+   const card=document.createElement("button");card.type="button";card.className="sds-school-card";
+   card.dataset.school=entry.code;
+   card.setAttribute("aria-label",entry.name+": "+entry.count+" rivalry matchups, "+entry.earned+" trophies earned");
+   const emblem=document.createElement("span");emblem.className="sds-school-emblem";emblem.textContent=entry.monogram;
+   const info=document.createElement("span");info.className="sds-school-info";
+   const name=document.createElement("strong");name.textContent=entry.name;
+   const count=document.createElement("small");count.textContent=entry.count+" rivalries · "+entry.earned+" earned";
+   info.append(name,count);
+   const chevron=document.createElement("span");chevron.className="sds-school-arrow";chevron.textContent="›";
+   card.append(emblem,info,chevron);
+   card.addEventListener("click",()=>changeSchool(entry.code));
+   grid.append(card);
+  }
+  const footer=document.createElement("button");footer.type="button";footer.className="sds-school-all";
+  footer.textContent="Browse the full "+TROPHIES.length+"-rivalry archive →";
+  footer.addEventListener("click",()=>changeSchool("all"));
+  section.append(top,grid,footer);
+  return section;
+ }
+ function schoolBreadcrumb(){
+  const row=document.createElement("div");row.className="sds-school-breadcrumb";
+  const back=document.createElement("button");back.type="button";back.className="sds-school-back";
+  back.textContent="← All SEC schools";
+  back.addEventListener("click",()=>changeSchool("schools"));
+  const heading=document.createElement("strong");
+  const list=schoolTrophies(school);
+  const total=list.length,earned=list.filter(t=>Boolean(lastWin(t.id))).length;
+  heading.textContent=school==="all"?"Complete Rivalry Archive":SCHOOL_BY_CODE.get(school).name+" Rivalries";
+  const stats=document.createElement("span");stats.textContent=total+" rivalries · "+earned+" earned";
+  row.append(back,heading,stats);return row;
+ }
  function deriveResults(games,picks,schedule,authenticated=false,leagueId=null){
   if(!authenticated||!leagueId||!Array.isArray(games)||!picks||!schedule)return [];
   const found=[];
@@ -66,7 +144,27 @@
  "#sds-trophy-case .sds-trophy-placeholder span{display:block;margin-top:6px;color:var(--sds-trophy-accent);letter-spacing:.8px}",
  "#sds-trophy-case .sds-trophy-category{color:#d5ff65;font-size:10px;font-weight:800;margin-top:9px}",
  "#sds-trophy-case .sds-trophy-schedule{color:#7e9aae;font-size:10px;margin-top:5px}",
-  "#sds-trophy-case .sds-rivalry-filters{margin-bottom:16px;display:grid;gap:10px}",
+ 
+ "#sds-trophy-case .sds-school-directory-heading{margin:6px 0 18px}",
+ "#sds-trophy-case .sds-school-directory-heading h3{font-size:22px;font-weight:900;letter-spacing:-.5px;margin:0 0 5px;color:#f5fbf9}",
+ "#sds-trophy-case .sds-school-directory-heading p{font-size:12px;color:#aabbc8;line-height:1.5;margin:0}",
+ "#sds-trophy-case .sds-school-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}",
+ "#sds-trophy-case .sds-school-card{display:flex;align-items:center;gap:10px;min-width:0;min-height:83px;padding:12px 10px;background:#142839;border:1px solid #344e5e;border-radius:14px;text-align:left;color:#f4faf8;cursor:pointer;transition:border-color .15s,background .15s}",
+ "#sds-trophy-case .sds-school-card:hover{border-color:#d5ff65;background:#1e3840}",
+ "#sds-trophy-case .sds-school-card:focus-visible,#sds-trophy-case .sds-school-back:focus-visible,#sds-trophy-case .sds-school-all:focus-visible{outline:3px solid #d5ff65;outline-offset:3px}",
+ "#sds-trophy-case .sds-school-emblem{min-width:37px;width:37px;height:37px;background:#233c43;border:1px solid #668658;border-radius:10px;display:grid;place-items:center;color:#d5ff65;font-weight:950;font-size:12px;letter-spacing:-.5px}",
+ "#sds-trophy-case .sds-school-info{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}",
+ "#sds-trophy-case .sds-school-info strong{font-size:13px;font-weight:850;overflow-wrap:anywhere}",
+ "#sds-trophy-case .sds-school-info small{font-size:10px;color:#a7bac8}",
+ "#sds-trophy-case .sds-school-arrow{color:#d5ff65;font-size:23px;line-height:1;flex:none}",
+ "#sds-trophy-case .sds-school-all{display:block;width:100%;margin-top:15px;background:#213b30;color:#d5ff65;border:1px solid #668658;border-radius:12px;padding:13px 12px;font-size:12px;font-weight:850;cursor:pointer;min-height:45px}",
+ "#sds-trophy-case .sds-school-breadcrumb{display:flex;align-items:center;gap:8px 13px;flex-wrap:wrap;padding:13px;margin-bottom:14px;border:1px solid #39545b;border-radius:12px;background:#152f34}",
+ "#sds-trophy-case .sds-school-back{border:1px solid #668658;background:#284234;color:#d5ff65;border-radius:9px;padding:9px 12px;min-height:39px;font-size:11px;font-weight:800;cursor:pointer}",
+ "#sds-trophy-case .sds-school-breadcrumb strong{font-size:13px;font-weight:850;color:#f4faf9}",
+ "#sds-trophy-case .sds-school-breadcrumb>span{font-size:11px;color:#a9bec8;margin-left:auto}",
+ "@media(min-width:850px){#sds-trophy-case .sds-school-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}",
+ "@media(max-width:410px){#sds-trophy-case .sds-school-card{gap:7px;min-height:79px;padding:9px 7px}#sds-trophy-case .sds-school-emblem{min-width:31px;width:31px;height:34px;font-size:10px}#sds-trophy-case .sds-school-info strong{font-size:11px}#sds-trophy-case .sds-school-info small{font-size:9px}}",
+ "#sds-trophy-case .sds-rivalry-filters{margin-bottom:16px;display:grid;gap:10px}",
  "#sds-trophy-case .sds-rivalry-chips{display:flex;flex-wrap:wrap;gap:6px}",
  "#sds-trophy-case .sds-rivalry-chip{border:1px solid #3d5865;background:#182c37;color:#abc4ca;font-size:11px;font-weight:800;padding:8px 10px;border-radius:999px;min-height:36px;cursor:pointer}",
  "#sds-trophy-case .sds-rivalry-chip.active{background:#d5ff65;color:#10221b;border-color:#d5ff65}",
@@ -98,7 +196,7 @@
  "@media(max-width:365px){#sds-trophy-case{padding:18px 10px 85px}#sds-trophy-case .sds-trophy-display{height:145px}#sds-trophy-case .sds-trophy-placeholder strong{font-size:44px}}"
  ];
  const style=document.createElement("style");style.textContent=rules.join("\n");document.head.appendChild(style);
- let verified=[],myPicks={},schedule={},records=[],permanent=[],derived=[],historyUser=null,signedIn=false,leagueId=null,leagueName="",tab="all",category="all",searchTerm="",rootId="sds-trophy-case",renderId=0,viewerLoading=false;
+ let verified=[],myPicks={},schedule={},records=[],permanent=[],derived=[],historyUser=null,signedIn=false,leagueId=null,leagueName="",tab="all",school="schools",category="all",searchTerm="",rootId="sds-trophy-case",renderId=0,viewerLoading=false;
  function last(id){return records.filter(r=>r.trophyId===id).sort((a,b)=>b.year-a.year)[0];}
  function lastWin(id){return records.filter(r=>r.trophyId===id&&r.correct).sort((a,b)=>b.year-a.year)[0];}
  function owned(){return TROPHIES.filter(t=>Boolean(lastWin(t.id)));}
@@ -171,10 +269,7 @@
    const result=game?verified.find(g=>g.id===game.id):null;
    return {t,game,result,pick:game?myPicks[game.id]:null};
   });
-  const onSlate=fullSlate.filter(({t})=>
-    (category==="all"||t.category===category)&&
-    (!searchTerm||(t.name+" "+t.teams).toLowerCase().includes(searchTerm))
-  );
+  const onSlate=fullSlate.filter(({t})=>visibleTrophies([t]).length>0);
   const allScheduled=fullSlate.filter(item=>Boolean(item.game));
   const allPicked=allScheduled.filter(item=>Boolean(item.pick));
   const allComplete=allScheduled.filter(item=>item.result?.game_status==="final");
@@ -242,10 +337,7 @@
    if(prior)prior.replaceWith(rivalryChallenges());
   }else if(tab==="all"||tab==="mine"){
    const grid=root.querySelector(".sds-trophy-grid");if(!grid)return;
-   const entries=(tab==="mine"?owned():TROPHIES).filter(t=>
-      (category==="all"||t.category===category)&&
-      (!searchTerm||(t.name+" "+t.teams+" "+(t.physical||"")).toLowerCase().includes(searchTerm))
-   );
+   const entries=visibleTrophies(tab==="mine"?owned():TROPHIES);
    grid.replaceChildren();
    if(!entries.length)grid.append(empty("No rivalries match this search."));
    else entries.forEach(t=>grid.append(trophyCard(t,renderId)));
@@ -285,12 +377,17 @@
   search.placeholder="Search Highway 82, Bedlam, Alabama…";search.value=searchTerm;
   search.addEventListener("input",ev=>{searchTerm=String(ev.target.value).toLowerCase();updateFiltered();});
   filterBar.append(chips,search);
-  root.append(h,subtitle,rivalryNotice,summary,tabs,filterBar);
+  if(school==="schools"){
+   root.append(h,subtitle,rivalryNotice,summary,schoolPicker());
+   return;
+  }
+  root.append(h,subtitle,rivalryNotice,summary,schoolBreadcrumb(),tabs,filterBar);
   if(tab==="rivalries"){root.append(rivalryChallenges());}
   else if(tab==="history"){
    const history=document.createElement("div");history.className="sds-trophy-history";
-   if(!records.length)history.append(empty(signedIn?"No verified rivalry predictions yet.":"Log in to track your rivalry predictions.",!signedIn));
-   for(const result of records.slice().sort((a,b)=>b.year-a.year)){
+   const schoolRecords=records.filter(result=>school==="all"||byId.get(result.trophyId)?.codes.includes(school));
+   if(!schoolRecords.length)history.append(empty(signedIn?"No verified rivalry predictions for this school yet.":"Log in to track your rivalry predictions.",!signedIn));
+   for(const result of schoolRecords.slice().sort((a,b)=>b.year-a.year)){
     const trophy=byId.get(result.trophyId);if(!trophy)continue;
     const row=document.createElement("div");row.className="sds-trophy-history-row";
     const label=document.createElement("div"),title=document.createElement("strong"),detail=document.createElement("small");
@@ -301,10 +398,7 @@
    }root.append(history);
   }else{
    const grid=document.createElement("div");grid.className="sds-trophy-grid";
-   const items=(tab==="mine"?owned():TROPHIES).filter(t=>
-      (category==="all"||t.category===category)&&
-      (!searchTerm||(t.name+" "+t.teams+" "+(t.physical||"")).toLowerCase().includes(searchTerm))
-   );
+   const items=visibleTrophies(tab==="mine"?owned():TROPHIES);
    if(!items.length)grid.append(empty(signedIn?"You haven't earned a rivalry trophy yet.":"Sign in to earn your first rivalry trophy.",!signedIn));
    else items.forEach(t=>grid.append(trophyCard(t,version)));
    root.append(grid);
@@ -353,7 +447,9 @@
       gameId:r.game_id,pick:r.pick_code,winner:r.winner_code,leagueId:r.league_id}));
    reconcile();render();
   },
-  sync,deriveResults,getResults:()=>records.map(r=>({...r})),trophies:TROPHIES
+  sync,deriveResults,getResults:()=>records.map(r=>({...r})),trophies:TROPHIES,
+  schools:SEC_SCHOOLS,getSchoolOverview:schoolOverviewData,getSchoolTrophies:schoolTrophies,
+  selectSchool:changeSchool,getSelectedSchool:()=>school,getVisibleTrophies:()=>visibleTrophies(TROPHIES)
  });
  if(window.location?.hash==="#trophies")window.SDSTrophyCase.mount();
 })();
