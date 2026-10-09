@@ -10,6 +10,7 @@ const ALL=["football","basketball","baseball"];
 const names={football:"🏈 Football",basketball:"🏀 Basketball",baseball:"⚾ Baseball"};
 const validSports=c=>(Array.isArray(c?.enabled_sports)?c.enabled_sports:ALL).filter(s=>ALL.includes(s));
 let clubs=[],singles=[],selection=null,leaderboard=[],lastUser=null,loading=false,lastLoad=0,message="";
+let inflight=null;
 const ident=i=>i?.kind+":"+i?.id;
 const key=()=> "sec-selected-league:"+(me()?.id||"guest");
 const cached=()=>{try{return localStorage.getItem(key());}catch(e){return null;}};
@@ -125,9 +126,14 @@ async function standings(){
  const c=club();
  leaderboard=c?(unwrap(await db().rpc("sec_club_standings",{p_club:c.id}))||[]):[];
 }
-async function load(force=false){
+function load(force=false){
+ if(inflight)return force?inflight.then(()=>load(true)):inflight;
+ inflight=loadNow(force).finally(()=>{inflight=null;});
+ return inflight;
+}
+async function loadNow(force=false){
  reset();
- if(!db()||!me()||loading||(!force&&Date.now()-lastLoad<45000)){render();return;}
+ if(!db()||!me()||(!force&&Date.now()-lastLoad<45000)){render();return;}
  const id=me().id;loading=true;message="";
  try{
   const [c,f,b]=await Promise.all([
