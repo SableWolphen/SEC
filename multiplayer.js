@@ -15,6 +15,23 @@
   var inviteCode = new URLSearchParams(location.search).get("league");
   if (inviteCode && !/^[A-Z0-9]{10}$/i.test(inviteCode)) inviteCode = null;
   var safe = function(s){return app.esc(String(s == null ? "" : s));};
+  // Treat pasted email addresses consistently, including Android's invisible copy/paste chars.
+  var cleanEmail = function(value){
+    return String(value == null ? "" : value).normalize("NFKC").replace(/[\u200B-\u200D\uFEFF]/g,"").trim();
+  };
+  var validEmail = function(email){
+    if(!email || email.length>254 || email.length<5)return false;
+    var at=email.indexOf("@");
+    if(at<1 || at!==email.lastIndexOf("@"))return false;
+    var local=email.slice(0,at), domain=email.slice(at+1);
+    if(!local || !domain || !domain.includes(".") || domain[0]==="." || domain.endsWith("."))return false;
+    if(local[0]==="." || local.endsWith(".") || email.includes(".."))return false;
+    for(var i=0;i<email.length;i++){
+      var code=email.charCodeAt(i);
+      if(code<=32 || code===127 || code===160)return false;
+    }
+    return true;
+  };
   var status = function(message){lastError = message || ""; var el = document.getElementById("online-status"); if(el) el.textContent=lastError;};
   var button = function(label,action,extra){return '<button type="button" class="'+(extra||"ghost-btn")+'" data-online="'+action+'">'+label+'</button>';};
   var card = function(title,content){return '<div class="content-card"><div class="card-kicker">ONLINE PICK’EM</div><h2>'+title+'</h2>'+content+'</div>';};
@@ -199,10 +216,10 @@
         await refresh();
         app.toast("Password updated. You're now signed in.");
       }else if(action==="register"||action==="login"){
-        var email=document.getElementById("online-email")?.value.trim()||"";
+        var email=cleanEmail(document.getElementById("online-email")?.value);
         var password=document.getElementById("online-password")?.value||"";
         draftEmail=email;
-        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))throw Error("Enter a valid email address.");
+        if(!validEmail(email))throw Error("Enter a valid email address.");
         if(password.length<8)throw Error("Use a password of at least 8 characters.");
         if(action==="register"){
           var name=document.getElementById("online-signup-name")?.value.trim()||"";
@@ -236,13 +253,13 @@
           app.toast("Welcome back! You can create or join a league.");
         }
       }else if(action==="reset-password"){
-        var email=document.getElementById("online-email")?.value.trim()||"";
-        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))throw Error("Enter your email above to reset your password.");
+        var email=cleanEmail(document.getElementById("online-email")?.value);
+        if(!validEmail(email))throw Error("Enter your email above to reset your password.");
         extract(await client.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname+"#league"}));
         status("If that account exists, a password reset email has been requested. Follow the link in your inbox.");
       }else if(action==="send-link"){
-        var email=document.getElementById("online-email")?.value.trim();
-        if(!email||!email.includes("@"))throw Error("Enter a valid email address.");
+        var email=cleanEmail(document.getElementById("online-email")?.value);
+        if(!validEmail(email))throw Error("Enter a valid email address.");
         loginEmail=email;
         extract(await client.auth.signInWithOtp({email:email,options:{emailRedirectTo:location.origin+location.pathname+location.search+"#league"}}));
         app.toast("Check your email for your sign-in link.");
@@ -295,7 +312,7 @@
     ev.preventDefault();ev.stopImmediatePropagation();void act(el.dataset.online);
   },true);
   document.addEventListener("input",function(ev){
-    if(ev.target.id==="online-email")draftEmail=ev.target.value;
+    if(ev.target.id==="online-email")draftEmail=cleanEmail(ev.target.value);
   });
   document.addEventListener("keydown",function(ev){
     var id=ev.target&&ev.target.id;
