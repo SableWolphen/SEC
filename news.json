@@ -1,7 +1,355 @@
 {
-  "updated_at": null,
-  "checked_at": null,
-  "sources": [],
-  "articles": [],
-  "warning": "Automatic SEC news ingestion is starting. Headlines will appear after the first successful source update."
+  "updated_at": "2026-10-09T20:19:11.213884Z",
+  "checked_at": "2026-10-09T20:19:11.213884Z",
+  "sources": [
+    "NCAA",
+    "ESPN"
+  ],
+  "articles": [
+    {
+      "id": "9ab0d574a7d05181",
+      "title": "Connelly Week 6 preview: Things get real with SEC, Big Ten showdowns",
+      "summary": "With Georgia-Alabama, major challenges for Big Ten unbeatens and some Big 12 chaos, there's a lot to follow.",
+      "url": "https://www.espn.com/college-football/story/_/id/50133135/connelly-week-6-preview-sec-big-ten-alabama-georgia",
+      "source": "ESPN",
+      "published_at": "2026-10-09T16:05:51Z",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "59f00712b756276c",
+      "title": "Alabama thinks it has found and fixed Ryan Coleman-Williams' drop issues",
+      "summary": "Using VR technology, the staff discovered a depth perception issue, and the drops have disappeared.",
+      "url": "https://www.espn.com/college-football/story/_/id/50133938/college-football-alabama-ryan-coleman-williams-drops",
+      "source": "ESPN",
+      "published_at": "2026-10-09T13:55:11Z",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "bbabb20709223eef",
+      "title": "Oregon, Florida and more lead loaded CFB Week 6 uniform slate",
+      "summary": "Of all the strong uniform weeks in college football this fall, you'll likely be hard-pressed to find another that stacks up to Week 6.",
+      "url": "https://www.espn.com/college-football/story/_/id/50134026/college-football-best-uniforms-week-6-oregon-florida-notre-dame",
+      "source": "ESPN",
+      "published_at": "2026-10-09T13:38:23Z",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "cf6ad493bda5ff75",
+      "title": "Finebaum: Kirby Smart, Georgia have 'an Alabama problem'",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50139833/kirby-smart-georgia-alabama-problem",
+      "source": "ESPN",
+      "published_at": "2026-10-09T13:14:28Z",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "79af8af1c33cca16",
+      "title": "First time at the State Fair of Texas? Here are our tips",
+      "summary": "We polled our staff for their best tips on making the most of one of the sport's most distinctive backdrops.",
+      "url": "https://www.espn.com/college-football/story/_/id/50135168/texas-oklahoma-state-fair-red-river-guide",
+      "source": "ESPN",
+      "published_at": "2026-10-09T13:03:43Z",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "549ce46ee8d24305",
+      "title": "Hometown hero Gunner Stockton back in spotlight for Georgia",
+      "summary": "The Bulldogs QB is a quiet leader, but those who have known him over the years eagerly sing his praises.",
+      "url": "https://www.espn.com/college-football/story/_/id/50126123/gunner-stockton-back-spotlight-georgia-faces-alabama",
+      "source": "ESPN",
+      "published_at": "2026-10-09T10:25:09Z",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "15c93d8aca762bf1",
+      "title": "South Florida Bulls vs. UTSA Roadrunners: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50137739/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-09T04:03:46Z",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1188b5e6f7780c93",
+      "title": "South Alabama Jaguars vs. Arkansas State Red Wolves: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50137660/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-09T03:49:32Z",
+      "teams": [
+        "Alabama",
+        "Arkansas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c84ab9bdf8201de7",
+      "title": "Nick Carroll, the No. 4 safety in 2028, commits to Georgia",
+      "summary": "Four-star safety Nick Carroll, ESPN's No. 61 overall prospect in the 2028 cycle, announced his commitment to the Georgia Bulldogs.",
+      "url": "https://www.espn.com/college-football/story/_/id/50134848/nick-carroll-no-4-overall-safety-28-commits-georgia",
+      "source": "ESPN",
+      "published_at": "2026-10-08T20:40:23Z",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "38d2a6f8812c4bc9",
+      "title": "How Kirby Smart is preparing for Alabama amid weather concerns",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50134145/how-kirby-smart-preparing-alabama-amid-weather-concerns",
+      "source": "ESPN",
+      "published_at": "2026-10-08T17:40:13Z",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b5404ab7ff31940c",
+      "title": "2026 'College GameDay' Week 6: Georgia vs. Alabama",
+      "summary": "\"College GameDay\" heads to Tuscaloosa, Alabama for Week 6.",
+      "url": "https://www.espn.com/college-football/story/_/id/50133318/2026-college-gameday-week-6-georgia-vs-alabama",
+      "source": "ESPN",
+      "published_at": "2026-10-08T16:39:56Z",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7481f321bfd7a20b",
+      "title": "Stephen A. issues warning to Texas ahead of Oklahoma showdown",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50133199/stephen-issues-warning-texas-ahead-oklahoma-showdown",
+      "source": "ESPN",
+      "published_at": "2026-10-08T15:07:51Z",
+      "teams": [
+        "Oklahoma",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e227c0ffb9757168",
+      "title": "Top 25 betting lines: Bama slim favorites at home vs. UGA; Oregon faves vs. UCLA",
+      "summary": "This week's odds and FPI predictions for Alabama-Georgia, Oregon-UCLA and every top 25 matchup.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50106943/2026-college-football-week-6-top-25-betting-lines-odds",
+      "source": "ESPN",
+      "published_at": "2026-10-08T13:57:07Z",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "520e533fb23fd3f3",
+      "title": "Missouri's Johnnie 'DJ' Jones receives heart transplant",
+      "summary": "Missouri offensive lineman Johnnie \"DJ\" Jones received a heart transplant Wednesday night.",
+      "url": "https://www.espn.com/college-football/story/_/id/50132416/missouri-johnnie-dj-jones-receives-heart-transplant",
+      "source": "ESPN",
+      "published_at": "2026-10-08T13:27:17Z",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c98f7536b05c78fd",
+      "title": "Alabama, Georgia prepare for hurricane to hit Saturday's game",
+      "summary": "Tropical storm Isaias has developed into a hurricane and could hit the Gulf Coast as early as Friday -- potentially taking it near Bryant-Denny Stadium, the site of Saturday's game between No.",
+      "url": "https://www.espn.com/college-football/story/_/id/50126396/alabama-georgia-prepare-storm-hit-saturday-game",
+      "source": "ESPN",
+      "published_at": "2026-10-08T12:01:03Z",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "13357dcf29e5279e",
+      "title": "Alabama TE Ford has broken arm, hopes to play vs. Georgia",
+      "summary": "Alabama tight end Josh Ford broke his arm during last Saturday's win over Mississippi State, had surgery Sunday and is attempting to play vs No. 2 Georgia.",
+      "url": "https://www.espn.com/college-football/story/_/id/50126204/alabama-te-ford-broken-arm-hopes-play-vs-georgia",
+      "source": "ESPN",
+      "published_at": "2026-10-08T12:00:48Z",
+      "teams": [
+        "Alabama",
+        "Georgia",
+        "Mississippi State"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "11e8f594eb05d693",
+      "title": "Georgia's Chauncey Bowens out vs. Alabama; Nate Frazier off injury report",
+      "summary": "Georgia running back Chauncey Bowens, who leads the No.",
+      "url": "https://www.espn.com/college-football/story/_/id/50128870/georgia-bulldogs-chauncey-bowens-vs-alabama-crimson-tide",
+      "source": "ESPN",
+      "published_at": "2026-10-08T11:59:54Z",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0c79562e55fe4057",
+      "title": "New Mexico State Aggies vs. Florida International Panthers: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50130306/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-08T03:47:58Z",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ee5c6a9c1ff1f342",
+      "title": "Gene Chizik: No. 9 Ole Miss needs to fix run defense",
+      "summary": "After a tough 52-28 loss to Florida, Chizik advises the Rebels to make defensive improvements to respond positively in Week 6 against Vanderbilt.",
+      "url": "https://www.espn.com/video/clip/_/id/50129446/no-9-ole-miss-needs-fix-run-defense",
+      "source": "ESPN",
+      "published_at": "2026-10-08T02:12:39Z",
+      "teams": [
+        "Florida",
+        "Ole Miss",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "727ef1aad7ea6012",
+      "title": "Gene Chizik breaks down No. 2 Georgia's ferocious run defense",
+      "summary": "SEC Network's Gene Chizik analyzes film of the Bulldogs' defensive front and explains how they are able to suffocate opposing rushing attacks.",
+      "url": "https://www.espn.com/video/clip/_/id/50128869/gene-chizik-breaks-no-2-georgia-ferocious-run-defense",
+      "source": "ESPN",
+      "published_at": "2026-10-08T02:00:29Z",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ac8e1965b840d2f9",
+      "title": "No. 1 Texas' Hero Kanu details experience in Red River Rivalry",
+      "summary": "Kanu joins SEC Now ahead of the Longhorns' matchup against Oklahoma to discuss the spectacle around one of college football's most historic rivalries and his interests outside of football.",
+      "url": "https://www.espn.com/video/clip/_/id/50128599/no-1-texas-hero-kanu-details-experience-red-river-rivalry",
+      "source": "ESPN",
+      "published_at": "2026-10-08T02:00:20Z",
+      "teams": [
+        "Oklahoma",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d40ad1270ce7c0f8",
+      "title": "Willie Rodriguez breaks down game-winning catch in UK's win over SC",
+      "summary": "Rodriguez joins SEC Now to relive the final moments of the Wildcats' comeback win over the Gamecocks and previews their matchup against No. 10 LSU in Lexington.",
+      "url": "https://www.espn.com/video/clip/_/id/50128738/willie-rodriguez-breaks-game-winning-catch-uk-win-sc",
+      "source": "ESPN",
+      "published_at": "2026-10-08T02:00:09Z",
+      "teams": [
+        "Kentucky",
+        "LSU",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5afa4d49b3350deb",
+      "title": "Gene Chizik outlines No. 14 Mizzou, Texas A&M keys to winning",
+      "summary": "Chizik says Missouri should maintain the dominance from its big Week 5 win over No. 16 Florida to protect home against the Aggies, while advising Texas A&M to lean on its QB run game.",
+      "url": "https://www.espn.com/video/clip/_/id/50128739/gene-chizik-outlines-no-14-mizzou-texas-keys-winning",
+      "source": "ESPN",
+      "published_at": "2026-10-08T00:12:17Z",
+      "teams": [
+        "Florida",
+        "Missouri",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1de5a0b183515b3c",
+      "title": "Gene Chizik says Week 6 game with UK is 'dangerous' for No. 10 LSU",
+      "summary": "Will Stein is full of confidence and it's evident in Kentucky's energy and momentum, this mentality is enough to convince Chizik that LSU must execute cleanly to pick up a road win.",
+      "url": "https://www.espn.com/video/clip/_/id/50128598/gene-chizik-says-week-6-game-uk-dangerous-no-10-lsu",
+      "source": "ESPN",
+      "published_at": "2026-10-07T23:51:46Z",
+      "teams": [
+        "Kentucky",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "2d3fd03a7ae053ae",
+      "title": "McGee Essay: Football, Legends, History - 'Red River Rivalry'",
+      "summary": "Ryan McGee dives into the legendary moments, rich history and storied tradition that make the 126-year rivalry between No. 1 Texas and Oklahoma one of college football's must-see matchups.",
+      "url": "https://www.espn.com/video/clip/_/id/50128398/football-legends-history-red-river-rivalry",
+      "source": "ESPN",
+      "published_at": "2026-10-07T23:28:33Z",
+      "teams": [
+        "Oklahoma",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "30d4ae62c7eb2db1",
+      "title": "Vols RB DeSean Bishop looks forward to Hogs, thinks beyond football",
+      "summary": "No. 15 Tennessee hasn't won at Razorback Stadium since 2001, and Bishop cherishes the opportunity to change that while keeping life after football in mind.",
+      "url": "https://www.espn.com/video/clip/_/id/50128025/vols-rb-desean-bishop-looks-forward-hogs-thinks-football",
+      "source": "ESPN",
+      "published_at": "2026-10-07T22:27:17Z",
+      "teams": [
+        "Arkansas",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1e245eaf82b3da2b",
+      "title": "Top five holds, Alabama rises in latest AP Top 25 college football rankings",
+      "summary": "Here’s what you need to know about the latest AP Top 25 Poll.",
+      "url": "https://www.ncaa.com/news/football/article/2026-10-04/top-five-holds-alabama-rises-latest-ap-top-25-college-football-rankings",
+      "source": "NCAA",
+      "published_at": "2026-10-04T18:32:17Z",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    }
+  ],
+  "warning": null
 }
