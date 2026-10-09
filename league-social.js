@@ -59,10 +59,10 @@ function championshipHtml(){
 function render(){
  if(!league)return "";
  return '<div class="sec-social-root" id="sec-social-root">'+
-  '<section class="sec-chat-card" aria-label="Private league chat">'+
+  '<section class="sec-chat-card" aria-label="Private chat for '+esc(league.name)+'">'+
   '<div class="sec-chat-heading"><div><span class="card-kicker">LEAGUE LOCKER ROOM</span><h3>Chat & Trash Talk</h3></div>'+
-  '<span>🔒 League only</span></div>'+
-  '<p class="sec-chat-lead">Keep the banter friendly. Your picks stay hidden until kickoff unless you share them yourself.</p>'+
+  '<span class="sec-chat-league-label">🔒 '+esc(league.name)+'</span></div>'+
+  '<p class="sec-chat-lead">Private conversation for <strong>'+esc(league.name)+'</strong>. Messages stay in this league. Keep the banter friendly.</p>'+
   '<div id="sec-chat-feed" class="sec-chat-feed" aria-live="polite">'+messageHtml()+'</div>'+
   '<label class="input-label" for="sec-chat-input">Message your league</label>'+
   '<textarea id="sec-chat-input" class="field sec-chat-input" rows="2" maxlength="500" placeholder="Who takes the rivalry this Saturday?"></textarea>'+
