@@ -11,6 +11,7 @@
   }) : null;
   var user = null, leagues = [], active = null, standings = [], profile = null;
   var working = false, lastError = "", loginEmail = "";
+  var authMode = "signup", draftEmail = "";
   var inviteCode = new URLSearchParams(location.search).get("league");
   if (inviteCode && !/^[A-Z0-9]{10}$/i.test(inviteCode)) inviteCode = null;
   var safe = function(s){return app.esc(String(s == null ? "" : s));};
@@ -31,15 +32,26 @@
       return;
     }
     if (!user){
-      host.innerHTML = '<div class="secondary-grid">'+card('Play with your crew.',
-        '<p>Sign in with your email. Your picks will follow your account across devices, and every player sees the same league standings.</p>'+
-        (inviteCode?'<div class="help-note">Invitation detected: '+safe(inviteCode)+'. Sign in first to join.</div>':'')+
+      var registering=authMode==="signup";
+      var panel='<div class="auth-tabs" role="group" aria-label="Account actions">'+
+        '<button type="button" data-online="mode-signup" class="auth-tab '+(registering?'active':'')+'" aria-pressed="'+registering+'">Create account</button>'+
+        '<button type="button" data-online="mode-login" class="auth-tab '+(!registering?'active':'')+'" aria-pressed="'+(!registering)+'">Log in</button></div>'+
+        '<p>Use an email and password to save your picks and compete with friends across devices.</p>'+
+        (inviteCode?'<div class="help-note">🏈 You have a league invite: <strong>'+safe(inviteCode)+'</strong>. Sign in or create an account to join.</div>':'')+
+        (registering?'<label class="input-label" for="online-signup-name">Display name</label>'+
+          '<input class="field" id="online-signup-name" type="text" autocomplete="nickname" maxlength="32" placeholder="Your pick’em name" required>':'')+
         '<label class="input-label" for="online-email">Email address</label>'+
-        '<input class="field" id="online-email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com">'+
-        '<div style="margin-top:12px">'+button('Email me a sign-in link','send-link','primary-btn')+'</div>'+
-        '<p class="helper">No password needed. A sign-in link will be sent to your inbox. If your email is rejected, the league owner must finish email delivery setup.</p>'+
-        '<p id="online-status" class="helper" role="status" aria-live="polite">'+safe(lastError)+'</p>')+
-        card('The rules','<p>Pick winners for every SEC matchup, including nonconference opponents. Earn one point per correct pick. Picks lock at kickoff (or a clearly marked early provisional time).</p><p>Your name and score appear only to fellow league members. Picks remain private until each game begins.</p>')+'</div>';
+        '<input class="field" id="online-email" type="email" autocomplete="email" maxlength="254" value="'+safe(draftEmail)+'" placeholder="you@example.com" required>'+
+        '<label class="input-label" for="online-password">Password</label>'+
+        '<input class="field" id="online-password" type="password" autocomplete="'+(registering?'new-password':'current-password')+'" minlength="8" maxlength="72" placeholder="At least 8 characters" required>'+
+        (registering?'<label class="input-label" for="online-password-confirm">Confirm password</label>'+
+          '<input class="field" id="online-password-confirm" type="password" autocomplete="new-password" minlength="8" maxlength="72" placeholder="Type it again" required>':'')+
+        '<div class="auth-actions">'+button(registering?'Create my account':'Log in',registering?'register':'login','primary-btn')+'</div>'+
+        (!registering?'<div class="auth-recovery">'+button('Forgot password?','reset-password','link-like')+'</div>':'')+
+        '<p id="online-status" class="helper auth-status" role="status" aria-live="polite">'+safe(lastError)+'</p>'+
+        '<p class="helper">After signing in, choose <strong>Create league</strong> to invite your friends. Email verification may be required by your league’s account settings.</p>';
+      host.innerHTML='<div class="secondary-grid">'+card(registering?'Join the pick’em club.':'Welcome back.',panel)+
+        card('Compete with friends','<p><strong>1.</strong> Create a free player account.<br><strong>2.</strong> Make a private league and share your invitation.<br><strong>3.</strong> Pick winners before kickoff.<br><strong>4.</strong> Follow the weekly and season leaderboard.</p><div class="help-note">All SEC games count, including nonconference matchups. One correct pick earns one point.</div>')+'</div>';
       return;
     }
     var choice = currentLeague();
@@ -47,7 +59,7 @@
     var nameForm=card('Your player profile',
        '<p>Signed in as <strong>'+safe(user.email||"Member")+'</strong></p>'+
        '<label class="input-label" for="online-name">Leaderboard display name</label>'+
-       '<input class="field" id="online-name" maxlength="32" autocomplete="nickname" value="'+safe(profile?.display_name||"")+'" placeholder="Your name">'+
+       '<input class="field" id="online-name" maxlength="32" autocomplete="nickname" value="'+safe(profile?.display_name||user.user_metadata?.display_name||"")+'" placeholder="Your name">'+
        '<div style="margin-top:12px">'+button('Save name','save-name','primary-btn')+' '+button('Sign out','logout')+'</div>');
     var leaguesForm=card('Create or join a league',
        '<label class="input-label" for="online-new-league">Make a new league</label>'+
@@ -69,7 +81,7 @@
         (standings.length?standings.map(function(row,i){return '<div class="standing-row" style="grid-template-columns:26px minmax(0,1fr) 48px 52px 58px"><span class="rank">'+(i+1)+'</span><span class="name">'+safe(row.display_name)+(row.user_id===user.id?' ★':'')+'</span><span class="muted">'+safe(row.picked)+'</span><span class="score">'+safe(row.week_points)+'</span><span>'+safe(row.season_points)+'</span></div>';}).join(''):'<p class="helper" style="padding:15px">No standings available yet.</p>')+
         '</div><p class="helper">Picks are stored securely online. Only league members can see this scoreboard.</p>');
     } else standingsHtml=card('Start the competition','<p>Create a league or join one with an invitation code. Invite your friends by sending the link.</p>');
-    host.innerHTML='<div class="secondary-grid"><div class="setting-stack">'+standingsHtml+'</div><div class="setting-stack">'+nameForm+leaguesForm+'</div></div>'+
+    host.innerHTML='<div class="secondary-grid"><div class="setting-stack">'+(choice?standingsHtml:leaguesForm+standingsHtml)+'</div><div class="setting-stack">'+nameForm+(choice?leaguesForm:'')+'</div></div>'+
       '<p id="online-status" class="helper" role="status" aria-live="polite">'+safe(lastError)+'</p>';
   }
   function renderSettings(){
