@@ -64,6 +64,20 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
  await settle();
  assert.match(roots["sports-hub"].innerHTML,/Choose your/);
  assert.match(roots["sports-hub"].innerHTML,/LATEST SEASON/);
+ assert.ok(roots["sports-hub"].innerHTML.indexOf('data-go-sport="football"')<
+  roots["sports-hub"].innerHTML.indexOf('data-go-sport="basketball"'),"Newest football season is first in October");
+ const series=JSON.parse(fs.readFileSync("baseball-2027-series.json","utf8"));
+ assert.equal(series.season,2027);
+ assert.equal(series.series.length,80,"all 80 published SEC baseball series appear in preview");
+ const counts=new Map();
+ series.series.forEach(item=>{
+  counts.set(item.home,(counts.get(item.home)||0)+1);
+  counts.set(item.away,(counts.get(item.away)||0)+1);
+  assert.match(item.status,/pending/i,"individual baseball game time unconfirmed");
+ });
+ assert.equal(counts.size,16,"all SEC baseball programs have published series");
+ assert.ok([...counts.values()].every(n=>n===10),"each SEC school has 10 conference series");
+ assert.match(fs.readFileSync("multi-sport.js","utf8"),/not pickable games/,"series only, no invented individual winner picks");
  for(const sport of ["football","basketball","baseball"])
   assert.match(roots["sports-hub"].innerHTML,new RegExp('data-go-sport="'+sport+'"'));
  app.mount("basketball");await settle();
@@ -86,6 +100,9 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
  app.mount("baseball");await settle();
  assert.match(roots["sport-baseball-content"].innerHTML,/Waiting for the official schedule/,"no fabricated baseball games");
  assert.equal(app.getState("baseball").games.length,0,"baseball table isolated");
+ const sw=fs.readFileSync("sw.js","utf8");
+ assert.match(sw,/multi-sport\.js/,"PWA includes season selector client");
+ assert.match(sw,/baseball-2027-series\.json/,"PWA caches official baseball series preview");
  const html=fs.readFileSync("index.html","utf8");
  for(const id of ["sports-view","picks-view","basketball-view","baseball-view"])
   assert.ok(html.includes('id="'+id+'"'),"Sport route exists: "+id);
