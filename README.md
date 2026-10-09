@@ -28,6 +28,23 @@ The site opens directly to the **most recently started season**, without a manda
 
 Schedules for basketball and baseball rely on verified imported games. If no officially confirmed game date/time is available, the app shows a schedule-pending message instead of creating fake fixtures or accepting invalid picks.
 
+## Full-season SEC Fan Experience (October 2026)
+
+### Grand Champion — one club across all sports
+Create or join an **All-Sports League** on the League page. One signed-in SEC player account and one private invite enroll the player atomically into three linked **Straight Picks** leagues (football, men's basketball, baseball). A single server-authorized Grand Champion leaderboard totals correct, confirmed winner picks; each sport's own leaderboard, own picks and private chat remain separate. Existing single-sport leagues are untouched. Share the one invite URL from the league panel; selecting a sport from the club panel opens its corresponding league. The additive, RLS-protected SQL is `supabase/migrations/20261009_unified_three_sport_leagues.sql`, applied to the existing SEC Supabase project. The system neither duplicates player accounts nor awards points for unplayed games.
+
+### Small Live Game Center, optional extra details
+**No huge live panel**. Each Picks matchup contains a single unobtrusive **Game center** row: tap to expand score/status, existing matchup analysis, and league pick percentages **only after lock** via the server's `sec_revealed_league_picks` RPC. On the basketball/baseball screens, verified score and source appear in the same compact disclosure. Data is polled while the Picks page is visible, not fake second-by-second play-by-play. Matchups remain easy to scan and pick; cards do not grow until expanded.
+
+### Recaps, team form, achievements and alerts
+- Weekly football recaps count only server-confirmed finals and authenticated picks, with accuracy and unpicked games in a folded summary.
+- Favorite Team HQ adds recent five confirmed results and next three verified fixtures, categorized by sport; no fabricated scores.
+- Player trophies reflect actual saved picks/correct results and remain separate from the existing rivalry collection.
+- Rivalry challenge link, basketball/baseball postseason bracket links, and baseball series previews are unobtrusive foldouts. **These are informational now**: official brackets must publish before a pickable bracket or scores can be activated; the SEC 2027 baseball series pairings are already displayed, but missing exact first-pitch times prevent safe series lock/scoring. This work deliberately does not advertise unimplemented brackets or unscored previews as official competitions.
+- Notification settings let players opt into **in-app**, browser-permission-based pick deadline alerts while the site is open. True background web push is not active until a push server/subscription store is available. No automatic permission prompt on load.
+
+The feature bundle is responsive, keeps the same bottom navigation and shared login, and preserves existing scores, leagues and picks. The mobile presentation emphasizes compact summaries and hidden details rather than a bulky Game Center.
+
 ## Additional official college baseball records & licensed statistics
 
 The **Teams → Favorite School HQ** now links to the [SEC Team Statistics dashboard](https://stats.secsports.com/#team) for batting/pitching/fielding tables, the [NCAA Baseball Statistics & Records archive](https://www.ncaa.org/championships/statistics-and-records/baseball/) for historical team-by-season and championship records, and [Sportradar Global Baseball](https://developer.sportradar.com/baseball/reference/global-baseball-overview) coverage/API documentation. These are real, clickable sources, not made-up data feeds. The NCAA archive is a historical/reference site, **not a verified unauthenticated real-time JSON endpoint**, and the SEC statistics page is an interactive dashboard; neither is incorrectly scraped as a live results API.
