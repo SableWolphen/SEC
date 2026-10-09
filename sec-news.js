@@ -8,7 +8,21 @@
   "Mississippi State","Missouri","Oklahoma","Ole Miss","South Carolina","Tennessee",
   "Texas","Texas A&M","Vanderbilt"];
  let entries=[],updated=null,checked=null,warning="",error="",loading=false,lastFetch=0;
- let team="all",breakingOnly=false,search="",sourceNames=[];
+ let team="all",breakingOnly=false,search="",sourceNames=[],sport=null;
+ const SPORTS={
+  football:{label:"Football",emoji:"🏈"},
+  baseball:{label:"Baseball",emoji:"⚾"},
+  basketball:{label:"Basketball",emoji:"🏀"}
+ };
+ function selectedSport(){
+  if(sport&&SPORTS[sport])return sport;
+  const picks=window.SEC_BRIDGE?.selectedSport?.();
+  sport=picks==="picks"?"football":SPORTS[picks]?picks:
+   (window.SEC_SPORTS?.recommended?.()||"football");
+  if(!SPORTS[sport])sport="football";
+  return sport;
+ }
+ const articleSport=item=>SPORTS[item.sport]?item.sport:!item.sport?"football":null;
  const $=id=>document.getElementById(id);
  const make=(tag,cls,content)=>{
   const el=document.createElement(tag);
@@ -48,6 +62,7 @@
   if(isBreaking(item))badges.append(make("span","sec-news-breaking","● BREAKING"));
   else if(isFresh(item))badges.append(make("span","sec-news-new","NEW"));
   badges.append(make("span","sec-news-source",item.source||"Publisher"));
+  badges.append(make("span","sec-news-sport-tag",SPORTS[articleSport(item)]?.label||"SEC"));
   badges.append(make("time","sec-news-time",elapsed(item.published_at)));
   if(date(item.published_at))badges.lastElementChild.dateTime=date(item.published_at).toISOString();
   const title=make(feature?"h2":"h3","sec-news-card-title",item.title);
@@ -61,6 +76,21 @@
   article.append(badges,title,blurb,tags);
   if(button)article.append(button);
   return article;
+ }
+ function sportFilters(root){
+  const chooser=make("div","sec-news-sports");
+  chooser.setAttribute("role","group");
+  chooser.setAttribute("aria-label","Choose sport for SEC news");
+  for(const [key,meta] of Object.entries(SPORTS)){
+   const button=make("button","sec-news-sport-choice"+(selectedSport()===key?" active":""),meta.emoji+" "+meta.label);
+   button.type="button";
+   button.setAttribute("data-news-sport",key);
+   button.setAttribute("aria-pressed",String(selectedSport()===key));
+   button.setAttribute("aria-label","Show "+meta.label+" news");
+   button.addEventListener("click",()=>{sport=key;render();});
+   chooser.append(button);
+  }
+  root.append(chooser);
  }
  function filters(root){
   const area=make("div","sec-news-controls");
@@ -89,6 +119,7 @@
  }
  function filtered(){
   return entries.filter(i=>{
+   if(articleSport(i)!==selectedSport())return false;
    if(breakingOnly&&!isBreaking(i))return false;
    if(team!=="all"&&!(Array.isArray(i.teams)&&i.teams.includes(team)))return false;
    return !search||(i.title+" "+i.summary+" "+(i.teams||[]).join(" ")).toLowerCase().includes(search);
@@ -99,13 +130,17 @@
   host.replaceChildren();
   const items=filtered();
   const count=$("sec-news-count");
-  if(count)count.textContent=items.length+" source-linked "+(items.length===1?"story":"stories");
+  if(count)count.textContent=items.length+" "+SPORTS[selectedSport()].label.toLowerCase()+
+   " "+(items.length===1?"story":"stories")+" · source-linked";
   if(!items.length){
    const state=make("div","sec-news-empty");
-   state.append(make("strong","",entries.length?
-     "No headlines match this filter yet.":"No current headlines available."));
-   state.append(make("p","",entries.length?
-     "Try another school or choose All news.":"We only show verified, dated articles. Try refreshing shortly."));
+   const sportCount=entries.filter(i=>articleSport(i)===selectedSport()).length;
+   state.append(make("strong","",sportCount?
+     "No "+SPORTS[selectedSport()].label.toLowerCase()+" stories match your filters.":
+     "No recent SEC "+SPORTS[selectedSport()].label.toLowerCase()+" headlines yet."));
+   state.append(make("p","",sportCount?
+     "Try another school, clear your search, or choose All news.":
+     "This sport may be between seasons. The feed updates from original publishers; try Refresh or check again later."));
    host.append(state);return;
   }
   const grid=make("div","sec-news-grid");
@@ -116,7 +151,7 @@
   const root=$("sec-news-root");if(!root)return;
   root.replaceChildren();
   const heading=make("section","sec-news-head");
-  const top=make("div","sec-news-eyebrow","THE LATEST · SEC FOOTBALL");
+  const top=make("div","sec-news-eyebrow","THE LATEST · SEC "+SPORTS[selectedSport()].label.toUpperCase());
   const title=make("h2","","News in a nutshell.");
   const intro=make("p","","Short summaries. Real sources. Tap any story to read the full article.");
   const status=make("div","sec-news-status");
@@ -130,6 +165,7 @@
   if(warning)root.append(make("p","sec-news-warning",warning));
   const details=make("p","sec-news-byline","Source excerpts, not independent reporting. Published times are from the original outlets. Feed checks run approximately hourly; alerts aren't instantaneous.");
   root.append(details);
+  sportFilters(root);
   filters(root);
   const count=make("p","sec-news-result-count");count.id="sec-news-count";root.append(count);
   const feed=make("div","");feed.id="sec-news-results";root.append(feed);
@@ -146,8 +182,14 @@
    if(!payload||!Array.isArray(payload.articles))throw new Error("Invalid news feed");
    const recent=payload.articles.filter(item=>item&&typeof item.title==="string"&&
     typeof item.source==="string"&&safeUrl(item.url)&&date(item.published_at)&&
-    hoursOld(item)>=-3&&hoursOld(item)<=216);
-   entries=recent.slice(0,50);
+    articleSport(item)&&hoursOld(item)>=-3&&hoursOld(item)<=216);
+   // Preserve up to 50 recent stories per sport; football must not crowd out baseball.
+   const perSport={football:0,baseball:0,basketball:0};
+   entries=recent.sort((a,b)=>date(b.published_at)-date(a.published_at)).filter(item=>{
+    const key=articleSport(item);
+    if(perSport[key]>=50)return false;
+    perSport[key]++;return true;
+   });
    updated=payload.updated_at||null;checked=payload.checked_at||null;
    sourceNames=Array.isArray(payload.sources)?payload.sources:[];
    warning=typeof payload.warning==="string"?payload.warning:"";
@@ -162,6 +204,6 @@
  }
  function mount(){render();void reload();}
  setInterval(()=>{if(!document.hidden&&window.SEC_BRIDGE?.view?.()==="news")void reload(true);},5*60000);
- window.SEC_NEWS=Object.freeze({mount,reload,getArticles:()=>entries.slice(),safeUrl});
+ window.SEC_NEWS=Object.freeze({mount,reload,getArticles:()=>entries.slice(),getSport:()=>selectedSport(),safeUrl});
  if(window.location?.hash==="#news")mount();
 })();
