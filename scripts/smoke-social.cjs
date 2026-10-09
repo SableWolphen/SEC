@@ -9,7 +9,8 @@ const elements={
 };
 const user={id:"player-a"},league={id:"league-a",name:"Testing Crew",owner_id:"player-a",mode:"straight"};
 const data={messages:[
-{id:"msg1",league_id:"league-a",user_id:"player-b",body:"<script>alert(1)</script>",created_at:"2026-10-09T14:00:00Z"}
+{id:"msg1",league_id:"league-a",user_id:"player-b",body:"<script>alert(1)</script>",created_at:"2026-10-09T14:00:00Z"},
+{id:"msg-other",league_id:"league-b",user_id:"player-a",body:"Private other league message",created_at:"2026-10-09T14:01:00Z"}
 ],reactions:[],champions:[],actions:[]};
 const fakeDocument={
  addEventListener(type,fn){listeners[type]=fn;},
@@ -54,12 +55,28 @@ async function run(){
  assert.match(html,/&lt;script&gt;alert\(1\)&lt;\/script&gt;/,"chat content escaped");
  assert.doesNotMatch(html,/<script>alert\(1\)<\/script>/,"chat cannot inject HTML");
  assert.match(html,/Remove/,"commissioner can moderate");
- assert.match(html,/League only/,"room labeled private");
+ assert.match(html,/🔒 Testing Crew/,"chat identifies its selected private league");
+ assert.doesNotMatch(html,/Private other league message/,"league A cannot read league B chat");
+ const multiplayer=fs.readFileSync("multiplayer.js","utf8");
+ const featureSource=fs.readFileSync("league-features.js","utf8");
+ assert.match(multiplayer,/sec-scoreboard-chat/,"chat mounted inside scoreboard card");
+ assert.match(multiplayer,/scoreboard-league-select/,"switch leagues from scoreboard");
+ assert.match(multiplayer,/\["online-league-select","scoreboard-league-select"\]/,"both league menus use same switch handler");
+ assert.doesNotMatch(featureSource,/leagueDetails\(\)[\s\S]*?SEC_SOCIAL\?\.render\?\.\(\)/,"no second chat under league settings");
  const other={id:"league-b",name:"Other League",owner_id:"player-b",mode:"straight"};
  feature.connect(client,other,user,[{user_id:"player-a",display_name:"Guest",season_points:0}]);
  assert.doesNotMatch(feature.renderChampionship(),/Crown 2026 Champion/,"non-commissioner cannot crown another league");
+ await new Promise(resolve=>setImmediate(resolve));
+ await new Promise(resolve=>setImmediate(resolve));
+ assert.match(feature.render(),/Private other league message/,"league B messages load when switching scoreboard");
+ assert.doesNotMatch(feature.render(),/&lt;script&gt;alert\(1\)/,"league A chat does not leak to B");
+ assert.match(feature.render(),/🔒 Other League/,"league B name updates with chat");
  feature.connect(client,league,user,[{user_id:"player-a",display_name:"Commissioner",season_points:0}]);
  assert.match(feature.renderChampionship(),/Crown 2026 Champion/,"commissioner regains control in own league");
+ await new Promise(resolve=>setImmediate(resolve));
+ await new Promise(resolve=>setImmediate(resolve));
+ assert.match(feature.render(),/&lt;script&gt;alert\(1\)/,"switching back loads league A chat");
+ assert.doesNotMatch(feature.render(),/Private other league message/,"league B messages do not leak after switching back");
   feature.connect(client,null,null,[]);
  assert.equal(feature.render(),"","league chat cleared on sign out");
  console.log("SEC league chat & championships smoke tests passed: XSS escaping, member view, commissioner gate and logout.");
