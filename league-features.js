@@ -326,6 +326,7 @@ function leagueDetails(){
 
  return '<section class="sec-league-extras">'+
   '<div class="sec-mode-summary"><div class="card-kicker">GAME MODE</div><h3>'+shareName+'</h3><p>'+esc(m.detail)+'</p></div>'+
+  '<button type="button" class="ghost-btn sec-league-honors-link" data-nav="trophies">🏆 Championships &amp; achievements are in your Trophy Case →</button>'+
   pairings()+
   '<div class="sec-reminder-box"><b>🔔 Pick reminders</b><p class="helper">Opt in for alerts while the app is open. Background push is not yet available.</p>'+
   '<button type="button" class="ghost-btn" data-extra="reminders">'+(localStorage.getItem("ss-sec-reminders")==="yes"?'Disable reminders':'Enable reminders')+'</button></div>'+
