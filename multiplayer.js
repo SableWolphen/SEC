@@ -170,7 +170,7 @@
         var email=document.getElementById("online-email")?.value.trim()||"";
         var password=document.getElementById("online-password")?.value||"";
         draftEmail=email;
-        if(!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email))throw Error("Enter a valid email address.");
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))throw Error("Enter a valid email address.");
         if(password.length<8)throw Error("Use a password of at least 8 characters.");
         if(action==="register"){
           var name=document.getElementById("online-signup-name")?.value.trim()||"";
@@ -205,7 +205,7 @@
         }
       }else if(action==="reset-password"){
         var email=document.getElementById("online-email")?.value.trim()||"";
-        if(!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email))throw Error("Enter your email above to reset your password.");
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))throw Error("Enter your email above to reset your password.");
         extract(await client.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname+"#league"}));
         status("If that account exists, a password reset email has been requested. Follow the link in your inbox.");
       }else if(action==="send-link"){
