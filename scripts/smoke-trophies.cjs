@@ -7,6 +7,40 @@ vm.runInNewContext(fs.readFileSync("rivalry-catalog.js","utf8"),harness,{filenam
 vm.runInNewContext(fs.readFileSync("trophy-case.js","utf8"),harness,{filename:"trophy-case.js"});
 const trophy=win.SDSTrophyCase;
 assert.equal(trophy.trophies.length,73,"full archive has 73 documented rivalry matchups");
+
+assert.equal(trophy.schools.length,16,"the 16 SEC schools each get a Trophy Case room");
+assert.equal(trophy.getSelectedSchool(),"schools","Trophy Case opens on clean school directory");
+const schoolNames=trophy.getSchoolOverview();
+assert.equal(schoolNames.length,16,"school directory has one card per program");
+assert.deepEqual([...schoolNames.map(s=>s.name)].sort(),schoolNames.map(s=>s.name),
+ "school cards display alphabetically");
+for(const school of schoolNames){
+ assert.ok(school.count>0,"no SEC program omitted: "+school.name);
+ assert.equal(school.count,trophy.getSchoolTrophies(school.code).length,"school count accurate");
+ assert.equal(school.earned,0,"new accounts have no artificial achievements");
+}
+const ironBowl=trophy.trophies.find(t=>t.id==="iron-bowl");
+assert.ok(trophy.getSchoolTrophies("ALA").some(t=>t.id===ironBowl.id),"Iron Bowl listed under Alabama");
+assert.ok(trophy.getSchoolTrophies("AUB").some(t=>t.id===ironBowl.id),"Iron Bowl listed under Auburn");
+assert.ok(trophy.getSchoolTrophies("ALA").some(t=>t.id==="highway-82"),"Highway 82 under Alabama");
+assert.ok(trophy.getSchoolTrophies("MSST").some(t=>t.id==="highway-82"),"Highway 82 under Mississippi State");
+assert.ok(trophy.getSchoolTrophies("SC").some(t=>t.id==="palmetto-showdown"),"Nonconference Palmetto included under South Carolina");
+assert.ok(trophy.getSchoolTrophies("OU").some(t=>t.id==="bedlam"),"Historic Bedlam rivalry shown under Oklahoma");
+assert.equal(trophy.getSchoolTrophies("all").length,73,"entire archive still accessible");
+trophy.selectSchool("ALA");
+assert.equal(trophy.getSelectedSchool(),"ALA","selected school persists in view");
+assert.equal(trophy.getVisibleTrophies().length,trophy.getSchoolTrophies("ALA").length,"selected school filters cards");
+assert.equal(trophy.getVisibleTrophies().some(t=>t.id==="iron-bowl"),true);
+assert.equal(trophy.getVisibleTrophies().some(t=>t.id==="bedlam"),false,"another school's rivalry isn't shown");
+trophy.selectSchool("AUB");
+assert.equal(trophy.getVisibleTrophies().some(t=>t.id==="iron-bowl"),true,"both SEC rivals can see shared matchup");
+trophy.selectSchool("all");
+assert.equal(trophy.getVisibleTrophies().length,73,"full archive shortcut keeps all 73");
+trophy.selectSchool("schools");
+assert.equal(trophy.getSelectedSchool(),"schools","back to school directory");
+trophy.selectSchool("INVALID");
+assert.equal(trophy.getSelectedSchool(),"schools","invalid school selection safely ignored");
+
 assert.equal(new Set(trophy.trophies.map(t=>t.id)).size,73,"all trophy IDs unique");
 assert.equal(new Set(trophy.trophies.map(t=>[...t.codes].sort().join("/"))).size,73,"all pairs are unique");
 assert.equal(trophy.trophies.filter(t=>t.category==="SEC").length,37,"37 intra-SEC rivalries");
@@ -85,6 +119,11 @@ assert.match(source,/camera-controls/,"3D models can be rotated");
 trophy.sync({games,picks,schedule,authenticated:true,leagueId:"league-a",leagueName:"Testing Crew",userId:"player-a"});
 trophy.setPermanentResults([{trophy_id:"red-river",season:2025,correct:true,game_id:"2025-OU-TEX",pick_code:"TEX",winner_code:"TEX",league_id:"older-league"}]);
 assert.equal(trophy.getResults().some(r=>r.trophyId==="red-river"&&r.year===2025&&r.correct),true,"past-season trophies persist");
+assert.equal(trophy.getSchoolOverview().find(t=>t.code==="OU").earned,1,"school card earns count from permanent trophy history");
+assert.equal(trophy.getSchoolOverview().find(t=>t.code==="TEX").earned,1,"shared Red River trophy correctly appears for Texas too");
+trophy.selectSchool("OU");
+assert.ok(trophy.getVisibleTrophies().find(t=>t.id==="red-river"),"historic earned trophy visible after selecting school");
+trophy.selectSchool("schools");
 trophy.sync({games,picks:{},schedule,authenticated:true,leagueId:"league-b",leagueName:"Other Crew",userId:"player-a"});
 assert.equal(trophy.getResults().some(r=>r.trophyId==="red-river"&&r.year===2025),true,"earned trophies survive league switching");
 trophy.sync({authenticated:false,userId:null});
