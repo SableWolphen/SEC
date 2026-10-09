@@ -246,7 +246,8 @@ function gameCard(s,g,league,picks){
     '<option value="">Choose</option>'+options+'</select></div>':'')+
   (mode==="spread"&&g.spread_home!==null&&g.spread_home!==undefined?
    '<p class="sport-odds">Published home spread: '+Number(g.spread_home)+' · pick the team to cover</p>':'')+
-  '<p class="sport-game-foot">'+esc(verdict||availability)+'</p></article>';
+  '<p class="sport-game-foot">'+esc(verdict||availability)+'</p>'+
+  '<small class="sport-game-provider">Source: '+esc(g.source||"ESPN")+'</small></article>';
 }
 function renderTiebreak(s,w,league,saved){
  if(!w||!w.games.length)return "";
