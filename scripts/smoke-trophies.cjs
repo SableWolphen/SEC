@@ -5,7 +5,11 @@ const win={};
 const harness={window:win,document:{head:{appendChild(){}},createElement(){return {setAttribute(){},append(){},replaceChildren(){}};},getElementById(){return null;}},console};
 vm.runInNewContext(fs.readFileSync("trophy-case.js","utf8"),harness,{filename:"trophy-case.js"});
 const trophy=win.SDSTrophyCase;
-assert.equal(trophy.trophies.length,4,"four rivalry trophies included");
+assert.equal(trophy.trophies.length,15,"15 unique rivalry matchups cover the SEC grid");
+assert.equal(new Set(trophy.trophies.map(t=>t.id)).size,15,"all trophy IDs unique");
+const secSchools=new Set(["ALA","ARK","AUB","FLA","UGA","UK","LSU","MSST","MIZ","OU","MISS","SC","TENN","TEX","TAMU","VAN"]);
+for(const t of trophy.trophies)for(const code of t.codes)secSchools.delete(code);
+assert.equal(secSchools.size,0,"all 16 SEC schools covered by at least one rivalry");
 const schedule={
  "2026-13-MSST-MISS":{id:"2026-13-MSST-MISS",away:"MSST",home:"MISS",date:"2026-11-28"},
  "2026-13-LSU-ARK":{id:"2026-13-LSU-ARK",away:"LSU",home:"ARK",date:"2026-11-28"},
@@ -36,4 +40,26 @@ assert.equal(trophy.getResults()[0].correct,false,"second league result independ
 trophy.sync({authenticated:false});
 assert.equal(trophy.getResults().length,0,"logout clears trophy results");
 assert.throws(()=>trophy.setResults({wrong:true}),/Expected an array/);
-console.log("SEC Trophy Case: 4 rivalry matches, verified awards, missed picks, league isolation and logout passed.");
+// Each rivalry appears once regardless of who is designated as home or away.
+for(const t of trophy.trophies){
+ const id="2026-9-"+t.codes.join("-");
+ const game={id,away:t.codes[0],home:t.codes[1],date:"2026-10-31",week:9};
+ const fakeFinal={id,game_status:"final",winner:t.codes[1]};
+ const one=trophy.deriveResults([fakeFinal],{[id]:t.codes[1]},{[id]:game},true,"test-league");
+ assert.equal(one.length,1,"recognized rivalry pair: "+t.name);
+ assert.equal(one[0].trophyId,t.id,"correct award identity: "+t.name);
+ assert.equal(one[0].correct,true,"winning award: "+t.name);
+ const reverse={...game,away:t.codes[1],home:t.codes[0]};
+ const reverseResult=trophy.deriveResults([{...fakeFinal,winner:reverse.home}],{[id]:reverse.home},{[id]:reverse},true,"test-league");
+ assert.equal(reverseResult[0].trophyId,t.id,"reversed teams recognized: "+t.name);
+ assert.equal(trophy.deriveResults([{id,game_status:"live",winner:t.codes[1]}],{[id]:t.codes[1]},{[id]:game},true,"test-league").length,0,"cannot earn before final");
+}
+const pair=(a,b)=>trophy.trophies.find(t=>t.codes.includes(a)&&t.codes.includes(b));
+assert.equal(pair("ALA","AUB").id,"iron-bowl");
+assert.equal(pair("OU","TEX").id,"red-river");
+assert.equal(pair("TEX","TAMU").id,"lone-star");
+assert.equal(pair("SC","CLEM").nonconference,true);
+assert.equal(pair("UK","LOU").nonconference,true);
+const source=fs.readFileSync("trophy-case.js","utf8");
+assert.match(source,/SDS_TROPHY_MODELS/,"missing models do not cause repeated 404s");
+console.log("SEC Trophy Case: 15 rivalries, all 16 SEC schools, verified wins/losses, team order, league isolation and logout passed.");
