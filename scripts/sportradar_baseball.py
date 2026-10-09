@@ -124,7 +124,7 @@ def fetch_verified(year, environ=None, get=request_json):
     configured_year = env.get("SPORTRADAR_BASEBALL_SEASON_YEAR", "").strip()
     if not key or not season_id or configured_year != str(year):
         return {}
-    access = env.get("SPORTRADAR_ACCESS_LEVEL", "trial").strip()
+    access = (env.get("SPORTRADAR_ACCESS_LEVEL") or "trial").strip()
     info = get(provider_url(access, season_id, "info"), key)
     if not season_is_ncaabaseball(info, season_id, year):
         raise ValueError("Sportradar season is not a verified NCAA baseball season for the requested year")
