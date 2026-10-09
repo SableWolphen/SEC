@@ -1,24 +1,172 @@
 {
-  "updated_at": null,
+  "updated_at": "2026-10-09T21:30:27.107974Z",
   "source": "ESPN",
-  "seasons": {},
-  "teams": {
-    "ALA": {},
-    "ARK": {},
-    "AUB": {},
-    "FLA": {},
-    "UGA": {},
-    "UK": {},
-    "LSU": {},
-    "MISS": {},
-    "MSST": {},
-    "MIZ": {},
-    "OU": {},
-    "SC": {},
-    "TENN": {},
-    "TEX": {},
-    "TAMU": {},
-    "VAN": {}
+  "seasons": {
+    "football": 2026,
+    "basketball": 2026,
+    "baseball": 2026
   },
-  "warning": "Waiting for the first verified ESPN record refresh."
+  "teams": {
+    "ALA": {
+      "football": {
+        "overall": "5-0",
+        "conference": null,
+        "season": 2026,
+        "source": "ESPN",
+        "source_url": "https://www.espn.com/college-football/team/_/id/333",
+        "verified_at": "2026-10-09T21:30:27.107974Z"
+      }
+    },
+    "ARK": {
+      "football": {
+        "overall": "2-3",
+        "conference": null,
+        "season": 2026,
+        "source": "ESPN",
+        "source_url": "https://www.espn.com/college-football/team/_/id/8",
+        "verified_at": "2026-10-09T21:30:27.107974Z"
+      }
+    },
+    "AUB": {
+      "football": {
+        "overall": "3-2",
+        "conference": null,
+        "season": 2026,
+        "source": "ESPN",
+        "source_url": "https://www.espn.com/college-football/team/_/id/2",
+        "verified_at": "2026-10-09T21:30:27.107974Z"
+      }
+    },
+    "FLA": {
+      "football": {
+        "overall": "4-1",
+        "conference": null,
+        "season": 2026,
+        "source": "ESPN",
+        "source_url": "https://www.espn.com/college-football/team/_/id/57",
+        "verified_at": "2026-10-09T21:30:27.107974Z"
+      }
+    },
+    "UGA": {
+      "football": {
+        "overall": "5-0",
+        "conference": null,
+        "season": 2026,
+        "source": "ESPN",
+        "source_url": "https://www.espn.com/college-football/team/_/id/61",
+        "verified_at": "2026-10-09T21:30:27.107974Z"
+      }
+    },
+    "UK": {
+      "football": {
+        "overall": "4-1",
+        "conference": null,
+        "season": 2026,
+        "source": "ESPN",
+        "source_url": "https://www.espn.com/college-football/team/_/id/96",
+        "verified_at": "2026-10-09T21:30:27.107974Z"
+      }
+    },
+    "LSU": {
+      "football": {
+        "overall": "4-1",
+        "conference": null,
+        "season": 2026,
+        "source": "ESPN",
+        "source_url": "https://www.espn.com/college-football/team/_/id/99",
+        "verified_at": "2026-10-09T21:30:27.107974Z"
+      }
+    },
+    "MISS": {
+      "football": {
+        "overall": "3-1",
+        "conference": null,
+        "season": 2026,
+        "source": "ESPN",
+        "source_url": "https://www.espn.com/college-football/team/_/id/145",
+        "verified_at": "2026-10-09T21:30:27.107974Z"
+      }
+    },
+    "MSST": {
+      "football": {
+        "overall": "4-1",
+        "conference": null,
+        "season": 2026,
+        "source": "ESPN",
+        "source_url": "https://www.espn.com/college-football/team/_/id/344",
+        "verified_at": "2026-10-09T21:30:27.107974Z"
+      }
+    },
+    "MIZ": {
+      "football": {
+        "overall": "4-1",
+        "conference": null,
+        "season": 2026,
+        "source": "ESPN",
+        "source_url": "https://www.espn.com/college-football/team/_/id/142",
+        "verified_at": "2026-10-09T21:30:27.107974Z"
+      }
+    },
+    "OU": {
+      "football": {
+        "overall": "2-2",
+        "conference": null,
+        "season": 2026,
+        "source": "ESPN",
+        "source_url": "https://www.espn.com/college-football/team/_/id/201",
+        "verified_at": "2026-10-09T21:30:27.107974Z"
+      }
+    },
+    "SC": {
+      "football": {
+        "overall": "2-3",
+        "conference": null,
+        "season": 2026,
+        "source": "ESPN",
+        "source_url": "https://www.espn.com/college-football/team/_/id/2579",
+        "verified_at": "2026-10-09T21:30:27.107974Z"
+      }
+    },
+    "TENN": {
+      "football": {
+        "overall": "4-1",
+        "conference": null,
+        "season": 2026,
+        "source": "ESPN",
+        "source_url": "https://www.espn.com/college-football/team/_/id/2633",
+        "verified_at": "2026-10-09T21:30:27.107974Z"
+      }
+    },
+    "TEX": {
+      "football": {
+        "overall": "4-0",
+        "conference": null,
+        "season": 2026,
+        "source": "ESPN",
+        "source_url": "https://www.espn.com/college-football/team/_/id/251",
+        "verified_at": "2026-10-09T21:30:27.107974Z"
+      }
+    },
+    "TAMU": {
+      "football": {
+        "overall": "3-2",
+        "conference": null,
+        "season": 2026,
+        "source": "ESPN",
+        "source_url": "https://www.espn.com/college-football/team/_/id/245",
+        "verified_at": "2026-10-09T21:30:27.107974Z"
+      }
+    },
+    "VAN": {
+      "football": {
+        "overall": "3-2",
+        "conference": null,
+        "season": 2026,
+        "source": "ESPN",
+        "source_url": "https://www.espn.com/college-football/team/_/id/238",
+        "verified_at": "2026-10-09T21:30:27.107974Z"
+      }
+    }
+  },
+  "warning": "Some team records are unavailable from ESPN; unavailable cells are not estimates."
 }
