@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-09T21:32:46.396662Z",
+  "updated_at": "2026-10-09T21:35:30.219578Z",
   "source": "ESPN",
   "seasons": {
     "football": 2026,
@@ -15,7 +15,7 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/333",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       },
       "basketball": {
         "overall": "23-9",
@@ -24,7 +24,7 @@
         "scope": "Regular season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/333",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       }
     },
     "ARK": {
@@ -35,7 +35,7 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/8",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       },
       "basketball": {
         "overall": "26-8",
@@ -44,7 +44,7 @@
         "scope": "Regular season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/8",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       }
     },
     "AUB": {
@@ -55,7 +55,7 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/2",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       },
       "basketball": {
         "overall": "17-16",
@@ -64,7 +64,7 @@
         "scope": "Regular season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/2",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       }
     },
     "FLA": {
@@ -75,7 +75,7 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/57",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       },
       "basketball": {
         "overall": "26-7",
@@ -84,7 +84,7 @@
         "scope": "Regular season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/57",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       }
     },
     "UGA": {
@@ -95,7 +95,7 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/61",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       },
       "basketball": {
         "overall": "22-10",
@@ -104,7 +104,7 @@
         "scope": "Regular season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/61",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       }
     },
     "UK": {
@@ -115,7 +115,7 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/96",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       },
       "basketball": {
         "overall": "21-13",
@@ -124,7 +124,7 @@
         "scope": "Regular season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/96",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       }
     },
     "LSU": {
@@ -135,7 +135,7 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/99",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       },
       "basketball": {
         "overall": "15-17",
@@ -144,7 +144,7 @@
         "scope": "Regular season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/99",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       }
     },
     "MISS": {
@@ -155,7 +155,7 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/145",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       },
       "basketball": {
         "overall": "15-20",
@@ -164,7 +164,7 @@
         "scope": "Regular season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/145",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       }
     },
     "MSST": {
@@ -175,7 +175,7 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/344",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       },
       "basketball": {
         "overall": "13-19",
@@ -184,7 +184,7 @@
         "scope": "Regular season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/344",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       }
     },
     "MIZ": {
@@ -195,7 +195,7 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/142",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       },
       "basketball": {
         "overall": "20-12",
@@ -204,7 +204,7 @@
         "scope": "Regular season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/142",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       }
     },
     "OU": {
@@ -215,7 +215,7 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/201",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       },
       "basketball": {
         "overall": "19-15",
@@ -224,7 +224,7 @@
         "scope": "Regular season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/201",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       }
     },
     "SC": {
@@ -235,7 +235,7 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/2579",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       },
       "basketball": {
         "overall": "13-19",
@@ -244,7 +244,7 @@
         "scope": "Regular season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/2579",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       }
     },
     "TENN": {
@@ -255,7 +255,7 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/2633",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       },
       "basketball": {
         "overall": "22-11",
@@ -264,7 +264,7 @@
         "scope": "Regular season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/2633",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       }
     },
     "TEX": {
@@ -275,7 +275,7 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/251",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       },
       "basketball": {
         "overall": "18-14",
@@ -284,7 +284,7 @@
         "scope": "Regular season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/251",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       }
     },
     "TAMU": {
@@ -295,7 +295,7 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/245",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       },
       "basketball": {
         "overall": "21-11",
@@ -304,7 +304,7 @@
         "scope": "Regular season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/245",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       }
     },
     "VAN": {
@@ -315,7 +315,7 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/238",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       },
       "basketball": {
         "overall": "26-8",
@@ -324,7 +324,7 @@
         "scope": "Regular season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/238",
-        "verified_at": "2026-10-09T21:32:46.396662Z"
+        "verified_at": "2026-10-09T21:35:30.219578Z"
       }
     }
   },
