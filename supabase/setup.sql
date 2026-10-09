@@ -121,22 +121,36 @@ begin
  insert into public.sec_members(league_id,user_id) values(v_id,auth.uid()) on conflict do nothing;
  return v_id;
 end $$;
-create or replace function public.sec_league_standings(p_league uuid,p_week integer)
+create or replace function public.sec_league_standings(p_league uuid, p_week integer)
 returns table (user_id uuid, display_name text, picked bigint, week_points bigint, season_points bigint)
 language plpgsql stable security definer set search_path = ''
 as $$
 begin
- if auth.uid() is null or not exists(
-  select 1 from public.sec_members where league_id=p_league and user_id=auth.uid()
- ) then raise exception 'You must join the league first'; end if;
- return query
- select m.user_id,coalesce(p.display_name,'Player')::text,
-  (select count(*) from public.sec_picks k join public.sec_games g on g.id=k.game_id where k.user_id=m.user_id and g.week=p_week),
-  (select count(*) from public.sec_picks k join public.sec_games g on g.id=k.game_id where k.user_id=m.user_id and g.week=p_week and g.winner is not null and k.pick_code=g.winner),
-  (select count(*) from public.sec_picks k join public.sec_games g on g.id=k.game_id where k.user_id=m.user_id and g.winner is not null and k.pick_code=g.winner)
- from public.sec_members m left join public.sec_profiles p on p.user_id=m.user_id
- where m.league_id=p_league
- order by 4 desc, 5 desc, 2 asc;
+  if (select auth.uid()) is null or not exists (
+    select 1 from public.sec_members as checking_member
+    where checking_member.league_id = p_league
+      and checking_member.user_id = (select auth.uid())
+  ) then
+    raise exception 'You must join the league first';
+  end if;
+  return query
+  select member.user_id,
+         coalesce(profile.display_name, 'Player')::text,
+         (select count(*) from public.sec_picks as pick
+          join public.sec_games as game on game.id = pick.game_id
+          where pick.user_id = member.user_id and game.week = p_week),
+         (select count(*) from public.sec_picks as pick
+          join public.sec_games as game on game.id = pick.game_id
+          where pick.user_id = member.user_id and game.week = p_week
+            and game.winner is not null and pick.pick_code = game.winner),
+         (select count(*) from public.sec_picks as pick
+          join public.sec_games as game on game.id = pick.game_id
+          where pick.user_id = member.user_id
+            and game.winner is not null and pick.pick_code = game.winner)
+  from public.sec_members as member
+  left join public.sec_profiles as profile on profile.user_id = member.user_id
+  where member.league_id = p_league
+  order by 4 desc, 5 desc, 2 asc;
 end $$;
 revoke all on function public.sec_create_league(text) from public,anon;
 revoke all on function public.sec_join_league(text) from public,anon;
