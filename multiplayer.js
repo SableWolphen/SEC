@@ -373,9 +373,15 @@
       catch(copyErr){window.prompt("Copy the invitation link:",share);}
     }
   }
+  function useLeague(id){
+    if(!id||typeof id!=="string")return;
+    localStorage.setItem("ss-sec-league",id);
+    active=id;
+    void refresh();
+  }
   window.secOnline={
     configured:!!client,renderLeague:renderLeague,renderSettings:renderSettings,
-    pick:choose,copyInvite:copyInvite,refreshStandings:refreshStandings,refresh:refresh,
+    pick:choose,copyInvite:copyInvite,useLeague:useLeague,refreshStandings:refreshStandings,refresh:refresh,
     isSignedIn:function(){return !!user;},getClient:function(){return client;},getUser:function(){return user;},getLeague:function(){return currentLeague();},
     whenAuthReady:function(){return authReady;},isAuthReady:function(){return authRestored;}
   };
