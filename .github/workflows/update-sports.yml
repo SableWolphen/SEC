@@ -1,0 +1,55 @@
+name: Refresh SEC basketball and baseball schedules
+on:
+  schedule:
+    - cron: '37 8,20 * * *'
+  workflow_dispatch: {}
+  push:
+    paths:
+      - 'scripts/update_sports.py'
+      - 'tests/test_sports.py'
+      - '.github/workflows/update-sports.yml'
+permissions:
+  contents: write
+concurrency:
+  group: sec-sports-feeds
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test real schedule parsing and team validation
+        run: python3 -m unittest discover -s tests -p test_sports.py -v
+      - name: Pull verified matchups from ESPN
+        run: python3 scripts/update_sports.py
+      - name: Validate published schedules
+        run: |
+          python3 - <<'PY'
+          import json,datetime as dt
+          d=json.load(open('sports-schedules.json'))
+          for sport in ('basketball','baseball'):
+              season=d['sports'][sport]['season']
+              ids=set()
+              for g in d['sports'][sport]['games']:
+                  assert g['sport']==sport and g['season']==season and g['id'] not in ids
+                  ids.add(g['id'])
+                  assert g['source']=='ESPN' and g['away_code']!=g['home_code']
+                  assert dt.datetime.fromisoformat(g['kickoff_at'].replace('Z','+00:00')).tzinfo is not None
+          print('Validated public sports schedule')
+          PY
+      - name: Publish updated fixtures
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sports-schedules.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh SEC basketball/baseball fixtures from ESPN [automated]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          else
+            echo "No new fixtures"
+          fi
