@@ -130,7 +130,8 @@ function renderSeries(s){
   '<div class="sport-series-grid">'+group.map(x=>'<article class="sport-series-card">'+
    '<strong>'+esc(x.away)+' <span>at</span> '+esc(x.home)+'</strong>'+
    '<small>SEC Weekend '+x.weekend+' · '+esc(x.start_date)+'–'+esc(x.end_date)+'</small>'+
-   '<div class="sport-series-pending">Game dates &amp; first-pitch times pending</div></article>').join("")+'</div>'+
+   '<div class="sport-series-pending">Game dates &amp; first-pitch times pending</div>'+
+   (window.SEC_FAN?.seriesPreviewCard?.(x)||"")+'</article>').join("")+'</div>'+
   '<p class="sport-series-source">Source: <a href="'+esc(baseballSeries.source_url)+
    '" target="_blank" rel="noopener noreferrer">SEC 2027 conference schedule ↗</a>. '+
   'Games may be rescheduled for TV, weather, travel or doubleheaders.</p></section>';
