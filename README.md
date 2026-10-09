@@ -8,12 +8,12 @@ An **unofficial fan-made SEC football pick’em website** in [SableWolphen/SEC](
 
 - Mobile-first and desktop-friendly dark interface; works in a browser on Android, iOS or desktop.
 - All 16 SEC teams; **120 regular-season games across 13 weeks**, including nonconference opponents.
-- One point per correct predicted winner, choose each game independently, and lock picks at kickoff.
+- Four independently scored league modes: **Straight Picks** (1 point per winner), **Confidence** (unique 1–N point weights each week), **Against the Spread** (published ESPN lines, half-point push), and **Head-to-Head** (weekly paired opponents with W/L/T records). All picks lock at kickoff.
 - TBD kickoff times lock provisionally at 10 AM Central on the game date, until official kickoff information is entered.
-- Private leagues, account registration, password login, invitation links, and synchronized scores. **Confirm-email settings still require the Supabase owner to finish activation for public registrations.**
+- Private leagues, in-app account registration and login, invitation links, separate league-specific picks, member management and centrally calculated standings. Verify that public email confirmation/delivery works before inviting a large group.
 - All authenticated online picks are stored on the server; row-level security protects user data and deadlines; weekly and season standings are centrally calculated.
 - The device-only pick preview remains available without signing in. Once the online service is configured, signed-in picks sync across devices.
-- No gambling, payments or betting.
+- No gambling, wagers, prizes or betting. Spread mode is a points-only sports-prediction game.
 
 ## Matchup insights and what they mean
 
@@ -21,7 +21,31 @@ Each game card now includes season win-loss records, Top-25 ranking when availab
 
 Data is sourced from ESPN's public college football game feed. `scripts/update_stats.py` refreshes `stats.json`; `.github/workflows/update-stats.yml` automatically runs three times per day and supports manual runs. The script refuses to overwrite the feed when the upstream source cannot be matched reliably. Unavailable data is labeled unavailable, not fabricated. Only publicly available team records, rankings and predictions are used.
 
-**Online league database is provisioned and connected.** Its dedicated Supabase project ID is `vzjrlvkwuswkryxxrvtp` (separate from PlushList and Baby PupFit). Friend sign-ins require the remaining Auth redirect and outbound email configuration described below. Do not claim public friend logins are tested until a second email address has actually joined a league.
+**Online league database is provisioned and connected.** Its dedicated Supabase project ID is `vzjrlvkwuswkryxxrvtp` (separate from PlushList and Baby PupFit). Players have successfully created a real league; full third-party public email-delivery configuration remains an owner task.
+
+## New competition features
+
+- **Four game modes:** choose the scoring format while creating a league. Existing leagues stay Straight Picks. Confidence ranks are unique within a week; pick a rank and tap the team to save. Spread games cannot be picked without a sourced pregame line. Head-to-Head opponents rotate each week.
+- **Live scoreboard pipeline:** a private Supabase Edge Function `sec-scores` fetches ESPN's verified statuses/scores and pregame spreads, then updates SEC tables (not client-accessible writes). The Edge Function is **deployed**, but its recurring scheduler is **not activated yet**. See [One-time score automation setup](supabase/enable-score-automation.sql). Until activation, scores/standings don't update automatically.
+- **Friends' picks:** secret before kickoff, viewable only by fellow league members after the game starts, including team-by-team pick percentages and names.
+- **League standings:** weekly and season points, automatic Head-to-Head W/L/T once all games in the week are complete, optional total-points tiebreaker for tied weekly scores, and member avatars/league-owner controls.
+- **Achievements:** 5 Correct Club, a genuine five-game pick streak, Perfect Week and an Upset King earned from verified final results and sourced spreads.
+- **Reminders:** opt-in pick-deadline, final-score and ranking alerts **only while the app is open**. This is NOT OS-level background web push. Do not rely on it for guaranteed off-app notifications.
+- **Game insight cards:** ESPN projections if published, otherwise a visibly labeled, unvalidated record-based estimate. Forecasts are not betting odds or guaranteed results.
+
+### Enable unattended score refresh (one-time)
+
+The secure score-fetching Edge Function and a private database token already exist in the dedicated SEC Supabase project. The connector could not activate the recurring Supabase Cron jobs, so **the site owner must do this once**:
+
+1. Open the [SEC Supabase SQL Editor](https://supabase.com/dashboard/project/vzjrlvkwuswkryxxrvtp/sql/new).
+2. Copy and run [`supabase/enable-score-automation.sql`](supabase/enable-score-automation.sql). It enables `pg_cron` / `pg_net`, schedules private jobs for game weekends and weekdays, and triggers an initial refresh. The token is fetched securely from Vault; do not copy private credentials to a public file.
+3. Inspect [Supabase Cron](https://supabase.com/dashboard/project/vzjrlvkwuswkryxxrvtp/integrations/cron) and the edge function logs. A complete game should move to `game_status='final'` with verified scores and a winner. Games without ESPN data are not invented. Standings then calculate from the verified stored results automatically.
+
+If the scheduled function cannot be enabled under your Supabase plan, the manual database administration fallback remains available. Keep authentication and SQL permissions restricted to project admins.
+
+### Database migration/source
+
+For a new standalone project, first run [`supabase/setup.sql`](supabase/setup.sql), then [`supabase/migrations/20261009_four_modes.sql`](supabase/migrations/20261009_four_modes.sql). The currently connected production SEC database already has the four-mode schema and 14 historical picks were copied into the existing straight-pick league without deleting the originals. Re-running the initial seed should never overwrite verified final scores.
 
 ## Deployment and online activation
 
@@ -49,23 +73,11 @@ The database and browser code are connected, but **successful registration by tw
 
 The setup SQL grants only the necessary public API permissions and applies **row-level security**. Members can access leagues they belong to, save only their own picks, and cannot edit past-kickoff picks. Results can only be updated by the trusted database administrator, not players.
 
-### Updating results and kickoff times
+### Updating verified results and kickoff times
 
-Only verified games should be marked final. From the dedicated Supabase project's SQL Editor:
+The trusted `sec-scores` updater is the intended source once Cron has been activated. For manual emergency corrections by the project administrator only, set **both** final team scores and `game_status='final'`, plus the correct winning team. Setting `winner` alone does not award points in the new scoring system.
 
-```sql
--- Example only; verify official final score first.
--- update public.sec_games set winner = 'ALA'
--- where id = '2026-6-UGA-ALA';
-
--- Update a formerly TBD game's kickoff to its announced instant:
--- update public.sec_games set kickoff_at='2026-11-28T15:30:00-05:00',
---   provisional=false where id='2026-13-SC-CLEM';
-```
-
-Make sure the published kickoff and timezone are right. Server-side deadlines are based on the `sec_games.kickoff_at` value, so do not rely on the browser's clock. Week 1–5 games are historically locked; dates and future kickoffs need ongoing official verification.
-
-Games after the regular season (conference championship, bowls, playoff games) are **not yet listed**; add them as confirmed to the schedule in both `index.html` and `sec_games`.
+Always confirm official times and results before corrections. Provisional game kickoff times may need updates from official schedules. Championship, bowls and playoff games are not yet in the 120-game regular-season slate.
 
 ### Troubleshooting
 
@@ -73,7 +85,7 @@ Games after the regular season (conference championship, bowls, playoff games) a
 - **Email confirmation link goes somewhere else:** update the project's Auth Site URL and Redirect allowlist.
 - **Data API permission error:** run `supabase/setup.sql` in the correct dedicated project and confirm the public schema is exposed in Data API settings.
 - **Picks refused:** kickoff has passed according to the database or the user isn't authenticated. Confirm the latest official game time.
-- **Scores show zero:** results have not yet been recorded by the administrator.
+- **Scores show zero:** check whether the official game is `final`, and whether the one-time private score scheduler has been activated.
 - **Pages missing/404:** GitHub Pages is not yet enabled. Open repository **Settings → Pages**, select **Deploy from a branch → `main` → `/(root)`**, and Save. The old Actions-based deployment failed because it was not authorized to create a Pages site; it was removed to stop repeated failure notifications.
 
 ## License and affiliation
