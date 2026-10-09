@@ -153,7 +153,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 .sec-news-byline{font-size:11px;color:#a1b8bf;line-height:1.6;margin:14px 2px 16px}
 .sec-news-result-count{font-size:11px;font-weight:850;color:#d5ff65;margin:0 0 11px}
 .sec-news-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;align-items:stretch}
-.sec-news-card{min-width:0;border:1px solid #304e59;border-radius:15px;padding:19px;background:linear-gradient(155deg,#172b39,#111f2d);display:flex;flex-direction:column;gap:10px;transition:border-color .18s,transform .18s}
+.sec-news-card{position:relative;min-width:0;border:1px solid #304e59;border-radius:15px;padding:19px;background:linear-gradient(155deg,#172b39,#111f2d);display:flex;flex-direction:column;gap:10px;transition:border-color .18s,transform .18s}
 .sec-news-card:hover{border-color:#80a56e;transform:translateY(-2px)}
 .sec-news-feature{grid-column:1/-1;border-color:#64865f;background:radial-gradient(circle at 97% 0,#466b4352,transparent 45%),linear-gradient(125deg,#20423c,#17323b)}
 .sec-news-card-labels{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
@@ -167,6 +167,8 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 .sec-news-card-summary strong{color:#d5ff65}
 .sec-news-tags{display:flex;flex-wrap:wrap;gap:5px}
 .sec-news-team{font-size:10px;color:#ceddbb;border:1px solid #4b6a57;background:#244036;padding:5px 8px;border-radius:99px}
+.sec-news-open::after{content:"";position:absolute;inset:0;cursor:pointer}
+.sec-news-card:focus-within{outline:2px solid #d5ff65;outline-offset:3px}
 .sec-news-open{color:#d5ff65;font-size:12px;font-weight:900;text-decoration:none;margin-top:auto;align-self:start;padding:9px 0}
 .sec-news-open:hover{text-decoration:underline;text-underline-offset:3px}
 .sec-news-empty,.sec-news-alert,.sec-news-warning{background:#172c35;color:#b7c8d0;border:1px solid #405560;border-radius:13px;padding:20px;font-size:12px;line-height:1.6}
