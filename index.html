@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b111b">
-  <meta name="sec-build" content="2026.10.09-account-shared.4">
+  <meta name="sec-build" content="2026.10.09-switch-under-intro.5">
   <link rel="manifest" href="./manifest.webmanifest">
   <meta name="description" content="An unofficial SEC football, basketball and baseball pick'em game. Switch sports instantly, make picks and keep score with friends.">
   <meta property="og:title" content="Saturdays Down South — SEC Pick'em">
@@ -181,7 +181,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 
 </style>
   <title>Saturdays Down South · SEC Pick'em</title>
-<link rel="stylesheet" href="./multi-sport.css?v=20261009-sharedaccount-v4">
+<link rel="stylesheet" href="./multi-sport.css?v=20261009-underintro-v5">
 </head>
 <body>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
@@ -202,17 +202,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     <button type="button" class="profile-chip" data-nav="settings" aria-label="Edit your profile"><span id="header-avatar">Y</span><span id="header-name">You</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m7 8 3 3 3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </header>
 
-  <nav class="global-sport-switch" id="global-sport-switch" aria-label="Choose SEC sport">
-    <span class="global-sport-label">YOUR GAME</span>
-    <div class="global-sport-options" role="group" aria-label="Sports pick'em">
-      <button type="button" class="global-sport-button" data-nav="picks" data-sport-tab="football" aria-label="Football picks" aria-pressed="false"><span class="global-sport-emoji" aria-hidden="true">🏈</span><span class="global-sport-name">Football</span><span class="global-season-dot" data-season-marker="football" hidden>Latest</span></button>
-      <button type="button" class="global-sport-button" data-nav="baseball" data-sport-tab="baseball" aria-label="Baseball picks" aria-pressed="false"><span class="global-sport-emoji" aria-hidden="true">⚾</span><span class="global-sport-name">Baseball</span><span class="global-season-dot" data-season-marker="baseball" hidden>Latest</span></button>
-      <button type="button" class="global-sport-button" data-nav="basketball" data-sport-tab="basketball" aria-label="Basketball picks" aria-pressed="false"><span class="global-sport-emoji" aria-hidden="true">🏀</span><span class="global-sport-name">Basketball</span><span class="global-season-dot" data-season-marker="basketball" hidden>Latest</span></button>
-    </div>
-    <span class="global-sport-hint" id="sport-season-hint">Switch sports anytime</span>
-  </nav>
-
-  <main id="main-content">
+<main id="main-content">
     <section id="sports-view" class="view" aria-labelledby="sports-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> SATURDAYS DOWN SOUTH <span class="eyebrow-slash">/</span> ALL SPORTS</div>
       <div class="page-intro"><div><h1 id="sports-heading">Your sport. <em>Your call.</em></h1><p>Pick SEC winners across football, basketball and baseball.</p></div></div>
@@ -231,6 +221,15 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     <section id="picks-view" class="view hidden" aria-labelledby="picks-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> 2026 SEC FOOTBALL SEASON <span class="eyebrow-slash">/</span> UNOFFICIAL FAN GAME</div>
       <div class="page-intro"><div><h1 id="picks-heading">Call your <em>shots.</em></h1><p>Every SEC game counts. Make your picks and challenge your friends.</p></div><div class="intro-side" id="countdown-badge"></div></div>
+      <nav class="global-sport-switch" id="global-sport-switch" aria-label="Choose SEC sport">
+        <span class="global-sport-label">YOUR GAME</span>
+        <div class="global-sport-options" role="group" aria-label="Sports pick'em">
+          <button type="button" class="global-sport-button" data-nav="picks" data-sport-tab="football" aria-label="Football picks" aria-pressed="false"><span class="global-sport-emoji" aria-hidden="true">🏈</span><span class="global-sport-name">Football</span><span class="global-season-dot" data-season-marker="football" hidden>Latest</span></button>
+          <button type="button" class="global-sport-button" data-nav="baseball" data-sport-tab="baseball" aria-label="Baseball picks" aria-pressed="false"><span class="global-sport-emoji" aria-hidden="true">⚾</span><span class="global-sport-name">Baseball</span><span class="global-season-dot" data-season-marker="baseball" hidden>Latest</span></button>
+          <button type="button" class="global-sport-button" data-nav="basketball" data-sport-tab="basketball" aria-label="Basketball picks" aria-pressed="false"><span class="global-sport-emoji" aria-hidden="true">🏀</span><span class="global-sport-name">Basketball</span><span class="global-season-dot" data-season-marker="basketball" hidden>Latest</span></button>
+        </div>
+        <span class="global-sport-hint" id="sport-season-hint">Switch sports anytime</span>
+      </nav>
       <div class="week-picker" id="week-picker" aria-label="Choose football week"></div>
       <div class="picks-layout">
         <div class="primary-column">
@@ -475,6 +474,13 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     if(sportViews.includes(v))lastSportView=v;
     currentView=v;
     for(const id of views)document.getElementById(id+'-view').classList.toggle('hidden',id!==v);
+    // Reuse the same three sport controls directly beneath the current page title/description.
+    // This also keeps the switcher available on Basketball, Baseball, League, News, etc.
+    const pageIntro=document.querySelector('#'+v+'-view > .page-intro');
+    const sportSwitcher=document.getElementById('global-sport-switch');
+    if(pageIntro&&sportSwitcher&&pageIntro.nextElementSibling!==sportSwitcher){
+      pageIntro.insertAdjacentElement('afterend',sportSwitcher);
+    }
     document.querySelectorAll('[data-nav]').forEach(el=>{
       const on=el.dataset.nav===v||(el.dataset.nav==='current-sport'&&sportViews.includes(v));
       el.classList.toggle('active',on);
