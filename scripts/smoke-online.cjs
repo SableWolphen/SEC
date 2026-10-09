@@ -21,10 +21,12 @@ const host={innerHTML:''};
 elements['league-content']=host;
 const document={
  getElementById(id){return fields[id]||elements[id]||null;},
+ querySelector(){return {value:''};},
  addEventListener(type,handler){handlers[type]=handler;},
 };
 const localCache=new Map();
 const localStorage={getItem:k=>localCache.get(k)||null,setItem:(k,v)=>localCache.set(k,String(v))};
+const sessionStorage={getItem:()=>null,setItem:()=>{}};
 function query(table){
  const api={
    eq(){return api;},
@@ -41,7 +43,7 @@ function query(table){
      return {data:row};
    },
    then(resolve,reject){
-     let data=table==='sec_picks'?state.picks:table==='sec_games'?[]:table==='sec_profiles'?state.profile:state.leagues;
+     let data=table==='sec_picks'||table==='sec_league_picks'?state.picks:table==='sec_games'||table==='sec_week_tiebreakers'?[]:table==='sec_profiles'?state.profile:state.leagues;
      return Promise.resolve({data}).then(resolve,reject);
    }
  };
@@ -68,18 +70,26 @@ const client={
  },
  from(table){return {select(){return query(table)},upsert(row){return query(table).upsert(row)}};},
  async rpc(name,args){
-   if(name==='sec_create_league'){
+   if(name==='sec_create_league_mode'){
      state.requests.push({type:'create-league'});
-     state.leagues.push({id:'test-league-1',name:args.p_name,invite_code:'123456789A',owner_id:user.id});
+     state.leagues.push({id:'test-league-1',name:args.p_name,mode:args.p_mode,invite_code:'123456789A',owner_id:user.id});
      return {data:[{league_id:'test-league-1',code:'123456789A'}]};
    }
-   if(name==='sec_league_standings')return {data:[{user_id:user.id,display_name:'Sally SEC',picked:0,week_points:0,season_points:0}]};
+   if(name==='sec_league_standings_v2')return {data:[{user_id:user.id,display_name:'Sally SEC',picked:0,week_points:0,season_points:0,correct_picks:0}]};
+   if(name==='sec_revealed_league_picks')return {data:[]};
+   if(name==='sec_save_league_pick'){
+     const row={league_id:args.p_league,user_id:user.id,game_id:args.p_game,pick_code:args.p_pick,confidence_points:args.p_confidence};
+     const idx=state.picks.findIndex(p=>p.game_id===row.game_id&&p.league_id===row.league_id);
+     if(idx>=0)state.picks[idx]=row;else state.picks.push(row);
+     state.requests.push({type:'pick',team:row.pick_code});
+     return {data:row};
+   }
    if(name==='sec_join_league')return {data:'test-league-1'};
    throw Error('Unexpected RPC '+name);
  }
 };
 const env={
- console,Promise,URL,URLSearchParams,localStorage,document,
+ console,Promise,URL,URLSearchParams,localStorage,sessionStorage,document,
  window:{
    SEC_BRIDGE:{
      esc:s=>String(s).replaceAll('<','&lt;'),
@@ -96,6 +106,7 @@ const env={
  setInterval:()=>0,
  navigator:{clipboard:{writeText:async()=>{}}},
 };
+vm.runInNewContext(fs.readFileSync('league-features.js','utf8'),env,{filename:'league-features.js'});
 vm.runInNewContext(fs.readFileSync('multiplayer.js','utf8'),env,{filename:'multiplayer.js'});
 const sleep=()=>new Promise(resolve=>setTimeout(resolve,0));
 function click(action){
