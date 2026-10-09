@@ -386,7 +386,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     const result=e.target.closest('[data-result]');if(result){if(window.secOnline?.configured){toast('Online winners are managed by the site administrator.');return;}const g=GAME_BY_ID[result.dataset.result];const id=result.dataset.team;if(!g)return;if(id==='clear')delete state.results[g.id];else if(id===g.away||id===g.home)state.results[g.id]=id;else return;save();renderSettings();toast(id==='clear'?'Result cleared.':`Winner set: ${team(id).name}`);return;}
     const action=e.target.closest('[data-action]');if(!action)return;
     switch(action.dataset.action){
-      case 'share-picks':if(window.secOnline?.configured){void window.secOnline.copyInvite();}else sharePicks();break;
+      case 'share-picks':if(window.secOnline?.configured){if(window.SEC_FEATURES?.shareSlip)void window.SEC_FEATURES.shareSlip();else void window.secOnline.copyInvite();}else sharePicks();break;
       case 'import-picks':importPicks();break;
       case 'share-results':shareResults();break;
       case 'import-results':importResults();break;
