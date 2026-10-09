@@ -1,6 +1,6 @@
 /* Network-first: fresh schedules and online features should not be frozen by old caches. */
-const CACHE="sec-pickem-v2";
-const CORE=["./","./index.html","./config.js","./multiplayer.js","./manifest.webmanifest","./icon.svg"];
+const CACHE="sec-pickem-v3";
+const CORE=["./","./index.html","./config.js","./multiplayer.js","./matchup-stats.js","./stats.json","./manifest.webmanifest","./icon.svg"];
 self.addEventListener("install",event=>{
  event.waitUntil((async()=>{
   const cache=await caches.open(CACHE);
