@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+"""Offline tests for ESPN SEC team record extraction and season isolation."""
+import datetime as dt
+import sys
+import unittest
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]/"scripts"))
+import update_team_records as tracker
+NOW=dt.datetime(2026,10,9,20,tzinfo=dt.timezone.utc)
+
+
+class TeamRecordTests(unittest.TestCase):
+ def test_season_rollovers(self):
+  self.assertEqual(tracker.season_year("football",NOW),2026)
+  self.assertEqual(tracker.season_year("basketball",NOW),2026)
+  self.assertEqual(tracker.season_year("baseball",NOW),2026)
+  december=NOW.replace(month=12)
+  self.assertEqual(tracker.season_year("basketball",december),2027)
+  january=NOW.replace(year=2027,month=1)
+  self.assertEqual(tracker.season_year("football",january),2026)
+  self.assertEqual(tracker.season_year("baseball",january),2026)
+ def test_records_and_conference_splits(self):
+  obj={"record":{"items":[{"type":"total","name":"All Splits","summary":"8-2"},
+     {"type":"vsconf","name":"vs. Conference","summary":"4-2"}]}}
+  self.assertEqual(tracker.record_parts(obj),("8-2","4-2"))
+  self.assertEqual(tracker.record_parts({"record":{"summary":"19-8"}}),("19-8",None))
+  self.assertEqual(tracker.record_parts({"record":[]}),(None,None))
+  self.assertIsNone(tracker.valid_record("12-0<script>"))
+ def test_no_cross_school_records(self):
+  self.assertTrue(tracker.identity_ok("TEX",{"location":"Texas","shortDisplayName":"Texas"}))
+  self.assertFalse(tracker.identity_ok("TEX",{"location":"Texas A&M","shortDisplayName":"Texas A&M"}))
+  self.assertFalse(tracker.identity_ok("MSST",{"location":"Ole Miss"}))
+  self.assertTrue(tracker.identity_ok("TAMU",{"location":"Texas A&M"}))
+ def test_full_build_source_verification(self):
+  called=[]
+  def mock(url):
+   called.append(url)
+   code=next(c for c,(team_id,_name) in tracker.SEC_TEAMS.items()
+             if f"/teams/{team_id}?" in url)
+   name=tracker.SEC_TEAMS[code][1]
+   return {"team":{"id":tracker.SEC_TEAMS[code][0],"location":name,
+                    "record":{"items":[{"name":"Overall","type":"total","summary":"3-1"},
+                                       {"name":"Conference","type":"vsconf","summary":"2-0"}]}}}
+  result=tracker.build(NOW,get=mock)
+  self.assertEqual(len(called),48)
+  self.assertEqual(len(result["teams"]),16)
+  self.assertEqual(result["teams"]["TENN"]["football"]["overall"],"3-1")
+  self.assertEqual(result["teams"]["TENN"]["basketball"]["conference"],"2-0")
+  self.assertEqual(result["teams"]["TENN"]["baseball"]["season"],2026)
+  self.assertEqual(result["warning"],None)
+ def test_outage_preserves_only_same_season_verified_data(self):
+  previous={"teams":{"TENN":{
+   "football":{"overall":"4-2","conference":None,"season":2026,
+               "source":"ESPN","verified_at":"2026-10-09T00:00:00Z"},
+   "basketball":{"overall":"20-10","season":2025,"source":"ESPN"}},
+    "ALA":{"football":{"overall":"17-2","season":2026,"source":"made-up"}}}}
+  def offline(_url):raise OSError("ESPN temporarily unreachable")
+  result=tracker.build(NOW,get=offline,existing=previous)
+  self.assertEqual(result["teams"]["TENN"]["football"]["overall"],"4-2")
+  self.assertEqual(result["teams"]["TENN"].get("basketball"),None)
+  self.assertEqual(result["teams"]["ALA"].get("football"),None)
+ def test_missing_or_mismatched_espn_team_is_unknown(self):
+  def mistaken(_url):
+   return {"team":{"id":"333","location":"Arkansas",
+                   "record":{"items":[{"type":"total","summary":"14-0"}]}}}
+  self.assertIsNone(tracker.get_one("ALA","football",2026,mistaken))
+
+
+if __name__=="__main__":
+ unittest.main()
