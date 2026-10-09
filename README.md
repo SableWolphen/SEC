@@ -23,18 +23,26 @@ Data is sourced from ESPN's public college football game feed. `scripts/update_s
 
 **Online league database is provisioned and connected.** Its dedicated Supabase project ID is `vzjrlvkwuswkryxxrvtp` (separate from PlushList and Baby PupFit). Players have successfully created a real league; full third-party public email-delivery configuration remains an owner task.
 
-## Rivalry Trophy Case
+## Rivalry Trophy Case, Rivalry Week and permanent collections
 
-The **Trophy Case** tab now includes **15 unique named rivalries**, representing **all 16 SEC schools** in the user's rivalry grid and two nonconference rivals. Every matchup gets a distinct collectible with a trophy-themed illustration, rivalry title, schools, and an earned/unearned state. Awards remain collected across seasons.
+The Trophy Case ships **15 unique original 3D GLB trophies**, one for every named rivalry supplied in the SEC rivalry grid, spanning all 16 SEC schools and two nonconference opponents. The models live in [`trophies/`](trophies/) and can be rotated using the touch- and mouse-enabled `model-viewer`. They are fan-made sculptures, not exact reproductions of real trophies or official school marks. Emoji placeholders appear if WebGL/model loading is unavailable.
 
-The collection includes: Iron Bowl, Third Saturday in October, Golden Boot, Southwest Classic, Deep South's Oldest Rivalry, Florida–Georgia (World's Largest Outdoor Cocktail Party), Governor's Cup, Magnolia Bowl, Egg Bowl/Golden Egg, Battle Line, Mayor's Cup, Red River, Palmetto Showdown, Lone Star Showdown, and Tennessee–Vanderbilt.
+**All 15 rivalries always remain in the catalog**, even when absent from a season's schedule. A missing matchup is labeled *Not scheduled this season* and cannot be falsely awarded. All Trophies, My Trophies, History and the Rivalry Week tab are available at [the Trophy Case](https://sablewolphen.github.io/SEC/#trophies).
 
-- **All Trophies** shows the whole collection, **My Trophies** shows achievements from correct predictions, and **History** shows correctly and incorrectly predicted rivalry finals.
-- The Trophy Case is **read-only**: it uses the current signed-in player's league-specific picks and games recorded as final with a verified winning team. There are no new database tables, and old league picks remain unchanged.
-- Awards are **digital fan achievements** for picking the straight-up winner, even when a league uses Spread mode. They do not indicate ownership of a school's physical trophy. There are no stakes, cash prizes or wagers.
-- Distinct illustrated placeholders are displayed until real licensed/created 3D models are uploaded in `trophies/<id>.glb`. To enable 3D files, define `window.SDS_TROPHY_MODELS = ["golden-egg", ...]` with only filenames genuinely uploaded, before loading `trophy-case.js`. Missing models are **not** repeatedly requested.
-- Navigation is available on desktop and mobile at [Trophy Case](https://sablewolphen.github.io/SEC/#trophies).
-- Run `node scripts/smoke-trophies.cjs` to test all 15 named pairs, reverse home/away order, verified finals, league isolation and sign-out.
+A correct straight-up winner prediction in any league mode unlocks the rivalry trophy after a **verified final game**. The `sec_sync_trophy_history` RPC records both successes and misses in `sec_trophy_history` (RLS: user can read their own history; writes only through verified authenticated RPC), so awards persist after league switching and across seasons. If a confirmed winner is later corrected, stored results are corrected as well. Nothing is awarded from scheduled or live scores.
+
+Rivalry Week offers an all-season catalog of the 15 matchups, direct links to scheduled picks, a completed-picks counter, plus earnable Rivalry Starter, Rivalry Specialist, Rivalry Sweep and All 15 Club challenge badges. Unsheduled rivalries remain visible with an honest status and no invented kickoff.
+
+## League chat and season championships
+
+- Every signed-in private league has its own **Locker Room** chat, 4 emoji reactions, and a commissioner moderation option. Only members can read/send/react in that league; users cannot impersonate another author. Content is escaped before rendering; messages are capped at 500 characters and rate-limited to 3 seconds apart.
+- Messages refresh while the League view is open, at most every 15 seconds, using the connected Supabase database. Notifications while the app is closed require additional push integration and are **not** included in this version.
+- **League Championships** displays season awards and the current points leader. Only the commissioner can finalize an award, and the database refuses to crown a champion until all games in the season are final or canceled. A stored award includes its season, winner, league mode, points and date.
+- Championships and chats do not change existing pickem modes or points and do not require automatic score jobs. However, they depend on **confirmed official finals** to complete championship awards.
+- Production SQL for these features was applied without altering existing league memberships or picks. Reproducible source is in [`supabase/migrations/20261009_trophies_chat_champions.sql`](supabase/migrations/20261009_trophies_chat_champions.sql). Apply **after** the original setup and four-mode migration when provisioning a new project.
+- Test with `node scripts/smoke-trophies.cjs` and `node scripts/smoke-social.cjs`. GitHub CI validates the headers and JSON chunks of all 15 `.glb` models.
+
+**Scheduler boundary:** no change was made to the optional automatic ESPN score Cron setup. It remains unactivated until the project owner chooses to enable it. The app will not claim a result is final until the database records it.
 
 ## New competition features
 
