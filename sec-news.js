@@ -202,8 +202,16 @@
      "Previously loaded headlines are shown below.":"Try again later or visit the SEC's official news page.");
   }finally{loading=false;render();}
  }
+ function showSchool(name,newsSport){
+   if(!SEC.includes(name))return;
+   team=name;
+   search="";breakingOnly=false;
+   if(SPORTS[newsSport])sport=newsSport;
+   window.SEC_BRIDGE?.setView?.("news");
+   render();void reload();
+ }
  function mount(){render();void reload();}
  setInterval(()=>{if(!document.hidden&&window.SEC_BRIDGE?.view?.()==="news")void reload(true);},5*60000);
- window.SEC_NEWS=Object.freeze({mount,reload,getArticles:()=>entries.slice(),getSport:()=>selectedSport(),safeUrl});
+ window.SEC_NEWS=Object.freeze({mount,reload,getArticles:()=>entries.slice(),getSport:()=>selectedSport(),showSchool,safeUrl});
  if(window.location?.hash==="#news")mount();
 })();
