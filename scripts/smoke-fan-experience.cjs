@@ -46,10 +46,14 @@ assert.match(sql,/sec_club_join\(p_code text\)/);
 assert.match(sql,/perform public\.sec_sport_join_league\(bbcode\)/);
 assert.match(sql,/perform public\.sec_sport_join_league\(bscode\)/);
 assert.match(sql,/clock_timestamp|season_points/);
-fan.onView("league").then(()=>{
- assert.match(nodes["fan-club-hub"].innerHTML,/One league\. Three sports/);
+let routes=0;
+window.SEC_LEAGUE_SETTINGS={onView:async()=>{routes++;nodes["fan-club-hub"].innerHTML="Each league chooses its own sports.";},render:()=>{}};
+fan.onView("league").then(async()=>{
+ assert.equal(routes,1,"League page delegates to independent league manager");
+ assert.match(nodes["fan-club-hub"].innerHTML,/Each league chooses its own sports/);
+ await fan.onView("picks");
  assert.match(nodes["fan-brackets"].innerHTML,/Official seeds|Only official seeds/);
  assert.match(nodes["fan-series"].innerHTML,/first pitch/);
  assert.match(nodes["fan-rivalries"].innerHTML,/Rivalry challenges/);
- console.log("SEC fan experience smoke passed: secure club, compact game center, verified source, disclosure UI");
+ console.log("SEC fan smoke passed: compact game centers, previews, rivalries and per-league routing.");
 }).catch(e=>{console.error(e);process.exitCode=1;});
