@@ -1,6 +1,6 @@
 /* Network-first: fresh schedules and online features should not be frozen by old caches. */
-const CACHE="sec-pickem-v4";
-const CORE=["./","./index.html","./config.js","./multiplayer.js","./matchup-stats.js","./stats.json","./manifest.webmanifest","./icon.svg"];
+const CACHE="sec-pickem-v5";
+const CORE=["./","./index.html","./config.js","./multiplayer.js?v=20261009-email-validation-fix","./matchup-stats.js","./stats.json","./manifest.webmanifest","./icon.svg"];
 self.addEventListener("install",event=>{
  event.waitUntil((async()=>{
   const cache=await caches.open(CACHE);
