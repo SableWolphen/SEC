@@ -7,6 +7,8 @@ const val=x=>{if(x?.error)throw x.error;return x?.data;},get=id=>document.getEle
 const date=x=>Number.isFinite(Date.parse(x))?new Date(x).toLocaleDateString("en-US",{month:"short",day:"numeric"}):"TBD";
 const sports=[["picks","🏈","Football"],["basketball","🏀","Basketball"],["baseball","⚾","Baseball"]];
 let leagues=[],clubId=null,rows=[],problem="",lastClub=0,clubLoading=false,identity=null;
+let playChoice={format:"single",sport:"picks"},choiceLoaded=false,choiceLoading=false,choiceVersion=0,choiceProblem="";
+let ownedSingle=[];
 let gameRows={},revealed={},myPicks=[],gamesAt=0,gamesLoading=false;
 let teamRows={football:[],basketball:[],baseball:[]},teamAt=0,teamLoading=false,teamSport="picks";
 const openDetails=new Set();
@@ -17,21 +19,128 @@ const toast=s=>app()?.toast?.(s);
 function resetAccount(){
  const id=user()?.id||"guest";if(id===identity)return;
  identity=id;leagues=[];clubId=null;rows=[];lastClub=0;gamesAt=0;teamAt=0;
+ choiceLoaded=false;choiceLoading=false;choiceProblem="";choiceVersion=0;ownedSingle=[];
+ const format=localStorage.getItem(key("format")),savedSport=localStorage.getItem(key("single-sport"));
+ playChoice={format:format==="all"?"all":"single",
+  sport:["picks","basketball","baseball"].includes(savedSport)?savedSport:"picks"};
  gameRows={};revealed={};myPicks=[];teamRows={football:[],basketball:[],baseball:[]};
 }
 function activeClub(){return leagues.find(x=>x.id===clubId)||null;}
+const backendSport=s=>s==="picks"?"football":s;
+function renderLeagueChoice(){
+ const root=get("fan-league-choice"),singleRoot=get("fan-single-league"),multiRoot=get("fan-club-hub");
+ if(!root)return;
+ const format=playChoice.format,sport=playChoice.sport,loggedIn=Boolean(user());
+ const button=(mode,icon,title,subtitle)=>'<button type="button" class="fan-format-card '+(format===mode?'active':'')+
+  '" data-fan="format" data-format="'+mode+'" aria-pressed="'+(format===mode)+'"><span class="fan-format-icon">'+icon+'</span>'+
+  '<span class="fan-format-title">'+title+'</span><small>'+subtitle+'</small><span class="fan-format-check">'+(format===mode?'✓ Selected':'Choose')+'</span></button>';
+ root.innerHTML='<section class="fan-format-wrap" aria-label="How do you want to play?">'+
+  '<div class="fan-format-title-row"><div><div class="card-kicker">CHOOSE YOUR COMPETITION</div>'+
+  '<h2>One sport or the whole SEC?</h2><p>Pick your league style below. You can change this choice whenever you want.</p></div></div>'+
+  '<div class="fan-format-grid" role="group" aria-label="League type">'+
+  button("single","🏈","Single Sport","Football, basketball, or baseball. One sport at a time.")+
+  button("all","🏆","All Three Sports","One invite and an overall Grand Champion race.")+'</div>'+
+  '<p class="fan-format-note">↔ Change anytime · Your account, league memberships, picks, and results stay saved.</p>'+
+  (choiceProblem?'<p class="fan-warning" role="status">'+esc(choiceProblem)+'</p>':'')+'</section>';
+ if(singleRoot){
+  singleRoot.hidden=format!=="single";
+  if(format==="single"){
+   const sportButtons='<div class="fan-sport-picker" role="group" aria-label="Choose your single sport">'+
+    sports.map(([value,icon,label])=>'<button type="button" data-fan="single-sport" data-sport="'+value+
+    '" class="fan-sport-choice '+(sport===value?'active':'')+'" aria-pressed="'+(sport===value)+'">'+
+    icon+' '+label+'</button>').join("")+'</div>';
+   const context=sport==="picks"?
+    '<p class="fan-subtle">Your football league, invitations, chat, and standings are below.</p>':
+    (loggedIn?(window.SEC_SPORTS?.renderLeaguePanel?.(sport)||
+     '<p class="fan-subtle">Loading your '+(sport==="basketball"?"basketball":"baseball")+' leagues…</p>'):
+    '<p class="fan-subtle">Sign in below using your existing account to create or join a league for this sport.</p>');
+   singleRoot.innerHTML='<section class="fan-panel fan-single-panel"><div class="card-kicker">ONE SPORT LEAGUE</div>'+
+    '<h3>Which sport are you playing?</h3>'+sportButtons+
+    (sport!=="picks"&&loggedIn?'<div class="fan-single-actions"><button class="fan-small fan-primary" data-fan="open-sport" data-sport="'+sport+
+      '" type="button">Make '+(sport==="basketball"?"basketball":"baseball")+' picks →</button></div>':"")+
+    context+'</section>';
+  }
+ }
+ if(multiRoot)multiRoot.hidden=format!=="all";
+ for(const id of ["fan-brackets","fan-series"]){const el=get(id);if(el)el.hidden=format!=="all";}
+ const football=get("league-content");
+ // Keep shared sign-in/password recovery accessible regardless of league style.
+ if(football)football.hidden=loggedIn&&(format==="all"||sport!=="picks");
+}
+async function readLeaguePreference(){
+ resetAccount();
+ const u=user(),c=client(),id=u?.id;
+ if(!id||!c||choiceLoaded||choiceLoading)return;
+ choiceLoading=true;const revision=choiceVersion;
+ try{
+  const response=await c.from("sec_player_league_preferences")
+   .select("play_format,single_sport").eq("user_id",id).maybeSingle();
+  const record=val(response);
+  if(identity!==id||revision!==choiceVersion)return;
+  if(record){
+   playChoice={format:record.play_format==="all"?"all":"single",
+    sport:record.single_sport==="basketball"||record.single_sport==="baseball"?
+     record.single_sport:"picks"};
+   store(key("format"),playChoice.format);store(key("single-sport"),playChoice.sport);
+  }
+  choiceLoaded=true;choiceProblem="";
+ }catch(e){
+  if(identity===id){choiceProblem="Your saved league choice is temporarily unavailable. Current choice is kept on this device.";
+   choiceLoaded=true;}
+ }finally{choiceLoading=false;if(identity===id)renderLeagueChoice();}
+}
+async function choosePlay(format,sport=playChoice.sport){
+ if(!["single","all"].includes(format)||!["picks","basketball","baseball"].includes(sport))return;
+ resetAccount();
+ if(playChoice.format===format&&playChoice.sport===sport)return;
+ const prior={...playChoice},id=user()?.id,revision=++choiceVersion;
+ playChoice={format,sport};choiceLoaded=true;choiceProblem="";
+ store(key("format"),format);store(key("single-sport"),sport);
+ renderLeagueChoice();
+ if(format==="all"){
+  renderClub(); // Guests still see the combined-league explanation before signing in.
+  void loadClubs();void window.SEC_BRACKETS?.mount?.();
+ }else if(sport!=="picks"&&id){
+  void window.SEC_SPORTS?.load?.(sport);
+ }
+ if(!id||!client()){toast("Log in to save this choice on your account.");return;}
+ try{
+  val(await client().from("sec_player_league_preferences").upsert({
+   user_id:id,play_format:format,single_sport:backendSport(sport)
+  },{onConflict:"user_id"}));
+  if(revision===choiceVersion&&identity===id)toast(format==="all"?
+   "All-sports view selected. Your existing leagues and picks are safe.":
+   "Single-sport view selected. Your other sports are still saved.");
+ }catch(e){
+  if(revision===choiceVersion&&identity===id){
+   playChoice=prior;store(key("format"),prior.format);store(key("single-sport"),prior.sport);
+   choiceProblem="Could not save this change to your account. Please try again.";
+   renderLeagueChoice();
+  }
+ }
+}
+
 async function loadClubs(force=false){
  resetAccount();
  if(!client()||!user()||clubLoading||(!force&&Date.now()-lastClub<45000))return;
  clubLoading=true;problem="";
  try{
-  leagues=val(await client().from("sec_clubs").select("id,name,invite_code,football_league,basketball_league,baseball_league").order("created_at",{ascending:false}))||[];
+  const [all,football,other]=await Promise.all([
+   client().from("sec_clubs").select("id,name,invite_code,football_league,basketball_league,baseball_league").order("created_at",{ascending:false}),
+   client().from("sec_leagues").select("id,name,owner_id,mode").eq("owner_id",user().id),
+   client().from("sec_sport_leagues").select("id,name,sport,owner_id,mode").eq("owner_id",user().id)
+  ]);
+  leagues=val(all)||[];
+  const old=[...(val(football)||[]).map(l=>({...l,sport:"football"})),...(val(other)||[])];
+  const linked=new Set(leagues.flatMap(c=>[c.football_league,c.basketball_league,c.baseball_league]));
+  ownedSingle=old.filter(l=>l.mode==="straight"&&!linked.has(l.id)&&
+   ["football","basketball","baseball"].includes(l.sport));
   clubId=leagues.some(x=>x.id===clubId)?clubId:
     leagues.find(x=>x.id===localStorage.getItem(key("club")))?.id||leagues[0]?.id||null;
   rows=clubId?(val(await client().rpc("sec_club_standings",{p_club:clubId}))||[]):[];
   lastClub=Date.now();
  }catch(e){problem="Could not load three-sport league: "+(e.message||"try again");}
- finally{clubLoading=false;renderClub();window.SEC_BRACKETS?.mount?.();}
+ finally{clubLoading=false;renderClub();if(playChoice.format==="all")window.SEC_BRACKETS?.mount?.();}
 }
 function renderClub(){
  const host=get("fan-club-hub");if(!host)return;
@@ -52,6 +161,14 @@ function renderClub(){
   }).join("")+'</div>'+
   '<p class="fan-subtle">Total championship points: '+safeNumber(mine.total)+
   '. Straight-pick scoring; only verified results count. Your older seasons remain in their original leagues.</p></details>':"";
+ const upgradeOptions=ownedSingle.map(l=>'<option value="'+esc(l.sport+":"+l.id)+'">'+
+  esc(({football:"🏈",basketball:"🏀",baseball:"⚾"}[l.sport]||"")+" "+l.name)+'</option>').join("");
+ const upgrade=ownedSingle.length?'<details class="fan-fold"><summary>↗ Upgrade an existing single-sport league</summary>'+
+  '<p>League owners can keep their original Straight Picks league and its history, then add the other two sports. '+
+  'Existing members must opt in with the new all-sports invite; nobody is enrolled without permission.</p>'+
+  '<label for="fan-upgrade-league" class="input-label">Your owned league</label>'+
+  '<select id="fan-upgrade-league" class="field">'+upgradeOptions+'</select>'+
+  '<button type="button" class="fan-small fan-primary" data-fan="upgrade">Upgrade to all three →</button></details>':"";
  const opts=leagues.length>1?'<select id="fan-club-select" aria-label="Choose combined league">'+
   leagues.map(l=>'<option value="'+esc(l.id)+'" '+(l.id===clubId?'selected':'')+'>'+esc(l.name)+'</option>').join("")+'</select>':"";
  host.innerHTML='<section class="fan-panel"><div class="fan-title-row"><div><div class="card-kicker">👑 GRAND CHAMPION RACE</div><h2>'+
@@ -66,7 +183,8 @@ function renderClub(){
    '<div class="fan-form"><label>League name<input id="fan-name" placeholder="SEC Legends" maxlength="50"></label>'+
    '<button class="fan-small fan-primary" data-fan="create">Create league</button>'+
    '<label>Invite code<input id="fan-code" placeholder="10-character code" maxlength="10"></label>'+
-   '<button class="fan-small" data-fan="join">Join league</button></div></details></section>';
+   '<button class="fan-small" data-fan="join">Join league</button></div></details>'+
+  upgrade+'</section>';
 }
 async function changeClub(type,el){
  if(!client()||!user()){toast("Log in first");return;}
@@ -79,6 +197,12 @@ async function changeClub(type,el){
    const code=field("fan-code").toUpperCase();if(!/^[A-Z0-9]{10}$/.test(code))throw Error("Enter a valid 10-character code.");
    clubId=val(await client().rpc("sec_club_join",{p_code:code}));toast("Joined one league across three sports!");
   }else if(type==="select"){clubId=el.value;}
+  else if(type==="upgrade"){
+   const valId=field("fan-upgrade-league"),[sport,id]=valId.split(":");
+   if(!ownedSingle.some(l=>l.id===id&&l.sport===sport))throw Error("Choose a league you own.");
+   clubId=val(await client().rpc("sec_club_upgrade_single",{p_sport:sport,p_league:id}));
+   toast("Your original picks and members were preserved. Share the new invite for the other sports!");
+  }
   else if(type==="sport"){
    const c=activeClub(),s=el.dataset.sport;if(!c)return;
    if(s==="picks")window.secOnline?.useLeague?.(c.football_league);
@@ -255,7 +379,18 @@ function remind(){
 }
 async function onView(v){
  resetAccount();
- if(v==="league"){renderClub();extras();await window.secOnline?.whenAuthReady?.();await inviteJoin();await loadClubs();extras();window.SEC_BRACKETS?.mount?.();}
+ if(v==="league"){
+  renderClub();renderLeagueChoice();extras();
+  await window.secOnline?.whenAuthReady?.();
+  resetAccount();await readLeaguePreference();
+  const inviteCode=new URLSearchParams(location.search).get("club");
+  if(user()&&/^[A-Za-z0-9]{10}$/.test(inviteCode||"")&&playChoice.format!=="all"){
+   await choosePlay("all");
+  }
+  if(playChoice.format==="all"){await inviteJoin();await loadClubs();window.SEC_BRACKETS?.mount?.();}
+  else if(user()&&playChoice.sport!=="picks")void window.SEC_SPORTS?.load?.(playChoice.sport);
+  renderLeagueChoice();extras();
+ }
  if(v==="picks"){enhanceRecap();extras();void loadGames().then(()=>{enhanceRecap();remind();});}
  if(v==="teams"){enhanceTeam();void loadTeamGames();}
  if(v==="trophies"){honors();void loadGames().then(honors);}
@@ -265,7 +400,10 @@ async function onView(v){
 document.addEventListener("click",e=>{
  const b=e.target.closest?.("[data-fan]");if(!b)return;e.preventDefault();
  const cmd=b.dataset.fan;
- if(["create","join","share","reload","sport"].includes(cmd)){void changeClub(cmd,b);return;}
+ if(cmd==="format"){void choosePlay(b.dataset.format);return;}
+ if(cmd==="single-sport"){void choosePlay("single",b.dataset.sport);return;}
+ if(cmd==="open-sport"){app()?.setView?.(b.dataset.sport);return;}
+ if(["create","join","share","reload","sport","upgrade"].includes(cmd)){void changeClub(cmd,b);return;}
  if(cmd==="go-picks")app()?.setView?.("picks");
  if(cmd==="go-baseball")app()?.setView?.("baseball");
  if(cmd==="team-sport"){teamSport=b.dataset.sport;enhanceTeam();}
@@ -322,7 +460,7 @@ document.addEventListener("change",e=>{
  if(!k||!["2-1","3-0"].includes(e.target.value))return;
  saveSeries(k,null,e.target.value);
 });
-window.SEC_FAN=Object.freeze({onView,gameCenter,sportCenter,seriesPreviewCard,enhanceRecap,enhanceTeam,honors,
+window.SEC_FAN=Object.freeze({onView,renderLeagueChoice,readLeaguePreference,choosePlay,getPlayChoice:()=>({...playChoice}),gameCenter,sportCenter,seriesPreviewCard,enhanceRecap,enhanceTeam,honors,
  loadClubs,getClub:activeClub,getStandings:()=>rows.slice()});
 if(app()?.view?.())void onView(app().view());
 setInterval(()=>{if(document.visibilityState!=="visible")return;
