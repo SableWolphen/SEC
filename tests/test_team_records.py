@@ -59,7 +59,8 @@ class TeamRecordTests(unittest.TestCase):
   result=tracker.build(NOW,get=get)
   self.assertEqual(result['teams']['ALA']['baseball']['overall'],'43-16')
   self.assertEqual(result['teams']['ALA']['baseball']['conference'],'20-10')
-  self.assertNotIn('baseball',result['teams']['TENN'])
+  self.assertEqual(result['teams']['TENN']['baseball']['overall'],'38-22')
+  self.assertEqual(result['teams']['TENN']['baseball']['source'],'SEC')
  def test_official_baseball_2026_finals_not_projected_to_2027(self):
   self.assertEqual(len(tracker.BASEBALL_FINAL_2026),16)
   self.assertEqual(tracker.BASEBALL_FINAL_2026['UGA'],('53-14','23-7'))
