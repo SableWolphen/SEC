@@ -1,0 +1,47 @@
+name: Refresh SEC matchup stats
+on:
+  schedule:
+    - cron: '15 11,17,23 * * *'
+  workflow_dispatch: {}
+  push:
+    paths:
+      - 'scripts/update_stats.py'
+      - '.github/workflows/update-stats.yml'
+permissions:
+  contents: write
+concurrency:
+  group: sec-stats
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve verified matchup information
+        run: python3 scripts/update_stats.py
+      - name: Validate feed format and probability range
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          obj=json.loads(Path('stats.json').read_text())
+          assert obj['games']
+          for game,info in obj['games'].items():
+              value=info.get('home_win_pct')
+              assert value is None or (isinstance(value,(int,float)) and 0<=value<=100), game
+          print('Validated',len(obj['games']),'matchups')
+          PY
+      - name: Publish refreshed statistics
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add stats.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update SEC matchup insights from ESPN [automated]'
+            git push
+          fi
