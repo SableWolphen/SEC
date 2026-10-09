@@ -86,7 +86,7 @@
  "@media(max-width:365px){#sds-trophy-case{padding:18px 10px 85px}#sds-trophy-case .sds-trophy-display{height:145px}#sds-trophy-case .sds-trophy-placeholder strong{font-size:44px}}"
  ];
  const style=document.createElement("style");style.textContent=rules.join("\n");document.head.appendChild(style);
- let verified=[],myPicks={},schedule={},records=[],signedIn=false,leagueId=null,leagueName="",tab="all",rootId="sds-trophy-case",renderId=0,viewerLoading=false;
+ let verified=[],myPicks={},schedule={},records=[],permanent=[],derived=[],historyUser=null,signedIn=false,leagueId=null,leagueName="",tab="all",rootId="sds-trophy-case",renderId=0,viewerLoading=false;
  function last(id){return records.filter(r=>r.trophyId===id).sort((a,b)=>b.year-a.year)[0];}
  function lastWin(id){return records.filter(r=>r.trophyId===id&&r.correct).sort((a,b)=>b.year-a.year)[0];}
  function owned(){return TROPHIES.filter(t=>Boolean(lastWin(t.id)));}
@@ -156,7 +156,9 @@
   const h=document.createElement("h2");h.className="sds-trophy-heading";h.innerHTML="Trophy <span>Case</span>";
   const subtitle=document.createElement("p");subtitle.className="sds-trophy-subtitle";
   subtitle.textContent="Win it. Keep it. Brag about it."+(leagueName?" · "+leagueName:"");
-  const summary=document.createElement("div");summary.className="sds-trophy-stats";
+  const rivalryNotice=document.createElement("p");rivalryNotice.className="sds-trophy-subtitle";
+  rivalryNotice.textContent="All 15 classic rivalries stay here—even when the matchup isn't played this year.";
+   const summary=document.createElement("div");summary.className="sds-trophy-stats";
   const big=document.createElement("strong");big.textContent=owned().length+" / "+TROPHIES.length;
   const small=document.createElement("span");small.textContent="Rivalry picks correctly called from verified finals";
   summary.append(big,small);
@@ -167,7 +169,7 @@
    btn.textContent=label;btn.setAttribute("aria-pressed",String(tab===id));btn.addEventListener("click",()=>render(id));
    tabs.append(btn);
   }
-  root.append(h,subtitle,summary,tabs);
+  root.append(h,subtitle,rivalryNotice,summary,tabs);
   if(tab==="history"){
    const history=document.createElement("div");history.className="sds-trophy-history";
    if(!records.length)history.append(empty(signedIn?"No verified rivalry predictions yet.":"Log in to track your rivalry predictions.",!signedIn));
@@ -191,6 +193,15 @@
   note.textContent="Trophy achievements represent picking the straight-up winner of a rivalry game (even when your league plays Spread). They are not ownership of the physical rivalry trophy. Every named rivalry remains available in this catalog, even if it is not scheduled this season. Only verified final scores and your signed-in league picks count. Awards remain collected across seasons. The original rotating 3D rivalry sculptures can be explored by touch or mouse.";
   root.append(note);
  }
+ function reconcile(){
+  const byKey=new Map();
+  for(const item of [...permanent,...derived]){
+   if(!byId.has(item.trophyId)||!Number.isInteger(item.year))continue;
+   const key=[item.trophyId,item.year,item.gameId,item.leagueId||leagueId||""].join("|");
+   if(!byKey.has(key))byKey.set(key,item);
+  }
+  records=[...byKey.values()].sort((a,b)=>b.year-a.year);
+ }
  function sync(payload={}){
   verified=Array.isArray(payload.games)?payload.games:[];
   myPicks=payload.picks&&typeof payload.picks==="object"?payload.picks:{};
@@ -198,7 +209,13 @@
   signedIn=Boolean(payload.authenticated);
   leagueId=signedIn&&payload.leagueId?String(payload.leagueId):null;
   leagueName=leagueId?String(payload.leagueName||"Your league"):"";
-  records=deriveResults(verified,myPicks,schedule,signedIn,leagueId);
+  const nextUser=payload.userId||null;
+  if(!signedIn || (historyUser&&nextUser!==historyUser)){
+    permanent=[];
+  }
+  historyUser=signedIn?nextUser:null;
+  derived=deriveResults(verified,myPicks,schedule,signedIn,leagueId);
+  reconcile();
   render();
  }
  window.SDSTrophyCase=Object.freeze({
@@ -206,8 +223,15 @@
   show(next="all"){render(next);},
   setResults(verifiedResults){
    if(!Array.isArray(verifiedResults))throw new Error("Expected an array of results.");
-   records=verifiedResults.filter(r=>byId.has(r?.trophyId)&&Number.isInteger(r.year)&&typeof r.correct==="boolean");
-   render();
+   permanent=verifiedResults.filter(r=>byId.has(r?.trophyId)&&Number.isInteger(r.year)&&typeof r.correct==="boolean");
+   reconcile();render();
+  },
+  setPermanentResults(rows){
+   if(!Array.isArray(rows))throw new Error("Expected a saved trophy history array.");
+   permanent=rows.filter(r=>byId.has(r?.trophy_id)&&Number.isInteger(Number(r.season))&&typeof r.correct==="boolean")
+    .map(r=>({trophyId:r.trophy_id,year:Number(r.season),correct:r.correct,
+      gameId:r.game_id,pick:r.pick_code,winner:r.winner_code,leagueId:r.league_id}));
+   reconcile();render();
   },
   sync,deriveResults,getResults:()=>records.map(r=>({...r})),trophies:TROPHIES
  });
