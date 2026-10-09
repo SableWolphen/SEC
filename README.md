@@ -2,7 +2,7 @@
 
 An **unofficial fan-made SEC football pick’em website** in [SableWolphen/SEC](https://github.com/SableWolphen/SEC).
 
-**Website:** https://sablewolphen.github.io/SEC/ (deploys from `main` with GitHub Actions when GitHub Pages is enabled).
+**Website:** https://sablewolphen.github.io/SEC/ (publishes automatically from `main` after GitHub Pages is configured to deploy from the root branch).
 
 ## Game features
 
@@ -19,7 +19,7 @@ An **unofficial fan-made SEC football pick’em website** in [SableWolphen/SEC](
 
 The GitHub Pages site and the online multiplayer service are **two different components**.
 
-The **website files and GitHub Pages workflow are committed**. The online multiplayer code and SQL have also been committed, but **the shared database is not connected by default**. Do not mistake the local-preview leaderboard for a synchronized live league.
+The **website files are committed**. GitHub Pages must be enabled once under repository Settings; after that, GitHub's native branch publishing updates the site on each push. The online multiplayer code and SQL have also been committed, but **the shared database is not connected by default**. Do not mistake the local-preview leaderboard for a synchronized live league.
 
 ### Finish multiplayer setup (site owner, one-time)
 
@@ -28,7 +28,7 @@ The **website files and GitHub Pages workflow are committed**. The online multip
 3. In **Project Settings → API Keys**, get its **publishable key**, and in the project settings copy its Project URL (the `https://...supabase.co` address).
 4. Edit [config.js](config.js) on `main` with the Project URL and **publishable key only**. **Never paste a service role/secret key, database password or admin key into GitHub, the browser, or client JS**. The publishable key is intentionally public.
 5. In **Supabase Authentication → URL Configuration**, set Site URL to `https://sablewolphen.github.io/SEC/` and include `https://sablewolphen.github.io/SEC/**` in Redirect URLs. Enable Email auth and test delivery of the email sign-in links. Email sending on default Supabase SMTP may be rate-limited; connect an SMTP provider for a larger audience.
-6. In GitHub repository **Settings → Pages**, set **Build and deployment → GitHub Actions** if not already enabled. The [deployment workflow](.github/workflows/deploy-pages.yml) publishes automatically after pushes to `main`.
+6. In GitHub repository **Settings → Pages → Build and deployment**, choose **Deploy from a branch**. Set **Branch: `main`** and **Folder: `/(root)`**, then Save. GitHub Pages republishes automatically after pushes to `main` without a custom deploy workflow.
 7. Visit https://sablewolphen.github.io/SEC/#league, sign in and create a league. Copy your league invite link. Open it in another browser signed into a different email account to test the shared standings.
 
 The setup SQL grants only the necessary public API permissions and applies **row-level security**. Members can access leagues they belong to, save only their own picks, and cannot edit past-kickoff picks. Results can only be updated by the trusted database administrator, not players.
@@ -58,7 +58,7 @@ Games after the regular season (conference championship, bowls, playoff games) a
 - **Data API permission error:** run `supabase/setup.sql` in the correct dedicated project and confirm the public schema is exposed in Data API settings.
 - **Picks refused:** kickoff has passed according to the database or the user isn't authenticated. Confirm the latest official game time.
 - **Scores show zero:** results have not yet been recorded by the administrator.
-- **Pages missing/404:** inspect the `Deploy Saturdays Down South to GitHub Pages` workflow under GitHub Actions and the Pages source setting.
+- **Pages missing/404:** GitHub Pages is not yet enabled. Open repository **Settings → Pages**, select **Deploy from a branch → `main` → `/(root)`**, and Save. The old Actions-based deployment failed because it was not authorized to create a Pages site; it was removed to stop repeated failure notifications.
 
 ## License and affiliation
 
