@@ -105,7 +105,7 @@
        card('League scoreboard',
         '<p>Scores update as confirmed results are posted. Everyone in this league shares these standings.</p>'+
         (standingsError?'<div class="help-note" role="alert">Scoreboard could not load: '+safe(standingsError)+'. Try Refresh standings.</div>':'')+
-        '<div class="chip-line">'+button('Share invite link','copy-invite','primary-btn')+' '+button('Refresh standings','refresh')+'</div>'+
+        '<div class="chip-line">'+button('Make my picks','go-picks','primary-btn')+' '+button('Share invite link','copy-invite')+' '+button('Refresh standings','refresh')+'</div>'+
         '<div style="margin:14px 0"><label for="league-week" class="input-label">Week</label><select class="field" id="league-week">'+app.weeks.map(function(x){return '<option value="'+x.num+'" '+(x.num===w.num?'selected':'')+'>Week '+x.num+'</option>';}).join('')+'</select></div>'+
         '<div class="leaderboard"><div class="standing-row head" style="grid-template-columns:26px minmax(0,1fr) 48px 52px 58px"><span>#</span><span>PLAYER</span><span>PICKS</span><span>WEEK</span><span>SEASON</span></div>'+
         (standings.length?standings.map(function(row,i){return '<div class="standing-row" style="grid-template-columns:26px minmax(0,1fr) 48px 52px 58px"><span class="rank">'+(i+1)+'</span><span class="name"><span class="sec-avatar" aria-hidden="true">'+safe((row.display_name||'P').slice(0,1).toUpperCase())+'</span>'+safe(row.display_name)+(row.user_id===user.id?' ★':'')+'</span><span class="muted">'+safe(row.picked)+'</span><span class="score">'+safe(row.week_points)+'</span><span>'+safe(row.season_points)+'</span></div>';}).join(''):'<p class="helper" style="padding:15px">No standings available yet.</p>')+
@@ -228,6 +228,7 @@
       status("");renderLeague();return;
     }
     if(action==="go-league"){app.setView("league");return;}
+    if(action==="go-picks"){app.setView("picks");return;}
     if(action==="copy-invite"){return copyInvite();}
     if(action==="refresh"){await refresh();return;}
     if(action==="logout"){await client.auth.signOut();location.reload();return;}
@@ -371,7 +372,10 @@
       }
     });
     void refresh();
-    setInterval(function(){if(user && document.visibilityState==="visible")void refresh();},45000);
+    setInterval(function(){
+      var editing=Boolean(document.activeElement?.matches?.("input,textarea,select"));
+      if(user&&document.visibilityState==="visible"&&!editing&&!working)void refresh();
+    },45000);
   }
   if(document.getElementById("picks-view")){
     var banner=document.createElement("div");
