@@ -84,7 +84,7 @@ const run=async()=>{
  await manager.onView();
  const list=manager.getLeagues();
  assert.equal(list.length,4,"2 clubs plus 2 unrelated standalone leagues");
- console.log("League test render diagnostics",JSON.stringify({list:list.map(x=>x.name),selected:manager.getSelected()?.name,markup:nodes["fan-league-choice"].innerHTML.slice(0,230)}));
+
  assert.match(nodes["fan-league-choice"].innerHTML,/Each league chooses its own sports/);
  assert.match(nodes["fan-league-choice"].innerHTML,/SEC Crew/);
  assert.match(nodes["fan-league-choice"].innerHTML,/Diamond Fans/);
@@ -114,6 +114,7 @@ const run=async()=>{
  assert.equal(manager.getClub().id,"club-C");
  assert.deepEqual(clubs.at(-1).enabled_sports,["football","basketball","baseball"]);
  await manager.choose("football:fb-original");
+ assert.equal(nodes["league-content"].hidden,false,"standalone football scoreboard remains available");
  assert.match(nodes["fan-single-league"].innerHTML,/Add sports to this league/);
  chooseSet("upgrade",["football","baseball"]);
  await click("upgrade");
@@ -126,8 +127,9 @@ const run=async()=>{
  assert.match(nodes["fan-single-league"].innerHTML,/Manage basketball league/);
  assert.equal(nodes["fan-club-hub"].hidden,true);
  assert.equal(nodes["league-content"].hidden,true);
- await manager.choose("football:fb-original");
- assert.equal(nodes["league-content"].hidden,false,"existing football scoreboard remains available");
+ await manager.choose("club:club-D");
+ assert.equal(manager.getClub().football_league,"fb-original","upgraded football league is still the original competition");
+ assert.match(nodes["fan-club-hub"].innerHTML,/🏈 Football picks/,"original football picks are accessible in upgraded league");
  current=null;await manager.onView();
  assert.match(nodes["fan-league-choice"].innerHTML,/Log in below/);
  assert.equal(nodes["league-content"].hidden,false,"guest still has shared login");
