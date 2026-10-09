@@ -20,7 +20,7 @@
  }
  function entry(team,sport){
   const item=snapshot?.teams?.[team]?.[sport];
-  if(!item||item.source!=="ESPN"||!cleanRecord(item.overall)||
+  if(!item||!["ESPN","SEC"].includes(item.source)||!cleanRecord(item.overall)||
     !Number.isInteger(item.season)||item.season!==snapshot?.seasons?.[sport])return null;
   return item;
  }
@@ -36,7 +36,9 @@
   const overall=item?item.overall:"—";
   const conf=item&&cleanRecord(item.conference)?item.conference:null;
   const label=item?(item.scope==="Regular season"?"Regular-season record":"Overall record"):"Awaiting ESPN record";
-  const url=item?.source_url&&/^https:\/\/www\.espn\.com\/[a-z/-]+\/team\/_\/id\/\d+$/.test(item.source_url)?
+  const url=item?.source==="SEC"&&item?.source_url==="https://www.secsports.com/standings/baseball"?
+   item.source_url:item?.source==="ESPN"&&item?.source_url&&
+   /^https:\/\/www\.espn\.com\/[a-z/-]+\/team\/_\/id\/\d+$/.test(item.source_url)?
    item.source_url:null;
   return '<article class="team-record-sport"><div class="record-sport-head"><span aria-hidden="true">'+meta.emoji+'</span>'+
    '<strong>'+meta.label+'</strong><span class="record-season">'+escape(seasonLabel(sport,season))+'</span></div>'+
@@ -44,7 +46,7 @@
    '<div class="record-sport-desc">'+label+'</div>'+
    '<div class="record-conference">'+(conf?"SEC: "+escape(conf):"Conference record: —")+'</div>'+
    (url?'<a class="record-source" href="'+escape(url)+'" target="_blank" rel="noopener noreferrer" '+
-   'aria-label="See '+meta.label+' record on ESPN">ESPN records ↗</a>':"")+'</article>';
+   'aria-label="See '+meta.label+' record at original publisher">'+(item.source==="SEC"?"SEC standings ↗":"ESPN records ↗")+'</a>':"")+'</article>';
  }
  function spotlight(id,teams,logo){
   if(!id||!teams[id]){
@@ -62,7 +64,7 @@
    '<button type="button" class="record-refresh-btn" data-record-refresh '+(loading?'disabled':'')+'>'+
    (loading?"Updating…":"↻ Update records")+'</button></div>'+
    '<div class="team-record-grid">'+ORDER.map(s=>sportCard(id,s)).join("")+'</div>'+
-   '<div class="record-footnote" role="status">'+escape(updated())+' · ESPN results (not live play-by-play)'+
+   '<div class="record-footnote" role="status">'+escape(updated())+' · ESPN & official SEC records (not live play-by-play)'+
    (error?' · '+escape(error):"")+'</div></section>';
  }
  function compact(id){

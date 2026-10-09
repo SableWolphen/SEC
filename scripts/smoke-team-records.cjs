@@ -37,6 +37,11 @@ const go=async()=>{
  assert.equal(app.entry("TENN","football").overall,"5-1");
  assert.equal(app.entry("TENN","basketball").overall,"22-9");
  assert.equal(app.entry("TENN","baseball"),null,"invalid record cannot appear as a result");
+ example.teams.TENN.baseball={overall:"38-22",conference:"15-15",season:2026,
+   scope:"Final 2026 season",source:"SEC",source_url:"https://www.secsports.com/standings/baseball"};
+ await app.refresh(true);
+ assert.equal(app.entry("TENN","baseball").overall,"38-22","official SEC records trusted alongside ESPN");
+ assert.match(app.spotlight("TENN",{TENN:{name:"Tennessee",nick:"Volunteers"}},id=>id),/SEC standings/);
  assert.equal(app.entry("ALA","football"),null,"old-season record must not be presented as current");
  assert.equal(app.entry("ALA","basketball"),null,"non-ESPN source never presented as verified");
  const name={TENN:{name:"Tennessee",nick:"Volunteers"}};
@@ -48,14 +53,14 @@ const go=async()=>{
  assert.match(view,/22-9/);
  assert.match(view,/SEC: 2-1/);
  assert.match(view,/Regular-season record/,"historical API does not include postseason games");
- assert.match(view,/Conference record: —/,"not all sports have a published SEC split");
+ assert.match(view,/SEC: 15-15/,"official baseball conference result appears");
  assert.doesNotMatch(view,/18-0/);
  const empty=app.spotlight(null,name,()=>"<span/>");
  assert.match(empty,/Tap ★/,"favorite can be selected from existing school cards");
  const compact=app.compact("TENN");
  assert.match(compact,/5-1/);
  assert.match(compact,/22-9/);
- assert.match(compact,/—/,"unavailable sport record stays unknown");
+ assert.match(compact,/38-22/,"SEC official baseball record appears in team preview");
  const html=fs.readFileSync("index.html","utf8");
  assert.match(html,/window\.SEC_TEAM_RECORDS\?\.refresh/,"Teams entry triggers feed load");
  assert.match(html,/data-fav=/,"favorite selection remains");
