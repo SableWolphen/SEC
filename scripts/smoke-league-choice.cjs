@@ -84,6 +84,7 @@ const run=async()=>{
  await manager.onView();
  const list=manager.getLeagues();
  assert.equal(list.length,4,"2 clubs plus 2 unrelated standalone leagues");
+ console.log("League test render diagnostics",JSON.stringify({list:list.map(x=>x.name),selected:manager.getSelected()?.name,markup:nodes["fan-league-choice"].innerHTML.slice(0,230)}));
  assert.match(nodes["fan-league-choice"].innerHTML,/Each league chooses its own sports/);
  assert.match(nodes["fan-league-choice"].innerHTML,/SEC Crew/);
  assert.match(nodes["fan-league-choice"].innerHTML,/Diamond Fans/);
