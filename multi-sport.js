@@ -13,6 +13,8 @@ const MODES={straight:"Straight Picks",confidence:"Confidence",spread:"Against t
 let feed={sports:{}},feedUpdated=null,feedIssue="",lastFeed=0,baseballSeries=null,seriesLoading=false;
 const cache={basketball:{},baseball:{}};
 const loading={basketball:false,baseball:false};
+const pendingReload={basketball:false,baseball:false};
+let lastAccountId=undefined;
 const selectedWeeks={basketball:0,baseball:0};
 const notices={basketball:"",baseball:""};
 const updating={basketball:0,baseball:0};
@@ -20,6 +22,8 @@ let refreshTimer=0;
 const esc=v=>String(v==null?"":v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const client=()=>window.secOnline?.getClient?.()||null;
 const user=()=>window.secOnline?.getUser?.()||null;
+const authPending=()=>Boolean(window.secOnline?.configured)&&window.secOnline?.isAuthReady?.()===false;
+const whenAuthReady=()=>window.secOnline?.whenAuthReady?.()||Promise.resolve();
 const unwrap=result=>{if(result.error)throw result.error;return result.data;};
 const currentSeason=(sport,now=new Date())=>{
  const yr=now.getUTCFullYear();
@@ -204,9 +208,12 @@ function renderLeagues(s,signed,league){
   esc(l.name)+' · '+esc(MODES[l.mode])+'</option>').join("");
  const notice=notices[s]?banner(notices[s],"sport-notice"):"";
  if(!signed){
-  return '<div class="sport-league-shell"><div class="sport-league-top"><div><div class="card-kicker">ONLINE PICK’EM</div>'+
-   '<h3>Compete with your crew.</h3><p>Use your existing Saturdays Down South account to join a private '+esc(SPORT[s].short)+' league.</p></div>'+
-   '<button type="button" data-nav="league" class="primary-btn">Sign in / Create account</button></div></div>'+notice;
+  if(authPending())return '<section class="sport-league-shell" aria-live="polite"><div class="sport-league-top">'+
+   '<div><div class="card-kicker">YOUR PLAYER ACCOUNT</div><h3>Restoring your account…</h3>'+
+   '<p>Checking your existing SEC Pick’em login. No new account is needed when you switch sports.</p></div></div></section>';
+  return '<section class="sport-league-shell"><div class="sport-league-top"><div><div class="card-kicker">YOUR PLAYER ACCOUNT</div>'+
+   '<h3>Use your existing account.</h3><p>One login works for football, basketball and baseball. Sign in to continue; do not create another account.</p></div>'+
+   '<button type="button" data-nav="league" class="primary-btn">Log in to your account</button></div></section>'+notice;
  }
  const dropdown=available.length?'<div class="sport-active-choice"><label class="input-label" for="sport-league-'+s+'">Playing in</label>'+
   '<select class="field" id="sport-league-'+s+'" data-change-sport="'+s+'">'+options+'</select></div>':"";
@@ -226,8 +233,10 @@ function renderLeagues(s,signed,league){
   '<button class="ghost-btn" type="button" data-sport-action="refresh" data-sport="'+s+'">Refresh standings</button></div></div>':"";
  const standings=league?renderStandings(s,league):'<p class="helper">Create or join a league to start saving your picks online.</p>';
  return '<section class="sport-league-shell" aria-label="Online sports leagues">'+
+  '<div class="sport-account-banner" role="status"><span aria-hidden="true">✓</span> Signed in as <strong>'+esc(user()?.email||"your SEC account")+'</strong>'+
+  ' <span>· Same account for all three sports</span></div>'+
   '<div class="sport-league-top"><div><div class="card-kicker">YOUR '+esc(SPORT[s].short.toUpperCase())+' LEAGUE</div>'+
-  '<h3>Make your picks count.</h3><p>Separate leagues for separate sports, all under your account.</p></div>'+
+  '<h3>Make your picks count.</h3><p>One player account across all sports. Leagues and scoreboards are organized by sport.</p></div>'+
   (league?'<span class="sport-league-code">Invite: '+esc(league.invite_code)+'</span>':'')+'</div>'+
   dropdown+leagueMeta+standings+tools+'</section>'+notice;
 }
@@ -303,10 +312,12 @@ function renderTiebreak(s,w,league,saved){
 }
 function inform(s,msg){notices[s]=msg;renderSport(s);}
 async function load(s,force=false){
- if(!SPORT[s]||loading[s])return;
+ if(!SPORT[s])return;
+ if(loading[s]){if(force)pendingReload[s]=true;return;}
  loading[s]=true;renderSport(s);
  const seq=++updating[s];
  try{
+  await whenAuthReady();
   await fetchFeed(force);
   const c=client(),u=user(),yr=year(s);
   if(!c||!u){
@@ -365,7 +376,10 @@ async function load(s,force=false){
   cache[s]={games,leagues,picks,standings,tiebreakers,pairings,active,lastServerSync:oldSync,error:""};
   if(active)localStorage.setItem("ss-sec-sport-league-"+s+"-"+yr,active);
  }catch(e){cache[s].error=e.message||"This sport is temporarily unavailable";console.warn("SEC sports:",e);}
- finally{loading[s]=false;renderSport(s);renderHub();}
+ finally{
+  loading[s]=false;renderSport(s);renderHub();
+  if(pendingReload[s]){pendingReload[s]=false;void load(s,true);}
+ }
 }
 async function action(btn){
  const s=btn.dataset.sport;const what=btn.dataset.sportAction;
@@ -435,6 +449,15 @@ document.addEventListener("change",ev=>{
  localStorage.setItem("ss-sec-sport-league-"+s+"-"+year(s),ev.target.value);
  void load(s,true);
 });
+function authChanged(){
+ const next=user()?.id||null;
+ if(lastAccountId===next)return;
+ lastAccountId=next;
+ // Keep all cached picks scoped to their player; never show the previous user's leagues.
+ for(const sport of Object.keys(SPORT))cache[sport]={};
+ const active=window.SEC_BRIDGE?.view?.();
+ if(SPORT[active]){renderSport(active);void load(active,true);}
+}
 function mount(route){
  renderHub();
  if(!SPORT[route]){void fetchFeed();return;}
@@ -446,6 +469,6 @@ setInterval(()=>{
  const active=window.SEC_BRIDGE?.view?.();
  if(SPORT[active]&&document.visibilityState==="visible"&&!document.activeElement?.matches?.("input,textarea,select"))void load(active,true);
 },5*60000);
-window.SEC_SPORTS=Object.freeze({mount,recommended,year,groups,renderHub,load,getState:s=>cache[s]});
+window.SEC_SPORTS=Object.freeze({mount,recommended,year,groups,renderHub,load,authChanged,getState:s=>cache[s]});
 if(["sports","basketball","baseball"].includes(window.SEC_BRIDGE?.view?.()))mount(window.SEC_BRIDGE.view());
 })();
