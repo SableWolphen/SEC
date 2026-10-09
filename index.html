@@ -96,6 +96,27 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 .sec-championship-action:disabled{opacity:.5}
 @media(max-width:490px){.sec-chat-card,.sec-championship-card{padding:13px}.sec-chat-heading h3{font-size:19px}.sec-chat-controls button{width:100%}.sec-social-root{margin-bottom:26px}}
 
+
+/* The tiebreaker is part of the weekly Pick'em slip. */
+.weekly-tiebreaker-slot{margin:0 0 18px}
+.sec-picks-tiebreaker{border:1px solid #47645b;background:linear-gradient(130deg,#133b36,#10252e);padding:21px;border-radius:18px;box-shadow:0 6px 24px #0002}
+.sec-picks-tiebreaker .sec-tie-topline{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#d7fa65;font-size:10px;font-weight:900;letter-spacing:1.4px;margin-bottom:11px}
+.sec-picks-tiebreaker .sec-tie-topline>span:last-child{color:#a9c3c7;letter-spacing:0;font-weight:700}
+.sec-picks-tiebreaker h3{color:#f4faf7;font-size:clamp(20px,2.8vw,25px);font-weight:900;margin:0 0 10px;letter-spacing:-.6px}
+.sec-picks-tiebreaker .sec-tie-description{color:#b4cacc;font-size:13px;line-height:1.6;margin:0 0 13px}
+.sec-picks-tiebreaker .sec-tie-description b{color:#ecf9ed}
+.sec-picks-tiebreaker .sec-tie-game{background:#0d2329;border:1px solid #355d5b;padding:12px 14px;border-radius:12px;display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:15px}
+.sec-picks-tiebreaker .sec-tie-game strong{color:#d7fa65;font-size:14px}
+.sec-picks-tiebreaker .sec-tie-game small{color:#b5c9d1;font-size:11px}
+.sec-picks-tiebreaker .sec-tie-entry label{display:block;color:#d4e6e2;font-weight:800;font-size:12px;margin-bottom:8px}
+.sec-picks-tiebreaker .sec-tie-fields{display:flex;gap:10px;align-items:stretch}
+.sec-picks-tiebreaker .sec-tie-fields input{min-width:0;flex:1;max-width:250px;padding:13px 15px;font-size:17px;font-weight:750}
+.sec-picks-tiebreaker .sec-tie-fields button{flex:1;min-height:48px;padding:10px 14px;font-size:13px;border-radius:11px}
+.sec-picks-tiebreaker .sec-tie-fields :disabled{opacity:.53;cursor:not-allowed}
+.sec-picks-tiebreaker .sec-tie-feedback{color:#d7fa65;font-weight:800;font-size:11px;margin:11px 0 0}
+.sec-picks-tiebreaker [data-nav="league"]{margin-top:11px;min-height:42px}
+@media(max-width:540px){.sec-picks-tiebreaker{padding:15px}.sec-picks-tiebreaker .sec-tie-fields input{max-width:none}.sec-picks-tiebreaker .sec-tie-fields button{flex:1}.sec-picks-tiebreaker .sec-tie-game{align-items:flex-start;flex-direction:column;gap:4px}}
+@media(max-width:360px){.sec-picks-tiebreaker .sec-tie-fields{flex-direction:column}.sec-picks-tiebreaker .sec-tie-fields input,.sec-picks-tiebreaker .sec-tie-fields button{width:100%}}
 </style>
   <title>Saturdays Down South · SEC Pick'em</title>
 </head>
@@ -127,6 +148,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
           <div id="hero-slot"></div>
           <div class="section-title-row"><div><div class="overline">THE SLATE</div><h2>Game day matchups <span id="matchup-count"></span></h2></div><div class="section-caption" id="slate-mode-caption">Straight Picks · 1 point per correct pick</div></div>
           <div id="slate-pick-tools" class="slate-pick-tools" role="group" aria-label="Filter matchups"></div>
+          <div id="weekly-tiebreaker-slot" class="weekly-tiebreaker-slot" aria-label="Weekly tiebreaker prediction"></div>
            <div id="games-list" class="games-list"></div>
         </div>
         <aside class="side-column" aria-label="Your weekly summary">
@@ -383,6 +405,8 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
      '<button type="button" class="slate-filter '+(slateFilter===key?'active':'')+'" data-slate-filter="'+key+
      '" aria-pressed="'+(slateFilter===key)+'">'+esc(label)+' <small>'+count+'</small></button>').join('')+
    '<button type="button" class="slate-next" data-slate-next '+(!openUnpicked.length?'disabled':'')+'>Jump to next pick ↓</button></div>';
+  const tieSlot=document.getElementById("weekly-tiebreaker-slot");
+  if(tieSlot)tieSlot.innerHTML=window.SEC_FEATURES?.tiebreakerCard?.()||"";
   const filtered=w.games.filter(g=>
     slateFilter==='picked' ? Boolean(state.picks[g.id]) :
     slateFilter==='unpicked' ? openUnpicked.includes(g) : true
