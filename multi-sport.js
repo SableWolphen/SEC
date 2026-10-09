@@ -170,7 +170,7 @@ function renderSport(s){
  const header='<div class="sport-heading"><div class="sport-heading-icon">'+conf.emoji+'</div>'+
   '<div><div class="card-kicker">SEC '+conf.name.toUpperCase()+' · '+year(s)+'</div>'+
   '<h2>'+esc(conf.tagline)+'</h2><p>Pick each winner. Score points together. Win your league.</p></div>'+
-  '<button type="button" class="sport-change-btn" data-go-sport="sports">All sports ↗</button></div>';
+  '</div>';
  const note=feed.sports?.[s]?.warning&&allGames(s).length===0?
    banner(feed.sports[s].warning,"sport-warning"):"";
  const status=feedIssue?banner(feedIssue,"sport-warning"):"";

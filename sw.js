@@ -1,6 +1,6 @@
 /* Network-first: fresh schedules and online features should not be frozen by old caches. */
-const CACHE="sec-pickem-v20";
-const CORE=["./","./index.html","./config.js","./rivalry-catalog.js?v=20261009-named-35","./trophy-case.js?v=20261009-volunteer-state-v1","./league-features.js?v=20261009-chat-scoreboard-v1","./league-social.js?v=20261009-chat-scoreboard-v1","./multiplayer.js?v=20261009-chat-scoreboard-v1","./sec-news.js?v=20261009-news-v1","./news.json","./matchup-stats.js","./stats.json","./multi-sport.js?v=20261009-multisport-v2","./multi-sport.css?v=20261009-multisport-v2","./sports-schedules.json","./baseball-2027-series.json","./manifest.webmanifest","./icon.svg"];
+const CACHE="sec-pickem-v21";
+const CORE=["./","./index.html","./config.js","./rivalry-catalog.js?v=20261009-named-35","./trophy-case.js?v=20261009-volunteer-state-v1","./league-features.js?v=20261009-chat-scoreboard-v1","./league-social.js?v=20261009-chat-scoreboard-v1","./multiplayer.js?v=20261009-chat-scoreboard-v1","./sec-news.js?v=20261009-news-v1","./news.json","./matchup-stats.js","./stats.json","./multi-sport.js?v=20261009-sportnav-v3","./multi-sport.css?v=20261009-sportnav-v3","./sports-schedules.json","./baseball-2027-series.json","./manifest.webmanifest","./icon.svg"];
 self.addEventListener("install",event=>{
  event.waitUntil((async()=>{
   const cache=await caches.open(CACHE);

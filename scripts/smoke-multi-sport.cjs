@@ -73,7 +73,7 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
  series.series.forEach(item=>{
   counts.set(item.home,(counts.get(item.home)||0)+1);
   counts.set(item.away,(counts.get(item.away)||0)+1);
-  assert.match(item.status,/pending/i,"individual baseball game time unconfirmed");
+  assert.match(item.status,/pending|TBD/i,"individual baseball game time unconfirmed");
  });
  assert.equal(counts.size,16,"all SEC baseball programs have published series");
  assert.ok([...counts.values()].every(n=>n===10),"each SEC school has 10 conference series");
@@ -107,8 +107,15 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
  for(const id of ["sports-view","picks-view","basketball-view","baseball-view"])
   assert.ok(html.includes('id="'+id+'"'),"Sport route exists: "+id);
  assert.ok(html.includes("SEC_SPORTS?.mount"),"route calls multi-sport manager");
- assert.ok(html.includes(":'sports'"),"first website visit defaults to three-sport hub");
- assert.ok(html.includes('data-nav="sports"'),"six-tab mobile navigation includes sport selector");
+ assert.ok(html.includes(":seasonLanding());"),"first website visit opens the most recently started season");
+ assert.ok(html.includes("if(v==='sports')v=seasonLanding()"),"old sport-hub links redirect to current season");
+ assert.ok(html.includes('id="global-sport-switch"'),"persistent sport switcher is above the main content");
+ assert.ok(html.indexOf('id="global-sport-switch"')<html.indexOf('<main id="main-content">'),"sport switcher stays at top");
+ for(const sport of ["football","baseball","basketball"])
+  assert.ok(html.includes('data-sport-tab="'+sport+'"'),"accessible sport icon: "+sport);
+ assert.ok(html.includes('data-nav="current-sport"'),"mobile and desktop Picks tabs return to the selected sport");
+ assert.ok(!html.includes('data-nav="sports"'),"no mandatory choose-sport navigation");
+ assert.ok(html.includes("lastSportView"),"returning from other pages preserves chosen sport");
  const sql=fs.readFileSync("supabase/migrations/20261009_basketball_baseball.sql","utf8");
  for(const name of ["sec_sport_games","sec_sport_leagues","sec_sport_picks","sec_sport_save_pick","sec_sport_standings","sec_sport_tiebreakers"])
   assert.ok(sql.includes(name),"secure sport backend includes "+name);
