@@ -99,13 +99,13 @@ async function inviteJoin(){
  }catch(e){problem="Invite error: "+e.message;renderClub();}
 }
 async function loadGames(force=false){
- if(!client()||!user()||gamesLoading||(!force&&Date.now()-gamesAt<120000))return;
+ if(!client()||gamesLoading||(!force&&Date.now()-gamesAt<120000))return;
  gamesLoading=true;
  try{
   const gs=val(await client().from("sec_games").select("id,week,away_code,home_code,kickoff_at,game_status,away_score,home_score,winner,score_updated_at"))||[];
   gameRows=Object.fromEntries(gs.map(g=>[g.id,g]));
   const league=window.secOnline?.getLeague?.();
-  if(league){
+  if(league&&user()){
    const p=val(await client().from("sec_league_picks").select("game_id,pick_code").eq("league_id",league.id).eq("user_id",user().id))||[];
    myPicks=p;
    const reveal=val(await client().rpc("sec_revealed_league_picks",{p_league:league.id,p_week:app()?.week?.()?.num||1}))||[];
@@ -250,7 +250,7 @@ async function onView(v){
  if(v==="league"){renderClub();extras();await window.secOnline?.whenAuthReady?.();await inviteJoin();await loadClubs();extras();window.SEC_BRACKETS?.mount?.();}
  if(v==="picks"){enhanceRecap();extras();void loadGames().then(()=>{enhanceRecap();remind();});}
  if(v==="teams"){enhanceTeam();void loadTeamGames();}
- if(v==="trophies")honors();
+ if(v==="trophies"){honors();void loadGames().then(honors);}
  if(v==="settings")alertSettings();
 }
 document.addEventListener("click",e=>{
