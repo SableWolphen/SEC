@@ -75,7 +75,7 @@ const client={
      state.leagues.push({id:'test-league-1',name:args.p_name,mode:args.p_mode,invite_code:'123456789A',owner_id:user.id});
      return {data:[{league_id:'test-league-1',code:'123456789A'}]};
    }
-   if(name==='sec_league_standings_v2')return {data:[{user_id:user.id,display_name:'Sally SEC',picked:0,week_points:0,season_points:0,correct_picks:0}]};
+   if(name==='sec_league_standings_v3')return {data:[{user_id:user.id,display_name:'Sally SEC',picked:0,week_points:0,season_points:0,correct_picks:0}]};
    if(name==='sec_revealed_league_picks')return {data:[]};
    if(name==='sec_save_league_pick'){
      const row={league_id:args.p_league,user_id:user.id,game_id:args.p_game,pick_code:args.p_pick,confidence_points:args.p_confidence};
