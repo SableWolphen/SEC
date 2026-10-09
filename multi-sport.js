@@ -292,6 +292,7 @@ function gameCard(s,g,league,picks){
     '<option value="">Choose</option>'+options+'</select></div>':'')+
   (mode==="spread"&&g.spread_home!==null&&g.spread_home!==undefined?
    '<p class="sport-odds">Published home spread: '+Number(g.spread_home)+' · pick the team to cover</p>':'')+
+  (window.SEC_FAN?.sportCenter?.(s,g)||"")+
   '<p class="sport-game-foot">'+esc(verdict||availability)+'</p>'+
   '<small class="sport-game-provider">Source: '+esc(g.source||"ESPN")+'</small></article>';
 }
@@ -459,6 +460,12 @@ function authChanged(){
  const active=window.SEC_BRIDGE?.view?.();
  if(SPORT[active]){renderSport(active);void load(active,true);}
 }
+function selectLeague(s,id){
+ if(!SPORT[s]||typeof id!=="string"||!id)return;
+ cache[s].active=id;
+ localStorage.setItem("ss-sec-sport-league-"+s+"-"+year(s),id);
+ void load(s,true);
+}
 function mount(route){
  renderHub();
  if(!SPORT[route]){void fetchFeed();return;}
@@ -470,6 +477,6 @@ setInterval(()=>{
  const active=window.SEC_BRIDGE?.view?.();
  if(SPORT[active]&&document.visibilityState==="visible"&&!document.activeElement?.matches?.("input,textarea,select"))void load(active,true);
 },5*60000);
-window.SEC_SPORTS=Object.freeze({mount,recommended,year,groups,renderHub,load,authChanged,getState:s=>cache[s]});
+window.SEC_SPORTS=Object.freeze({mount,recommended,year,groups,renderHub,load,authChanged,selectLeague,getState:s=>cache[s]});
 if(["sports","basketball","baseball"].includes(window.SEC_BRIDGE?.view?.()))mount(window.SEC_BRIDGE.view());
 })();
