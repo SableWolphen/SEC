@@ -1,0 +1,19 @@
+{
+  "updated_at": null,
+  "sports": {
+    "basketball": {
+      "season": 2027,
+      "games": [],
+      "source": "ESPN",
+      "source_windows": 0,
+      "warning": "Waiting for first verified feed refresh"
+    },
+    "baseball": {
+      "season": 2027,
+      "games": [],
+      "source": "ESPN",
+      "source_windows": 0,
+      "warning": "Waiting for verified upcoming schedule"
+    }
+  }
+}
