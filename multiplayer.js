@@ -167,6 +167,7 @@
           }catch(profileErr){console.warn("SEC display name sync:",profileErr);}
         }
       }
+      if(profile?.display_name)s.name=profile.display_name;
       leagues=results[1].data||[];
       window.SEC_FEATURES?.updateGames?.(results[3].data||[],app);
       s.picks=Object.fromEntries((results[2].data||[]).filter(function(p){return app.gameById[p.game_id];}).map(function(p){return [p.game_id,p.pick_code];}));
