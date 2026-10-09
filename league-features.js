@@ -304,15 +304,29 @@ async function saveTiebreaker(){
  if(app.view()==="picks")app.renderPicks();
  return tiebreakers[w.num];
 }
+function leagueAchievements(){
+ if(!current||!user)return "";
+ const earned=standings
+  .map(row=>({row,badges:badgeFor(row)}))
+  .filter(item=>Boolean(item.badges));
+ const collection=earned.length?
+  '<div class="sec-honors-achievements-list">'+earned.map(({row,badges})=>
+   '<div class="sec-honors-member"><strong>'+esc(row.display_name||"League player")+
+   (row.user_id===user.id?' ★':'')+'</strong>'+badges+'</div>').join("")+'</div>':
+  '<div class="sec-honors-empty"><strong>Badges are still up for grabs.</strong>'+
+  '<p>Verified final results unlock Perfect Week, 5 Correct Club, streaks and upsets.</p></div>';
+ return '<section class="sec-honors-achievements" aria-label="League achievements">'+
+  '<div class="sec-honors-achievement-heading"><span aria-hidden="true">🏅</span><div><h3>League Achievements</h3>'+
+  '<p>This week’s badges · confirmed results only</p></div></div>'+collection+'</section>';
+}
 function leagueDetails(){
  if(!current)return "";
  const m=cMode(),shareName=esc(m.name);
  const owner=current.owner_id===user?.id;
- const badge=standings.slice(0,5).map(r=>'<div><strong>'+esc(r.display_name)+'</strong>'+badgeFor(r)+'</div>').join("");
+
  return '<section class="sec-league-extras">'+
   '<div class="sec-mode-summary"><div class="card-kicker">GAME MODE</div><h3>'+shareName+'</h3><p>'+esc(m.detail)+'</p></div>'+
   pairings()+
-  '<div class="sec-achievement-box"><b>🏅 League achievements</b><p class="helper">Earn badges from confirmed results, not predictions.</p>'+ (badge||'<p class="helper">Badges appear once games finish.</p>')+'</div>'+
   '<div class="sec-reminder-box"><b>🔔 Pick reminders</b><p class="helper">Opt in for alerts while the app is open. Background push is not yet available.</p>'+
   '<button type="button" class="ghost-btn" data-extra="reminders">'+(localStorage.getItem("ss-sec-reminders")==="yes"?'Disable reminders':'Enable reminders')+'</button></div>'+
   (owner?'<div class="sec-manage"><b>League manager</b><p class="helper">Only the league creator can remove a member.</p>'+
@@ -320,7 +334,7 @@ function leagueDetails(){
    standings.filter(r=>r.user_id!==user.id).map(r=>'<div class="sec-manage-row"><span>'+esc(r.display_name)+'</span><button type="button" class="ghost-btn" data-extra="remove-member" data-user="'+esc(r.user_id)+'">Remove</button></div>').join('')+'</div>':'')+
   '</section>'+(window.SEC_SOCIAL?.render?.()||'');
 }
-function setStandings(rows){standings=rows||[];}
+function setStandings(rows){standings=rows||[];window.SDSTrophyCase?.refreshHonors?.();}
 function remind(){
  if(localStorage.getItem("ss-sec-reminders")!=="yes"||!user||!app)return;
  function send(key,message){
@@ -395,5 +409,5 @@ document.addEventListener("click",event=>{
   else if(app?.view()==="league")app.setView("league");
  }).catch(error=>{app?.toast?.(error.message||"Unable to save.");});
 },true);
-window.SEC_FEATURES={MODES,control,updateGames,reload,extras,save,leagueDetails,setStandings,remind,getMode:mode,isUnavailable,pickResult,summaryPoints,modeDescription,shareSlip,tiebreakerCard,saveTiebreaker};
+window.SEC_FEATURES={MODES,control,updateGames,reload,extras,save,leagueDetails,leagueAchievements,setStandings,remind,getMode:mode,isUnavailable,pickResult,summaryPoints,modeDescription,shareSlip,tiebreakerCard,saveTiebreaker};
 })();
