@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Saturdays Down South — SEC Pick'em",
   "short_name": "SEC Pick'em",
-  "description": "Pick every SEC football game and compete in private leagues.",
+  "description": "Pick SEC football, basketball and baseball winners with friends in unified leagues.",
   "start_url": "./#picks",
   "scope": "./",
   "display": "standalone",
