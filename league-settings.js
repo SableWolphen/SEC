@@ -10,7 +10,7 @@ const ALL=["football","basketball","baseball"];
 const names={football:"🏈 Football",basketball:"🏀 Basketball",baseball:"⚾ Baseball"};
 const validSports=c=>(Array.isArray(c?.enabled_sports)?c.enabled_sports:ALL).filter(s=>ALL.includes(s));
 let clubs=[],singles=[],selection=null,leaderboard=[],lastUser=null,loading=false,lastLoad=0,message="";
-let inflight=null;
+let inflight=null,inflightUser=null;
 const ident=i=>i?.kind+":"+i?.id;
 const key=()=> "sec-selected-league:"+(me()?.id||"guest");
 const cached=()=>{try{return localStorage.getItem(key());}catch(e){return null;}};
@@ -57,7 +57,8 @@ function render(){
  ' active sport'+(item?.sports.length===1?"":"s")+'. Changes here do not affect other leagues.</p>':
  '<p class="fan-format-note">No leagues joined yet. Make your first league below.</p>'):
  '<p class="fan-format-note">One account for all sports. Log in below to manage your leagues.</p>')+
- (message?'<p class="fan-warning" role="status">'+html(message)+'</p>':"")+'</section>';
+ (message?'<p class="fan-warning" role="status">'+html(message)+'</p>':"")+
+ (logged?'<button class="fan-small" type="button" data-league-action="reload">↻ Refresh my leagues</button>':"")+'</section>';
  if(create)create.innerHTML=logged?'<details class="fan-fold fan-new-league" '+(!all.length?'open':'')+
  '><summary>＋ Create a league <span>Choose 1, 2 or 3 sports</span></summary>'+
  '<label class="fan-league-select-label" for="fan-new-name">League name</label>'+
@@ -127,8 +128,12 @@ async function standings(){
  leaderboard=c?(unwrap(await db().rpc("sec_club_standings",{p_club:c.id}))||[]):[];
 }
 function load(force=false){
- if(inflight)return force?inflight.then(()=>load(true)):inflight;
- inflight=loadNow(force).finally(()=>{inflight=null;});
+ if(inflight){
+  if(inflightUser!==me()?.id)return inflight.then(()=>load(true));
+  return force?inflight.then(()=>load(true)):inflight;
+ }
+ inflightUser=me()?.id||null;
+ inflight=loadNow(force).finally(()=>{inflight=null;inflightUser=null;});
  return inflight;
 }
 async function loadNow(force=false){
@@ -150,6 +155,13 @@ async function loadNow(force=false){
   selection=list.some(x=>ident(x)===previous)?previous:
    list.some(x=>ident(x)===remembered)?remembered:
    list.length?ident(list[0]):null;
+  // Restore the sport-specific pick screen to the selected standalone league.
+  const item=selectedItem();
+  if(item?.kind==="football"&&win.secOnline?.getLeague?.()?.id!==item.id)
+   win.secOnline?.useLeague?.(item.id);
+  if(item&&["basketball","baseball"].includes(item.kind)&&
+    win.SEC_SPORTS?.getState?.(item.kind)?.active!==item.id)
+   win.SEC_SPORTS?.selectLeague?.(item.kind,item.id);
   await standings();
   lastLoad=Date.now();
  }catch(e){if(me()?.id===id)message="Could not load league settings: "+(e.message||"Try refreshing.");}
