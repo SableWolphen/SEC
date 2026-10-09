@@ -181,6 +181,7 @@ function leagueDetails(){
   '<div class="sec-reminder-box"><b>🔔 Pick reminders</b><p class="helper">Opt in for alerts while the app is open. Background push is not yet available.</p>'+
   '<button type="button" class="ghost-btn" data-extra="reminders">'+(localStorage.getItem("ss-sec-reminders")==="yes"?'Disable reminders':'Enable reminders')+'</button></div>'+
   (owner?'<div class="sec-manage"><b>League manager</b><p class="helper">Only the league creator can remove a member.</p>'+
+   '<button type="button" class="ghost-btn" data-extra="rotate-code">Reset invite code</button><p class="helper">Use this after removing someone to invalidate the old invite link.</p>'+
    standings.filter(r=>r.user_id!==user.id).map(r=>'<div class="sec-manage-row"><span>'+esc(r.display_name)+'</span><button type="button" class="ghost-btn" data-extra="remove-member" data-user="'+esc(r.user_id)+'">Remove</button></div>').join('')+'</div>':'')+
   '</section>';
 }
@@ -238,6 +239,12 @@ async function action(type,target){
   const resp=await client.from("sec_week_tiebreakers").upsert({league_id:current.id,user_id:user.id,week:app.week().num,game_id:game.id,predicted_total:guess},{onConflict:"league_id,user_id,week"});
   err(resp);tiebreaker={game_id:game.id,predicted_total:guess};
   app.toast("Tiebreaker saved!");
+ }
+ if(type==="rotate-code"){
+  if(current.owner_id!==user.id)return;
+  if(!window.confirm("Reset invitation link for "+current.name+"? Old links will stop working."))return;
+  err(await client.rpc("sec_rotate_league_invite",{p_league:current.id}));
+  app.toast("Invite code reset. Share the new link.");return "refresh";
  }
  if(type==="remove-member"){
   const id=target?.dataset?.user;
