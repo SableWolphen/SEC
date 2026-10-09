@@ -176,4 +176,5 @@
   },
   sync,deriveResults,getResults:()=>records.map(r=>({...r})),trophies:TROPHIES
  });
+ if(window.location?.hash==="#trophies")window.SDSTrophyCase.mount();
 })();
