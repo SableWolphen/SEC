@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b111b">
-  <meta name="sec-build" content="2026.10.09-switch-under-intro.5">
+  <meta name="sec-build" content="2026.10.09-news-sports.6">
   <link rel="manifest" href="./manifest.webmanifest">
   <meta name="description" content="An unofficial SEC football, basketball and baseball pick'em game. Switch sports instantly, make picks and keep score with friends.">
   <meta property="og:title" content="Saturdays Down South — SEC Pick'em">
@@ -476,7 +476,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     for(const id of views)document.getElementById(id+'-view').classList.toggle('hidden',id!==v);
     // Reuse the same three sport controls directly beneath the current page title/description.
     // This also keeps the switcher available on Basketball, Baseball, League, News, etc.
-    const pageIntro=document.querySelector('#'+v+'-view > .page-intro');
+    const pageIntro=sportViews.includes(v)?document.querySelector('#'+v+'-view > .page-intro'):null;
     const sportSwitcher=document.getElementById('global-sport-switch');
     if(pageIntro&&sportSwitcher&&pageIntro.nextElementSibling!==sportSwitcher){
       pageIntro.insertAdjacentElement('afterend',sportSwitcher);
@@ -618,7 +618,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   renderHeader();setView(['sports','picks','basketball','baseball','league','trophies','news','teams','settings'].includes(location.hash.slice(1))?location.hash.slice(1):seasonLanding());
   setInterval(()=>{if(currentView==='picks'&&document.activeElement?.id!=='sec-total-guess')renderPicks();},60000);
   // Expose the narrow integration surface used by the separate hosted league module.
-  window.SEC_BRIDGE={weeks:WEEKS,gameById:GAME_BY_ID,state:()=>state,week:week,view:()=>currentView,setView:setView,renderPicks:renderPicks,renderLeague:renderLeague,renderSettings:renderSettings,esc:esc,toast:toast};
+  window.SEC_BRIDGE={weeks:WEEKS,gameById:GAME_BY_ID,state:()=>state,week:week,view:()=>currentView,selectedSport:()=>lastSportView,setView:setView,renderPicks:renderPicks,renderLeague:renderLeague,renderSettings:renderSettings,esc:esc,toast:toast};
   // Expose deliberately tiny read-only diagnostic surface for smoke tests.
   window.SATURDAY_SOUTH_INFO=Object.freeze({weeks:WEEKS.map(w=>({week:w.num,games:w.games.length})),teams:Object.keys(TEAMS).length,totalGames:WEEKS.reduce((n,w)=>n+w.games.length,0)});
 })();
@@ -633,6 +633,6 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./multiplayer.js?v=20261009-sharedaccount-v4"></script>
 <script src="./matchup-stats.js"></script>
 <script src="./multi-sport.js?v=20261009-sharedaccount-v4"></script>
-<script src="./sec-news.js?v=20261009-news-v1"></script>
+<script src="./sec-news.js?v=20261009-news-sports-v2"></script>
 </body>
 </html>
