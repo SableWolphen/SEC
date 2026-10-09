@@ -86,6 +86,23 @@ Deno.serve(async(req:Request)=>{
   }
   if(success===0)return reply({error:"Schedule source unavailable; existing games have not been changed"},503);
   const games=[...unique.values()];
+  // Reconcile ESPN event IDs with the verified SEC / university fixture IDs.
+  // Preserve existing IDs (and all player picks) when ESPN later publishes an
+  // exact kickoff for a matchup previously listed with an early provisional lock.
+  const official=await database.from("sec_sport_games")
+   .select("id,sport,season,kickoff_at,away_code,home_code,source")
+   .eq("sport",sport).eq("season",season).neq("source","ESPN").limit(1000);
+  if(official.error)throw official.error;
+  const key=(g:any)=>{
+   const day=String(g.kickoff_at).slice(0,10);
+   return day+"|"+g.away_code+"|"+g.home_code;
+  };
+  const fixtures=new Map((official.data||[]).map((g:any)=>[key(g),g]));
+  for(const row of games){
+   const original:any=fixtures.get(key(row));
+   if(original){row.id=original.id;}
+  }
+
   for(let i=0;i<games.length;i+=75){
    const items=games.slice(i,i+75);
    const ids=items.map(g=>g.id);
