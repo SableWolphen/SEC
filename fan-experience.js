@@ -31,7 +31,7 @@ async function loadClubs(force=false){
   rows=clubId?(val(await client().rpc("sec_club_standings",{p_club:clubId}))||[]):[];
   lastClub=Date.now();
  }catch(e){problem="Could not load three-sport league: "+(e.message||"try again");}
- finally{clubLoading=false;renderClub();}
+ finally{clubLoading=false;renderClub();window.SEC_BRACKETS?.mount?.();}
 }
 function renderClub(){
  const host=get("fan-club-hub");if(!host)return;
@@ -208,7 +208,7 @@ function enhanceTeam(){
 }
 function extras(){
  const sec=get("fan-brackets");
- if(sec)sec.innerHTML='<details class="fan-fold"><summary>🏀⚾ SEC tournament brackets <span>Only official seeds</span></summary>'+
+ if(sec&&!window.SEC_BRACKETS)sec.innerHTML='<details class="fan-fold"><summary>🏀⚾ SEC tournament brackets <span>Only official seeds</span></summary>'+
  '<p class="fan-subtle">Bracket picks activate after official SEC postseason matchups are published. No made-up seeds.</p>'+
  '<p><a href="https://www.secsports.com/sport/mens-basketball" target="_blank" rel="noopener noreferrer">Basketball tournament ↗</a> · '+
  '<a href="https://www.secsports.com/sport/baseball" target="_blank" rel="noopener noreferrer">Baseball tournament ↗</a></p></details>';
@@ -247,7 +247,7 @@ function remind(){
 }
 async function onView(v){
  resetAccount();
- if(v==="league"){renderClub();extras();await window.secOnline?.whenAuthReady?.();await inviteJoin();await loadClubs();extras();}
+ if(v==="league"){renderClub();extras();await window.secOnline?.whenAuthReady?.();await inviteJoin();await loadClubs();extras();window.SEC_BRACKETS?.mount?.();}
  if(v==="picks"){enhanceRecap();extras();void loadGames().then(()=>{enhanceRecap();remind();});}
  if(v==="teams"){enhanceTeam();void loadTeamGames();}
  if(v==="trophies")honors();
