@@ -19,6 +19,8 @@ jobs:
           node --check multiplayer.js
           node --check config.js
           node --check sw.js
+          node --check matchup-stats.js
+          python3 -m py_compile scripts/update_stats.py
           python3 - <<'PY'
           from pathlib import Path
           source=Path("index.html").read_text()
@@ -39,6 +41,9 @@ jobs:
           assert "./config.js" in html and "./multiplayer.js" in html
           assert "./manifest.webmanifest" in html
           assert Path("sw.js").exists() and Path("icon.svg").exists()
+          assert "./matchup-stats.js" in html and Path("stats.json").exists()
+          data=json.loads(Path("stats.json").read_text())
+          assert isinstance(data.get("games"),dict)
           assert manifest["display"] == "standalone"
           assert "service_role" not in Path("config.js").read_text().replace("// NEVER put a secret, service_role, or database password in this file.","")
           print("Verified 120 games, scripts, install manifest, and public client config.")
