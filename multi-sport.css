@@ -79,6 +79,7 @@
 .sport-check{font-size:14px;align-self:flex-end;color:#d5ff65;font-weight:900}
 .sport-vs{align-self:center;font-size:10px;color:#91a3b2;font-weight:950}
 .sport-game-foot{font-size:10px;color:#b0c5ca;margin:12px 0 0}
+.sport-game-provider{display:block;color:#8fa6b3;font-size:9px;line-height:1.5;margin:8px 0 0}
 .sport-confidence{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
 .sport-confidence label{font-size:11px;color:#d5ff65}
 .sport-confidence select{border:1px solid #557361;background:#142d31;border-radius:8px;color:#e0eded;padding:7px;min-height:35px}
