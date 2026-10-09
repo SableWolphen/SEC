@@ -106,6 +106,8 @@ const env={
  setInterval:()=>0,
  navigator:{clipboard:{writeText:async()=>{}}},
 };
+env.window.location=env.location;
+env.navigator.clipboard.writeText=async text=>{state.sharedSlip=text;};
 vm.runInNewContext(fs.readFileSync('league-features.js','utf8'),env,{filename:'league-features.js'});
 vm.runInNewContext(fs.readFileSync('multiplayer.js','utf8'),env,{filename:'multiplayer.js'});
 const sleep=()=>new Promise(resolve=>setTimeout(resolve,0));
@@ -155,6 +157,10 @@ function click(action){
  assert.equal(pickState.picks[sampleGame.id],'ALA','signed-in picks restore from backend');
  // Mode-aware display and scoring regressions: never show straight-winner points in spread mode.
  const features=env.window.SEC_FEATURES;
+ await features.shareSlip();
+ assert.match(state.sharedSlip,/Week 6/,'shared actual weekly slip');
+ assert.match(state.sharedSlip,/UGA vs ALA → ALA/,'shared selected winner');
+ assert.doesNotMatch(state.sharedSlip,/123456789A/,'pick slip must not be replaced with league invite');
  const scored={id:sampleGame.id,game_status:'final',winner:'ALA',away_score:24,home_score:28,
    kickoff_at:sampleGame.kickoff,spread_home:-7.5,spread_source:'ESPN'};
  features.updateGames([scored],env.window.SEC_BRIDGE);
