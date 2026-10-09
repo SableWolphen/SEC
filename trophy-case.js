@@ -46,32 +46,72 @@
   if(code!=="all"&&code!=="schools"&&!SCHOOL_BY_CODE.has(code))return;
   school=code;category="all";searchTerm="";tab="all";render();
  }
- function schoolPicker(){
+ function schoolPreview(code){
+  const all=schoolTrophies(code);
+  // Show recognisable trophy silhouettes directly on the closed school row.
+  return all.slice(0,3).map(t=>({id:t.id,symbol:t.symbol,name:t.name,earned:Boolean(lastWin(t.id))}));
+ }
+ function toggleSchool(code){
+  if(!SCHOOL_BY_CODE.has(code))return;
+  expandedSchool=expandedSchool===code?null:code;
+  render();
+  // Return keyboard focus to the same school disclosure button after rendering.
+  const button=document.querySelector?.('[data-school-toggle="'+code+'"]');
+  button?.focus?.({preventScroll:true});
+ }
+ function schoolPicker(version){
   const section=document.createElement("section");section.className="sds-school-directory";
   const top=document.createElement("div");top.className="sds-school-directory-heading";
-  const heading=document.createElement("h3");heading.textContent="Choose your SEC school";
+  const heading=document.createElement("h3");heading.textContent="Rivalry trophy shelves";
   const help=document.createElement("p");
-  help.textContent="Select a school to see its named trophy games and special rivalries—even ones not played this season.";
+  help.textContent="See each school's trophy previews below. Tap the arrow to expand the full collection right here—no extra page. Named rivals stay listed even in seasons they don't meet.";
   top.append(heading,help);
-  const grid=document.createElement("div");grid.className="sds-school-grid";
+  const list=document.createElement("div");list.className="sds-school-accordion-list";
   for(const entry of schoolOverviewData()){
-   const card=document.createElement("button");card.type="button";card.className="sds-school-card";
-   card.dataset.school=entry.code;
-   card.setAttribute("aria-label",entry.name+": "+entry.count+" rivalry matchups, "+entry.earned+" trophies earned");
-   const emblem=document.createElement("span");emblem.className="sds-school-emblem";emblem.textContent=entry.monogram;
+   const opened=expandedSchool===entry.code;
+   const wrapper=document.createElement("div");
+   wrapper.className="sds-school-accordion"+(opened?" is-open":"");
+   const card=document.createElement("button");card.type="button";
+   card.className="sds-school-disclosure";
+   card.dataset.schoolToggle=entry.code;
+   card.setAttribute("aria-expanded",String(opened));
+   card.setAttribute("aria-controls","sds-school-panel-"+entry.code);
+   card.setAttribute("aria-label",(opened?"Collapse ":"Expand ")+entry.name+" trophy collection, "+entry.count+" named rivalries");
+   const emblem=document.createElement("span");emblem.className="sds-school-emblem";
+   emblem.textContent=entry.monogram;
    const info=document.createElement("span");info.className="sds-school-info";
    const name=document.createElement("strong");name.textContent=entry.name;
-   const count=document.createElement("small");count.textContent=entry.count+" rivalries · "+entry.earned+" earned";
+   const count=document.createElement("small");count.textContent=entry.count+" named rivalries · "+entry.earned+" earned";
    info.append(name,count);
-   const chevron=document.createElement("span");chevron.className="sds-school-arrow";chevron.textContent="›";
-   card.append(emblem,info,chevron);
-   card.addEventListener("click",()=>changeSchool(entry.code));
-   grid.append(card);
+   const preview=document.createElement("span");preview.className="sds-school-preview";
+   preview.setAttribute("aria-hidden","true");
+   for(const trophy of schoolPreview(entry.code)){
+    const icon=document.createElement("span");
+    icon.className="sds-school-preview-icon"+(trophy.earned?" earned":"");
+    icon.textContent=trophy.symbol;icon.title=trophy.name;
+    preview.append(icon);
+   }
+   const chevron=document.createElement("span");chevron.className="sds-school-chevron";
+   chevron.textContent="⌄";chevron.setAttribute("aria-hidden","true");
+   card.append(emblem,info,preview,chevron);
+   card.addEventListener("click",()=>toggleSchool(entry.code));
+   wrapper.append(card);
+   if(opened){
+    const panel=document.createElement("div");panel.className="sds-school-expanded";
+    panel.id="sds-school-panel-"+entry.code;
+    const line=document.createElement("p");line.className="sds-school-panel-label";
+    line.textContent=entry.name+" · "+entry.count+" rivalry collectibles";
+    const grid=document.createElement("div");grid.className="sds-trophy-grid";
+    schoolTrophies(entry.code).forEach(t=>grid.append(trophyCard(t,version)));
+    panel.append(line,grid);
+    wrapper.append(panel);
+   }
+   list.append(wrapper);
   }
   const footer=document.createElement("button");footer.type="button";footer.className="sds-school-all";
   footer.textContent="Browse all "+TROPHIES.length+" named rivalry trophies →";
   footer.addEventListener("click",()=>changeSchool("all"));
-  section.append(top,grid,footer);
+  section.append(top,list,footer);
   return section;
  }
  function schoolBreadcrumb(){
@@ -164,6 +204,28 @@
  "#sds-trophy-case .sds-school-breadcrumb>span{font-size:11px;color:#a9bec8;margin-left:auto}",
  "@media(min-width:850px){#sds-trophy-case .sds-school-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}",
  "@media(max-width:410px){#sds-trophy-case .sds-school-card{gap:7px;min-height:79px;padding:9px 7px}#sds-trophy-case .sds-school-emblem{min-width:31px;width:31px;height:34px;font-size:10px}#sds-trophy-case .sds-school-info strong{font-size:11px}#sds-trophy-case .sds-school-info small{font-size:9px}}",
+
+ "#sds-trophy-case .sds-school-accordion-list{display:grid;gap:11px}",
+ "#sds-trophy-case .sds-school-accordion{background:linear-gradient(110deg,#152d34,#112331);border:1px solid #35545b;border-radius:15px;overflow:hidden;box-shadow:0 6px 20px #050c1433}",
+ "#sds-trophy-case .sds-school-accordion.is-open{border-color:#83a957;background:linear-gradient(120deg,#1b3935,#132d35 65%,#112532)}",
+ "#sds-trophy-case .sds-school-disclosure{width:100%;display:flex;align-items:center;gap:12px;text-align:left;min-height:89px;background:none;color:#f4faf8;border:0;padding:12px 15px;cursor:pointer}",
+ "#sds-trophy-case .sds-school-disclosure:focus-visible{outline:3px solid #d5ff65;outline-offset:-4px}",
+ "#sds-trophy-case .sds-school-accordion.is-open .sds-school-disclosure{border-bottom:1px solid #466555}",
+ "#sds-trophy-case .sds-school-disclosure .sds-school-info strong{font-size:15px;line-height:1.25}",
+ "#sds-trophy-case .sds-school-disclosure .sds-school-info small{font-size:11px;margin-top:3px}",
+ "#sds-trophy-case .sds-school-preview{display:flex;gap:5px;flex:none;align-items:center;justify-content:flex-end}",
+ "#sds-trophy-case .sds-school-preview-icon{width:34px;height:39px;display:grid;place-items:center;border:1px solid #5c7362;border-radius:9px;background:radial-gradient(circle at 55% 20%,#40564c,#152830);font-size:21px;filter:drop-shadow(0 3px 4px #0004)}",
+ "#sds-trophy-case .sds-school-preview-icon.earned{border-color:#d5ff65;box-shadow:0 0 11px #d5ff6533}",
+ "#sds-trophy-case .sds-school-chevron{font-size:27px;color:#d5ff65;line-height:1;transform:rotate(0deg);transition:transform .18s;flex:none;margin-left:4px}",
+ "#sds-trophy-case .sds-school-accordion.is-open .sds-school-chevron{transform:rotate(180deg)}",
+ "#sds-trophy-case .sds-school-expanded{padding:15px 13px 19px;background:#0e202a}",
+ "#sds-trophy-case .sds-school-panel-label{color:#d5ff65;font-size:12px;font-weight:900;margin:0 0 12px;letter-spacing:.3px}",
+ "#sds-trophy-case .sds-school-expanded .sds-trophy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}",
+ "#sds-trophy-case .sds-school-expanded .sds-trophy-card{min-width:0}",
+ "@media(min-width:860px){#sds-trophy-case .sds-school-expanded .sds-trophy-grid{grid-template-columns:repeat(3,minmax(0,1fr))}#sds-trophy-case .sds-school-preview-icon{width:43px;height:49px;font-size:25px}}",
+ "@media(max-width:480px){#sds-trophy-case .sds-school-disclosure{padding:11px 10px;gap:8px;min-height:84px}#sds-trophy-case .sds-school-disclosure .sds-school-info strong{font-size:13px}#sds-trophy-case .sds-school-disclosure .sds-school-info small{font-size:10px}#sds-trophy-case .sds-school-preview-icon{width:27px;height:32px;font-size:17px}#sds-trophy-case .sds-school-preview{gap:3px}#sds-trophy-case .sds-school-expanded{padding:12px 9px 16px}}",
+ "@media(max-width:355px){#sds-trophy-case .sds-school-preview-icon{width:25px;height:29px;font-size:16px}#sds-trophy-case .sds-school-preview-icon:nth-child(3){display:none}#sds-trophy-case .sds-school-disclosure .sds-school-emblem{min-width:28px;width:28px}}",
+ "@media(prefers-reduced-motion:reduce){#sds-trophy-case .sds-school-chevron{transition:none}}",
  "#sds-trophy-case .sds-rivalry-filters{margin-bottom:16px;display:grid;gap:10px}",
  "#sds-trophy-case .sds-rivalry-chips{display:flex;flex-wrap:wrap;gap:6px}",
  "#sds-trophy-case .sds-rivalry-chip{border:1px solid #3d5865;background:#182c37;color:#abc4ca;font-size:11px;font-weight:800;padding:8px 10px;border-radius:999px;min-height:36px;cursor:pointer}",
@@ -196,7 +258,7 @@
  "@media(max-width:365px){#sds-trophy-case{padding:18px 10px 85px}#sds-trophy-case .sds-trophy-display{height:145px}#sds-trophy-case .sds-trophy-placeholder strong{font-size:44px}}"
  ];
  const style=document.createElement("style");style.textContent=rules.join("\n");document.head.appendChild(style);
- let verified=[],myPicks={},schedule={},records=[],permanent=[],derived=[],historyUser=null,signedIn=false,leagueId=null,leagueName="",tab="all",school="schools",category="all",searchTerm="",rootId="sds-trophy-case",renderId=0,viewerLoading=false;
+ let verified=[],myPicks={},schedule={},records=[],permanent=[],derived=[],historyUser=null,signedIn=false,leagueId=null,leagueName="",tab="all",school="schools",expandedSchool="ALA",category="all",searchTerm="",rootId="sds-trophy-case",renderId=0,viewerLoading=false;
  function last(id){return records.filter(r=>r.trophyId===id).sort((a,b)=>b.year-a.year)[0];}
  function lastWin(id){return records.filter(r=>r.trophyId===id&&r.correct).sort((a,b)=>b.year-a.year)[0];}
  function owned(){return TROPHIES.filter(t=>Boolean(lastWin(t.id)));}
@@ -378,7 +440,7 @@
   search.addEventListener("input",ev=>{searchTerm=String(ev.target.value).toLowerCase();updateFiltered();});
   filterBar.append(chips,search);
   if(school==="schools"){
-   root.append(h,subtitle,rivalryNotice,summary,schoolPicker());
+   root.append(h,subtitle,rivalryNotice,summary,schoolPicker(version));
    return;
   }
   root.append(h,subtitle,rivalryNotice,summary,schoolBreadcrumb(),tabs,filterBar);
@@ -449,7 +511,8 @@
   },
   sync,deriveResults,getResults:()=>records.map(r=>({...r})),trophies:TROPHIES,
   schools:SEC_SCHOOLS,getSchoolOverview:schoolOverviewData,getSchoolTrophies:schoolTrophies,
-  selectSchool:changeSchool,getSelectedSchool:()=>school,getVisibleTrophies:()=>visibleTrophies(TROPHIES)
+  selectSchool:changeSchool,getSelectedSchool:()=>school,getVisibleTrophies:()=>visibleTrophies(TROPHIES),
+  toggleSchool,getExpandedSchool:()=>expandedSchool,getSchoolPreview:schoolPreview
  });
  if(window.location?.hash==="#trophies")window.SDSTrophyCase.mount();
 })();
