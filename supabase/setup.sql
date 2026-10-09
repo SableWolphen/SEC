@@ -79,19 +79,20 @@ drop policy if exists sec_picks_before_kickoff_update on public.sec_picks;
 create policy sec_picks_before_kickoff_update on public.sec_picks for update to authenticated
  using (user_id=(select auth.uid()) and exists(select 1 from public.sec_games g where g.id=game_id and now() < g.kickoff_at))
  with check (user_id=(select auth.uid()) and exists(select 1 from public.sec_games g where g.id=game_id and now() < g.kickoff_at and pick_code in (g.away_code,g.home_code)));
--- Enforce the deadline again inside the write itself to avoid stale client clocks.
+-- Enforce the deadline in the trigger to avoid stale client clocks. Do not use SELECT FOR SHARE:
+-- PostgreSQL row-locking reads require UPDATE permission on sec_games, which players must not have.
 create or replace function public.sec_guard_pick()
 returns trigger language plpgsql security invoker set search_path = ''
 as $$
 declare g record;
 begin
- select kickoff_at, away_code, home_code into g from public.sec_games where id=new.game_id for share;
+ select g0.kickoff_at, g0.away_code, g0.home_code into g from public.sec_games as g0 where g0.id=new.game_id;
  if not found or clock_timestamp()>=g.kickoff_at or new.pick_code not in (g.away_code,g.home_code) then
   raise exception 'This pick is invalid or the game has already started';
  end if;
- new.updated_at := now();
+ new.updated_at := clock_timestamp();
  return new;
-end $$;
+end $;
 drop trigger if exists sec_guard_pick_trigger on public.sec_picks;
 create trigger sec_guard_pick_trigger before insert or update on public.sec_picks
 for each row execute function public.sec_guard_pick();
