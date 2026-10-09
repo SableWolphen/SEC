@@ -11,7 +11,21 @@
   }) : null;
   var user = null, leagues = [], active = null, standings = [], profile = null, standingsError = '';
   var working = false, lastError = "", loginEmail = "";
-  var authMode = "signup", draftEmail = "", recoveryMode = false;
+  var authMode = "login", draftEmail = "", recoveryMode = false;
+  // A single Supabase auth session is shared across football, basketball and baseball.
+  // Sport pages must not interpret the initial session restore as signed-out.
+  var authReadyResolve;
+  var authReady = new Promise(function(resolve){authReadyResolve=resolve;});
+  var authRestored = !client, previousAuthUserId;
+  if(authRestored)authReadyResolve();
+  function publishAccount(){
+    if(!authRestored){authRestored=true;authReadyResolve();}
+    var nextUserId=user?.id||null;
+    if(previousAuthUserId!==nextUserId){
+      previousAuthUserId=nextUserId;
+      window.SEC_SPORTS?.authChanged?.();
+    }
+  }
   var inviteCode = new URLSearchParams(location.search).get("league");
   if (inviteCode && !/^[A-Z0-9]{10}$/i.test(inviteCode)) inviteCode = null;
   var safe = function(s){return app.esc(String(s == null ? "" : s));};
@@ -139,6 +153,7 @@
     try{
       var session=extract(await client.auth.getSession()).session;
       user=session?.user||null;
+      publishAccount();
       var s=app.state();
       if(!user){
         leagues=[];active=null;profile=null;standings=[];standingsError='';
@@ -207,7 +222,11 @@
       window.SEC_SOCIAL?.connect?.(client,currentLeague(),user,standings);
       window.SEC_FEATURES?.remind?.();
       show();
-    }catch(err){busy(err);show();}
+    }catch(err){
+      // A failed session lookup must not leave the other sports stuck on "Restoring account".
+      if(!authRestored){authRestored=true;authReadyResolve();}
+      busy(err);show();
+    }
   }
   async function refreshStandings(shouldShow){
     if(!client||!user||!active){standings=[];return;}
@@ -357,7 +376,8 @@
   window.secOnline={
     configured:!!client,renderLeague:renderLeague,renderSettings:renderSettings,
     pick:choose,copyInvite:copyInvite,refreshStandings:refreshStandings,refresh:refresh,
-    isSignedIn:function(){return !!user;},getClient:function(){return client;},getUser:function(){return user;},getLeague:function(){return currentLeague();}
+    isSignedIn:function(){return !!user;},getClient:function(){return client;},getUser:function(){return user;},getLeague:function(){return currentLeague();},
+    whenAuthReady:function(){return authReady;},isAuthReady:function(){return authRestored;}
   };
   document.addEventListener("click",function(ev){
     var el=ev.target.closest("[data-online]");
@@ -390,6 +410,7 @@
         recoveryMode=true;
         setTimeout(function(){app.setView("league");renderLeague();},0);
       }else if(event==="SIGNED_IN"||event==="SIGNED_OUT"){
+        if(event==="SIGNED_OUT"){user=null;publishAccount();}
         setTimeout(function(){void refresh();},0);
       }
     });
