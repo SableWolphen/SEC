@@ -35,7 +35,7 @@
   const season=item?item.season:snapshot?.seasons?.[sport];
   const overall=item?item.overall:"—";
   const conf=item&&cleanRecord(item.conference)?item.conference:null;
-  const label=item?"Overall record":"Awaiting ESPN record";
+  const label=item?(item.scope==="Regular season"?"Regular-season record":"Overall record"):"Awaiting ESPN record";
   const url=item?.source_url&&/^https:\/\/www\.espn\.com\/[a-z/-]+\/team\/_\/id\/\d+$/.test(item.source_url)?
    item.source_url:null;
   return '<article class="team-record-sport"><div class="record-sport-head"><span aria-hidden="true">'+meta.emoji+'</span>'+

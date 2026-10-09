@@ -60,6 +60,29 @@ class TeamRecordTests(unittest.TestCase):
   self.assertEqual(result["teams"]["TENN"]["football"]["overall"],"4-2")
   self.assertEqual(result["teams"]["TENN"].get("basketball"),None)
   self.assertEqual(result["teams"]["ALA"].get("football"),None)
+ def test_historical_season_record_core_fallback(self):
+  urls=[]
+  def get(url):
+   urls.append(url)
+   if 'site.api.espn.com' in url:
+    return {'season':{'year':2027},
+      'team':{'id':'2633','location':'Tennessee','record':{'summary':'0-0'}}}
+   return {'count':2,'items':[
+      {'name':'All Splits','type':'total','summary':'27-9'},
+      {'name':'vs Conference','type':'vsconf','summary':'14-4'}]}
+  record=tracker.get_one('TENN','basketball',2026,get)
+  self.assertEqual(record['overall'],'27-9')
+  self.assertEqual(record['conference'],'14-4')
+  self.assertEqual(record['scope'],'Regular season')
+  self.assertEqual(record['season'],2026)
+  self.assertIn('/seasons/2026/types/2/teams/2633/record',urls[-1])
+ def test_unavailable_historical_record_never_shows_wrong_season(self):
+  def get(url):
+   if 'site.api.espn.com' in url:
+    return {'season':{'year':2027},
+      'team':{'id':'333','location':'Alabama','record':{'summary':'0-0'}}}
+   raise OSError('No verified historical records')
+  self.assertIsNone(tracker.get_one('ALA','baseball',2026,get))
  def test_missing_or_mismatched_espn_team_is_unknown(self):
   def mistaken(_url):
    return {"team":{"id":"333","location":"Arkansas",
