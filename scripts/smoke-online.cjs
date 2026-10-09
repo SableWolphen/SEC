@@ -8,7 +8,7 @@ const vm=require('node:vm');
 const handlers={},elements={};
 const state={session:null,profile:null,leagues:[],picks:[],requests:[]};
 const pickState={picks:{},results:{}};
-const sampleGame={id:'2026-6-UGA-ALA',away:'UGA',home:'ALA'};
+const sampleGame={id:'2026-6-UGA-ALA',away:'UGA',home:'ALA',kickoff:new Date(Date.now()+48*3600000).toISOString()};
 const fields={
   'online-email':{value:'sample.person.middle@gmail.com\u200B '},
   'online-signup-name':{value:'Sally SEC'},
