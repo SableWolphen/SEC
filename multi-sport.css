@@ -272,3 +272,13 @@
 .fan-bracket-team:focus-visible{outline:3px solid #d7fa65;outline-offset:2px}
 .fan-bracket-game .fan-subtle{margin:9px 0 0;font-size:10px}
 @media(max-width:700px){.fan-tournament-columns{grid-template-columns:1fr}.fan-bracket-section{padding:12px}}
+
+/* Personal baseball series preview picks live inside published SEC schedule cards. */
+.fan-series-predict{margin-top:12px;background:#112631;border:1px solid #40585d;border-radius:9px;padding:8px 10px}
+.fan-series-predict summary{cursor:pointer;font-size:11px;font-weight:850;color:#d7fa65}
+.fan-series-predict p{font-size:10px;color:#adbfc1;line-height:1.5;margin:9px 0}
+.fan-series-preview-buttons{display:flex;gap:6px;flex-wrap:wrap}
+.fan-series-preview-buttons .fan-small{flex:1;min-width:120px;white-space:normal}
+.fan-series-preview-buttons .fan-small.is-current{background:#d7fa65;border-color:#d7fa65;color:#15221d}
+.fan-series-margin{font-size:10px;display:flex;align-items:center;justify-content:space-between;gap:8px;margin:12px 0 3px;color:#c7d9d8}
+.fan-series-margin select{color:#f0f9f0;background:#142b33;border:1px solid #57726b;border-radius:8px;padding:8px}

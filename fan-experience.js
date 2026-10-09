@@ -260,6 +260,7 @@ async function onView(v){
  if(v==="teams"){enhanceTeam();void loadTeamGames();}
  if(v==="trophies"){honors();void loadGames().then(honors);}
  if(v==="settings")alertSettings();
+ if(v==="baseball")window.SEC_SPORTS?.mount?.("baseball");
 }
 document.addEventListener("click",e=>{
  const b=e.target.closest?.("[data-fan]");if(!b)return;e.preventDefault();
@@ -280,7 +281,48 @@ document.addEventListener("click",e=>{
 document.addEventListener("change",e=>{if(e.target.id==="fan-club-select")void changeClub("select",e.target);});
 document.addEventListener("toggle",e=>{if(!e.target?.matches?.("[data-fan-center]"))return;
  if(e.target.open)openDetails.add(e.target.dataset.fanCenter);else openDetails.delete(e.target.dataset.fanCenter);},true);
-window.SEC_FAN=Object.freeze({onView,gameCenter,sportCenter,enhanceRecap,enhanceTeam,honors,
+
+/* SEC's 2027 conference series pairings are verified, but exact first pitches aren't.
+   Store private non-scoring previews for the current browser/player, never league points. */
+function seriesKey(game){return "2027|"+String(game.weekend)+"|"+game.away+"|"+game.home;}
+function seriesPredictions(){
+ try{return JSON.parse(localStorage.getItem(key("series-preview"))||"{}")||{};}catch(e){return {};}
+}
+function seriesPreviewCard(x){
+ if(!x||!x.away||!x.home||!Number.isInteger(x.weekend))return "";
+ const k=seriesKey(x),prediction=seriesPredictions()[k]||{};
+ const selected=prediction.winner||"",length=prediction.length||"2-1";
+ return '<details class="fan-series-predict"><summary>✎ My series preview '+(selected?"· "+esc(selected):"")+'</summary>'+
+  '<p>Personal preview only · no scored league points until first pitches are confirmed.</p>'+
+  '<div class="fan-series-preview-buttons">'+[x.away,x.home].map(name=>'<button type="button" data-fan-series="winner" data-series-key="'+esc(k)+
+   '" data-series-winner="'+esc(name)+'" class="fan-small '+(selected===name?"is-current":"")+
+   '">'+esc(name)+(selected===name?" ✓":"")+'</button>').join("")+'</div>'+
+  '<label class="fan-series-margin">Predicted series result <select data-fan-series-margin="'+esc(k)+'" aria-label="Expected series score">'+
+   ['2-1','3-0'].map(score=>'<option value="'+score+'" '+(length===score?"selected":"")+'>'+score+'</option>').join("")+
+  '</select></label></details>';
+}
+function saveSeries(keyValue,winner,margin){
+ const current=seriesPredictions(),next=current[keyValue]||{};
+ if(winner)next.winner=winner;
+ if(margin)next.length=margin;
+ current[keyValue]=next;
+ store(key("series-preview"),JSON.stringify(current));
+ if(app()?.view?.()==="baseball")window.SEC_SPORTS?.mount?.("baseball");
+ toast("Series preview saved on this device. It does not affect league scoring.");
+}
+document.addEventListener("click",e=>{
+ const button=e.target.closest?.("[data-fan-series]");if(!button)return;
+ e.preventDefault();
+ const k=button.dataset.seriesKey,w=button.dataset.seriesWinner,parts=k?.split("|");
+ if(!parts||parts.length!==4||parts[0]!=="2027"||![parts[2],parts[3]].includes(w))return;
+ saveSeries(k,w,null);
+});
+document.addEventListener("change",e=>{
+ const k=e.target.dataset?.fanSeriesMargin;
+ if(!k||!["2-1","3-0"].includes(e.target.value))return;
+ saveSeries(k,null,e.target.value);
+});
+window.SEC_FAN=Object.freeze({onView,gameCenter,sportCenter,seriesPreviewCard,enhanceRecap,enhanceTeam,honors,
  loadClubs,getClub:activeClub,getStandings:()=>rows.slice()});
 if(app()?.view?.())void onView(app().view());
 setInterval(()=>{if(document.visibilityState!=="visible")return;

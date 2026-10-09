@@ -24,6 +24,13 @@ assert.match(center,/<details class="fan-center"/,"game center is collapsed HTML
 assert.doesNotMatch(center,/<details[^>]+ open/,"center closed by default");
 assert.match(center,/Published rankings/,"existing matchup stats are preserved inside expandable center");
 assert.match(center,/Score pending/,"no false real-time scores");
+const preview=fan.seriesPreviewCard({weekend:1,away:"Tennessee",home:"Florida",start_date:"2027-03-19",end_date:"2027-03-21"});
+assert.match(preview,/Tennessee/);
+assert.match(preview,/Florida/);
+assert.match(preview,/Personal preview only/);
+assert.match(preview,/data-fan-series="winner"/);
+assert.match(preview,/3-0/);
+assert.match(fs.readFileSync("multi-sport.js","utf8"),/seriesPreviewCard/,"series prediction is actually embedded in verified published conference previews");
 const sport=fan.sportCenter("baseball",{id:"b2027",game_status:"scheduled",away_name:"Georgia",home_name:"Tennessee",source:"SEC"});
 assert.match(sport,/Score & source/);
 assert.doesNotMatch(sport,/LIVE|FINAL/,"does not fake an active game");
