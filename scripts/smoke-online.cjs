@@ -120,10 +120,12 @@ function click(action){
 }
 (async()=>{
  await sleep();await sleep();
- assert.match(host.innerHTML,/Create my account/,'create account form');
+ assert.match(host.innerHTML,/Log in/,'returning user gets login rather than new account by default');
+ assert.doesNotMatch(host.innerHTML,/online-password-confirm/,'login does not ask to confirm a new password');
  assert.match(host.innerHTML,/version 2026.10.09.2/,'fresh account screen visible');
  assert.doesNotMatch(fs.readFileSync('multiplayer.js','utf8'),/Enter a valid email address\\./,'old client-side email rejection removed');
- assert.match(host.innerHTML,/online-password-confirm/,'password confirmation form');
+ click('mode-signup');assert.match(host.innerHTML,/Create my account/,'new users can explicitly choose account creation');
+ assert.match(host.innerHTML,/online-password-confirm/,'signup asks to confirm password');
  click('mode-login');assert.match(host.innerHTML,/Log in/);assert.doesNotMatch(host.innerHTML,/online-password-confirm/);
  click('mode-signup');click('register');
  await sleep();await sleep();await sleep();
