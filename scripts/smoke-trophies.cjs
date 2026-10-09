@@ -7,13 +7,13 @@ vm.runInNewContext(fs.readFileSync("rivalry-catalog.js","utf8"),harness,{filenam
 vm.runInNewContext(fs.readFileSync("trophy-case.js","utf8"),harness,{filename:"trophy-case.js"});
 const trophy=win.SDSTrophyCase;
 assert.equal(win.SDS_RIVALRIES.length,73,"full history registry is retained without deletion");
-assert.equal(trophy.trophies.length,33,"only 33 titled rivalry/trophy games shown");
-assert.equal(win.SDS_TROPHY_RIVALRIES.length,33,"titled rivalry export is stable");
-assert.equal(win.SDS_RIVALRIES.filter(t=>!t.namedTrophy).length,40,"40 generically named games are hidden, not deleted");
+assert.equal(trophy.trophies.length,35,"35 named rivalry or trophy games are shown");
+assert.equal(win.SDS_TROPHY_RIVALRIES.length,35,"titled rivalry export is stable");
+assert.equal(win.SDS_RIVALRIES.filter(t=>!t.namedTrophy).length,38,"38 generic pairings stay preserved in the archive");
 for(const t of trophy.trophies){
  assert.equal(t.namedTrophy,true,"Trophy Case must not include generic matchups: "+t.name);
 }
-assert.ok(!trophy.trophies.some(t=>t.id==="alabama-florida"||t.id==="tennessee-vanderbilt"),"generic rivalries removed");
+assert.ok(!trophy.trophies.some(t=>t.id==="alabama-florida"),"generic pairings without named rivalry remain hidden");
 assert.ok(trophy.trophies.some(t=>t.id==="beer-barrel"&&/Beer Barrel/.test(t.name)),"named Beer Barrel retained");
 assert.ok(trophy.trophies.some(t=>t.id==="highway-82"&&/Highway 82/.test(t.name)),"named Highway 82 retained");
 
@@ -36,7 +36,7 @@ assert.ok(trophy.getSchoolTrophies("ALA").some(t=>t.id==="highway-82"),"Highway 
 assert.ok(trophy.getSchoolTrophies("MSST").some(t=>t.id==="highway-82"),"Highway 82 under Mississippi State");
 assert.ok(trophy.getSchoolTrophies("SC").some(t=>t.id==="palmetto-showdown"),"Nonconference Palmetto included under South Carolina");
 assert.ok(trophy.getSchoolTrophies("OU").some(t=>t.id==="bedlam"),"Historic Bedlam rivalry shown under Oklahoma");
-assert.equal(trophy.getSchoolTrophies("all").length,33,"all titled rivalries accessible");
+assert.equal(trophy.getSchoolTrophies("all").length,35,"all titled rivalries accessible");
 trophy.selectSchool("ALA");
 assert.equal(trophy.getSelectedSchool(),"ALA","selected school persists in view");
 assert.equal(trophy.getVisibleTrophies().length,trophy.getSchoolTrophies("ALA").length,"selected school filters cards");
@@ -45,15 +45,15 @@ assert.equal(trophy.getVisibleTrophies().some(t=>t.id==="bedlam"),false,"another
 trophy.selectSchool("AUB");
 assert.equal(trophy.getVisibleTrophies().some(t=>t.id==="iron-bowl"),true,"both SEC rivals can see shared matchup");
 trophy.selectSchool("all");
-assert.equal(trophy.getVisibleTrophies().length,33,"full named collection shortcut preserves all 33");
+assert.equal(trophy.getVisibleTrophies().length,35,"full named collection shortcut preserves all 35");
 trophy.selectSchool("schools");
 assert.equal(trophy.getSelectedSchool(),"schools","back to school directory");
 trophy.selectSchool("INVALID");
 assert.equal(trophy.getSelectedSchool(),"schools","invalid school selection safely ignored");
 
-assert.equal(new Set(trophy.trophies.map(t=>t.id)).size,33,"all named trophy IDs unique");
-assert.equal(new Set(trophy.trophies.map(t=>[...t.codes].sort().join("/"))).size,33,"all named pairs are unique");
-assert.equal(trophy.trophies.filter(t=>t.category==="SEC").length,17,"17 named intra-SEC rivalry games");
+assert.equal(new Set(trophy.trophies.map(t=>t.id)).size,35,"all named trophy IDs unique");
+assert.equal(new Set(trophy.trophies.map(t=>[...t.codes].sort().join("/"))).size,35,"all named pairs are unique");
+assert.equal(trophy.trophies.filter(t=>t.category==="SEC").length,19,"19 named intra-SEC rivalry games");
 assert.equal(trophy.trophies.filter(t=>t.category==="Historic").length,1,"only titled historic non-FBS game shown");
 const secSchools=new Set(["ALA","ARK","AUB","FLA","UGA","UK","LSU","MSST","MIZ","OU","MISS","SC","TENN","TEX","TAMU","VAN"]);
 for(const t of trophy.trophies)for(const code of t.codes)secSchools.delete(code);
@@ -117,7 +117,15 @@ assert.equal(pair("TEX","TTU").id,"chancellors-spurs");
 assert.equal(pair("TAMU","BAY").id,"battle-brazos");
 assert.equal(pair("VAN","GT").id,"gold-cowbell");
 assert.equal(pair("ALA","FLA"),undefined,"generic Alabama–Florida match hidden");
-assert.equal(pair("TENN","VAN"),undefined,"generic Tennessee–Vanderbilt match hidden");
+assert.equal(pair("TENN","VAN").id,"tennessee-vanderbilt","Volunteer State showdown restored");
+assert.match(pair("TENN","VAN").name,/Battle for the Volunteer State/);
+assert.equal(pair("FLA","TENN").id,"florida-tennessee","Third Saturday September restored");
+assert.match(pair("FLA","TENN").name,/Third Saturday in September/);
+assert.ok(trophy.getSchoolTrophies("VAN").some(t=>t.id==="tennessee-vanderbilt"),"Vanderbilt school shelf includes Volunteer State rivalry");
+assert.ok(trophy.getSchoolTrophies("TENN").some(t=>t.id==="tennessee-vanderbilt"),"Tennessee school shelf includes Volunteer State rivalry");
+assert.ok(trophy.getSchoolTrophies("FLA").some(t=>t.id==="florida-tennessee"),"Florida shelf includes September rivalry");
+assert.equal(pair("TENN","VAN").model,"trophies/tennessee-vanderbilt.glb","retained existing real 3D model");
+assert.equal(pair("TENN","VAN").physical,null,"does not claim an official physical trophy");
 const source=fs.readFileSync("trophy-case.js","utf8");
 const catalogSource=fs.readFileSync("rivalry-catalog.js","utf8");
 assert.match(catalogSource,/trophies\/golden-egg\.glb/,"original 3D model paths remain in catalog");
@@ -211,4 +219,4 @@ assert.equal(descendants(panels[0],n=>n.className?.includes?.("sds-trophy-card")
 controls.find(n=>n.dataset.schoolToggle==="UGA").events.click();
 assert.equal(descendants(trophyRoot,n=>n.className==="sds-school-expanded").length,0,"dropdown collapses cleanly");
 assert.equal(descendants(trophyRoot,n=>n.className==="sds-school-disclosure").length,16,"other schools stay visible when closed");
-console.log("SEC Trophy Case: 33 titled rivalry trophies organized by all 16 schools; 40 generic games hidden; 73 preserved in history; verified awards and league isolation passed.");
+console.log("SEC Trophy Case: 35 named rivalry collectibles, 16 schools, preserved 73-row archive, Volunteer State and September names, verified awards and league isolation passed.");
