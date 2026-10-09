@@ -93,8 +93,8 @@ const env={
  window:{
    SEC_BRIDGE:{
      esc:s=>String(s).replaceAll('<','&lt;'),
-     weeks:[{num:6}],gameById:{'2026-6-UGA-ALA':sampleGame},state:()=>pickState,
-     week:()=>({num:6}),view:()=> 'league',setView:()=>{},renderPicks:()=>{},
+     weeks:[{num:6,games:[sampleGame]}],gameById:{'2026-6-UGA-ALA':sampleGame},state:()=>pickState,
+     week:()=>({num:6,games:[sampleGame]}),view:()=> 'league',setView:()=>{},renderPicks:()=>{},
      toast:()=>{}
    },
    SEC_ONLINE_CONFIG:{url:'https://test-project.supabase.co',publishableKey:'sb_publishable_test_public'},
