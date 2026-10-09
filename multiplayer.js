@@ -24,6 +24,7 @@
     if(previousAuthUserId!==nextUserId){
       previousAuthUserId=nextUserId;
       window.SEC_SPORTS?.authChanged?.();
+      void window.SEC_FAN?.onView?.(app.view());
     }
   }
   var inviteCode = new URLSearchParams(location.search).get("league");
