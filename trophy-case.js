@@ -236,6 +236,7 @@
  "#sds-trophy-case .sds-honors-go-league{border:1px solid #91aa62;border-radius:10px;background:#d5ff65;color:#102218;font-size:11px;font-weight:900;min-height:40px;padding:10px 13px;cursor:pointer}",
  "@media(min-width:750px){#sds-trophy-case .sds-honors-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}",
  "@media(max-width:430px){#sds-trophy-case .sds-league-honors{padding:12px;margin-bottom:20px}#sds-trophy-case .sds-honors-grid .sec-championship-card,#sds-trophy-case .sds-honors-achievements-card{padding:12px}#sds-trophy-case .sds-honors-head h3{font-size:20px}}",
+ "#sds-trophy-case .sds-nickname-note{color:#9fb2be;font-size:10px;line-height:1.5;margin:8px 0 0}",
  "#sds-trophy-case .sds-school-accordion-list{display:grid;gap:11px}",
  "#sds-trophy-case .sds-school-accordion{background:linear-gradient(110deg,#152d34,#112331);border:1px solid #35545b;border-radius:15px;overflow:hidden;box-shadow:0 6px 20px #050c1433}",
  "#sds-trophy-case .sds-school-accordion.is-open{border-color:#83a957;background:linear-gradient(120deg,#1b3935,#132d35 65%,#112532)}",
@@ -350,6 +351,11 @@
     const unscheduled=document.createElement('div');unscheduled.className='sds-trophy-schedule';
     unscheduled.textContent='Not on the current season slate · stays in your collection';
     info.append(title,teams,category,unscheduled,year);
+  }
+  if(t.nicknameNote){
+    const context=document.createElement("p");context.className="sds-nickname-note";
+    context.textContent=t.nicknameNote;
+    info.append(context);
   }
   card.append(display,info);attachModel(display,t,version);return card;
  }
