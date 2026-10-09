@@ -9,7 +9,7 @@ const MODES={
  h2h:{name:"Head-to-Head",detail:"Pick winners as usual, but compete against a paired league rival each week."}
 };
 const own={},games={},revealedByGame={},notes={};
-let current=null,user=null,client=null,app=null,confidence={},tiebreaker=null,standings=[],notificationAt=0;
+let current=null,user=null,client=null,app=null,confidence={},tiebreaker=null,standings=[],history=[];
 const err=(r)=>{if(r?.error)throw r.error;return r?.data;};
 const esc=s=>app?.esc?app.esc(String(s??"")):String(s??"").replaceAll("<","&lt;");
 const mode=()=>current?.mode||"straight";
@@ -22,17 +22,19 @@ async function reload(c,l,u,a){
  client=c;current=l;user=u;app=a;
  Object.keys(own).forEach(k=>delete own[k]);
  Object.keys(revealedByGame).forEach(k=>delete revealedByGame[k]);
- confidence={};tiebreaker=null;
+ confidence={};tiebreaker=null;history=[];
  if(!c||!l||!u)return;
  const week=a.week().num;
- const [my,reveals,ties]=await Promise.all([
+ const [my,reveals,ties,head]=await Promise.all([
   c.from("sec_league_picks").select("game_id,pick_code,confidence_points").eq("league_id",l.id).eq("user_id",u.id),
   c.rpc("sec_revealed_league_picks",{p_league:l.id,p_week:week}),
-  c.from("sec_week_tiebreakers").select("week,game_id,predicted_total").eq("league_id",l.id).eq("user_id",u.id).eq("week",week)
+  c.from("sec_week_tiebreakers").select("week,game_id,predicted_total").eq("league_id",l.id).eq("user_id",u.id).eq("week",week),
+  l.mode==="h2h"?c.rpc("sec_h2h_history",{p_league:l.id}):Promise.resolve({data:[]})
  ]);
  for(const row of err(my)||[]){own[row.game_id]=row.pick_code;confidence[row.game_id]=row.confidence_points;}
  for(const row of err(reveals)||[])(revealedByGame[row.game_id]??=[]).push(row);
  tiebreaker=(err(ties)||[])[0]||null;
+ history=err(head)||[];
  a.state().picks={...own};
 }
 function updateGames(list,a){
@@ -124,18 +126,27 @@ function badgeFor(row){
 }
 function pairings(){
  if(mode()!=="h2h"||!standings.length)return "";
- const sorted=standings.slice().sort((a,b)=>String(a.user_id).localeCompare(String(b.user_id)));
- const length=sorted.length;
- const position=(i)=>(i+(app.week().num-1))%length;
- const me=sorted.find(p=>p.user_id===user?.id);
- if(!me)return "";
- const i=sorted.findIndex(p=>p.user_id===me.user_id);
- const myPos=position(i);
- const enemyPos=myPos%2===0?myPos+1:myPos-1;
- const opponent=sorted.find((p,j)=>position(j)===enemyPos);
- if(!opponent)return '<div class="sec-h2h">⚔️ Head-to-Head · Bye this week. Your picks still count toward season points.</div>';
- const myPts=oneDecimal(me.week_points),theirs=oneDecimal(opponent.week_points);
- return '<div class="sec-h2h"><b>⚔️ This week’s matchup</b><div>'+esc(me.display_name)+' <strong>'+myPts+'</strong> vs '+esc(opponent.display_name)+' <strong>'+theirs+'</strong></div><p class="helper">Matchups rotate by week. Winner is decided after final scores.</p></div>';
+ const rows=history.filter(r=>r.player_id===user?.id);
+ const record=rows.reduce((out,r)=>{if(r.result==="win")out.w++;if(r.result==="loss")out.l++;if(r.result==="tie")out.t++;return out;},{w:0,l:0,t:0});
+ const week=app.week().num,pair=rows.find(r=>Number(r.week)===week);
+ const rival=standings.find(p=>p.user_id===pair?.opponent_id);
+ let matchup='<div class="sec-h2h"><b>⚔️ Your weekly matchup</b><p class="helper">Season head-to-head record: <strong>'+record.w+'W – '+record.l+'L – '+record.t+'T</strong></p>';
+ if(!pair)matchup+='<div>Matchups will appear after joining.</div>';
+ else if(pair.result==="bye")matchup+='<div>You have a bye this week. Picks still count toward your overall points.</div>';
+ else matchup+='<div>'+esc(standings.find(p=>p.user_id===user.id)?.display_name||"You")+
+  ' <strong>'+oneDecimal(pair.player_points)+'</strong> vs '+esc(rival?.display_name||"Opponent")+
+  ' <strong>'+oneDecimal(pair.opponent_points)+'</strong>'+
+  ' · <b>'+esc(pair.result==="pending"?"In progress":pair.result.toUpperCase())+'</b></div>';
+ matchup+='<p class="helper">Matchup results settle after all games that week finish.</p></div>';
+ const scores=standings.map(p=>{
+  const all=history.filter(r=>r.player_id===p.user_id);
+  return {name:p.display_name,id:p.user_id,w:all.filter(r=>r.result==="win").length,
+   l:all.filter(r=>r.result==="loss").length,t:all.filter(r=>r.result==="tie").length,
+   points:Number(p.season_points)||0};
+ }).sort((a,b)=>b.w-a.w||a.l-b.l||b.points-a.points);
+ return matchup+'<div class="sec-h2h-records"><div class="small-heading">Head-to-head standings</div>'+
+ scores.map((p,i)=>'<div class="sec-manage-row"><span>'+(i+1)+'. '+esc(p.name)+(p.id===user.id?' ★':'')+'</span>'+
+  '<strong>'+p.w+'–'+p.l+'–'+p.t+'</strong></div>').join('')+'</div>';
 }
 function tiebreakerCard(){
  if(!current)return "";
