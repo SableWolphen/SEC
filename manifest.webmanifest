@@ -1,0 +1,19 @@
+{
+  "id": "./",
+  "name": "Saturdays Down South — SEC Pick'em",
+  "short_name": "SEC Pick'em",
+  "description": "Pick every SEC football game and compete in private leagues.",
+  "start_url": "./#picks",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b111b",
+  "theme_color": "#0b111b",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
