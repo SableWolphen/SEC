@@ -142,7 +142,11 @@
     const matchNote=document.createElement("div");matchNote.className="sds-trophy-schedule";
     matchNote.textContent="On the "+String(next.date?.slice(0,4)||"2026")+" SEC slate · Week "+next.week;
     info.append(title,teams,category,matchNote,year);
-  }else{info.append(title,teams,category,year);}
+  }else{
+    const unscheduled=document.createElement('div');unscheduled.className='sds-trophy-schedule';
+    unscheduled.textContent='Not on the current season slate · stays in your collection';
+    info.append(title,teams,category,unscheduled,year);
+  }
   card.append(display,info);attachModel(display,t,version);return card;
  }
  function render(next=tab){
@@ -184,7 +188,7 @@
    root.append(grid);
   }
   const note=document.createElement("p");note.className="sds-trophy-disclaimer";
-  note.textContent="Trophy achievements represent picking the straight-up winner of a rivalry game (even when your league plays Spread). They are not ownership of the physical rivalry trophy. Only verified final scores and your signed-in league picks count. Awards remain collected across seasons. Original collectible artwork is shown until optional 3D models are supplied.";
+  note.textContent="Trophy achievements represent picking the straight-up winner of a rivalry game (even when your league plays Spread). They are not ownership of the physical rivalry trophy. Every named rivalry remains available in this catalog, even if it is not scheduled this season. Only verified final scores and your signed-in league picks count. Awards remain collected across seasons. Original collectible artwork is shown until optional 3D models are supplied.";
   root.append(note);
  }
  function sync(payload={}){
