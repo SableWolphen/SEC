@@ -1,0 +1,728 @@
+{
+  "season": 2027,
+  "source": "SEC official 2027 baseball conference schedule",
+  "source_url": "https://www.secsports.com/news/2026/09/2027-sec-baseball-schedule-announced",
+  "notice": "Verified conference series pairings and weekend date windows. Individual game start dates and first-pitch times may shift for TV, travel, weather or doubleheaders. These are informational previews, not pickable games until scheduled individually.",
+  "series": [
+    {
+      "weekend": 1,
+      "start_date": "2027-03-19",
+      "end_date": "2027-03-21",
+      "away": "Texas A&M",
+      "home": "Alabama",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 1,
+      "start_date": "2027-03-19",
+      "end_date": "2027-03-21",
+      "away": "Arkansas",
+      "home": "Ole Miss",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 1,
+      "start_date": "2027-03-19",
+      "end_date": "2027-03-21",
+      "away": "Florida",
+      "home": "Auburn",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 1,
+      "start_date": "2027-03-19",
+      "end_date": "2027-03-21",
+      "away": "Georgia",
+      "home": "Kentucky",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 1,
+      "start_date": "2027-03-19",
+      "end_date": "2027-03-21",
+      "away": "Texas",
+      "home": "LSU",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 1,
+      "start_date": "2027-03-19",
+      "end_date": "2027-03-21",
+      "away": "Missouri",
+      "home": "Mississippi State",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 1,
+      "start_date": "2027-03-19",
+      "end_date": "2027-03-21",
+      "away": "Oklahoma",
+      "home": "Tennessee",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 1,
+      "start_date": "2027-03-19",
+      "end_date": "2027-03-21",
+      "away": "Vanderbilt",
+      "home": "South Carolina",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 2,
+      "start_date": "2027-03-25",
+      "end_date": "2027-03-27",
+      "away": "Alabama",
+      "home": "Arkansas",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 2,
+      "start_date": "2027-03-25",
+      "end_date": "2027-03-27",
+      "away": "Auburn",
+      "home": "Oklahoma",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 2,
+      "start_date": "2027-03-25",
+      "end_date": "2027-03-27",
+      "away": "Mississippi State",
+      "home": "Georgia",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 2,
+      "start_date": "2027-03-25",
+      "end_date": "2027-03-27",
+      "away": "Ole Miss",
+      "home": "Vanderbilt",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 2,
+      "start_date": "2027-03-25",
+      "end_date": "2027-03-27",
+      "away": "South Carolina",
+      "home": "Texas",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 2,
+      "start_date": "2027-03-26",
+      "end_date": "2027-03-28",
+      "away": "LSU",
+      "home": "Florida",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 2,
+      "start_date": "2027-03-26",
+      "end_date": "2027-03-28",
+      "away": "Kentucky",
+      "home": "Missouri",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 2,
+      "start_date": "2027-03-26",
+      "end_date": "2027-03-28",
+      "away": "Tennessee",
+      "home": "Texas A&M",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 3,
+      "start_date": "2027-04-02",
+      "end_date": "2027-04-04",
+      "away": "Texas",
+      "home": "Alabama",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 3,
+      "start_date": "2027-04-02",
+      "end_date": "2027-04-04",
+      "away": "Arkansas",
+      "home": "Tennessee",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 3,
+      "start_date": "2027-04-02",
+      "end_date": "2027-04-04",
+      "away": "Missouri",
+      "home": "Auburn",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 3,
+      "start_date": "2027-04-02",
+      "end_date": "2027-04-04",
+      "away": "Florida",
+      "home": "South Carolina",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 3,
+      "start_date": "2027-04-02",
+      "end_date": "2027-04-04",
+      "away": "Georgia",
+      "home": "Oklahoma",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 3,
+      "start_date": "2027-04-02",
+      "end_date": "2027-04-04",
+      "away": "Texas A&M",
+      "home": "Kentucky",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 3,
+      "start_date": "2027-04-02",
+      "end_date": "2027-04-04",
+      "away": "Vanderbilt",
+      "home": "LSU",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 3,
+      "start_date": "2027-04-02",
+      "end_date": "2027-04-04",
+      "away": "Ole Miss",
+      "home": "Mississippi State",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 4,
+      "start_date": "2027-04-09",
+      "end_date": "2027-04-11",
+      "away": "Alabama",
+      "home": "Missouri",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 4,
+      "start_date": "2027-04-09",
+      "end_date": "2027-04-11",
+      "away": "LSU",
+      "home": "Arkansas",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 4,
+      "start_date": "2027-04-09",
+      "end_date": "2027-04-11",
+      "away": "Auburn",
+      "home": "Georgia",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 4,
+      "start_date": "2027-04-09",
+      "end_date": "2027-04-11",
+      "away": "Mississippi State",
+      "home": "Florida",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 4,
+      "start_date": "2027-04-09",
+      "end_date": "2027-04-11",
+      "away": "Kentucky",
+      "home": "Vanderbilt",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 4,
+      "start_date": "2027-04-09",
+      "end_date": "2027-04-11",
+      "away": "South Carolina",
+      "home": "Ole Miss",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 4,
+      "start_date": "2027-04-09",
+      "end_date": "2027-04-11",
+      "away": "Oklahoma",
+      "home": "Texas A&M",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 4,
+      "start_date": "2027-04-09",
+      "end_date": "2027-04-11",
+      "away": "Tennessee",
+      "home": "Texas",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 5,
+      "start_date": "2027-04-16",
+      "end_date": "2027-04-18",
+      "away": "South Carolina",
+      "home": "Alabama",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 5,
+      "start_date": "2027-04-16",
+      "end_date": "2027-04-18",
+      "away": "Missouri",
+      "home": "Arkansas",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 5,
+      "start_date": "2027-04-16",
+      "end_date": "2027-04-18",
+      "away": "Tennessee",
+      "home": "Auburn",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 5,
+      "start_date": "2027-04-16",
+      "end_date": "2027-04-18",
+      "away": "Texas",
+      "home": "Florida",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 5,
+      "start_date": "2027-04-16",
+      "end_date": "2027-04-18",
+      "away": "Vanderbilt",
+      "home": "Georgia",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 5,
+      "start_date": "2027-04-16",
+      "end_date": "2027-04-18",
+      "away": "Kentucky",
+      "home": "Oklahoma",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 5,
+      "start_date": "2027-04-16",
+      "end_date": "2027-04-18",
+      "away": "Ole Miss",
+      "home": "LSU",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 5,
+      "start_date": "2027-04-16",
+      "end_date": "2027-04-18",
+      "away": "Texas A&M",
+      "home": "Mississippi State",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 6,
+      "start_date": "2027-04-23",
+      "end_date": "2027-04-25",
+      "away": "Alabama",
+      "home": "Ole Miss",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 6,
+      "start_date": "2027-04-23",
+      "end_date": "2027-04-25",
+      "away": "Arkansas",
+      "home": "Texas",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 6,
+      "start_date": "2027-04-23",
+      "end_date": "2027-04-25",
+      "away": "Auburn",
+      "home": "South Carolina",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 6,
+      "start_date": "2027-04-23",
+      "end_date": "2027-04-25",
+      "away": "Florida",
+      "home": "Kentucky",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 6,
+      "start_date": "2027-04-23",
+      "end_date": "2027-04-25",
+      "away": "Georgia",
+      "home": "Tennessee",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 6,
+      "start_date": "2027-04-23",
+      "end_date": "2027-04-25",
+      "away": "LSU",
+      "home": "Texas A&M",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 6,
+      "start_date": "2027-04-23",
+      "end_date": "2027-04-25",
+      "away": "Mississippi State",
+      "home": "Vanderbilt",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 6,
+      "start_date": "2027-04-23",
+      "end_date": "2027-04-25",
+      "away": "Oklahoma",
+      "home": "Missouri",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 7,
+      "start_date": "2027-04-30",
+      "end_date": "2027-05-02",
+      "away": "Kentucky",
+      "home": "Alabama",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 7,
+      "start_date": "2027-04-30",
+      "end_date": "2027-05-02",
+      "away": "Auburn",
+      "home": "Arkansas",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 7,
+      "start_date": "2027-04-30",
+      "end_date": "2027-05-02",
+      "away": "Tennessee",
+      "home": "Florida",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 7,
+      "start_date": "2027-04-30",
+      "end_date": "2027-05-02",
+      "away": "Georgia",
+      "home": "LSU",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 7,
+      "start_date": "2027-04-30",
+      "end_date": "2027-05-02",
+      "away": "Missouri",
+      "home": "Ole Miss",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 7,
+      "start_date": "2027-04-30",
+      "end_date": "2027-05-02",
+      "away": "Oklahoma",
+      "home": "Mississippi State",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 7,
+      "start_date": "2027-04-30",
+      "end_date": "2027-05-02",
+      "away": "Texas A&M",
+      "home": "South Carolina",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 7,
+      "start_date": "2027-04-30",
+      "end_date": "2027-05-02",
+      "away": "Vanderbilt",
+      "home": "Texas",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 8,
+      "start_date": "2027-05-07",
+      "end_date": "2027-05-09",
+      "away": "Alabama",
+      "home": "Georgia",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 8,
+      "start_date": "2027-05-07",
+      "end_date": "2027-05-09",
+      "away": "Arkansas",
+      "home": "Texas A&M",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 8,
+      "start_date": "2027-05-07",
+      "end_date": "2027-05-09",
+      "away": "Ole Miss",
+      "home": "Auburn",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 8,
+      "start_date": "2027-05-07",
+      "end_date": "2027-05-09",
+      "away": "Florida",
+      "home": "Vanderbilt",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 8,
+      "start_date": "2027-05-07",
+      "end_date": "2027-05-09",
+      "away": "South Carolina",
+      "home": "Kentucky",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 8,
+      "start_date": "2027-05-07",
+      "end_date": "2027-05-09",
+      "away": "LSU",
+      "home": "Missouri",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 8,
+      "start_date": "2027-05-07",
+      "end_date": "2027-05-09",
+      "away": "Mississippi State",
+      "home": "Tennessee",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 8,
+      "start_date": "2027-05-07",
+      "end_date": "2027-05-09",
+      "away": "Texas",
+      "home": "Oklahoma",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 9,
+      "start_date": "2027-05-14",
+      "end_date": "2027-05-16",
+      "away": "Tennessee",
+      "home": "Alabama",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 9,
+      "start_date": "2027-05-14",
+      "end_date": "2027-05-16",
+      "away": "Kentucky",
+      "home": "Arkansas",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 9,
+      "start_date": "2027-05-14",
+      "end_date": "2027-05-16",
+      "away": "Auburn",
+      "home": "Vanderbilt",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 9,
+      "start_date": "2027-05-14",
+      "end_date": "2027-05-16",
+      "away": "Georgia",
+      "home": "Florida",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 9,
+      "start_date": "2027-05-14",
+      "end_date": "2027-05-16",
+      "away": "Mississippi State",
+      "home": "LSU",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 9,
+      "start_date": "2027-05-14",
+      "end_date": "2027-05-16",
+      "away": "Oklahoma",
+      "home": "Ole Miss",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 9,
+      "start_date": "2027-05-14",
+      "end_date": "2027-05-16",
+      "away": "Missouri",
+      "home": "South Carolina",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 9,
+      "start_date": "2027-05-14",
+      "end_date": "2027-05-16",
+      "away": "Texas A&M",
+      "home": "Texas",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 10,
+      "start_date": "2027-05-20",
+      "end_date": "2027-05-22",
+      "away": "Alabama",
+      "home": "Auburn",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 10,
+      "start_date": "2027-05-20",
+      "end_date": "2027-05-22",
+      "away": "Arkansas",
+      "home": "Mississippi State",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 10,
+      "start_date": "2027-05-20",
+      "end_date": "2027-05-22",
+      "away": "Florida",
+      "home": "Missouri",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 10,
+      "start_date": "2027-05-20",
+      "end_date": "2027-05-22",
+      "away": "Texas",
+      "home": "Georgia",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 10,
+      "start_date": "2027-05-20",
+      "end_date": "2027-05-22",
+      "away": "LSU",
+      "home": "Kentucky",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 10,
+      "start_date": "2027-05-20",
+      "end_date": "2027-05-22",
+      "away": "Ole Miss",
+      "home": "Texas A&M",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 10,
+      "start_date": "2027-05-20",
+      "end_date": "2027-05-22",
+      "away": "South Carolina",
+      "home": "Oklahoma",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    },
+    {
+      "weekend": 10,
+      "start_date": "2027-05-20",
+      "end_date": "2027-05-22",
+      "away": "Vanderbilt",
+      "home": "Tennessee",
+      "source": "SEC 2027 conference baseball series schedule",
+      "status": "Series dates published; individual first pitches TBD"
+    }
+  ]
+}
