@@ -164,6 +164,75 @@ def get_one(code, sport, year, get):
     }
 
 
+def _season_matches(payload, year):
+    season = payload.get("season")
+    if isinstance(season, dict):
+        season = season.get("year")
+    return not season or str(season) == str(year)
+
+
+def _standings_entries(obj):
+    """Walk ESPN standings trees, including conference groups and nested children."""
+    if isinstance(obj, list):
+        for item in obj:
+            yield from _standings_entries(item)
+    elif isinstance(obj, dict):
+        entries = obj.get("entries")
+        if isinstance(entries, list):
+            for item in entries:
+                if isinstance(item, dict) and isinstance(item.get("team"), dict):
+                    yield item
+        for key in ("children", "groups", "standings"):
+            if key in obj:
+                yield from _standings_entries(obj[key])
+
+
+def _wins_losses(stats, prefix=""):
+    by_name = {str(item.get("name", "")).lower(): item
+               for item in stats if isinstance(item, dict)}
+    win = by_name.get(prefix + "wins")
+    loss = by_name.get(prefix + "losses")
+    if not win or not loss:
+        return None
+    try:
+        w = float(win.get("value", win.get("displayValue")))
+        l = float(loss.get("value", loss.get("displayValue")))
+    except (ValueError, TypeError):
+        return None
+    if w < 0 or l < 0 or not w.is_integer() or not l.is_integer():
+        return None
+    return valid_record(f"{int(w)}-{int(l)}")
+
+
+def standings_records(payload, sport, year):
+    """Find validated SEC school records in ESPN's season-specific conference table."""
+    if not isinstance(payload, dict) or not _season_matches(payload, year):
+        return {}
+    ids = {id_value: code for code, (id_value, _) in SEC_TEAMS.items()}
+    found = {}
+    for entry in _standings_entries(payload):
+        team = entry["team"]
+        code = ids.get(str(team.get("id", "")))
+        if not code:
+            continue
+        if any(team.get(k) for k in ("location", "shortDisplayName")) and not identity_ok(code, team):
+            continue
+        stats = entry.get("stats") or []
+        overall, conference = record_parts({"record": {"items": stats}})
+        if not overall:
+            overall = _wins_losses(stats)
+        if not conference:
+            conference = _wins_losses(stats, "conference")
+        if not overall:
+            continue
+        found[code] = {
+            "overall": overall, "conference": conference, "season": year,
+            "scope": "Season", "source": "ESPN",
+            "source_url": f"https://www.espn.com/college-baseball/team/_/id/{team['id']}",
+        }
+    return found
+
+
 def build(now=None, get=get_json, existing=None):
     now = now or dt.datetime.now(UTC)
     stamp = now.astimezone(UTC).isoformat().replace("+00:00", "Z")
@@ -195,6 +264,22 @@ def build(now=None, get=get_json, existing=None):
                 if (isinstance(old, dict) and old.get("season") == year
                         and old.get("source") == "ESPN" and valid_record(old.get("overall"))):
                     updated[code][sport] = old
+
+    # ESPN team details and Core API occasionally omit baseball records entirely.
+    # A source-verified, season-scoped SEC standings table is an independent fallback.
+    if any("baseball" not in updated[code] for code in SEC_TEAMS):
+        year = seasons["baseball"]
+        url = (f"https://site.api.espn.com/apis/v2/sports/baseball/"
+               f"college-baseball/standings?group=8&season={year}")
+        try:
+            table = standings_records(get(url), "baseball", year)
+            for code, record in table.items():
+                if "baseball" not in updated[code]:
+                    updated[code]["baseball"] = {**record, "verified_at": stamp}
+                    sourced += 1
+            print(f"ESPN SEC baseball standings filled {len(table)} source-linked schools")
+        except Exception as error:
+            print("SEC baseball standings unavailable:", type(error).__name__)
 
     available = sum(bool(updated[code]) for code in SEC_TEAMS)
     if sourced == 0 and available == 0:
