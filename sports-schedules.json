@@ -1,19 +1,19 @@
 {
-  "updated_at": null,
+  "updated_at": "2026-10-09T20:36:30.483586Z",
   "sports": {
     "basketball": {
       "season": 2027,
       "games": [],
       "source": "ESPN",
       "source_windows": 0,
-      "warning": "Waiting for first verified feed refresh"
+      "warning": "Schedule source unavailable. Showing previously verified fixtures only."
     },
     "baseball": {
       "season": 2027,
       "games": [],
       "source": "ESPN",
       "source_windows": 0,
-      "warning": "Waiting for verified upcoming schedule"
+      "warning": "Schedule source unavailable. Showing previously verified fixtures only."
     }
   }
 }
