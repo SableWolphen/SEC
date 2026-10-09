@@ -179,6 +179,13 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 @media(max-width:760px){.sec-news-controls{grid-template-columns:1fr 1fr}.sec-news-toggle{grid-column:1/-1}.sec-news-search{grid-column:1/-1}.sec-news-grid{grid-template-columns:1fr}.sec-news-card{padding:16px}.sec-news-head{padding:18px}}
 @media(max-width:440px){.sec-news-controls{grid-template-columns:1fr}.sec-news-school,.sec-news-search{grid-column:1}.sec-news-filter{flex:1}.sec-news-toggle{grid-column:1}}
 
+.sec-news-sports{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:15px 0 17px;padding:8px;border:1px solid #3b6262;border-radius:16px;background:linear-gradient(125deg,#18332f,#142532)}
+.sec-news-sport-choice{min-width:0;min-height:54px;border:1px solid #405963;background:#112633;color:#bad0d0;border-radius:12px;font-size:13px;font-weight:900;padding:10px 8px;transition:background .18s,border-color .18s}
+.sec-news-sport-choice.active{background:#d7fa65;color:#13251e;border-color:#d7fa65}
+.sec-news-sport-choice:hover:not(.active){border-color:#b1c979;color:#f8fff0}
+.sec-news-sport-choice:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.sec-news-sport-tag{color:#b5d79a;font-size:10px;font-weight:850;border:1px solid #466958;border-radius:6px;padding:4px 7px}
+@media(max-width:440px){.sec-news-sports{gap:5px;padding:6px}.sec-news-sport-choice{font-size:11px;padding:9px 2px;min-height:50px}}
 </style>
   <title>Saturdays Down South · SEC Pick'em</title>
 <link rel="stylesheet" href="./multi-sport.css?v=20261009-underintro-v5">
