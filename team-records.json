@@ -1,0 +1,24 @@
+{
+  "updated_at": null,
+  "source": "ESPN",
+  "seasons": {},
+  "teams": {
+    "ALA": {},
+    "ARK": {},
+    "AUB": {},
+    "FLA": {},
+    "UGA": {},
+    "UK": {},
+    "LSU": {},
+    "MISS": {},
+    "MSST": {},
+    "MIZ": {},
+    "OU": {},
+    "SC": {},
+    "TENN": {},
+    "TEX": {},
+    "TAMU": {},
+    "VAN": {}
+  },
+  "warning": "Waiting for the first verified ESPN record refresh."
+}
