@@ -92,6 +92,7 @@
     var leaguesForm=card('Create or join a league',
        '<label class="input-label" for="online-new-league">Make a new league</label>'+
        '<input class="field" id="online-new-league" maxlength="50" placeholder="Saturday Crew">'+
+       (window.SEC_FEATURES?.control?.()||'')+
        '<div style="margin-top:10px">'+button('Create league','create-league','primary-btn')+'</div>'+
        '<div class="divider"></div><label class="input-label" for="online-invite">Have an invite code?</label>'+
        '<input class="field" id="online-invite" maxlength="10" value="'+safe(inviteCode||"")+'" placeholder="10-character code" autocapitalize="characters">'+
@@ -100,7 +101,7 @@
     var standingsHtml = "";
     if(choice){
       var w=app.week();
-      standingsHtml = '<div class="league-hero"><div><div class="label">LIVE ONLINE LEAGUE</div><h2>'+safe(choice.name)+'</h2><p>'+(standingsError?'Standings unavailable':standings.length+' players')+' · Week '+w.num+' · Invite code '+safe(choice.invite_code)+'</p></div><span class="big-emoji" aria-hidden="true">🏆</span></div>'+
+      standingsHtml = '<div class="league-hero"><div><div class="label">LIVE ONLINE LEAGUE · '+safe(window.SEC_FEATURES?.MODES?.[choice.mode]?.name||'Straight Picks')+'</div><h2>'+safe(choice.name)+'</h2><p>'+(standingsError?'Standings unavailable':standings.length+' players')+' · Week '+w.num+' · Invite code '+safe(choice.invite_code)+'</p></div><span class="big-emoji" aria-hidden="true">🏆</span></div>'+
        card('League scoreboard',
         '<p>Scores update as confirmed results are posted. Everyone in this league shares these standings.</p>'+
         (standingsError?'<div class="help-note" role="alert">Scoreboard could not load: '+safe(standingsError)+'. Try Refresh standings.</div>':'')+
@@ -110,7 +111,7 @@
         (standings.length?standings.map(function(row,i){return '<div class="standing-row" style="grid-template-columns:26px minmax(0,1fr) 48px 52px 58px"><span class="rank">'+(i+1)+'</span><span class="name">'+safe(row.display_name)+(row.user_id===user.id?' ★':'')+'</span><span class="muted">'+safe(row.picked)+'</span><span class="score">'+safe(row.week_points)+'</span><span>'+safe(row.season_points)+'</span></div>';}).join(''):'<p class="helper" style="padding:15px">No standings available yet.</p>')+
         '</div><p class="helper">Picks are stored securely online. Only league members can see this scoreboard.</p>');
     } else standingsHtml=card('Start the competition','<p>Create a league or join one with an invitation code. Invite your friends by sending the link.</p>');
-    host.innerHTML='<div class="secondary-grid"><div class="setting-stack">'+(choice?standingsHtml:leaguesForm+standingsHtml)+'</div><div class="setting-stack">'+nameForm+(choice?leaguesForm:'')+'</div></div>'+
+    host.innerHTML='<div class="secondary-grid"><div class="setting-stack">'+(choice?standingsHtml+(window.SEC_FEATURES?.leagueDetails?.()||''):leaguesForm+standingsHtml)+'</div><div class="setting-stack">'+nameForm+(choice?leaguesForm:'')+'</div></div>'+
       '<p id="online-status" class="helper" role="status" aria-live="polite">'+safe(lastError)+'</p>';
   }
   function renderSettings(){
@@ -136,9 +137,9 @@
       if(!user){leagues=[];active=null;profile=null;standings=[];standingsError='';show();return;}
       var results=await Promise.all([
         client.from("sec_profiles").select("user_id,display_name").eq("user_id",user.id).maybeSingle(),
-        client.from("sec_leagues").select("id,name,invite_code,owner_id").order("created_at",{ascending:true}),
+        client.from("sec_leagues").select("id,name,invite_code,owner_id,mode").order("created_at",{ascending:true}),
         client.from("sec_picks").select("game_id,pick_code").eq("user_id",user.id),
-        client.from("sec_games").select("id,kickoff_at,winner,provisional")
+        client.from("sec_games").select("id,kickoff_at,winner,provisional,game_status,status_detail,away_score,home_score,spread_home,spread_source,score_updated_at")
       ]);
       results.forEach(extract);
       profile=results[0].data;
@@ -153,6 +154,7 @@
         }
       }
       leagues=results[1].data||[];
+      window.SEC_FEATURES?.updateGames?.(results[3].data||[],app);
       s.picks=Object.fromEntries((results[2].data||[]).filter(function(p){return app.gameById[p.game_id];}).map(function(p){return [p.game_id,p.pick_code];}));
       s.results={};
       (results[3].data||[]).forEach(function(g){
@@ -162,17 +164,24 @@
       active=leagues.some(function(l){return l.id===stored;})?stored:(leagues[0]?.id||null);
       if(inviteCode && !leagues.some(function(l){return l.invite_code===inviteCode.toUpperCase();})){
         // Explicitly joining an invite URL is equivalent to redeeming the invite.
-        try{var id=extract(await client.rpc("sec_join_league",{p_code:inviteCode}));inviteCode=null;leagues=extract(await client.from("sec_leagues").select("id,name,invite_code,owner_id").order("created_at",{ascending:true}))||[];active=id;history.replaceState(null,"",location.pathname+"#league");}
+        try{var id=extract(await client.rpc("sec_join_league",{p_code:inviteCode}));inviteCode=null;leagues=extract(await client.from("sec_leagues").select("id,name,invite_code,owner_id,mode").order("created_at",{ascending:true}))||[];active=id;history.replaceState(null,"",location.pathname+"#league");}
         catch(err){status(err.message);inviteCode=null;}
       }
       if(active)localStorage.setItem("ss-sec-league",active);
+      if(window.SEC_FEATURES?.reload)await window.SEC_FEATURES.reload(client,currentLeague(),user,app);
       await refreshStandings(false);
+      window.SEC_FEATURES?.remind?.();
       show();
     }catch(err){busy(err);show();}
   }
   async function refreshStandings(shouldShow){
     if(!client||!user||!active){standings=[];return;}
-    try{standings=extract(await client.rpc("sec_league_standings",{p_league:active,p_week:app.week().num}))||[];standingsError='';if(shouldShow)show();}
+    try{
+      standings=extract(await client.rpc("sec_league_standings_v2",{p_league:active,p_week:app.week().num}))||[];
+      window.SEC_FEATURES?.setStandings?.(standings);
+      if(shouldShow&&window.SEC_FEATURES?.reload)await window.SEC_FEATURES.reload(client,currentLeague(),user,app);
+      standingsError='';if(shouldShow)show();
+    }
     catch(err){standings=[];standingsError=err.message||'Server error';busy(err);if(shouldShow)show();}
   }
   function show(){
@@ -189,8 +198,13 @@
     if(working)return;
     working=true;
     try{
-      extract(await client.from("sec_picks").upsert({user_id:user.id,game_id:g.id,pick_code:id},{onConflict:"user_id,game_id"}));
-      app.state().picks[g.id]=id;app.renderPicks();app.toast("Pick saved online!");
+      if(window.SEC_FEATURES?.save){
+        await window.SEC_FEATURES.save(g,id,client,currentLeague(),user,app);
+      }else{
+        extract(await client.from("sec_picks").upsert({user_id:user.id,game_id:g.id,pick_code:id},{onConflict:"user_id,game_id"}));
+        app.state().picks[g.id]=id;app.renderPicks();
+      }
+      app.toast("Pick saved online!");
     }catch(err){busy(err);return;}working=false;
   }
   async function act(action){
@@ -276,7 +290,8 @@
         if(!user)throw Error("Sign in first.");
         var n=document.getElementById("online-new-league")?.value.trim();
         if(!n||n.length<2||n.length>50)throw Error("League name must be 2–50 characters.");
-        var row=extract(await client.rpc("sec_create_league",{p_name:n}));
+        var leagueMode=document.getElementById("online-league-mode")?.value||"straight";
+        var row=extract(await client.rpc("sec_create_league_mode",{p_name:n,p_mode:leagueMode}));
         active=row[0].league_id;localStorage.setItem("ss-sec-league",active);await refresh();
         app.toast("League created! Copy your invite link.");
       }else if(action==="join-league"){
@@ -326,7 +341,7 @@
   document.addEventListener("change",function(ev){
     if(ev.target.id==="online-league-select"){
       active=ev.target.value;localStorage.setItem("ss-sec-league",active);
-      void refreshStandings(true);
+      void refresh();
     }else if(ev.target.id==="league-week"&&client&&user){
       // The original app changes its active week in its own event handler.
       setTimeout(function(){void refreshStandings(true);},0);
