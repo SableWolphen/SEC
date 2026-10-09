@@ -108,7 +108,7 @@
         '<div class="chip-line">'+button('Share invite link','copy-invite','primary-btn')+' '+button('Refresh standings','refresh')+'</div>'+
         '<div style="margin:14px 0"><label for="league-week" class="input-label">Week</label><select class="field" id="league-week">'+app.weeks.map(function(x){return '<option value="'+x.num+'" '+(x.num===w.num?'selected':'')+'>Week '+x.num+'</option>';}).join('')+'</select></div>'+
         '<div class="leaderboard"><div class="standing-row head" style="grid-template-columns:26px minmax(0,1fr) 48px 52px 58px"><span>#</span><span>PLAYER</span><span>PICKS</span><span>WEEK</span><span>SEASON</span></div>'+
-        (standings.length?standings.map(function(row,i){return '<div class="standing-row" style="grid-template-columns:26px minmax(0,1fr) 48px 52px 58px"><span class="rank">'+(i+1)+'</span><span class="name">'+safe(row.display_name)+(row.user_id===user.id?' ★':'')+'</span><span class="muted">'+safe(row.picked)+'</span><span class="score">'+safe(row.week_points)+'</span><span>'+safe(row.season_points)+'</span></div>';}).join(''):'<p class="helper" style="padding:15px">No standings available yet.</p>')+
+        (standings.length?standings.map(function(row,i){return '<div class="standing-row" style="grid-template-columns:26px minmax(0,1fr) 48px 52px 58px"><span class="rank">'+(i+1)+'</span><span class="name"><span class="sec-avatar" aria-hidden="true">'+safe((row.display_name||'P').slice(0,1).toUpperCase())+'</span>'+safe(row.display_name)+(row.user_id===user.id?' ★':'')+'</span><span class="muted">'+safe(row.picked)+'</span><span class="score">'+safe(row.week_points)+'</span><span>'+safe(row.season_points)+'</span></div>';}).join(''):'<p class="helper" style="padding:15px">No standings available yet.</p>')+
         '</div><p class="helper">Picks are stored securely online. Only league members can see this scoreboard.</p>');
     } else standingsHtml=card('Start the competition','<p>Create a league or join one with an invitation code. Invite your friends by sending the link.</p>');
     host.innerHTML='<div class="secondary-grid"><div class="setting-stack">'+(choice?standingsHtml+(window.SEC_FEATURES?.leagueDetails?.()||''):leaguesForm+standingsHtml)+'</div><div class="setting-stack">'+nameForm+(choice?leaguesForm:'')+'</div></div>'+
@@ -134,7 +134,20 @@
       var session=extract(await client.auth.getSession()).session;
       user=session?.user||null;
       var s=app.state();
-      if(!user){leagues=[];active=null;profile=null;standings=[];standingsError='';show();return;}
+      if(!user){
+        leagues=[];active=null;profile=null;standings=[];standingsError='';
+        if(window.SEC_FEATURES?.reload)await window.SEC_FEATURES.reload(client,null,null,app);
+        try{
+          var publicGames=extract(await client.from("sec_games").select("id,kickoff_at,winner,provisional,game_status,status_detail,away_score,home_score,spread_home,spread_source,score_updated_at"))||[];
+          window.SEC_FEATURES?.updateGames?.(publicGames,app);
+          publicGames.forEach(function(g){var local=app.gameById[g.id];if(local){
+            if(g.kickoff_at)local.kickoff=g.kickoff_at;
+            local.onlineProvisional=g.provisional;
+            if(g.winner)app.state().results[g.id]=g.winner;
+          }});
+        }catch(publicErr){console.warn("Public game scoreboard unavailable",publicErr);}
+        show();return;
+      }
       var results=await Promise.all([
         client.from("sec_profiles").select("user_id,display_name").eq("user_id",user.id).maybeSingle(),
         client.from("sec_leagues").select("id,name,invite_code,owner_id,mode").order("created_at",{ascending:true}),
