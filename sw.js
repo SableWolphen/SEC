@@ -1,6 +1,6 @@
 /* Network-first: fresh schedules and online features should not be frozen by old caches. */
-const CACHE="sec-pickem-v9";
-const CORE=["./","./index.html","./config.js","./league-features.js?v=20261009-modes-v4","./multiplayer.js?v=20261009-modes-v4","./matchup-stats.js","./stats.json","./manifest.webmanifest","./icon.svg"];
+const CACHE="sec-pickem-v10";
+const CORE=["./","./index.html","./config.js","./trophy-case.js?v=20261009-trophies-all15","./league-features.js?v=20261009-modes-v4","./multiplayer.js?v=20261009-modes-v4","./matchup-stats.js","./stats.json","./manifest.webmanifest","./icon.svg"];
 self.addEventListener("install",event=>{
  event.waitUntil((async()=>{
   const cache=await caches.open(CACHE);
