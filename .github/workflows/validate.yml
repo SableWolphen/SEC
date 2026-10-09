@@ -16,6 +16,11 @@ jobs:
           node-version: '22'
       - name: JavaScript syntax
         run: |
+          node --check multi-sport.js
+          node --check scripts/smoke-multi-sport.cjs
+          node scripts/smoke-multi-sport.cjs
+          python3 -m unittest discover -s tests -p test_sports.py -v
+          python3 -m py_compile scripts/update_sports.py
           node --check multiplayer.js
           node --check league-features.js
           node --check scripts/smoke-tiebreakers.cjs
@@ -64,6 +69,12 @@ jobs:
           headlines=json.loads(Path('news.json').read_text())
           assert isinstance(headlines.get('articles'),list), "Published news feed is invalid"
           assert all(isinstance(item.get('title'),str) and item.get('source') in ('NCAA','ESPN') for item in headlines['articles']), "Invalid news source record"
+          assert 'id="sports-view"' in html and 'id="basketball-view"' in html and 'id="baseball-view"' in html, "All three sport pages required"
+          assert './multi-sport.js' in html and Path('multi-sport.js').exists(), "Multi-sport client missing"
+          assert Path('multi-sport.css').exists(), "Sports CSS missing"
+          assert Path('sports-schedules.json').exists(), "Public sports schedule missing"
+          assert Path('supabase/migrations/20261009_basketball_baseball.sql').exists(), "Isolated sport backend migration missing"
+          assert Path('supabase/functions/sec-sport-sync/index.ts').exists(), "Source-verified importer missing"
           assert "window.SEC_BRIDGE" in html
           assert "./config.js" in html and "./multiplayer.js" in html
           assert "./manifest.webmanifest" in html
