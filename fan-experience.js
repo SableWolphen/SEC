@@ -380,7 +380,7 @@ function remind(){
 async function onView(v){
  resetAccount();
  if(v==="league"){
-  renderLeagueChoice();extras();
+  renderClub();renderLeagueChoice();extras();
   await window.secOnline?.whenAuthReady?.();
   resetAccount();await readLeaguePreference();
   const inviteCode=new URLSearchParams(location.search).get("club");
