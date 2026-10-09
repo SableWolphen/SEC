@@ -366,3 +366,22 @@ grant execute on function public.sec_create_league_mode(text,text),
   public.sec_h2h_history(uuid),
   public.sec_remove_league_member(uuid,uuid) to authenticated;
 -- For scheduled ESPN score refresh, see ../enable-score-automation.sql.
+
+-- League owner can revoke old invitation links after removing a player.
+CREATE OR REPLACE FUNCTION public.sec_rotate_league_invite(p_league uuid)
+ RETURNS text
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO ''
+AS $function$
+declare next_code text;
+begin
+ if (select auth.uid()) is null or not exists(
+  select 1 from public.sec_leagues l where l.id=p_league and l.owner_id=(select auth.uid())
+ ) then raise exception 'Only the league creator can reset invitations'; end if;
+ update public.sec_leagues set invite_code=upper(substr(replace(gen_random_uuid()::text,'-',''),1,10))
+ where id=p_league returning invite_code into next_code;
+ return next_code;
+end $function$
+revoke all on function public.sec_rotate_league_invite(uuid) from public,anon;
+grant execute on function public.sec_rotate_league_invite(uuid) to authenticated;
