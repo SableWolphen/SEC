@@ -23,6 +23,19 @@ Data is sourced from ESPN's public college football game feed. `scripts/update_s
 
 **Online league database is provisioned and connected.** Its dedicated Supabase project ID is `vzjrlvkwuswkryxxrvtp` (separate from PlushList and Baby PupFit). Players have successfully created a real league; full third-party public email-delivery configuration remains an owner task.
 
+## Rivalry Trophy Case
+
+The **Trophy Case** tab now includes **15 unique named rivalries**, representing **all 16 SEC schools** in the user's rivalry grid and two nonconference rivals. Every matchup gets a distinct collectible with a trophy-themed illustration, rivalry title, schools, and an earned/unearned state. Awards remain collected across seasons.
+
+The collection includes: Iron Bowl, Third Saturday in October, Golden Boot, Southwest Classic, Deep South's Oldest Rivalry, Florida–Georgia (World's Largest Outdoor Cocktail Party), Governor's Cup, Magnolia Bowl, Egg Bowl/Golden Egg, Battle Line, Mayor's Cup, Red River, Palmetto Showdown, Lone Star Showdown, and Tennessee–Vanderbilt.
+
+- **All Trophies** shows the whole collection, **My Trophies** shows achievements from correct predictions, and **History** shows correctly and incorrectly predicted rivalry finals.
+- The Trophy Case is **read-only**: it uses the current signed-in player's league-specific picks and games recorded as final with a verified winning team. There are no new database tables, and old league picks remain unchanged.
+- Awards are **digital fan achievements** for picking the straight-up winner, even when a league uses Spread mode. They do not indicate ownership of a school's physical trophy. There are no stakes, cash prizes or wagers.
+- Distinct illustrated placeholders are displayed until real licensed/created 3D models are uploaded in `trophies/<id>.glb`. To enable 3D files, define `window.SDS_TROPHY_MODELS = ["golden-egg", ...]` with only filenames genuinely uploaded, before loading `trophy-case.js`. Missing models are **not** repeatedly requested.
+- Navigation is available on desktop and mobile at [Trophy Case](https://sablewolphen.github.io/SEC/#trophies).
+- Run `node scripts/smoke-trophies.cjs` to test all 15 named pairs, reverse home/away order, verified finals, league isolation and sign-out.
+
 ## New competition features
 
 - **Four game modes:** choose the scoring format while creating a league. Existing leagues stay Straight Picks. Confidence ranks are unique within a week; pick a rank and tap the team to save. Spread games cannot be picked without a sourced pregame line. Head-to-Head opponents rotate each week.
