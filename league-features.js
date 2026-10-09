@@ -333,7 +333,7 @@ function leagueDetails(){
   (owner?'<div class="sec-manage"><b>League manager</b><p class="helper">Only the league creator can remove a member.</p>'+
    '<button type="button" class="ghost-btn" data-extra="rotate-code">Reset invite code</button><p class="helper">Use this after removing someone to invalidate the old invite link.</p>'+
    standings.filter(r=>r.user_id!==user.id).map(r=>'<div class="sec-manage-row"><span>'+esc(r.display_name)+'</span><button type="button" class="ghost-btn" data-extra="remove-member" data-user="'+esc(r.user_id)+'">Remove</button></div>').join('')+'</div>':'')+
-  '</section>'+(window.SEC_SOCIAL?.render?.()||'');
+  '</section>';
 }
 function setStandings(rows){standings=rows||[];window.SDSTrophyCase?.refreshHonors?.();}
 function remind(){
