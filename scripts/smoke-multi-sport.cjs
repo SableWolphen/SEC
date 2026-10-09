@@ -124,7 +124,9 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
  assert.ok(html.includes('id="global-sport-switch"'),"persistent sport switcher exists");
  assert.ok(html.indexOf('id="picks-heading"')<html.indexOf('id="global-sport-switch"'),"football headline and description precede sport switcher");
  assert.ok(html.indexOf('id="global-sport-switch"')<html.indexOf('id="week-picker"'),"sport selector follows the football intro before matchups");
- assert.ok(html.includes("pageIntro.insertAdjacentElement('afterend',sportSwitcher)"),"one switcher moves below current screen intro on navigation");
+ assert.ok(html.includes("pageIntro.insertAdjacentElement('afterend',sportSwitcher)"),"one switcher moves below current picks screen intro");
+ assert.ok(html.includes("sportViews.includes(v)?document.querySelector"),"pick sport switcher never moves into News, League, Settings or Trophy Case");
+ assert.ok(html.includes("selectedSport:()=>lastSportView"),"news can default to sport viewed on Picks page");
  assert.ok(html.includes("20261009-underintro-v5"),"updated sport selector styling is cache-busted");
  for(const sport of ["football","baseball","basketball"])
   assert.ok(html.includes('data-sport-tab="'+sport+'"'),"accessible sport icon: "+sport);
