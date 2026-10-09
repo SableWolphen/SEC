@@ -20,6 +20,7 @@ jobs:
           node --check league-features.js
           node --check scripts/smoke-tiebreakers.cjs
           node scripts/smoke-tiebreakers.cjs
+          node --check rivalry-catalog.js
           node --check trophy-case.js
           node --check league-social.js
           node --check scripts/smoke-social.cjs
@@ -63,6 +64,9 @@ jobs:
           assert 'pairings()+tiebreakerCard()' not in features, "Tiebreaker must not remain in League settings"
           assert 'id="sds-trophy-case"' in html and 'data-nav="trophies"' in html, "Trophy Case must be available in navigation"
           assert './trophy-case.js' in html and Path("trophy-case.js").exists(), "Missing Trophy Case asset"
+          assert './rivalry-catalog.js' in html and Path('rivalry-catalog.js').exists(), "Archive script missing"
+          assert html.index('./rivalry-catalog.js') < html.index('./trophy-case.js'), "Archive must load first"
+          assert Path('supabase/migrations/20261009_73_rivalry_catalog.sql').exists(), "Expanded secure award migration missing"
           assert './league-social.js' in html and Path("league-social.js").exists(), "Missing social client"
           assert Path("supabase/migrations/20261009_trophies_chat_champions.sql").exists()
           assert "sec_league_standings_v3" in Path("multiplayer.js").read_text()
