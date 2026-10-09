@@ -48,7 +48,7 @@ const document={
 const localStorage={getItem(){return null;},setItem(){}};
 const fixture={updated_at:"2026-10-09T20:00:00Z",
  sports:{basketball:{season:2027,games:[game]},baseball:{season:2027,games:[]}}};
-const context={window,document,localStorage,URL,Date,console,
+const context={window,document,localStorage,URL,URLSearchParams,Date,console,
  navigator:{clipboard:{writeText:async()=>{}}},location:{hash:"#sports",href:"https://sablewolphen.github.io/SEC/#sports"},
  history:{replaceState(){}},setInterval(){},setTimeout,
  fetch:async()=>({ok:true,json:async()=>fixture})};
