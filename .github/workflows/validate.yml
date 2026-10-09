@@ -1,0 +1,45 @@
+name: Verify SEC Pick'em
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JavaScript syntax
+        run: |
+          node --check multiplayer.js
+          node --check config.js
+          node --check sw.js
+          python3 - <<'PY'
+          from pathlib import Path
+          source=Path("index.html").read_text()
+          assert "<script>" in source and "</script>" in source
+          Path("/tmp/sec-inline.js").write_text(source.split("<script>",1)[1].split("</script>",1)[0])
+          PY
+          node --check /tmp/sec-inline.js
+      - name: Validate schedule, manifest and multiplayer assets
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json, re
+          html=Path("index.html").read_text()
+          sql=Path("supabase/setup.sql").read_text()
+          manifest=json.loads(Path("manifest.webmanifest").read_text())
+          assert len(re.findall(r"\('2026-\d+-[A-Z0-9]+-[A-Z0-9]+'",sql)) == 120, "Expected all 120 regular-season games seeded"
+          assert "window.SEC_BRIDGE" in html
+          assert "./config.js" in html and "./multiplayer.js" in html
+          assert "./manifest.webmanifest" in html
+          assert Path("sw.js").exists() and Path("icon.svg").exists()
+          assert manifest["display"] == "standalone"
+          assert "service_role" not in Path("config.js").read_text().replace("// NEVER put a secret, service_role, or database password in this file.","")
+          print("Verified 120 games, scripts, install manifest, and public client config.")
+          PY
