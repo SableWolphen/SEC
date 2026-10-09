@@ -164,7 +164,7 @@ function element(tag){
 }
 const trophyRoot=element("section");
 harness.document.createElement=element;
-harness.document.getElementById=id=>id==="sds-trophy-case"?trophyRoot:null;
+harness.document.getElementById=id=>id==="sds-trophy-case"?trophyRoot:descendants(trophyRoot,n=>n.id===id)[0]||null;
 const descendants=(node,match)=>[...(match(node)?[node]:[]),...(node.children||[]).flatMap(child=>child&&typeof child==="object"?descendants(child,match):[])];
 
 win.SEC_SOCIAL={renderChampionship:()=>'<div class="sec-championship-heading"><h3>League Championship</h3></div><button data-sec-social="crown" disabled>Crown 2026 Champion</button>'};
