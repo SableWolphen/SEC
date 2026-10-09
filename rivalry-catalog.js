@@ -262,21 +262,23 @@ const all=[
  },
  {
   "id": "tennessee-vanderbilt",
-  "name": "Tennessee–Vanderbilt Rivalry",
+  "name": "Battle for the Volunteer State",
   "codes": [
    "TENN",
    "VAN"
   ],
   "symbol": "🎸",
-  "kind": "series",
-  "physical": "",
+  "kind": "named",
+  "physical": null,
   "category": "SEC",
   "legacy": true,
   "teams": "Tennessee vs Vanderbilt",
   "model": "trophies/tennessee-vanderbilt.glb",
-  "short": "TENNESSEE–VANDERBILT ",
+  "short": "VOLUNTEER STATE SHOWDOWN",
   "tone": "#d7fa65",
-  "nonconference": false
+  "nonconference": false,
+  "nicknameNote": "Informal descriptive name, inspired by Tennessee Athletics’ 'Battle for Volunteer State Supremacy' coverage. Not an official physical trophy.",
+  "nicknameSource": "https://utsports.com/news/2022/11/23/football-fb-preview-10-vols-cap-regular-season-in-nashville-in-battle-for-volunteer-state-supremacy"
  },
  {
   "id": "alabama-florida",
@@ -514,21 +516,23 @@ const all=[
  },
  {
   "id": "florida-tennessee",
-  "name": "Florida–Tennessee Rivalry",
+  "name": "Third Saturday in September",
   "codes": [
    "FLA",
    "TENN"
   ],
-  "symbol": "🐅",
-  "kind": "series",
+  "symbol": "🍊",
+  "kind": "named",
   "physical": null,
   "category": "SEC",
   "legacy": false,
   "teams": "Florida vs Tennessee",
   "model": null,
-  "short": "FLORIDA–TENNESSEE ",
+  "short": "THIRD SATURDAY SEPTEMBER",
   "tone": "#d7fa65",
-  "nonconference": false
+  "nonconference": false,
+  "nicknameNote": "Traditional nickname from the old September schedule; the game may be played on other dates.",
+  "nicknameSource": "https://en.wikipedia.org/wiki/Florida%E2%80%93Tennessee_football_rivalry"
  },
  {
   "id": "georgia-south-carolina",
@@ -1332,7 +1336,7 @@ for(const t of all){
 // Keep the full 73-game reference registry for non-destructive historical records.
 // Only officially/traditionally TITLED rivalry games belong in the public Trophy Case.
 // Do not infer a title from a generic 'School A–School B Rivalry' description.
-const NAMED_RIVALRY_IDS=new Set(["iron-bowl","third-saturday","golden-boot","southwest-classic","deep-south","cocktail-party","governors-cup","magnolia-bowl","golden-egg","battle-line","mayors-cup","red-river","palmetto-showdown","lone-star","first-saturday-november","highway-82","tiger-bowl","beer-barrel","tiger-sooner","sunshine-showdown","florida-miami","clean-old-fashioned-hate","battle-on-broadway","battle-for-rag","arch-rivalry","telephone-trophy","border-war","missouri-nebraska","bedlam","mid-south","chancellors-spurs","battle-brazos","gold-cowbell"]);
+const NAMED_RIVALRY_IDS=new Set(["iron-bowl","third-saturday","golden-boot","southwest-classic","deep-south","cocktail-party","governors-cup","magnolia-bowl","golden-egg","battle-line","mayors-cup","red-river","palmetto-showdown","lone-star","first-saturday-november","highway-82","tiger-bowl","beer-barrel","tiger-sooner","sunshine-showdown","florida-miami","clean-old-fashioned-hate","battle-on-broadway","battle-for-rag","arch-rivalry","telephone-trophy","border-war","missouri-nebraska","bedlam","mid-south","chancellors-spurs","battle-brazos","gold-cowbell","tennessee-vanderbilt","florida-tennessee"]);
 const immutable=Object.freeze(all.map(t=>Object.freeze({...t,namedTrophy:NAMED_RIVALRY_IDS.has(t.id)})));
 window.SDS_RIVALRIES=immutable;
 window.SDS_TROPHY_RIVALRIES=Object.freeze(immutable.filter(t=>t.namedTrophy));
