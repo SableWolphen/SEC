@@ -102,7 +102,8 @@
       var w=app.week();
       standingsHtml = '<div class="league-hero"><div><div class="label">LIVE ONLINE LEAGUE</div><h2>'+safe(choice.name)+'</h2><p>'+(standingsError?'Standings unavailable':standings.length+' players')+' · Week '+w.num+' · Invite code '+safe(choice.invite_code)+'</p></div><span class="big-emoji" aria-hidden="true">🏆</span></div>'+
        card('League scoreboard',
-        '<p>Scores update as confirmed results are posted. Everyone in this league shares these standings.</p>'+\n        (standingsError?'<div class="help-note" role="alert">Scoreboard could not load: '+safe(standingsError)+'. Try Refresh standings.</div>':'')+
+        '<p>Scores update as confirmed results are posted. Everyone in this league shares these standings.</p>'+
+        (standingsError?'<div class="help-note" role="alert">Scoreboard could not load: '+safe(standingsError)+'. Try Refresh standings.</div>':'')+
         '<div class="chip-line">'+button('Share invite link','copy-invite','primary-btn')+' '+button('Refresh standings','refresh')+'</div>'+
         '<div style="margin:14px 0"><label for="league-week" class="input-label">Week</label><select class="field" id="league-week">'+app.weeks.map(function(x){return '<option value="'+x.num+'" '+(x.num===w.num?'selected':'')+'>Week '+x.num+'</option>';}).join('')+'</select></div>'+
         '<div class="leaderboard"><div class="standing-row head" style="grid-template-columns:26px minmax(0,1fr) 48px 52px 58px"><span>#</span><span>PLAYER</span><span>PICKS</span><span>WEEK</span><span>SEASON</span></div>'+
