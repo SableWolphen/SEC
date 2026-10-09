@@ -15,6 +15,10 @@ Open **News** in the desktop or six-item mobile navigation (or go directly to [t
 - **Fail safely:** no made-up headlines, invented dates, unverified website redirects, or stories outside the past nine days. If both news sources are unavailable, recent cached stories may be displayed with a clear warning. Existing pick'em scoring automation is unchanged. No API tokens or account connections are needed.
 - **Testing:** `python3 -m unittest discover -s tests -p test_news.py -v` validates source parsing, recency and link safety, and `node scripts/smoke-news.cjs` checks the mobile navigation, breaking-badge freshness, TL;DR rendering and direct source links.
 
+## One account across all three sports
+
+Football, basketball and baseball all use the **same Supabase Auth session**. Returning players sign in only once; switching sports does not create a separate user. The sport-specific page waits for the saved session to restore before deciding the player is signed out, automatically refreshes when login changes, and shows the current signed-in email. Sports keep separate league standings and picks, but those leagues belong to the same account. Creating/joining another sport's league is **not** creating another account.
+
 ## Persistent sport icons and automatic season landing
 
 The site opens directly to the **most recently started season**, without a mandatory choose-sport homepage: **football in August–October, men's basketball in November–January, and baseball in February–July**. The compact 🏈 Football / ⚾ Baseball / 🏀 Basketball switcher stays directly below the header on every screen, including mobile. You can jump between pick slates in one tap, while each sport keeps its own picks and leagues. The Picks item in desktop/mobile navigation returns to the sport you were viewing. The original football deep link stays `#picks`; basketball and baseball use `#basketball` and `#baseball`. Old `#sports` links redirect to the current season. Loading the root route starts at the latest season regardless of the sport visited in the previous browser session.
