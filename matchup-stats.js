@@ -24,8 +24,10 @@ function render(g){
   var result='<div class="insight-head"><strong>📊 Matchup stats</strong><small>'+esc(d.updated_at?new Date(d.updated_at).toLocaleDateString("en-US",{month:"short",day:"numeric"}):"2026 season")+' · ESPN data'+link+'</small></div>'+
   '<div class="insight-records"><span><b>Away</b> '+esc(ar)+esc(ap)+'</span><span><b>Home</b> '+esc(hr)+esc(hp)+'</span></div>';
   if(p!==null){
-    var awayPct=100-p;
-    result+='<div class="insight-forecast"><span>'+esc(g.away)+' <strong>'+awayPct+'%</strong></span><span>'+esc(g.home)+' <strong>'+p+'%</strong></span></div>'+
+    var awayPct=Math.round((100-p)*10)/10;
+    p=Math.round(p*10)/10;
+    var lean=p>55?g.home:p<45?g.away:'Toss-up';
+    result+='<p class="insight-lean"><strong>Projected lean: '+esc(lean)+'</strong> · '+esc(method)+'</p><div class="insight-forecast"><span>'+esc(g.away)+' <strong>'+awayPct+'%</strong></span><span>'+esc(g.home)+' <strong>'+p+'%</strong></span></div>'+
       '<div class="insight-bar" role="img" aria-label="'+esc(g.away)+' '+awayPct+' percent; '+esc(g.home)+' '+p+' percent"><span style="width:'+awayPct+'%"></span></div>'+
       '<p class="insight-disclaimer">'+esc(method)+(method==="Record-based estimate"?" (season win–loss records + home-field adjustment; not a validated predictive model)":" (as published by ESPN)")+' · Predictions are uncertain, not guarantees or betting odds.</p>';
   } else {
