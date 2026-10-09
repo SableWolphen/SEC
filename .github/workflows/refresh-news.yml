@@ -1,0 +1,58 @@
+name: Refresh SEC football headlines
+on:
+  schedule:
+    - cron: '21 * * * *'
+  workflow_dispatch: {}
+  push:
+    paths:
+      - 'scripts/update_news.py'
+      - 'tests/test_news.py'
+      - '.github/workflows/refresh-news.yml'
+permissions:
+  contents: write
+concurrency:
+  group: sec-football-news
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test source parsing and headline integrity
+        run: python3 -m unittest discover -s tests -p test_news.py -v
+      - name: Fetch current college football news and filter to SEC
+        run: python3 scripts/update_news.py
+      - name: Validate real news story URLs and published dates
+        run: |
+          python3 - <<'PY'
+          import json,datetime as dt
+          from pathlib import Path
+          d=json.loads(Path('news.json').read_text())
+          assert isinstance(d.get('articles'),list)
+          assert isinstance(d.get('sources'),list)
+          for row in d['articles']:
+              assert row['source'] in ('ESPN','NCAA')
+              assert row['url'].startswith(('https://www.espn.com/','https://www.ncaa.com/','https://espn.com/','https://ncaa.com/'))
+              assert row['title'] and row['published_at']
+              stamp=dt.datetime.fromisoformat(row['published_at'].replace('Z','+00:00'))
+              assert stamp.tzinfo is not None
+          print('Validated',len(d['articles']),'verified source-linked SEC stories')
+          PY
+      - name: Publish news feed to GitHub Pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh source-linked SEC news headlines [automated]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          else
+            echo "News unchanged"
+          fi
