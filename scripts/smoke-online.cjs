@@ -8,7 +8,7 @@ const vm=require('node:vm');
 const handlers={},elements={};
 const state={session:null,profile:null,leagues:[],picks:[],requests:[]};
 const fields={
-  'online-email':{value:'sally@example.com'},
+  'online-email':{value:'sample.person.middle@gmail.com\u200B '},
   'online-signup-name':{value:'Sally SEC'},
   'online-password':{value:'aStrongTestPass123!'},
   'online-password-confirm':{value:'aStrongTestPass123!'},
@@ -40,14 +40,14 @@ function query(table){
  };
  return api;
 }
-const user={id:'test-player-1',email:'sally@example.com',user_metadata:{display_name:'Sally SEC'}};
+const user={id:'test-player-1',email:'sample.person.middle@gmail.com',user_metadata:{display_name:'Sally SEC'}};
 const client={
  auth:{
    async getSession(){return {data:{session:state.session}};},
    onAuthStateChange(){return {data:{subscription:{unsubscribe(){}}}};},
    async signUp(credentials){
      state.requests.push({type:'signup',email:credentials.email,passwordLength:credentials.password.length});
-     assert.equal(credentials.email,'sally@example.com');
+     assert.equal(credentials.email,'sample.person.middle@gmail.com');
      state.session={user};
      return {data:{user,session:state.session}};
    },
