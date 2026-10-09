@@ -113,6 +113,16 @@
       ]);
       results.forEach(extract);
       profile=results[0].data;
+      // The sign-up display name is untrusted cosmetic metadata, never used for access control.
+      if(!profile){
+        var display=String(user.user_metadata?.display_name||"").trim();
+        if(display.length>=2&&display.length<=32){
+          try{
+            extract(await client.from("sec_profiles").upsert({user_id:user.id,display_name:display},{onConflict:"user_id"}));
+            profile={user_id:user.id,display_name:display};
+          }catch(profileErr){console.warn("SEC display name sync:",profileErr);}
+        }
+      }
       leagues=results[1].data||[];
       s.picks=Object.fromEntries((results[2].data||[]).filter(function(p){return app.gameById[p.game_id];}).map(function(p){return [p.game_id,p.pick_code];}));
       s.results={};
@@ -141,8 +151,8 @@
     if(app.view()==="league")renderLeague();
     if(app.view()==="settings")renderSettings();
     var el=document.getElementById("online-banner");
-    if(el)el.innerHTML=user?'<span class="eyebrow-dot"></span> ONLINE · '+safe(user.email||"Signed in")+' · '+safe(currentLeague()?.name||"Join a league"):
-      '<span class="eyebrow-dot"></span> ONLINE LEAGUES · '+(client?'Sign in under My league':'Owner setup required');
+    if(el)el.innerHTML=user?'<span class="eyebrow-dot"></span> ONLINE · '+safe(user.email||"Signed in")+' · '+safe(currentLeague()?.name||"Create or join a league"):
+      '<button type="button" class="online-signin-cta" data-online="go-league">👤 Create account or log in · Make a league with friends ↗</button>';
   }
   async function choose(g,id){
     if(!client){app.toast("Online play is not configured yet.");app.setView("league");return;}
