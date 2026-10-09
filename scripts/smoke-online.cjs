@@ -7,6 +7,8 @@ const vm=require('node:vm');
 
 const handlers={},elements={};
 const state={session:null,profile:null,leagues:[],picks:[],requests:[]};
+const pickState={picks:{},results:{}};
+const sampleGame={id:'2026-6-UGA-ALA',away:'UGA',home:'ALA'};
 const fields={
   'online-email':{value:'sample.person.middle@gmail.com\u200B '},
   'online-signup-name':{value:'Sally SEC'},
@@ -30,7 +32,12 @@ function query(table){
    async maybeSingle(){return {data:state.profile};},
    async upsert(row){
      if(table==='sec_profiles')state.profile=row;
-     else if(table==='sec_picks')state.picks.push(row);
+     else if(table==='sec_picks'){
+       const existing=state.picks.findIndex(p=>p.user_id===row.user_id&&p.game_id===row.game_id);
+       if(existing<0)state.picks.push(row);
+       else state.picks[existing]=row;
+       state.requests.push({type:'pick',team:row.pick_code});
+     }
      return {data:row};
    },
    then(resolve,reject){
@@ -76,7 +83,7 @@ const env={
  window:{
    SEC_BRIDGE:{
      esc:s=>String(s).replaceAll('<','&lt;'),
-     weeks:[{num:6}],gameById:{},state:()=>({picks:{},results:{}}),
+     weeks:[{num:6}],gameById:{'2026-6-UGA-ALA':sampleGame},state:()=>pickState,
      week:()=>({num:6}),view:()=> 'league',setView:()=>{},renderPicks:()=>{},
      toast:()=>{}
    },
@@ -125,5 +132,15 @@ function click(action){
  await sleep();await sleep();await sleep();
  assert.equal(state.requests.some(x=>x.type==='login'),true,'password sign-in called');
  assert.match(host.innerHTML,/Saturday Friends/,'existing league reloads after sign-in');
- console.log('SEC signup → account profile → create private league → invite → logout → password login smoke tests passed.');
+ // Verify tap-a-team, change a selection, and reload the saved winner.
+ await env.window.secOnline.pick(sampleGame,'UGA');
+ assert.equal(pickState.picks[sampleGame.id],'UGA','first winner selected');
+ await env.window.secOnline.pick(sampleGame,'ALA');
+ assert.equal(pickState.picks[sampleGame.id],'ALA','second winner replaces first choice');
+ assert.deepEqual(state.requests.filter(x=>x.type==='pick').map(x=>x.team),['UGA','ALA'],'server received both picks');
+ assert.equal(state.picks.length,1,'upsert keeps one winner per game');
+ pickState.picks={};
+ await env.window.secOnline.refresh();
+ assert.equal(pickState.picks[sampleGame.id],'ALA','signed-in picks restore from backend');
+ console.log('SEC signup → account profile → create private league → invite → logout → password login → pick + change winner + refresh smoke tests passed.');
 })().catch(err=>{console.error(err);process.exitCode=1;});
