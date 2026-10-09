@@ -1,6 +1,6 @@
 # Saturdays Down South — SEC Pick’em
 
-An **unofficial fan-made SEC football pick’em website** in [SableWolphen/SEC](https://github.com/SableWolphen/SEC).
+An **unofficial fan-made SEC football, basketball and baseball pick’em website** in [SableWolphen/SEC](https://github.com/SableWolphen/SEC).
 
 **Website:** https://sablewolphen.github.io/SEC/ (GitHub Pages publishes from `main` branch root).
 
@@ -14,6 +14,12 @@ Open **News** in the desktop or six-item mobile navigation (or go directly to [t
 - **Automatic updates:** [`.github/workflows/refresh-news.yml`](.github/workflows/refresh-news.yml) runs around **once per hour** via GitHub Actions, filters/deduplicates stories, and commits [`news.json`](news.json) for GitHub Pages. Scheduled jobs can be delayed, and this isn't second-by-second breaking coverage or background push. Opening the tab requests the newest published file; while the News tab is open, it rechecks every five minutes.
 - **Fail safely:** no made-up headlines, invented dates, unverified website redirects, or stories outside the past nine days. If both news sources are unavailable, recent cached stories may be displayed with a clear warning. Existing pick'em scoring automation is unchanged. No API tokens or account connections are needed.
 - **Testing:** `python3 -m unittest discover -s tests -p test_news.py -v` validates source parsing, recency and link safety, and `node scripts/smoke-news.cjs` checks the mobile navigation, breaking-badge freshness, TL;DR rendering and direct source links.
+
+## Persistent sport icons and automatic season landing
+
+The site opens directly to the **most recently started season**, without a mandatory choose-sport homepage: **football in August–October, men's basketball in November–January, and baseball in February–July**. The compact 🏈 Football / ⚾ Baseball / 🏀 Basketball switcher stays directly below the header on every screen, including mobile. You can jump between pick slates in one tap, while each sport keeps its own picks and leagues. The Picks item in desktop/mobile navigation returns to the sport you were viewing. The original football deep link stays `#picks`; basketball and baseball use `#basketball` and `#baseball`. Old `#sports` links redirect to the current season. Loading the root route starts at the latest season regardless of the sport visited in the previous browser session.
+
+Schedules for basketball and baseball rely on verified imported games. If no officially confirmed game date/time is available, the app shows a schedule-pending message instead of creating fake fixtures or accepting invalid picks.
 
 ## Game features
 
