@@ -4,9 +4,21 @@ An **unofficial fan-made SEC football pick’em website** in [SableWolphen/SEC](
 
 **Website:** https://sablewolphen.github.io/SEC/ (GitHub Pages publishes from `main` branch root).
 
+## SEC News — live TL;DR headlines
+
+Open **News** in the desktop or six-item mobile navigation (or go directly to [the SEC News tab](https://sablewolphen.github.io/SEC/#news)). It displays real, dated Southeastern Conference football articles collected from the [NCAA FBS RSS feed](https://www.ncaa.com/rss) and [ESPN college-football news](https://www.espn.com/college-football/), filtered for the 16 current SEC schools.
+
+- **TL;DR:** short, plainly marked excerpts from each story's own published description, **not** invented AI summaries or independently verified reporting. If no source description is available, the app says so rather than inventing one.
+- Tap anywhere on a news card or **Read full story ↗** to open the original publisher's linked webpage in a new browser tab. Cards show publication age, source, and relevant SEC schools.
+- Search by headline or player, filter by each SEC school, or choose **Breaking**. The breaking label is conservative: the original story must be under six hours old and its headline must contain a time-sensitive development word (such as *suspended*, *transfer* or *hires*). It isn't an independent verification of an event.
+- **Automatic updates:** [`.github/workflows/refresh-news.yml`](.github/workflows/refresh-news.yml) runs around **once per hour** via GitHub Actions, filters/deduplicates stories, and commits [`news.json`](news.json) for GitHub Pages. Scheduled jobs can be delayed, and this isn't second-by-second breaking coverage or background push. Opening the tab requests the newest published file; while the News tab is open, it rechecks every five minutes.
+- **Fail safely:** no made-up headlines, invented dates, unverified website redirects, or stories outside the past nine days. If both news sources are unavailable, recent cached stories may be displayed with a clear warning. Existing pick'em scoring automation is unchanged. No API tokens or account connections are needed.
+- **Testing:** `python3 -m unittest discover -s tests -p test_news.py -v` validates source parsing, recency and link safety, and `node scripts/smoke-news.cjs` checks the mobile navigation, breaking-badge freshness, TL;DR rendering and direct source links.
+
 ## Game features
 
 - Mobile-first and desktop-friendly dark interface; works in a browser on Android, iOS or desktop.
+- New **SEC News** tab: current college football headlines, quick summaries, per-school filters and publisher links.
 - All 16 SEC teams; **120 regular-season games across 13 weeks**, including nonconference opponents.
 - Four independently scored league modes: **Straight Picks** (1 point per winner), **Confidence** (unique 1–N point weights each week), **Against the Spread** (published ESPN lines, half-point push), and **Head-to-Head** (weekly paired opponents with W/L/T records). All picks lock at kickoff.
 - TBD kickoff times lock provisionally at 10 AM Central on the game date, until official kickoff information is entered.
