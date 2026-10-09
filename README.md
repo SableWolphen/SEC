@@ -10,7 +10,7 @@ An **unofficial fan-made SEC football pick’em website** in [SableWolphen/SEC](
 - All 16 SEC teams; **120 regular-season games across 13 weeks**, including nonconference opponents.
 - One point per correct predicted winner, choose each game independently, and lock picks at kickoff.
 - TBD kickoff times lock provisionally at 10 AM Central on the game date, until official kickoff information is entered.
-- Online private leagues, email sign-in, invite links and scoreboards: **database provisioned; email delivery and allowed redirects require owner setup before friends can log in.**
+- Private leagues, account registration, password login, invitation links, and synchronized scores. **Confirm-email settings still require the Supabase owner to finish activation for public registrations.**
 - All authenticated online picks are stored on the server; row-level security protects user data and deadlines; weekly and season standings are centrally calculated.
 - The device-only pick preview remains available without signing in. Once the online service is configured, signed-in picks sync across devices.
 - No gambling, payments or betting.
@@ -27,15 +27,25 @@ Data is sourced from ESPN's public college football game feed. `scripts/update_s
 
 The GitHub Pages site is published, and the SEC-specific database has been created and populated with all 120 games. The tables are protected by row-level security, and the **public publishable** key is configured in `config.js`. The other Supabase projects were left untouched.
 
-### Owner actions remaining: email sign-in
+### Account registration and league creation
 
-These Supabase Auth settings are project configuration, **not SQL tables or GitHub files**, so the connected tools cannot change them:
+Players can open **My league** directly in the app, select **Create account**, enter a display name, email, and password, and then **Create league** or **Join league**. Existing players choose **Log in**. The Picks screen also has a direct account shortcut. A logged-in player can create multiple private leagues and invite friends with a shared URL or invite code.
 
-1. Open [Auth URL Configuration](https://supabase.com/dashboard/project/vzjrlvkwuswkryxxrvtp/auth/url-configuration). Set **Site URL** to `https://sablewolphen.github.io/SEC/` and add `https://sablewolphen.github.io/SEC/**` to the **Redirect URLs** allowlist.
-2. Open [Auth SMTP settings](https://supabase.com/dashboard/project/vzjrlvkwuswkryxxrvtp/auth/smtp). Configure a real email delivery provider (e.g. Resend, Postmark, SES or Brevo) for sign-in links. **Supabase's built-in mailer only sends to Supabase organization members**, and has a low hourly rate limit, so it cannot invite ordinary friends. Do not add SMTP passwords or secret API keys to `config.js` or GitHub.
-3. On [Saturdays Down South](https://sablewolphen.github.io/SEC/#league), send yourself a login link, set a display name, click **Create league**, and copy the invitation link. Have a friend open it, sign in with their own email, and verify both accounts appear in the same live standings.
+#### Required project-level email confirmation setting
 
-A correct deployment **does not imply** sign-in emails are ready until those settings and an end-to-end friend test are complete.
+In the dedicated [SEC Supabase Email provider settings](https://supabase.com/dashboard/project/vzjrlvkwuswkryxxrvtp/auth/providers), choose one approach:
+
+- **Recommended for a public launch:** keep **Confirm email** enabled, set up a real SMTP provider in [Supabase Authentication SMTP](https://supabase.com/dashboard/project/vzjrlvkwuswkryxxrvtp/auth/smtp), and set **Site URL** to `https://sablewolphen.github.io/SEC/` plus **Redirect URLs** `https://sablewolphen.github.io/SEC/**` in [URL Configuration](https://supabase.com/dashboard/project/vzjrlvkwuswkryxxrvtp/auth/url-configuration). This verifies players' email ownership and supports password reset, but needs working outbound email.
+- **For a quick private test only:** disable **Confirm email** in the Email provider settings. Supabase then returns an authenticated session immediately when players register with a password, without sending confirmation mail. The trade-off is that email addresses are unverified; users may impersonate another address and password recovery still needs outbound email. Restore email confirmations with proper SMTP before inviting the public.
+
+Those are Auth service settings; **they cannot be configured using SQL or the connected Supabase project tools**. They must be changed by the project owner. The site does not store passwords itself; Supabase Auth handles registration, session management, and password verification.
+
+The database and browser code are connected, but **successful registration by two real people has not been verified** until this setting and an end-to-end invitation test are complete. After changing the setting:
+
+1. Open [Saturdays Down South — My league](https://sablewolphen.github.io/SEC/#league).
+2. Select **Create account**, enter a display name, email and password, and register. Log in if asked to confirm your email first.
+3. Select **Create league**, give it a name, and use **Share invite link**.
+4. Have a friend visit that link, register under their own email, and verify they appear in the same weekly and season standings.
 
 The setup SQL grants only the necessary public API permissions and applies **row-level security**. Members can access leagues they belong to, save only their own picks, and cannot edit past-kickoff picks. Results can only be updated by the trusted database administrator, not players.
 
@@ -59,8 +69,8 @@ Games after the regular season (conference championship, bowls, playoff games) a
 
 ### Troubleshooting
 
-- **Site says owner setup required:** `config.js` still has blank values, or the Supabase browser client did not load.
-- **Sign-in link goes somewhere else:** update the project's Auth Site URL and Redirect allowlist.
+- **Site says owner setup required:** check that `config.js` has the dedicated public Supabase project values and the browser Supabase client loads.
+- **Email confirmation link goes somewhere else:** update the project's Auth Site URL and Redirect allowlist.
 - **Data API permission error:** run `supabase/setup.sql` in the correct dedicated project and confirm the public schema is exposed in Data API settings.
 - **Picks refused:** kickoff has passed according to the database or the user isn't authenticated. Confirm the latest official game time.
 - **Scores show zero:** results have not yet been recorded by the administrator.
