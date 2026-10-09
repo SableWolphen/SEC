@@ -9,7 +9,7 @@
   var client = enabled && window.supabase ? window.supabase.createClient(cfg.url, cfg.publishableKey, {
     auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
   }) : null;
-  var user = null, leagues = [], active = null, standings = [], profile = null;
+  var user = null, leagues = [], active = null, standings = [], profile = null, standingsError = '';
   var working = false, lastError = "", loginEmail = "";
   var authMode = "signup", draftEmail = "", recoveryMode = false;
   var inviteCode = new URLSearchParams(location.search).get("league");
@@ -100,9 +100,9 @@
     var standingsHtml = "";
     if(choice){
       var w=app.week();
-      standingsHtml = '<div class="league-hero"><div><div class="label">LIVE ONLINE LEAGUE</div><h2>'+safe(choice.name)+'</h2><p>'+standings.length+' players · Week '+w.num+' · Invite code '+safe(choice.invite_code)+'</p></div><span class="big-emoji" aria-hidden="true">🏆</span></div>'+
+      standingsHtml = '<div class="league-hero"><div><div class="label">LIVE ONLINE LEAGUE</div><h2>'+safe(choice.name)+'</h2><p>'+(standingsError?'Standings unavailable':standings.length+' players')+' · Week '+w.num+' · Invite code '+safe(choice.invite_code)+'</p></div><span class="big-emoji" aria-hidden="true">🏆</span></div>'+
        card('League scoreboard',
-        '<p>Scores update as confirmed results are posted. Everyone in this league shares these standings.</p>'+
+        '<p>Scores update as confirmed results are posted. Everyone in this league shares these standings.</p>'+\n        (standingsError?'<div class="help-note" role="alert">Scoreboard could not load: '+safe(standingsError)+'. Try Refresh standings.</div>':'')+
         '<div class="chip-line">'+button('Share invite link','copy-invite','primary-btn')+' '+button('Refresh standings','refresh')+'</div>'+
         '<div style="margin:14px 0"><label for="league-week" class="input-label">Week</label><select class="field" id="league-week">'+app.weeks.map(function(x){return '<option value="'+x.num+'" '+(x.num===w.num?'selected':'')+'>Week '+x.num+'</option>';}).join('')+'</select></div>'+
         '<div class="leaderboard"><div class="standing-row head" style="grid-template-columns:26px minmax(0,1fr) 48px 52px 58px"><span>#</span><span>PLAYER</span><span>PICKS</span><span>WEEK</span><span>SEASON</span></div>'+
@@ -132,7 +132,7 @@
       var session=extract(await client.auth.getSession()).session;
       user=session?.user||null;
       var s=app.state();
-      if(!user){leagues=[];active=null;profile=null;standings=[];show();return;}
+      if(!user){leagues=[];active=null;profile=null;standings=[];standingsError='';show();return;}
       var results=await Promise.all([
         client.from("sec_profiles").select("user_id,display_name").eq("user_id",user.id).maybeSingle(),
         client.from("sec_leagues").select("id,name,invite_code,owner_id").order("created_at",{ascending:true}),
@@ -171,8 +171,8 @@
   }
   async function refreshStandings(shouldShow){
     if(!client||!user||!active){standings=[];return;}
-    try{standings=extract(await client.rpc("sec_league_standings",{p_league:active,p_week:app.week().num}))||[];if(shouldShow)show();}
-    catch(err){standings=[];busy(err);}
+    try{standings=extract(await client.rpc("sec_league_standings",{p_league:active,p_week:app.week().num}))||[];standingsError='';if(shouldShow)show();}
+    catch(err){standings=[];standingsError=err.message||'Server error';busy(err);if(shouldShow)show();}
   }
   function show(){
     if(app.view()==="picks")app.renderPicks();
