@@ -60,6 +60,18 @@ class TeamRecordTests(unittest.TestCase):
   self.assertEqual(result['teams']['ALA']['baseball']['overall'],'43-16')
   self.assertEqual(result['teams']['ALA']['baseball']['conference'],'20-10')
   self.assertNotIn('baseball',result['teams']['TENN'])
+ def test_official_baseball_2026_finals_not_projected_to_2027(self):
+  self.assertEqual(len(tracker.BASEBALL_FINAL_2026),16)
+  self.assertEqual(tracker.BASEBALL_FINAL_2026['UGA'],('53-14','23-7'))
+  self.assertEqual(tracker.BASEBALL_FINAL_2026['TENN'],('38-22','15-15'))
+  self.assertEqual(tracker.BASEBALL_FINAL_2026['ALA'],('42-21','18-12'))
+  self.assertEqual(tracker.BASEBALL_FINAL_2026['SC'],('22-35','7-23'))
+  def offline(_url):raise OSError('Source unavailable')
+  record=tracker.build(NOW,get=offline)
+  self.assertEqual(record['teams']['UGA']['baseball']['overall'],'53-14')
+  self.assertEqual(record['teams']['UGA']['baseball']['source'],'SEC')
+  self.assertEqual(record['teams']['UGA']['baseball']['conference'],'23-7')
+  self.assertNotIn('baseball',tracker.build(NOW.replace(year=2027),get=offline)['teams']['UGA'])
  def test_no_cross_school_records(self):
   self.assertTrue(tracker.identity_ok("TEX",{"location":"Texas","shortDisplayName":"Texas"}))
   self.assertFalse(tracker.identity_ok("TEX",{"location":"Texas A&M","shortDisplayName":"Texas A&M"}))
