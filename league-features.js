@@ -52,6 +52,50 @@ function name(code){
  const t=app?.gameById?null:null;
  return esc(code);
 }
+function isUnavailable(g){
+ return Boolean(current&&mode()==="spread"&&!hasNumber(leagueGame(g).spread_home));
+}
+function scoreFor(g,pick){
+ const d=leagueGame(g);
+ if(!pick||d.game_status!=="final")return 0;
+ if(mode()==="spread"){
+  if(!hasNumber(d.spread_home)||!hasNumber(d.home_score)||!hasNumber(d.away_score))return 0;
+  const margin=Number(d.home_score)-Number(d.away_score)+Number(d.spread_home);
+  if(margin===0)return 0.5;
+  return (margin>0&&pick===g.home)||(margin<0&&pick===g.away)?1:0;
+ }
+ return d.winner===pick?(mode()==="confidence"?Number(confidence[g.id])||0:1):0;
+}
+function pickResult(g){
+ if(!current)return null; // Maintain the original offline demo's copy.
+ const picked=own[g.id],d=leagueGame(g),modeName=mode();
+ if(d.game_status==="final"){
+  if(!picked)return "Final · no pick made";
+  const earned=scoreFor(g,picked);
+  if(modeName==="spread"){
+   if(!hasNumber(d.spread_home))return "Final · no verified spread";
+   if(earned===0.5)return '<span class="earned">↔ Spread push · +0.5 pts</span>';
+   return earned?'<span class="earned">✓ Covered the spread · +1 pt</span>':'<span class="missed">✕ Did not cover · 0 pts</span>';
+  }
+  if(earned>0)return '<span class="earned">✓ Correct · +'+oneDecimal(earned)+' pt'+(earned===1?'':'s')+'</span>';
+  return '<span class="missed">✕ Incorrect pick · 0 pts</span>';
+ }
+ if(!picked)return isUnavailable(g)?"Spread not yet published · pick unavailable":"Choose the winner to make your pick";
+ let description='Your pick: <span class="text-strong">'+esc(picked)+'</span>';
+ if(modeName==="confidence"&&hasNumber(confidence[g.id])){
+  description+=' · '+esc(confidence[g.id])+' confidence pts';
+ }
+ if(modeName==="spread")description+=' · to cover';
+ return description;
+}
+function summaryPoints(w){
+ if(!current)return null;
+ const score=w.games.reduce((total,g)=>total+scoreFor(g,own[g.id]),0);
+ return {score:oneDecimal(score),label:mode()==="confidence"?"Confidence points":mode()==="spread"?"Spread points":"Correct picks"};
+}
+function modeDescription(){
+ return current?cMode().name+' · '+cMode().detail:'Straight Picks · 1 point per correct pick';
+}
 function extras(g){
  const game=leagueGame(g),displayScore=hasNumber(game.away_score)&&hasNumber(game.home_score);
  const status=game.game_status||"scheduled";
@@ -262,5 +306,5 @@ document.addEventListener("click",event=>{
   else if(app?.view()==="league")app.setView("league");
  }).catch(error=>{app?.toast?.(error.message||"Unable to save.");});
 },true);
-window.SEC_FEATURES={MODES,control,updateGames,reload,extras,save,leagueDetails,setStandings,remind,getMode:mode};
+window.SEC_FEATURES={MODES,control,updateGames,reload,extras,save,leagueDetails,setStandings,remind,getMode:mode,isUnavailable,pickResult,summaryPoints,modeDescription};
 })();
