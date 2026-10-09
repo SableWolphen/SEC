@@ -57,8 +57,9 @@ class TeamRecordTests(unittest.TestCase):
                  {'name':'vsconf','displayValue':'20-10'}]}]}}]}
    raise OSError('Other requests missing')
   result=tracker.build(NOW,get=get)
-  self.assertEqual(result['teams']['ALA']['baseball']['overall'],'43-16')
-  self.assertEqual(result['teams']['ALA']['baseball']['conference'],'20-10')
+  self.assertEqual(result['teams']['ALA']['baseball']['overall'],'42-21')
+  self.assertEqual(result['teams']['ALA']['baseball']['conference'],'18-12')
+  self.assertEqual(result['teams']['ALA']['baseball']['source'],'SEC')
   self.assertEqual(result['teams']['TENN']['baseball']['overall'],'38-22')
   self.assertEqual(result['teams']['TENN']['baseball']['source'],'SEC')
  def test_official_baseball_2026_finals_not_projected_to_2027(self):
@@ -71,6 +72,9 @@ class TeamRecordTests(unittest.TestCase):
   record=tracker.build(NOW,get=offline)
   self.assertEqual(record['teams']['UGA']['baseball']['overall'],'53-14')
   self.assertEqual(record['teams']['UGA']['baseball']['source'],'SEC')
+  self.assertIn('SEC',record['sources_used'])
+  self.assertEqual(record['reference_links']['sec_team_statistics'],
+                   'https://stats.secsports.com/#team')
   self.assertEqual(record['teams']['UGA']['baseball']['conference'],'23-7')
   self.assertNotIn('baseball',tracker.build(NOW.replace(year=2027),get=offline)['teams']['UGA'])
  def test_no_cross_school_records(self):
