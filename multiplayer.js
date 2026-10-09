@@ -104,12 +104,18 @@
       standingsHtml = '<div class="league-hero"><div><div class="label">LIVE ONLINE LEAGUE · '+safe(window.SEC_FEATURES?.MODES?.[choice.mode]?.name||'Straight Picks')+'</div><h2>'+safe(choice.name)+'</h2><p>'+(standingsError?'Standings unavailable':standings.length+' players')+' · Week '+w.num+' · Invite code '+safe(choice.invite_code)+'</p></div><span class="big-emoji" aria-hidden="true">🏆</span></div>'+
        card('League scoreboard',
         '<p>Scores update as confirmed results are posted. Everyone in this league shares these standings.</p>'+
+        (leagues.length>1?'<div class="sec-scoreboard-league-choice"><label class="input-label" for="scoreboard-league-select">Scoreboard &amp; chat for</label>'+
+        '<select id="scoreboard-league-select" class="field" aria-label="Select league scoreboard and private chat">'+list+'</select>'+
+        '<p class="helper">Change leagues to switch both the standings and chat.</p></div>':
+        '<div class="sec-scoreboard-current-league">🔒 Private league chat · '+safe(choice.name)+'</div>')+
         (standingsError?'<div class="help-note" role="alert">Scoreboard could not load: '+safe(standingsError)+'. Try Refresh standings.</div>':'')+
         '<div class="chip-line">'+button('Make my picks','go-picks','primary-btn')+' '+button('Share invite link','copy-invite')+' '+button('Refresh standings','refresh')+'</div>'+
         '<div style="margin:14px 0"><label for="league-week" class="input-label">Week</label><select class="field" id="league-week">'+app.weeks.map(function(x){return '<option value="'+x.num+'" '+(x.num===w.num?'selected':'')+'>Week '+x.num+'</option>';}).join('')+'</select></div>'+
         '<div class="leaderboard"><div class="standing-row head" style="grid-template-columns:26px minmax(0,1fr) 48px 52px 58px"><span>#</span><span>PLAYER</span><span>PICKS</span><span>WEEK</span><span>SEASON</span></div>'+
         (standings.length?standings.map(function(row,i){return '<div class="standing-row" style="grid-template-columns:26px minmax(0,1fr) 48px 52px 58px"><span class="rank">'+(i+1)+'</span><span class="name"><span class="sec-avatar" aria-hidden="true">'+safe((row.display_name||'P').slice(0,1).toUpperCase())+'</span>'+safe(row.display_name)+(row.user_id===user.id?' ★':'')+'</span><span class="muted">'+safe(row.picked)+'</span><span class="score">'+safe(row.week_points)+'</span><span>'+safe(row.season_points)+'</span></div>';}).join(''):'<p class="helper" style="padding:15px">No standings available yet.</p>')+
-        '</div><p class="helper">Picks are stored securely online. Only league members can see this scoreboard.</p>');
+        '</div><p class="helper">Picks are stored securely online. Only league members can see this scoreboard.</p>'+
+        '<div class="sec-scoreboard-chat" aria-label="Chat for '+safe(choice.name)+'">'+
+        (window.SEC_SOCIAL?.render?.()||'<p class="helper">Loading private league chat…</p>')+'</div>');
     } else standingsHtml=card('Start the competition','<p>Create a league or join one with an invitation code. Invite your friends by sending the link.</p>');
     host.innerHTML='<div class="secondary-grid"><div class="setting-stack">'+(choice?standingsHtml+(window.SEC_FEATURES?.leagueDetails?.()||''):leaguesForm+standingsHtml)+'</div><div class="setting-stack">'+nameForm+(choice?leaguesForm:'')+'</div></div>'+
       '<p id="online-status" class="helper" role="status" aria-live="polite">'+safe(lastError)+'</p>';
@@ -370,7 +376,7 @@
     }
   });
   document.addEventListener("change",function(ev){
-    if(ev.target.id==="online-league-select"){
+    if(["online-league-select","scoreboard-league-select"].includes(ev.target.id)){
       active=ev.target.value;localStorage.setItem("ss-sec-league",active);
       void refresh();
     }else if(ev.target.id==="league-week"&&client&&user){
