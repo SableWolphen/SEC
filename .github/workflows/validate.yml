@@ -41,6 +41,8 @@ jobs:
           assert len(re.findall(r"\('2026-\d+-[A-Z0-9]+-[A-Z0-9]+'",sql)) == 120, "Expected all 120 regular-season games seeded"
           assert 'checking_member.user_id = (select auth.uid())' in sql, 'Standings authorization must qualify member user_id to avoid PL/pgSQL ambiguity'
           assert 'where league_id=p_league and user_id=auth.uid()' not in sql, 'Unqualified user_id breaks standings'
+          assert 'where g0.id=new.game_id;' in sql, 'Pick guard must use a regular SELECT so authenticated users can save a pick'
+          assert 'where id=new.game_id for share;' not in sql, 'FOR SHARE would require schedule update rights and break Pickem'
           assert "window.SEC_BRIDGE" in html
           assert "./config.js" in html and "./multiplayer.js" in html
           assert "./manifest.webmanifest" in html
