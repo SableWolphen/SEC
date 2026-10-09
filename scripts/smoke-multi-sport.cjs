@@ -127,7 +127,7 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
  assert.ok(html.includes("pageIntro.insertAdjacentElement('afterend',sportSwitcher)"),"one switcher moves below current picks screen intro");
  assert.ok(html.includes("sportViews.includes(v)?document.querySelector"),"pick sport switcher never moves into News, League, Settings or Trophy Case");
  assert.ok(html.includes("selectedSport:()=>lastSportView"),"news can default to sport viewed on Picks page");
- assert.ok(html.includes("20261009-underintro-v5"),"updated sport selector styling is cache-busted");
+ assert.ok(html.includes("20261009-teamtracker-v7"),"all updated styles are cache-busted");
  for(const sport of ["football","baseball","basketball"])
   assert.ok(html.includes('data-sport-tab="'+sport+'"'),"accessible sport icon: "+sport);
  assert.ok(html.includes('data-nav="current-sport"'),"mobile and desktop Picks tabs return to the selected sport");
