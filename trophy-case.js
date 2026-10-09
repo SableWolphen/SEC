@@ -205,6 +205,37 @@
  "@media(min-width:850px){#sds-trophy-case .sds-school-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}",
  "@media(max-width:410px){#sds-trophy-case .sds-school-card{gap:7px;min-height:79px;padding:9px 7px}#sds-trophy-case .sds-school-emblem{min-width:31px;width:31px;height:34px;font-size:10px}#sds-trophy-case .sds-school-info strong{font-size:11px}#sds-trophy-case .sds-school-info small{font-size:9px}}",
 
+ "#sds-trophy-case .sds-league-honors{margin:12px 0 25px;padding:17px;border-radius:17px;background:linear-gradient(130deg,#16332f,#112833 75%);border:1px solid #476c5b}",
+ "#sds-trophy-case .sds-honors-head{margin-bottom:14px}",
+ "#sds-trophy-case .sds-honors-kicker{font-weight:950;letter-spacing:1.9px;font-size:10px;color:#d5ff65;margin-bottom:6px}",
+ "#sds-trophy-case .sds-honors-head h3{font-size:clamp(21px,4.8vw,27px);font-weight:950;letter-spacing:-.6px;line-height:1.17;color:#f2f9f7;margin:0 0 8px}",
+ "#sds-trophy-case .sds-honors-head p{margin:0;color:#a9bec3;font-size:12px}",
+ "#sds-trophy-case .sds-honors-grid{display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}",
+ "#sds-trophy-case .sds-honors-grid .sec-championship-card,#sds-trophy-case .sds-honors-achievements-card{padding:15px;background:#142632;border:1px solid #355563;border-radius:14px;min-width:0}",
+ "#sds-trophy-case .sec-championship-heading{gap:9px}",
+ "#sds-trophy-case .sec-championship-heading h3,#sds-trophy-case .sec-honors-achievement-heading h3{font-size:17px;letter-spacing:-.2px;margin:0 0 5px;font-weight:900;color:#f1f8f8}",
+ "#sds-trophy-case .sec-championship-heading p,#sds-trophy-case .sec-honors-achievement-heading p{font-size:11px;line-height:1.45;color:#9fb4c2;margin:0}",
+ "#sds-trophy-case .sec-championship-cup,#sds-trophy-case .sec-honors-achievement-heading>span{font-size:28px;line-height:1}",
+ "#sds-trophy-case .sec-championship-pending{margin-top:12px;padding:12px;border-radius:11px}",
+ "#sds-trophy-case .sec-championship-pending strong{font-size:13px}",
+ "#sds-trophy-case .sec-championship-pending p{font-size:11px;line-height:1.5}",
+ "#sds-trophy-case .sec-championship-action{font-size:11px;min-height:39px;padding:10px 13px;margin-top:12px}",
+ "#sds-trophy-case .sec-championship-action:disabled{background:#354841;color:#b8c5bf;opacity:1;cursor:not-allowed}",
+ "#sds-trophy-case .sec-championship-card>.helper{font-size:10px;line-height:1.5;margin:9px 0 0}",
+ "#sds-trophy-case .sec-honors-achievement-heading{display:flex;gap:10px;align-items:center}",
+ "#sds-trophy-case .sec-honors-empty{border:1px dashed #45616a;padding:15px;border-radius:11px;margin-top:12px}",
+ "#sds-trophy-case .sec-honors-empty strong{font-size:12px;color:#d5ff65}",
+ "#sds-trophy-case .sec-honors-empty p{margin:6px 0 0;font-size:11px;line-height:1.5;color:#a8bdc6}",
+ "#sds-trophy-case .sec-honors-achievements-list{display:grid;gap:8px;margin-top:12px}",
+ "#sds-trophy-case .sec-honors-member{padding:10px 11px;border-radius:10px;background:#1b3438;border:1px solid #49634f}",
+ "#sds-trophy-case .sec-honors-member>strong{display:block;font-size:12px;margin-bottom:7px}",
+ "#sds-trophy-case .sec-honors-member .sec-achievements{display:flex;flex-wrap:wrap;gap:5px}",
+ "#sds-trophy-case .sec-honors-member .sec-achievements span{font-size:10px;padding:5px 7px}",
+ "#sds-trophy-case .sds-honors-connect{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:#10262b;border-radius:12px;border:1px solid #37594d;padding:12px}",
+ "#sds-trophy-case .sds-honors-connect p{margin:0;max-width:370px;flex:1;font-size:12px;color:#bbced2;line-height:1.5}",
+ "#sds-trophy-case .sds-honors-go-league{border:1px solid #91aa62;border-radius:10px;background:#d5ff65;color:#102218;font-size:11px;font-weight:900;min-height:40px;padding:10px 13px;cursor:pointer}",
+ "@media(min-width:750px){#sds-trophy-case .sds-honors-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}",
+ "@media(max-width:430px){#sds-trophy-case .sds-league-honors{padding:12px;margin-bottom:20px}#sds-trophy-case .sds-honors-grid .sec-championship-card,#sds-trophy-case .sds-honors-achievements-card{padding:12px}#sds-trophy-case .sds-honors-head h3{font-size:20px}}",
  "#sds-trophy-case .sds-school-accordion-list{display:grid;gap:11px}",
  "#sds-trophy-case .sds-school-accordion{background:linear-gradient(110deg,#152d34,#112331);border:1px solid #35545b;border-radius:15px;overflow:hidden;box-shadow:0 6px 20px #050c1433}",
  "#sds-trophy-case .sds-school-accordion.is-open{border-color:#83a957;background:linear-gradient(120deg,#1b3935,#132d35 65%,#112532)}",
@@ -405,6 +436,43 @@
    else entries.forEach(t=>grid.append(trophyCard(t,renderId)));
   }
  }
+ // Trophy Case owns the trophy/achievement displays; League keeps chat and management.
+ // Render the honors independently so standings updates do not collapse school dropdowns.
+ function leagueHonors(){
+  const section=document.createElement("section");section.id="sds-league-honors";
+  section.className="sds-league-honors";section.setAttribute("aria-label","League championship and achievements");
+  const head=document.createElement("div");head.className="sds-honors-head";
+  const label=document.createElement("div");label.className="sds-honors-kicker";
+  label.textContent="🏆 LEAGUE HONORS";
+  const heading=document.createElement("h3");heading.textContent="Championships & Achievements";
+  const detail=document.createElement("p");
+  detail.textContent=leagueId?"Your league: "+leagueName+" · Awards from official results":"Compete with friends. Earn your place in the trophy room.";
+  head.append(label,heading,detail);section.append(head);
+  if(!signedIn||!leagueId){
+   const empty=document.createElement("div");empty.className="sds-honors-connect";
+   const message=document.createElement("p");message.textContent="Join a league to see its season champion and earned player badges.";
+   const link=document.createElement("button");link.type="button";link.className="sds-honors-go-league";
+   link.textContent="Go to My League →";
+   link.addEventListener("click",()=>window.SEC_BRIDGE?.setView?.("league"));
+   empty.append(message,link);section.append(empty);
+   return section;
+  }
+  const grid=document.createElement("div");grid.className="sds-honors-grid";
+  const championship=document.createElement("div");championship.className="sec-championship-card";
+  championship.id="sec-championship-content";
+  championship.innerHTML=window.SEC_SOCIAL?.renderChampionship?.()||
+   '<p class="helper">Loading championship history…</p>';
+  const achievements=document.createElement("div");achievements.className="sds-honors-achievements-card";
+  achievements.id="sec-achievements-content";
+  achievements.innerHTML=window.SEC_FEATURES?.leagueAchievements?.()||
+   '<p class="helper">Loading league achievements…</p>';
+  grid.append(championship,achievements);section.append(grid);
+  return section;
+ }
+ function refreshHonors(){
+  const old=document.getElementById("sds-league-honors");
+  if(old)old.replaceWith(leagueHonors());
+ }
  function render(next=tab){
   const root=document.getElementById(rootId);if(!root)return;
   tab=["all","mine","history","rivalries"].includes(next)?next:"all";
@@ -440,10 +508,10 @@
   search.addEventListener("input",ev=>{searchTerm=String(ev.target.value).toLowerCase();updateFiltered();});
   filterBar.append(chips,search);
   if(school==="schools"){
-   root.append(h,subtitle,rivalryNotice,summary,schoolPicker(version));
+   root.append(h,subtitle,leagueHonors(),rivalryNotice,summary,schoolPicker(version));
    return;
   }
-  root.append(h,subtitle,rivalryNotice,summary,schoolBreadcrumb(),tabs,filterBar);
+  root.append(h,subtitle,leagueHonors(),rivalryNotice,summary,schoolBreadcrumb(),tabs,filterBar);
   if(tab==="rivalries"){root.append(rivalryChallenges());}
   else if(tab==="history"){
    const history=document.createElement("div");history.className="sds-trophy-history";
@@ -512,6 +580,7 @@
   sync,deriveResults,getResults:()=>records.map(r=>({...r})),trophies:TROPHIES,
   schools:SEC_SCHOOLS,getSchoolOverview:schoolOverviewData,getSchoolTrophies:schoolTrophies,
   selectSchool:changeSchool,getSelectedSchool:()=>school,getVisibleTrophies:()=>visibleTrophies(TROPHIES),
+  refreshHonors,
   toggleSchool,getExpandedSchool:()=>expandedSchool,getSchoolPreview:schoolPreview
  });
  if(window.location?.hash==="#trophies")window.SDSTrophyCase.mount();
