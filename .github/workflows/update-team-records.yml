@@ -28,6 +28,11 @@ jobs:
       - name: Test records and school mappings without network access
         run: python3 -m unittest discover -s tests -p test_team_records.py -v
       - name: Fetch source-verified SEC records for all three sports
+        env:
+          SPORTRADAR_API_KEY: ${{ secrets.SPORTRADAR_API_KEY }}
+          SPORTRADAR_BASEBALL_SEASON_ID: ${{ vars.SPORTRADAR_BASEBALL_SEASON_ID }}
+          SPORTRADAR_BASEBALL_SEASON_YEAR: ${{ vars.SPORTRADAR_BASEBALL_SEASON_YEAR }}
+          SPORTRADAR_ACCESS_LEVEL: ${{ vars.SPORTRADAR_ACCESS_LEVEL }}
         run: python3 scripts/update_team_records.py
       - name: Validate 16 schools, season isolation and record format
         run: |
@@ -38,12 +43,15 @@ jobs:
           codes={'ALA','ARK','AUB','FLA','UGA','UK','LSU','MISS',
                  'MSST','MIZ','OU','SC','TENN','TEX','TAMU','VAN'}
           assert set(obj['teams'])==codes
+          assert obj['reference_links']['sec_team_statistics']=='https://stats.secsports.com/#team'
+          assert obj['reference_links']['ncaa_baseball_records'].startswith('https://www.ncaa.org/')
+          assert 'SPORTRADAR_API_KEY' not in Path('team-records.json').read_text()
           assert set(obj['seasons'])=={'football','basketball','baseball'}
           for code,sports in obj['teams'].items():
               for sport,record in sports.items():
                   assert sport in obj['seasons']
                   assert record['season']==obj['seasons'][sport]
-                  assert record['source'] in ('ESPN','SEC')
+                  assert record['source'] in ('ESPN','SEC','Sportradar')
                   assert re.fullmatch(r'[0-9]{1,3}-[0-9]{1,3}(?:-[0-9]{1,3})?',record['overall'])
                   conf=record.get('conference')
                   assert conf is None or re.fullmatch(r'[0-9]{1,3}-[0-9]{1,3}(?:-[0-9]{1,3})?',conf)

@@ -178,3 +178,12 @@
 .team-mini-record strong{font-size:10px;color:#f1f8f7;letter-spacing:-.2px}
 @media(max-width:790px){.team-record-feature,.team-record-empty{padding:17px}}
 @media(max-width:600px){.team-record-grid{grid-template-columns:1fr;gap:9px}.team-record-sport{padding:13px;min-height:100px}.record-big{font-size:30px;margin:5px 0 2px}.record-sport-head{gap:8px}.record-favorite-name h2 span{display:block;margin-top:3px}.record-refresh-btn{width:100%}.team-record-feature-head{gap:11px}.team-record-empty>span{align-self:start}}
+
+
+/* Small source shelf for official SEC/NCAA baseball research; never obscures team records. */
+.team-record-resources{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:15px;padding-top:12px;border-top:1px solid #3a5855;font-size:11px;line-height:1.6}
+.team-record-resources strong{color:#d7fa65;font-size:11px;font-weight:900;margin-right:2px}
+.team-record-resources a{color:#c0dfdf;font-size:11px;font-weight:800;text-underline-offset:3px;padding:6px 8px;border:1px solid #42625f;border-radius:8px;text-decoration:none;background:#112c30}
+.team-record-resources a:hover{border-color:#d7fa65;color:#eefbe3}
+.team-record-resources a:focus-visible{outline:3px solid #d7fa65;outline-offset:2px}
+@media(max-width:460px){.team-record-resources{gap:6px}.team-record-resources strong{width:100%}.team-record-resources a{flex:1 1 40%;text-align:center;font-size:10px}}

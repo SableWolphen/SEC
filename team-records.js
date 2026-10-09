@@ -1,5 +1,5 @@
 /* Saturdays Down South — source-verified favorite SEC team record tracker.
- * Never fabricate W-L: published ESPN season data is shown only when validated.
+ * Never fabricate W-L: SEC, licensed Sportradar and ESPN data requires validation.
  * All three sports share the existing favorite team selection.
  */
 (()=>{
@@ -20,7 +20,7 @@
  }
  function entry(team,sport){
   const item=snapshot?.teams?.[team]?.[sport];
-  if(!item||!["ESPN","SEC"].includes(item.source)||!cleanRecord(item.overall)||
+  if(!item||!["ESPN","SEC","Sportradar"].includes(item.source)||!cleanRecord(item.overall)||
     !Number.isInteger(item.season)||item.season!==snapshot?.seasons?.[sport])return null;
   return item;
  }
@@ -35,9 +35,17 @@
   const season=item?item.season:snapshot?.seasons?.[sport];
   const overall=item?item.overall:"—";
   const conf=item&&cleanRecord(item.conference)?item.conference:null;
-  const label=item?(item.scope==="Regular season"?"Regular-season record":"Overall record"):"Awaiting ESPN record";
-  const url=item?.source==="SEC"&&item?.source_url==="https://www.secsports.com/standings/baseball"?
-   item.source_url:item?.source==="ESPN"&&item?.source_url&&
+  const label=!item?"Verified record unavailable":
+   item.scope==="Regular season"?"Regular-season record":
+   item.scope==="Final 2026 season"?"2026 final record":
+   item.scope==="Sportradar season standings"?"Sportradar standings":"Overall record";
+  const sourceUrls={
+   SEC:"https://www.secsports.com/standings/baseball",
+   Sportradar:"https://developer.sportradar.com/baseball/reference/global-baseball-season-standings"
+  };
+  const url=item?.source==="SEC"&&item?.source_url===sourceUrls.SEC?item.source_url:
+   item?.source==="Sportradar"&&item?.source_url===sourceUrls.Sportradar?item.source_url:
+   item?.source==="ESPN"&&item?.source_url&&
    /^https:\/\/www\.espn\.com\/[a-z/-]+\/team\/_\/id\/\d+$/.test(item.source_url)?
    item.source_url:null;
   return '<article class="team-record-sport"><div class="record-sport-head"><span aria-hidden="true">'+meta.emoji+'</span>'+
@@ -46,7 +54,7 @@
    '<div class="record-sport-desc">'+label+'</div>'+
    '<div class="record-conference">'+(conf?"SEC: "+escape(conf):"Conference record: —")+'</div>'+
    (url?'<a class="record-source" href="'+escape(url)+'" target="_blank" rel="noopener noreferrer" '+
-   'aria-label="See '+meta.label+' record at original publisher">'+(item.source==="SEC"?"SEC standings ↗":"ESPN records ↗")+'</a>':"")+'</article>';
+   'aria-label="See '+meta.label+' record at original publisher">'+(item.source==="SEC"?"SEC standings ↗":item.source==="Sportradar"?"Sportradar source ↗":"ESPN records ↗")+'</a>':"")+'</article>';
  }
  function spotlight(id,teams,logo){
   if(!id||!teams[id]){
@@ -64,7 +72,13 @@
    '<button type="button" class="record-refresh-btn" data-record-refresh '+(loading?'disabled':'')+'>'+
    (loading?"Updating…":"↻ Update records")+'</button></div>'+
    '<div class="team-record-grid">'+ORDER.map(s=>sportCard(id,s)).join("")+'</div>'+
-   '<div class="record-footnote" role="status">'+escape(updated())+' · ESPN & official SEC records (not live play-by-play)'+
+   '<div class="team-record-resources" aria-label="Official college baseball data sources">'+
+     '<strong>⚾ More baseball stats</strong>'+
+     '<a href="https://stats.secsports.com/#team" target="_blank" rel="noopener noreferrer">SEC team statistics ↗</a>'+
+     '<a href="https://www.ncaa.org/championships/statistics-and-records/baseball/" target="_blank" rel="noopener noreferrer">NCAA season records ↗</a>'+
+     '<a href="https://developer.sportradar.com/baseball/reference/global-baseball-overview" target="_blank" rel="noopener noreferrer">Sportradar API details ↗</a>'+
+   '</div>'+
+   '<div class="record-footnote" role="status">'+escape(updated())+' · Source-verified records (not live play-by-play)'+
    (error?' · '+escape(error):"")+'</div></section>';
  }
  function compact(id){
@@ -88,7 +102,7 @@
       !data.seasons||typeof data.seasons!=="object")throw Error("Records feed invalid");
    snapshot=data;checked=Date.now();error="";
   }catch(e){
-   error=snapshot?"Could not refresh; showing last verified records.":"Waiting for verified ESPN records.";
+   error=snapshot?"Could not refresh; showing last verified records.":"Waiting for source-verified team records.";
   }finally{
    loading=false;
    if(window.SEC_BRIDGE?.view?.()==="teams")window.SEC_BRIDGE?.renderTeams?.();

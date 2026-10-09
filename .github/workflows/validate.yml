@@ -43,7 +43,8 @@ jobs:
           node --check scripts/smoke-team-records.cjs
           node scripts/smoke-team-records.cjs
           python3 -m unittest discover -s tests -p test_team_records.py -v
-          python3 -m py_compile scripts/update_team_records.py
+          python3 -m unittest discover -s tests -p test_sportradar_baseball.py -v
+          python3 -m py_compile scripts/update_team_records.py scripts/sportradar_baseball.py
           node --check scripts/smoke-online.cjs
           node scripts/smoke-online.cjs
           python3 -m py_compile scripts/update_stats.py
