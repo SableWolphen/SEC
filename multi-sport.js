@@ -96,7 +96,7 @@ async function fetchFeed(force=false){
 }
 const allGames=(s)=>{
  const publicList=Array.isArray(feed.sports?.[s]?.games)?feed.sports[s].games:[];
- const dbList=Array.isArray(cache[s].games)?cache[s].games:[];
+ const dbList=(Array.isArray(cache[s].games)?cache[s].games:[]).filter(g=>g.sport===s&&g.season===year(s));
  const merged=new Map(publicList.filter(g=>g.season===year(s)).map(g=>[g.id,{...g,imported:false}]));
  dbList.forEach(g=>merged.set(g.id,{...merged.get(g.id),...g,imported:true}));
  return [...merged.values()].sort((a,b)=>new Date(a.kickoff_at)-new Date(b.kickoff_at));
@@ -276,7 +276,7 @@ async function load(s,force=false){
    let games=[];
    if(c){
     const list=await c.from("sec_sport_games").select("*").eq("sport",s).eq("season",yr).order("kickoff_at");
-    if(!list.error)games=list.data||[];
+    if(!list.error)games=(list.data||[]).filter(g=>g.sport===s&&g.season===yr);
    }
    cache[s]={games,leagues:[],picks:{},standings:[],tiebreakers:{},pairings:[],active:null};
    return;
@@ -291,7 +291,8 @@ async function load(s,force=false){
    c.from("sec_sport_games").select("*").eq("sport",s).eq("season",yr).order("kickoff_at"),
    c.from("sec_sport_leagues").select("id,name,mode,invite_code,owner_id,sport,season").eq("sport",s).eq("season",yr).order("created_at")
   ]);
-  const games=unwrap(g)||[],leagues=unwrap(l)||[];
+  const games=(unwrap(g)||[]).filter(x=>x.sport===s&&x.season===yr);
+  const leagues=(unwrap(l)||[]).filter(x=>x.sport===s&&x.season===yr);
   let active=cache[s].active||localStorage.getItem("ss-sec-sport-league-"+s+"-"+yr);
   if(!leagues.some(item=>item.id===active))active=leagues[0]?.id||null;
   const invitation=new URLSearchParams(location.search);
