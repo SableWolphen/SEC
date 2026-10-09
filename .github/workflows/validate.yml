@@ -39,6 +39,12 @@ jobs:
           node --check config.js
           node --check sw.js
           node --check matchup-stats.js
+          node --check sec-brackets.js
+          node --check scripts/smoke-brackets.cjs
+          node scripts/smoke-brackets.cjs
+          node --check fan-experience.js
+          node --check scripts/smoke-fan-experience.cjs
+          node scripts/smoke-fan-experience.cjs
           node --check team-records.js
           node --check scripts/smoke-team-records.cjs
           node scripts/smoke-team-records.cjs
@@ -80,6 +86,8 @@ jobs:
           assert Path('multi-sport.css').exists(), "Sports CSS missing"
           assert Path('sports-schedules.json').exists(), "Public sports schedule missing"
           assert Path('supabase/migrations/20261009_basketball_baseball.sql').exists(), "Isolated sport backend migration missing"
+          assert Path('supabase/migrations/20261009_unified_three_sport_leagues.sql').exists(), "Unified club migration missing"
+          assert Path('supabase/migrations/20261009_secure_postseason_brackets.sql').exists(), "Secure postseason bracket migration missing"
           assert Path('supabase/functions/sec-sport-sync/index.ts').exists(), "Source-verified importer missing"
           assert "window.SEC_BRIDGE" in html
           assert "./config.js" in html and "./multiplayer.js" in html
