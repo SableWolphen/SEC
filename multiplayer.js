@@ -77,7 +77,7 @@
         '<div class="auth-actions">'+button(registering?'Create my account':'Log in',registering?'register':'login','primary-btn')+'</div>'+
         (!registering?'<div class="auth-recovery">'+button('Forgot password?','reset-password','link-like')+'</div>':'')+
         '<p id="online-status" class="helper auth-status" role="status" aria-live="polite">'+safe(lastError)+'</p>'+
-        '<p class="helper">After signing in, choose <strong>Create league</strong> to invite your friends. Email verification may be required by your league’s account settings.</p>';
+        '<p class="helper">After signing in, choose <strong>Create league</strong> to invite your friends. Email verification may be required by your league’s account settings.</p><p class="helper" style="opacity:.7;margin-top:10px">Account screen · version 2026.10.09.2</p>';
       host.innerHTML='<div class="secondary-grid">'+card(registering?'Join the pick’em club.':'Welcome back.',panel)+
         card('Compete with friends','<p><strong>1.</strong> Create a free player account.<br><strong>2.</strong> Make a private league and share your invitation.<br><strong>3.</strong> Pick winners before kickoff.<br><strong>4.</strong> Follow the weekly and season leaderboard.</p><div class="help-note">All SEC games count, including nonconference matchups. One correct pick earns one point.</div>')+'</div>';
       return;
@@ -219,7 +219,7 @@
         var email=cleanEmail(document.getElementById("online-email")?.value);
         var password=document.getElementById("online-password")?.value||"";
         draftEmail=email;
-        if(!validEmail(email))throw Error("Enter a valid email address.");
+        if(!email)throw Error("Please enter an email address to continue.");
         if(password.length<8)throw Error("Use a password of at least 8 characters.");
         if(action==="register"){
           var name=document.getElementById("online-signup-name")?.value.trim()||"";
@@ -254,12 +254,12 @@
         }
       }else if(action==="reset-password"){
         var email=cleanEmail(document.getElementById("online-email")?.value);
-        if(!validEmail(email))throw Error("Enter your email above to reset your password.");
+        if(!email)throw Error("Enter your email above to reset your password.");
         extract(await client.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname+"#league"}));
         status("If that account exists, a password reset email has been requested. Follow the link in your inbox.");
       }else if(action==="send-link"){
         var email=cleanEmail(document.getElementById("online-email")?.value);
-        if(!validEmail(email))throw Error("Enter a valid email address.");
+        if(!email)throw Error("Enter your email address.");
         loginEmail=email;
         extract(await client.auth.signInWithOtp({email:email,options:{emailRedirectTo:location.origin+location.pathname+location.search+"#league"}}));
         app.toast("Check your email for your sign-in link.");
