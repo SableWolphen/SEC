@@ -12,6 +12,21 @@ function estimate(a,b){
   var diff=2.4*(y-x)+0.22;
   return Math.max(8,Math.min(92,Math.round(100/(1+Math.exp(-diff)))));
 }
+function featured(list){
+  if(!list || !list.length)return null;
+  var ranked=list.map(function(g){
+    var d=games[g.id];if(!d)return null;
+    var ar=Number(d.away&&d.away.rank)||99, hr=Number(d.home&&d.home.rank)||99;
+    if(ar>25&&hr>25)return null;
+    var both=ar<=25&&hr<=25;
+    // Two ranked teams get priority, then top ranking strength, then estimated competitiveness.
+    var p=num(d.home_win_pct);
+    var closeness=p!==null?Math.max(0,20-Math.abs(50-p)*0.4):0;
+    var score=(both?150:0)+(ar<=25?(26-ar)*2:0)+(hr<=25?(26-hr)*2:0)+closeness;
+    return {g:g,score:score};
+  }).filter(Boolean).sort(function(a,b){return b.score-a.score;});
+  return ranked[0]?ranked[0].g:null;
+}
 function render(g){
   var d=games[g.id];if(!d)return '<div class="matchup-insight"><span class="insight-muted">Matchup insights are not available yet for this game.</span></div>';
   var away=d.away||{},home=d.home||{},p=num(d.home_win_pct),method="ESPN matchup projection";
@@ -45,6 +60,6 @@ async function refresh(){
     if(window.SEC_BRIDGE&&window.SEC_BRIDGE.view()==="picks")window.SEC_BRIDGE.renderPicks();
   }catch(err){console.info("SEC matchup insights unavailable",err);}
 }
-window.SEC_STATS={render:render,refresh:refresh,lastUpdated:function(){return generated;},count:function(){return Object.keys(games).length;}};
+window.SEC_STATS={render:render,featured:featured,refresh:refresh,lastUpdated:function(){return generated;},count:function(){return Object.keys(games).length;}};
 void refresh();
 })();
