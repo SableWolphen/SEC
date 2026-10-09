@@ -3,7 +3,7 @@
   "name": "Saturdays Down South — SEC Pick'em",
   "short_name": "SEC Pick'em",
   "description": "Pick SEC football, basketball and baseball winners with friends in unified leagues.",
-  "start_url": "./#picks",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0b111b",
