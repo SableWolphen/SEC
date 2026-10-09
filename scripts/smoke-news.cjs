@@ -24,7 +24,7 @@ const dataset={updated_at:now.toISOString(),sources:["ESPN","NCAA"],articles:[
  {id:"stale",title:"Old Ole Miss update",summary:"Months ago.",source:"ESPN",published_at:old,teams:["Ole Miss"],breaking:false,url:"https://www.espn.com/stale"},
  {id:"unsafe",title:"Dangerous link",summary:"Bad link.",source:"ESPN",published_at:time,teams:["Texas"],breaking:true,url:"javascript:alert(1)"}
 ]};
-const document={getElementById:id=>elements[id]||null,createElement:node,
+const document={getElementById:id=>elements[id]||traverse(root,x=>x.id===id)[0]||null,createElement:node,
  createTextNode:text=>({tag:"#text",textContent:text,children:[]}),hidden:false};
 const window={SEC_BRIDGE:{view:()=>"news"},location:{hash:""}};
 const context={window,document,Date,URL,console,Option:function(label,value){return {label,value}},
