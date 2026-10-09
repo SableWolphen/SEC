@@ -82,7 +82,7 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
  assert.match(fs.readFileSync("multi-sport.js","utf8"),/not pickable games/,"series only, no invented individual winner picks");
  for(const sport of ["football","basketball","baseball"])
   assert.match(roots["sports-hub"].innerHTML,new RegExp('data-go-sport="'+sport+'"'));
- app.mount("basketball");await settle();
+ activeView="basketball";app.mount("basketball");await settle();
  assert.match(roots["sport-basketball-content"].innerHTML,/Alabama/,"real upcoming basketball fixture visible even to guests");
  assert.match(roots["sport-basketball-content"].innerHTML,/provisional pick lock/,"provisional lock clearly distinguished from actual tipoff");
  assert.match(roots["sport-basketball-content"].innerHTML,/Log in to your account/,"signed-out user sees login rather than another account creation");
@@ -108,7 +108,7 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
  assert.equal(pickCalls[0].p_game,game.id);
  assert.equal(pickCalls[0].p_pick,game.away_code);
  assert.equal(pickCalls[0].p_league,league.id);
- app.mount("baseball");await settle();
+ activeView="baseball";app.mount("baseball");await settle();
  assert.match(roots["sport-baseball-content"].innerHTML,/Waiting for the official schedule/,"no fabricated baseball games");
  assert.match(roots["sport-baseball-content"].innerHTML,/tester@example.com/,"same signed-in account carries to baseball");
  assert.equal(app.getState("baseball").games.length,0,"baseball table isolated");
