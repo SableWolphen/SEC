@@ -113,8 +113,15 @@ function extras(g){
   }
   if(mode()==="confidence"){
    let count=app.week().games.length,pick=confidence[g.id];
+   const taken=new Set(Object.keys(confidence).filter(gameId=>
+     gameId!==g.id && own[gameId] && app.gameById[gameId]?.week===g.week
+   ).map(gameId=>Number(confidence[gameId])).filter(Number.isFinite));
    let opts='<option value="">Auto-assign an unused value</option>';
-   for(let i=count;i>=1;i--)opts+='<option value="'+i+'" '+(Number(pick)===i?'selected':'')+'>'+i+' point'+(i===1?'':'s')+'</option>';
+   for(let i=count;i>=1;i--){
+     const used=taken.has(i);
+     opts+='<option value="'+i+'" '+(Number(pick)===i?'selected':'')+' '+(used?'disabled':'')+'>'+
+       i+' point'+(i===1?'':'s')+(used?' · already used':'')+'</option>';
+   }
    html+='<label class="sec-confidence-label">Confidence points <select class="field sec-confidence" data-confidence-game="'+esc(g.id)+'">'+opts+'</select></label><p class="helper">Select points, then tap a team. Use each number once this week.</p>';
   }
  }
@@ -241,7 +248,7 @@ function pairings(){
 function tiebreakerCard(){
  if(!current)return "";
  const week=app.week();
- const finalGame=week.games.slice().sort((a,b)=>Date.parse(b.kickoff)-Date.parse(a.kickoff))[0];
+ const finalGame=week.games.slice().sort((a,b)=>Date.parse(leagueGame(b).kickoff_at||b.kickoff||b.date+'T11:00:00Z')-Date.parse(leagueGame(a).kickoff_at||a.kickoff||a.date+'T11:00:00Z'))[0];
  if(!finalGame)return "";
  const open=isOpen(finalGame);
  return '<div class="sec-tiebreaker"><b>🎯 Weekly total-points tiebreaker</b><p class="helper">Predict combined points in the last scheduled game ('+esc(finalGame.away)+' vs '+esc(finalGame.home)+'). Closest guess breaks tied scores once it is final.</p>'+
@@ -312,9 +319,11 @@ async function action(type,target){
  }
  if(!client||!current||!user)throw Error("Sign in and join a league first.");
  if(type==="save-total"){
-  const guess=Number(document.getElementById("sec-total-guess")?.value);
+  const raw=document.getElementById("sec-total-guess")?.value?.trim()??"";
+  if(raw==="")throw Error("Enter a total-points prediction before saving.");
+  const guess=Number(raw);
   if(!Number.isInteger(guess)||guess<0||guess>200)throw Error("Enter a total from 0 to 200.");
-  const game=app.week().games.slice().sort((a,b)=>Date.parse(b.kickoff)-Date.parse(a.kickoff))[0];
+  const game=app.week().games.slice().sort((a,b)=>Date.parse(leagueGame(b).kickoff_at||b.kickoff||b.date+'T11:00:00Z')-Date.parse(leagueGame(a).kickoff_at||a.kickoff||a.date+'T11:00:00Z'))[0];
   const resp=await client.from("sec_week_tiebreakers").upsert({league_id:current.id,user_id:user.id,week:app.week().num,game_id:game.id,predicted_total:guess},{onConflict:"league_id,user_id,week"});
   err(resp);tiebreaker={game_id:game.id,predicted_total:guess};
   app.toast("Tiebreaker saved!");
