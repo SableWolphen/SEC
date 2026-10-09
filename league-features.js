@@ -9,7 +9,7 @@ const MODES={
  h2h:{name:"Head-to-Head",detail:"Pick winners as usual, but compete against a paired league rival each week."}
 };
 const own={},games={},revealedByGame={},notes={};
-let current=null,user=null,client=null,app=null,confidence={},tiebreaker=null,standings=[],history=[];
+let current=null,user=null,client=null,app=null,confidence={},tiebreakers={},tieDrafts={},standings=[],history=[];
 const err=(r)=>{if(r?.error)throw r.error;return r?.data;};
 const esc=s=>app?.esc?app.esc(String(s??"")):String(s??"").replaceAll("<","&lt;");
 const mode=()=>current?.mode||"straight";
@@ -19,21 +19,23 @@ const leagueGame=g=>games[g.id]||g;
 const isOpen=g=>Date.now()<Date.parse(leagueGame(g).kickoff_at||g.kickoff);
 const hasNumber=n=>n!==null&&n!==undefined&&n!=="";
 async function reload(c,l,u,a){
+ const switched=current?.id!==l?.id||user?.id!==u?.id;
+ if(switched)tieDrafts={};
  client=c;current=l;user=u;app=a;
  Object.keys(own).forEach(k=>delete own[k]);
  Object.keys(revealedByGame).forEach(k=>delete revealedByGame[k]);
- confidence={};tiebreaker=null;history=[];
+ confidence={};tiebreakers={};history=[];
  if(!c||!l||!u){if(a?.state)a.state().picks={};return;}
  const week=a.week().num;
  const [my,reveals,ties,head]=await Promise.all([
   c.from("sec_league_picks").select("game_id,pick_code,confidence_points").eq("league_id",l.id).eq("user_id",u.id),
   c.rpc("sec_revealed_league_picks",{p_league:l.id,p_week:week}),
-  c.from("sec_week_tiebreakers").select("week,game_id,predicted_total").eq("league_id",l.id).eq("user_id",u.id).eq("week",week),
+  c.from("sec_week_tiebreakers").select("week,game_id,predicted_total").eq("league_id",l.id).eq("user_id",u.id),
   l.mode==="h2h"?c.rpc("sec_h2h_history",{p_league:l.id}):Promise.resolve({data:[]})
  ]);
  for(const row of err(my)||[]){own[row.game_id]=row.pick_code;confidence[row.game_id]=row.confidence_points;}
  for(const row of err(reveals)||[])(revealedByGame[row.game_id]??=[]).push(row);
- tiebreaker=(err(ties)||[])[0]||null;
+ for(const t of err(ties)||[])tiebreakers[t.week]=t;
  history=err(head)||[];
  a.state().picks={...own};
 }
@@ -245,15 +247,62 @@ function pairings(){
  scores.map((p,i)=>'<div class="sec-manage-row"><span>'+(i+1)+'. '+esc(p.name)+(p.id===user.id?' ★':'')+'</span>'+
   '<strong>'+p.w+'–'+p.l+'–'+p.t+'</strong></div>').join('')+'</div>';
 }
+function lastGameForWeek(w){
+ if(!w?.games?.length)return null;
+ return w.games.slice().sort((a,b)=>
+  Date.parse(leagueGame(b).kickoff_at||b.kickoff||b.date+"T11:00:00Z")-
+  Date.parse(leagueGame(a).kickoff_at||a.kickoff||a.date+"T11:00:00Z")
+ )[0];
+}
 function tiebreakerCard(){
- if(!current)return "";
- const week=app.week();
- const finalGame=week.games.slice().sort((a,b)=>Date.parse(leagueGame(b).kickoff_at||b.kickoff||b.date+'T11:00:00Z')-Date.parse(leagueGame(a).kickoff_at||a.kickoff||a.date+'T11:00:00Z'))[0];
- if(!finalGame)return "";
- const open=isOpen(finalGame);
- return '<div class="sec-tiebreaker"><b>🎯 Weekly total-points tiebreaker</b><p class="helper">Predict combined points in the last scheduled game ('+esc(finalGame.away)+' vs '+esc(finalGame.home)+'). Closest guess breaks tied scores once it is final.</p>'+
-  '<div class="chip-line"><input class="field" id="sec-total-guess" type="number" min="0" max="200" inputmode="numeric" value="'+esc(tiebreaker?.predicted_total??"")+'" placeholder="Total points" '+(!open?'disabled':'')+'>'+
-  '<button type="button" class="ghost-btn" data-extra="save-total" '+(!open?'disabled':'')+'>Save guess</button></div></div>';
+ if(!app)return "";
+ const w=app.week(),game=lastGameForWeek(w);
+ if(!game)return "";
+ const saved=tiebreakers[w.num]||null;
+ const draft=Object.prototype.hasOwnProperty.call(tieDrafts,w.num);
+ const value=draft?tieDrafts[w.num]:String(saved?.predicted_total??"");
+ const open=isOpen(game),signedIn=Boolean(user&&current&&client);
+ const date=new Date(leagueGame(game).kickoff_at||game.kickoff);
+ const when=Number.isFinite(date.valueOf())?date.toLocaleString("en-US",{
+  month:"short",day:"numeric",hour:"numeric",minute:"2-digit",timeZone:"America/Chicago",timeZoneName:"short"
+ }):"Kickoff TBA";
+ const status=!signedIn?"Sign in and join a league to submit your prediction.":
+  !open?(saved?"Locked · Saved: "+saved.predicted_total+" points":"Locked · No prediction saved"):
+  draft&&value!==String(saved?.predicted_total??"")?"Unsaved changes":
+  saved?"Saved: "+saved.predicted_total+" combined points":"Not saved yet";
+ return '<section class="sec-tiebreaker sec-picks-tiebreaker" aria-labelledby="sec-tie-heading">'+
+  '<div class="sec-tie-topline"><span>WEEK '+w.num+' · PICK SLIP</span><span>'+(open?"Open until kickoff":"Locked")+'</span></div>'+
+  '<h3 id="sec-tie-heading">🎯 Weekly total-points tiebreaker</h3>'+
+  '<p class="sec-tie-description">Predict the <b>combined final points</b> from both teams in the last game to kick off this week. Closest guess breaks tied league standings after the game is final.</p>'+
+  '<div class="sec-tie-game"><strong>'+esc(game.away)+' vs '+esc(game.home)+'</strong><small>'+esc(when)+'</small></div>'+
+  '<div class="sec-tie-entry"><label for="sec-total-guess">Your total-points prediction</label><div class="sec-tie-fields">'+
+  '<input class="field" id="sec-total-guess" type="number" min="0" max="200" step="1" inputmode="numeric" data-tie-week="'+w.num+
+  '" value="'+esc(value)+'" placeholder="e.g. 48" '+(!open||!signedIn?'disabled':'')+'>'+
+  '<button type="button" class="primary-btn" data-extra="save-total" data-tie-week="'+w.num+'" '+
+  (!open||!signedIn?'disabled':'')+'>Save tiebreaker</button></div></div>'+
+  '<p class="sec-tie-feedback" role="status">'+esc(status)+'</p>'+
+  (!signedIn?'<button type="button" class="ghost-btn" data-nav="league">Sign in on League page</button>':'')+
+  '</section>';
+}
+async function saveTiebreaker(){
+ if(!client||!current||!user||!app)throw Error("Join a league and sign in first.");
+ const w=app.week(),game=lastGameForWeek(w);
+ if(!game||!isOpen(game))throw Error("This week's tiebreaker is locked.");
+ const input=document.getElementById("sec-total-guess");
+ if(!input||Number(input.dataset?.tieWeek)!==Number(w.num))throw Error("The selected week changed. Try again.");
+ const raw=String(input.value??"").trim();
+ if(!raw)throw Error("Enter your total-points prediction.");
+ const guess=Number(raw);
+ if(!Number.isInteger(guess)||guess<0||guess>200)throw Error("Use a whole number from 0 to 200.");
+ const response=await client.from("sec_week_tiebreakers").upsert({
+  league_id:current.id,user_id:user.id,week:w.num,game_id:game.id,predicted_total:guess
+ },{onConflict:"league_id,user_id,week"});
+ err(response);
+ tiebreakers[w.num]={week:w.num,game_id:game.id,predicted_total:guess};
+ delete tieDrafts[w.num];
+ app.toast("Week "+w.num+" tiebreaker saved!");
+ if(app.view()==="picks")app.renderPicks();
+ return tiebreakers[w.num];
 }
 function leagueDetails(){
  if(!current)return "";
@@ -262,7 +311,7 @@ function leagueDetails(){
  const badge=standings.slice(0,5).map(r=>'<div><strong>'+esc(r.display_name)+'</strong>'+badgeFor(r)+'</div>').join("");
  return '<section class="sec-league-extras">'+
   '<div class="sec-mode-summary"><div class="card-kicker">GAME MODE</div><h3>'+shareName+'</h3><p>'+esc(m.detail)+'</p></div>'+
-  pairings()+tiebreakerCard()+
+  pairings()+
   '<div class="sec-achievement-box"><b>🏅 League achievements</b><p class="helper">Earn badges from confirmed results, not predictions.</p>'+ (badge||'<p class="helper">Badges appear once games finish.</p>')+'</div>'+
   '<div class="sec-reminder-box"><b>🔔 Pick reminders</b><p class="helper">Opt in for alerts while the app is open. Background push is not yet available.</p>'+
   '<button type="button" class="ghost-btn" data-extra="reminders">'+(localStorage.getItem("ss-sec-reminders")==="yes"?'Disable reminders':'Enable reminders')+'</button></div>'+
@@ -318,16 +367,7 @@ async function action(type,target){
   return;
  }
  if(!client||!current||!user)throw Error("Sign in and join a league first.");
- if(type==="save-total"){
-  const raw=document.getElementById("sec-total-guess")?.value?.trim()??"";
-  if(raw==="")throw Error("Enter a total-points prediction before saving.");
-  const guess=Number(raw);
-  if(!Number.isInteger(guess)||guess<0||guess>200)throw Error("Enter a total from 0 to 200.");
-  const game=app.week().games.slice().sort((a,b)=>Date.parse(leagueGame(b).kickoff_at||b.kickoff||b.date+'T11:00:00Z')-Date.parse(leagueGame(a).kickoff_at||a.kickoff||a.date+'T11:00:00Z'))[0];
-  const resp=await client.from("sec_week_tiebreakers").upsert({league_id:current.id,user_id:user.id,week:app.week().num,game_id:game.id,predicted_total:guess},{onConflict:"league_id,user_id,week"});
-  err(resp);tiebreaker={game_id:game.id,predicted_total:guess};
-  app.toast("Tiebreaker saved!");
- }
+ if(type==="save-total"){await saveTiebreaker();return;}
  if(type==="rotate-code"){
   if(current.owner_id!==user.id)return;
   if(!window.confirm("Reset invitation link for "+current.name+"? Old links will stop working."))return;
@@ -342,6 +382,11 @@ async function action(type,target){
   app.toast("Member removed.");return "refresh";
  }
 }
+document.addEventListener("input",event=>{
+ if(event.target?.id!=="sec-total-guess")return;
+ const n=Number(event.target.dataset?.tieWeek);
+ if(Number.isInteger(n))tieDrafts[n]=String(event.target.value);
+});
 document.addEventListener("click",event=>{
  const el=event.target.closest("[data-extra]");if(!el)return;
  event.preventDefault();event.stopImmediatePropagation();
@@ -350,5 +395,5 @@ document.addEventListener("click",event=>{
   else if(app?.view()==="league")app.setView("league");
  }).catch(error=>{app?.toast?.(error.message||"Unable to save.");});
 },true);
-window.SEC_FEATURES={MODES,control,updateGames,reload,extras,save,leagueDetails,setStandings,remind,getMode:mode,isUnavailable,pickResult,summaryPoints,modeDescription,shareSlip};
+window.SEC_FEATURES={MODES,control,updateGames,reload,extras,save,leagueDetails,setStandings,remind,getMode:mode,isUnavailable,pickResult,summaryPoints,modeDescription,shareSlip,tiebreakerCard,saveTiebreaker};
 })();
