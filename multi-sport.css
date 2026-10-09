@@ -142,3 +142,39 @@
 /* Keep sport choice beneath the headline and description, never above the title. */
 .view > .global-sport-switch{margin:-8px 0 24px}
 @media(max-width:540px){.view > .global-sport-switch{margin:-7px 0 22px}}
+
+
+/* SEC Teams favorite tracker — three verified season records in one compact HQ. */
+.team-record-feature,.team-record-empty{border:1px solid #4f7760;border-radius:20px;background:radial-gradient(circle at 94% 0,#497b4b38,transparent 40%),linear-gradient(145deg,#1c3a38,#162635);padding:23px;margin:0 0 20px;box-shadow:0 12px 26px #070e1729}
+.team-record-feature-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:19px;flex-wrap:wrap}
+.record-favorite-name{display:flex;gap:13px;align-items:center;min-width:0}
+.record-favorite-name .mini-logo{width:55px;height:55px;font-size:15px;border-radius:14px}
+.record-eyebrow{font-size:10px;color:#d7fa65;letter-spacing:1.6px;font-weight:950;margin:0 0 6px}
+.record-favorite-name h2{margin:0;font-size:clamp(22px,3.3vw,30px);letter-spacing:-.6px;line-height:1.12;overflow-wrap:anywhere}
+.record-favorite-name h2 span{font-size:15px;font-weight:700;color:#a9c1c0}
+.record-favorite-name p{color:#a4bebd;margin:7px 0 0;font-size:12px}
+.record-refresh-btn{color:#d7fa65;background:#1b3935;border:1px solid #5c8566;border-radius:10px;padding:10px 13px;min-height:43px;font-size:11px;font-weight:900}
+.record-refresh-btn:disabled{opacity:.55}
+.record-refresh-btn:focus-visible,.favorite-btn:focus-visible{outline:3px solid #d7fa65;outline-offset:3px}
+.team-record-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.team-record-sport{background:#0f242c;border:1px solid #38545a;border-radius:15px;padding:16px;min-width:0;display:flex;flex-direction:column;align-items:start}
+.record-sport-head{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:900;width:100%;flex-wrap:wrap;color:#e8f2f1}
+.record-sport-head>span:first-child{font-size:19px}
+.record-season{margin-left:auto;font-size:10px;font-weight:750;color:#8ca9a9}
+.record-big{font-size:clamp(29px,4vw,39px);font-weight:950;color:#d7fa65;line-height:1.1;margin:11px 0 2px;letter-spacing:-1.1px}
+.record-big.missing{color:#778d95}
+.record-sport-desc,.record-conference{font-size:11px;color:#a6bec0;line-height:1.5}
+.record-conference{margin-top:5px;color:#d7e3dc}
+.record-source{display:inline-block;color:#d7fa65;font-size:10px;font-weight:900;text-decoration:none;margin-top:11px;padding:4px 0}
+.record-source:hover{text-decoration:underline}
+.record-footnote{margin-top:13px;color:#a1b9b4;font-size:10px;line-height:1.5}
+.team-record-empty{display:flex;align-items:center;gap:15px;border-style:dashed}
+.team-record-empty>span{font-size:33px;color:#d7fa65}
+.team-record-empty h2{font-size:20px;letter-spacing:-.5px;margin:3px 0 6px}
+.team-record-empty p{margin:0;font-size:12px;color:#a4bbba}
+.team-record-directory{margin-top:23px}
+.team-mini-records{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px;padding-top:13px;border-top:1px solid #344957}
+.team-mini-record{display:inline-flex;align-items:center;gap:4px;border-radius:8px;border:1px solid #425766;background:#101e2a;padding:6px;font-size:10px;color:#c1d5cf;white-space:nowrap}
+.team-mini-record strong{font-size:10px;color:#f1f8f7;letter-spacing:-.2px}
+@media(max-width:790px){.team-record-feature,.team-record-empty{padding:17px}}
+@media(max-width:600px){.team-record-grid{grid-template-columns:1fr;gap:9px}.team-record-sport{padding:13px;min-height:100px}.record-big{font-size:30px;margin:5px 0 2px}.record-sport-head{gap:8px}.record-favorite-name h2 span{display:block;margin-top:3px}.record-refresh-btn{width:100%}.team-record-feature-head{gap:11px}.team-record-empty>span{align-self:start}}
