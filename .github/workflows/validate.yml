@@ -18,6 +18,9 @@ jobs:
         run: |
           node --check multiplayer.js
           node --check league-features.js
+          node --check trophy-case.js
+          node --check scripts/smoke-trophies.cjs
+          node scripts/smoke-trophies.cjs
           node --check config.js
           node --check sw.js
           node --check matchup-stats.js
@@ -50,6 +53,8 @@ jobs:
           assert Path("sw.js").exists() and Path("icon.svg").exists()
           assert "./matchup-stats.js" in html and Path("stats.json").exists()
           assert "./league-features.js" in html and Path("league-features.js").exists()
+          assert 'id="sds-trophy-case"' in html and 'data-nav="trophies"' in html, "Trophy Case must be available in navigation"
+          assert './trophy-case.js' in html and Path("trophy-case.js").exists(), "Missing Trophy Case asset"
           assert "sec_league_standings_v3" in Path("multiplayer.js").read_text()
           modes=Path("supabase/migrations/20261009_four_modes.sql").read_text()
           for symbol in ("sec_save_league_pick","sec_h2h_history","sec_league_standings_v3","sec_revealed_league_picks","sec_rotate_league_invite","sec_week_tiebreakers"):
