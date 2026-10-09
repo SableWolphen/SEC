@@ -44,13 +44,21 @@ function renderClub(){
  const scores=c?'<div class="fan-table-wrap"><table class="fan-table"><thead><tr><th>Player</th><th>🏈</th><th>🏀</th><th>⚾</th><th>Total</th></tr></thead><tbody>'+
   rows.map((r,i)=>'<tr><td>#'+(i+1)+' '+esc(r.display_name)+(r.user_id===user()?.id?' ★':'')+'</td>'+
   ["football","basketball","baseball","total"].map(s=>'<td>'+safeNumber(r[s])+'</td>').join("")+'</tr>').join("")+'</tbody></table></div>':"";
+ const mine=rows.find(row=>row.user_id===user()?.id);
+ const stats=c&&mine?'<details class="fan-fold"><summary>📈 My three-sport stats <span>Season to date</span></summary>'+
+  '<div class="fan-metrics">'+sports.map(([sport,icon,label])=>{
+   const key=sport==="picks"?"football":sport,correct=mine[key+"_correct"];
+   return '<span><strong>'+safeNumber(correct)+'</strong><small>'+icon+' '+label+' correct</small></span>';
+  }).join("")+'</div>'+
+  '<p class="fan-subtle">Total championship points: '+safeNumber(mine.total)+
+  '. Straight-pick scoring; only verified results count. Your older seasons remain in their original leagues.</p></details>':"";
  const opts=leagues.length>1?'<select id="fan-club-select" aria-label="Choose combined league">'+
   leagues.map(l=>'<option value="'+esc(l.id)+'" '+(l.id===clubId?'selected':'')+'>'+esc(l.name)+'</option>').join("")+'</select>':"";
  host.innerHTML='<section class="fan-panel"><div class="fan-title-row"><div><div class="card-kicker">👑 GRAND CHAMPION RACE</div><h2>'+
   esc(c?.name||"One league. Three sports.")+'</h2><p>Same friends across football, basketball and baseball. One point per confirmed correct winner.</p></div>'+
   '<button class="fan-small" data-fan="reload" type="button">↻ Refresh</button></div>'+
   (problem?'<p class="fan-warning" role="status">'+esc(problem)+'</p>':"")+
-  (c?opts+'<p class="fan-subtle">Confirmed scores only · '+rows.length+' members</p>'+scores+
+  (c?opts+'<p class="fan-subtle">Confirmed scores only · '+rows.length+' members</p>'+scores+stats+
     '<div class="fan-sport-links">'+sports.map(([s,emoji,title])=>'<button class="fan-small" data-fan="sport" data-sport="'+s+'">'+emoji+' '+title+' picks ↗</button>').join("")+'</div>'+
     '<button class="fan-small" data-fan="share">Share one invite ↗</button> <small>Code: '+esc(c.invite_code)+'</small>':
     '<p class="fan-subtle">Create a league or join your friends. Existing single-sport leagues remain unchanged.</p>')+
