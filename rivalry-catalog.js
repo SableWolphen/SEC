@@ -208,7 +208,7 @@ const all=[
  },
  {
   "id": "red-river",
-  "name": "Red River Rivalry",
+  "name": "Red River Rivalry · Golden Hat",
   "codes": [
    "OU",
    "TEX"
@@ -424,7 +424,7 @@ const all=[
  },
  {
   "id": "tiger-bowl",
-  "name": "Tiger Bowl / Auburn–LSU Rivalry",
+  "name": "Tiger Bowl",
   "codes": [
    "AUB",
    "LSU"
@@ -586,7 +586,7 @@ const all=[
  },
  {
   "id": "beer-barrel",
-  "name": "Kentucky–Tennessee / Beer Barrel",
+  "name": "The Beer Barrel",
   "codes": [
    "UK",
    "TENN"
@@ -658,7 +658,7 @@ const all=[
  },
  {
   "id": "tiger-sooner",
-  "name": "Missouri–Oklahoma / Tiger–Sooner Peace Pipe",
+  "name": "Tiger–Sooner Peace Pipe",
   "codes": [
    "MIZ",
    "OU"
@@ -856,7 +856,7 @@ const all=[
  },
  {
   "id": "florida-miami",
-  "name": "Florida–Miami Rivalry / Florida Cup",
+  "name": "Florida–Miami / Florida Cup",
   "codes": [
    "FLA",
    "MIAMI"
@@ -1036,7 +1036,7 @@ const all=[
  },
  {
   "id": "missouri-nebraska",
-  "name": "Missouri–Nebraska Rivalry",
+  "name": "The Victory Bell (Missouri–Nebraska)",
   "codes": [
    "MIZ",
    "NEB"
@@ -1216,7 +1216,7 @@ const all=[
  },
  {
   "id": "chancellors-spurs",
-  "name": "Texas–Texas Tech / Chancellor’s Spurs",
+  "name": "Chancellor’s Spurs",
   "codes": [
    "TEX",
    "TTU"
@@ -1288,7 +1288,7 @@ const all=[
  },
  {
   "id": "gold-cowbell",
-  "name": "Georgia Tech–Vanderbilt / Gold Cowbell",
+  "name": "The Gold Cowbell",
   "codes": [
    "VAN",
    "GT"
@@ -1329,5 +1329,11 @@ for(const t of all){
  if(pairs.has(pair)||ids.has(t.id))throw Error("Duplicate rivalry: "+t.id);
  pairs.add(pair);ids.add(t.id);
 }
-window.SDS_RIVALRIES=Object.freeze(all.map(t=>Object.freeze(t)));
+// Keep the full 73-game reference registry for non-destructive historical records.
+// Only officially/traditionally TITLED rivalry games belong in the public Trophy Case.
+// Do not infer a title from a generic 'School A–School B Rivalry' description.
+const NAMED_RIVALRY_IDS=new Set(["iron-bowl","third-saturday","golden-boot","southwest-classic","deep-south","cocktail-party","governors-cup","magnolia-bowl","golden-egg","battle-line","mayors-cup","red-river","palmetto-showdown","lone-star","first-saturday-november","highway-82","tiger-bowl","beer-barrel","tiger-sooner","sunshine-showdown","florida-miami","clean-old-fashioned-hate","battle-on-broadway","battle-for-rag","arch-rivalry","telephone-trophy","border-war","missouri-nebraska","bedlam","mid-south","chancellors-spurs","battle-brazos","gold-cowbell"]);
+const immutable=Object.freeze(all.map(t=>Object.freeze({...t,namedTrophy:NAMED_RIVALRY_IDS.has(t.id)})));
+window.SDS_RIVALRIES=immutable;
+window.SDS_TROPHY_RIVALRIES=Object.freeze(immutable.filter(t=>t.namedTrophy));
 })();
