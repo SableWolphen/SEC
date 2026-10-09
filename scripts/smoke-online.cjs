@@ -101,6 +101,8 @@ function click(action){
 (async()=>{
  await sleep();await sleep();
  assert.match(host.innerHTML,/Create my account/,'create account form');
+ assert.match(host.innerHTML,/version 2026.10.09.2/,'fresh account screen visible');
+ assert.doesNotMatch(fs.readFileSync('multiplayer.js','utf8'),/Enter a valid email address\\./,'old client-side email rejection removed');
  assert.match(host.innerHTML,/online-password-confirm/,'password confirmation form');
  click('mode-login');assert.match(host.innerHTML,/Log in/);assert.doesNotMatch(host.innerHTML,/online-password-confirm/);
  click('mode-signup');click('register');
