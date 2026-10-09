@@ -14,7 +14,8 @@ const game={id:"basketball-2027-sec-test",sport:"basketball",season:2027,week:1,
  kickoff_at:kickoff,home_code:"333",home_name:"Alabama",away_code:"2633",away_name:"Tennessee",
  game_status:"scheduled",source:"SEC official conference schedule · provisional tipoff",winner_code:null};
 let signed=false,syncCalls=0,pickCalls=[],standCalls=0,createCalls=0;
-const me={id:"person-123"};
+let authIsReady=true,restoreSession=Promise.resolve(),finishRestoring=null;
+const me={id:"person-123",email:"tester@example.com"};
 const league={id:"league-123",sport:"basketball",season:2027,owner_id:me.id,name:"Hoops Crew",
  mode:"straight",invite_code:"K3J59G7L4Z"};
 const db={
@@ -36,7 +37,8 @@ const db={
 let activeView="sports",selected="";
 const window={
  SEC_BRIDGE:{view:()=>activeView,setView:x=>{selected=x;activeView=x;}},
- secOnline:{getUser:()=>signed?me:null,getClient:()=>db},
+ secOnline:{configured:true,getUser:()=>signed?me:null,getClient:()=>db,
+  isAuthReady:()=>authIsReady,whenAuthReady:()=>restoreSession},
  location:{hash:"#sports"}
 };
 const document={
@@ -80,11 +82,20 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
  assert.match(fs.readFileSync("multi-sport.js","utf8"),/not pickable games/,"series only, no invented individual winner picks");
  for(const sport of ["football","basketball","baseball"])
   assert.match(roots["sports-hub"].innerHTML,new RegExp('data-go-sport="'+sport+'"'));
- app.mount("basketball");await settle();
+ activeView="basketball";app.mount("basketball");await settle();
  assert.match(roots["sport-basketball-content"].innerHTML,/Alabama/,"real upcoming basketball fixture visible even to guests");
  assert.match(roots["sport-basketball-content"].innerHTML,/provisional pick lock/,"provisional lock clearly distinguished from actual tipoff");
- assert.match(roots["sport-basketball-content"].innerHTML,/Sign in/,"signed-out view prompts account access");
- signed=true;await app.load("basketball",true);await settle();
+ assert.match(roots["sport-basketball-content"].innerHTML,/Log in to your account/,"signed-out user sees login rather than another account creation");
+ // The saved session may still be restoring when the player switches sports.
+ authIsReady=false;
+ restoreSession=new Promise(resolve=>{finishRestoring=resolve;});
+ app.mount("basketball");await settle();
+ assert.match(roots["sport-basketball-content"].innerHTML,/Restoring your account/,"do not demand account creation while restoring login");
+ assert.doesNotMatch(roots["sport-basketball-content"].innerHTML,/Log in to your account/,"no premature login prompt");
+ signed=true;authIsReady=true;finishRestoring();
+ app.authChanged();await settle();
+ assert.match(roots["sport-basketball-content"].innerHTML,/tester@example.com/,"football account automatically appears in basketball");
+ assert.doesNotMatch(roots["sport-basketball-content"].innerHTML,/Log in to your account/,"no separate basketball signup needed");
  assert.ok(syncCalls>0,"signed-in app requests verified ESPN server sync");
  assert.ok(standCalls>0,"standings query scoped to new league");
  assert.match(roots["sport-basketball-content"].innerHTML,/Hoops Crew/,"player sees only basketball league");
@@ -97,8 +108,9 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
  assert.equal(pickCalls[0].p_game,game.id);
  assert.equal(pickCalls[0].p_pick,game.away_code);
  assert.equal(pickCalls[0].p_league,league.id);
- app.mount("baseball");await settle();
+ activeView="baseball";app.mount("baseball");await settle();
  assert.match(roots["sport-baseball-content"].innerHTML,/Waiting for the official schedule/,"no fabricated baseball games");
+ assert.match(roots["sport-baseball-content"].innerHTML,/tester@example.com/,"same signed-in account carries to baseball");
  assert.equal(app.getState("baseball").games.length,0,"baseball table isolated");
  const sw=fs.readFileSync("sw.js","utf8");
  assert.match(sw,/multi-sport\.js/,"PWA includes season selector client");
@@ -116,6 +128,11 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
  assert.ok(html.includes('data-nav="current-sport"'),"mobile and desktop Picks tabs return to the selected sport");
  assert.ok(!html.includes('data-nav="sports"'),"no mandatory choose-sport navigation");
  assert.ok(html.includes("lastSportView"),"returning from other pages preserves chosen sport");
+ assert.ok(html.includes("20261009-sharedaccount-v4"),"site loads updated shared-auth scripts rather than an old cached build");
+ const shared=fs.readFileSync("multiplayer.js","utf8");
+ assert.match(shared,/whenAuthReady:function/,"one Supabase login exposes session restoration to all sports");
+ assert.match(shared,/publishAccount\(\)/,"auth restoration triggers sport refresh");
+ assert.match(shared,/var authMode = "login"/,"returning users see login, not account creation");
  const sql=fs.readFileSync("supabase/migrations/20261009_basketball_baseball.sql","utf8");
  for(const name of ["sec_sport_games","sec_sport_leagues","sec_sport_picks","sec_sport_save_pick","sec_sport_standings","sec_sport_tiebreakers"])
   assert.ok(sql.includes(name),"secure sport backend includes "+name);
