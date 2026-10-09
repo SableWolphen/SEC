@@ -133,16 +133,23 @@ def get_one(code, sport, year, get):
     if str(team.get("id", "")) != team_id or not identity_ok(code, team):
         return None  # A bad ESPN mapping must never place one school's record on another.
     season = data.get("season")
-    if isinstance(season, dict) and season.get("year") and int(season["year"]) != year:
-        return None
-    overall, conference = record_parts(data)
-    if not overall:
+    wrong_season = (isinstance(season, dict) and season.get("year") and
+                    int(season["year"]) != year)
+    overall, conference = (None, None) if wrong_season else record_parts(data)
+    if not overall and not wrong_season:
         overall, conference = record_parts(team)
+    scope = "Season"
     if not overall:
-        # Some college endpoints only serve records through /teams/{id}/record.
+        # Site team endpoints often show only the upcoming year's records.
+        # The ESPN core endpoint addresses the desired season explicitly.
+        core_sport, league = slug.split("/")
+        core_url = (f"https://sports.core.api.espn.com/v2/sports/{core_sport}/"
+                    f"leagues/{league}/seasons/{year}/types/2/teams/{team_id}/record")
         try:
-            extra = get(f"{BASE}/{slug}/teams/{team_id}/record?season={year}")
-            overall, conference = record_parts({"record": extra})
+            historical = get(core_url)
+            overall, conference = record_parts({"record": historical})
+            if overall:
+                scope = "Regular season"  # ESPN /types/2 excludes playoffs.
         except Exception:
             pass
     if not overall:
@@ -151,6 +158,7 @@ def get_one(code, sport, year, get):
         "overall": overall,
         "conference": conference,
         "season": year,
+        "scope": scope,
         "source": "ESPN",
         "source_url": f"https://www.espn.com/{slug.replace('football/college-football','college-football').replace('basketball/mens-college-basketball','mens-college-basketball').replace('baseball/college-baseball','college-baseball')}/team/_/id/{team_id}",
     }
