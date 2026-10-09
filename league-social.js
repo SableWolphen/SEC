@@ -4,7 +4,7 @@
 (()=>{
 "use strict";
 let client=null,league=null,user=null,standings=[],messages=[],reactions=[],champions=[];
-let inFlight=false,loaded=false,error="",requestId=0,refreshAt=0;
+let inFlight=false,loadingToken=0,loaded=false,error="",requestId=0,refreshAt=0;
 const allowedEmoji=["🔥","🏈","😂","👏"];
 const esc=value=>String(value??"").replace(/[&<>"']/g,x=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[x]));
 const extract=result=>{if(result?.error)throw result.error;return result?.data||[];};
@@ -78,7 +78,7 @@ function update(){
 async function load(force=false){
  if(!client||!league||!user||inFlight)return;
  if(!force&&Date.now()-refreshAt<10000)return;
- const id=league.id,token=++requestId;inFlight=true;refreshAt=Date.now();
+ const id=league.id,token=++requestId;inFlight=true;loadingToken=token;refreshAt=Date.now();
  try{
   const [mc,cc]=await Promise.all([
    client.from("sec_league_messages").select("id,league_id,user_id,body,created_at")
@@ -100,11 +100,11 @@ async function load(force=false){
    error="League chat temporarily unavailable. "+String(e.message||"Please try again.").slice(0,125);
    loaded=true;update();
   }
- }finally{inFlight=false;}
+ }finally{if(loadingToken===token)inFlight=false;}
 }
 function connect(c,l,u,rows){
  const changed=l?.id!==league?.id||u?.id!==user?.id;
- if(changed){messages=[];reactions=[];champions=[];loaded=false;error="";refreshAt=0;requestId++;}
+ if(changed){messages=[];reactions=[];champions=[];loaded=false;error="";refreshAt=0;requestId++;inFlight=false;}
  client=c;league=l||null;user=u||null;standings=Array.isArray(rows)?rows:[];
  if(c&&l&&u)void load();
 }
