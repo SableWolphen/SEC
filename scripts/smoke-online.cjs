@@ -113,5 +113,15 @@ function click(action){
  assert.equal(state.requests.some(x=>x.type==='create-league'),true,'server-authorized create league RPC used');
  assert.match(host.innerHTML,/Saturday Friends/,'new league on screen');
  assert.match(host.innerHTML,/Share invite link/,'friends sharing available');
- console.log('SEC signup → account profile → create league → invite link smoke tests passed.');
+ // Simulate returning to the website and logging in with the same email/password.
+ click('logout');
+ await sleep();await sleep();
+ await env.window.secOnline.refresh();
+ click('mode-login');
+ assert.match(host.innerHTML,/Log in/);
+ click('login');
+ await sleep();await sleep();await sleep();
+ assert.equal(state.requests.some(x=>x.type==='login'),true,'password sign-in called');
+ assert.match(host.innerHTML,/Saturday Friends/,'existing league reloads after sign-in');
+ console.log('SEC signup → account profile → create private league → invite → logout → password login smoke tests passed.');
 })().catch(err=>{console.error(err);process.exitCode=1;});
