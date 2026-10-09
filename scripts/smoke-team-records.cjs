@@ -54,6 +54,9 @@ const go=async()=>{
  assert.match(view,/SEC: 2-1/);
  assert.match(view,/Regular-season record/,"historical API does not include postseason games");
  assert.match(view,/SEC: 15-15/,"official baseball conference result appears");
+ assert.match(view,/stats\.secsports\.com\/#team/,"official SEC team statistics are linked");
+ assert.match(view,/ncaa\.org\/championships\/statistics-and-records\/baseball/,"NCAA baseball archive is linked");
+ assert.match(view,/developer\.sportradar\.com\/baseball\/reference\/global-baseball-overview/,"Sportradar coverage is discoverable");
  assert.doesNotMatch(view,/18-0/);
  const empty=app.spotlight(null,name,()=>"<span/>");
  assert.match(empty,/Tap ★/,"favorite can be selected from existing school cards");
