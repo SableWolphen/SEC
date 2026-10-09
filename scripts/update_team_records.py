@@ -34,6 +34,21 @@ SEC_TEAMS = {
     "TENN": ("2633", "Tennessee"), "TEX": ("251", "Texas"),
     "TAMU": ("245", "Texas A&M"), "VAN": ("238", "Vanderbilt"),
 }
+# Completed 2026 season (source: Southeastern Conference official final table).
+# Unlike ESPN's incomplete college-baseball endpoints, the SEC publishes every
+# school's final overall and conference result:
+# https://www.secsports.com/standings/baseball  (2026 final standings).
+# These are immutable final 2026 records, NOT a projection for 2027+.
+BASEBALL_FINAL_2026 = {
+    "UGA": ("53-14", "23-7"), "TEX": ("46-15", "19-10"),
+    "TAMU": ("41-16", "18-11"), "ALA": ("42-21", "18-12"),
+    "FLA": ("41-21", "18-12"), "AUB": ("42-22", "17-13"),
+    "ARK": ("41-22", "17-13"), "MSST": ("43-19", "16-14"),
+    "MISS": ("41-23", "15-15"), "TENN": ("38-22", "15-15"),
+    "OU": ("43-23", "14-16"), "VAN": ("33-25", "14-16"),
+    "UK": ("33-23", "13-17"), "LSU": ("30-28", "9-21"),
+    "SC": ("22-35", "7-23"), "MIZ": ("24-31", "6-24"),
+}
 ALIAS = {
     "LSU": {"lsu", "louisianastate"},
     "MISS": {"olemiss", "mississippi"},
@@ -262,7 +277,7 @@ def build(now=None, get=get_json, existing=None):
                 # Retain *only* a previously verified record from the same season.
                 old = (prev.get(code) or {}).get(sport)
                 if (isinstance(old, dict) and old.get("season") == year
-                        and old.get("source") == "ESPN" and valid_record(old.get("overall"))):
+                        and old.get("source") in ("ESPN", "SEC") and valid_record(old.get("overall"))):
                     updated[code][sport] = old
 
     # ESPN team details and Core API occasionally omit baseball records entirely.
@@ -281,14 +296,28 @@ def build(now=None, get=get_json, existing=None):
         except Exception as error:
             print("SEC baseball standings unavailable:", type(error).__name__)
 
+    # The SEC's official 2026 baseball season is complete. Preserve its
+    # published final table if ESPN has no confirmed baseball record.
+    if seasons["baseball"] == 2026:
+        for code, (overall, conference) in BASEBALL_FINAL_2026.items():
+            if "baseball" not in updated[code]:
+                updated[code]["baseball"] = {
+                    "overall": overall, "conference": conference,
+                    "season": 2026, "scope": "Final 2026 season",
+                    "source": "SEC",
+                    "source_url": "https://www.secsports.com/standings/baseball",
+                    "verified_at": stamp,
+                }
+
     available = sum(bool(updated[code]) for code in SEC_TEAMS)
+    record_count = sum(len(updated[code]) for code in SEC_TEAMS)
     if sourced == 0 and available == 0:
         print("ESPN returned no verified records. Publishing honest unavailable state.")
     print(f"SEC record tracker: {sourced}/48 newly confirmed records; "
           f"{failed} source request errors; {available}/16 schools with at least one record")
     return {"updated_at": stamp, "source": "ESPN", "seasons": seasons, "teams": updated,
-            "warning": "Some team records are unavailable from ESPN; unavailable cells are not estimates."
-                       if sourced < 48 else None}
+            "warning": "Some records are not available from ESPN or SEC; unavailable cells are not estimates."
+                       if record_count < 48 else None}
 
 
 def main():
