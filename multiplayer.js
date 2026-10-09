@@ -138,6 +138,7 @@
         leagues=[];active=null;profile=null;standings=[];standingsError='';
         app.state().picks={};app.state().results={};
         window.SDSTrophyCase?.sync({authenticated:false,schedule:app.gameById});
+        window.SEC_SOCIAL?.connect?.(client,null,null,[]);
         if(window.SEC_FEATURES?.reload)await window.SEC_FEATURES.reload(client,null,null,app);
         try{
           var publicGames=extract(await client.from("sec_games").select("id,kickoff_at,winner,provisional,game_status,status_detail,away_score,home_score,spread_home,spread_source,score_updated_at"))||[];
@@ -188,9 +189,16 @@
       window.SDSTrophyCase?.sync({
         games:results[3].data||[],picks:app.state().picks,schedule:app.gameById,
         leagueId:currentLeague()?.id||null,leagueName:currentLeague()?.name||"",
-        authenticated:!!user
+        authenticated:!!user,userId:user.id
       });
+      if(currentLeague()&&window.SDSTrophyCase?.setPermanentResults){
+        try{
+          var historyRows=extract(await client.rpc("sec_sync_trophy_history",{p_league:active}))||[];
+          window.SDSTrophyCase.setPermanentResults(historyRows);
+        }catch(trophyErr){console.warn("Saved trophy history unavailable",trophyErr);}
+      }
       await refreshStandings(false);
+      window.SEC_SOCIAL?.connect?.(client,currentLeague(),user,standings);
       window.SEC_FEATURES?.remind?.();
       show();
     }catch(err){busy(err);show();}
@@ -200,6 +208,7 @@
     try{
       standings=extract(await client.rpc("sec_league_standings_v3",{p_league:active,p_week:app.week().num}))||[];
       window.SEC_FEATURES?.setStandings?.(standings);
+      window.SEC_SOCIAL?.setStandings?.(standings);
       if(shouldShow&&window.SEC_FEATURES?.reload)await window.SEC_FEATURES.reload(client,currentLeague(),user,app);
       standingsError='';if(shouldShow)show();
     }
