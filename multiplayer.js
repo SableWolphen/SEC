@@ -17,7 +17,7 @@
   var status = function(message){lastError = message || ""; var el = document.getElementById("online-status"); if(el) el.textContent=lastError;};
   var button = function(label,action,extra){return '<button type="button" class="'+(extra||"ghost-btn")+'" data-online="'+action+'">'+label+'</button>';};
   var card = function(title,content){return '<div class="content-card"><div class="card-kicker">ONLINE PICK’EM</div><h2>'+title+'</h2>'+content+'</div>';};
-  var busy = function(err){working=false; if(err){console.warn("SEC online operation:",err);status(err.message||"Something went wrong. Try again.");app.toast(err.message||"Could not complete the request.");}else status("");};
+  var busy = function(err){working=false; if(err){console.warn("SEC online operation:",err);var message=err.message||"Something went wrong. Try again.";if(/email address not authorized/i.test(message))message="Email sign-in is not enabled for outside friends yet. Ask the league owner to configure an email provider.";status(message);app.toast(message);}else status("");};
   var extract = function(obj){if(obj.error)throw obj.error;return obj.data;};
   var currentLeague = function(){return leagues.find(function(l){return l.id===active;});};
   var urlForInvite = function(code){var u=new URL(location.href);u.searchParams.set("league",code);u.hash="league";return u.toString();};
@@ -37,7 +37,7 @@
         '<label class="input-label" for="online-email">Email address</label>'+
         '<input class="field" id="online-email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com">'+
         '<div style="margin-top:12px">'+button('Email me a sign-in link','send-link','primary-btn')+'</div>'+
-        '<p class="helper">No password needed. A sign-in link will be sent to your inbox.</p>'+
+        '<p class="helper">No password needed. A sign-in link will be sent to your inbox. If your email is rejected, the league owner must finish email delivery setup.</p>'+
         '<p id="online-status" class="helper" role="status" aria-live="polite">'+safe(lastError)+'</p>')+
         card('The rules','<p>Pick winners for every SEC matchup, including nonconference opponents. Earn one point per correct pick. Picks lock at kickoff (or a clearly marked early provisional time).</p><p>Your name and score appear only to fellow league members. Picks remain private until each game begins.</p>')+'</div>';
       return;
@@ -63,7 +63,7 @@
       standingsHtml = '<div class="league-hero"><div><div class="label">LIVE ONLINE LEAGUE</div><h2>'+safe(choice.name)+'</h2><p>'+standings.length+' players · Week '+w.num+' · Invite code '+safe(choice.invite_code)+'</p></div><span class="big-emoji" aria-hidden="true">🏆</span></div>'+
        card('League scoreboard',
         '<p>Scores update as confirmed results are posted. Everyone in this league shares these standings.</p>'+
-        '<div class="chip-line">'+button('Copy invite link','copy-invite','primary-btn')+' '+button('Refresh standings','refresh')+'</div>'+
+        '<div class="chip-line">'+button('Share invite link','copy-invite','primary-btn')+' '+button('Refresh standings','refresh')+'</div>'+
         '<div style="margin:14px 0"><label for="league-week" class="input-label">Week</label><select class="field" id="league-week">'+app.weeks.map(function(x){return '<option value="'+x.num+'" '+(x.num===w.num?'selected':'')+'>Week '+x.num+'</option>';}).join('')+'</select></div>'+
         '<div class="leaderboard"><div class="standing-row head" style="grid-template-columns:26px minmax(0,1fr) 48px 52px 58px"><span>#</span><span>PLAYER</span><span>PICKS</span><span>WEEK</span><span>SEASON</span></div>'+
         (standings.length?standings.map(function(row,i){return '<div class="standing-row" style="grid-template-columns:26px minmax(0,1fr) 48px 52px 58px"><span class="rank">'+(i+1)+'</span><span class="name">'+safe(row.display_name)+(row.user_id===user.id?' ★':'')+'</span><span class="muted">'+safe(row.picked)+'</span><span class="score">'+safe(row.week_points)+'</span><span>'+safe(row.season_points)+'</span></div>';}).join(''):'<p class="helper" style="padding:15px">No standings available yet.</p>')+
@@ -185,8 +185,14 @@
   async function copyInvite(){
     var l=currentLeague();if(!l){app.toast("Create or join a league first.");app.setView("league");return;}
     var share=urlForInvite(l.invite_code);
-    try{await navigator.clipboard.writeText(share);app.toast("Invitation link copied!");}
-    catch(err){window.prompt("Copy the invitation link:",share);}
+    try{
+      if(navigator.share){await navigator.share({title:"Join "+l.name+" on Saturdays Down South",text:"Join my SEC Pick'em league!",url:share});app.toast("League invite ready to share!");return;}
+      await navigator.clipboard.writeText(share);app.toast("Invitation link copied!");
+    }catch(err){
+      if(err.name==="AbortError")return;
+      try{await navigator.clipboard.writeText(share);app.toast("Invitation link copied!");}
+      catch(copyErr){window.prompt("Copy the invitation link:",share);}
+    }
   }
   window.secOnline={
     configured:!!client,renderLeague:renderLeague,renderSettings:renderSettings,
