@@ -6,10 +6,21 @@
 (() => {
  "use strict";
  const TROPHIES=Object.freeze([
-  {id:"golden-egg",name:"The Golden Egg",teams:"Mississippi State vs Ole Miss",codes:["MSST","MISS"],model:"trophies/golden-egg.glb",symbol:"🥚",short:"EGG BOWL"},
-  {id:"golden-boot",name:"The Golden Boot",teams:"LSU vs Arkansas",codes:["LSU","ARK"],model:"trophies/golden-boot.glb",symbol:"🥾",short:"GOLDEN BOOT"},
-  {id:"battle-line",name:"Battle Line Rivalry",teams:"Arkansas vs Missouri",codes:["ARK","MIZ"],model:"trophies/battle-line.glb",symbol:"⚔️",short:"BATTLE LINE"},
-  {id:"governors-cup",name:"Governor’s Cup",teams:"Kentucky vs Louisville",codes:["UK","LOU"],model:"trophies/governors-cup.glb",symbol:"🏆",short:"GOVERNOR’S CUP"}
+  {id:"iron-bowl",name:"The Iron Bowl",teams:"Alabama vs Auburn",codes:["ALA","AUB"],model:"trophies/iron-bowl.glb",symbol:"🏈",short:"IRON BOWL",tone:"#c94857",nonconference:false},
+  {id:"third-saturday",name:"Third Saturday in October",teams:"Alabama vs Tennessee",codes:["ALA","TENN"],model:"trophies/third-saturday.glb",symbol:"🍂",short:"THIRD SATURDAY",tone:"#e9a044",nonconference:false},
+  {id:"golden-boot",name:"The Golden Boot",teams:"LSU vs Arkansas",codes:["LSU","ARK"],model:"trophies/golden-boot.glb",symbol:"🥾",short:"GOLDEN BOOT",tone:"#caa954",nonconference:false},
+  {id:"southwest-classic",name:"The Southwest Classic",teams:"Arkansas vs Texas A&M",codes:["ARK","TAMU"],model:"trophies/southwest-classic.glb",symbol:"⭐",short:"SOUTHWEST CLASSIC",tone:"#9b636c",nonconference:false},
+  {id:"deep-south",name:"Deep South’s Oldest Rivalry",teams:"Auburn vs Georgia",codes:["AUB","UGA"],model:"trophies/deep-south.glb",symbol:"🏛️",short:"DEEP SOUTH",tone:"#bd775b",nonconference:false},
+  {id:"cocktail-party",name:"World’s Largest Outdoor Cocktail Party",teams:"Florida vs Georgia",codes:["FLA","UGA"],model:"trophies/cocktail-party.glb",symbol:"🍊",short:"FLORIDA–GEORGIA",tone:"#d88439",nonconference:false},
+  {id:"governors-cup",name:"The Governor’s Cup",teams:"Kentucky vs Louisville",codes:["UK","LOU"],model:"trophies/governors-cup.glb",symbol:"🏆",short:"GOVERNOR’S CUP",tone:"#5f9fd0",nonconference:true},
+  {id:"magnolia-bowl",name:"The Magnolia Bowl",teams:"LSU vs Ole Miss",codes:["LSU","MISS"],model:"trophies/magnolia-bowl.glb",symbol:"🌸",short:"MAGNOLIA BOWL",tone:"#ac76c2",nonconference:false},
+  {id:"golden-egg",name:"The Golden Egg (Egg Bowl)",teams:"Mississippi State vs Ole Miss",codes:["MSST","MISS"],model:"trophies/golden-egg.glb",symbol:"🥚",short:"EGG BOWL",tone:"#d4b45e",nonconference:false},
+  {id:"battle-line",name:"Battle Line Rivalry",teams:"Arkansas vs Missouri",codes:["ARK","MIZ"],model:"trophies/battle-line.glb",symbol:"⚔️",short:"BATTLE LINE",tone:"#bb6f52",nonconference:false},
+  {id:"mayors-cup",name:"The Mayor’s Cup",teams:"Missouri vs South Carolina",codes:["MIZ","SC"],model:"trophies/mayors-cup.glb",symbol:"🏙️",short:"MAYOR’S CUP",tone:"#b99e4c",nonconference:false},
+  {id:"red-river",name:"Red River Rivalry",teams:"Oklahoma vs Texas",codes:["OU","TEX"],model:"trophies/red-river.glb",symbol:"🌉",short:"RED RIVER",tone:"#c35d4b",nonconference:false},
+  {id:"palmetto-showdown",name:"Palmetto Showdown",teams:"South Carolina vs Clemson",codes:["SC","CLEM"],model:"trophies/palmetto-showdown.glb",symbol:"🌴",short:"PALMETTO",tone:"#b58364",nonconference:true},
+  {id:"lone-star",name:"Lone Star Showdown",teams:"Texas vs Texas A&M",codes:["TEX","TAMU"],model:"trophies/lone-star.glb",symbol:"🌟",short:"LONE STAR",tone:"#cb8b4f",nonconference:false},
+  {id:"tennessee-vanderbilt",name:"Tennessee–Vanderbilt Rivalry",teams:"Tennessee vs Vanderbilt",codes:["TENN","VAN"],model:"trophies/tennessee-vanderbilt.glb",symbol:"🎸",short:"TENNESSEE",tone:"#dbb265",nonconference:false}
  ]);
  const byId=new Map(TROPHIES.map(t=>[t.id,t]));
  function deriveResults(games,picks,schedule,authenticated=false,leagueId=null){
@@ -64,14 +75,21 @@
  "#sds-trophy-case .sds-trophy-empty{text-align:center;padding:35px 12px;border:1px dashed #3d556b;border-radius:14px;color:#9baabd;grid-column:1/-1}",
  "#sds-trophy-case .sds-trophy-empty strong{display:block;color:#f7f9fb;margin-bottom:7px}",
  "#sds-trophy-case .sds-trophy-action{border:1px solid #668448;background:#273b2c;color:#d5ff65;border-radius:11px;padding:11px 13px;margin-top:13px;font-weight:850;cursor:pointer}",
- "#sds-trophy-case .sds-trophy-disclaimer{margin-top:20px;color:#93a7b9;font-size:11px;line-height:1.5}",
+ "#sds-trophy-case .sds-trophy-card{--sds-trophy-accent:#d4bb65}",
+ "#sds-trophy-case .sds-trophy-display{background:radial-gradient(circle at 53% 33%,color-mix(in srgb,var(--sds-trophy-accent) 28%,#142232),#08111c 77%)}",
+ "#sds-trophy-case .sds-trophy-placeholder strong{filter:drop-shadow(0 5px 15px var(--sds-trophy-accent));transform:rotate(-6deg)}",
+ "#sds-trophy-case .sds-trophy-placeholder span{display:block;margin-top:6px;color:var(--sds-trophy-accent);letter-spacing:.8px}",
+ "#sds-trophy-case .sds-trophy-category{color:#d5ff65;font-size:10px;font-weight:800;margin-top:9px}",
+ "#sds-trophy-case .sds-trophy-schedule{color:#7e9aae;font-size:10px;margin-top:5px}",
+  "#sds-trophy-case .sds-trophy-disclaimer{margin-top:20px;color:#93a7b9;font-size:11px;line-height:1.5}",
  "@media(min-width:890px){#sds-trophy-case .sds-trophy-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}",
  "@media(max-width:365px){#sds-trophy-case{padding:18px 10px 85px}#sds-trophy-case .sds-trophy-display{height:145px}#sds-trophy-case .sds-trophy-placeholder strong{font-size:44px}}"
  ];
  const style=document.createElement("style");style.textContent=rules.join("\n");document.head.appendChild(style);
  let verified=[],myPicks={},schedule={},records=[],signedIn=false,leagueId=null,leagueName="",tab="all",rootId="sds-trophy-case",renderId=0,viewerLoading=false;
  function last(id){return records.filter(r=>r.trophyId===id).sort((a,b)=>b.year-a.year)[0];}
- function owned(){return TROPHIES.filter(t=>last(t.id)?.correct===true);}
+ function lastWin(id){return records.filter(r=>r.trophyId===id&&r.correct).sort((a,b)=>b.year-a.year)[0];}
+ function owned(){return TROPHIES.filter(t=>Boolean(lastWin(t.id)));}
  function empty(message,withButton=false){
   const el=document.createElement("div");el.className="sds-trophy-empty";
   const strong=document.createElement("strong");strong.textContent=message;el.append(strong);
@@ -82,10 +100,13 @@
   const div=document.createElement("div");div.className="sds-trophy-placeholder";
   const art=document.createElement("strong");art.textContent=t.symbol;art.setAttribute("aria-hidden","true");
   const title=document.createElement("span");title.textContent=t.short;
+  div.style.setProperty("--sds-trophy-accent",t.tone);
   div.append(art,title);return div;
  }
  // Model loads only once its .glb file actually exists. Until then keep attractive placeholders.
  async function attachModel(display,t,version){
+  // Only probe known uploaded assets; do not make 15 guaranteed 404 requests every render.
+  if(!Array.isArray(window.SDS_TROPHY_MODELS)||!window.SDS_TROPHY_MODELS.includes(t.id))return;
   if(typeof fetch!=="function"||!window.customElements)return;
   try{
    const response=await fetch(t.model,{method:"HEAD",cache:"force-cache"});
@@ -104,15 +125,25 @@
   }catch(err){/* Missing model: keep placeholder. */}
  }
  function trophyCard(t,version){
-  const result=last(t.id),earned=result?.correct===true;
+  const result=last(t.id),won=lastWin(t.id),earned=Boolean(won);
   const card=document.createElement("article");card.className="sds-trophy-card"+(earned?" earned":"");
+  card.style.setProperty("--sds-trophy-accent",t.tone);
   const display=document.createElement("div");display.className="sds-trophy-display";display.append(placeholder(t));
   const info=document.createElement("div");info.className="sds-trophy-info";
   const title=document.createElement("div");title.className="sds-trophy-name";title.textContent=t.name;
   const teams=document.createElement("div");teams.className="sds-trophy-teams";teams.textContent=t.teams;
   const year=document.createElement("div");year.className="sds-trophy-year"+(earned?" sds-trophy-owned":"");
-  year.textContent=earned?"🏆 "+result.year+" · EARNED":result?"Last picked: "+result.year:"Not yet earned";
-  info.append(title,teams,year);card.append(display,info);attachModel(display,t,version);return card;
+  year.textContent=earned?"🏆 "+won.year+" · EARNED":result?"Last picked: "+result.year:"Not yet earned";
+  const category=document.createElement("div");category.className="sds-trophy-category";
+  category.textContent=t.nonconference?"SEC vs nonconference":"SEC rivalry";
+  const matching=Object.values(schedule).filter(g=>g&&t.codes.includes(g.home)&&t.codes.includes(g.away));
+  if(matching.length){
+    const next=matching.sort((a,b)=>String(b.date).localeCompare(String(a.date)))[0];
+    const matchNote=document.createElement("div");matchNote.className="sds-trophy-schedule";
+    matchNote.textContent="On the "+String(next.date?.slice(0,4)||"2026")+" SEC slate · Week "+next.week;
+    info.append(title,teams,category,matchNote,year);
+  }else{info.append(title,teams,category,year);}
+  card.append(display,info);attachModel(display,t,version);return card;
  }
  function render(next=tab){
   const root=document.getElementById(rootId);if(!root)return;
@@ -153,7 +184,7 @@
    root.append(grid);
   }
   const note=document.createElement("p");note.className="sds-trophy-disclaimer";
-  note.textContent="Trophy achievements represent picking the straight-up winner of a rivalry game (even when your league plays Spread). They are not ownership of the physical rivalry trophy. Only verified final scores and your signed-in league picks count. 3D models appear when supplied.";
+  note.textContent="Trophy achievements represent picking the straight-up winner of a rivalry game (even when your league plays Spread). They are not ownership of the physical rivalry trophy. Only verified final scores and your signed-in league picks count. Awards remain collected across seasons. Original collectible artwork is shown until optional 3D models are supplied.";
   root.append(note);
  }
  function sync(payload={}){
