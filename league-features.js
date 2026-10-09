@@ -23,7 +23,7 @@ async function reload(c,l,u,a){
  Object.keys(own).forEach(k=>delete own[k]);
  Object.keys(revealedByGame).forEach(k=>delete revealedByGame[k]);
  confidence={};tiebreaker=null;history=[];
- if(!c||!l||!u)return;
+ if(!c||!l||!u){if(a?.state)a.state().picks={};return;}
  const week=a.week().num;
  const [my,reveals,ties,head]=await Promise.all([
   c.from("sec_league_picks").select("game_id,pick_code,confidence_points").eq("league_id",l.id).eq("user_id",u.id),
@@ -145,6 +145,41 @@ async function save(g,id,c,l,u,a){
  a.state().picks[g.id]=id;
  a.renderPicks();
  return row;
+}
+async function shareSlip(){
+ if(!current||!user||!app){
+  app?.toast?.("Sign in and choose a league before sharing your picks.");
+  return;
+ }
+ const w=app.week(),made=w.games.filter(g=>own[g.id]===g.away||own[g.id]===g.home);
+ if(!made.length){app.toast("Pick a team before sharing your slip.");return;}
+ const lines=[
+  "🏈 Saturdays Down South",
+  current.name+" · "+cMode().name+" · Week "+w.num,
+  made.length+" of "+w.games.length+" selected",
+  ""
+ ];
+ for(const g of w.games){
+  if(!own[g.id])continue;
+  const bonus=mode()==="confidence"&&hasNumber(confidence[g.id])?" · "+confidence[g.id]+" confidence pts":"";
+  lines.push(g.away+" vs "+g.home+" → "+own[g.id]+bonus);
+ }
+ lines.push("","Picks can change until kickoff. Shared voluntarily by the player.");
+ lines.push(window.location?.origin+window.location?.pathname+"#picks");
+ const content=lines.join("\n");
+ try{
+  if(navigator.share){
+   await navigator.share({title:current.name+" · My Week "+w.num+" Picks",text:content});
+   app.toast("Pick slip ready to share!");
+  }else if(navigator.clipboard?.writeText){
+   await navigator.clipboard.writeText(content);
+   app.toast("My weekly picks copied!");
+  }else{
+   window.prompt("Copy your pick slip:",content);
+  }
+ }catch(error){
+  if(error?.name!=="AbortError")app.toast("Couldn't share the picks. Try again.");
+ }
 }
 function control(){
  return '<label class="input-label" for="online-league-mode">Game mode</label><select class="field" id="online-league-mode">'+
@@ -306,5 +341,5 @@ document.addEventListener("click",event=>{
   else if(app?.view()==="league")app.setView("league");
  }).catch(error=>{app?.toast?.(error.message||"Unable to save.");});
 },true);
-window.SEC_FEATURES={MODES,control,updateGames,reload,extras,save,leagueDetails,setStandings,remind,getMode:mode,isUnavailable,pickResult,summaryPoints,modeDescription};
+window.SEC_FEATURES={MODES,control,updateGames,reload,extras,save,leagueDetails,setStandings,remind,getMode:mode,isUnavailable,pickResult,summaryPoints,modeDescription,shareSlip};
 })();
