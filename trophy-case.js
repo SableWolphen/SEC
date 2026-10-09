@@ -5,8 +5,8 @@
 */
 (() => {
  "use strict";
- const TROPHIES=window.SDS_RIVALRIES;
- if(!Array.isArray(TROPHIES)||TROPHIES.length<15)throw Error("Rivalry catalog missing");
+ const TROPHIES=window.SDS_TROPHY_RIVALRIES;
+ if(!Array.isArray(TROPHIES)||TROPHIES.length<15)throw Error("Named Rivalry catalog missing");
  const byId=new Map(TROPHIES.map(t=>[t.id,t]));
 
  // Each school gets a room. An SEC-vs-SEC matchup is listed under BOTH schools,
@@ -51,7 +51,7 @@
   const top=document.createElement("div");top.className="sds-school-directory-heading";
   const heading=document.createElement("h3");heading.textContent="Choose your SEC school";
   const help=document.createElement("p");
-  help.textContent="Select a school to see its rivalry trophy collection. Every classic and off-season matchup stays included.";
+  help.textContent="Select a school to see its named trophy games and special rivalries—even ones not played this season.";
   top.append(heading,help);
   const grid=document.createElement("div");grid.className="sds-school-grid";
   for(const entry of schoolOverviewData()){
@@ -69,7 +69,7 @@
    grid.append(card);
   }
   const footer=document.createElement("button");footer.type="button";footer.className="sds-school-all";
-  footer.textContent="Browse the full "+TROPHIES.length+"-rivalry archive →";
+  footer.textContent="Browse all "+TROPHIES.length+" named rivalry trophies →";
   footer.addEventListener("click",()=>changeSchool("all"));
   section.append(top,grid,footer);
   return section;
@@ -300,7 +300,7 @@
   }
   wrap.append(badges);
   const heading=document.createElement("h3");heading.className="sds-rivalry-list-heading";
-  heading.textContent="All "+TROPHIES.length+" rivalry matchups";wrap.append(heading);
+  heading.textContent="All "+TROPHIES.length+" named rivalry matchups";wrap.append(heading);
   const entries=document.createElement("div");entries.className="sds-rivalry-entries";
   for(const {t,game,result,pick} of onSlate.sort((a,b)=>Number(Boolean(b.game))-Number(Boolean(a.game)))){
    const row=document.createElement("article");row.className="sds-rivalry-entry";
@@ -351,7 +351,7 @@
   const subtitle=document.createElement("p");subtitle.className="sds-trophy-subtitle";
   subtitle.textContent="Win it. Keep it. Brag about it."+(leagueName?" · "+leagueName:"");
   const rivalryNotice=document.createElement("p");rivalryNotice.className="sds-trophy-subtitle";
-  rivalryNotice.textContent="All "+TROPHIES.length+" SEC, nonconference and historic rivalries stay here—even when they are not played this season.";
+  rivalryNotice.textContent="Only named rivalries and trophy games are shown. All "+TROPHIES.length+" stay here, even off-season.";
    const summary=document.createElement("div");summary.className="sds-trophy-stats";
   const big=document.createElement("strong");big.textContent=owned().length+" / "+TROPHIES.length;
   const small=document.createElement("span");small.textContent="Rivalry picks correctly called from verified finals";
@@ -404,7 +404,7 @@
    root.append(grid);
   }
   const note=document.createElement("p");note.className="sds-trophy-disclaimer";
-  note.textContent="Trophy achievements represent picking the straight-up winner of a rivalry game (even when your league plays Spread). They are not ownership of the physical rivalry trophy. Every named rivalry remains available in this catalog, even if it is not scheduled this season. Only verified final scores and your signed-in league picks count. Awards remain collected across seasons. The original 15 collectibles use interactive 3D sculptures; archive additions use distinct emblems until new models are created. Not every traditional rivalry has an official physical trophy.";
+  note.textContent="This case includes named rivalry games and named trophy contests—not generic team matchups. Off-season rivalries stay available. Correct straight-up predictions earn digital fan awards from verified finals only, and are not physical-trophy ownership. Earned history is retained. Some original collectibles have interactive 3D sculptures; other entries use emblems.";
   root.append(note);
  }
  function reconcile(){
