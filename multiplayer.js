@@ -136,6 +136,7 @@
       var s=app.state();
       if(!user){
         leagues=[];active=null;profile=null;standings=[];standingsError='';
+        app.state().picks={};app.state().results={};
         if(window.SEC_FEATURES?.reload)await window.SEC_FEATURES.reload(client,null,null,app);
         try{
           var publicGames=extract(await client.from("sec_games").select("id,kickoff_at,winner,provisional,game_status,status_detail,away_score,home_score,spread_home,spread_source,score_updated_at"))||[];
