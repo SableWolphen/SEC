@@ -31,6 +31,8 @@ function render(){
  const root=html("fan-brackets");if(!root)return;
  const c=club(),isMember=Boolean(user()&&c);
  const bracket=(sport)=>{
+  const enabled=Array.isArray(c?.enabled_sports)?c.enabled_sports.includes(sport):true;
+  if(!enabled)return "";
   const year=sportYear(c,sport),games=fixtures.filter(g=>g.sport===sport&&g.season===year);
   const board=sport==="basketball"?basketball:baseball;
   const winners=board.filter(row=>Number(row.correct)>0).slice().sort((a,b)=>Number(b.correct)-Number(a.correct));
@@ -57,7 +59,9 @@ async function load(force=false){
  try{
   const rr=await db().from("sec_bracket_games").select("id,sport,season,round_label,away_code,away_name,home_code,home_name,kickoff_at,winner_code,status,source_url").order("kickoff_at");
   const fetched=unpack(rr)||[];
-  fixtures=fetched.filter(g=>["baseball","basketball"].includes(g.sport)&&g.season===sportYear(c,g.sport));
+  fixtures=fetched.filter(g=>["baseball","basketball"].includes(g.sport)&&
+    (!Array.isArray(c.enabled_sports)||c.enabled_sports.includes(g.sport))&&
+    g.season===sportYear(c,g.sport));
   const [p,b,base]=await Promise.all([
    db().from("sec_bracket_picks").select("game_id,pick_code").eq("club_id",c.id).eq("user_id",u.id),
    db().rpc("sec_bracket_standings",{p_club:c.id,p_sport:"basketball"}),
