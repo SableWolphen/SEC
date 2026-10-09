@@ -1,0 +1,64 @@
+name: Refresh SEC team records
+on:
+  schedule:
+    - cron: '27 5,11,17,23 * * *'
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/update_team_records.py'
+      - 'tests/test_team_records.py'
+      - '.github/workflows/update-team-records.yml'
+permissions:
+  contents: write
+concurrency:
+  group: sec-team-records
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test records and school mappings without network access
+        run: python3 -m unittest discover -s tests -p test_team_records.py -v
+      - name: Fetch source-verified SEC records for all three sports
+        run: python3 scripts/update_team_records.py
+      - name: Validate 16 schools, season isolation and record format
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          obj=json.loads(Path('team-records.json').read_text())
+          codes={'ALA','ARK','AUB','FLA','UGA','UK','LSU','MISS',
+                 'MSST','MIZ','OU','SC','TENN','TEX','TAMU','VAN'}
+          assert set(obj['teams'])==codes
+          assert set(obj['seasons'])=={'football','basketball','baseball'}
+          for code,sports in obj['teams'].items():
+              for sport,record in sports.items():
+                  assert sport in obj['seasons']
+                  assert record['season']==obj['seasons'][sport]
+                  assert record['source']=='ESPN'
+                  assert re.fullmatch(r'[0-9]{1,3}-[0-9]{1,3}(?:-[0-9]{1,3})?',record['overall'])
+                  conf=record.get('conference')
+                  assert conf is None or re.fullmatch(r'[0-9]{1,3}-[0-9]{1,3}(?:-[0-9]{1,3})?',conf)
+          print('Verified',sum(len(x) for x in obj['teams'].values()),'team/sport records')
+          PY
+      - name: Publish verified team records to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add team-records.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh verified SEC team records [automated]'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          else
+            echo "Team records unchanged"
+          fi
