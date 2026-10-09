@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b111b">
+  <meta name="description" content="A friendly, unofficial SEC football pick'em game. Make weekly picks, share your slip and keep score with friends.">
+  <meta property="og:title" content="Saturdays Down South — SEC Pick'em">
+  <meta property="og:description" content="Your Saturdays. Your calls. Pick winners for all SEC-team games, including nonconference opponents.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22512%22%20height%3D%22512%22%20viewBox%3D%220%200%20512%20512%22%3E%0A%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22114%22%20fill%3D%22%230b111b%22/%3E%0A%3Crect%20x%3D%2242%22%20y%3D%2242%22%20width%3D%22428%22%20height%3D%22428%22%20rx%3D%2290%22%20fill%3D%22%23172f31%22/%3E%0A%3Ccircle%20cx%3D%22366%22%20cy%3D%22125%22%20r%3D%2231%22%20fill%3D%22%23d7fa65%22/%3E%0A%3Cpath%20d%3D%22M117%20279c86-139%20184-138%20282-56M117%20360c86-139%20184-138%20282-56%22%20fill%3D%22none%22%20stroke%3D%22%23d7fa65%22%20stroke-width%3D%2256%22%20stroke-linecap%3D%22round%22/%3E%0A%3C/svg%3E%0A" type="image/svg+xml">
+  <style>
+:root{color-scheme:dark;--bg:#0b111b;--bg2:#0f1925;--panel:#172230;--panel2:#1b2837;--card:#151f2c;--border:#2b3949;--text:#f7f9fb;--muted:#9aa9bb;--soft:#687a8e;--lime:#d7fa65;--lime-dark:#b5dd42;--teal:#94eed2;--danger:#ff928e;--round:20px;--shadow:0 14px 42px #070c1580;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.45}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed}a{color:inherit}svg{display:block}.hidden{display:none!important}.ambient{position:fixed;pointer-events:none;z-index:-1;filter:blur(90px);opacity:.34}.ambient-one{width:460px;height:460px;background:#1b564d;left:-240px;top:100px;border-radius:50%}.ambient-two{width:430px;height:550px;background:#303f4d;right:-310px;top:0;border-radius:50%}.app-shell{max-width:1370px;margin:auto;padding:0 46px}.site-header{height:91px;display:flex;align-items:center;gap:26px;justify-content:space-between;border-bottom:1px solid #29384785}.brand{text-decoration:none;display:flex;gap:11px;align-items:center;min-width:240px}.brand-mark{width:46px;height:46px;border-radius:14px;background:var(--lime);color:#121d1d;display:grid;place-items:center;transform:rotate(-6deg)}.brand-mark svg{width:28px;height:28px;transform:rotate(6deg)}.brand-title{font-size:17px;font-weight:950;letter-spacing:-.9px;line-height:1.04}.brand-title>span{color:var(--lime)}.brand-title small{display:block;font-size:8px;color:#8092a3;letter-spacing:2.45px;margin-top:7px;font-weight:850}.desktop-nav{display:flex;background:#121c29;border:1px solid #273748;border-radius:100px;padding:5px;gap:2px}.nav-link{background:transparent;border:0;color:#a7b6c5;padding:10px 19px;border-radius:90px;font-size:12px;font-weight:750}.nav-link:hover,.nav-link.active{background:#253444;color:#fff}.profile-chip{display:flex;align-items:center;gap:9px;border:1px solid #314254;background:#172332;color:#e0e9ee;border-radius:50px;padding:5px 9px 5px 5px;font-size:12px;font-weight:750;max-width:190px}.profile-chip #header-avatar{width:28px;height:28px;border-radius:100%;display:grid;place-items:center;background:#3d5360;color:var(--lime);font-size:13px;font-weight:900}.profile-chip #header-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.profile-chip svg{width:15px;height:15px;color:#95a7b9}
+main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weight:900;color:#b1c1ce;display:flex;align-items:center;gap:12px}.eyebrow-dot{width:7px;height:7px;border-radius:100%;background:var(--lime);box-shadow:0 0 0 4px #d7fa651c}.eyebrow-slash{color:#547082}.page-intro{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:15px 0 27px}h1,h2,h3,p{margin-top:0}.page-intro h1{font-size:clamp(38px,5.2vw,61px);line-height:1.08;font-weight:950;letter-spacing:-3px;margin:0 0 9px}.page-intro h1 em{font-style:normal;color:var(--lime)}.page-intro p{font-size:14px;color:#9aabbe;margin:0}.intro-side{font-size:11px;color:var(--lime);font-weight:800;padding-bottom:7px;white-space:nowrap}.intro-side span{color:#899aaa;font-weight:600}.week-picker{display:flex;gap:8px;overflow-x:auto;padding:1px 0 15px;scrollbar-width:none}.week-picker::-webkit-scrollbar{display:none}.week-pill{flex:0 0 auto;border:1px solid #344456;background:#172330;color:#91a4b5;padding:11px 17px;border-radius:11px;text-align:left;min-width:108px;transition:background .2s,transform .2s}.week-pill:hover{border-color:#708a77;transform:translateY(-1px)}.week-pill.active{color:#142019;border-color:var(--lime);background:var(--lime)}.week-pill strong{font-size:12px;display:block;font-weight:900}.week-pill small{font-size:10px;display:block;margin-top:2px;opacity:.8}.picks-layout{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(280px, .83fr);gap:21px;align-items:start}.primary-column,.side-column{min-width:0}.spotlight{min-height:238px;background:radial-gradient(circle at 96% 4%,#4e775d66 0,transparent 38%),linear-gradient(120deg,#264e4b,#173538 66%,#1a2a33);border:1px solid #56736570;border-radius:21px;position:relative;overflow:hidden;padding:25px 27px 24px;box-shadow:var(--shadow)}.spotlight:after{content:"";position:absolute;right:-70px;top:-126px;width:440px;height:440px;border:1px solid #d6ff6c1a;border-radius:100%;box-shadow:0 0 0 30px #b5d77b0b,0 0 0 65px #b5d77b08;pointer-events:none}.spotlight-inner{position:relative;z-index:1}.spotlight-top{display:flex;align-items:center;gap:8px;color:#d7fa65;letter-spacing:1.9px;font-size:10px;font-weight:900}.spotlight-top .line{width:23px;height:1px;background:#d7fa65aa}.spotlight-title{font-size:30px;letter-spacing:-1.25px;margin:14px 0 5px;font-weight:950;max-width:400px}.spotlight-title span{color:var(--lime)}.spotlight-sub{font-size:12px;color:#bfceca;margin:0 0 19px}.spotlight-game{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.spotlight-team{display:flex;align-items:center;gap:9px;background:#06171554;border:1px solid #8fa79b59;border-radius:12px;padding:8px 13px 8px 8px;min-height:50px;min-width:143px;color:#f7fef9}.spotlight-team:hover{border-color:var(--lime)}.spotlight-team.chosen{background:#d7fa65;color:#101d1b;border-color:#d7fa65}.spotlight-team:disabled{opacity:.75}.spotlight-team b{font-size:12px;font-weight:850}.spotlight-team .mini-logo{background:#f9f9f5!important;color:#223236!important}.spotlight-versus{color:#c9ded2;font-size:10px;font-weight:900;letter-spacing:1.8px}.spotlight-label{font-size:10px;margin-top:14px;color:#bad0c5}.mini-logo{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;flex:none;color:#fff;font-size:10px;font-weight:950;letter-spacing:-.5px;border:1px solid #ffffff16;box-shadow:inset 0 0 0 1px #ffffff12}.section-title-row{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:30px 0 16px}.section-title-row .overline{color:var(--lime);font-size:9px;letter-spacing:2px;font-weight:900;margin-bottom:3px}.section-title-row h2{margin:0;font-size:19px;letter-spacing:-.65px}.section-title-row h2 span{font-size:12px;font-weight:700;color:#8295a5;margin-left:4px}.section-caption{font-size:10px;color:#8796a8;text-align:right}.games-list{display:grid;gap:10px}.game-card{background:#141f2c;border:1px solid #2c3b4b;border-radius:16px;padding:17px 18px;transition:border .2s}.game-card:hover{border-color:#485c63}.game-header{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}.game-index{font-size:10px;letter-spacing:1.6px;color:#9aabbb;font-weight:850}.game-index strong{color:var(--lime)}.game-meta{font-size:10px;color:#9dafba;display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:flex-end}.meta-separator{color:#57697a}.lock-tag{color:#aabf96;background:#d7fa6511;border:1px solid #d7fa6526;border-radius:7px;padding:3px 6px;font-size:9px;font-weight:850;white-space:nowrap}.lock-tag.locked{color:#f9a89d;background:#ff908f12;border-color:#ff908f24}.team-choices{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:stretch;gap:11px}.team-choice{border:1px solid #354458;background:#1b2938;border-radius:11px;min-height:65px;display:flex;align-items:center;gap:9px;padding:9px;text-align:left;color:#ecf2f5;transition:background .16s,border .16s}.team-choice:hover:not(:disabled){border-color:#789a95;background:#263b45}.team-choice.selected{background:#3b513a;border-color:#c0ea62;box-shadow:inset 0 0 0 1px #c0ea6230}.team-choice.winner{border-color:#95edb3}.team-choice.loser{opacity:.7}.team-choice:disabled:not(.selected){opacity:.6}.team-choice .team-copy{flex:1;min-width:0}.team-name{font-size:12px;font-weight:850;display:block;line-height:1.2}.team-nick{font-size:10px;color:#94a5b3;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:3px}.select-mark{border-radius:100%;width:18px;height:18px;border:1px solid #526477;display:grid;place-items:center;color:#141e15;font-size:10px;font-weight:900;flex:none}.selected .select-mark{background:var(--lime);border-color:var(--lime)}.versus{color:#697c8c;font-size:10px;align-self:center;font-weight:950;letter-spacing:1px}.game-note{display:flex;justify-content:space-between;align-items:center;margin-top:10px;color:#8da1b0;font-size:10px;gap:10px}.game-note .earned{color:#a5e8a6}.game-note .missed{color:#fca9a1}.summary-card{border:1px solid #354759;background:linear-gradient(155deg,#1b2c38,#182633);border-radius:19px;padding:23px 22px 21px}.card-kicker{font-size:10px;letter-spacing:2px;color:#a6b9ca;font-weight:900}.summary-card h3{font-size:23px;letter-spacing:-.9px;margin:12px 0 4px}.summary-card h3 span{color:var(--lime)}.summary-sub{font-size:11px;color:#8c9fae;margin-bottom:18px}.progress-top{display:flex;justify-content:space-between;align-items:end;margin:16px 0 8px}.progress-big{font-weight:950;font-size:34px;letter-spacing:-1px;line-height:1}.progress-big small{font-size:14px;color:#8ba0b0}.progress-label{color:var(--lime);font-size:10px;font-weight:850}.progress-track{height:8px;border-radius:40px;background:#364755;overflow:hidden}.progress-track span{display:block;background:var(--lime);height:100%;border-radius:40px;transition:width .2s}.summary-stats{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #3b4b56;margin-top:20px;padding-top:17px;gap:12px}.summary-stats strong{font-size:23px;display:block;line-height:1.2}.summary-stats small{font-size:10px;color:#9aacbc}.primary-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:10px;background:var(--lime);color:#15211b;font-size:12px;font-weight:950;padding:13px 17px;min-height:43px}.primary-btn:hover{background:#e4ff93}.primary-btn:disabled{opacity:.5}.ghost-btn{border:1px solid #4a5c68;color:#e4edf0;background:#1e2b39;padding:12px 15px;border-radius:10px;font-weight:850;font-size:12px;min-height:43px}.ghost-btn:hover{border-color:var(--lime)}.summary-card .primary-btn{width:100%;margin-top:19px}.side-card{border:1px solid #293848;background:#131d29;border-radius:17px;padding:22px;margin-top:15px}.rules-card h3{font-size:22px;line-height:1.16;letter-spacing:-.8px;margin:13px 0 22px}.rules-card h3 span{color:var(--lime)}.rule-item{display:flex;gap:13px;align-items:start;margin:0 0 18px}.rule-number{font-size:10px;color:var(--lime);font-weight:900;padding-top:2px}.rule-item p{font-size:12px;color:#a6b6c5;margin:0;line-height:1.5}.inline-link{color:var(--lime);border:0;background:transparent;padding:5px 0;font-size:11px;font-weight:900}.source-note{font-size:10px;line-height:1.65;color:#697c8b;padding:14px 5px}.source-note a{color:#a9bea8}.footer{border-top:1px solid #243646;padding:20px 0 27px;display:flex;justify-content:space-between;gap:15px;align-items:center;font-size:10px;color:#738697}.footer a{color:#9badbd;text-decoration:none}.bottom-nav{display:none}.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);padding:13px 19px;max-width:min(94vw,420px);text-align:center;color:#0c211b;background:var(--lime);border-radius:12px;font-size:12px;font-weight:900;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;box-shadow:var(--shadow);z-index:100}.toast.show{opacity:1;transform:translate(-50%,0)}
+/* Secondary screens */
+.secondary-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(270px,.85fr);gap:17px}.content-card{border:1px solid #304152;border-radius:19px;background:var(--card);padding:24px;min-width:0}.content-card h2{font-size:20px;letter-spacing:-.5px;margin:7px 0 7px}.content-card h3{font-size:15px;margin:0 0 10px}.content-card p{font-size:12px;color:#9eafbf;line-height:1.6}.content-card .card-kicker{color:var(--lime)}.input-label{display:block;font-size:11px;font-weight:800;color:#bbcbd3;margin:13px 0 7px}.field{width:100%;background:#0d1723;border:1px solid #3b4d5d;border-radius:10px;padding:12px;color:#f5fbff;outline:none;min-height:44px;font-size:13px}.field:focus{border-color:var(--lime);box-shadow:0 0 0 3px #d7fa651c}textarea.field{min-height:116px;resize:vertical}.form-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.form-row>*{flex:1}.helper{font-size:10px;color:#8397a9;line-height:1.6}.small-heading{font-size:12px;letter-spacing:1px;font-weight:900;color:#b7c9d6;margin:0 0 13px;text-transform:uppercase}.leaderboard{border:1px solid #293b4b;border-radius:12px;overflow:hidden}.standing-row{display:grid;grid-template-columns:28px minmax(0,1fr) 56px 58px;gap:10px;align-items:center;padding:14px;border-bottom:1px solid #2b3b4a;font-size:12px}.standing-row:last-child{border:0}.standing-row.head{background:#1c2b3a;color:#8095a7;text-transform:uppercase;font-weight:900;font-size:9px;letter-spacing:1px;padding:10px 14px}.standing-row .rank{color:var(--lime);font-weight:950}.standing-row .name{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:850}.standing-row .muted{color:#8c9fac}.standing-row .score{font-weight:950;color:var(--lime);font-size:15px}.standing-row .remover{color:#e8ada5;border:0;background:transparent;font-size:16px;padding:2px 6px;justify-self:end}.standing-row.player-row{grid-template-columns:28px minmax(0,1fr) 56px 58px 20px}.league-hero{background:linear-gradient(135deg,#254d42,#1d3541);border:1px solid #426c66;border-radius:17px;padding:22px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:15px}.league-hero .label{font-size:10px;font-weight:900;color:var(--lime);letter-spacing:2px}.league-hero h2{font-size:27px;margin:6px 0 0;letter-spacing:-1px}.league-hero p{font-size:11px;color:#bed0d0;margin:5px 0 0}.big-emoji{font-size:45px;opacity:.9}.help-note{display:flex;gap:10px;padding:12px;border:1px solid #667b623d;background:#d7fa6509;color:#aabfa4;font-size:11px;border-radius:11px;line-height:1.5;margin-top:14px}.teams-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.team-card{border:1px solid #2f4050;background:#141f2c;border-radius:16px;padding:19px;min-width:0;transition:border-color .18s,transform .18s}.team-card:hover{border-color:#8aa684;transform:translateY(-2px)}.team-card .team-card-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:19px}.team-card .mini-logo{width:53px;height:53px;font-size:14px;border-radius:14px}.favorite-btn{background:#243141;color:#8396a6;border:1px solid #455262;border-radius:100%;width:34px;height:34px;font-size:19px;display:grid;place-items:center}.favorite-btn.active{background:#d7fa6522;border-color:var(--lime);color:var(--lime)}.team-card h3{font-size:15px;letter-spacing:-.3px;margin:0}.team-card p{margin:3px 0 0;color:#8e9faf;font-size:11px}.team-card .city{font-size:10px;color:#60798b;margin-top:16px}.team-card.favorite{border-color:#91ad79}.filter-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px}.filter-row p{font-size:11px;color:#92a7b6;margin:0}.setting-stack{display:grid;gap:15px}.result-list{display:grid;gap:8px}.result-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid #2b3948;padding:10px 0}.result-row:last-child{border:0}.result-row .matchup-label{flex:1;min-width:150px;color:#cedbe5;font-size:12px;font-weight:850}.result-controls{display:flex;gap:6px;flex-wrap:wrap}.result-choice{font-size:10px;font-weight:900;color:#b0c0c9;border:1px solid #3b4e5f;padding:7px 9px;border-radius:8px;background:#202f3d}.result-choice.active{background:#d7fa65;color:#142018;border-color:#d7fa65}.result-choice.clear{color:#8298a9}.divider{height:1px;background:#2e3d4d;margin:18px 0}.info-chip{border:1px solid #4d6557;background:#c3f77713;color:#baf083;border-radius:9px;padding:7px 11px;font-size:10px;font-weight:900}.empty-state{padding:32px 12px;text-align:center;color:#91a7b5}.empty-state strong{display:block;font-size:15px;color:#f2f5f3}.empty-state span{font-size:30px;display:block;margin-bottom:10px}.empty-state p{max-width:330px;margin:10px auto;font-size:12px}.link-like{text-decoration:underline;text-underline-offset:3px;color:var(--lime);background:transparent;border:0;padding:0;font-size:inherit}.subtitle-pill{background:#263e3e;color:#aaf8bb;border:1px solid #406357;border-radius:7px;padding:5px 8px;display:inline-block;font-size:10px;font-weight:850}.schedule-warning{margin:13px 0 0;color:#acbbb2;font-size:11px;line-height:1.6}.text-strong{color:#f0f7fb}.muted{color:#93a8b8}.install-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.install-row p{flex:1;min-width:165px;margin:0}.chip-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+@media(max-width:1050px){.app-shell{padding:0 27px}.brand{min-width:200px}.desktop-nav .nav-link{padding:10px 12px}.teams-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.picks-layout{grid-template-columns:minmax(0,1.6fr) minmax(252px, .83fr)}.team-name{font-size:11px}.team-choices{gap:6px}.team-choice{padding:7px;gap:6px}}
+@media(max-width:790px){.app-shell{padding:0 21px}.site-header{height:78px}.desktop-nav{display:none}.brand{min-width:0}.picks-layout,.secondary-grid{grid-template-columns:1fr}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:13px;align-items:start}.rules-card{margin-top:0}.source-note{grid-column:1/-1}.section-title-row{margin-top:26px}.teams-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.footer{flex-wrap:wrap;padding-bottom:90px}.bottom-nav{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;bottom:0;left:0;right:0;z-index:50;padding:8px max(10px,env(safe-area-inset-right)) calc(9px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));background:#0e1721f5;border-top:1px solid #2b3b49;backdrop-filter:blur(14px)}.mobile-nav-btn{display:flex;flex-direction:column;align-items:center;gap:3px;justify-content:center;color:#8498aa;background:transparent;border:0;font-size:10px;font-weight:800;padding:4px 6px}.mobile-nav-btn.active{color:var(--lime)}.mobile-nav-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.toast{bottom:88px}}
+@media(max-width:540px){.app-shell{padding:0 15px}.site-header{height:76px}.brand-mark{width:41px;height:41px}.brand-title{font-size:15px}.brand-title small{font-size:7px;letter-spacing:2px}.profile-chip{padding:5px;border:0;background:none}.profile-chip #header-avatar{width:35px;height:35px}.profile-chip #header-name,.profile-chip svg{display:none}main{padding:28px 0 44px}.eyebrow{font-size:9px;letter-spacing:1.35px;gap:8px}.page-intro{display:block;margin:13px 0 22px}.page-intro h1{font-size:45px;letter-spacing:-2.2px}.page-intro p{font-size:12px}.intro-side{margin-top:13px;font-size:10px}.week-picker{margin-right:-15px;padding-right:15px}.week-pill{min-width:96px;padding:10px 13px}.spotlight{min-height:0;padding:22px 17px}.spotlight-title{font-size:26px}.spotlight-team{flex:1;min-width:125px;padding:7px}.spotlight-game{gap:6px}.spotlight-team b{font-size:11px}.spotlight-versus{font-size:9px}.section-title-row{align-items:start}.section-title-row h2{font-size:18px}.section-caption{max-width:100px;font-size:9px}.game-card{padding:13px 11px}.game-header{align-items:start}.game-meta{font-size:9px}.team-choice{min-height:64px;gap:6px;padding:7px}.mini-logo{width:29px;height:29px;font-size:9px}.team-name{font-size:10px}.team-nick{font-size:9px}.versus{font-size:9px}.select-mark{width:16px;height:16px}.side-column{grid-template-columns:1fr}.summary-card,.side-card{padding:20px}.rules-card{margin-top:0}.teams-grid{gap:9px}.team-card{padding:14px}.team-card h3{font-size:13px}.team-card .mini-logo{width:45px;height:45px}.content-card{padding:18px}.league-hero h2{font-size:23px}.league-hero{padding:18px}.footer{font-size:9px;flex-direction:column;align-items:start}.standing-row{gap:5px;padding:11px}.standing-row .name{font-size:11px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+</style>
+  <title>Saturdays Down South · SEC Pick'em</title>
+</head>
+<body>
+<div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
+<div class="app-shell">
+  <header class="site-header">
+    <a class="brand" href="#picks" aria-label="Saturdays Down South home" id="home-link">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M6 18c6-10 14-10 20-4M6 24c6-10 14-10 20-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="23" cy="7" r="3" fill="currentColor"/></svg></span>
+      <span class="brand-title">SATURDAYS<span>DOWN SOUTH</span><small>THE SEC PICK'EM CLUB</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <button type="button" data-nav="picks" class="nav-link active">Pick games</button>
+      <button type="button" data-nav="league" class="nav-link">My league</button>
+      <button type="button" data-nav="teams" class="nav-link">SEC teams</button>
+      <button type="button" data-nav="settings" class="nav-link">Settings</button>
+    </nav>
+    <button type="button" class="profile-chip" data-nav="settings" aria-label="Edit your profile"><span id="header-avatar">Y</span><span id="header-name">You</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m7 8 3 3 3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </header>
+
+  <main id="main-content">
+    <section id="picks-view" class="view" aria-labelledby="picks-heading">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> 2026 SEC FOOTBALL SEASON <span class="eyebrow-slash">/</span> UNOFFICIAL FAN GAME</div>
+      <div class="page-intro"><div><h1 id="picks-heading">Call your <em>shots.</em></h1><p>Every SEC game counts. Make your picks and challenge your friends.</p></div><div class="intro-side" id="countdown-badge"></div></div>
+      <div class="week-picker" id="week-picker" aria-label="Choose football week"></div>
+      <div class="picks-layout">
+        <div class="primary-column">
+          <div id="hero-slot"></div>
+          <div class="section-title-row"><div><div class="overline">THE SLATE</div><h2>Game day matchups <span id="matchup-count"></span></h2></div><div class="section-caption">Straight-up winners · 1 point per correct pick</div></div>
+          <div id="games-list" class="games-list"></div>
+        </div>
+        <aside class="side-column" aria-label="Your weekly summary">
+          <div id="summary-slot"></div>
+          <div class="side-card rules-card"><div class="card-kicker">HOW TO PLAY</div><h3>Simple picks.<br><span>Big bragging rights.</span></h3><div class="rule-item"><span class="rule-number">01</span><p>Pick the winner of each game involving an SEC team.</p></div><div class="rule-item"><span class="rule-number">02</span><p>Picks lock at kickoff (early provisional lock for TBD games).</p></div><div class="rule-item"><span class="rule-number">03</span><p>Earn a point for each correct call. Most wins takes the week.</p></div><button type="button" data-nav="league" class="inline-link">Bring your friends <span aria-hidden="true">↗</span></button></div>
+          <div class="source-note">Schedule sourced from the <a href="https://www.secsports.com/fbtv" target="_blank" rel="noopener noreferrer">SEC's official broadcast schedule</a>. Future kickoff times may change. No affiliation with the SEC.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="league-view" class="view hidden" aria-labelledby="league-heading">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> FRIENDLY COMPETITION</div>
+      <div class="page-intro"><div><h1 id="league-heading">Your <em>people.</em></h1><p>Talk your talk. Then let the picks do the talking.</p></div></div>
+      <div id="league-content"></div>
+    </section>
+
+    <section id="teams-view" class="view hidden" aria-labelledby="teams-heading">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> THE CONFERENCE</div>
+      <div class="page-intro"><div><h1 id="teams-heading">All <em>16.</em> All in.</h1><p>Every SEC team in one place. Claim your favorite.</p></div></div>
+      <div id="teams-content"></div>
+    </section>
+
+    <section id="settings-view" class="view hidden" aria-labelledby="settings-heading">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> MAKE IT YOURS</div>
+      <div class="page-intro"><div><h1 id="settings-heading">Your <em>playbook.</em></h1><p>Set up your name, manage results, and take the game on the go.</p></div></div>
+      <div id="settings-content"></div>
+    </section>
+  </main>
+
+  <footer class="footer"><span>© 2026 SATURDAYS DOWN SOUTH</span><span>Made for Saturdays. Unofficial fan app. Not affiliated with the SEC, its schools, or the similarly named sports publication.</span><a href="https://www.secsports.com/fbtv" target="_blank" rel="noopener noreferrer">Official schedule ↗</a></footer>
+</div>
+
+<nav class="bottom-nav" aria-label="Mobile navigation">
+ <button type="button" data-nav="picks" class="mobile-nav-btn active"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM8 10l2.5 2.5L16 7"/></svg><span>Picks</span></button>
+ <button type="button" data-nav="league" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19v-2a5.5 5.5 0 0 1 11 0v2M17 6a3 3 0 0 1 0 6M17 14a5 5 0 0 1 3.5 5"/></svg><span>League</span></button>
+ <button type="button" data-nav="teams" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 7l9 4 9-4-9-4ZM3 11l9 4 9-4M3 15l9 4 9-4"/></svg><span>Teams</span></button>
+ <button type="button" data-nav="settings" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.8 1.8 0 0 0 .3 2L18 18.7a1.8 1.8 0 0 0-2-.3 1.8 1.8 0 0 0-1 1.7H9a1.8 1.8 0 0 0-1-1.7 1.8 1.8 0 0 0-2 .3L4.3 17a1.8 1.8 0 0 0 .3-2 1.8 1.8 0 0 0-1.7-1v-4a1.8 1.8 0 0 0 1.7-1 1.8 1.8 0 0 0-.3-2L6 5.3a1.8 1.8 0 0 0 2 .3A1.8 1.8 0 0 0 9 3.9h6a1.8 1.8 0 0 0 1 1.7 1.8 1.8 0 0 0 2-.3L19.7 7a1.8 1.8 0 0 0-.3 2 1.8 1.8 0 0 0 1.7 1v4a1.8 1.8 0 0 0-1.7 1Z"/></svg><span>Settings</span></button>
+</nav>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>
+(() => {
+  'use strict';
+
+  // Colors/monograms are original UI representations, not official logos.
+  const TEAMS = {
+    ALA:{name:'Alabama',nick:'Crimson Tide',abbr:'BAMA',mark:'A',color:'#9a273d',city:'Tuscaloosa, Alabama'},
+    ARK:{name:'Arkansas',nick:'Razorbacks',abbr:'ARK',mark:'AR',color:'#a82443',city:'Fayetteville, Arkansas'},
+    AUB:{name:'Auburn',nick:'Tigers',abbr:'AUB',mark:'AU',color:'#152e5b',city:'Auburn, Alabama'},
+    FLA:{name:'Florida',nick:'Gators',abbr:'UF',mark:'FL',color:'#e77125',city:'Gainesville, Florida'},
+    UGA:{name:'Georgia',nick:'Bulldogs',abbr:'UGA',mark:'GA',color:'#bb2a39',city:'Athens, Georgia'},
+    UK:{name:'Kentucky',nick:'Wildcats',abbr:'UK',mark:'KY',color:'#2667ac',city:'Lexington, Kentucky'},
+    LSU:{name:'LSU',nick:'Tigers',abbr:'LSU',mark:'LSU',color:'#5f3897',city:'Baton Rouge, Louisiana'},
+    MISS:{name:'Ole Miss',nick:'Rebels',abbr:'MISS',mark:'OM',color:'#bb3142',city:'Oxford, Mississippi'},
+    MSST:{name:'Mississippi State',nick:'Bulldogs',abbr:'MSST',mark:'MS',color:'#7a3145',city:'Starkville, Mississippi'},
+    MIZ:{name:'Missouri',nick:'Tigers',abbr:'MIZ',mark:'M',color:'#c19e28',city:'Columbia, Missouri'},
+    OU:{name:'Oklahoma',nick:'Sooners',abbr:'OU',mark:'OU',color:'#9f3543',city:'Norman, Oklahoma'},
+    SC:{name:'South Carolina',nick:'Gamecocks',abbr:'SC',mark:'SC',color:'#882b43',city:'Columbia, South Carolina'},
+    TENN:{name:'Tennessee',nick:'Volunteers',abbr:'TENN',mark:'T',color:'#d87c2c',city:'Knoxville, Tennessee'},
+    TEX:{name:'Texas',nick:'Longhorns',abbr:'TEX',mark:'TX',color:'#b26435',city:'Austin, Texas'},
+    TAMU:{name:'Texas A&M',nick:'Aggies',abbr:'A&M',mark:'ATM',color:'#783847',city:'College Station, Texas'},
+    VAN:{name:'Vanderbilt',nick:'Commodores',abbr:'VAN',mark:'V',color:'#8e8052',city:'Nashville, Tennessee'}
+  };
+
+  // game involving an SEC teams only. Times are Eastern; blank means kickoff TBA.
+  // Source: https://www.secsports.com/fbtv and official 2026 SEC weekly schedule.
+  // 2026 full SEC-team regular season, including nonconference games. Times in ET.
+  const NONSEC = {
+    UAPB:'Arkansas–Pine Bluff',UTEP:'UTEP',ECU:'East Carolina',KENT:'Kent State',
+    YSU:'Youngstown State',TNSTATE:'Tennessee State',BAY:'Baylor',TXST:'Texas State',
+    FUR:'Furman',NALA:'North Alabama',MOST:'Missouri State',AUSTPEAY:'Austin Peay',
+    CLEM:'Clemson',ULM:'UL Monroe',FAU:'Florida Atlantic',LOU:'Louisville',
+    UTAH:'Utah',SOMISS:'Southern Miss',CAMP:'Campbell',WKU:'Western Kentucky',
+    LATECH:'Louisiana Tech',CHAR:'Charlotte',MINN:'Minnesota',KANS:'Kansas',
+    MICH:'Michigan',TOW:'Towson',GATECH:'Georgia Tech',OHST:'Ohio State',
+    ASU:'Arizona State',DEL:'Delaware',FSU:'Florida State',TROY:'Troy',
+    UNM:'New Mexico',KSU:'Kennesaw State',UTSA:'UTSA',TULSA:'Tulsa',
+    SOALA:'South Alabama',MCN:'McNeese',CITADEL:'The Citadel',
+    CHATT:'Chattanooga',SAM:'Samford',WOFF:'Wofford',TNTECH:'Tennessee Tech',
+    NCST:'NC State'
+  };
+  const RAW_WEEKS = [
+    [1,'2026-09-05',[
+      ['UAPB','MIZ','20:00','SEC Network',null,'2026-09-03'],
+      ['UTEP','OU','20:00','SECN+',null,'2026-09-04'],
+      ['ECU','ALA','12:00','ABC'],['KENT','SC','12:45','SEC Network'],
+      ['YSU','UK','13:00','SECN+'],['TNSTATE','UGA','15:00','SECN+'],
+      ['BAY','AUB','15:30','ABC','Neutral · Atlanta'],['TXST','TEX','15:30','ESPN'],
+      ['FUR','TENN','15:30','SECN+'],['NALA','ARK','16:15','SEC Network'],
+      ['MOST','TAMU','19:00','ESPN'],['AUSTPEAY','VAN','19:00','SECN+'],
+      ['CLEM','LSU','19:30','ABC'],['ULM','MSST','19:30','ESPNU'],
+      ['FAU','FLA','19:45','SEC Network'],
+      ['LOU','MISS','19:30','ABC','Neutral · Nashville','2026-09-06']
+    ]],
+    [2,'2026-09-12',[
+      ['ARK','UTAH',null,'TBA'],['SOMISS','AUB',null,'TBA'],
+      ['CAMP','FLA',null,'TBA'],['WKU','UGA',null,'TBA'],
+      ['ALA','UK',null,'TBA'],['LATECH','LSU',null,'TBA'],
+      ['CHAR','MISS',null,'TBA'],['MSST','MINN',null,'TBA'],
+      ['MIZ','KANS',null,'TBA'],['OU','MICH',null,'TBA'],
+      ['TOW','SC',null,'TBA'],['TENN','GATECH',null,'TBA'],
+      ['OHST','TEX',null,'TBA'],['ASU','TAMU',null,'TBA'],
+      ['DEL','VAN',null,'TBA']
+    ]],
+    [3,'2026-09-19',[
+      ['FSU','ALA',null,'TBA'],['UGA','ARK',null,'TBA'],
+      ['FLA','AUB',null,'TBA'],['LSU','MISS',null,'TBA'],
+      ['TROY','MIZ',null,'TBA'],['UNM','OU',null,'TBA'],
+      ['MSST','SC',null,'TBA'],['KSU','TENN',null,'TBA'],
+      ['UTSA','TEX',null,'TBA'],['UK','TAMU',null,'TBA'],
+      ['NCST','VAN',null,'TBA']
+    ]],
+    [4,'2026-09-26',[
+      ['SC','ALA',null,'TBA'],['TULSA','ARK',null,'TBA'],
+      ['VAN','AUB',null,'TBA'],['MISS','FLA',null,'TBA'],
+      ['OU','UGA',null,'TBA'],['SOALA','UK',null,'TBA'],
+      ['TAMU','LSU',null,'TBA'],['MIZ','MSST',null,'TBA'],
+      ['TEX','TENN',null,'TBA']
+    ]],
+    [5,'2026-10-03',[
+      ['VAN','UGA',null,'TBA'],['MCN','LSU',null,'TBA'],
+      ['ALA','MSST',null,'TBA'],['FLA','MIZ',null,'TBA'],
+      ['UK','SC',null,'TBA'],['AUB','TENN',null,'TBA'],
+      ['ARK','TAMU',null,'TBA']
+    ]],
+    [6,'2026-10-10',[
+      ['TAMU','MIZ','12:00','ABC'],['SC','FLA','12:45','SEC Network'],
+      ['TEX','OU','15:30','ABC','Cotton Bowl · Dallas'],['MISS','VAN','15:30','ESPN'],
+      ['TENN','ARK','16:15','SEC Network'],['LSU','UK','19:00','ESPN'],['UGA','ALA','19:30','ABC']
+    ]],
+    [7,'2026-10-17',[
+      ['FLA','TEX','12:00','ABC / ESPN'],['MSST','LSU','12:00','ABC / ESPN'],
+      ['AUB','UGA','15:30','ABC / ESPN / SECN'],['MIZ','MISS','15:30','ABC / ESPN / SECN'],
+      ['ALA','TENN','15:30','ABC / ESPN / SECN'],['ARK','VAN','19:00','ESPN2'],
+      ['UK','OU','19:30','SEC Network'],['CITADEL','TAMU',null,'TBA']
+    ]],
+    [8,'2026-10-24',[
+      ['LSU','AUB','12:00','ABC / ESPN'],['TENN','SC',null,'TBA'],
+      ['VAN','UK',null,'TBA'],['TAMU','ALA',null,'TBA'],
+      ['OU','MSST',null,'TBA'],['MISS','TEX',null,'TBA']
+    ]],
+    [9,'2026-10-31',[
+      ['AUB','MISS',null,'TBA'],['FLA','UGA','15:30','ABC','Neutral · Atlanta'],
+      ['MSST','TEX',null,'TBA'],['MIZ','ARK',null,'TBA'],['SC','OU',null,'TBA']
+    ]],
+    [10,'2026-11-07',[
+      ['ARK','AUB',null,'TBA'],['OU','FLA',null,'TBA'],['ALA','LSU',null,'TBA'],
+      ['UGA','MISS',null,'TBA'],['VAN','MSST',null,'TBA'],['TEX','MIZ',null,'TBA'],
+      ['TAMU','SC',null,'TBA'],['UK','TENN',null,'TBA']
+    ]],
+    [11,'2026-11-14',[
+      ['SC','ARK',null,'TBA'],['MIZ','UGA',null,'TBA'],['FLA','UK',null,'TBA'],
+      ['TEX','LSU',null,'TBA'],['AUB','MSST',null,'TBA'],['MISS','OU',null,'TBA'],
+      ['TENN','TAMU',null,'TBA'],['ALA','VAN',null,'TBA']
+    ]],
+    [12,'2026-11-21',[
+      ['VAN','FLA',null,'TBA'],['UK','MIZ',null,'TBA'],['TAMU','OU',null,'TBA'],
+      ['UGA','SC',null,'TBA'],['LSU','TENN',null,'TBA'],['ARK','TEX',null,'TBA'],
+      ['CHATT','ALA',null,'TBA'],['SAM','AUB',null,'TBA'],
+      ['WOFF','MISS',null,'TBA'],['TNTECH','MSST',null,'TBA']
+    ]],
+    [13,'2026-11-28',[
+      ['TEX','TAMU',null,'TBA',null,'2026-11-27'],['AUB','ALA',null,'TBA'],
+      ['LSU','ARK',null,'TBA'],['MSST','MISS',null,'TBA'],
+      ['OU','MIZ',null,'TBA'],['TENN','VAN',null,'TBA'],
+      ['FLA','FSU',null,'TBA'],['GATECH','UGA',null,'TBA'],
+      ['LOU','UK',null,'TBA'],['SC','CLEM',null,'TBA']
+    ]]
+  ];
+  const WEEKS = RAW_WEEKS.map(([num,date,rows]) => ({num,date,games:rows.map(([away,home,et,network,neutral,overrideDate]) => {
+    const gameDate=overrideDate||date;
+    const kickoff=et ? `${gameDate}T${et}:00${gameDate<'2026-11-01'?'-04:00':'-05:00'}` : null;
+    return {id:`2026-${num}-${away}-${home}`,date:gameDate,week:num,away,home,kickoff,network,neutral:neutral||null};
+  })}));
+  const GAME_BY_ID = Object.fromEntries(WEEKS.flatMap(w=>w.games.map(g=>[g.id,g])));
+  const STORAGE_KEY='saturday-south-sec-pickem-v1';
+  const defaults = {v:1,name:'You',favorite:null,league:'Saturdays Down South Crew',picks:{},results:{},members:[]};
+  let state = load();
+  let currentWeek = initialWeek();
+  let currentView = 'picks';
+  let installPrompt = null;
+  let toastTimeout = null;
+
+  function load(){try{const raw=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(raw&&raw.v===1){return {...defaults,...raw,picks:raw.picks||{},results:raw.results||{},members:Array.isArray(raw.members)?raw.members:[]};}}catch(e){console.warn('Could not restore saved picks',e);}return {...defaults};}
+  function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(e){console.warn('Storage unavailable',e);toast('Browser storage is unavailable — picks may not be saved.');}}
+  function initialWeek(){const now=Date.now();return WEEKS.find(w=>w.games.some(g=>Date.parse(lockTimestamp(g))>now))?.num||13;}
+  function week(){return WEEKS.find(w=>w.num===currentWeek)||WEEKS[0];}
+  function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function team(id){return TEAMS[id]||(NONSEC[id]?{name:NONSEC[id],nick:'',mark:id.slice(0,3),color:'#415f76'}:{name:id,nick:'',mark:id,color:'#526271'});}
+  function logo(id){const t=team(id);return `<span class="mini-logo" style="background:${t.color}" aria-hidden="true">${esc(t.mark)}</span>`;}
+  function displayDate(date,includeWeekday=false){return new Date(`${date}T17:00:00Z`).toLocaleDateString('en-US',{month:'short',day:'numeric',...(includeWeekday?{weekday:'short'}:{})});}
+  function ctTime(timestamp){return new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',timeZone:'America/Chicago'}).format(new Date(timestamp));}
+  function provisional(g){return !g.kickoff;}
+  function lockTimestamp(g){return g.kickoff || `${g.date}T11:00:00${g.date<'2026-11-01'?'-04:00':'-05:00'}`;}
+  function isLocked(g){return Date.now()>=Date.parse(lockTimestamp(g));}
+  function gameTime(g){return g.kickoff?`${ctTime(g.kickoff)} CT`: 'Kickoff TBD';}
+  function timeNote(g){return g.kickoff ? (isLocked(g)?'Picks locked':'Locks at kickoff') : (isLocked(g)?'Provisional lock passed':'Provisional lock 10 AM CT');}
+  function activePicks(w=week()){return w.games.filter(g=>state.picks[g.id]===g.away||state.picks[g.id]===g.home).length;}
+  function resultsCount(w=week()){return w.games.filter(g=>!!state.results[g.id]).length;}
+  function correctCount(w=week(), picks=state.picks){return w.games.reduce((sum,g)=>sum+Number(!!state.results[g.id]&&picks[g.id]===state.results[g.id]),0);}
+  function getName(){return state.name.trim().slice(0,32)||'You';}
+  function pendingLocks(w=week()){return w.games.filter(g=>!isLocked(g)).sort((a,b)=>Date.parse(lockTimestamp(a))-Date.parse(lockTimestamp(b)));}
+  function relativeTime(ms){if(ms<=0)return 'Locked';const h=Math.floor(ms/3600000);const d=Math.floor(h/24);if(d)return `${d}d ${h%24}h`;if(h)return `${h}h ${Math.floor(ms/60000)%60}m`;return `${Math.max(1,Math.ceil(ms/60000))}m`;}
+  function selected(g,id){return state.picks[g.id]===id;}
+  function points(picks){let n=0;for(const w of WEEKS)n+=correctCount(w,picks);return n;}
+  function toast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>el.classList.remove('show'),3100);}
+
+  function setView(v){if(!['picks','league','teams','settings'].includes(v))return;currentView=v;for(const id of ['picks','league','teams','settings']){document.getElementById(`${id}-view`).classList.toggle('hidden',id!==v);}document.querySelectorAll('[data-nav]').forEach(el=>{const on=el.dataset.nav===v;el.classList.toggle('active',on);if(el.classList.contains('nav-link'))el.setAttribute('aria-current',on?'page':'false');});if(v==='picks')renderPicks();if(v==='league')renderLeague();if(v==='teams')renderTeams();if(v==='settings')renderSettings();if(location.hash!==`#${v}`)history.replaceState(null,'',`#${v}`);window.scrollTo({top:0,behavior:'instant'});}
+  function renderHeader(){document.getElementById('header-name').textContent=getName();document.getElementById('header-avatar').textContent=getName().slice(0,1).toUpperCase();}
+  function renderWeekPicker(){document.getElementById('week-picker').innerHTML=WEEKS.map(w=>`<button type="button" class="week-pill ${w.num===currentWeek?'active':''}" data-week="${w.num}" aria-pressed="${w.num===currentWeek}"><strong>WEEK ${w.num}</strong><small>${displayDate(w.date)}</small></button>`).join('');const bar=document.getElementById('week-picker');const active=bar.querySelector('.week-pill.active');if(active)bar.scrollLeft=Math.max(0,active.offsetLeft-bar.offsetLeft-10);}
+  function makeTeamButton(g,id,hero=false){const t=team(id), sel=selected(g,id);const decided=state.results[g.id];if(hero)return `<button class="spotlight-team ${sel?'chosen':''}" type="button" data-pick="${g.id}" data-team="${id}" aria-pressed="${sel}" ${isLocked(g)?'disabled':''}>${logo(id)}<b>${esc(t.name)}</b>${sel?' ✓':''}</button>`;return `<button type="button" class="team-choice ${sel?'selected':''} ${decided===id?'winner':''} ${decided&&decided!==id?'loser':''}" data-pick="${g.id}" data-team="${id}" aria-label="Pick ${esc(t.name)} to win" aria-pressed="${sel}" ${isLocked(g)?'disabled':''}>${logo(id)}<span class="team-copy"><span class="team-name">${esc(t.name)}</span><span class="team-nick">${esc(t.nick)}</span></span><span class="select-mark">${sel?'✓':''}</span></button>`;}
+  function renderHero(w){const featured=w.games.find(g=>g.away==='UGA'&&g.home==='ALA')||w.games.find(g=>g.away===state.favorite||g.home===state.favorite)||w.games[0];document.getElementById('hero-slot').innerHTML=`<div class="spotlight"><div class="spotlight-inner"><div class="spotlight-top"><span class="line"></span>${w.num===6?'GAME OF THE WEEK':'FEATURED MATCHUP'} <span class="line"></span></div><h2 class="spotlight-title">Big games. <span>Bigger calls.</span></h2><p class="spotlight-sub">${esc(gameTime(featured))} · ${esc(featured.network)}${featured.neutral?' · '+esc(featured.neutral):''}</p><div class="spotlight-game">${makeTeamButton(featured,featured.away,true)}<span class="spotlight-versus">VS</span>${makeTeamButton(featured,featured.home,true)}</div><div class="spotlight-label">${state.picks[featured.id]?'Your pick: '+esc(team(state.picks[featured.id]).name):'Who are you backing? Tap to choose.'} ${isLocked(featured)?' · Locked':''}</div></div></div>`;}
+  function renderGame(g,index){const pick=state.picks[g.id],winner=state.results[g.id];const note=winner ? !pick ? 'Final result entered · no pick made' : pick===winner ? '<span class="earned">✓ Correct pick · +1 point</span>' : '<span class="missed">✕ Incorrect pick · 0 points</span>' : pick ? `Your pick: <span class="text-strong">${esc(team(pick).name)}</span>`:'Choose a team to make your pick';return `<article class="game-card"><div class="game-header"><div class="game-index"><strong>${String(index+1).padStart(2,'0')}</strong> / MATCHUP</div><div class="game-meta"><span>${displayDate(g.date,g.date!==week().date)}</span><span class="meta-separator">·</span><span>${esc(gameTime(g))}</span><span class="meta-separator">·</span><span>${esc(g.network)}</span></div></div><div class="team-choices">${makeTeamButton(g,g.away)}<span class="versus">VS</span>${makeTeamButton(g,g.home)}</div><div class="game-note"><span>${note}</span><span class="lock-tag ${isLocked(g)?'locked':''}">${esc(timeNote(g))}</span></div>${g.neutral?`<div class="helper" style="margin-top:7px">${esc(g.neutral)}</div>`:''}</article>`;}
+  function renderSummary(w){const made=activePicks(w),total=w.games.length,allFinal=resultsCount(w),open=pendingLocks(w).length;document.getElementById('summary-slot').innerHTML=`<div class="summary-card"><div class="card-kicker">YOUR WEEKLY CARD</div><h3>Week ${w.num} <span>recap.</span></h3><p class="summary-sub">${made===total?'Your slip is full. Bring on Saturday.':`${total-made} picks left on the board.`}</p><div class="progress-top"><span class="progress-big">${made}<small>/${total}</small></span><span class="progress-label">${Math.round(made/total*100)}% COMPLETE</span></div><div class="progress-track" aria-label="${made} of ${total} picks made"><span style="width:${made/total*100}%"></span></div><div class="summary-stats"><div><strong>${correctCount(w)}</strong><small>Correct picks</small></div><div><strong>${allFinal}<small> / ${total}</small></strong><small>Games scored</small></div></div><button class="primary-btn" type="button" data-action="share-picks" ${made===0?'disabled':''}>${made===total?'Share your picks ↗':'Copy pick slip ↗'}</button><p class="helper" style="margin:10px 0 0">${open?'Unpicked games can be selected until their lock time.':'This week’s picks are locked.'}</p></div>`;}
+  function renderPicks(){const w=week();renderHeader();renderWeekPicker();document.getElementById('matchup-count').textContent=`(${w.games.length})`;const nearest=pendingLocks(w)[0];document.getElementById('countdown-badge').innerHTML=nearest?`◷ NEXT LOCK <strong>${relativeTime(Date.parse(lockTimestamp(nearest))-Date.now())}</strong> <span>· Central time shown</span>`:'<strong>ALL PICKS LOCKED</strong>';renderHero(w);document.getElementById('games-list').innerHTML=w.games.map((g,i)=>renderGame(g,i)).join('');renderSummary(w);}
+
+  function scoreFor(picks,requestedWeek){const w=WEEKS.find(w=>w.num===requestedWeek);return correctCount(w,picks||{});}
+  function peopleForWeek(w){const rows=[{id:'me',name:getName(),picks:state.picks,local:true}];for(const m of state.members){const weekPicks=m.weeks?.[w.num]?.picks||{};rows.push({id:m.id,name:m.name,picks:weekPicks,local:false,hasSlip:!!m.weeks?.[w.num]});}rows.forEach(r=>{r.score=scoreFor(r.picks,w.num);r.total=w.games.filter(g=>r.picks[g.id]).length;r.fullScore=points(r.local?state.picks:Object.assign({},...Object.values(state.members.find(m=>m.id===r.id)?.weeks||{}).map(v=>v.picks||{})));});rows.sort((a,b)=>b.score-a.score||b.total-a.total||a.name.localeCompare(b.name));return rows;}
+  function renderStandings(w){const rows=peopleForWeek(w);return `<div class="leaderboard"><div class="standing-row head"><span>#</span><span>PLAYER</span><span>PICKS</span><span>PTS</span></div>${rows.map((r,i)=>`<div class="standing-row ${r.local?'':''}"><span class="rank">${String(i+1).padStart(2,'0')}</span><span class="name">${esc(r.name)} ${r.local?'<span class="subtitle-pill">YOU</span>':''}</span><span class="muted">${r.total}/${w.games.length}</span><span class="score">${r.score}</span></div>`).join('')}</div>`;}
+  function renderLeague(){const w=week(),n=state.members.length;document.getElementById('league-content').innerHTML=`<div class="league-hero"><div><div class="label">YOUR HOME FIELD</div><h2>${esc(state.league)}</h2><p>${n+1} ${n===0?'player':'players'} · Week ${w.num} standings · ${resultsCount(w)} of ${w.games.length} final results entered</p></div><span class="big-emoji" aria-hidden="true">🏆</span></div><div class="secondary-grid"><div class="setting-stack"><div class="content-card"><div class="card-kicker">LEAGUE STANDINGS</div><h2>Let the scoreboard talk.</h2><p>One point per correctly predicted winner. Results are entered in Settings.</p><div class="form-row" style="margin:15px 0"><label class="input-label" style="margin:0;flex:none" for="league-week">Show week</label><select class="field" id="league-week" style="max-width:180px">${WEEKS.map(x=>`<option value="${x.num}" ${x.num===w.num?'selected':''}>Week ${x.num} · ${displayDate(x.date)}</option>`).join('')}</select></div>${renderStandings(w)}<div class="help-note">★ Standings are local to this device, not a live online league. Share and import codes to add friends. Codes aren't identity-verified.</div></div><div class="content-card"><div class="card-kicker">YOUR ROSTER</div><h2>People in your league</h2>${n?state.members.map(m=>`<div class="result-row"><div class="matchup-label">${esc(m.name)}<div class="helper">${Object.keys(m.weeks||{}).length} weekly slip(s) imported</div></div><button type="button" class="ghost-btn" data-action="remove-member" data-id="${esc(m.id)}">Remove</button></div>`).join(''):'<div class="empty-state"><span>🙌</span><strong>Room for your rivals</strong><p>Invite friends to send you their pick code, then import it here.</p></div>'}</div></div><div class="setting-stack"><div class="content-card"><div class="card-kicker">SHARE YOUR PICKS</div><h2>Talk some trash. Politely.</h2><p>Copy your Week ${w.num} picks and send them in a group chat. Your friends can import the code.</p><button type="button" class="primary-btn" data-action="share-picks" ${activePicks(w)===0?'disabled':''}>Copy my Week ${w.num} code ↗</button><div class="helper" style="margin-top:9px">${activePicks(w)}/${w.games.length} picks on your current slip. Sharing works even if your slip is incomplete.</div></div><div class="content-card"><div class="card-kicker">ADD A FRIEND</div><h2>Import their picks.</h2><p>Paste the pick code your friend shared. Their entry will appear in your local standings.</p><label class="input-label" for="import-code">Friend's pick code</label><textarea id="import-code" class="field" placeholder="SS26P:..." spellcheck="false"></textarea><button class="primary-btn" type="button" data-action="import-picks" style="margin-top:11px">Import pick slip</button><div class="help-note">Each imported slip covers one week. Import another code from the same friend in future weeks to keep scoring.</div></div></div></div>`;}
+
+  function renderTeams(){document.getElementById('teams-content').innerHTML=`<div class="filter-row"><p>Choose one favorite. Matchups featuring your team get featured when possible.</p><span class="info-chip">16 SEC TEAMS</span></div><div class="teams-grid">${Object.entries(TEAMS).map(([id,t])=>`<article class="team-card ${state.favorite===id?'favorite':''}"><div class="team-card-top">${logo(id)}<button type="button" data-fav="${id}" class="favorite-btn ${state.favorite===id?'active':''}" aria-pressed="${state.favorite===id}" aria-label="${state.favorite===id?'Remove favorite':'Set '+esc(t.name)+' as favorite'}" title="${state.favorite===id?'Favorite team':'Mark as favorite'}">${state.favorite===id?'★':'☆'}</button></div><h3>${esc(t.name)}</h3><p>${esc(t.nick)}</p><div class="city">${esc(t.city)}</div></article>`).join('')}</div>`;}
+
+  function renderSettings(){const w=week();document.getElementById('settings-content').innerHTML=`<div class="secondary-grid"><div class="setting-stack"><div class="content-card"><div class="card-kicker">PROFILE</div><h2>What should we call you?</h2><p>Your name shows up on your pick slip and local leaderboard.</p><label class="input-label" for="display-name">Display name</label><input id="display-name" class="field" maxlength="32" value="${esc(getName())}" autocomplete="nickname"/><button class="primary-btn" type="button" data-action="save-profile" style="margin-top:12px">Save my name</button><div class="divider"></div><label class="input-label" for="league-name">League name</label><input id="league-name" class="field" maxlength="50" value="${esc(state.league)}"/><button class="ghost-btn" type="button" data-action="save-league" style="margin-top:12px">Update league name</button></div><div class="content-card"><div class="card-kicker">WEEKLY RESULTS</div><h2>Set the winners.</h2><p>After a game ends, tap the winning team to score everyone’s picks. Results are manually managed on this device, not fetched live.</p><div class="chip-line" style="margin:12px 0 5px"><span class="subtitle-pill">WEEK ${w.num}</span><span class="helper">${resultsCount(w)} / ${w.games.length} results set</span></div><div class="result-list">${w.games.map(g=>`<div class="result-row"><span class="matchup-label">${esc(team(g.away).name)} <span class="muted">vs</span> ${esc(team(g.home).name)}</span><div class="result-controls"><button type="button" class="result-choice ${state.results[g.id]===g.away?'active':''}" data-result="${g.id}" data-team="${g.away}">${esc(team(g.away).abbr)}</button><button type="button" class="result-choice ${state.results[g.id]===g.home?'active':''}" data-result="${g.id}" data-team="${g.home}">${esc(team(g.home).abbr)}</button><button type="button" class="result-choice clear" data-result="${g.id}" data-team="clear">×</button></div></div>`).join('')}</div><button type="button" class="ghost-btn" data-action="share-results" style="margin-top:15px">Copy Week ${w.num} results code</button><div class="helper" style="margin-top:8px">Share the result code with friends so they can score their local leagues too.</div></div></div><div class="setting-stack"><div class="content-card"><div class="card-kicker">SHARED RESULTS</div><h2>Sync by code.</h2><p>Paste a trusted friend's results code here to import official-looking results manually. Verify winners independently before importing.</p><label class="input-label" for="import-results-code">Results code</label><textarea id="import-results-code" class="field" placeholder="SS26R:..." spellcheck="false"></textarea><button type="button" class="primary-btn" data-action="import-results" style="margin-top:10px">Import results</button></div><div class="content-card"><div class="card-kicker">PLAY ON YOUR PHONE</div><h2>Keep Saturdays close.</h2><p>Install this as a web app from your browser on a secure hosted URL. Picks are saved to this browser on this device.</p><div class="install-row"><button type="button" class="ghost-btn" data-action="install">Install app ↗</button><p class="helper">On Android Chrome, use the browser menu → Add to Home screen if an install prompt doesn't appear.</p></div></div><div class="content-card"><div class="card-kicker">THE FINE PRINT</div><h2>A fun fan game. Not a sportsbook.</h2><p>There are no wagers, odds, payments, or cash prizes here. This app is unofficial and unaffiliated with the SEC. Team initials and original badges replace licensed logos.</p><div class="help-note">Kickoff times for announced games lock picks at kickoff. If a game's time is TBD, picks lock conservatively at 10 AM Central on game day. Always confirm the official kickoff schedule.</div><p class="helper">All data stays in this browser. Deleting site data, switching devices, or private browsing can erase your entries. Manual codes are not tamper-proof.</p><button type="button" class="link-like" data-action="reset-all">Reset all my local data</button></div></div></div>`;}
+
+  function encodeCode(prefix,payload){const bytes=new TextEncoder().encode(JSON.stringify(payload));let binary='';for(let i=0;i<bytes.length;i++)binary+=String.fromCharCode(bytes[i]);return prefix+btoa(binary).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
+  function decodeCode(text,prefix){const value=(text||'').trim();if(!value.startsWith(prefix)||value.length>16000)throw new Error('This is not a supported '+(prefix==='SS26P:'?'pick':'results')+' code.');const b64=value.slice(prefix.length).replace(/-/g,'+').replace(/_/g,'/');const binary=atob(b64);const bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));const data=JSON.parse(new TextDecoder().decode(bytes));if(data.v!==1||data.sport!=='SEC' || !WEEKS.some(w=>w.num===data.week))throw new Error('This code uses an unsupported format or week.');return data;}
+  function validPicksForWeek(w,picks){if(!picks||typeof picks!=='object'||Array.isArray(picks))return null;const valid={};for(const g of w.games){if(picks[g.id]===g.away||picks[g.id]===g.home)valid[g.id]=picks[g.id];}return valid;}
+  async function copyToClipboard(s,label){try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(s);toast(label+' copied!');return;}const el=document.createElement('textarea');el.value=s;el.style.position='fixed';el.style.top='-9999px';document.body.appendChild(el);el.select();const result=document.execCommand('copy');el.remove();if(result){toast(label+' copied!');return;}}catch(e){console.warn('Clipboard unavailable',e);}window.prompt('Copy the code below:',s);toast('Copy the code to share.');}
+  function sharePicks(){const w=week(),picks=validPicksForWeek(w,state.picks);if(!Object.keys(picks).length){toast('Make at least one pick first.');return;}const code=encodeCode('SS26P:',{v:1,sport:'SEC',week:w.num,name:getName(),picks,at:new Date().toISOString()});copyToClipboard(code,'Pick slip');}
+  function importPicks(){const input=document.getElementById('import-code');try{const x=decodeCode(input.value,'SS26P:');const w=WEEKS.find(w=>w.num===x.week);if(typeof x.name!=='string'||!x.name.trim()||x.name.length>32)throw new Error('That slip needs a valid display name.');const name=x.name.trim();if(name.toLowerCase()===getName().toLowerCase())throw new Error('This is your display name. Ask your friend to use a different one.');const picks=validPicksForWeek(w,x.picks);if(!picks||!Object.keys(picks).length)throw new Error('No valid game picks found for that week.');const existing=state.members.find(m=>m.name.toLowerCase()===name.toLowerCase());if(existing){existing.weeks ||= {};existing.weeks[x.week]={picks,at:x.at||null};}else{state.members.push({id:'m-'+Date.now()+'-'+Math.random().toString(36).slice(2,7),name,weeks:{[x.week]:{picks,at:x.at||null}}});}save();renderLeague();toast(`Imported ${name}'s Week ${x.week} slip!`);}catch(e){toast(e.message||'Could not import picks.');}}
+  function shareResults(){const w=week(),winners={};for(const g of w.games)if(state.results[g.id])winners[g.id]=state.results[g.id];if(!Object.keys(winners).length){toast('Enter at least one result first.');return;}copyToClipboard(encodeCode('SS26R:',{v:1,sport:'SEC',week:w.num,winners,at:new Date().toISOString()}),'Results');}
+  function importResults(){const raw=document.getElementById('import-results-code').value;try{const x=decodeCode(raw,'SS26R:');const w=WEEKS.find(w=>w.num===x.week);const winners=validPicksForWeek(w,x.winners);if(!winners||!Object.keys(winners).length)throw new Error('This code has no valid winners.');if(!confirm(`Import ${Object.keys(winners).length} game results for Week ${x.week}? This will replace matching local winners. Verify the source first.`))return;Object.assign(state.results,winners);currentWeek=x.week;save();renderSettings();toast(`Imported Week ${x.week} results.`);}catch(e){toast(e.message||'Could not import results.');}}
+
+  document.addEventListener('click', e=>{
+    const nav=e.target.closest('[data-nav]');if(nav){e.preventDefault();setView(nav.dataset.nav);return;}
+    const weekEl=e.target.closest('[data-week]');if(weekEl){currentWeek=Number(weekEl.dataset.week);if(currentView==='picks')renderPicks();else if(currentView==='league')renderLeague();else if(currentView==='settings')renderSettings();return;}
+    const pick=e.target.closest('[data-pick]');if(pick){const g=GAME_BY_ID[pick.dataset.pick],id=pick.dataset.team;if(!g||isLocked(g)){toast('This game is locked.');return;}if(g.away!==id&&g.home!==id)return;state.picks[g.id]=id;save();renderPicks();toast(`${team(id).name} selected!`);return;}
+    const fav=e.target.closest('[data-fav]');if(fav){const id=fav.dataset.fav;if(!TEAMS[id])return;state.favorite=state.favorite===id?null:id;save();renderTeams();toast(state.favorite?`${team(id).name} is your favorite!`:'Favorite cleared.');return;}
+    const result=e.target.closest('[data-result]');if(result){const g=GAME_BY_ID[result.dataset.result];const id=result.dataset.team;if(!g)return;if(id==='clear')delete state.results[g.id];else if(id===g.away||id===g.home)state.results[g.id]=id;else return;save();renderSettings();toast(id==='clear'?'Result cleared.':`Winner set: ${team(id).name}`);return;}
+    const action=e.target.closest('[data-action]');if(!action)return;
+    switch(action.dataset.action){
+      case 'share-picks':sharePicks();break;
+      case 'import-picks':importPicks();break;
+      case 'share-results':shareResults();break;
+      case 'import-results':importResults();break;
+      case 'save-profile':{const val=document.getElementById('display-name').value.trim().slice(0,32);if(!val){toast('Enter a display name.');break;}state.name=val;save();renderHeader();toast('Profile updated!');break;}
+      case 'save-league':{const val=document.getElementById('league-name').value.trim().slice(0,50);if(!val){toast('Enter a league name.');break;}state.league=val;save();toast('League renamed!');break;}
+      case 'remove-member':{const m=state.members.find(x=>x.id===action.dataset.id);if(m&&confirm(`Remove ${m.name} and their imported picks?`)){state.members=state.members.filter(x=>x.id!==m.id);save();renderLeague();toast('Player removed.');}break;}
+      case 'install':{if(installPrompt){installPrompt.prompt();installPrompt.userChoice.finally(()=>installPrompt=null);}else toast('Use your browser menu → Add to Home screen.');break;}
+      case 'reset-all':{if(confirm('Erase all your local picks, imported friends, winners and settings? This cannot be undone.')){try{localStorage.removeItem(STORAGE_KEY);}catch(e){}state={...defaults,picks:{},results:{},members:[]};currentWeek=initialWeek();renderHeader();renderSettings();toast('Local data reset.');}break;}
+    }
+  });
+  document.addEventListener('change',e=>{if(e.target.id==='league-week'){currentWeek=Number(e.target.value);renderLeague();}});
+  document.addEventListener('keydown',e=>{if(e.key==='Enter' && (e.target.id==='display-name'||e.target.id==='league-name')){const a=e.target.id==='display-name'?'save-profile':'save-league';document.querySelector(`[data-action="${a}"]`)?.click();}});
+  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;});
+  window.addEventListener('hashchange',()=>{const v=location.hash.slice(1);if(['picks','league','teams','settings'].includes(v)&&v!==currentView)setView(v);});
+  if('serviceWorker'in navigator && /^https?:$/.test(location.protocol))navigator.serviceWorker.register('./sw.js').catch(err=>console.warn('Service worker unavailable',err));
+  renderHeader();setView(['picks','league','teams','settings'].includes(location.hash.slice(1))?location.hash.slice(1):'picks');
+  setInterval(()=>{if(currentView==='picks')renderPicks();},60000);
+  // Expose deliberately tiny read-only diagnostic surface for smoke tests.
+  window.SATURDAY_SOUTH_INFO=Object.freeze({weeks:WEEKS.map(w=>({week:w.num,games:w.games.length})),teams:Object.keys(TEAMS).length,totalGames:WEEKS.reduce((n,w)=>n+w.games.length,0)});
+})();
+
+</script>
+</body>
+</html>
