@@ -140,4 +140,49 @@ trophy.sync({games,picks:{},schedule,authenticated:true,leagueId:"league-b",leag
 assert.equal(trophy.getResults().some(r=>r.trophyId==="red-river"&&r.year===2025),true,"earned trophies survive league switching");
 trophy.sync({authenticated:false,userId:null});
 assert.equal(trophy.getResults().length,0,"past-season trophies clear on sign out");
+
+// Accordion UI regression: render actual faux DOM, not just string expectations.
+assert.equal(trophy.getExpandedSchool(),"ALA","Alabama shelf opens by default, showing trophies immediately");
+const alabamaPreviews=trophy.getSchoolPreview("ALA");
+assert.equal(alabamaPreviews.length,3,"school cards show a row of three trophy previews");
+assert.ok(alabamaPreviews.every(t=>typeof t.symbol==="string"&&t.symbol.length>0),"previews contain trophy artwork");
+trophy.toggleSchool("UGA");
+assert.equal(trophy.getExpandedSchool(),"UGA","another school can expand without leaving the directory");
+trophy.toggleSchool("UGA");
+assert.equal(trophy.getExpandedSchool(),null,"tapping expanded school collapses it");
+trophy.toggleSchool("ALA");
+
+function element(tag){
+ return {tag,className:"",children:[],attrs:{},events:{},dataset:{},style:{setProperty(){}},isConnected:true,
+ setAttribute(name,value){this.attrs[name]=String(value);},
+ addEventListener(name,fn){this.events[name]=fn;},
+ append(...items){this.children.push(...items);},
+ appendChild(item){this.children.push(item);},
+ replaceChildren(...items){this.children=items;},
+ focus(){}};
+}
+const trophyRoot=element("section");
+harness.document.createElement=element;
+harness.document.getElementById=id=>id==="sds-trophy-case"?trophyRoot:null;
+const descendants=(node,match)=>[...(match(node)?[node]:[]),...(node.children||[]).flatMap(child=>child&&typeof child==="object"?descendants(child,match):[])];
+trophy.selectSchool("schools");
+trophy.mount();
+let controls=descendants(trophyRoot,n=>n.className==="sds-school-disclosure");
+let previews=descendants(trophyRoot,n=>n.className.includes?.("sds-school-preview-icon"));
+let panels=descendants(trophyRoot,n=>n.className==="sds-school-expanded");
+assert.equal(controls.length,16,"all 16 school dropdowns render");
+assert.ok(previews.length>=16,"trophy previews show without first clicking a school");
+assert.equal(panels.length,1,"one full trophy shelf opens at a time");
+assert.equal(controls.find(n=>n.dataset.schoolToggle==="ALA").attrs["aria-expanded"],"true","Alabama starts expanded");
+assert.equal(descendants(panels[0],n=>n.className?.includes?.("sds-trophy-card")).length,trophy.getSchoolTrophies("ALA").length,"expanded inline shelf displays all of Alabama's trophies");
+controls.find(n=>n.dataset.schoolToggle==="UGA").events.click();
+controls=descendants(trophyRoot,n=>n.className==="sds-school-disclosure");
+panels=descendants(trophyRoot,n=>n.className==="sds-school-expanded");
+assert.equal(trophy.getSelectedSchool(),"schools","expanding a school does not navigate away");
+assert.equal(trophy.getExpandedSchool(),"UGA");
+assert.equal(panels.length,1,"only selected school is expanded");
+assert.equal(descendants(panels[0],n=>n.className?.includes?.("sds-trophy-card")).length,trophy.getSchoolTrophies("UGA").length,"Georgia's trophies show inline");
+controls.find(n=>n.dataset.schoolToggle==="UGA").events.click();
+assert.equal(descendants(trophyRoot,n=>n.className==="sds-school-expanded").length,0,"dropdown collapses cleanly");
+assert.equal(descendants(trophyRoot,n=>n.className==="sds-school-disclosure").length,16,"other schools stay visible when closed");
 console.log("SEC Trophy Case: 33 titled rivalry trophies organized by all 16 schools; 40 generic games hidden; 73 preserved in history; verified awards and league isolation passed.");
