@@ -112,6 +112,17 @@ function badgeFor(row){
  const correct=Number(row.correct_picks)||0,wp=Number(row.week_points)||0;
  let items=[];
  if(correct>=5)items.push("🏅 5 Correct Club");
+ if(row.user_id===user?.id){
+  let best=0,run=0;
+  const completed=Object.keys(own).map(id=>({g:games[id],pick:own[id]}))
+    .filter(x=>x.g?.game_status==="final"&&x.g?.winner)
+    .sort((a,b)=>Date.parse(a.g.kickoff_at)-Date.parse(b.g.kickoff_at));
+  for(const x of completed){
+   run=x.pick===x.g.winner?run+1:0;
+   best=Math.max(best,run);
+  }
+  if(best>=5)items.push("🔥 5-Game Streak");
+ }
  if(finished&&mode()!=="confidence"&&mode()!=="spread"&&wp===week.games.length)items.push("🏆 Perfect Week");
  if((revealedByGame&&Object.keys(revealedByGame).length)){
   const upset=week.games.some(g=>{
@@ -176,14 +187,37 @@ function leagueDetails(){
 function setStandings(rows){standings=rows||[];}
 function remind(){
  if(localStorage.getItem("ss-sec-reminders")!=="yes"||!user||!app)return;
+ function send(key,message){
+  if(sessionStorage.getItem(key))return;
+  sessionStorage.setItem(key,"yes");
+  app.toast(message);
+  if("Notification" in window&&Notification.permission==="granted"){
+   try{new Notification("Saturdays Down South",{body:message,tag:key});}catch(e){console.info("Notification unavailable",e);}
+  }
+ }
  const upcoming=app.week().games.filter(g=>isOpen(g)&&!own[g.id]&&Date.parse(leagueGame(g).kickoff_at||g.kickoff)-Date.now()<3*3600000);
- if(!upcoming.length)return;
- const key="ss-sec-reminded-"+new Date().toISOString().slice(0,10)+"-"+current?.id;
- if(sessionStorage.getItem(key))return;
- sessionStorage.setItem(key,"yes");
- const msg=upcoming.length+" SEC matchup pick"+(upcoming.length===1?"":"s")+" due within 3 hours.";
- app.toast(msg);
- if("Notification" in window&&Notification.permission==="granted")new Notification("Saturdays Down South",{body:msg,tag:"sec-picks-due"});
+ if(upcoming.length){
+  send("ss-sec-upcoming-"+new Date().toISOString().slice(0,10)+"-"+current?.id,
+   upcoming.length+" SEC pick"+(upcoming.length===1?" is":"s are")+" due within 3 hours.");
+ }
+ for(const g of app.week().games){
+  const status=games[g.id];
+  const updated=Date.parse(status?.score_updated_at||"");
+  if(status?.game_status==="final"&&Number.isFinite(updated)&&Date.now()-updated<2*3600000){
+    send("ss-sec-final-"+g.id,
+      "Final: "+g.away+" "+status.away_score+" – "+status.home_score+" "+g.home+". Check the league results!");
+  }
+ }
+ const rank=standings.findIndex(p=>p.user_id===user.id);
+ if(rank>=0&&current){
+  const key="ss-sec-rank-"+current.id+"-"+app.week().num;
+  const previous=Number(localStorage.getItem(key));
+  if(previous>0&&previous!==rank+1){
+   send("ss-sec-rank-alert-"+key+"-"+(rank+1),
+     "Your league ranking changed: now #"+(rank+1)+" this week.");
+  }
+  localStorage.setItem(key,String(rank+1));
+ }
 }
 async function action(type,target){
  if(type==="reminders"){
