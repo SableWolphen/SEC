@@ -49,6 +49,7 @@ jobs:
           print('Validated',len(d['articles']),'verified SEC stories across',dict(sport_counts))
           PY
       - name: Publish news feed to GitHub Pages
+        if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
