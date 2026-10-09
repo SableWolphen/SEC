@@ -13,6 +13,7 @@ import json
 import re
 from pathlib import Path
 from urllib.request import Request, urlopen
+from sportradar_baseball import fetch_verified
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "team-records.json"
@@ -277,7 +278,7 @@ def build(now=None, get=get_json, existing=None):
                 # Retain *only* a previously verified record from the same season.
                 old = (prev.get(code) or {}).get(sport)
                 if (isinstance(old, dict) and old.get("season") == year
-                        and old.get("source") in ("ESPN", "SEC") and valid_record(old.get("overall"))):
+                        and old.get("source") in ("ESPN", "SEC", "Sportradar") and valid_record(old.get("overall"))):
                     updated[code][sport] = old
 
     # ESPN team details and Core API occasionally omit baseball records entirely.
@@ -296,18 +297,30 @@ def build(now=None, get=get_json, existing=None):
         except Exception as error:
             print("SEC baseball standings unavailable:", type(error).__name__)
 
-    # The SEC's official 2026 baseball season is complete. Preserve its
-    # published final table if ESPN has no confirmed baseball record.
+    # Optional licensed feed. Requires a GitHub Actions secret and an explicit
+    # NCAA Baseball season URN/year pair; no API key is sent to browser clients.
+    # When validated, Sportradar takes priority over the ESPN baseball fallback.
+    try:
+        licensed_records = fetch_verified(seasons["baseball"])
+        for code, record in licensed_records.items():
+            if code in SEC_TEAMS and record.get("season") == seasons["baseball"]:
+                updated[code]["baseball"] = {**record, "verified_at": stamp}
+        if licensed_records:
+            print("Verified Sportradar NCAA baseball records:", len(licensed_records))
+    except (ValueError, OSError, TimeoutError) as error:
+        print("Optional Sportradar coverage unavailable:", type(error).__name__)
+
+    # Authoritative SEC *final* results outrank both ESPN and licensed data
+    # for the already completed 2026 season. Never reuse these in 2027.
     if seasons["baseball"] == 2026:
         for code, (overall, conference) in BASEBALL_FINAL_2026.items():
-            if "baseball" not in updated[code]:
-                updated[code]["baseball"] = {
-                    "overall": overall, "conference": conference,
-                    "season": 2026, "scope": "Final 2026 season",
-                    "source": "SEC",
-                    "source_url": "https://www.secsports.com/standings/baseball",
-                    "verified_at": stamp,
-                }
+            updated[code]["baseball"] = {
+                "overall": overall, "conference": conference,
+                "season": 2026, "scope": "Final 2026 season",
+                "source": "SEC",
+                "source_url": "https://www.secsports.com/standings/baseball",
+                "verified_at": stamp,
+            }
 
     available = sum(bool(updated[code]) for code in SEC_TEAMS)
     record_count = sum(len(updated[code]) for code in SEC_TEAMS)
@@ -315,7 +328,15 @@ def build(now=None, get=get_json, existing=None):
         print("ESPN returned no verified records. Publishing honest unavailable state.")
     print(f"SEC record tracker: {sourced}/48 newly confirmed records; "
           f"{failed} source request errors; {available}/16 schools with at least one record")
-    return {"updated_at": stamp, "source": "ESPN", "seasons": seasons, "teams": updated,
+    providers = sorted({record["source"] for sports in updated.values()
+                        for record in sports.values()})
+    return {"updated_at": stamp, "source": "ESPN", "sources_used": providers,
+            "reference_links": {
+                "sec_team_statistics": "https://stats.secsports.com/#team",
+                "ncaa_baseball_records": "https://www.ncaa.org/championships/statistics-and-records/baseball/",
+                "sportradar_documentation": "https://developer.sportradar.com/baseball/reference/global-baseball-overview",
+            },
+            "seasons": seasons, "teams": updated,
             "warning": "Some records are not available from ESPN or SEC; unavailable cells are not estimates."
                        if record_count < 48 else None}
 
