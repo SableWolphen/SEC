@@ -1,11 +1,24 @@
 {
-  "updated_at": "2026-10-09T20:19:11.213884Z",
-  "checked_at": "2026-10-09T20:19:11.213884Z",
+  "updated_at": "2026-10-09T20:20:13.487987Z",
+  "checked_at": "2026-10-09T20:20:13.487987Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "44496c3c6cf58e06",
+      "title": "Sources: South Carolina's Dylan Stewart to return against Florida",
+      "summary": "South Carolina edge rusher Dylan Stewart will play Saturday against Florida after completing his one-game suspension, sources told ESPN's Pete Thamel.",
+      "url": "https://www.espn.com/college-football/story/_/id/50141924/sources-south-carolina-dylan-stewart-return-florida",
+      "source": "ESPN",
+      "published_at": "2026-10-09T19:11:42Z",
+      "teams": [
+        "Florida",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
     {
       "id": "9ab0d574a7d05181",
       "title": "Connelly Week 6 preview: Things get real with SEC, Big Ten showdowns",
@@ -81,31 +94,6 @@
       "breaking": false
     },
     {
-      "id": "15c93d8aca762bf1",
-      "title": "South Florida Bulls vs. UTSA Roadrunners: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50137739/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-09T04:03:46Z",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1188b5e6f7780c93",
-      "title": "South Alabama Jaguars vs. Arkansas State Red Wolves: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50137660/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-09T03:49:32Z",
-      "teams": [
-        "Alabama",
-        "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
       "id": "c84ab9bdf8201de7",
       "title": "Nick Carroll, the No. 4 safety in 2028, commits to Georgia",
       "summary": "Four-star safety Nick Carroll, ESPN's No. 61 overall prospect in the 2028 cycle, announced his commitment to the Georgia Bulldogs.",
@@ -177,33 +165,6 @@
       "published_at": "2026-10-08T13:27:17Z",
       "teams": [
         "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c98f7536b05c78fd",
-      "title": "Alabama, Georgia prepare for hurricane to hit Saturday's game",
-      "summary": "Tropical storm Isaias has developed into a hurricane and could hit the Gulf Coast as early as Friday -- potentially taking it near Bryant-Denny Stadium, the site of Saturday's game between No.",
-      "url": "https://www.espn.com/college-football/story/_/id/50126396/alabama-georgia-prepare-storm-hit-saturday-game",
-      "source": "ESPN",
-      "published_at": "2026-10-08T12:01:03Z",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "13357dcf29e5279e",
-      "title": "Alabama TE Ford has broken arm, hopes to play vs. Georgia",
-      "summary": "Alabama tight end Josh Ford broke his arm during last Saturday's win over Mississippi State, had surgery Sunday and is attempting to play vs No. 2 Georgia.",
-      "url": "https://www.espn.com/college-football/story/_/id/50126204/alabama-te-ford-broken-arm-hopes-play-vs-georgia",
-      "source": "ESPN",
-      "published_at": "2026-10-08T12:00:48Z",
-      "teams": [
-        "Alabama",
-        "Georgia",
-        "Mississippi State"
       ],
       "breaking": false
     },
