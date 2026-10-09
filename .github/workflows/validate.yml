@@ -19,6 +19,9 @@ jobs:
           node --check multiplayer.js
           node --check league-features.js
           node --check trophy-case.js
+          node --check league-social.js
+          node --check scripts/smoke-social.cjs
+          node scripts/smoke-social.cjs
           node --check scripts/smoke-trophies.cjs
           node scripts/smoke-trophies.cjs
           node --check config.js
@@ -55,10 +58,23 @@ jobs:
           assert "./league-features.js" in html and Path("league-features.js").exists()
           assert 'id="sds-trophy-case"' in html and 'data-nav="trophies"' in html, "Trophy Case must be available in navigation"
           assert './trophy-case.js' in html and Path("trophy-case.js").exists(), "Missing Trophy Case asset"
+          assert './league-social.js' in html and Path("league-social.js").exists(), "Missing social client"
+          assert Path("supabase/migrations/20261009_trophies_chat_champions.sql").exists()
           assert "sec_league_standings_v3" in Path("multiplayer.js").read_text()
           modes=Path("supabase/migrations/20261009_four_modes.sql").read_text()
           for symbol in ("sec_save_league_pick","sec_h2h_history","sec_league_standings_v3","sec_revealed_league_picks","sec_rotate_league_invite","sec_week_tiebreakers"):
               assert symbol in modes, "Missing game mode database function/table: "+symbol
+          import struct
+          models=list(Path("trophies").glob("*.glb"))
+          assert len(models)==15, f"Expected 15 real 3D GLB assets, found {len(models)}"
+          for model in models:
+              binary=model.read_bytes()
+              magic,version,total=struct.unpack_from("<4sII",binary,0)
+              assert magic==b"glTF" and version==2 and total==len(binary), model.name
+              json_size,json_magic=struct.unpack_from("<II",binary,12)
+              assert json_magic==0x4e4f534a, model.name
+              gltf=json.loads(binary[20:20+json_size])
+              assert gltf["asset"]["version"]=="2.0" and gltf["meshes"], model.name
           assert Path("supabase/enable-score-automation.sql").exists()
           assert Path("supabase/functions/sec-scores/index.ts").exists()
           data=json.loads(Path("stats.json").read_text())
