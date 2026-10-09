@@ -46,6 +46,7 @@ Rivalry Week offers an all-season catalog of the 15 matchups, direct links to sc
 
 ## New competition features
 
+- **Weekly tiebreakers live on the Picks page**, directly above the weekly game slate—not in League settings. Each selected week has its own saved predicted total in the existing `sec_week_tiebreakers` table. The card chooses the last-kickoff game in that week, shows saved/unsaved status, and prevents saving after that game's kickoff. A signed-out player can navigate to League to sign in. No database migration required. Test with `node scripts/smoke-tiebreakers.cjs`.
 - **Four game modes:** choose the scoring format while creating a league. Existing leagues stay Straight Picks. Confidence ranks are unique within a week; pick a rank and tap the team to save. Spread games cannot be picked without a sourced pregame line. Head-to-Head opponents rotate each week.
 - **Live scoreboard pipeline:** a private Supabase Edge Function `sec-scores` fetches ESPN's verified statuses/scores and pregame spreads, then updates SEC tables (not client-accessible writes). The Edge Function is **deployed**, but its recurring scheduler is **not activated yet**. See [One-time score automation setup](supabase/enable-score-automation.sql). Until activation, scores/standings don't update automatically.
 - **Friends' picks:** secret before kickoff, viewable only by fellow league members after the game starts, including team-by-team pick percentages and names.
