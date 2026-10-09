@@ -65,7 +65,7 @@ begin
  if p_sport not in('basketball','baseball') then raise exception 'Invalid tournament sport';end if;
  return query select m.user_id,coalesce(pr.display_name,'Player')::text,
   count(*) filter(where g.status='final' and p.pick_code=g.winner_code)::bigint,
-  count(p.game_id)::bigint
+  count(g.id)::bigint
  from public.sec_club_members m
  left join public.sec_profiles pr on pr.user_id=m.user_id
  left join public.sec_bracket_picks p on p.club_id=p_club and p.user_id=m.user_id
