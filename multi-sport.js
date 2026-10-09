@@ -326,6 +326,7 @@ async function load(s,force=false){
     const list=await c.from("sec_sport_games").select("*").eq("sport",s).eq("season",yr).order("kickoff_at");
     if(!list.error)games=(list.data||[]).filter(g=>g.sport===s&&g.season===yr);
    }
+   if(seq!==updating[s])return; // A login change happened while fetching public games.
    cache[s]={games,leagues:[],picks:{},standings:[],tiebreakers:{},pairings:[],active:null};
    return;
   }
@@ -454,7 +455,7 @@ function authChanged(){
  if(lastAccountId===next)return;
  lastAccountId=next;
  // Keep all cached picks scoped to their player; never show the previous user's leagues.
- for(const sport of Object.keys(SPORT))cache[sport]={};
+ for(const sport of Object.keys(SPORT)){cache[sport]={};updating[sport]++;}
  const active=window.SEC_BRIDGE?.view?.();
  if(SPORT[active]){renderSport(active);void load(active,true);}
 }
