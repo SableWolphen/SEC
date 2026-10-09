@@ -202,6 +202,10 @@ function renderSport(s){
   'When a tipoff is not announced, a conservative 10 AM Central provisional lock is shown. '+
   'Basketball and baseball leagues have their own memberships and standings, separate from football.</p>';
 }
+function renderLeaguePanel(s){
+ if(!SPORT[s])return "";
+ return renderLeagues(s,!!user(),ownLeague(s));
+}
 function renderLeagues(s,signed,league){
  const data=cache[s],season=year(s);
  const available=data.leagues||[];
@@ -312,7 +316,9 @@ function renderTiebreak(s,w,league,saved){
   '<button type="button" class="primary-btn" data-sport-action="total" data-sport="'+s+'" '+(!can?'disabled':'')+'>Save prediction</button></div>'+
   '<div class="helper">'+esc(done?"Saved: "+done.predicted_total+" total "+SPORT[s].units:past?"Prediction closed":"Submit before the last game starts")+'</div></section>';
 }
-function inform(s,msg){notices[s]=msg;renderSport(s);}
+function inform(s,msg){notices[s]=msg;renderSport(s);
+ if(window.SEC_BRIDGE?.view?.()==="league")window.SEC_FAN?.renderLeagueChoice?.();
+}
 async function load(s,force=false){
  if(!SPORT[s])return;
  if(loading[s]){if(force)pendingReload[s]=true;return;}
@@ -381,6 +387,7 @@ async function load(s,force=false){
  }catch(e){cache[s].error=e.message||"This sport is temporarily unavailable";console.warn("SEC sports:",e);}
  finally{
   loading[s]=false;renderSport(s);renderHub();
+  if(window.SEC_BRIDGE?.view?.()==="league")window.SEC_FAN?.renderLeagueChoice?.();
   if(pendingReload[s]){pendingReload[s]=false;void load(s,true);}
  }
 }
@@ -478,6 +485,6 @@ setInterval(()=>{
  const active=window.SEC_BRIDGE?.view?.();
  if(SPORT[active]&&document.visibilityState==="visible"&&!document.activeElement?.matches?.("input,textarea,select"))void load(active,true);
 },5*60000);
-window.SEC_SPORTS=Object.freeze({mount,recommended,year,groups,renderHub,load,authChanged,selectLeague,getState:s=>cache[s]});
+window.SEC_SPORTS=Object.freeze({mount,recommended,year,groups,renderHub,load,authChanged,selectLeague,renderLeaguePanel,getState:s=>cache[s]});
 if(["sports","basketball","baseball"].includes(window.SEC_BRIDGE?.view?.()))mount(window.SEC_BRIDGE.view());
 })();
