@@ -45,14 +45,22 @@ async function run(){
  await new Promise(resolve=>setImmediate(resolve));
  const html=feature.render();
  assert.match(html,/Chat & Trash Talk/,"private chat visible");
- assert.match(html,/League Championship/,"season championship card visible");
- assert.match(html,/Current points leader: Commissioner/,"leader clearly tentative");
- assert.match(html,/disabled title=/,"commissioner can't finalize before official finals");
+ assert.doesNotMatch(html,/League Championship/,"no duplicate championship on League page");
+ const honors=feature.renderChampionship();
+ assert.match(honors,/League Championship/,"Trophy Case receives season championship panel");
+ assert.match(honors,/Current points leader: Commissioner/,"leader clearly tentative");
+ assert.match(honors,/disabled title=/,"commissioner can't finalize before official finals");
+ assert.match(honors,/data-sec-social="crown"/,"commissioner control still accessible");
  assert.match(html,/&lt;script&gt;alert\(1\)&lt;\/script&gt;/,"chat content escaped");
  assert.doesNotMatch(html,/<script>alert\(1\)<\/script>/,"chat cannot inject HTML");
  assert.match(html,/Remove/,"commissioner can moderate");
  assert.match(html,/League only/,"room labeled private");
- feature.connect(client,null,null,[]);
+ const other={id:"league-b",name:"Other League",owner_id:"player-b",mode:"straight"};
+ feature.connect(client,other,user,[{user_id:"player-a",display_name:"Guest",season_points:0}]);
+ assert.doesNotMatch(feature.renderChampionship(),/Crown 2026 Champion/,"non-commissioner cannot crown another league");
+ feature.connect(client,league,user,[{user_id:"player-a",display_name:"Commissioner",season_points:0}]);
+ assert.match(feature.renderChampionship(),/Crown 2026 Champion/,"commissioner regains control in own league");
+  feature.connect(client,null,null,[]);
  assert.equal(feature.render(),"","league chat cleared on sign out");
  console.log("SEC league chat & championships smoke tests passed: XSS escaping, member view, commissioner gate and logout.");
 }
