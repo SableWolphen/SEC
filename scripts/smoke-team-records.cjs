@@ -11,7 +11,7 @@ const example={
   TENN:{
    football:{overall:"5-1",conference:"2-1",season:2026,source:"ESPN",
     source_url:"https://www.espn.com/college-football/team/_/id/2633"},
-   basketball:{overall:"22-9",conference:"11-7",season:2026,source:"ESPN"},
+   basketball:{overall:"22-9",conference:"11-7",season:2026,scope:"Regular season",source:"ESPN"},
    baseball:{overall:"—",conference:null,season:2026,source:"ESPN"}
   },
   ALA:{
@@ -47,6 +47,7 @@ const go=async()=>{
  assert.match(view,/5-1/);
  assert.match(view,/22-9/);
  assert.match(view,/SEC: 2-1/);
+ assert.match(view,/Regular-season record/,"historical API does not include postseason games");
  assert.match(view,/Conference record: —/,"not all sports have a published SEC split");
  assert.doesNotMatch(view,/18-0/);
  const empty=app.spotlight(null,name,()=>"<span/>");
