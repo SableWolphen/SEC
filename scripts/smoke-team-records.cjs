@@ -29,7 +29,9 @@ const context={window,document,Date,URL,console,fetch:async()=>{
 vm.runInNewContext(fs.readFileSync("team-records.js","utf8"),context,{filename:"team-records.js"});
 const go=async()=>{
  const app=window.SEC_TEAM_RECORDS;assert.ok(app);
- await app.refresh(true);
+ // A direct #teams visit starts loading on module initialization.
+ await new Promise(setImmediate);await new Promise(setImmediate);
+ await app.refresh();
  assert.ok(requests>=1,"published record snapshot requested without login");
  assert.ok(rerenders>=1,"open Teams rerenders once data arrives");
  assert.equal(app.entry("TENN","football").overall,"5-1");
