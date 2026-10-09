@@ -471,7 +471,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   window.addEventListener('hashchange',()=>{const v=location.hash.slice(1);if(['picks','league','trophies','teams','settings'].includes(v)&&v!==currentView)setView(v);});
   if('serviceWorker'in navigator && /^https?:$/.test(location.protocol))navigator.serviceWorker.register('./sw.js').catch(err=>console.warn('Service worker unavailable',err));
   renderHeader();setView(['picks','league','trophies','teams','settings'].includes(location.hash.slice(1))?location.hash.slice(1):'picks');
-  setInterval(()=>{if(currentView==='picks')renderPicks();},60000);
+  setInterval(()=>{if(currentView==='picks'&&document.activeElement?.id!=='sec-total-guess')renderPicks();},60000);
   // Expose the narrow integration surface used by the separate hosted league module.
   window.SEC_BRIDGE={weeks:WEEKS,gameById:GAME_BY_ID,state:()=>state,week:week,view:()=>currentView,setView:setView,renderPicks:renderPicks,renderLeague:renderLeague,renderSettings:renderSettings,esc:esc,toast:toast};
   // Expose deliberately tiny read-only diagnostic surface for smoke tests.
