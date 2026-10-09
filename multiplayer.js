@@ -177,7 +177,7 @@
   async function refreshStandings(shouldShow){
     if(!client||!user||!active){standings=[];return;}
     try{
-      standings=extract(await client.rpc("sec_league_standings_v2",{p_league:active,p_week:app.week().num}))||[];
+      standings=extract(await client.rpc("sec_league_standings_v3",{p_league:active,p_week:app.week().num}))||[];
       window.SEC_FEATURES?.setStandings?.(standings);
       if(shouldShow&&window.SEC_FEATURES?.reload)await window.SEC_FEATURES.reload(client,currentLeague(),user,app);
       standingsError='';if(shouldShow)show();
