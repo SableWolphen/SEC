@@ -105,9 +105,10 @@ def parse_standings(payload, year):
                     continue
                 record = f"{wins}-{losses}"
                 # Two conflicting rows for one school must not be arbitrarily resolved.
-                if code in found and found[code]["overall"] != record:
-                    found[code] = None
-                elif code not in found:
+                if code in found:
+                    if found[code] is not None and found[code]["overall"] != record:
+                        found[code] = None
+                else:
                     found[code] = {
                         "overall": record, "conference": None, "season": year,
                         "scope": "Sportradar season standings", "source": "Sportradar",
