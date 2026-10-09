@@ -163,4 +163,5 @@
  function mount(){render();void reload();}
  setInterval(()=>{if(!document.hidden&&window.SEC_BRIDGE?.view?.()==="news")void reload(true);},5*60000);
  window.SEC_NEWS=Object.freeze({mount,reload,getArticles:()=>entries.slice(),safeUrl});
+ if(window.location?.hash==="#news")mount();
 })();
