@@ -65,6 +65,8 @@ jobs:
           node scripts/smoke-school-pride.cjs
           node --check sec-brags.js
           node --check sec-game-community.js
+          node --check scripts/smoke-ai-commentary.cjs
+          node scripts/smoke-ai-commentary.cjs
           node --check scripts/smoke-fan-experience.cjs
           node scripts/smoke-fan-experience.cjs
           node --check team-records.js
