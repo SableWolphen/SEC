@@ -69,6 +69,8 @@ function formState(){
   const details=node?.querySelector?.(selector);
   if(details)state.open[id]=details.open;
  }
+ const clubSettings=byId("fan-club-hub")?.querySelector?.(".fan-club-settings");
+ if(clubSettings&&state.sameSelection)state.open["club-settings"]=clubSettings.open;
  return state;
 }
 function restoreForms(state){
@@ -90,6 +92,8 @@ function restoreForms(state){
   const details=node?.querySelector?.(selector);
   if(details)details.open=state.open[id];
  }
+ const clubSettings=byId("fan-club-hub")?.querySelector?.(".fan-club-settings");
+ if(clubSettings&&"club-settings" in state.open)clubSettings.open=state.open["club-settings"];
 }
 function render(){
  reset();
@@ -133,7 +137,13 @@ function render(){
   single.hidden=!logged||!item||item.kind==="club";
   if(!single.hidden){
    const kind=item.kind,owner=item.owner_id===me().id;
-   single.innerHTML='<section class="fan-panel fan-single-panel">'+
+   single.innerHTML=kind==="football"?
+    (owner?'<details class="fan-fold fan-standalone-settings"><summary>⚙ Football league settings <span>Optional</span></summary>'+
+      '<p class="fan-subtle">Add sports to this league while keeping your original picks and members.</p>'+
+      '<details class="fan-fold"><summary>⚙️ Add sports to this league</summary>'+
+      '<div id="fan-upgrade-sport-options">'+checkboxes([kind],"upgrade")+'</div>'+
+      '<button class="fan-small fan-primary" type="button" data-league-action="upgrade">Save league sports →</button></details></details>':""):
+'<section class="fan-panel fan-single-panel">'+
     (kind==="football"?'':'<div class="card-kicker">SINGLE-SPORT LEAGUE</div>')+
     '<h3>'+html(item.name)+'</h3><p class="fan-subtle">'+names[kind]+
     ' · Your original scores, picks and membership remain available.</p>'+
