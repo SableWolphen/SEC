@@ -139,6 +139,41 @@ function extras(g){
  }
  return html;
 }
+
+/* Final-game UI is separate from live picks. Only verified winners and
+ * kickoff-revealed league choices qualify for badges, points, and impact. */
+function finalData(g){
+ const d=leagueGame(g),away=d.away_score??g.awayScore??g.away_score;
+ const home=d.home_score??g.homeScore??g.home_score;
+ const final=String(d.game_status||g.liveStatus||g.game_status)==="final";
+ const winner=d.winner||app?.state?.()?.results?.[g.id]||g.winner;
+ if(!final||![g.away,g.home].includes(winner)||
+    ![away,home].every(x=>x!==null&&x!==undefined&&x!==""&&
+      Number.isInteger(Number(x))&&Number(x)>=0)||
+    Number(away)===Number(home)||
+    (winner===g.away&&Number(away)<=Number(home))||
+    (winner===g.home&&Number(home)<=Number(away)))return null;
+ const pick=current?own[g.id]:app?.state?.()?.picks?.[g.id];
+ const m=current?mode():"straight";
+ const points=pick?(current?scoreFor(g,pick):pick===winner?1:0):null;
+ const kickoff=Date.parse(d.kickoff_at||g.kickoff||"");
+ const visible=Number.isFinite(kickoff)&&Date.now()>=kickoff;
+ const reveal=visible?(revealedByGame[g.id]||[]).filter(p=>
+   [g.away,g.home].includes(p.pick_code)):[];
+ const awayCount=reveal.filter(x=>x.pick_code===g.away).length;
+ const homeCount=reveal.filter(x=>x.pick_code===g.home).length;
+ const spread=hasNumber(d.spread_home)&&Boolean(d.spread_source)?Number(d.spread_home):null;
+ const margin=Number(home)-Number(away)+(spread??0);
+ const cover=spread===null||margin===0?null:margin>0?g.home:g.away;
+ const taken=spread===null?null:margin===0?"Push":cover;
+ const missed=reveal.filter(p=>m==="spread"?cover&&p.pick_code!==cover:p.pick_code!==winner).length;
+ return {winner,pick,points,mode:m,awayScore:Number(away),homeScore:Number(home),
+  spread,spreadSource:d.spread_source||null,cover,push:m==="spread"&&spread!==null&&margin===0,
+  reveal,total:reveal.length,awayCount,homeCount,missed,
+  majority:awayCount>=homeCount?g.away:g.home,
+  majorityCount:Math.max(awayCount,homeCount),eventId:String(d.espn_event_id||g.espnEventId||g.espn_event_id||"")};
+}
+
 async function save(g,id,c,l,u,a){
  if(!l)throw Error("Create or join a league before saving picks.");
  if(!isOpen(g))throw Error("This game is already locked.");
@@ -412,5 +447,5 @@ document.addEventListener("click",event=>{
   else if(app?.view()==="league")app.setView("league");
  }).catch(error=>{app?.toast?.(error.message||"Unable to save.");});
 },true);
-window.SEC_FEATURES={MODES,control,updateGames,reload,extras,save,leagueDetails,leagueAchievements,setStandings,remind,getMode:mode,isUnavailable,pickResult,summaryPoints,modeDescription,shareSlip,tiebreakerCard,saveTiebreaker};
+window.SEC_FEATURES={MODES,finalData,control,updateGames,reload,extras,save,leagueDetails,leagueAchievements,setStandings,remind,getMode:mode,isUnavailable,pickResult,summaryPoints,modeDescription,shareSlip,tiebreakerCard,saveTiebreaker};
 })();
