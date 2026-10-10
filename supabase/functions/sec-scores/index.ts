@@ -73,18 +73,22 @@ function liveSituation(summary:any,away:any,home:any):Record<string,unknown>{
  const plays=Array.isArray(current?.plays)?current.plays:[];
  const latest=info?.lastPlay||plays[plays.length-1]||null;
  const ids=[away?.team?.id,home?.team?.id].map(x=>String(x||""));
- let possession=info?.possession??current?.team?.id??null;
+ let possession=info?.possession??null;
  if(possession&&typeof possession==="object"){
   possession=possession.id||possession.team?.id||String(possession.$ref||"").split("/").pop();
  }
  const raw=String(possession??"").trim();
  let code=raw&&raw===ids[0]?away.team.abbreviation:raw&&raw===ids[1]?home.team.abbreviation:null;
- // Drive team is reliable only if it matches one of the verified participants.
- if(!code&&current?.team){
-  if(String(current.team.id)===ids[0])code=away.team.abbreviation;
-  else if(String(current.team.id)===ids[1])code=home.team.abbreviation;
+ // A completed drive can still name the team that just punted. Do not
+ // infer *current* possession from a drive's previous offensive team.
+ if(!code){
+  const competitors=summary?.header?.competitions?.[0]?.competitors||[];
+  const carrying=competitors.filter((v:any)=>v?.possession===true);
+  if(carrying.length===1){
+   const id=String(carrying[0]?.team?.id||"");
+   code=id===ids[0]?away.team.abbreviation:id===ids[1]?home.team.abbreviation:null;
+  }
  }
- const idToCode=new Map([[ids[0],away?.team?.abbreviation],[ids[1],home?.team?.abbreviation]]);
  // Normalize ESPN's external abbreviations to our own matching code at caller.
  const validDown=(x:unknown)=>Number.isInteger(Number(x))&&Number(x)>=1&&Number(x)<=4?Number(x):null;
  const validDistance=(x:unknown)=>x!==null&&x!==undefined&&x!==""&&
