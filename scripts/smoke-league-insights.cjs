@@ -32,7 +32,7 @@ const game={id:"game-01",away:"ALA",home:"UGA",game_status:"final",away_score:34
  assert.equal(insights.upset({...game,winner:"UGA"},"football"),null,"conflicting final winner cannot be called an upset");
  assert.equal(insights.upset({...game,winner:null},"football"),null,"unconfirmed final winner cannot be called an upset");
  assert.match(insights.upset({...game,game_status:"live"},"football").label,/UPSET WATCH/);
- assert.match(insights.initial(game,"football"),/League picks are revealed after kickoff/);
+ assert.match(insights.initial(game,"football"),/Picks reveal at kickoff/);
  const waiting={...game,kickoff:future,id:"game-02"};
  await insights.load(waiting,"football");
  assert.equal(calls,0,"not even an aggregate RPC before kickoff");
@@ -41,7 +41,7 @@ const game={id:"game-01",away:"ALA",home:"UGA",game_status:"final",away_score:34
  assert.equal(updates[0].p_kind,"club");
  assert.equal(updates[0].p_league,"club-a");
  assert.equal(updates[0].p_sport,"football");
- assert.match(leagueBox.innerHTML,/3 of 4 league picks backed the verified winner/);
+ assert.match(leagueBox.innerHTML,/3 of 4 called the winner/);
  assert.match(leagueBox.innerHTML,/Alabama 3/);
  assert.match(leagueBox.innerHTML,/Georgia 1/);
  assert.doesNotMatch(leagueBox.innerHTML,/<img/,"league names must be escaped");
@@ -71,7 +71,7 @@ const game={id:"game-01",away:"ALA",home:"UGA",game_status:"final",away_score:34
  await insights.load(game,"football",true);
  assert.equal(calls,1,"cross sport query blocked");
  account=null;
- assert.match(insights.initial(game,"football"),/Join a league/);
+ assert.equal(insights.initial(game,"football"),"","Guest should see no private league panel");
  assert.equal(calls,1);
  console.log("League Shockwave regression passed: pregame confidentiality, winner impact, sourced upsets, weekly awards and account isolation.");
 })().catch(e=>{console.error(e);process.exitCode=1;});

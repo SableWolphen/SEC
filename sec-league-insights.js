@@ -8,7 +8,7 @@ const FIELDS=["club","football","basketball","baseball"];
 const ROWS=new Map(),PENDING=new Set(),GAMES=new Map();
 let weeklyKey="";
 let weeklyExpanded=false;
-document.addEventListener("toggle",e=>{
+document.addEventListener?.("toggle",e=>{
  if(e.target?.id==="sec-weekly-fold")weeklyExpanded=e.target.open;
 },true);
 const code=g=>({away:String(g.away_code||g.away||""),home:String(g.home_code||g.home||"")});
