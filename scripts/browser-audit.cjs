@@ -97,6 +97,10 @@ fs.mkdirSync(output,{recursive:true});
      window.SEC_BRIDGE.setView("picks");
      const a=window.SEC_BRIDGE,w=a.week();
      if(w.games[1]){w.games[1].kickoff=new Date(Date.now()+3600000).toISOString();delete a.state().picks[w.games[1].id];}
+     // A published confirmed final cannot become a live match merely because
+     // the visual fixture overrides the local score; opt that fixture out.
+     window.__AUDIT_FINAL_DATA=window.SEC_FEATURES.finalData;
+     window.SEC_FEATURES.finalData=x=>x.liveStatus==="live"?null:window.__AUDIT_FINAL_DATA(x);
      const g=w.games[0];g.liveStatus="live";g.awayScore=14;g.homeScore=10;
      g.statusDetail="Q2 · 8:04";g.scoreUpdatedAt=new Date().toISOString();
      g.kickoff=new Date(Date.now()-4*60000).toISOString();
@@ -141,6 +145,49 @@ fs.mkdirSync(output,{recursive:true});
       !oneLive.hasLiveDrive||!oneLive.hasBall||!oneLive.liveText)
      problems.push(viewport.width+"px duplicate live game status: "+JSON.stringify(oneLive));
    await page.screenshot({path:path.join(output,viewport.width+"-gameday.png")});
+
+   // Independently audit final-game layout (offline fixture; no private data
+   // is requested from the actual database or any user's picks modified).
+   await page.evaluate(()=>{
+     const w=window.SEC_BRIDGE.week(),g=w.games[0];
+     g.liveStatus="final";g.awayScore=6;g.homeScore=27;
+     window.SEC_FEATURES.finalData=x=>x.id!==g.id?null:{
+      winner:g.home,pick:g.away,points:0,mode:"straight",
+      awayScore:6,homeScore:27,spread:-4.5,cover:g.home,push:false,
+      eventId:"401856716",majority:g.away,majorityCount:4,
+      missed:4,total:6,awayCount:4,homeCount:2,
+      reveal:Array.from({length:6},(_,i)=>({display_name:"Fan "+(i+1),
+       pick_code:i<4?g.away:g.home}))
+     };
+     window.SEC_BRIDGE.renderPicks();
+   });
+   const post=await page.evaluate(()=>{
+     const card=document.querySelector("#games-list .sec-final-card");
+     const friends=card?.querySelector(".sec-final-reveal");
+     return {hasCard:!!card,winner:!!card?.querySelector(".sec-final-team.is-winner"),
+      result:card?.textContent.includes("0 pts"),
+      recap:!!card?.querySelector('.sec-final-recap-link[href^="https://www.espn.com/"]'),
+      box:!!card?.querySelector('.sec-final-box-link[href^="https://www.espn.com/"]'),
+      leagueImpact:card?.textContent.includes("4 missed their pick"),
+      friendsClosed:!!friends&&!friends.open,
+      width:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth};
+   });
+   if(!post.hasCard||!post.winner||!post.result||!post.recap||!post.box||
+      !post.leagueImpact||!post.friendsClosed||post.width>post.viewport+2)
+     problems.push(viewport.width+"px final game layout regression: "+JSON.stringify(post));
+   const friendToggle=page.locator("#games-list .sec-final-card .sec-final-reveal > summary").first();
+   if(await friendToggle.count()){
+     await friendToggle.click();
+     const expanded=await page.evaluate(()=>document.querySelector(
+       "#games-list .sec-final-card .sec-final-reveal")?.open);
+     if(!expanded)problems.push(viewport.width+"px cannot reveal post-kickoff friend picks");
+   }
+   await page.screenshot({path:path.join(output,viewport.width+"-final-game.png")});
+   await page.evaluate(()=>{
+    window.SEC_FEATURES.finalData=window.__AUDIT_FINAL_DATA;
+    delete window.__AUDIT_FINAL_DATA;
+   });
+
    if(viewport.width<=390){
     await page.evaluate(()=>window.SEC_BRIDGE.setView("league"));
     const input=page.locator("#online-email");
