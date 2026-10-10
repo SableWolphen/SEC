@@ -153,5 +153,5 @@ document.addEventListener("keydown",event=>{
 setInterval(()=>{
  if(document.visibilityState==="visible"&&["league","trophies"].includes(window.SEC_BRIDGE?.view?.())&&league&&user)void load();
 },15000);
-window.SEC_SOCIAL={connect,setStandings,render,renderChampionship:championshipHtml,load,refreshDisplay:update};
+window.SEC_SOCIAL={connect,setStandings,render,renderChampionship:championshipHtml,load,refreshDisplay:update,getChampions:()=>champions.map(c=>({...c}))};
 })();
