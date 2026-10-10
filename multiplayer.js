@@ -126,7 +126,7 @@
         '<div class="chip-line">'+button('Make my picks','go-picks','primary-btn')+' '+button('Share invite link','copy-invite')+' '+button('Refresh standings','refresh')+'</div>'+
         '<div style="margin:14px 0"><label for="league-week" class="input-label">Week</label><select class="field" id="league-week">'+app.weeks.map(function(x){return '<option value="'+x.num+'" '+(x.num===w.num?'selected':'')+'>Week '+x.num+'</option>';}).join('')+'</select></div>'+
         '<div class="leaderboard"><div class="standing-row head" style="grid-template-columns:26px minmax(0,1fr) 48px 52px 58px"><span>#</span><span>PLAYER</span><span>PICKS</span><span>WEEK</span><span>SEASON</span></div>'+
-        (standings.length?standings.map(function(row,i){return '<div class="standing-row" style="grid-template-columns:26px minmax(0,1fr) 48px 52px 58px"><span class="rank">'+(i+1)+'</span><span class="name"><span class="sec-avatar" aria-hidden="true">'+safe((row.display_name||'P').slice(0,1).toUpperCase())+'</span>'+safe(row.display_name)+(row.user_id===user.id?' ★':'')+'</span><span class="muted">'+safe(row.picked)+'</span><span class="score">'+safe(row.week_points)+'</span><span>'+safe(row.season_points)+'</span></div>';}).join(''):'<p class="helper" style="padding:15px">No standings available yet.</p>')+
+        (standings.length?standings.map(function(row,i){return '<div class="standing-row" style="grid-template-columns:26px minmax(0,1fr) 48px 52px 58px"><span class="rank">'+(i+1)+'</span><span class="name"><span class="sec-avatar" aria-hidden="true">'+safe((row.display_name||'P').slice(0,1).toUpperCase())+'</span>'+safe(row.display_name)+(window.SEC_PRIDE?.badge?.(row.user_id)||'')+(row.user_id===user.id?' ★':'')+'</span><span class="muted">'+safe(row.picked)+'</span><span class="score">'+safe(row.week_points)+'</span><span>'+safe(row.season_points)+'</span></div>';}).join(''):'<p class="helper" style="padding:15px">No standings available yet.</p>')+
         '</div><p class="helper">Picks are stored securely online. Only league members can see this scoreboard.</p>'+
         '<div class="sec-scoreboard-chat" aria-label="Chat for '+safe(choice.name)+'">'+
         (window.SEC_SOCIAL?.render?.()||'<p class="helper">Loading private league chat…</p>')+'</div>');
@@ -187,7 +187,7 @@
         show();return;
       }
       var results=await Promise.all([
-        client.from("sec_profiles").select("user_id,display_name").eq("user_id",user.id).maybeSingle(),
+        client.from("sec_profiles").select("user_id,display_name,favorite_school_code").eq("user_id",user.id).maybeSingle(),
         client.from("sec_leagues").select("id,name,invite_code,owner_id,mode").order("created_at",{ascending:true}),
         client.from("sec_picks").select("game_id,pick_code").eq("user_id",user.id),
         client.from("sec_games").select("id,kickoff_at,winner,provisional,game_status,status_detail,away_score,home_score,spread_home,spread_source,score_updated_at")
@@ -206,6 +206,7 @@
           }catch(profileErr){console.warn("SEC display name sync:",profileErr);}
         }
       }
+      window.SEC_PRIDE?.setProfile?.(profile);
       if(profile?.display_name)s.name=profile.display_name;
       leagues=results[1].data||[];
       window.SEC_FEATURES?.updateGames?.(results[3].data||[],app);
@@ -418,7 +419,7 @@
   window.secOnline={
     configured:!!client,renderLeague:renderLeague,renderSettings:renderSettings,
     pick:choose,copyInvite:copyInvite,useLeague:useLeague,refreshStandings:refreshStandings,refresh:refresh,
-    isSignedIn:function(){return !!user;},getClient:function(){return client;},getUser:function(){return user;},getLeague:function(){return currentLeague();},
+    isSignedIn:function(){return !!user;},getClient:function(){return client;},getUser:function(){return user;},getLeague:function(){return currentLeague();},getStandings:function(){return standings.slice();},
     whenAuthReady:function(){return authReady;},isAuthReady:function(){return authRestored;}
   };
   document.addEventListener("click",function(ev){

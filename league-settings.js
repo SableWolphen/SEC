@@ -177,7 +177,7 @@ function renderClub(c,host){
  '<h2>League standings</h2><p>Only these sports count toward this league’s leaderboard.</p></div>'+
  '<button class="fan-small" type="button" data-league-action="reload">↻ Refresh</button></div>'+
  '<div class="fan-table-wrap"><table class="fan-table"><thead><tr><th>Player</th>'+columns+'<th>Total</th></tr></thead><tbody>'+
- (leaderboard.length?leaderboard.map((p,i)=>'<tr><td>#'+(i+1)+' '+html(p.display_name)+(p.user_id===me()?.id?" ★":"")+'</td>'+
+ (leaderboard.length?leaderboard.map((p,i)=>'<tr><td>#'+(i+1)+' '+html(p.display_name)+(win.SEC_PRIDE?.badge?.(p.user_id)||"")+(p.user_id===me()?.id?" ★":"")+'</td>'+
  sports.map(s=>'<td>'+score(p[s])+'</td>').join("")+'<td>'+score(p.total)+'</td></tr>').join(""):
  '<tr><td colspan="'+(sports.length+2)+'" class="fan-subtle">Waiting for verified game results.</td></tr>')+
  '</tbody></table></div>'+

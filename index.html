@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b111b">
-  <meta name="sec-build" content="2026.10.10-feedback.1">
+  <meta name="sec-build" content="2026.10.10-community.1">
   <link rel="manifest" href="./manifest.webmanifest">
   <meta name="description" content="An unofficial SEC football, basketball and baseball pick'em game. Switch sports instantly, make picks and keep score with friends.">
   <meta property="og:title" content="Saturdays Down South — SEC Pick'em">
@@ -188,7 +188,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 @media(max-width:440px){.sec-news-sports{gap:5px;padding:6px}.sec-news-sport-choice{font-size:11px;padding:9px 2px;min-height:50px}}
 </style>
   <title>Saturdays Down South · SEC Pick'em</title>
-<link rel="stylesheet" href="./multi-sport.css?v=20261010-feedback-v1">
+<link rel="stylesheet" href="./multi-sport.css?v=20261010-community-v1">
 </head>
 <body>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
@@ -206,7 +206,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       <button type="button" data-nav="teams" class="nav-link">SEC teams</button>
       <button type="button" data-nav="settings" class="nav-link">Settings</button>
     </nav>
-    <button type="button" class="profile-chip" data-nav="settings" aria-label="Edit your profile"><span id="header-avatar">Y</span><span id="header-name">You</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m7 8 3 3 3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button type="button" class="profile-chip" data-nav="settings" aria-label="Edit your profile"><span id="header-avatar">Y</span><span id="header-name">You</span><span id="header-school-pride" aria-live="polite"></span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m7 8 3 3 3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </header>
 
 <main id="main-content">
@@ -263,6 +263,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       <div id="fan-league-tabs" class="fan-league-tabs" role="tablist" aria-label="League sections" hidden>
         <button type="button" id="fan-tab-scores" role="tab" aria-selected="true" aria-controls="fan-pane-scores" data-league-pane="scores">🏆 Standings</button>
         <button type="button" id="fan-tab-chat" role="tab" aria-selected="false" aria-controls="fan-pane-chat" data-league-pane="chat" hidden>💬 Chat</button>
+        <button type="button" id="fan-tab-brags" role="tab" aria-selected="false" aria-controls="fan-pane-brags" data-league-pane="brags">🔥 Brags</button>
         <button type="button" id="fan-tab-more" role="tab" aria-selected="false" aria-controls="fan-pane-more" data-league-pane="more">⚙ More</button>
       </div>
       <div id="fan-pane-scores" class="fan-league-pane" role="tabpanel" aria-labelledby="fan-tab-scores">
@@ -272,6 +273,9 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       </div>
       <div id="fan-pane-chat" class="fan-league-pane" role="tabpanel" aria-labelledby="fan-tab-chat" hidden>
         <div id="fan-league-chat-content"></div>
+      </div>
+      <div id="fan-pane-brags" class="fan-league-pane" role="tabpanel" aria-labelledby="fan-tab-brags" hidden>
+        <div id="fan-bragging-content" aria-live="polite"></div>
       </div>
       <div id="fan-pane-more" class="fan-league-pane" role="tabpanel" aria-labelledby="fan-tab-more" hidden>
         <div id="fan-league-club-manager"></div>
@@ -548,7 +552,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     if(location.hash!=='#'+v)history.replaceState(null,'','#'+v);
     window.scrollTo({top:0,behavior:'instant'});
   }
-  function renderHeader(){document.getElementById('header-name').textContent=getName();document.getElementById('header-avatar').textContent=getName().slice(0,1).toUpperCase();}
+  function renderHeader(){document.getElementById('header-name').textContent=getName();document.getElementById('header-avatar').textContent=getName().slice(0,1).toUpperCase();const flair=document.getElementById('header-school-pride');if(flair)flair.innerHTML=window.SEC_PRIDE?.myBadge?.()||'';}
   let lastRenderedPickerWeek=null;
   function renderWeekPicker(){
     const bar=document.getElementById('week-picker');
@@ -665,7 +669,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       return;
     }
     const pick=e.target.closest('[data-pick]');if(pick){const g=GAME_BY_ID[pick.dataset.pick],id=pick.dataset.team;if(!g||isLocked(g)){toast('This game is locked.');return;}if(g.away!==id&&g.home!==id)return;if(window.secOnline?.configured){void window.secOnline.pick(g,id);return;}state.picks[g.id]=id;save();renderPicks();toast(`${team(id).name} selected!`);return;}
-    const fav=e.target.closest('[data-fav]');if(fav){const id=fav.dataset.fav;if(!TEAMS[id])return;state.favorite=state.favorite===id?null:id;save();renderTeams();toast(state.favorite?`${team(id).name} is your favorite!`:'Favorite cleared.');return;}
+    const fav=e.target.closest('[data-fav]');if(fav){const id=fav.dataset.fav;if(!TEAMS[id])return;state.favorite=state.favorite===id?null:id;save();void window.SEC_PRIDE?.saveFavorite?.(state.favorite);renderHeader();renderTeams();toast(state.favorite?`${team(id).name} is your favorite!`:'Favorite cleared.');return;}
     const result=e.target.closest('[data-result]');if(result){if(window.secOnline?.configured){toast('Online winners are managed by the site administrator.');return;}const g=GAME_BY_ID[result.dataset.result];const id=result.dataset.team;if(!g)return;if(id==='clear')delete state.results[g.id];else if(id===g.away||id===g.home)state.results[g.id]=id;else return;save();renderSettings();toast(id==='clear'?'Result cleared.':`Winner set: ${team(id).name}`);return;}
     const action=e.target.closest('[data-action]');if(!action)return;
     switch(action.dataset.action){
@@ -688,7 +692,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   renderHeader();setView(['sports','picks','basketball','baseball','league','trophies','news','teams','settings'].includes(location.hash.slice(1))?location.hash.slice(1):seasonLanding());
   setInterval(()=>{if(currentView==='picks'&&document.activeElement?.id!=='sec-total-guess')renderPicks();},60000);
   // Expose the narrow integration surface used by the separate hosted league module.
-  window.SEC_BRIDGE={weeks:WEEKS,gameById:GAME_BY_ID,state:()=>state,week:week,view:()=>currentView,selectedSport:()=>lastSportView,setView:setView,renderPicks:renderPicks,renderLeague:renderLeague,renderSettings:renderSettings,renderTeams:renderTeams,esc:esc,toast:toast};
+  window.SEC_BRIDGE={weeks:WEEKS,gameById:GAME_BY_ID,state:()=>state,week:week,view:()=>currentView,selectedSport:()=>lastSportView,setView:setView,renderPicks:renderPicks,renderLeague:renderLeague,renderSettings:renderSettings,renderTeams:renderTeams,renderHeader:renderHeader,esc:esc,toast:toast};
   // Expose deliberately tiny read-only diagnostic surface for smoke tests.
   window.SATURDAY_SOUTH_INFO=Object.freeze({weeks:WEEKS.map(w=>({week:w.num,games:w.games.length})),teams:Object.keys(TEAMS).length,totalGames:WEEKS.reduce((n,w)=>n+w.games.length,0)});
 })();
@@ -699,17 +703,20 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./rivalry-catalog.js?v=20261009-named-35"></script>
 <script src="./trophy-case.js?v=20261009-volunteer-state-v1"></script>
 <script src="./league-features.js?v=20261009-isolation-v2"></script>
-<script src="./league-social.js?v=20261009-chat-scoreboard-v1"></script>
-<script src="./multiplayer.js?v=20261010-leaguetabs-v3"></script>
+<script src="./league-social.js?v=20261010-community-v1"></script>
+<script src="./sec-pride.js?v=20261010-community-v1"></script>
+<script src="./multiplayer.js?v=20261010-community-v1"></script>
 <script src="./matchup-stats.js?v=20261010-pickcontext-v1"></script>
 <script src="./team-records.js?v=20261009-officialsources-v8"></script>
 <script src="./multi-sport.js?v=20261009-single-league-v5"></script>
 <script src="./sec-news.js?v=20261010-feedback-v1"></script>
-<script src="./fan-experience.js?v=20261009-live-center-v4"></script>
+<script src="./sec-game-community.js?v=20261010-community-v1"></script>
+<script src="./fan-experience.js?v=20261010-community-v1"></script>
 <script src="./sec-live-scores.js?v=20261009-gameday-scores-v2"></script>
-<script src="./league-settings.js?v=20261010-leaguetabs-v3"></script>
+<script src="./league-settings.js?v=20261010-community-v1"></script>
 <script src="./sec-power-rankings.js?v=20261009-power-v1"></script>
 <script src="./sec-brackets.js?v=20261009-perleague-bracket-v3"></script>
-<script src="./league-tabs.js?v=20261010-feedback-v1"></script>
+<script src="./sec-brags.js?v=20261010-community-v1"></script>
+<script src="./league-tabs.js?v=20261010-community-v1"></script>
 </body>
 </html>

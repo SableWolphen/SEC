@@ -27,7 +27,7 @@ function messageHtml(){
     '" aria-label="React '+em+' to this message">'+em+' '+people.length+'</button>';
   }).join("");
   return '<article class="sec-chat-message '+(mine?"mine":"")+'">'+
-   '<div class="sec-chat-message-title"><strong>'+esc(memberName(m.user_id))+'</strong><time>'+esc(stamp(m.created_at))+'</time></div>'+
+   '<div class="sec-chat-message-title"><strong>'+esc(memberName(m.user_id))+'</strong>'+(window.SEC_PRIDE?.badge?.(m.user_id)||'')+'<time>'+esc(stamp(m.created_at))+'</time></div>'+
    '<p>'+esc(m.body)+'</p><div class="sec-chat-message-footer">'+counts+
    ((mine||isOwner())?'<button type="button" class="sec-chat-delete" data-sec-social="remove-message" data-message-id="'+esc(m.id)+'" aria-label="Delete message">Remove</button>':'')+
    '</div></article>';
@@ -153,5 +153,5 @@ document.addEventListener("keydown",event=>{
 setInterval(()=>{
  if(document.visibilityState==="visible"&&["league","trophies"].includes(window.SEC_BRIDGE?.view?.())&&league&&user)void load();
 },15000);
-window.SEC_SOCIAL={connect,setStandings,render,renderChampionship:championshipHtml,load};
+window.SEC_SOCIAL={connect,setStandings,render,renderChampionship:championshipHtml,load,refreshDisplay:update};
 })();

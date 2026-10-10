@@ -55,6 +55,7 @@ function gameCenter(g,insights){
   '<summary><b class="'+(status==="live"?"fan-live":"")+'">'+(status==="live"?"🔴 LIVE":status==="final"?"✓ FINAL":"Game center")+'</b>'+
   '<span>'+(scored?text:"Scores & matchup stats")+'</span><span>⌄</span></summary>'+
   '<div class="fan-center-detail"><p>'+text+'</p>'+trend+(insights||'<p class="fan-subtle">Matchup details pending.</p>')+
+  (window.SEC_GAME_COMMUNITY?.panel?.(g,"football")||"")+
   '<small>Verified game feed, updated periodically while this tab is open. No simulated play-by-play.</small></div></details>';
 }
 function sportCenter(s,g){
@@ -63,7 +64,8 @@ function sportCenter(s,g){
   '<summary><b class="'+(g.game_status==="live"?"fan-live":"")+'">'+(g.game_status==="live"?"🔴 LIVE":g.game_status==="final"?"✓ FINAL":"Game center")+'</b>'+
   '<span>'+(scored?g.away_score+" – "+g.home_score:"Score & source")+'</span><span>⌄</span></summary>'+
   '<div class="fan-center-detail">'+esc(g.away_name)+' vs '+esc(g.home_name)+'<p class="fan-subtle">'+
-  (scored?"Confirmed score "+g.away_score+"–"+g.home_score:"Verified score pending")+' · '+esc(g.source||"Schedule feed")+'</p></div></details>';
+  (scored?"Confirmed score "+g.away_score+"–"+g.home_score:"Verified score pending")+' · '+esc(g.source||"Schedule feed")+'</p>'+
+  (window.SEC_GAME_COMMUNITY?.panel?.(g,s)||"")+'</div></details>';
 }
 function recap(){
  const w=app()?.week?.();if(!w)return "";
@@ -198,7 +200,10 @@ document.addEventListener("click",e=>{
  if(cmd==="alerts")void toggleAlerts();
 });
 document.addEventListener("toggle",e=>{if(!e.target?.matches?.("[data-fan-center]"))return;
- if(e.target.open)openDetails.add(e.target.dataset.fanCenter);else openDetails.delete(e.target.dataset.fanCenter);},true);
+ if(e.target.open){openDetails.add(e.target.dataset.fanCenter);
+  const k=e.target.querySelector?.("[data-community-game]")?.dataset?.communityGame;
+  if(k)void window.SEC_GAME_COMMUNITY?.loadKey?.(k);
+ }else openDetails.delete(e.target.dataset.fanCenter);},true);
 
 /* SEC's 2027 conference series pairings are verified, but exact first pitches aren't.
    Store private non-scoring previews for the current browser/player, never league points. */

@@ -4,13 +4,13 @@
 const byId=id=>document.getElementById(id);
 const manager=()=>window.SEC_LEAGUE_SETTINGS;
 let pane="scores",selectedKey=null,pending=false;
-const paneNames=["scores","chat","more"];
+const paneNames=["scores","chat","brags","more"];
 function eligible(){
  const member=window.secOnline?.getUser?.(),item=manager()?.getSelected?.();
  return {member,item,chat:!!member&&item?.kind==="football"};
 }
 function switchPane(next,focus=false){
- const {member,item,chat}=eligible(),allowed=member?["scores",...(chat?["chat"]:[]),"more"]:["scores"];
+ const {member,item,chat}=eligible(),allowed=member?["scores",...(chat?["chat"]:[]),"brags","more"]:["scores"];
  pane=allowed.includes(next)?next:"scores";
  const tabs=byId("fan-league-tabs");if(tabs)tabs.hidden=!member;
  for(const name of paneNames){
@@ -40,10 +40,13 @@ function synchronize(){
  const key=member?item?item.kind+":"+item.id:"empty":"guest";
  if(selectedKey!==key){
   selectedKey=key;pane=member&&!item?"more":"scores";
+  if(member&&item){void window.SEC_PRIDE?.load?.(item.kind,item.id);void window.SEC_BRAGS?.load?.(item);}
+  else window.SEC_BRAGS?.render?.();
   for(const id of ["fan-league-club-manager","fan-league-single-manager","fan-league-football-manager","fan-league-chat-content"])byId(id)?.replaceChildren();
  }
  switchPane(pane);
  if(!member)return;
+ if(pane==="brags")window.SEC_BRAGS?.render?.();
  if(item?.kind==="club"){
   relocate("fan-club-hub",".fan-club-settings","fan-league-club-manager");
 
@@ -82,7 +85,7 @@ document.addEventListener("keydown",e=>{
  const tab=e.target.closest?.("[data-league-pane]");
  if(!tab||!["ArrowLeft","ArrowRight","Home","End"].includes(e.key))return;
  e.preventDefault();
- const chat=eligible().chat,list=["scores",...(chat?["chat"]:[]),"more"];
+ const chat=eligible().chat,list=["scores",...(chat?["chat"]:[]),"brags","more"];
  const current=list.indexOf(tab.dataset.leaguePane);
  if(current<0)return;
  const target=e.key==="Home"?0:e.key==="End"?list.length-1:
