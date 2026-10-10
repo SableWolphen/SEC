@@ -54,6 +54,17 @@ fs.mkdirSync(output,{recursive:true});
     if(audit.isMobile&&!audit.navVisible)problems.push(prefix+" mobile nav hidden");
     if(audit.isMobile&&(!audit.navFits||!audit.navWithin))problems.push(prefix+" clipped nav: "+JSON.stringify(audit.navRect));
     if(!audit.isMobile&&audit.navVisible)problems.push(prefix+" mobile nav on desktop");
+    if(route==="picks"){
+     const tidy=await page.evaluate(()=>{
+      const top=document.querySelector("#weekly-score-strip .weekly-score-strip");
+      const repeated=["summary-slot","fan-recap","sec-gameday-picks","sec-day-recap","fan-rivalries"]
+       .map(id=>document.getElementById(id)).filter(Boolean)
+       .filter(el=>getComputedStyle(el).display!=="none").map(el=>el.id);
+      return {topVisible:!!top&&top.getBoundingClientRect().height>0,repeated};
+     });
+     if(!tidy.topVisible||tidy.repeated.length)
+      problems.push(viewport.width+"px duplicate football summaries: "+JSON.stringify(tidy));
+    }
     await page.screenshot({path:path.join(output,viewport.width+"-"+route+".png")});
     total++;
    }
