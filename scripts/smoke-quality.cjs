@@ -34,7 +34,11 @@ assert.match(html,/sec-live-scores\.js\?v=/,"live score refresh loads on every s
 assert.match(html,/id="fan-club-hub"/);
 assert.match(html,/id="fan-single-league"/);
 assert.match(html,/id="fan-brackets"/);
-assert.match(worker,/sec-pickem-v64/);
+assert.match(worker,/const CACHE="sec-pickem-v[0-9]+"/,"service worker cache is versioned");
+assert.match(html,/id="weekly-score-strip"/,"football score is visible before the slate");
+assert.match(html,/renderWeeklyScoreStrip\(w\)/,"weekly score updates with rerenders");
+assert.match(css,/#picks-view #hero-slot\{display:none\}/,"mobile layout removes duplicated featured matchup");
+assert.match(fs.readFileSync("multi-sport.js","utf8"),/sportStrip\+leagues\+games/,"other sports show the weekly score before leagues and games");
 assert.match(worker,/20261010-showcase-v1/);
 assert.match(html,/20261010-community-v1/);
 const league=fs.readFileSync("league-settings.js","utf8");
