@@ -90,6 +90,9 @@ async function refresh(force=false){
     local.awayScore=row.away_score;
     local.homeScore=row.home_score;
     local.scoreUpdatedAt=row.score_updated_at;
+    if(row.spread_home!=null&&row.spread_source){
+     local.spread_home=row.spread_home;local.spread_source=row.spread_source;
+    }
     if(row.provisional!=null)local.onlineProvisional=row.provisional;
     if(row.winner&&row.game_status==="final")a.state().results[row.id]=row.winner;
    }

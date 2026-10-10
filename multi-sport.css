@@ -696,3 +696,30 @@ body{overflow-x:clip}
 .sec-ai-panel[data-commentary-state^="FINAL"] .sec-ai-status{background:#244b40;color:#caff9b;border-color:#699b7b}
 .sec-ai-panel .sec-ai-narrative p{font-size:12px;line-height:1.7}
 .sec-ai-coverage{overflow-wrap:anywhere}
+
+/* SEC Game of the Week, Upset Watch, League Shockwave and weekly receipts */
+.spotlight-analyst{font-size:12px;line-height:1.55;color:#bbd5c5;margin:9px auto 15px;max-width:680px;
+ display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sec-upset-watch{background:#62421e77;border:1px solid #bb8b52;border-radius:11px;padding:10px 12px;margin-top:10px}
+.sec-upset-watch strong{font-size:11px;color:#ffe294;letter-spacing:.5px}
+.sec-upset-watch p{font-size:11px;color:#f7e2bb;margin:6px 0 0}
+.sec-shockwave-card{margin:12px 0;padding:14px;border:1px solid #547f73;border-radius:13px;
+ background:linear-gradient(130deg,#153b36,#19303d)}
+.sec-shockwave-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.sec-shockwave-head strong{color:#d5ff65;font-size:13px}
+.sec-shockwave-head small{color:#a8c4c6;font-size:11px;overflow-wrap:anywhere;text-align:right}
+.sec-shockwave-summary{font-size:12px;line-height:1.55;color:#e3f2ed;margin:10px 0}
+.sec-shockwave-labels{display:flex;justify-content:space-between;gap:9px;font-size:11px;color:#e1f1ed;font-weight:800}
+.sec-shockwave-track{height:10px;border-radius:10px;background:#6e8195;overflow:hidden;margin:6px 0 10px}
+.sec-shockwave-track i{display:block;height:100%;background:#d5ff65}
+.sec-shockwave-note{display:block;font-size:10px;color:#a8bebd;line-height:1.5}
+.sec-shockwave-hint{font-size:11px;margin:9px 0}
+.sec-weekly-recap{border:1px solid #426b5d;background:#192e35;border-radius:13px;padding:14px;margin-bottom:12px}
+.sec-weekly-recap h3{font-size:18px;color:#f5fff2;margin:4px 0 12px}
+.sec-weekly-awards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0}
+.sec-weekly-award{min-width:0;background:#253a3c;border:1px solid #3f625a;border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:5px}
+.sec-weekly-award small{color:#c2d2c5;font-size:10px}
+.sec-weekly-award strong{color:#d5ff65;font-size:12px;overflow-wrap:anywhere}
+.sec-weekly-award span{font-size:11px;color:#c9e4e2}
+@media(max-width:520px){.sec-weekly-awards{display:flex;overflow-x:auto;padding-bottom:5px;scroll-snap-type:x mandatory}
+.sec-weekly-award{flex:0 0 72%;scroll-snap-align:start}.sec-shockwave-head{flex-wrap:wrap}}

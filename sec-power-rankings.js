@@ -47,6 +47,7 @@ function render(item=manager()?.getSelected?.()){
  const data=cache.get(input.key);
  const busy=pending.has(input.key),issue=error.get(input.key);
  const rows=Array.isArray(data?.rows)?data.rows:[];
+ window.SEC_LEAGUE_INSIGHTS?.weekly?.(item,rows);
  const hasResults=rows.some(row=>number(row.season_graded)>0);
  let content="";
  if(!data&&busy)content='<p class="fan-subtle power-empty" role="status">Checking confirmed SEC results…</p>';

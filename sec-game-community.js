@@ -141,11 +141,13 @@ function commentary(g,sport){
    .filter(x=>x.url).filter((x,i,list)=>list.findIndex(y=>y.url===x.url)===i);
  const selected=source?'Recent '+source.source+" coverage: “"+String(source.title).slice(0,145)+"”":"";
  const caution=hits.some(a=>/\binjur|ruled out|questionable|inactive|scratched|surgery/i.test(a.title+" "+(a.summary||"")));
+ const upsetting=window.SEC_LEAGUE_INSIGHTS?.upset?.(g,sport);
  return '<div class="sec-ai-panel" data-commentary-state="'+esc(report.label)+'">'+
   '<div class="sec-ai-top"><h5>🎙️ SEC Smart Commentary</h5>'+
   '<span class="sec-ai-status">'+esc(report.label)+'</span></div>'+
   '<div class="sec-ai-narrative"><p>'+esc(report.text)+'</p>'+
   (selected?'<p class="sec-ai-coverage">'+esc(selected)+'</p>':"")+
+  (upsetting?'<div class="sec-upset-watch"><strong>'+esc(upsetting.label)+'</strong><p>'+esc(upsetting.message)+'</p></div>':"")+
   '</div>'+
   (caution?'<p class="sec-ai-injury">Injury-related coverage exists. Check the linked original reporting for current status.</p>':"")+
   '<div class="sec-ai-attribution"><small>Automatically written from published game data. No paid AI API, simulated plays or invented injuries.</small>'+
@@ -174,6 +176,7 @@ function panel(g,sport="football"){
  return '<section class="sec-game-community" data-community-game="'+esc(k)+'" aria-label="SEC game commentary and fan reactions">'+
   '<h4>🏟️ Game Center · fan zone</h4>'+
   '<div class="sec-community-news">'+commentary(g,sport)+'</div>'+
+  '<div class="sec-league-shockwave">'+(window.SEC_LEAGUE_INSIGHTS?.initial?.(g,sport)||"")+'</div>'+
   '<div class="sec-community-reactions">'+(stored.reactions||'<p class="fan-subtle">Checking fan reactions…</p>')+'</div></section>';
 }
 function update(k){
@@ -202,6 +205,7 @@ async function load(g,sport="football",force=false){
  try{
   await loadNews();
   update(k);
+  void window.SEC_LEAGUE_INSIGHTS?.load?.(g,sport,force);
   if(db()){
    const res=await db().rpc("sec_game_reaction_totals",{p_game:k});
    if(res.error)throw res.error;

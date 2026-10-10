@@ -24,7 +24,7 @@ async function loadGames(force=false){
  if(!client()||gamesLoading||(!force&&Date.now()-gamesAt<120000))return;
  gamesLoading=true;
  try{
-  const gs=val(await client().from("sec_games").select("id,week,away_code,home_code,kickoff_at,game_status,away_score,home_score,winner,score_updated_at"))||[];
+  const gs=val(await client().from("sec_games").select("id,week,away_code,home_code,kickoff_at,game_status,away_score,home_score,winner,spread_home,spread_source,score_updated_at"))||[];
   gameRows=Object.fromEntries(gs.map(g=>[g.id,g]));
   const league=window.secOnline?.getLeague?.();
   if(league&&user()){
@@ -49,7 +49,9 @@ function gameCenter(g,insights){
  const scored=isScore(awayScore)&&isScore(homeScore);
  const text=scored?esc(g.away)+" "+awayScore+" – "+homeScore+" "+esc(g.home):"Score pending";
  const game={...g,game_status:status,away_score:awayScore,home_score:homeScore,
-  winner:d?.winner||g.winner||null};
+  winner:d?.winner||g.winner||null,
+  spread_home:d?.spread_home??g.spread_home,
+  spread_source:d?.spread_source||g.spread_source||null};
  const rows=(revealed[g.id]||[]).filter(x=>x===g.away||x===g.home),num=rows.filter(x=>x===g.away).length;
  const locked=Number.isFinite(Date.parse(d?.kickoff_at||g.kickoff))&&Date.parse(d?.kickoff_at||g.kickoff)<=Date.now();
  const trend=locked&&rows.length?'<p class="fan-subtle">League trends (revealed after lock): '+esc(g.away)+' '+Math.round(num/rows.length*100)+
