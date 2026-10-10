@@ -1,18 +1,136 @@
 {
-  "updated_at": "2026-10-09T21:12:46.325201Z",
-  "checked_at": "2026-10-09T21:12:46.325201Z",
+  "updated_at": "2026-10-10T00:05:22.961914Z",
+  "checked_at": "2026-10-10T00:05:22.961914Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "bed43defcdb4fcbd",
+      "title": "Chris Doering dives into key SEC Week 6 matchups",
+      "summary": "SEC Network's Doering joins The Paul Finebaum Show to spotlight what to look out for this week as big conference games take the stage in Week 6.",
+      "url": "https://www.espn.com/video/clip/_/id/50143221/chris-doering-dives-key-sec-week-6-matchups",
+      "source": "ESPN",
+      "published_at": "2026-10-09T22:55:02Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "203e8b0cc9543229",
+      "title": "Dari Nowkhah offers advice to improve Sooners' offense",
+      "summary": "With the pressure high to secure a Red River Rivalry win, SEC Network's Nowkhah advises his alma mater Oklahoma with keys in order to come out on top.",
+      "url": "https://www.espn.com/video/clip/_/id/50143206/dari-nowkhah-offers-advice-improve-sooners-offense",
+      "source": "ESPN",
+      "published_at": "2026-10-09T22:49:54Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "82f9fe32eb3ac4ed",
+      "title": "How will Florida respond vs. South Carolina following loss to Missouri?",
+      "summary": "Tim Tebow joins The Paul Finebaum Show to discuss where things went wrong for the Gators against the Tigers and emphasize the need to show up with high energy vs. the Gamecocks.",
+      "url": "https://www.espn.com/video/clip/_/id/50143079/how-florida-respond-vs-south-carolina-following-loss-missouri",
+      "source": "ESPN",
+      "published_at": "2026-10-09T22:25:22Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Missouri",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3b43cba914b03824",
+      "title": "Roman Harper is impressed with Bama's defensive growth, UGA offense",
+      "summary": "Harper highlights No. 6 Alabama's defensive maturity through diverse and young talent then praises No. 2 Georgia's offensive flow.",
+      "url": "https://www.espn.com/video/clip/_/id/50143018/roman-harper-impressed-bama-defensive-growth-uga-offense",
+      "source": "ESPN",
+      "published_at": "2026-10-09T21:54:19Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "79af8af1c33cca16",
+      "title": "First time at the State Fair of Texas? Here are our tips",
+      "summary": "We polled our staff for their best tips on making the most of one of the sport's most distinctive backdrops.",
+      "url": "https://www.espn.com/college-football/story/_/id/50135168/texas-oklahoma-state-fair-red-river-guide",
+      "source": "ESPN",
+      "published_at": "2026-10-09T21:52:39Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "fb24f3d462a2849d",
+      "title": "Power ranking SEC teams who need a win in Week 6",
+      "summary": "Peter Burns brings out his own version of SEC Network Power Rankings as he ranks the five teams that are under the most pressure to get a victory in Week 6 action.",
+      "url": "https://www.espn.com/video/clip/_/id/50142969/power-ranking-sec-teams-need-win-week-6",
+      "source": "ESPN",
+      "published_at": "2026-10-09T21:49:10Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "2cee426fbc0c02dc",
+      "title": "Holly Rowe analyzes Georgia and Alabama's improvements",
+      "summary": "ESPN's Rowe joins The Paul Finebaum Show to discuss how the No. 2 Bulldogs and the No. 6 Crimson Tide's improved offenses will be the big storyline of this game.",
+      "url": "https://www.espn.com/video/clip/_/id/50142972/holly-rowe-analyzes-georgia-alabama-improvements",
+      "source": "ESPN",
+      "published_at": "2026-10-09T21:47:18Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "cb37f14afbc2f6a0",
+      "title": "Mack Brown on Red River Rivalry: 'It's loud the whole time'",
+      "summary": "As Oklahoma and No. 1 Texas face off once again, former Longhorns' head coach Brown joins SEC This Morning and explains how the environment and atmosphere shape the rivalry game.",
+      "url": "https://www.espn.com/video/clip/_/id/50142915/loud-whole",
+      "source": "ESPN",
+      "published_at": "2026-10-09T21:35:40Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5b4625aa709472cc",
+      "title": "George: Defense will decide OU vs No. 1 Texas, Manning is confident",
+      "summary": "ESPN's Katie George expects the Red River Rivalry to be a defensive battle, and discusses the support QB Arch Manning has received as he continues to find his rhythm.",
+      "url": "https://www.espn.com/video/clip/_/id/50142912/defense-decide-ou-vs-no-1-texas-manning-confident",
+      "source": "ESPN",
+      "published_at": "2026-10-09T21:34:43Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
       "id": "b7e40453d895bcf7",
       "title": "Trump will not attend Georgia-Alabama game due to Hurricane Isaias",
       "summary": "President Trump will no longer attend Saturday's SEC clash between Georgia and Alabama, which remains on schedule despite approaching Hurricane Isaias.",
       "url": "https://www.espn.com/college-football/story/_/id/50142513/trump-not-attend-georgia-alabama-game-due-hurricane-isaias",
       "source": "ESPN",
-      "published_at": "2026-10-09T21:05:54Z",
+      "published_at": "2026-10-09T21:21:28Z",
       "sport": "football",
       "teams": [
         "Alabama",
@@ -85,19 +203,6 @@
       "teams": [
         "Alabama",
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "79af8af1c33cca16",
-      "title": "First time at the State Fair of Texas? Here are our tips",
-      "summary": "We polled our staff for their best tips on making the most of one of the sport's most distinctive backdrops.",
-      "url": "https://www.espn.com/college-football/story/_/id/50135168/texas-oklahoma-state-fair-red-river-guide",
-      "source": "ESPN",
-      "published_at": "2026-10-09T13:03:43Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
       ],
       "breaking": false
     },
@@ -247,105 +352,6 @@
         "Florida",
         "Ole Miss",
         "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "727ef1aad7ea6012",
-      "title": "Gene Chizik breaks down No. 2 Georgia's ferocious run defense",
-      "summary": "SEC Network's Gene Chizik analyzes film of the Bulldogs' defensive front and explains how they are able to suffocate opposing rushing attacks.",
-      "url": "https://www.espn.com/video/clip/_/id/50128869/gene-chizik-breaks-no-2-georgia-ferocious-run-defense",
-      "source": "ESPN",
-      "published_at": "2026-10-08T02:00:29Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ac8e1965b840d2f9",
-      "title": "No. 1 Texas' Hero Kanu details experience in Red River Rivalry",
-      "summary": "Kanu joins SEC Now ahead of the Longhorns' matchup against Oklahoma to discuss the spectacle around one of college football's most historic rivalries and his interests outside of football.",
-      "url": "https://www.espn.com/video/clip/_/id/50128599/no-1-texas-hero-kanu-details-experience-red-river-rivalry",
-      "source": "ESPN",
-      "published_at": "2026-10-08T02:00:20Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d40ad1270ce7c0f8",
-      "title": "Willie Rodriguez breaks down game-winning catch in UK's win over SC",
-      "summary": "Rodriguez joins SEC Now to relive the final moments of the Wildcats' comeback win over the Gamecocks and previews their matchup against No. 10 LSU in Lexington.",
-      "url": "https://www.espn.com/video/clip/_/id/50128738/willie-rodriguez-breaks-game-winning-catch-uk-win-sc",
-      "source": "ESPN",
-      "published_at": "2026-10-08T02:00:09Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "LSU",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5afa4d49b3350deb",
-      "title": "Gene Chizik outlines No. 14 Mizzou, Texas A&M keys to winning",
-      "summary": "Chizik says Missouri should maintain the dominance from its big Week 5 win over No. 16 Florida to protect home against the Aggies, while advising Texas A&M to lean on its QB run game.",
-      "url": "https://www.espn.com/video/clip/_/id/50128739/gene-chizik-outlines-no-14-mizzou-texas-keys-winning",
-      "source": "ESPN",
-      "published_at": "2026-10-08T00:12:17Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Missouri",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1de5a0b183515b3c",
-      "title": "Gene Chizik says Week 6 game with UK is 'dangerous' for No. 10 LSU",
-      "summary": "Will Stein is full of confidence and it's evident in Kentucky's energy and momentum, this mentality is enough to convince Chizik that LSU must execute cleanly to pick up a road win.",
-      "url": "https://www.espn.com/video/clip/_/id/50128598/gene-chizik-says-week-6-game-uk-dangerous-no-10-lsu",
-      "source": "ESPN",
-      "published_at": "2026-10-07T23:51:46Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "2d3fd03a7ae053ae",
-      "title": "McGee Essay: Football, Legends, History - 'Red River Rivalry'",
-      "summary": "Ryan McGee dives into the legendary moments, rich history and storied tradition that make the 126-year rivalry between No. 1 Texas and Oklahoma one of college football's must-see matchups.",
-      "url": "https://www.espn.com/video/clip/_/id/50128398/football-legends-history-red-river-rivalry",
-      "source": "ESPN",
-      "published_at": "2026-10-07T23:28:33Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "30d4ae62c7eb2db1",
-      "title": "Vols RB DeSean Bishop looks forward to Hogs, thinks beyond football",
-      "summary": "No. 15 Tennessee hasn't won at Razorback Stadium since 2001, and Bishop cherishes the opportunity to change that while keeping life after football in mind.",
-      "url": "https://www.espn.com/video/clip/_/id/50128025/vols-rb-desean-bishop-looks-forward-hogs-thinks-football",
-      "source": "ESPN",
-      "published_at": "2026-10-07T22:27:17Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas",
-        "Tennessee"
       ],
       "breaking": false
     },
