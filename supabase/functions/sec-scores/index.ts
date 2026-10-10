@@ -1,4 +1,5 @@
-// SEC scores: ESPN public scoreboard -> verified game results.
+// SEC scores: verified ESPN results + NCAA live score cross-check.
+import {fetchNcaa,matchNcaa,pickLive} from "./ncaa.ts";
 // Called only by the private pg_cron token kept in Supabase Vault; no arbitrary client writes.
 const PROJECT = Deno.env.get("SUPABASE_URL") || "";
 const SERVICE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
@@ -137,7 +138,7 @@ Deno.serve(async req=>{
   if(valid!==true)return jsonify({error:"Forbidden"},403);
  }catch(e){console.error("SEC job authorization failed",e);return jsonify({error:"Authorization unavailable"},503);}
  try{
-  const games:any[]=await api("sec_games?select=id,game_date,kickoff_at,away_code,home_code,game_status,status_detail,away_score,home_score,espn_event_id,spread_home,score_updated_at,live_possession_code,live_down,live_distance,live_position_text,live_field_percent,live_drive_summary,live_last_play,live_situation_updated_at&order=game_date.asc");
+  const games:any[]=await api("sec_games?select=id,week,game_date,kickoff_at,away_code,home_code,game_status,status_detail,away_score,home_score,espn_event_id,spread_home,score_updated_at,live_score_source,live_possession_code,live_down,live_distance,live_position_text,live_field_percent,live_drive_summary,live_last_play,live_situation_updated_at&order=game_date.asc");
   const today=new Date().toISOString().slice(0,10);
   const min=new Date(Date.now()-65*86400000).toISOString().slice(0,10);
   const max=new Date(Date.now()+3*86400000).toISOString().slice(0,10);
@@ -154,6 +155,16 @@ Deno.serve(async req=>{
       at<Date.now()-36*3600000 || at>Date.now()+72*3600000)continue;
    for(const d of [-1,1])datesSet.add(new Date(Date.parse(g.game_date+"T12:00:00Z")+d*86400000).toISOString().slice(0,10));
   }
+  // Fetch only the matching NCAA gameweeks; parallel to ESPN.
+  const nowMs=Date.now();
+  const feedWeeks=[...new Set(eligible.filter(g=>{
+   const t=Date.parse(g.kickoff_at);
+   return g.game_status!=="final"&&Number.isFinite(t)&&t>nowMs-8*3600000&&t<nowMs+45*60000;
+  }).map(g=>String(g.game_date).slice(0,4)+":"+g.week))].slice(0,3);
+  const ncaaPending=Promise.all(feedWeeks.map(async key=>{
+   const [season,week]=key.split(":").map(Number);
+   return [key,await fetchNcaa(season,week)] as const;
+  }));
   const dates=[...datesSet].sort();
   const matches:Record<string,any[]>={};
   let failures=0;
@@ -164,6 +175,7 @@ Deno.serve(async req=>{
    }));
   }
 
+  const ncaaBoards=new Map<string,any[]>(await ncaaPending);
   // Enrich only matched live SEC games, in bounded concurrent batches.
   // One bad ESPN summary must never interfere with official score grading.
   const liveEvents=new Set<string>();
@@ -191,7 +203,7 @@ Deno.serve(async req=>{
    }));
   }
 
-  let updated=0, skipped=0,finals=0,lines=0;
+  let updated=0, skipped=0,finals=0,lines=0,ncaaAhead=0;
   for(const g of eligible){
    const all=[...(matches[g.game_date]||[])];
    // Adjacent-day candidates must match the exact event ID when known, or
@@ -220,7 +232,13 @@ Deno.serve(async req=>{
    // Only declare winners from an official completed event with two distinct scores.
    const winner=rawStatus==="final"&&awayScore!==null&&homeScore!==null&&awayScore!==homeScore
       ?(homeScore>awayScore?g.home_code:g.away_code):null;
-   const status=rawStatus==="final"&&!winner?"live":rawStatus;
+   let status=rawStatus==="final"&&!winner?"live":rawStatus;
+   const ncaa=matchNcaa(g,ncaaBoards.get(String(g.game_date).slice(0,4)+":"+g.week)||[],recognize);
+   if(status==="scheduled"&&ncaa?.state==="I"&&
+      Date.now()>=Date.parse(g.kickoff_at)-10*60000)status="live";
+   const preferred=status==="final"?{away:awayScore,home:homeScore,source:"ESPN"}:
+    pickLive(awayScore,homeScore,ncaa,g.away_score,g.home_score,status==="live");
+   if(preferred.source==="NCAA")ncaaAhead++;
    // Never undo a previously verified final if the provider briefly regresses.
    if(g.game_status==="final"&&status!=="final"){skipped++;continue;}
    const liveStatus=ev.status||comp.status||{};
@@ -229,7 +247,10 @@ Deno.serve(async req=>{
    const clock=/^\d{1,2}:\d{2}$/.test(rawClock)?rawClock:null;
    const periodName=period>=1&&period<=4?"Q"+period:period>=5&&period<=8?"OT"+(period-4):null;
    const stage=status==="live"&&clock&&periodName?periodName+" · "+clock:null;
-   const detail=stage||String(ev.status?.type?.shortDetail||comp.status?.type?.shortDetail||"");
+   const espnDetail=stage||String(ev.status?.type?.shortDetail||comp.status?.type?.shortDetail||"");
+   const phaseRank=(x:string)=>x==="Halftime"?2.5:Number(x.match(/Q([1-4])/i)?.[1]||0);
+   const detail=status==="live"&&ncaa?.period&&phaseRank(ncaa.period)>phaseRank(espnDetail)
+    ?ncaa.period:espnDetail;
    const officialKickoff=Date.parse(ev.date||comp.date||"");
    const originalKickoff=Date.parse(g.kickoff_at);
    // Never silently reopen a kicked-off or completed game. A source-verified
@@ -240,8 +261,8 @@ Deno.serve(async req=>{
    const patch:any={
      game_status:status,
      status_detail:detail.slice(0,80),
-     away_score:awayScore,
-     home_score:homeScore,
+     away_score:preferred.away,
+     home_score:preferred.home,
      espn_event_id:String(ev.id)
    };
 
@@ -282,13 +303,16 @@ Deno.serve(async req=>{
      lines++;
     }
    }
+   if(preferred.away!==g.away_score||preferred.home!==g.home_score)
+    patch.live_score_source=preferred.source;
    // Track when the *published* scoreboard changes, not merely when our job
    // re-polls an unchanged response. This enables meaningful stale-feed alerts.
    const changed=status!==g.game_status || patch.status_detail!==g.status_detail ||
-     awayScore!==g.away_score || homeScore!==g.home_score ||
+     patch.away_score!==g.away_score || patch.home_score!==g.home_score ||
      patch.kickoff_at!==undefined ||
      (patch.spread_home!==undefined&&patch.spread_home!==g.spread_home) ||
      (g.espn_event_id||null)!==String(ev.id) ||
+     (patch.live_score_source!==undefined&&patch.live_score_source!==g.live_score_source) ||
      SITUATION_KEYS.some(k=>Object.hasOwn(patch,k) && (patch[k]??null)!==(g[k]??null)) ||
      (Object.hasOwn(patch,"live_situation_updated_at")&&patch.live_situation_updated_at===null&&g.live_situation_updated_at!==null);
    if(!changed){skipped++;continue;}
@@ -299,6 +323,6 @@ Deno.serve(async req=>{
      });updated++;
    }catch(e){failures++;console.warn("SEC result update failed",g.id,String(e));}
   }
-  return jsonify({updated,finalsObserved:finals,linesObserved:lines,unmatched:skipped,errors:failures,checkedDates:dates.length,at:stamp()},failures?207:200);
+  return jsonify({updated,finalsObserved:finals,linesObserved:lines,ncaaAhead,unmatched:skipped,errors:failures,checkedDates:dates.length,at:stamp()},failures?207:200);
  }catch(e){console.error("SEC scores job failed",e);return jsonify({error:"Score refresh unavailable"},503);}
 });
