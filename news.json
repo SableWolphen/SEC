@@ -1,11 +1,66 @@
 {
-  "updated_at": "2026-10-10T00:05:22.961914Z",
-  "checked_at": "2026-10-10T00:05:22.961914Z",
+  "updated_at": "2026-10-10T05:57:36.988877Z",
+  "checked_at": "2026-10-10T05:57:36.988877Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "46c6d02f34b38fa3",
+      "title": "Analyzing challenge Georgia faces against battle-tested Alabama",
+      "summary": "ESPN's Kirk Herbstreit breaks down the strengths of both teams as he emphasizes why the Bulldogs must make the Crimson Tide drive the ball if they want to win in Tuscaloosa.",
+      "url": "https://www.espn.com/video/clip/_/id/50143772/analyzing-challenge-georgia-faces-battle-tested-alabama",
+      "source": "ESPN",
+      "published_at": "2026-10-10T01:58:11Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "dfd4bd46df05d0ee",
+      "title": "Taking a look at Texas' Arch Manning's passing woes",
+      "summary": "With Manning having two touchdowns and three interceptions when throwing the ball 10+ yards, SEC Now's Chris Doering breaks down what needs to improve with the Longhorns' passing attack.",
+      "url": "https://www.espn.com/video/clip/_/id/50143829/taking-look-texas-arch-manning-passing-woes",
+      "source": "ESPN",
+      "published_at": "2026-10-10T01:42:57Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6eb28b6ff9213e13",
+      "title": "DeBoer on Bama's execution, Russell's biggest test of season vs. UGA",
+      "summary": "Kalen DeBoer discusses his pride in the Crimson Tide's ability to execute plays effectively as he describes the confidence he has in Keelon Russell ahead of test vs. the Bulldogs.",
+      "url": "https://www.espn.com/video/clip/_/id/50143662/deboer-bama-execution-russell-biggest-test-season-vs-uga",
+      "source": "ESPN",
+      "published_at": "2026-10-10T01:02:11Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b7e40453d895bcf7",
+      "title": "Trump will not attend Georgia-Alabama game due to Hurricane Isaias",
+      "summary": "President Trump will no longer attend Saturday's SEC clash between Georgia and Alabama, which remains on schedule despite approaching Hurricane Isaias.",
+      "url": "https://www.espn.com/college-football/story/_/id/50142513/trump-not-attend-georgia-alabama-game-due-hurricane-isaias",
+      "source": "ESPN",
+      "published_at": "2026-10-10T00:25:03Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
     {
       "id": "bed43defcdb4fcbd",
       "title": "Chris Doering dives into key SEC Week 6 matchups",
@@ -121,20 +176,6 @@
       "sport": "football",
       "teams": [
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b7e40453d895bcf7",
-      "title": "Trump will not attend Georgia-Alabama game due to Hurricane Isaias",
-      "summary": "President Trump will no longer attend Saturday's SEC clash between Georgia and Alabama, which remains on schedule despite approaching Hurricane Isaias.",
-      "url": "https://www.espn.com/college-football/story/_/id/50142513/trump-not-attend-georgia-alabama-game-due-hurricane-isaias",
-      "source": "ESPN",
-      "published_at": "2026-10-09T21:21:28Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
       ],
       "breaking": false
     },
@@ -310,20 +351,6 @@
       "sport": "football",
       "teams": [
         "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "11e8f594eb05d693",
-      "title": "Georgia's Chauncey Bowens out vs. Alabama; Nate Frazier off injury report",
-      "summary": "Georgia running back Chauncey Bowens, who leads the No.",
-      "url": "https://www.espn.com/college-football/story/_/id/50128870/georgia-bulldogs-chauncey-bowens-vs-alabama-crimson-tide",
-      "source": "ESPN",
-      "published_at": "2026-10-08T11:59:54Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
       ],
       "breaking": false
     },
