@@ -30,6 +30,10 @@ Schedules for basketball and baseball rely on verified imported games. If no off
 
 ## Full-season SEC Fan Experience (October 2026)
 
+### Weekly League Power Rankings — verified only
+
+Every selected SEC league now includes an unobtrusive **⚡ Power Rankings** card. The private, member-authorized Supabase function `sec_weekly_power_rankings(p_kind,p_league)` works on **each standalone sport league** and every **per-league combination** of football, basketball and baseball. It ranks players by their actual season league points; displays graded weekly points and correct picks; compares the season standings to their position at this Monday’s start (Central Time) for **▲ / ▼** movements; and summarizes the true season leader, most correct picks this week, and largest rank rise. **No final results = no invented rankings, movement, streaks, or winners.** Disabled sports do not influence that league. Only club/league members can call the server-side function; no other player's unstarted picks are returned. Compact by default with the first five members and a disclosure for the rest. Cache lasts two minutes per selected league, with manual refresh.
+
 ### Each league chooses its own sports — change per league
 
 The **League** page now lists each league independently. Owners can create a **Football-only**, **Basketball-only**, **Baseball-only**, any **two-sport**, or **three-sport** league. Players can join and belong to multiple leagues with different configurations using their one existing account.
