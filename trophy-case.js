@@ -290,7 +290,7 @@
  "@media(max-width:365px){#sds-trophy-case{padding:18px 10px 85px}#sds-trophy-case .sds-trophy-display{height:145px}#sds-trophy-case .sds-trophy-placeholder strong{font-size:44px}}"
  ];
  const style=document.createElement("style");style.textContent=rules.join("\n");document.head.appendChild(style);
- let verified=[],myPicks={},schedule={},records=[],permanent=[],derived=[],historyUser=null,signedIn=false,leagueId=null,leagueName="",tab="all",school="schools",expandedSchool="ALA",category="all",searchTerm="",rootId="sds-trophy-case",renderId=0,viewerLoading=false;
+ let verified=[],myPicks={},schedule={},records=[],permanent=[],derived=[],historyUser=null,signedIn=false,leagueId=null,leagueName="",tab="all",school="schools",expandedSchool=null,category="all",searchTerm="",rootId="sds-trophy-case",renderId=0,viewerLoading=false;
  function last(id){return records.filter(r=>r.trophyId===id).sort((a,b)=>b.year-a.year)[0];}
  function lastWin(id){return records.filter(r=>r.trophyId===id&&r.correct).sort((a,b)=>b.year-a.year)[0];}
  function owned(){return TROPHIES.filter(t=>Boolean(lastWin(t.id)));}
@@ -476,6 +476,7 @@
   return section;
  }
  function refreshHonors(){
+  if(window.SEC_TROPHY_MUSEUM?.refresh){window.SEC_TROPHY_MUSEUM.refresh();return;}
   const old=document.getElementById("sds-league-honors");
   if(old)old.replaceWith(leagueHonors());
  }
@@ -483,6 +484,7 @@
   const root=document.getElementById(rootId);if(!root)return;
   tab=["all","mine","history","rivalries"].includes(next)?next:"all";
   const version=++renderId;root.replaceChildren();
+  if(window.SEC_TROPHY_MUSEUM?.render?.({root,version,signedIn,leagueId,leagueName,verified,myPicks,schedule,records,trophies:TROPHIES,owned,lastWin,schoolOverviewData,schoolTrophies,trophyCard,expandedSchool,toggleSchool,rerender:()=>render()}))return;
   const h=document.createElement("h2");h.className="sds-trophy-heading";h.innerHTML="Trophy <span>Case</span>";
   const subtitle=document.createElement("p");subtitle.className="sds-trophy-subtitle";
   subtitle.textContent="Win it. Keep it. Brag about it."+(leagueName?" · "+leagueName:"");
