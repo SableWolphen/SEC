@@ -71,6 +71,9 @@ const flush=async()=>{for(let i=0;i<4;i++)await new Promise(resolve=>setImmediat
  assert.equal(standingRefresh,1,"no duplicate final-triggered ranking updates");
  const pub=fs.readFileSync("supabase/migrations/20261010_football_realtime_scores.sql","utf8");
  assert.match(pub,/alter publication supabase_realtime add table public.sec_games/);
+ const fast=fs.readFileSync("supabase/migrations/20261010_football_30_second_espn_refresh.sql","utf8");
+ assert.match(fast,/sec-scores-live-minute','30 seconds'/);
+ assert.match(fast,/where exists\(/,"server does not poll ESPN every 30s outside game windows");
  const sql=fs.readFileSync("supabase/migrations/20261009_active_game_minute_scores.sql","utf8");
  assert.ok(sql.includes("g.game_status in ('scheduled','live')"));
  assert.ok(sql.includes("vault.decrypted_secrets"));
@@ -79,5 +82,5 @@ const flush=async()=>{for(let i=0;i<4;i++)await new Promise(resolve=>setImmediat
  assert.ok(ts.includes("const rawClock=String(liveStatus.displayClock"));
  assert.ok(ts.includes('g.game_status==="final"&&status!=="final"'));
  assert.ok(!fs.readFileSync("sec-live-scores.js","utf8").includes('.update('),"client never writes score data");
- console.log("Verified live football score smoke passed: clock, score updates, unchanged picks, final-only grading, no repeated rerender and secure minute job.");
+ console.log("Verified live football score smoke passed: clock, score updates, unchanged picks, final-only grading, no repeated rerender and secure 30-second game-day job.");
 })().catch(e=>{console.error(e);process.exitCode=1;});
