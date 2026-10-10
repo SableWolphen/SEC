@@ -6,14 +6,14 @@ const schools={ALA:"Alabama",ARK:"Arkansas",AUB:"Auburn",FLA:"Florida",UGA:"Geor
  MSST:"Mississippi State",MIZ:"Missouri",OU:"Oklahoma",SC:"South Carolina",TENN:"Tennessee",TEX:"Texas",TAMU:"Texas A&M",VAN:"Vanderbilt"};
 const emojis={fire:"🔥",upset:"⚡",hype:"🙌",wow:"😱"};
 let articles=[],newsAt=0;
-const cache=new Map(),pending=new Set();
+const cache=new Map(),pending=new Set(),games=new Map();
 const db=()=>window.secOnline?.getClient?.();
 const viewer=()=>window.secOnline?.getUser?.();
 const data=()=>window.SEC_BRIDGE?.state?.();
 function key(g,sport){return sport+":"+g.id;}
 function panel(g,sport="football"){
  if(!g?.id)return "";
- const k=key(g,sport),stored=cache.get(k)||{};
+ const k=key(g,sport),stored=cache.get(k)||{};games.set(k,{g,sport});
  return '<section class="sec-game-community" data-community-game="'+esc(k)+'" aria-label="Fan Game Center extras">'+
   '<h4>🏟️ Fans &amp; matchup intel</h4>'+
   '<div class="sec-community-commentary">'+(stored.commentary||'Open Game Center for a source-grounded matchup preview.')+'</div>'+
@@ -26,7 +26,7 @@ const safeUrl=u=>{
 const name=c=>schools[c]||c||"";
 function matching(g,item){
  const ts=Array.isArray(item.teams)?item.teams:[];
- return [g.away,g.home,g.away_code,g.home_code].filter(Boolean).some(c=>ts.includes(name(c)));
+ return [g.away,g.home,g.away_code,g.home_code,g.away_name,g.home_name].filter(Boolean).some(c=>ts.includes(name(c)));
 }
 function analysis(g,sport){
  if(sport==="football"){
@@ -129,5 +129,5 @@ document.addEventListener("click",e=>{
  if(voteButton){e.preventDefault();void vote(voteButton.dataset.gameKey,voteButton.dataset.gameReaction,voteButton);return;}
  if(e.target.closest?.("[data-community-login]")){e.preventDefault();window.SEC_BRIDGE?.setView?.("league");}
 });
-window.SEC_GAME_COMMUNITY=Object.freeze({panel,load});
+window.SEC_GAME_COMMUNITY=Object.freeze({panel,load,loadKey:k=>{const v=games.get(k);if(v)return load(v.g,v.sport);}});
 })();

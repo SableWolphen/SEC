@@ -606,3 +606,23 @@ body{overflow-x:clip}
 .spotlight-team .team-copy{display:flex;flex-direction:column;align-items:flex-start;min-width:0;text-align:left}
 .sec-news-no-breaking{border:1px solid #4d6872;background:#19313b;color:#d8e9ef;border-radius:12px;padding:12px 14px;font-size:12px;line-height:1.5;margin:0 0 13px}
 @media(max-width:400px){.team-pick-context{font-size:9px}.team-choice .team-copy{min-width:0}}
+
+/* Fan pride, verified bragging receipts and member reactions */
+#league-view .fan-league-tabs button{font-size:11px;padding:9px 5px}
+.sec-school-badge{display:inline-flex;vertical-align:middle;white-space:nowrap;background:#335344;border:1px solid #70957a;color:#dbf4b1;padding:3px 6px;border-radius:999px;font-size:10px;font-weight:900;margin-left:5px}
+.sec-brags-panel{margin:0!important;padding:15px}
+.sec-brags-panel h2{font-size:21px;margin:5px 0}
+.sec-brag-awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:13px 0 15px}
+.sec-brag-award{border-radius:12px;border:1px solid #476157;background:#142a2a;padding:12px;display:flex;flex-direction:column;gap:5px;min-width:0}
+.sec-brag-award>span{font-size:19px}.sec-brag-award small{color:#9db6b6;text-transform:uppercase;font-size:10px;font-weight:800}
+.sec-brag-award strong{overflow-wrap:anywhere;font-size:13px;color:#e8f4e7}.sec-brag-award em{color:#d7fa65;font-size:11px;font-style:normal;font-weight:900}
+.sec-brag-table{font-size:11px;white-space:nowrap}
+.sec-game-community{border-top:1px solid #43625e;margin-top:15px;padding-top:12px}
+.sec-game-community h4{font-size:15px;margin:0 0 9px}.sec-game-community h5{font-size:13px;margin:12px 0 8px}
+.sec-community-news-section ul{padding-left:20px;margin:6px 0}.sec-community-news-section li{margin:7px 0;font-size:12px;line-height:1.5}
+.sec-community-news-section li a{color:#d7fa65}.sec-community-news-section li small{color:#adb9be}
+.sec-community-votes{display:flex;gap:7px;flex-wrap:wrap}
+.sec-community-reaction{border:1px solid #5c756e;border-radius:999px;background:#193335;color:#e9f1f0;padding:9px 12px;min-height:43px;font-size:13px;font-weight:800}
+.sec-community-reaction.chosen{background:#d7fa65;border-color:#d7fa65;color:#1b2f26}
+.sec-community-reaction:disabled{opacity:.5}
+@media(max-width:430px){#league-view .fan-league-tabs button{font-size:10px;padding:9px 2px}.sec-brag-awards{gap:7px}.sec-brag-award{padding:10px}.sec-brag-table{font-size:10px}}

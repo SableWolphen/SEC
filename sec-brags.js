@@ -26,7 +26,7 @@ function render(){
   ["🧱","Chalk Loyalist",loyal,loyal?pct(loyal.favorite_pick_pct)+" favorites":"No published lines"],
   ["💥","Biggest Shock",biggest,biggest?Number(biggest.biggest_upset).toFixed(1)+"-point dog":"No verified upsets"]
  ];
- const names=Object.fromEntries((window.SEC_LEAGUE_SETTINGS?.getStandings?.()||[]).map(r=>[r.user_id,r.display_name]));
+ const names=Object.fromEntries([...(window.SEC_LEAGUE_SETTINGS?.getStandings?.()||[]),...(window.secOnline?.getStandings?.()||[])].map(r=>[r.user_id,r.display_name]));
  // Football standings live in a separate module; the authoritative name is in the stats response.
  const grid=champions.map(([emoji,title,player,value])=>'<div class="sec-brag-award"><span>'+emoji+'</span>'+
   '<small>'+title+'</small><strong>'+esc(player?.display_name||names[player?.user_id]||"Unclaimed")+
@@ -53,7 +53,7 @@ async function load(item=kindOf(),force=false){
   const result=await db.rpc("sec_league_brag_stats",{p_kind:item.kind,p_league:item.id});
   if(result.error)throw result.error;
   if(v!==request||key!==k)return;
-  rows=(result.data||[]).map(r=>({...r,display_name:null}));
+  rows=result.data||[];
   loadedAt=Date.now();
  }catch(e){if(v===request)error=e.message||"Try again.";}
  finally{if(v===request){loading=false;render();}}

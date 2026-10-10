@@ -76,6 +76,6 @@ async function refresh(){
     if(window.SEC_BRIDGE&&window.SEC_BRIDGE.view()==="picks")window.SEC_BRIDGE.renderPicks();
   }catch(err){console.info("SEC matchup insights unavailable",err);}
 }
-window.SEC_STATS={render:render,featured:featured,pickContext:pickContext,refresh:refresh,lastUpdated:function(){return generated;},count:function(){return Object.keys(games).length;}};
+window.SEC_STATS={render:render,featured:featured,getGame:g=>games[g?.id]||null,pickContext:pickContext,refresh:refresh,lastUpdated:function(){return generated;},count:function(){return Object.keys(games).length;}};
 void refresh();
 })();

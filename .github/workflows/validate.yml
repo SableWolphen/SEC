@@ -60,6 +60,9 @@ jobs:
           node scripts/smoke-league-choice.cjs
           node --check league-tabs.js
           node scripts/smoke-league-tabs.cjs
+          node --check sec-pride.js
+          node --check sec-brags.js
+          node --check sec-game-community.js
           node --check scripts/smoke-fan-experience.cjs
           node scripts/smoke-fan-experience.cjs
           node --check team-records.js
