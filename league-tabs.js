@@ -41,6 +41,8 @@ function synchronize(){
  if(selectedKey!==key){
   selectedKey=key;pane=member&&!item?"more":"scores";
   if(member&&item){void window.SEC_PRIDE?.load?.(item.kind,item.id);void window.SEC_BRAGS?.load?.(item);
+   void window.SEC_POWER?.show?.(item);
+   void window.SEC_BRAG_ARENA?.load?.(item);
    window.SEC_BRAG_ARENA?.render?.();}
   else window.SEC_BRAGS?.render?.();
   for(const id of ["fan-league-club-manager","fan-league-single-manager","fan-league-football-manager","fan-league-chat-content"])byId(id)?.replaceChildren();
