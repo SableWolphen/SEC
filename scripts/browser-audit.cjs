@@ -128,6 +128,8 @@ fs.mkdirSync(output,{recursive:true});
        score:row?.textContent.includes("14 – 10")||false,
        duplicateStatus:!!card?.querySelector(".sec-live,.sec-score-phase"),
        hasDetail:!!card?.querySelector(".fan-center-detail"),
+       compactFieldVisible:(()=>{const el=card?.querySelector(".fan-center > summary .fan-field-mini");return !!el&&el.getBoundingClientRect().height>0;})(),
+       compactMarker:!!card?.querySelector(".fan-center > summary .fan-football-marker"),
        hasLiveDrive:!!card?.querySelector(".fan-drive"),
        hasBall:!!card?.querySelector(".fan-drive-ball"),
        liveText:card?.querySelector(".fan-drive")?.textContent.includes("2nd & 7")||false
@@ -135,6 +137,7 @@ fs.mkdirSync(output,{recursive:true});
    });
    if(!oneLive.rendered||oneLive.liveBadges!==1||!oneLive.phase||
       !oneLive.score||oneLive.duplicateStatus||!oneLive.hasDetail||
+      !oneLive.compactFieldVisible||!oneLive.compactMarker||
       !oneLive.hasLiveDrive||!oneLive.hasBall||!oneLive.liveText)
      problems.push(viewport.width+"px duplicate live game status: "+JSON.stringify(oneLive));
    await page.screenshot({path:path.join(output,viewport.width+"-gameday.png")});
