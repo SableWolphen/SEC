@@ -5,7 +5,7 @@ const nodes=Object.fromEntries(["sec-gameday-picks","sec-gameday-alerts","sec-da
 "sec-day-rivalry","sec-day-basketball","sec-day-baseball","sec-day-alert-settings"].map(id=>[id,{innerHTML:""}]));
 const listeners={};
 const games=[
- {id:"g1",away:"TAMU",home:"MIZ",kickoff:"2026-10-10T15:00:00Z",liveStatus:"live",
+ {id:"g1",away:"TAMU",home:"MIZ",kickoff:new Date(Date.now()-2*3600000).toISOString(),liveStatus:"live",
  awayScore:14,homeScore:10,statusDetail:"Q2 · 06:23"},
  {id:"g2",away:"ALA",home:"UGA",kickoff:"2026-10-09T15:00:00Z",liveStatus:"final",
  awayScore:31,homeScore:17},
