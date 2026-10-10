@@ -63,6 +63,7 @@ fs.mkdirSync(output,{recursive:true});
    await page.evaluate(()=>{
      window.SEC_BRIDGE.setView("picks");
      const a=window.SEC_BRIDGE,w=a.week();
+     if(w.games[1]){w.games[1].kickoff=new Date(Date.now()+3600000).toISOString();delete a.state().picks[w.games[1].id];}
      const g=w.games[0];g.liveStatus="live";g.awayScore=14;g.homeScore=10;
      g.statusDetail="Q2 · 8:04";g.scoreUpdatedAt=new Date().toISOString();
      g.kickoff=new Date(Date.now()-4*60000).toISOString();
