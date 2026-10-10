@@ -172,6 +172,16 @@ function renderSport(s){
  const conf=SPORT[s],active=ownLeague(s),w=curWeek(s),weeks=groups(s);
  const person=user(),signed=Boolean(person&&client()),data=cache[s]||{};
  const picks=data.picks||{},saved=data.tiebreakers||{};
+
+ const weekFinal=w?w.games.filter(g=>g.game_status==="final"):[],
+   chosen=w?w.games.filter(g=>Boolean(picks[g.id]?.pick_code)).length:0,
+   graded=weekFinal.filter(g=>g.winner_code&&picks[g.id]?.pick_code),
+   right=graded.filter(g=>g.winner_code===picks[g.id].pick_code).length;
+ const sportStrip=w?'<section class="weekly-score-strip sport-week-score" aria-label="Your Week '+w.num+' results">'+
+   '<div class="week-score-primary"><small>WEEK '+w.num+' · RIGHT PICKS</small><strong>'+right+'<span> / '+graded.length+'</span></strong>'+
+   '<small>'+(graded.length?(graded.length-right)+' missed · confirmed winners':'No picks graded yet')+'</small></div>'+
+   '<div class="week-score-metric"><strong>'+chosen+'<span>/'+w.games.length+'</span></strong><small>Picks made</small></div>'+
+   '<div class="week-score-metric"><strong>'+weekFinal.length+'<span>/'+w.games.length+'</span></strong><small>Final games</small></div></section>':"";
  const header='<div class="sport-heading"><div class="sport-heading-icon">'+conf.emoji+'</div>'+
   '<div><div class="card-kicker">SEC '+conf.name.toUpperCase()+' · '+year(s)+'</div>'+
   '<h2>'+esc(conf.tagline)+'</h2><p>Pick each winner. Score points together. Win your league.</p></div>'+
@@ -197,7 +207,7 @@ function renderSport(s){
    '<div class="sport-games-grid">'+w.games.map(g=>gameCard(s,g,active,picks)).join("")+'</div>'+
    renderTiebreak(s,w,active,saved);
  }
- root.innerHTML=header+note+status+stale+loadingText+leagues+games+renderSeries(s)+
+ root.innerHTML=header+note+status+stale+loadingText+sportStrip+leagues+games+renderSeries(s)+
   '<p class="sport-data-note">Official SEC and university schedules, with ESPN updates where available · Central time. '+ 
   'When a tipoff is not announced, a conservative 10 AM Central provisional lock is shown. '+
   'Basketball and baseball leagues have their own memberships and standings, separate from football.</p>';
