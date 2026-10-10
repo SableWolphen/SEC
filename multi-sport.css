@@ -477,3 +477,52 @@ body{overflow-x:clip}
  .sec-live-score-strip{margin-top:4px;margin-bottom:12px}
  .sec-live-mini-score{overflow-wrap:anywhere}
 }
+
+
+/* Calm league home: one selector and active scoreboard first, rare controls last. */
+.fan-league-home{padding:17px 19px;margin-bottom:9px}
+.fan-league-home-head{display:flex;gap:12px;align-items:center;justify-content:space-between}
+.fan-league-home-head>div{min-width:0;flex:1}
+.fan-league-home-head h2{font-size:20px;margin:5px 0 4px;letter-spacing:-.55px}
+.fan-league-home-head p{font-size:12px;line-height:1.45;max-width:550px;margin:0;color:#abc1c1}
+.fan-league-home-head>.fan-small{flex:none;min-height:43px;white-space:nowrap}
+.fan-league-home .fan-league-select-label{margin:13px 0 6px}
+.fan-league-home .fan-league-select{max-width:560px}
+.fan-league-sports-note{margin:7px 0 0!important;color:#cee3da;font-size:11px}
+.fan-league-sports-note span{color:#8fa8a6}
+.fan-club-focus{margin:9px 0 14px;padding:17px 19px}
+.fan-club-focus h2{font-size:20px;margin:4px 0 5px}
+.fan-club-focus .fan-club-title{margin-bottom:14px}
+.fan-club-focus .fan-club-title p{margin:0;font-size:11px}
+.fan-club-focus .fan-table-wrap{margin-top:8px}
+.fan-club-focus .fan-sport-links{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0 5px}
+.fan-club-focus .fan-sport-links .fan-small{min-height:42px}
+.fan-club-settings{margin:13px 0 0}
+.fan-club-settings>.fan-club-invite{margin-top:14px}
+.fan-club-settings .fan-secondary-action{margin-bottom:5px}
+.fan-standalone-settings{margin:9px 0 13px}
+.fan-football-scoreboard{max-width:100%}
+.fan-football-advanced{margin-top:12px}
+.fan-football-advanced .fan-fold{margin-top:8px}
+.fan-football-advanced .content-card{margin:12px 0}
+.fan-compact-football-hero{padding:15px 19px;margin-bottom:11px}
+.fan-compact-football-hero h2{font-size:20px;margin-top:3px}
+.fan-compact-football-hero p{font-size:11px}
+.fan-league-management,.fan-league-more{margin:14px 0;padding:12px 16px}
+.fan-league-management #fan-league-create{margin-top:8px}
+.fan-league-management .fan-new-league,.fan-league-management .fan-join-league{margin:7px 0}
+.fan-league-management .fan-new-league{background:#132a2d}
+.fan-league-more>.fan-fold{margin:9px 0}
+#fan-club-hub[hidden],#fan-league-management[hidden],#fan-season-extras[hidden]{display:none!important}
+@media(max-width:540px){
+ .fan-league-home,.fan-club-focus{padding:13px;margin:9px 0}
+ .fan-league-home-head{flex-wrap:wrap;gap:8px}
+ .fan-league-home-head h2{font-size:18px}
+ .fan-league-home-head>.fan-small{width:100%}
+ .fan-club-focus .fan-club-title{align-items:start}
+ .fan-club-focus .fan-secondary-action{min-height:40px}
+ .fan-club-focus .fan-sport-links .fan-small{flex:1 1 130px}
+ .fan-compact-football-hero{padding:13px}
+ .fan-league-management,.fan-league-more{padding:11px 12px}
+ .fan-league-sports-note{overflow-wrap:anywhere}
+}
