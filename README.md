@@ -30,6 +30,10 @@ Schedules for basketball and baseball rely on verified imported games. If no off
 
 ## Full-season SEC Fan Experience (October 2026)
 
+### Cleaner leagues and dependable invitations
+
+This pass also removes the old account-wide Single/All selector and its duplicate data queries from `fan-experience.js` (over 15 KB less code to load), makes the real per-league view the single source of truth, and repairs **Player Trophies** so they use the selected league's current confirmed scoreboard. All league types again have an obvious **Join with invite code** entry; it routes authenticated codes securely to the existing three-sport club, original football, or basketball/baseball membership RPCs as appropriate. The original large football account-management and secondary league forms are folded behind **⚙ Account & other football leagues** instead of overwhelming the default League view. Login, password recovery, picks and standings still work. Mobile rankings now have larger tap targets and text, while the extra data stays collapsed.
+
 ### Weekly League Power Rankings — verified only
 
 Every selected SEC league now includes an unobtrusive **⚡ Power Rankings** card. The private, member-authorized Supabase function `sec_weekly_power_rankings(p_kind,p_league)` works on **each standalone sport league** and every **per-league combination** of football, basketball and baseball. It ranks players by their actual season league points; displays graded weekly points and correct picks; compares the season standings to their position at this Monday’s start (Central Time) for **▲ / ▼** movements; and summarizes the true season leader, most correct picks this week, and largest rank rise. **No final results = no invented rankings, movement, streaks, or winners.** Disabled sports do not influence that league. Only club/league members can call the server-side function; no other player's unstarted picks are returned. Compact by default with the first five members and a disclosure for the rest. Cache lasts two minutes per selected league, with manual refresh.
