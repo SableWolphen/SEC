@@ -121,6 +121,7 @@ async function refresh(force=false){
   // Refresh the live race after every league-view poll. Even unchanged scores
   // can require a new post-kickoff picks snapshot; the outlook throttles RPCs.
   if(viewing==="league")window.SEC_GAMEDAY?.leagueOutlook?.();
+  if(viewing==="league")window.SEC_COMPETITIVE?.refreshPath?.();
   if(justFinal&&window.secOnline?.isSignedIn?.()){
    // Refresh only after an actual verified final, never on live estimates.
    // Club, football leaderboard and power rankings all use server RPCs.
