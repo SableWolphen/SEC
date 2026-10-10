@@ -90,6 +90,51 @@ fs.mkdirSync(output,{recursive:true});
       viewport.width+" bottom nav must hide during keyboard entry");
     }
    }
+   // Signed-in DOM fixture: no real account, no mutations, no server requests.
+   // Verify league tabs actually move chat/commissioner sections and shorten standings.
+   await page.evaluate(()=>{
+     document.activeElement?.blur?.();
+     const real=window.secOnline||{},settings=window.SEC_LEAGUE_SETTINGS||{};
+     window.secOnline={...real,getUser:()=>({id:"fixture-user"}),getLeague:()=>({id:"fixture-football"})};
+     window.SEC_LEAGUE_SETTINGS={...settings,getSelected:()=>({kind:"football",id:"fixture-football",name:"Fixture Fans"})};
+     const host=document.getElementById("league-content");
+     const rows=Array.from({length:9},(_,i)=>'<div class="standing-row"><span>'+String(i+1)+
+       '</span><span>Fan '+String(i+1)+'</span></div>').join("");
+     host.innerHTML='<div class="fan-football-scoreboard"><div class="content-card"><h2>League scoreboard</h2>'+
+       '<div class="leaderboard"><div class="standing-row head">Player</div>'+rows+'</div>'+
+       '<div class="sec-scoreboard-chat"><div class="sec-chat-card"><label for="fixture-message">League chat</label>'+
+       '<textarea id="fixture-message" class="field"></textarea></div></div></div>'+
+       '<details class="fan-football-management"><summary>Commissioner tools</summary><button type="button">Settings</button></details>'+
+       '</div><div class="fan-football-advanced"><details><summary>Account options</summary></details></div>';
+     window.SEC_LEAGUE_TABS?.synchronize();
+   });
+   const tabChecks=await page.evaluate(()=>{
+     const d=id=>document.getElementById(id);
+     const board=d("league-content").querySelector(".leaderboard");
+     return {tabs:!d("fan-league-tabs").hidden,scores:!d("fan-pane-scores").hidden,
+       visibleRows:board.querySelectorAll(".standing-row").length,
+       expander:!!d("league-content").querySelector(".fan-player-expander"),
+       movedChat:!!d("fan-league-chat-content").querySelector("#fixture-message"),
+       movedRules:!!d("fan-league-football-manager").querySelector(".fan-football-management"),
+       movedAccount:!!d("fan-league-football-manager").querySelector(".fan-football-advanced")};
+   });
+   if(!tabChecks.tabs||!tabChecks.scores||tabChecks.visibleRows!==6||
+      !tabChecks.expander||!tabChecks.movedChat||!tabChecks.movedRules||!tabChecks.movedAccount)
+     problems.push(viewport.width+"px signed-in league tabs: "+JSON.stringify(tabChecks));
+   await page.locator("#fan-tab-chat").click();
+   const chatOkay=await page.evaluate(()=>document.getElementById("fan-pane-scores").hidden&&
+     !document.getElementById("fan-pane-chat").hidden&&!!document.getElementById("fixture-message"));
+   if(!chatOkay)problems.push(viewport.width+"px cannot reach private chat tab");
+   await page.locator("#fan-tab-more").click();
+   const moreOkay=await page.evaluate(()=>document.getElementById("fan-pane-scores").hidden&&
+     !document.getElementById("fan-pane-more").hidden&&
+     !!document.getElementById("fan-league-football-manager").querySelector(".fan-football-management"));
+   if(!moreOkay)problems.push(viewport.width+"px commissioner controls missing from More tab");
+   await page.locator("#fan-tab-scores").click();
+   const tabWidth=await page.evaluate(()=>({document:document.documentElement.scrollWidth,
+     viewport:document.documentElement.clientWidth}));
+   if(tabWidth.document>tabWidth.viewport+2)problems.push(viewport.width+"px signed-in league overflow "+JSON.stringify(tabWidth));
+   await page.screenshot({path:path.join(output,viewport.width+"-league-tabs-fixture.png")});
    if(errors.length)console.log(viewport.width+"px nonfatal client errors:",errors.slice(0,3));
    await context.close();
   }
