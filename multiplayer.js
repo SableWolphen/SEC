@@ -132,7 +132,14 @@
         '<div class="sec-scoreboard-chat" aria-label="Chat for '+safe(choice.name)+'">'+
         (window.SEC_SOCIAL?.render?.()||'<p class="helper">Loading private league chat…</p>')+'</div>');
     } else standingsHtml=card('Start the competition','<p>Create a league or join one with an invitation code. Invite your friends by sending the link.</p>');
-    host.innerHTML='<div class="secondary-grid"><div class="setting-stack">'+(choice?standingsHtml+(window.SEC_FEATURES?.leagueDetails?.()||''):leaguesForm+standingsHtml)+'</div><div class="setting-stack">'+nameForm+(choice?leaguesForm:'')+'</div></div>'+
+    // Keep the scoreboard and league chat prominent. Rarely used account and
+    // legacy football league controls are available, but no longer dominate mobile.
+    var secondary = choice?
+      '<details class="fan-fold fan-football-tools"><summary>⚙ Account &amp; other football leagues</summary>'+
+       nameForm+leaguesForm+'</details>':nameForm;
+    host.innerHTML='<div class="secondary-grid"><div class="setting-stack">'+
+      (choice?standingsHtml+(window.SEC_FEATURES?.leagueDetails?.()||''):leaguesForm+standingsHtml)+
+      '</div><div class="setting-stack">'+secondary+'</div></div>'+
       '<p id="online-status" class="helper" role="status" aria-live="polite">'+safe(lastError)+'</p>';
   }
   function renderSettings(){
