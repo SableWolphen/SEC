@@ -110,8 +110,11 @@ function render(){
  heading.innerHTML='<section class="fan-format-wrap fan-league-home">'+
  '<div class="fan-league-home-head"><div><div class="card-kicker">YOUR LEAGUES</div>'+
  '<h2>League home</h2><p>Each league chooses its own sports. Pick one to see standings and chat.</p></div>'+
+ '<div class="fan-league-home-actions">'+
  (logged&&item&&(current||item.kind==="football")?
- '<button type="button" class="fan-small fan-primary" data-league-action="share">↗ Invite friends</button>':"")+'</div>'+
+ '<button type="button" class="fan-small fan-primary" data-league-action="share">↗ Invite friends</button>':"")+
+ (logged?'<button type="button" class="fan-small" data-league-action="manage">⚙ Manage</button>':"")+
+ '</div></div>'+
  (logged?(all.length?'<label class="fan-league-select-label" for="fan-selected-league">Current league</label>'+
  '<select class="fan-league-select" id="fan-selected-league" aria-label="Choose league">'+
  all.map(x=>'<option value="'+html(ident(x))+'" '+(ident(x)===selection?"selected":"")+'>'+html(x.name)+
@@ -286,6 +289,11 @@ async function invitation(){
  }catch(e){message="Could not join this league: "+(e.message||"Please retry.");render();}
 }
 async function action(name,button){
+ if(name==="manage"){
+  const panel=byId("fan-league-management");
+  if(panel){panel.open=true;panel.scrollIntoView?.({behavior:"smooth",block:"start"});}
+  return;
+ }
  if(!me()||!db()){app()?.toast?.("Log in first.");return;}
  // Avoid duplicate league creation/joining from double-taps or slow networks.
  if(actionPending)return;
