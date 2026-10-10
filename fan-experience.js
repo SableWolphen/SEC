@@ -57,7 +57,8 @@ function gameCenter(g,insights){
  // Revealed league pick totals live in one place: the League picks line.
  return '<details class="fan-center" data-fan-center="'+esc(g.id)+'" '+(openDetails.has(g.id)?"open":"")+'>'+
   '<summary><b class="'+(status==="live"?"fan-live":"")+'">'+(status==="live"?"🔴 LIVE":status==="final"?"✓ FINAL":"Game center")+'</b>'+
-  '<span>'+(scored?text:"Scores & matchup stats")+(phase?' · '+esc(phase):'')+'</span><span>⌄</span></summary>'+
+  '<span>'+(scored?text:"Scores & matchup stats")+(phase?' · '+esc(phase):'')+'</span><span>⌄</span>'+ 
+  (window.SEC_LIVE_DRIVE?.renderCompact?.(g,d,status)||"")+'</summary>'+
   '<div class="fan-center-detail">'+
   (window.SEC_LIVE_DRIVE?.render?.(g,d,status)||"")+
   (window.SEC_GAME_COMMUNITY?.panel?.(game,"football")||"")+
