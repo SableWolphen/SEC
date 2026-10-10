@@ -188,7 +188,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 @media(max-width:440px){.sec-news-sports{gap:5px;padding:6px}.sec-news-sport-choice{font-size:11px;padding:9px 2px;min-height:50px}}
 </style>
   <title>Saturdays Down South · SEC Pick'em</title>
-<link rel="stylesheet" href="./multi-sport.css?v=20261010-field-visible-v2">
+<link rel="stylesheet" href="./multi-sport.css?v=20261010-competition-v1">
 <link rel="stylesheet" href="./trophy-museum.css?v=20261010-museum-v1">
 </head>
 <body>
@@ -658,6 +658,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     slateFilter==='picked' ? Boolean(state.picks[g.id]) :
     slateFilter==='unpicked' ? openUnpicked.includes(g) : true
   );
+  window.SEC_COMPETITIVE?.onPicks?.();
   document.getElementById('games-list').innerHTML=filtered.length?
    filtered.map((g)=>renderGame(g,w.games.indexOf(g))).join(''):
    '<div class="slate-empty"><strong>'+(slateFilter==='unpicked'?'All available games are picked!':'No matches in this view.')+
@@ -774,5 +775,6 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./sec-bragging-arena.js?v=20261010-gameday-v1"></script>
 <script src="./sec-gameday.js?v=20261010-game-day-v2"></script>
 <script src="./league-tabs.js?v=20261010-gameday-v2"></script>
+<script src="./sec-competitive-tools.js?v=20261010-competition-v1"></script>
 </body>
 </html>
