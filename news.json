@@ -1,11 +1,131 @@
 {
-  "updated_at": "2026-10-10T12:37:38.989025Z",
-  "checked_at": "2026-10-10T12:37:38.989025Z",
+  "updated_at": "2026-10-10T17:52:52.589624Z",
+  "checked_at": "2026-10-10T17:52:52.589624Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "ef92b3dd36938471",
+      "title": "Pat McAfee goes full heel with his Georgia-Alabama pick",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50148435/pat-mcafee-goes-full-heel-georgia-alabama-pick",
+      "source": "ESPN",
+      "published_at": "2026-10-10T16:24:27Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ad2c1721e5fd26be",
+      "title": "Sources: Alabama TE Josh Ford expected to play vs. Georgia",
+      "summary": "Alabama starting tight end Josh Ford, who suffered a broken arm and had surgery over the past week, is expected to play against No. 2 Georgia, sources told ESPN.",
+      "url": "https://www.espn.com/college-football/story/_/id/50147564/sources-alabama-josh-ford-expected-play-vs-georgia",
+      "source": "ESPN",
+      "published_at": "2026-10-10T15:04:34Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "14e9b4ecc897dda3",
+      "title": "Venables discusses how Oklahoma can reignite Mateer and the offense",
+      "summary": "Brent Venables explains how the Sooners plan to bounce back from a slow start and come out refreshed after the bye week.",
+      "url": "https://www.espn.com/video/clip/_/id/50147712/venables-discusses-how-oklahoma-reignite-mateer-offense",
+      "source": "ESPN",
+      "published_at": "2026-10-10T14:38:07Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b14edd45b888dc47",
+      "title": "Texas' Sarkisian evaluates Manning's performance, Oklahoma matchup",
+      "summary": "Steve Sarkisian discusses the effective play of his star quarterback, Arch Manning, and outlines the keys to the game against the Sooners.",
+      "url": "https://www.espn.com/video/clip/_/id/50147706/texas-sarkisian-evaluates-manning-performance-oklahoma-matchup",
+      "source": "ESPN",
+      "published_at": "2026-10-10T14:37:56Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "365327a143cfcf80",
+      "title": "Breaking down strengths that make Alabama, Georgia defenses dangerous",
+      "summary": "SEC Network's Roman Harper highlights how the Bulldogs and the Crimson Tide excel at forcing turnovers and keeping opponents off balance.",
+      "url": "https://www.espn.com/video/clip/_/id/50147490/breaking-strengths-make-alabama-georgia-defenses-dangerous",
+      "source": "ESPN",
+      "published_at": "2026-10-10T14:19:40Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "ce34f7c8cd965367",
+      "title": "Checking out the best fair food at the Red River Rivalry",
+      "summary": "SEC Network's Marion Crowder, Ryan McGee and Marty Smith join SEC Nation from the State Fair of Texas with some fried food to die for.",
+      "url": "https://www.espn.com/video/clip/_/id/50147331/checking-best-fair-food-red-river-rivalry",
+      "source": "ESPN",
+      "published_at": "2026-10-10T14:05:38Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "59f00712b756276c",
+      "title": "Alabama thinks it has found and fixed Ryan Coleman-Williams' drop issues",
+      "summary": "Using VR technology, the staff discovered a depth perception issue, and the drops have disappeared.",
+      "url": "https://www.espn.com/college-football/story/_/id/50133938/college-football-alabama-ryan-coleman-williams-drops",
+      "source": "ESPN",
+      "published_at": "2026-10-10T13:55:26Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "da7f8a8910971a4d",
+      "title": "Who is the best team in the SEC right now?",
+      "summary": "The SEC Nation crew discusses which teams make up the conference's top tier and debates the differences between the nation's top teams.",
+      "url": "https://www.espn.com/video/clip/_/id/50147247/who-best-team-sec-right-now",
+      "source": "ESPN",
+      "published_at": "2026-10-10T13:51:29Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "44496c3c6cf58e06",
+      "title": "Sources: South Carolina's Dylan Stewart to return vs. Florida",
+      "summary": "South Carolina edge rusher Dylan Stewart will play Saturday against Florida after completing his one-game suspension, sources told ESPN's Pete Thamel.",
+      "url": "https://www.espn.com/college-football/story/_/id/50141924/sources-south-carolina-dylan-stewart-return-florida",
+      "source": "ESPN",
+      "published_at": "2026-10-10T12:56:55Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
     {
       "id": "0754883f6193fd51",
       "title": "Washington State Cougars vs. Utah State Aggies: Full Highlights",
@@ -207,20 +327,6 @@
       "breaking": false
     },
     {
-      "id": "44496c3c6cf58e06",
-      "title": "Sources: South Carolina's Dylan Stewart to return against Florida",
-      "summary": "South Carolina edge rusher Dylan Stewart will play Saturday against Florida after completing his one-game suspension, sources told ESPN's Pete Thamel.",
-      "url": "https://www.espn.com/college-football/story/_/id/50141924/sources-south-carolina-dylan-stewart-return-florida",
-      "source": "ESPN",
-      "published_at": "2026-10-09T19:11:42Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
       "id": "9ab0d574a7d05181",
       "title": "Connelly Week 6 preview: Things get real with SEC, Big Ten showdowns",
       "summary": "With Georgia-Alabama, major challenges for Big Ten unbeatens and some Big 12 chaos, there's a lot to follow.",
@@ -231,19 +337,6 @@
       "teams": [
         "Alabama",
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "59f00712b756276c",
-      "title": "Alabama thinks it has found and fixed Ryan Coleman-Williams' drop issues",
-      "summary": "Using VR technology, the staff discovered a depth perception issue, and the drops have disappeared.",
-      "url": "https://www.espn.com/college-football/story/_/id/50133938/college-football-alabama-ryan-coleman-williams-drops",
-      "source": "ESPN",
-      "published_at": "2026-10-09T13:55:11Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
       ],
       "breaking": false
     },
@@ -297,46 +390,6 @@
       "sport": "basketball",
       "teams": [
         "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c84ab9bdf8201de7",
-      "title": "Nick Carroll, the No. 4 safety in 2028, commits to Georgia",
-      "summary": "Four-star safety Nick Carroll, ESPN's No. 61 overall prospect in the 2028 cycle, announced his commitment to the Georgia Bulldogs.",
-      "url": "https://www.espn.com/college-football/story/_/id/50134848/nick-carroll-no-4-overall-safety-28-commits-georgia",
-      "source": "ESPN",
-      "published_at": "2026-10-08T20:40:23Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "38d2a6f8812c4bc9",
-      "title": "How Kirby Smart is preparing for Alabama amid weather concerns",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50134145/how-kirby-smart-preparing-alabama-amid-weather-concerns",
-      "source": "ESPN",
-      "published_at": "2026-10-08T17:40:13Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b5404ab7ff31940c",
-      "title": "2026 'College GameDay' Week 6: Georgia vs. Alabama",
-      "summary": "\"College GameDay\" heads to Tuscaloosa, Alabama for Week 6.",
-      "url": "https://www.espn.com/college-football/story/_/id/50133318/2026-college-gameday-week-6-georgia-vs-alabama",
-      "source": "ESPN",
-      "published_at": "2026-10-08T16:39:56Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
       ],
       "breaking": false
     },
@@ -427,19 +480,6 @@
       "url": "https://www.espn.com/mens-college-basketball/story/_/id/50078729/florida-denzel-aberdeen-only-fair-granted-5th-year",
       "source": "ESPN",
       "published_at": "2026-10-01T20:03:51Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "675aed132e334524",
-      "title": "Florida leads Andy Katz's men's basketball Power 44 rankings ahead of the 2026-27 season",
-      "summary": "With the NCAA tournament field expanding from 68 to 76 teams beginning with the 2026-27 season, Andy Katz has expanded his weekly power rankings from 37 to 44.",
-      "url": "https://www.ncaa.com/news/basketball-men/article/2026-10-01/florida-leads-andy-katzs-mens-basketball-power-44-rankings-ahead-2026-27-season",
-      "source": "NCAA",
-      "published_at": "2026-10-01T14:00:00Z",
       "sport": "basketball",
       "teams": [
         "Florida"
