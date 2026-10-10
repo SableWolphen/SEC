@@ -94,6 +94,7 @@ fs.mkdirSync(output,{recursive:true});
    // Verify league tabs actually move chat/commissioner sections and shorten standings.
    await page.evaluate(()=>{
      document.activeElement?.blur?.();
+     window.SEC_BRIDGE.setView("league");
      const real=window.secOnline||{},settings=window.SEC_LEAGUE_SETTINGS||{};
      window.secOnline={...real,getUser:()=>({id:"fixture-user"}),getLeague:()=>({id:"fixture-football"})};
      window.SEC_LEAGUE_SETTINGS={...settings,getSelected:()=>({kind:"football",id:"fixture-football",name:"Fixture Fans"})};
