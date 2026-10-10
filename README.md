@@ -204,3 +204,12 @@ Always confirm official times and results before corrections. Provisional game k
 ## License and affiliation
 
 Fan-made project. Not affiliated with, endorsed by, or sponsored by the Southeastern Conference, its universities, or the similarly named sports publication *Saturday Down South*. Original stylized team initials are used instead of official logos.
+
+### Reliability release — verified schedules, isolated accounts and real browser QA
+
+- Schedule updater reads only public verified SEC/university fixtures (using the existing safe browser publishable key) when ESPN is blocked or unavailable. It preserves original imported game IDs and confirmed final scores, deduplicates genuine basketball events, and never fabricates baseball first pitches. The published fixture file is a **read-only display feed**, not an alternative pick-authority; pick saving remains server validated. The schedule updater can write to `main` **only when triggered on main**.
+- Football's multiplayer and league mode clients now discard network responses from a prior user/league after auth or selected-league changes. The dedicated two-account smoke test simulates a late request from Account A while Account B signs in; B's picks and private league remain isolated.
+- A real headless Chromium workflow checks every one of eight screens at five sizes (320, 360, 390, 768, 1280 pixels), including overflow, bottom navigation, keyboard focus, and saves screenshots for review. It uses anonymous visits only and performs no production user writes.
+- 2027 baseball weekend **series previews** are not individual game picks. Until an official first-pitch time and matchup is available, don't invent game cards or assert that the team record feed has supplied it.
+
+Real-account sign-in and email delivery still require authorized end-to-end credentials to verify; automated mocks cannot prove external email service health.
