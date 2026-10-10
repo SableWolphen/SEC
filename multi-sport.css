@@ -416,6 +416,11 @@ body{overflow-x:clip}
   .fan-sport-checkbox>span{font-size:11px;line-height:1.2;min-height:52px}
   .fan-club-invite .fan-small{min-height:44px}
 }
+/* On a phone, keep the fixed bottom navigation off the virtual keyboard. */
+@media(max-width:790px){
+  body:has(input:focus,textarea:focus,select:focus) .bottom-nav{display:none}
+  body:has(input:focus,textarea:focus,select:focus) .toast{bottom:16px}
+}
 @media(max-width:345px){
   .app-shell{padding-left:11px;padding-right:11px}
   .mobile-nav-btn{font-size:9px}
