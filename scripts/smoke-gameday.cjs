@@ -29,7 +29,7 @@ const window={
  SEC_SPORTS:{getState:()=>({games:[],picks:{}}),year:()=>2027}
 };
 const document={getElementById:id=>nodes[id],addEventListener:(k,f)=>{listeners[k]=f;},visibilityState:"visible"};
-const localStorage={getItem:()=>null,setItem(){}};
+const prefs={};const localStorage={getItem:k=>prefs[k]??null,setItem:(k,v)=>{prefs[k]=v;}};
 const navigator={clipboard:{writeText:async t=>copied.push(t)}};
 const context={window,document,Date,Math,Number,Object,String,Set,Promise,console,Intl,localStorage,navigator};
 vm.runInNewContext(fs.readFileSync("sec-gameday.js","utf8"),context);
@@ -59,6 +59,7 @@ assert.equal(app.period({status_detail:"<script>"}),"");
 app.settings();
 assert.match(nodes["sec-day-alert-settings"].innerHTML,/Final scores/);
 assert.match(nodes["sec-day-alert-settings"].innerHTML,/Upset results/);
+assert.match(nodes["sec-day-alert-settings"].innerHTML,/Kickoff/);
 listeners.click({target:{closest:()=>({dataset:{dayShare:"week"}})},preventDefault(){}});
 Promise.resolve().then(()=>{
  assert.equal(copied.length,1);

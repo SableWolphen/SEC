@@ -34,5 +34,5 @@ assert.doesNotMatch(render("basketball",{...basketball,game_status:"scheduled",a
 assert.match(render("baseball",{...basketball,game_status:"final",away_score:3,home_score:2}),/sport-team-score is-leading[^>]*>3<\/span>/);
 assert.doesNotMatch(render("baseball",{...basketball,away_score:null}),/sport-team-score/);
 assert.match(fs.readFileSync("multi-sport.css","utf8"),/\.pick-team-score\.is-leading/);
-assert.match(html,/2026\.10\.10-game-day\.2/);
+assert.match(html,/2026\.10\.10-game-day\.3/);
 console.log("Inline team scores passed: verified live/final, no placeholder scores, football hero plus basketball/baseball and compact card layout.");
