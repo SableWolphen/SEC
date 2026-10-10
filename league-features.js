@@ -103,12 +103,9 @@ function modeDescription(){
  return current?cMode().name+' · '+cMode().detail:'Straight Picks · 1 point per correct pick';
 }
 function extras(g){
- const game=leagueGame(g),displayScore=hasNumber(game.away_score)&&hasNumber(game.home_score);
- const status=game.game_status||"scheduled";
+ // The Game Center row owns the live/final score and phase. Keep pick-mode and friends details here.
+ const game=leagueGame(g);
  let html="";
- if(displayScore&&(status==="live"||status==="final")){
-  html+='<div class="sec-live" role="status"><span>'+(status==="live"?'🔴 LIVE':'✅ FINAL')+'</span><strong>'+esc(g.away)+' '+oneDecimal(game.away_score)+' – '+oneDecimal(game.home_score)+' '+esc(g.home)+'</strong><small>'+esc(game.status_detail||"ESPN scoreboard")+'</small></div>';
- }
  if(current){
   if(mode()==="spread"){
    const line=game.spread_home;
