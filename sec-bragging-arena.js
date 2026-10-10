@@ -260,7 +260,8 @@ function featuredBulletin(m){
  const stories=bulletin(m);
  return '<section class="brag-showcase-section" aria-label="League bulletin">'+
   '<div class="brag-showcase-heading"><h3>📣 LEAGUE BULLETIN</h3>'+
-  '<span>Share the best calls and biggest misses</span></div>'+
+  (item()?.kind==="football"?'<button type="button" class="brag-showcase-link" data-brag-chat>Talk trash in chat ↗</button>':
+   '<span>Share the best calls and biggest misses</span>')+'</div>'+
   (stories.length?'<div class="brag-showcase-stories">'+stories.slice(0,2).map((n,i)=>
    '<article class="brag-showcase-story"><span class="brag-story-mark">📣</span>'+
    '<p>'+esc(n.text)+'</p><button type="button" class="fan-small" data-brag-bulletin="'+i+
@@ -274,10 +275,18 @@ function featuredBulletin(m){
   '</section>';
 }
 function featuredReceipts(m,me){
- const featured=m.finals.flatMap(g=>{
-  const picks=m.byGame.get(g.id)||[];
-  return picks.map(p=>({g,p,win:result(g,p.pick)}));
- }).filter(x=>x.win!==null).slice(0,3);
+ // Prefer the current fan's own receipts, then different verified games.
+ // Avoid a carousel of three copies of the same final result.
+ const pool=[...m.finals.flatMap(g=>{
+  const p=m.get(me.user_id,g);
+  return p?[{g,p:{player:me,pick:p},win:result(g,p)}]:[];
+ }),...m.finals.flatMap(g=>(m.byGame.get(g.id)||[]).map(p=>({g,p,win:result(g,p.pick)})))];
+ const usedGames=new Set(),featured=[];
+ for(const row of pool){
+  if(row.win===null||usedGames.has(row.g.id))continue;
+  usedGames.add(row.g.id);featured.push(row);
+  if(featured.length>=3)break;
+ }
  const icons={football:"🏈",basketball:"🏀",baseball:"⚾"};
  return '<section class="brag-showcase-section" aria-label="Pick Receipts">'+
  '<div class="brag-showcase-heading"><h3>🎯 PICK RECEIPTS</h3><span>Proof after the final whistle</span></div>'+
@@ -400,10 +409,11 @@ document.addEventListener("change",e=>{
  }
 });
 document.addEventListener("click",e=>{
- const b=e.target.closest?.("[data-brag-refresh],[data-brag-receipt],[data-brag-bulletin],[data-brag-share],[data-brag-trophies]");
+ const b=e.target.closest?.("[data-brag-refresh],[data-brag-receipt],[data-brag-bulletin],[data-brag-share],[data-brag-trophies],[data-brag-chat]");
  if(!b)return;e.preventDefault();
  if(b.matches("[data-brag-refresh]")){void load(item(),true);return;}
  if(b.matches("[data-brag-trophies]")){window.SEC_BRIDGE?.setView?.("trophies");return;}
+ if(b.matches("[data-brag-chat]")){if(item()?.kind==="football")window.SEC_LEAGUE_TABS?.switchPane?.("chat");return;}
  const m=currentModel(),me=user();if(!m||!me)return;
  if(b.hasAttribute("data-brag-receipt")){
   const g=m.games.get(b.dataset.bragReceipt),p=g&&m.get(b.dataset.bragPlayer,g);
