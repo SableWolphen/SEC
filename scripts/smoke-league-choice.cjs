@@ -149,6 +149,10 @@ const run=async()=>{
  assert.match(h,/id="fan-league-create"/);
  const fan=fs.readFileSync("fan-experience.js","utf8");
  assert.match(fan,/v==="league"\)return window\.SEC_LEAGUE_SETTINGS\?\.onView/);
+ assert.doesNotMatch(fan,/sec_player_league_preferences|playChoice\s*=|changeClub\(/,
+   "old account-wide league chooser has been removed");
+ assert.match(fan,/getStandings:\(\)=>window\.SEC_LEAGUE_SETTINGS\?\.getStandings/,
+   "player trophies use the same selected league scoreboard");
  console.log("Per-league sports passed: independent clubs, 1/2/3 sports, owner-only edits, safe upgrade and one account.");
 };
 run().catch(e=>{console.error(e);process.exitCode=1;});
