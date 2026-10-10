@@ -22,6 +22,8 @@ const client={rpc:async(name,args)=>{
  return {data:data[args.p_league],error:null};
 }};
 const window={
+ SEC_PRIDE:{badge:id=>id==="player-A"?'<span class="sec-school-badge">★ ALA</span>':
+  id==="player-B"?'<span class="sec-school-badge">★ UGA</span>':""},
  SEC_LEAGUE_SETTINGS:{getSelected:()=>selected},
  secOnline:{getClient:()=>client,getUser:()=>user}
 };
@@ -38,7 +40,10 @@ const main=async()=>{
  assert.match(root.innerHTML,/▲ 1/);
  assert.match(root.innerHTML,/▼ 1/);
  assert.match(root.innerHTML,/6\/7 graded picks correct/);
- assert.match(root.innerHTML,/See all 6 players/,"long rankings remain collapsed");
+ assert.doesNotMatch(root.innerHTML,/See all 6 players/,"all players visible without expanding");
+ assert.equal((root.innerHTML.match(/class="power-rank-row /g)||[]).length,6,"six full ranking rows");
+ assert.match(root.innerHTML,/Alex.*ALA/,"favorite school by player name");
+ assert.match(root.innerHTML,/Jordan.*UGA/,"teammate's favorite school visible");
  assert.match(root.innerHTML,/Tied|Most right this week/);
  assert.doesNotMatch(root.innerHTML,/<svg onload/,"untrusted display name escaped");
  assert.match(root.innerHTML,/&lt;svg onload=/);

@@ -251,7 +251,7 @@ function renderStandings(s,league){
  if(!rows.length)return head+'<p class="helper">No verified standings yet.</p>';
  const table='<div class="sport-score-scroll"><table class="sport-standings"><thead><tr>'+
   '<th>Rank</th><th>Player</th><th>Picks</th><th>Week</th><th>Season</th></tr></thead><tbody>'+
-  rows.map((r,i)=>'<tr><td>'+String(i+1)+'</td><td>'+esc(r.display_name||"Player")+(window.SEC_PRIDE?.badge?.(r.user_id)||"")+
+  rows.map((r,i)=>'<tr><td>'+String(i+1)+'</td><td data-player-id="'+esc(r.user_id)+'">'+esc(r.display_name||"Player")+(window.SEC_PRIDE?.badge?.(r.user_id)||"")+
    (r.user_id===user()?.id?' ★':'')+'</td><td>'+Number(r.picked||0)+'</td>'+
    '<td>'+Number(r.week_points||0)+'</td><td>'+Number(r.season_points||0)+'</td></tr>').join("")+
   '</tbody></table></div>';

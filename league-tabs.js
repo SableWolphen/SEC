@@ -76,7 +76,12 @@ document.addEventListener("click",e=>{
  const tab=e.target.closest?.("[data-league-pane]");
  if(tab){
   e.preventDefault();
-  switchPane(tab.dataset.leaguePane);return;
+  switchPane(tab.dataset.leaguePane);
+  if(["scores","brags"].includes(tab.dataset.leaguePane)){
+   const item=eligible().item;
+   if(item)void window.SEC_PRIDE?.load?.(item.kind,item.id,true);
+  }
+  return;
  }
  // Existing Manage Leagues button opens its disclosure; first make More visible.
  if(e.target.closest?.('[data-league-action="manage"]'))switchPane("more");

@@ -32,7 +32,8 @@ function rankRow(p){
  const mine=p.user_id===me()?.id;
  return '<li class="power-rank-row '+(mine?"is-you":"")+'">'+
  '<span class="power-position">'+(rank===1?"👑 ":"")+rank+'</span>'+
- '<span class="power-player"><strong>'+escapeHtml(p.display_name||"Player")+(mine?" ★":"")+'</strong>'+
+ '<span class="power-player"><strong data-player-id="'+escapeHtml(p.user_id)+'">'+escapeHtml(p.display_name||"Player")+
+ (window.SEC_PRIDE?.badge?.(p.user_id)||"")+(mine?" ★":"")+'</strong>'+
  '<small>'+number(p.weekly_correct)+'/'+number(p.weekly_graded)+' graded picks correct · '+
  pretty(p.weekly_points)+' pts this week</small></span>'+
  '<span class="power-points" aria-label="'+pretty(p.season_points)+' season points">'+
@@ -53,7 +54,8 @@ function render(item=manager()?.getSelected?.()){
  else if(!rows.length)content='<p class="fan-subtle power-empty">No players found in this league yet. Invite friends to get started.</p>';
  else if(!hasResults)content='<p class="fan-subtle power-empty">Power rankings begin once league picks have verified final results. No projected leaders or made-up awards.</p>';
  else {
-  const leaders=rows.filter(x=>Number(x.current_rank)===1).map(x=>x.display_name||"Player");
+  const leaders=rows.filter(x=>Number(x.current_rank)===1);
+  const withSchool=p=>escapeHtml(p?.display_name||"Player")+(window.SEC_PRIDE?.badge?.(p?.user_id)||"");
   const weekRows=rows.filter(x=>number(x.weekly_graded)>0);
   const best=weekRows.slice().sort((a,b)=>number(b.weekly_correct)-number(a.weekly_correct)||
     number(b.weekly_points)-number(a.weekly_points)||String(a.display_name).localeCompare(String(b.display_name)))[0];
@@ -61,16 +63,11 @@ function render(item=manager()?.getSelected?.()){
     .sort((a,b)=>(number(b.previous_rank)-number(b.current_rank))-
                  (number(a.previous_rank)-number(a.current_rank)))[0];
   const highlight='<div class="power-highlights" aria-label="League weekly highlights">'+
-   '<div><small>👑 Season leader</small><strong>'+escapeHtml(leaders.length===1?leaders[0]:"Tied: "+leaders.slice(0,2).join(" & ")+(leaders.length>2?" +":""))+'</strong></div>'+
-   '<div><small>🔥 Most right this week</small><strong>'+escapeHtml(best&&number(best.weekly_correct)>0?
-      (best.display_name||"Player")+" · "+number(best.weekly_correct):"Awaiting results")+'</strong></div>'+
-   '<div><small>⬆ Biggest rise</small><strong>'+escapeHtml(improved?
-      (improved.display_name||"Player")+" · +"+(number(improved.previous_rank)-number(improved.current_rank)):"No movement")+'</strong></div>'+
+   '<div><small>👑 Season leader</small><strong>'+(leaders.length===1?withSchool(leaders[0]):"Tied: "+leaders.slice(0,2).map(withSchool).join(" &amp; ")+(leaders.length>2?" +":""))+'</strong></div>'+
+   '<div><small>🔥 Most right this week</small><strong>'+(best&&number(best.weekly_correct)>0?withSchool(best)+" · "+number(best.weekly_correct):"Awaiting results")+'</strong></div>'+
+   '<div><small>⬆ Biggest rise</small><strong>'+(improved?withSchool(improved)+" · +"+(number(improved.previous_rank)-number(improved.current_rank)):"No movement")+'</strong></div>'+
    '</div>';
-  const top=rows.slice(0,5).map(rankRow).join("");
-  const rest=rows.length>5?'<details class="power-rest"><summary>See all '+rows.length+' players</summary>'+
-   '<ol class="power-rank-list" start="6">'+rows.slice(5).map(rankRow).join("")+'</ol></details>':"";
-  content=highlight+'<ol class="power-rank-list">'+top+'</ol>'+rest;
+  content=highlight+'<ol class="power-rank-list">'+rows.map(rankRow).join("")+'</ol>';
  }
  const label=rows.length?safeDate(rows[0].week_start):"This week";
  el.innerHTML='<section class="fan-panel fan-power-card" aria-label="Weekly power rankings for '+escapeHtml(item.name)+'">'+
