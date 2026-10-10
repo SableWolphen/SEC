@@ -34,7 +34,7 @@ assert.match(html,/sec-live-scores\.js\?v=/,"live score refresh loads on every s
 assert.match(html,/id="fan-club-hub"/);
 assert.match(html,/id="fan-single-league"/);
 assert.match(html,/id="fan-brackets"/);
-assert.match(worker,/sec-pickem-v54/);
+assert.match(worker,/sec-pickem-v55/);
 assert.match(worker,/20261010-calm-v1/);
 assert.match(html,/20261010-community-v1/);
 const league=fs.readFileSync("league-settings.js","utf8");
