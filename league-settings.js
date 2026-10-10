@@ -66,6 +66,8 @@ function formState(){
   const details=node?.querySelector?.(selector);
   if(details)state.open[id]=details.open;
  }
+ const clubSettings=byId("fan-club-hub")?.querySelector?.(".fan-club-settings");
+ if(clubSettings&&state.sameSelection)state.open["club-settings"]=clubSettings.open;
  return state;
 }
 function restoreForms(state){
@@ -84,6 +86,8 @@ function restoreForms(state){
   const details=node?.querySelector?.(selector);
   if(details)details.open=state.open[id];
  }
+ const clubSettings=byId("fan-club-hub")?.querySelector?.(".fan-club-settings");
+ if(clubSettings&&"club-settings" in state.open)clubSettings.open=state.open["club-settings"];
 }
 function render(){
  reset();
@@ -162,32 +166,31 @@ function render(){
 function renderClub(c,host){
  const sports=validSports(c),owner=c.owner_id===me()?.id,info=leaderboard.find(x=>x.user_id===me()?.id);
  const columns=sports.map(s=>'<th>'+names[s]+'</th>').join("");
- host.innerHTML='<section class="fan-panel" aria-label="League sports for '+html(c.name)+'">'+
- '<div class="fan-title-row"><div><div class="card-kicker">🏆 THIS LEAGUE</div><h2>'+html(c.name)+'</h2>'+
- '<p>'+sports.map(s=>names[s]).join(" · ")+' · '+sports.length+' active sport'+(sports.length===1?"":"s")+
- '. Only these sports count toward this league’s leaderboard.</p></div>'+
- '</div>'+
- (owner?'<details class="fan-fold fan-edit-league"><summary>⚙️ Change sports for this league <span>Owner only</span></summary>'+
- '<p>Select one, two, or all three. Turning a sport off will NOT delete its picks or results. You can enable it again anytime.</p>'+
- '<div id="fan-edit-sport-options">'+checkboxes(sports,"edit")+'</div>'+
- '<button class="fan-small fan-primary" type="button" data-league-action="save-sports">Save these sports →</button></details>':
- '<p class="fan-subtle">The league owner controls which sports this league plays.</p>')+
+ host.innerHTML='<section class="fan-panel fan-club-focus" aria-label="Standings for '+html(c.name)+'">'+
+ '<div class="fan-title-row fan-club-title"><div><div class="card-kicker">🏆 '+html(c.name)+'</div>'+
+ '<h2>League standings</h2><p>Only these sports count toward this league’s leaderboard.</p></div>'+
+ '<button class="fan-small" type="button" data-league-action="reload">↻ Refresh</button></div>'+
+ '<div class="fan-table-wrap"><table class="fan-table"><thead><tr><th>Player</th>'+columns+'<th>Total</th></tr></thead><tbody>'+
+ (leaderboard.length?leaderboard.map((p,i)=>'<tr><td>#'+(i+1)+' '+html(p.display_name)+(p.user_id===me()?.id?" ★":"")+'</td>'+
+ sports.map(s=>'<td>'+score(p[s])+'</td>').join("")+'<td>'+score(p.total)+'</td></tr>').join(""):
+ '<tr><td colspan="'+(sports.length+2)+'" class="fan-subtle">Waiting for verified game results.</td></tr>')+
+ '</tbody></table></div>'+
  '<div class="fan-sport-links">'+sports.map(s=>'<button class="fan-small" type="button" data-league-action="sport" data-sport="'+s+
  '">'+names[s]+' picks ↗</button>').join("")+'</div>'+
- '<h3>'+(sports.length===1?"League standings":"Combined league standings")+'</h3>'+
- '<p class="fan-subtle">Only verified results from this league’s enabled sports count.</p>'+
- '<div class="fan-table-wrap"><table class="fan-table"><thead><tr><th>Player</th>'+columns+'<th>Total</th></tr></thead><tbody>'+
- leaderboard.map((p,i)=>'<tr><td>#'+(i+1)+' '+html(p.display_name)+(p.user_id===me()?.id?" ★":"")+'</td>'+
- sports.map(s=>'<td>'+score(p[s])+'</td>').join("")+'<td>'+score(p.total)+'</td></tr>').join("")+'</tbody></table></div>'+
- (info&&sports.length>1?'<details class="fan-fold"><summary>📈 My '+sports.length+'-sport statistics</summary>'+
- '<div class="fan-metrics">'+sports.map(s=>'<span><strong>'+score(info[s+"_correct"])+
- '</strong><small>'+names[s]+' correct</small></span>').join("")+'</div></details>':"")+
+ '<details class="fan-fold fan-club-settings"><summary>⚙ League settings <span>Invite · Sports · Membership</span></summary>'+
  '<div class="fan-club-invite"><span>Invite code: <strong>'+html(c.invite_code)+'</strong></span>'+
  '<button class="fan-small" type="button" data-league-action="share">Share invite ↗</button></div>'+
+ (owner?'<details class="fan-fold fan-edit-league"><summary>⚙️ Change sports for this league <span>Owner only</span></summary>'+
+ '<p>Choose which sports count. Disabled sports keep their existing picks and results.</p>'+
+ '<div id="fan-edit-sport-options">'+checkboxes(sports,"edit")+'</div>'+
+ '<button class="fan-small fan-primary" type="button" data-league-action="save-sports">Save these sports →</button></details>':"")+
+ (info&&sports.length>1?'<details class="fan-fold"><summary>📈 My statistics</summary>'+
+ '<div class="fan-metrics">'+sports.map(s=>'<span><strong>'+score(info[s+"_correct"])+
+ '</strong><small>'+names[s]+' correct</small></span>').join("")+'</div></details>':"")+
  '<details class="fan-fold fan-member-sync"><summary>Member sync options</summary>'+
  '<p class="fan-subtle">Opt into newly enabled sports. Disabled sports never erase old picks.</p>'+
  '<button class="fan-small" type="button" data-league-action="sync">Join newly added sports</button></details>'+
- '</section>';
+ '</details></section>';
 }
 async function standings(){
  const currentClub=club(),who=me()?.id,version=++standingsVersion;
