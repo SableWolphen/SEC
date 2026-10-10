@@ -1,11 +1,226 @@
 {
-  "updated_at": "2026-10-10T17:52:52.589624Z",
-  "checked_at": "2026-10-10T17:52:52.589624Z",
+  "updated_at": "2026-10-10T21:48:22.889000Z",
+  "checked_at": "2026-10-10T21:48:22.889000Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "1e9a9e6430ea5fb0",
+      "title": "LaNorris Sellers sparks South Carolina rout of No. 16 Florida",
+      "summary": "LaNorris Sellers accounted for five TDs as South Carolina stunned No. 16 Florida to end an eight-game SEC skid and take some heat off embattled coach Shane Beamer.",
+      "url": "https://www.espn.com/college-football/story/_/id/50150629/lanorris-sellers-sparks-south-carolina-rout-no-16-florida",
+      "source": "ESPN",
+      "published_at": "2026-10-10T21:17:54Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "73042af10f53ee15",
+      "title": "South Carolina State Bulldogs vs. Charleston Southern Buccaneers: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50150926/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-10T21:17:47Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "89906e7bc4f9a4d4",
+      "title": "Shane Beamer beams after Gamecocks' upset win over No. 14 Florida",
+      "summary": "Beamer celebrates the Gamecocks answering the call with a big SEC win and credits South Carolina's culture for keeping his players resilient through a tough start.",
+      "url": "https://www.espn.com/video/clip/_/id/50150895/shane-beamer-beams-gamecocks-upset-win-no-14-florida",
+      "source": "ESPN",
+      "published_at": "2026-10-10T21:16:02Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "de99086f69a48537",
+      "title": "South Carolina Gamecocks vs. Florida Gators: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50150746/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-10T21:02:27Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a951ce07d83b2df0",
+      "title": "LaNorris Sellers credits Gamecocks teammates for making plays in win",
+      "summary": "Sellers discusses how South Carolina weathered the extra long halftime delay and shouts out his teammates for finding a way to win.",
+      "url": "https://www.espn.com/video/clip/_/id/50150702/lanorris-sellers-credits-gamecocks-teammates-making-plays-win",
+      "source": "ESPN",
+      "published_at": "2026-10-10T21:01:14Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c7383a3cbdacfb20",
+      "title": "South Carolina tops No. 16 Florida, North Carolina takes down No. 25 Pitt in top 25 upsets",
+      "summary": "There’s a lot of benefits that come with being a Top 25 team, but immunity isn’t one of them.",
+      "url": "https://www.ncaa.com/news/football/article/2026-10-10/south-carolina-tops-no-16-florida-north-carolina-takes-down-no-25-pitt-top-25-upsets",
+      "source": "NCAA",
+      "published_at": "2026-10-10T20:38:35Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "fef3feb850edbc2b",
+      "title": "Texas A&M Aggies vs. Missouri Tigers: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50150141/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-10T20:32:58Z",
+      "sport": "football",
+      "teams": [
+        "Missouri",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e4b22db39168b1ea",
+      "title": "San Diego Toreros vs. Butler Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50150244/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-10T20:21:03Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4c7eb1fce4c5916c",
+      "title": "Ball State Cardinals vs. Northwestern Wildcats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50150102/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-10T20:14:38Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c717af84644efd21",
+      "title": "East Tennessee State Buccaneers vs. The Citadel Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50150109/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-10T20:11:27Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "29e222d552ab7470",
+      "title": "Samford Bulldogs vs. Chattanooga Mocs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50149992/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-10T19:58:57Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "29438450f25b9bc1",
+      "title": "Jamal Roberts says Tigers were motivated to get revenge vs. Texas A&M",
+      "summary": "Roberts explains why he and his teammates were motivated to defend home field against the Aggies while saying how grateful he is for the opportunity to play at Missouri.",
+      "url": "https://www.espn.com/video/clip/_/id/50149948/jamal-roberts-says-tigers-were-motivated-get-revenge-vs-texas-am",
+      "source": "ESPN",
+      "published_at": "2026-10-10T19:54:22Z",
+      "sport": "football",
+      "teams": [
+        "Missouri",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3fa43aa9fbbe8a96",
+      "title": "Ahmed Nur commits to Ole Miss for school's top recruit in decades",
+      "summary": "Top-20 senior Ahmed Nur has committed to Ole Miss, giving the Rebels their highest-ranked recruit in at least 20 years.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50149713/ahmed-nur-commits-ole-miss-school-top-recruit-decades",
+      "source": "ESPN",
+      "published_at": "2026-10-10T19:42:13Z",
+      "sport": "basketball",
+      "teams": [
+        "Ole Miss"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "4d973877a67c12fa",
+      "title": "Dartmouth Big Green vs. Yale Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50149790/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-10T19:29:12Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1d05981183e2a999",
+      "title": "Bryant Bulldogs vs. Brown Bears: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50149708/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-10T19:19:16Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0bd05d7aad948489",
+      "title": "Davidson Wildcats vs. Presbyterian Blue Hose: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50149702/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-10T19:18:24Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
     {
       "id": "ef92b3dd36938471",
       "title": "Pat McAfee goes full heel with his Georgia-Alabama pick",
@@ -16,366 +231,6 @@
       "sport": "football",
       "teams": [
         "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ad2c1721e5fd26be",
-      "title": "Sources: Alabama TE Josh Ford expected to play vs. Georgia",
-      "summary": "Alabama starting tight end Josh Ford, who suffered a broken arm and had surgery over the past week, is expected to play against No. 2 Georgia, sources told ESPN.",
-      "url": "https://www.espn.com/college-football/story/_/id/50147564/sources-alabama-josh-ford-expected-play-vs-georgia",
-      "source": "ESPN",
-      "published_at": "2026-10-10T15:04:34Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "14e9b4ecc897dda3",
-      "title": "Venables discusses how Oklahoma can reignite Mateer and the offense",
-      "summary": "Brent Venables explains how the Sooners plan to bounce back from a slow start and come out refreshed after the bye week.",
-      "url": "https://www.espn.com/video/clip/_/id/50147712/venables-discusses-how-oklahoma-reignite-mateer-offense",
-      "source": "ESPN",
-      "published_at": "2026-10-10T14:38:07Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b14edd45b888dc47",
-      "title": "Texas' Sarkisian evaluates Manning's performance, Oklahoma matchup",
-      "summary": "Steve Sarkisian discusses the effective play of his star quarterback, Arch Manning, and outlines the keys to the game against the Sooners.",
-      "url": "https://www.espn.com/video/clip/_/id/50147706/texas-sarkisian-evaluates-manning-performance-oklahoma-matchup",
-      "source": "ESPN",
-      "published_at": "2026-10-10T14:37:56Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "365327a143cfcf80",
-      "title": "Breaking down strengths that make Alabama, Georgia defenses dangerous",
-      "summary": "SEC Network's Roman Harper highlights how the Bulldogs and the Crimson Tide excel at forcing turnovers and keeping opponents off balance.",
-      "url": "https://www.espn.com/video/clip/_/id/50147490/breaking-strengths-make-alabama-georgia-defenses-dangerous",
-      "source": "ESPN",
-      "published_at": "2026-10-10T14:19:40Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": true
-    },
-    {
-      "id": "ce34f7c8cd965367",
-      "title": "Checking out the best fair food at the Red River Rivalry",
-      "summary": "SEC Network's Marion Crowder, Ryan McGee and Marty Smith join SEC Nation from the State Fair of Texas with some fried food to die for.",
-      "url": "https://www.espn.com/video/clip/_/id/50147331/checking-best-fair-food-red-river-rivalry",
-      "source": "ESPN",
-      "published_at": "2026-10-10T14:05:38Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "59f00712b756276c",
-      "title": "Alabama thinks it has found and fixed Ryan Coleman-Williams' drop issues",
-      "summary": "Using VR technology, the staff discovered a depth perception issue, and the drops have disappeared.",
-      "url": "https://www.espn.com/college-football/story/_/id/50133938/college-football-alabama-ryan-coleman-williams-drops",
-      "source": "ESPN",
-      "published_at": "2026-10-10T13:55:26Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "da7f8a8910971a4d",
-      "title": "Who is the best team in the SEC right now?",
-      "summary": "The SEC Nation crew discusses which teams make up the conference's top tier and debates the differences between the nation's top teams.",
-      "url": "https://www.espn.com/video/clip/_/id/50147247/who-best-team-sec-right-now",
-      "source": "ESPN",
-      "published_at": "2026-10-10T13:51:29Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "44496c3c6cf58e06",
-      "title": "Sources: South Carolina's Dylan Stewart to return vs. Florida",
-      "summary": "South Carolina edge rusher Dylan Stewart will play Saturday against Florida after completing his one-game suspension, sources told ESPN's Pete Thamel.",
-      "url": "https://www.espn.com/college-football/story/_/id/50141924/sources-south-carolina-dylan-stewart-return-florida",
-      "source": "ESPN",
-      "published_at": "2026-10-10T12:56:55Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0754883f6193fd51",
-      "title": "Washington State Cougars vs. Utah State Aggies: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50145006/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-10T05:08:12Z",
-      "sport": "football",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7a9f3509ca9419d9",
-      "title": "How can LSU's defense be a different test for Kentucky?",
-      "summary": "Being ranked the second best defense in the FBS, SEC Now's Chris Doering explains how the No. 10 Tigers' defensive force can affect Kenny Minchey and the Kentucky Wildcats.",
-      "url": "https://www.espn.com/video/clip/_/id/50144643/how-lsu-defense-different-test-kentucky",
-      "source": "ESPN",
-      "published_at": "2026-10-10T04:20:43Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b7e40453d895bcf7",
-      "title": "Trump will not attend Georgia-Alabama game due to Hurricane Isaias",
-      "summary": "President Trump will no longer attend Saturday's SEC clash between Georgia and Alabama, which remains on schedule despite approaching Hurricane Isaias.",
-      "url": "https://www.espn.com/college-football/story/_/id/50142513/trump-not-attend-georgia-alabama-game-due-hurricane-isaias",
-      "source": "ESPN",
-      "published_at": "2026-10-10T04:03:58Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "46c6d02f34b38fa3",
-      "title": "Analyzing challenge Georgia faces against battle-tested Alabama",
-      "summary": "ESPN's Kirk Herbstreit breaks down the strengths of both teams as he emphasizes why the Bulldogs must make the Crimson Tide drive the ball if they want to win in Tuscaloosa.",
-      "url": "https://www.espn.com/video/clip/_/id/50143772/analyzing-challenge-georgia-faces-battle-tested-alabama",
-      "source": "ESPN",
-      "published_at": "2026-10-10T01:58:11Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "dfd4bd46df05d0ee",
-      "title": "Taking a look at Texas' Arch Manning's passing woes",
-      "summary": "With Manning having two touchdowns and three interceptions when throwing the ball 10+ yards, SEC Now's Chris Doering breaks down what needs to improve with the Longhorns' passing attack.",
-      "url": "https://www.espn.com/video/clip/_/id/50143829/taking-look-texas-arch-manning-passing-woes",
-      "source": "ESPN",
-      "published_at": "2026-10-10T01:42:57Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6eb28b6ff9213e13",
-      "title": "DeBoer on Bama's execution, Russell's biggest test of season vs. UGA",
-      "summary": "Kalen DeBoer discusses his pride in the Crimson Tide's ability to execute plays effectively as he describes the confidence he has in Keelon Russell ahead of test vs. the Bulldogs.",
-      "url": "https://www.espn.com/video/clip/_/id/50143662/deboer-bama-execution-russell-biggest-test-season-vs-uga",
-      "source": "ESPN",
-      "published_at": "2026-10-10T01:02:11Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "bed43defcdb4fcbd",
-      "title": "Chris Doering dives into key SEC Week 6 matchups",
-      "summary": "SEC Network's Doering joins The Paul Finebaum Show to spotlight what to look out for this week as big conference games take the stage in Week 6.",
-      "url": "https://www.espn.com/video/clip/_/id/50143221/chris-doering-dives-key-sec-week-6-matchups",
-      "source": "ESPN",
-      "published_at": "2026-10-09T22:55:02Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "203e8b0cc9543229",
-      "title": "Dari Nowkhah offers advice to improve Sooners' offense",
-      "summary": "With the pressure high to secure a Red River Rivalry win, SEC Network's Nowkhah advises his alma mater Oklahoma with keys in order to come out on top.",
-      "url": "https://www.espn.com/video/clip/_/id/50143206/dari-nowkhah-offers-advice-improve-sooners-offense",
-      "source": "ESPN",
-      "published_at": "2026-10-09T22:49:54Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "82f9fe32eb3ac4ed",
-      "title": "How will Florida respond vs. South Carolina following loss to Missouri?",
-      "summary": "Tim Tebow joins The Paul Finebaum Show to discuss where things went wrong for the Gators against the Tigers and emphasize the need to show up with high energy vs. the Gamecocks.",
-      "url": "https://www.espn.com/video/clip/_/id/50143079/how-florida-respond-vs-south-carolina-following-loss-missouri",
-      "source": "ESPN",
-      "published_at": "2026-10-09T22:25:22Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Missouri",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3b43cba914b03824",
-      "title": "Roman Harper is impressed with Bama's defensive growth, UGA offense",
-      "summary": "Harper highlights No. 6 Alabama's defensive maturity through diverse and young talent then praises No. 2 Georgia's offensive flow.",
-      "url": "https://www.espn.com/video/clip/_/id/50143018/roman-harper-impressed-bama-defensive-growth-uga-offense",
-      "source": "ESPN",
-      "published_at": "2026-10-09T21:54:19Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "79af8af1c33cca16",
-      "title": "First time at the State Fair of Texas? Here are our tips",
-      "summary": "We polled our staff for their best tips on making the most of one of the sport's most distinctive backdrops.",
-      "url": "https://www.espn.com/college-football/story/_/id/50135168/texas-oklahoma-state-fair-red-river-guide",
-      "source": "ESPN",
-      "published_at": "2026-10-09T21:52:39Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "fb24f3d462a2849d",
-      "title": "Power ranking SEC teams who need a win in Week 6",
-      "summary": "Peter Burns brings out his own version of SEC Network Power Rankings as he ranks the five teams that are under the most pressure to get a victory in Week 6 action.",
-      "url": "https://www.espn.com/video/clip/_/id/50142969/power-ranking-sec-teams-need-win-week-6",
-      "source": "ESPN",
-      "published_at": "2026-10-09T21:49:10Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "2cee426fbc0c02dc",
-      "title": "Holly Rowe analyzes Georgia and Alabama's improvements",
-      "summary": "ESPN's Rowe joins The Paul Finebaum Show to discuss how the No. 2 Bulldogs and the No. 6 Crimson Tide's improved offenses will be the big storyline of this game.",
-      "url": "https://www.espn.com/video/clip/_/id/50142972/holly-rowe-analyzes-georgia-alabama-improvements",
-      "source": "ESPN",
-      "published_at": "2026-10-09T21:47:18Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "cb37f14afbc2f6a0",
-      "title": "Mack Brown on Red River Rivalry: 'It's loud the whole time'",
-      "summary": "As Oklahoma and No. 1 Texas face off once again, former Longhorns' head coach Brown joins SEC This Morning and explains how the environment and atmosphere shape the rivalry game.",
-      "url": "https://www.espn.com/video/clip/_/id/50142915/loud-whole",
-      "source": "ESPN",
-      "published_at": "2026-10-09T21:35:40Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5b4625aa709472cc",
-      "title": "George: Defense will decide OU vs No. 1 Texas, Manning is confident",
-      "summary": "ESPN's Katie George expects the Red River Rivalry to be a defensive battle, and discusses the support QB Arch Manning has received as he continues to find his rhythm.",
-      "url": "https://www.espn.com/video/clip/_/id/50142912/defense-decide-ou-vs-no-1-texas-manning-confident",
-      "source": "ESPN",
-      "published_at": "2026-10-09T21:34:43Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "9ab0d574a7d05181",
-      "title": "Connelly Week 6 preview: Things get real with SEC, Big Ten showdowns",
-      "summary": "With Georgia-Alabama, major challenges for Big Ten unbeatens and some Big 12 chaos, there's a lot to follow.",
-      "url": "https://www.espn.com/college-football/story/_/id/50133135/connelly-week-6-preview-sec-big-ten-alabama-georgia",
-      "source": "ESPN",
-      "published_at": "2026-10-09T16:05:51Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "bbabb20709223eef",
-      "title": "Oregon, Florida and more lead loaded CFB Week 6 uniform slate",
-      "summary": "Of all the strong uniform weeks in college football this fall, you'll likely be hard-pressed to find another that stacks up to Week 6.",
-      "url": "https://www.espn.com/college-football/story/_/id/50134026/college-football-best-uniforms-week-6-oregon-florida-notre-dame",
-      "source": "ESPN",
-      "published_at": "2026-10-09T13:38:23Z",
-      "sport": "football",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "cf6ad493bda5ff75",
-      "title": "Finebaum: Kirby Smart, Georgia have 'an Alabama problem'",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50139833/kirby-smart-georgia-alabama-problem",
-      "source": "ESPN",
-      "published_at": "2026-10-09T13:14:28Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "549ce46ee8d24305",
-      "title": "Hometown hero Gunner Stockton back in spotlight for Georgia",
-      "summary": "The Bulldogs QB is a quiet leader, but those who have known him over the years eagerly sing his praises.",
-      "url": "https://www.espn.com/college-football/story/_/id/50126123/gunner-stockton-back-spotlight-georgia-faces-alabama",
-      "source": "ESPN",
-      "published_at": "2026-10-09T10:25:09Z",
-      "sport": "football",
-      "teams": [
         "Georgia"
       ],
       "breaking": false
@@ -470,19 +325,6 @@
       "sport": "basketball",
       "teams": [
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0201623495fe30bd",
-      "title": "Florida's Denzel Aberdeen: Only 'fair' to be granted 5th year",
-      "summary": "Denzel Aberdeen says it's \"fair\" that he's been granted a fifth year of eligibility to play for Florida.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50078729/florida-denzel-aberdeen-only-fair-granted-5th-year",
-      "source": "ESPN",
-      "published_at": "2026-10-01T20:03:51Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
       ],
       "breaking": false
     }
