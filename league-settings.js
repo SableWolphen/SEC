@@ -19,6 +19,9 @@ const club=()=>items().find(x=>ident(x)===selection&&x.kind==="club")?.detail||n
 const selectedItem=()=>items().find(x=>ident(x)===selection)||null;
 const score=n=>Number.isFinite(Number(n))?Number(n):0;
 const sportRoute=s=>s==="football"?"picks":s;
+const olderSeason=item=>item&&["basketball","baseball"].includes(item.kind)&&
+  Number.isInteger(item.detail?.season)&&Number.isInteger(win.SEC_SPORTS?.year?.(item.kind))&&
+  item.detail.season!==win.SEC_SPORTS.year(item.kind);
 function reset(){
  const id=me()?.id||"guest";
  if(lastUser===id)return;
@@ -100,7 +103,7 @@ function render(){
  (logged?(all.length?'<label class="fan-league-select-label" for="fan-selected-league">Choose a league to manage</label>'+
  '<select class="fan-league-select" id="fan-selected-league" aria-label="Choose league">'+
  all.map(x=>'<option value="'+html(ident(x))+'" '+(ident(x)===selection?"selected":"")+'>'+html(x.name)+
- ' · '+x.sports.map(s=>names[s]).join(" + ")+'</option>').join("")+'</select>'+
+ ' · '+x.sports.map(s=>names[s]).join(" + ")+(olderSeason(x)?" · "+x.detail.season+" archive":"")+'</option>').join("")+'</select>'+
  '<p class="fan-format-note">'+html(item?.name||"Your league")+' · '+item?.sports.length+
  ' active sport'+(item?.sports.length===1?"":"s")+'. Changes here do not affect other leagues.</p>':
  '<p class="fan-format-note">'+(loading?"Loading your leagues…":"No leagues joined yet. Make your first league below.")+'</p>'):
@@ -131,10 +134,12 @@ function render(){
       '<div id="fan-upgrade-sport-options">'+checkboxes([kind],"upgrade")+'</div>'+
       '<button class="fan-small fan-primary" type="button" data-league-action="upgrade">Save league sports →</button></details>':
       '<p class="fan-subtle">Only this league’s owner can change its sports.</p>')+
-    (kind!=="football"?'<button class="fan-small" type="button" data-league-action="open-sport" data-sport="'+kind+
-     '">Open '+names[kind]+' picks →</button>':
-     '<p class="fan-subtle">Your football scoreboard and league chat are below.</p>')+
-    (kind!=="football"?(win.SEC_SPORTS?.renderLeaguePanel?.(kind)||
+    (olderSeason(item)?'<p class="fan-warning" role="status">'+item.detail.season+
+       ' season archive. Your historical membership is preserved, but current picks use the new season.</p>':
+     kind!=="football"?'<button class="fan-small" type="button" data-league-action="open-sport" data-sport="'+kind+
+       '">Open '+names[kind]+' picks →</button>':
+       '<p class="fan-subtle">Your football scoreboard and league chat are below.</p>')+
+    (kind!=="football"&&!olderSeason(item)?(win.SEC_SPORTS?.renderLeaguePanel?.(kind)||
       '<p class="fan-subtle">Loading this sport’s league controls…</p>'):"")+
     '</section>';
   }
@@ -223,7 +228,7 @@ async function loadNow(force=false){
   const item=selectedItem();
   if(item?.kind==="football"&&win.secOnline?.getLeague?.()?.id!==item.id)
    win.secOnline?.useLeague?.(item.id);
-  if(item&&["basketball","baseball"].includes(item.kind)&&
+  if(item&&["basketball","baseball"].includes(item.kind)&&!olderSeason(item)&&
     win.SEC_SPORTS?.getState?.(item.kind)?.active!==item.id)
    win.SEC_SPORTS?.selectLeague?.(item.kind,item.id);
   await standings();
@@ -242,7 +247,7 @@ async function choose(value){
  render();
  try{
   if(x.kind==="football")win.secOnline?.useLeague?.(x.id);
-  else if(x.kind!=="club")win.SEC_SPORTS?.selectLeague?.(x.kind,x.id);
+  else if(x.kind!=="club"&&!olderSeason(x))win.SEC_SPORTS?.selectLeague?.(x.kind,x.id);
   await standings();
  }catch(e){message="Could not refresh this league’s standings: "+(e.message||"Please retry.");}
  render();win.SEC_BRACKETS?.mount?.();
