@@ -44,4 +44,60 @@ class SportFeedTests(unittest.TestCase):
   r=sport.build(now=NOW,get=offline,existing=existing)
   self.assertEqual(len(r['sports']['basketball']['games']),1)
   self.assertIn('unavailable',r['sports']['basketball']['warning'])
+ def test_database_fallback_populates_real_games_even_when_espn_is_down(self):
+  imported={'id':'basketball-2027-sec-20261103-2747-2633',
+   'sport':'basketball','season':2027,'week':1,
+   'kickoff_at':'2026-11-03T22:00:00+00:00','away_code':'2747',
+   'home_code':'2633','away_name':'Wofford','home_name':'Tennessee',
+   'away_score':None,'home_score':None,'winner_code':None,
+   'game_status':'scheduled','source':'Tennessee Athletics · confirmed tipoff',
+   'espn_event_id':None}
+  def offline(url):raise OSError('ESPN down')
+  def fallback(sport,year):return [imported] if sport=='basketball' else []
+  result=sport.build(now=NOW,get=offline,fallback=fallback)
+  rows=result['sports']['basketball']
+  self.assertEqual(len(rows['games']),1)
+  self.assertEqual(rows['games'][0]['id'],imported['id'])
+  self.assertEqual(rows['verified_database_games'],1)
+  self.assertEqual(rows['source_windows'],0)
+  self.assertIn('verified',rows['warning'])
+  self.assertIsNone(rows['games'][0]['winner_code'])
+  self.assertEqual(result['sports']['baseball']['games'],[])
+ def test_schedules_use_server_import_ids_instead_of_duplicate_espn_ids(self):
+  imported={'id':'basketball-2027-sec-20261103-2747-2633',
+   'sport':'basketball','season':2027,'week':1,
+   'kickoff_at':'2026-11-03T22:00:00Z','away_code':'2747',
+   'home_code':'2633','away_name':'Wofford','home_name':'Tennessee',
+   'away_score':None,'home_score':None,'winner_code':None,
+   'game_status':'scheduled','source':'Tennessee Athletics · confirmed tipoff',
+   'espn_event_id':'espn001'}
+  def espn(url):
+   if 'basketball/' not in url:return {'events':[]}
+   return {'events':[event('espn001',2747,2633,'2026-11-03T22:00:00Z')]}
+  result=sport.build(now=NOW,get=espn,
+     fallback=lambda s,y:[imported] if s=='basketball' else [])
+  ids=[g['id'] for g in result['sports']['basketball']['games']]
+  self.assertEqual(ids,[imported['id']],"No duplicate visible games or changed pick IDs")
+ def test_offline_sources_preserve_prior_verified_finals(self):
+  old={'sports':{'basketball':{'games':[{
+    'id':'basketball-2027-sec-20261103-2747-2633','sport':'basketball',
+    'season':2027,'week':1,'away_code':'2747','home_code':'2633',
+    'away_name':'Wofford','home_name':'Tennessee',
+    'kickoff_at':'2026-11-03T22:00:00Z','source':'SEC confirmed',
+    'game_status':'final','winner_code':'2633','away_score':65,'home_score':73
+  }]}}}
+  revised={**old['sports']['basketball']['games'][0],
+      'game_status':'scheduled','winner_code':None,'away_score':None,'home_score':None}
+  result=sport.build(now=NOW,get=lambda u: (_ for _ in ()).throw(OSError('offline')),
+      fallback=lambda s,y:[revised] if s=='basketball' else [],existing=old)
+  actual=result['sports']['basketball']['games'][0]
+  self.assertEqual(actual['game_status'],'final')
+  self.assertEqual(actual['winner_code'],'2633')
+  self.assertEqual(actual['home_score'],73)
+ def test_invalid_database_rows_cannot_create_false_games(self):
+  bad={'id':'basketball-2027-forged','sport':'basketball','season':2027,'week':1,
+      'kickoff_at':'2026-11-03T22:00:00Z','away_code':'55','home_code':'66',
+      'game_status':'final','source':'Unverified'}
+  self.assertEqual(sport.validated_public_games([bad],'basketball',2027),[])
+
 if __name__=='__main__':unittest.main()

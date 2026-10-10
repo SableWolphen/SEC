@@ -430,3 +430,12 @@ body{overflow-x:clip}
 @media(prefers-reduced-motion:reduce){
   .fan-format-card,.fan-power-card,.fan-center,.fan-fold{transition:none!important}
 }
+
+
+/* 320px Android: the Picks week scroller uses -15px at <=540px, but
+   page gutter shrinks to 11px below 345px. Match those sizes exactly so
+   the document and fixed bottom nav do not become 4px wider than the screen. */
+@media(max-width:345px){
+  .week-picker{margin-right:-11px;padding-right:11px}
+  .bottom-nav{width:100%;max-width:100%;box-sizing:border-box}
+}
