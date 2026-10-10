@@ -15,10 +15,21 @@ const ctx={team:id=>({name:id==="TAMU"?"Texas A&M":"Missouri",nick:id==="TAMU"?"
 const markup=win.SEC_FINAL_CARDS.render(g,0,ctx);
 assert.match(markup,/class="game-card sec-final-card"/);
 assert.match(markup,/Missouri/);
-assert.match(markup,/🏆 WINNER/);
-assert.match(markup,/TAMU 6 – 27 MIZ/);
+assert.match(markup,/class="sec-final-team is-winner"/,"winner receives highlight without a giant badge");
+assert.match(markup,/scored 6/);
+assert.match(markup,/scored 27/);
+assert.match(markup,/✓ FINAL/);
 assert.match(markup,/Texas A&amp;M/);
 assert.match(markup,/0 pts/);
+assert.match(markup,/<details class="sec-final-details" data-game-id="2026-6-TAMU-MIZ">\s*<summary>/,
+ "final games display the score; all extra content starts collapsed");
+assert.match(markup,/<summary><span>Game details<\/span>/,
+ "one optional expander replaces tall postgame panels");
+assert.ok(markup.indexOf('Game details')<markup.indexOf('YOUR PICK'),
+ "personal pick is hidden inside game details");
+assert.ok(markup.indexOf('Game details')<markup.indexOf('View Box Score'),
+ "box score link is hidden inside game details");
+assert.doesNotMatch(markup,/class="sec-final-scoreline"/,"no duplicate final score row");
 assert.match(markup,/4 of 6 picked TAMU/);
 assert.match(markup,/4 missed their pick/);
 assert.doesNotMatch(markup,/5 lost their pick|0 leading picks|Watch ABC/);
@@ -49,4 +60,11 @@ assert.match(features,/winner===g\.away&&Number\(away\)<=Number\(home\)/,
  "winner badge requires score agreeing with result");
 const live=fs.readFileSync("sec-live-scores.js","utf8");
 assert.match(live,/espn_event_id/,"recap actions require verified ESPN event IDs");
-console.log("Final matchup design passed: real winners/points, source-backed links, compact expandable private picks, and unverified-result guard.");
+// Rebuilding the picks list while scores refresh keeps intentionally-open details open.
+const oldCard={dataset:{gameId:g.id},querySelector:q=>q===".sec-final-details"?{open:true}:null};
+const doc={querySelectorAll:()=>[oldCard]};
+const alternate={SEC_BRIDGE:{view:()=>"league"},SEC_FEATURES:{finalData:()=>d},SEC_STATS:{pickContext:()=>""}};
+vm.runInNewContext(fs.readFileSync("sec-final-cards.js","utf8"),{window:alternate,document:doc});
+assert.match(alternate.SEC_FINAL_CARDS.render(g,0,ctx),/data-game-id="2026-6-TAMU-MIZ" open>/,
+ "expanded game details stay open across score re-renders");
+console.log("Final matchup design passed: score-only closed games, optional results, real winners/points, ESPN links and safe rerenders.");
