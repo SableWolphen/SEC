@@ -328,3 +328,50 @@
 .fan-new-league>.fan-small,.fan-edit-league .fan-small{margin:4px 0 6px}
 .fan-new-league #fan-new-name{width:100%;min-height:44px}
 @media(max-width:460px){.fan-sport-checkboxes{gap:5px}.fan-sport-checkbox>span{font-size:10px;padding:8px 3px;min-height:54px}.fan-club-invite>.fan-small{flex:1}}
+
+/* League-specific weekly power rankings — compact by default, mobile friendly. */
+.fan-power-card{padding:17px 19px;margin:10px 0 17px}
+.fan-power-card h3{font-size:19px;letter-spacing:-.6px;line-height:1.2;margin:5px 0}
+.fan-power-card .power-heading{align-items:center;margin-bottom:9px}
+.fan-power-card .power-heading p{margin:0;font-size:11px}
+.fan-power-card button:disabled{opacity:.6;cursor:wait}
+.power-highlights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}
+.power-highlights>div{background:#112631;border:1px solid #365954;border-radius:11px;padding:10px;min-width:0}
+.power-highlights small{color:#9fbdbd;font-size:11px;display:block;margin-bottom:5px}
+.power-highlights strong{color:#e5f5de;font-size:12px;font-weight:900;line-height:1.45;display:block;overflow-wrap:anywhere}
+.power-rank-list{margin:10px 0 0;padding:0;list-style:none;border:1px solid #365257;border-radius:12px;overflow:hidden}
+.power-rank-row{display:grid;grid-template-columns:40px minmax(0,1fr) 64px 50px;gap:10px;align-items:center;
+ padding:11px 10px;border-bottom:1px solid #345158;background:#142832;min-width:0}
+.power-rank-row:last-child{border-bottom:0}
+.power-rank-row.is-you{background:#244034}
+.power-position{font-size:15px;font-weight:950;color:#d7fa65;text-align:center;white-space:nowrap}
+.power-player{min-width:0;overflow:hidden}
+.power-player strong{font-size:13px;color:#f3f6ee;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.power-player small{color:#a4bac0;font-size:11px;display:block;margin-top:2px;line-height:1.3}
+.power-points{text-align:right;min-width:0}
+.power-points strong{font-size:15px;display:block;color:#e7f2dd}
+.power-points small{font-size:9px;display:block;color:#abc3b8}
+.power-movement{display:inline-flex;min-height:25px;align-items:center;justify-content:center;
+ font-size:11px;font-weight:950;border-radius:8px;padding:4px;white-space:nowrap}
+.power-movement.up{color:#d7fa65;background:#30542b}
+.power-movement.down{color:#ffa7a0;background:#4b3037}
+.power-movement.neutral{color:#aabcc2;background:#253840}
+.power-rest{margin:8px 0}
+.power-rest summary{cursor:pointer;color:#d7fa65;font-size:11px;font-weight:850;padding:8px 4px}
+.power-rest summary:focus-visible{outline:3px solid #d7fa65;outline-offset:2px}
+.power-empty{padding:12px 0 7px;margin:0}
+.fan-power-card .power-note{margin:13px 0 0;font-size:10px;color:#91abb0;line-height:1.5}
+@media(max-width:620px){.fan-power-card{padding:12px}.power-rank-row{grid-template-columns:30px minmax(0,1fr) 50px 39px;gap:6px;padding:10px 7px}
+ .power-player strong{font-size:11px}.power-player small{font-size:9px}.power-points strong{font-size:13px}
+ .power-highlights{gap:5px}.power-highlights>div{padding:8px}.power-highlights strong{font-size:10px}
+ .power-movement{font-size:10px;padding:3px}}
+@media(max-width:340px){.power-highlights{grid-template-columns:1fr}.power-rank-row{grid-template-columns:25px minmax(0,1fr) 43px 37px;gap:4px}}
+
+/* Focus and touch targets on the simplified League page. */
+.fan-power-card .fan-small{min-height:44px}
+.power-rest summary{padding:12px 6px;min-height:44px;display:flex;align-items:center}
+.fan-football-tools{margin:0;padding:11px 13px}
+.fan-football-tools>.content-card{margin:12px 0}
+.fan-football-tools summary{min-height:44px;display:flex;align-items:center}
+@media(max-width:620px){.power-player strong{font-size:12px}.power-player small{font-size:10px}
+.power-highlights strong{font-size:11px}}
