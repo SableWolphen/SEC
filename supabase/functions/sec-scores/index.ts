@@ -225,7 +225,32 @@ Deno.serve(async req=>{
    }).filter(Boolean);
    const byId=g.espn_event_id?valid.filter(v=>String(v.ev.id)===String(g.espn_event_id)):[];
    const candidates=byId.length?byId:valid;
-   if(candidates.length!==1){skipped++;continue;}
+   const ncaa=matchNcaa(g,ncaaBoards.get(String(g.game_date).slice(0,4)+":"+g.week)||[],recognize);
+
+   if(candidates.length!==1){
+    // Fallback when ESPN misses a live contest. NCAA can publish its live
+    // score but never final results, changes to picks, or a winner.
+    const kick=Date.parse(g.kickoff_at);
+    if(g.game_status==="final"||!ncaa||!Number.isFinite(kick)||
+       Date.now()<kick-10*60000||Date.now()>kick+8*3600000){skipped++;continue;}
+    const next=pickLive(null,null,ncaa,g.away_score,g.home_score,true);
+    const newState="live";
+    const newDetail=ncaa.period||g.status_detail||"Live";
+    if(g.game_status===newState&&next.away===g.away_score&&
+       next.home===g.home_score&&newDetail===g.status_detail){skipped++;continue;}
+    const ncaaPatch:any={game_status:newState,status_detail:newDetail.slice(0,80),
+     away_score:next.away,home_score:next.home,score_updated_at:stamp()};
+    if(next.away!==g.away_score||next.home!==g.home_score){
+     ncaaPatch.live_score_source="NCAA";ncaaAhead++;
+    }
+    try{
+     await api("sec_games?id=eq."+encodeURIComponent(g.id),{
+      method:"PATCH",headers:{"Content-Type":"application/json","Prefer":"return=minimal"},
+      body:JSON.stringify(ncaaPatch)
+     });updated++;
+    }catch(e){failures++;console.warn("NCAA fallback update failed",g.id,String(e));}
+    continue;
+   }
    const {ev,comp,away,home}=candidates[0];
    const rawStatus=stateFrom(ev,comp);
    const awayScore=parseNum(away.score),homeScore=parseNum(home.score);
@@ -233,7 +258,7 @@ Deno.serve(async req=>{
    const winner=rawStatus==="final"&&awayScore!==null&&homeScore!==null&&awayScore!==homeScore
       ?(homeScore>awayScore?g.home_code:g.away_code):null;
    let status=rawStatus==="final"&&!winner?"live":rawStatus;
-   const ncaa=matchNcaa(g,ncaaBoards.get(String(g.game_date).slice(0,4)+":"+g.week)||[],recognize);
+
    if(status==="scheduled"&&ncaa?.state==="I"&&
       Date.now()>=Date.parse(g.kickoff_at)-10*60000)status="live";
    const preferred=status==="final"?{away:awayScore,home:homeScore,source:"ESPN"}:
