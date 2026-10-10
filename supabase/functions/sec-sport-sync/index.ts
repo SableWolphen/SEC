@@ -31,6 +31,12 @@ function parseEvents(data:any,sport:string,season:number,start:Date){
   const winner=ended&&hs!==as?(hs>as?h:a):null;
   const odds=comp?.odds?.[0];
   const spread=typeof odds?.spread==="number"&&Number.isFinite(odds.spread)?odds.spread:null;
+  const phase=String(event.status?.type?.shortDetail||event.status?.type?.detail||"").trim();
+  const clock=String(event.status?.displayClock||"").trim();
+  const p=Number(event.status?.period);
+  const stage=phase|| (status==="in"&&Number.isInteger(p)&&p>0?
+   (sport==="basketball"?"Period "+p:"Inning "+p)+(clock?" · "+clock:""):"");
+  const detail=stage.slice(0,42).replace(/[<>]/g,"");
   list.push({
    id:sport+"-"+season+"-"+event.id,sport,season,
    week:Math.max(1,Math.floor((tip.getTime()-start.getTime())/604800000)+1),
@@ -39,6 +45,7 @@ function parseEvents(data:any,sport:string,season:number,start:Date){
    away_code:a,away_name:String(away.team?.displayName||away.team?.name||"Away"),
    home_score:hs,away_score:as,winner_code:winner,spread_home:spread,
    game_status:canceled?"canceled":ended?"final":status==="in"?"live":"scheduled",
+   status_detail:ended?"Final":status==="in"?detail:"",
    source:"ESPN",updated_at:new Date().toISOString()
   });
  }
@@ -53,23 +60,41 @@ Deno.serve(async(req:Request)=>{
  if(req.method!=="POST")return reply({error:"Use POST"},405);
  if(!URL||!SERVICE||!ANON)return reply({error:"Schedule sync not configured"},503);
  try{
-  const token=req.headers.get("Authorization")||"";
-  if(!token.startsWith("Bearer "))return reply({error:"Sign in before refreshing schedules"},401);
-  const session=createClient(URL,ANON,{auth:{persistSession:false,autoRefreshToken:false}});
-  const identity=await session.auth.getUser(token.slice(7));
-  if(identity.error||!identity.data?.user)return reply({error:"Sign in before refreshing schedules"},401);
+  const database=createClient(URL,SERVICE,{auth:{persistSession:false,autoRefreshToken:false}});
+  const jobToken=req.headers.get("X-SEC-Job-Token")||"";
+  let job=false;
+  if(jobToken){
+   const proof=await database.rpc("sec_verify_scores_job",{p_token:jobToken});
+   job=proof.error==null&&proof.data===true;
+  }
+  if(!job){
+   const token=req.headers.get("Authorization")||"";
+   if(!token.startsWith("Bearer "))return reply({error:"Sign in before refreshing schedules"},401);
+   const session=createClient(URL,ANON,{auth:{persistSession:false,autoRefreshToken:false}});
+   const identity=await session.auth.getUser(token.slice(7));
+   if(identity.error||!identity.data?.user)return reply({error:"Sign in before refreshing schedules"},401);
+  }
   const body=await req.json().catch(()=>({}));
   const sport=String(body.sport||"");
   if(!LEAGUES[sport])return reply({error:"Unsupported sport"},400);
-  const database=createClient(URL,SERVICE,{auth:{persistSession:false,autoRefreshToken:false}});
   const now=new Date(),season=currentSeason(now),start=seasonStart(sport,season);
   const prev=await database.from("sec_sport_sync_state").select("last_checked_at,imported").eq("sport",sport).maybeSingle();
   const last=prev.data?.last_checked_at?new Date(prev.data.last_checked_at).getTime():0;
-  if(now.getTime()-last<900000)return reply({ok:true,sport,season,cached:true,imported:prev.data?.imported||0});
+  // A two-minute refresh is useful only around active games. Otherwise the
+  // existing 15-minute cache protects the official provider from unnecessary work.
+  const near=await database.from("sec_sport_games").select("id")
+   .eq("sport",sport).eq("season",season)
+   .gte("kickoff_at",new Date(now.getTime()-6*3600000).toISOString())
+   .lte("kickoff_at",new Date(now.getTime()+30*60000).toISOString()).limit(1);
+  const active=Array.isArray(near.data)&&near.data.length>0;
+  const ttl=active?120000:900000;
+  if(now.getTime()-last<ttl)return reply({ok:true,sport,season,cached:true,imported:prev.data?.imported||0,active});
   // The server fetches from a fixed official provider and does NOT accept any
   // game IDs, kickoff dates, winners or scores from a user request.
-  const first=new Date(Math.max(start.getTime(),now.getTime()-10*86400000));
-  const end=new Date(Math.min(new Date(Date.UTC(season,6,1)).getTime(),Math.max(now.getTime(),start.getTime())+90*86400000));
+  const first=active?new Date(Math.max(start.getTime(),now.getTime()-2*86400000)):
+   new Date(Math.max(start.getTime(),now.getTime()-10*86400000));
+  const end=active?new Date(Math.min(new Date(Date.UTC(season,6,1)).getTime(),now.getTime()+3*86400000)):
+   new Date(Math.min(new Date(Date.UTC(season,6,1)).getTime(),Math.max(now.getTime(),start.getTime())+90*86400000));
   const unique=new Map<string,any>();let success=0;
   const compact=(d:Date)=>d.toISOString().slice(0,10).replaceAll("-","");
   for(let at=new Date(first);at<end;at=new Date(at.getTime()+14*86400000)){
@@ -120,6 +145,6 @@ Deno.serve(async(req:Request)=>{
   }
   await database.from("sec_sport_sync_state").upsert({sport,last_checked_at:now.toISOString(),
    last_success_at:now.toISOString(),imported:games.length},{onConflict:"sport"});
-  return reply({ok:true,sport,season,imported:games.length,source_windows:success});
+  return reply({ok:true,sport,season,imported:games.length,source_windows:success,active});
  }catch(_){return reply({error:"Could not refresh the verified sports schedule"},503);}
 });
