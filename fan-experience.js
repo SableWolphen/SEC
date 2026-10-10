@@ -48,6 +48,7 @@ function gameCenter(g,insights){
  const awayScore=g.awayScore??d?.away_score,homeScore=g.homeScore??d?.home_score;
  // The provider uses 0–0 placeholders before kickoff; never present them as a live score.
  const scored=["live","final"].includes(status)&&isScore(awayScore)&&isScore(homeScore);
+ const phase=status==="live"?String(g.statusDetail||d?.status_detail||"").trim().slice(0,45):"";
  const text=scored?esc(g.away)+" "+awayScore+" – "+homeScore+" "+esc(g.home):"Score pending";
  const game={...g,game_status:status,away_score:awayScore,home_score:homeScore,
   winner:d?.winner||g.winner||null,
@@ -56,7 +57,7 @@ function gameCenter(g,insights){
  // Revealed league pick totals live in one place: the League picks line.
  return '<details class="fan-center" data-fan-center="'+esc(g.id)+'" '+(openDetails.has(g.id)?"open":"")+'>'+
   '<summary><b class="'+(status==="live"?"fan-live":"")+'">'+(status==="live"?"🔴 LIVE":status==="final"?"✓ FINAL":"Game center")+'</b>'+
-  '<span>'+(scored?text:"Scores & matchup stats")+'</span><span>⌄</span></summary>'+
+  '<span>'+(scored?text:"Scores & matchup stats")+(phase?' · '+esc(phase):'')+'</span><span>⌄</span></summary>'+
   '<div class="fan-center-detail">'+
   (window.SEC_GAME_COMMUNITY?.panel?.(game,"football")||"")+
   (insights?'<details class="sec-game-more sec-matchup-fold"><summary>📊 Matchup stats &amp; prediction</summary><div class="sec-game-more-body">'+insights+'</div></details>':"")+
