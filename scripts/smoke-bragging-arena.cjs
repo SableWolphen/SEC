@@ -65,6 +65,11 @@ const arena=window.SEC_BRAG_ARENA;
  assert.match(html.innerHTML,/<section class="brag-showcase-section brag-featured-rival"/,"Featured rivalry is visible");
  assert.match(html.innerHTML,/BRAGGING <em>RIGHTS<\/em>/,"Bragging Rights hero is present");
  assert.match(html.innerHTML,/LEAGUE KING/,"Leader highlight rendered");
+ assert.equal((html.innerHTML.match(/<article class="brag-showcase-receipt /g)||[]).length,3,
+  "show distinct final games, not three copies of one game's picks");
+ assert.match(html.innerHTML,/data-brag-receipt="fb1"/,"football receipt can be shared");
+ assert.match(html.innerHTML,/data-brag-receipt="bb1"/,"basketball receipt can be shared");
+ assert.match(html.innerHTML,/data-brag-receipt="bs1"/,"baseball receipt can be shared");
  assert.match(html.innerHTML,/HOT STREAK/,"Streak highlight rendered");
  assert.match(html.innerHTML,/MOST ACCURATE/,"Accuracy highlight rendered");
  assert.match(html.innerHTML,/<details class="brag-showcase-more" data-brag-panel="rivals"/,"Rivalry history tucked into details");
