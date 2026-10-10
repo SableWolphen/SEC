@@ -175,17 +175,27 @@ fs.mkdirSync(output,{recursive:true});
    const post=await page.evaluate(()=>{
      const card=document.querySelector("#games-list .sec-final-card");
      const friends=card?.querySelector(".sec-final-reveal");
+     const details=card?.querySelector(".sec-final-details");
+     const visible=el=>!!el&&el.getBoundingClientRect().height>0&&getComputedStyle(el).visibility!=="hidden";
      return {hasCard:!!card,winner:!!card?.querySelector(".sec-final-team.is-winner"),
       result:card?.textContent.includes("0 pts"),
       recap:!!card?.querySelector('.sec-final-recap-link[href^="https://www.espn.com/"]'),
       box:!!card?.querySelector('.sec-final-box-link[href^="https://www.espn.com/"]'),
       leagueImpact:card?.textContent.includes("4 missed their pick"),
       friendsClosed:!!friends&&!friends.open,
+      detailsClosed:!!details&&!details.open,
+      detailsPrompt:details?.querySelector("summary")?.textContent.includes("Game details")||false,
+      resultHidden:!visible(card?.querySelector(".sec-final-grade")),
+      linksHidden:!visible(card?.querySelector(".sec-final-actions")),
+      noDuplicateScore:!card?.querySelector(".sec-final-scoreline"),
+      compactHeight:Math.round(card?.getBoundingClientRect().height||0),
       width:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth};
    });
    if(!post.hasCard||!post.winner||!post.result||!post.recap||!post.box||
-      !post.leagueImpact||!post.friendsClosed||post.width>post.viewport+2)
-     problems.push(viewport.width+"px final game layout regression: "+JSON.stringify(post));
+      !post.leagueImpact||!post.friendsClosed||!post.detailsClosed||
+      !post.detailsPrompt||!post.resultHidden||!post.linksHidden||!post.noDuplicateScore||
+      post.compactHeight>210||post.width>post.viewport+2)
+     problems.push(viewport.width+"px final game not compact/collapsed: "+JSON.stringify(post));
 
    const teamNames=await page.evaluate(()=>{
     const all=[...document.querySelectorAll("#games-list .sec-final-team-copy > strong")];
@@ -209,6 +219,23 @@ fs.mkdirSync(output,{recursive:true});
    if(!teamNames.some(x=>x.name==="Missouri")||
       !teamNames.some(x=>x.name==="South Carolina"))
       problems.push(viewport.width+"px actual team name fixtures missing: "+JSON.stringify(teamNames));
+
+   // The user can choose to see everything, and score refreshes must not
+   // unexpectedly collapse the game they've just opened.
+   const detailToggle=page.locator("#games-list .sec-final-card .sec-final-details > summary").first();
+   await detailToggle.click();
+   const opened=await page.evaluate(()=>{
+    const box=document.querySelector("#games-list .sec-final-card .sec-final-details");
+    const grade=box?.querySelector(".sec-final-grade");
+    return {open:!!box?.open,gradeHeight:Math.round(grade?.getBoundingClientRect().height||0)};
+   });
+   if(!opened.open||opened.gradeHeight===0)
+      problems.push(viewport.width+"px final Game details do not open: "+JSON.stringify(opened));
+   await page.evaluate(()=>window.SEC_BRIDGE.renderPicks());
+   const keptOpen=await page.evaluate(()=>document.querySelector(
+     "#games-list .sec-final-card .sec-final-details")?.open);
+   if(!keptOpen)
+      problems.push(viewport.width+"px score rerender unexpectedly collapsed opened final details");
 
    const friendToggle=page.locator("#games-list .sec-final-card .sec-final-reveal > summary").first();
    if(await friendToggle.count()){
