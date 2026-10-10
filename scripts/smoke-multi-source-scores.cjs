@@ -19,6 +19,9 @@ assert.match(edge,/const preferred=status==="final"\?\{away:awayScore,home:homeS
 assert.match(edge,/const winner=rawStatus==="final"/,
  "only ESPN official completed events set winners");
 assert.match(edge,/ncaaAhead/,"observe which source advanced the live scoreboard");
+assert.match(edge,/if\(candidates.length!==1\)/,"independent fallback when ESPN is unavailable");
+assert.match(edge,/ncaaPatch\.live_score_source="NCAA"/,"NCAA fallback provenance is recorded");
+assert.match(edge,/if\(g\.game_status==="final"\|\|!ncaa/,"final games remain immutable to the NCAA fallback");
 assert.match(edge,/rpc\/sec_verify_scores_job/,"all scorer writes remain private");
 assert.match(migration,/live_score_source/,"displayed scoreboard source can be audited");
 assert.doesNotMatch(ncaa,/SERVICE_ROLE_KEY|SUPABASE_SERVICE_ROLE_KEY/,"NCAA helper carries no database secrets");
