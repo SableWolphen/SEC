@@ -21,7 +21,7 @@ const safeDate=value=>{
 function movement(row){
  const prev=row.previous_rank==null?null:Number(row.previous_rank);
  const current=Number(row.current_rank);
- if(prev==null||!Number.isFinite(prev)||!Number.isFinite(current))return '<span class="power-movement neutral">NEW</span>';
+ if(prev==null||!Number.isFinite(prev)||!Number.isFinite(current))return '<span class="power-movement neutral" aria-label="No previous ranking">—</span>';
  const moved=prev-current;
  if(moved>0)return '<span class="power-movement up" aria-label="Up '+moved+' place'+(moved===1?"":"s")+'">▲ '+moved+'</span>';
  if(moved<0)return '<span class="power-movement down" aria-label="Down '+Math.abs(moved)+' place'+(moved===-1?"":"s")+'">▼ '+Math.abs(moved)+'</span>';
@@ -84,6 +84,7 @@ function render(item=manager()?.getSelected?.()){
  'This week’s picks only count after final scores are confirmed.</p></section>';
 }
 function show(item=manager()?.getSelected?.(),force=false){
+ if(item===null)item=manager()?.getSelected?.();
  const input=fromItem(item);
  if(!input||!me()){activeKey="";render(null);return Promise.resolve();}
  activeKey=input.key;
