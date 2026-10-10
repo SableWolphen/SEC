@@ -111,7 +111,7 @@ Deno.serve(async req=>{
    const liveStatus=ev.status||comp.status||{};
    const period=Number(liveStatus.period);
    const rawClock=String(liveStatus.displayClock||"").trim();
-   const clock=/^\\d{1,2}:\\d{2}$/.test(rawClock)?rawClock:null;
+   const clock=/^\d{1,2}:\d{2}$/.test(rawClock)?rawClock:null;
    const periodName=period>=1&&period<=4?"Q"+period:period>=5&&period<=8?"OT"+(period-4):null;
    const stage=status==="live"&&clock&&periodName?periodName+" · "+clock:null;
    const detail=stage||String(ev.status?.type?.shortDetail||comp.status?.type?.shortDetail||"");
