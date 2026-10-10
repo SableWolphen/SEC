@@ -51,7 +51,7 @@ function renderStatus(){
    '<small>Provider-confirmed scores · refreshes automatically while this page is open</small>';
 }
 function matchValue(g){
- return [g.game_status,g.status_detail,g.away_score,g.home_score,g.winner,g.kickoff_at,
+ return [g.game_status,g.status_detail,g.away_score,g.home_score,g.winner,g.kickoff_at,g.espn_event_id,
   g.live_possession_code,g.live_down,g.live_distance,g.live_position_text,g.live_field_percent,
   g.live_drive_summary,g.live_last_play,g.live_situation_updated_at].join("|");
 }
@@ -70,7 +70,7 @@ async function refresh(force=false){
  busy=true;lastRequest=now();const request=++activeRequest;
  try{
   const response=await c.from("sec_games").select(
-   "id,kickoff_at,winner,game_status,status_detail,away_score,home_score,score_updated_at,provisional,spread_home,spread_source,"+
+   "id,kickoff_at,winner,game_status,status_detail,away_score,home_score,score_updated_at,espn_event_id,provisional,spread_home,spread_source,"+
    "live_possession_code,live_down,live_distance,live_position_text,live_field_percent,live_drive_summary,live_last_play,live_situation_updated_at"
   ).in("id",ids);
   if(response?.error)throw response.error;
@@ -94,6 +94,7 @@ async function refresh(force=false){
     local.awayScore=row.away_score;
     local.homeScore=row.home_score;
     local.scoreUpdatedAt=row.score_updated_at;
+     local.espnEventId=row.espn_event_id||null;
     local.livePossessionCode=row.live_possession_code||null;
     local.liveDown=row.live_down??null;
     local.liveDistance=row.live_distance??null;
