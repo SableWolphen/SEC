@@ -74,6 +74,8 @@ jobs:
           node --check sec-competitive-tools.js
           node --check scripts/smoke-competition.cjs
           node scripts/smoke-competition.cjs
+          node --check scripts/smoke-path-to-first.cjs
+          node scripts/smoke-path-to-first.cjs
           node --check league-tabs.js
           node scripts/smoke-league-tabs.cjs
           node --check sec-pride.js
