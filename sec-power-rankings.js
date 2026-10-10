@@ -108,7 +108,6 @@ function show(item=manager()?.getSelected?.(),force=false){
     render(manager()?.getSelected?.());
     // Update the belt after verified rankings resolve without reloading private picks.
     window.SEC_BRAG_ARENA?.render?.();
-    window.SEC_GAMEDAY?.leagueOutlook?.();
    }
   }
  })();
