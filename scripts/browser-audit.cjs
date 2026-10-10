@@ -54,6 +54,15 @@ fs.mkdirSync(output,{recursive:true});
     if(audit.isMobile&&!audit.navVisible)problems.push(prefix+" mobile nav hidden");
     if(audit.isMobile&&(!audit.navFits||!audit.navWithin))problems.push(prefix+" clipped nav: "+JSON.stringify(audit.navRect));
     if(!audit.isMobile&&audit.navVisible)problems.push(prefix+" mobile nav on desktop");
+    if(route==="league"){
+     const simple=await page.evaluate(()=>({
+      duplicate:!!document.querySelector("#sec-day-league,.sec-day-league"),
+      scoreboard:!!document.getElementById("league-content"),
+      tabs:!!document.getElementById("fan-league-tabs")
+     }));
+     if(simple.duplicate||!simple.scoreboard||!simple.tabs)
+      problems.push(viewport.width+"px unexpected duplicate league leaderboard: "+JSON.stringify(simple));
+    }
     if(route==="picks"){
      const tidy=await page.evaluate(()=>{
       const top=document.querySelector("#weekly-score-strip .weekly-score-strip");
