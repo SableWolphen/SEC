@@ -5,6 +5,7 @@ let fetches=0,paidCalls=0;
 const news={articles:[
  {sport:"football",teams:["Alabama","Georgia"],title:"Alabama <script>alert(1)</script> Georgia rivalry preview",
   source:"ESPN",summary:"Confirmed preview context",published_at:new Date().toISOString(),url:"https://www.espn.com/college-football/story/_/id/1234"},
+ {sport:"football",teams:["Alabama","Georgia"],title:"Washington State Cougars vs. Utah State Aggies: Full Highlights",source:"ESPN",summary:"Irrelevant",published_at:new Date().toISOString(),url:"https://www.espn.com/college-football/story/_/id/5678"},
  {sport:"football",teams:["Alabama"],title:"Fake injection",source:"Fake",summary:"",published_at:new Date().toISOString(),url:"javascript:alert(1)"}
 ]};
 const nodes={".sec-community-news":{innerHTML:""},".sec-community-reactions":{innerHTML:""}};
@@ -41,6 +42,7 @@ const football={id:"g-1",away:"ALA",home:"UGA",game_status:"scheduled",kickoff:"
  await c.load(football,"football");
  assert.match(nodes[".sec-community-news"].innerHTML,/&lt;script&gt;alert\(1\)&lt;\/script&gt;/,"publisher headline escaped");
  assert.doesNotMatch(nodes[".sec-community-news"].innerHTML,/<script>/,"untrusted headlines cannot execute");
+ assert.doesNotMatch(nodes[".sec-community-news"].innerHTML,/Washington State Cougars/,"mislabeled highlights from other games are excluded");
  assert.match(nodes[".sec-community-news"].innerHTML,/noopener noreferrer/,"safe linked sources");
  assert.equal(fetches,1,"one fetch of published news");
  assert.equal(paidCalls,0,"no AI API requests");

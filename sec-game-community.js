@@ -115,8 +115,11 @@ function matching(g,item){
  const candidates=[g.away,g.home,g.away_code,g.home_code,g.away_name,g.home_name]
   .filter(Boolean).map(c=>name(c).toLowerCase());
  // A matchup article must identify both schools, not just one school mentioned elsewhere.
- return [g.away_name||name(g.away_code||g.away),g.home_name||name(g.home_code||g.home)]
-  .every(team=>teams.some(t=>String(t).toLowerCase()===String(team).toLowerCase()));
+ const expected=[g.away_name||name(g.away_code||g.away),g.home_name||name(g.home_code||g.home)];
+ const headline=String(item.title||"").toLowerCase();
+ // Tags alone can be wrong: don't display a random game's highlights as this matchup.
+ return expected.every(team=>teams.some(t=>String(t).toLowerCase()===String(team).toLowerCase())
+  &&headline.includes(String(team).toLowerCase()));
 }
 async function loadNews(){
  if(Date.now()-newsAt<300000)return;
