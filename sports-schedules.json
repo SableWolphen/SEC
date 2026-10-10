@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-10T01:07:09.296510Z",
+  "updated_at": "2026-10-10T01:09:36.995299Z",
   "sports": {
     "basketball": {
       "season": 2027,
@@ -1633,7 +1633,7 @@
       "source_windows": 0,
       "verified_database_games": 0,
       "database_connected": true,
-      "warning": "Live ESPN feed unavailable; displaying verified SEC/university fixtures."
+      "warning": "No verified individual first-pitch times yet; SEC baseball weekend series previews remain available."
     }
   }
 }
