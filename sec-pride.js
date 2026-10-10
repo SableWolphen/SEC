@@ -1,69 +1,99 @@
-/* SEC school pride: account-saved, member-only badges; never used for permission checks. */
+/* SEC school pride: account-level favorite + private-league badges. */
 (()=>{
 "use strict";
 const CODES={ALA:"Alabama",ARK:"Arkansas",AUB:"Auburn",FLA:"Florida",UGA:"Georgia",UK:"Kentucky",
-LSU:"LSU",MISS:"Ole Miss",MSST:"Mississippi State",MIZ:"Missouri",OU:"Oklahoma",
-SC:"South Carolina",TENN:"Tennessee",TEX:"Texas",TAMU:"Texas A&M",VAN:"Vanderbilt"};
-const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+ LSU:"LSU",MISS:"Ole Miss",MSST:"Mississippi State",MIZ:"Missouri",OU:"Oklahoma",
+ SC:"South Carolina",TENN:"Tennessee",TEX:"Texas",TAMU:"Texas A&M",VAN:"Vanderbilt"};
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const valid=s=>Object.prototype.hasOwnProperty.call(CODES,s)?s:null;
 const client=()=>window.secOnline?.getClient?.(),user=()=>window.secOnline?.getUser?.();
-let owner=null,chosen=null,flair={},leagueKey="",inflight=null,revision=0,saving=false;
+const key=id=>"ss-sec-favorite-profile:"+id,lastKey="ss-sec-last-favorite-account";
+const read=k=>{try{return localStorage.getItem(k);}catch{return null;}};
+const write=(k,v)=>{try{localStorage.setItem(k,String(v));}catch{}};
+let owner=null,chosen=null,flair={},leagueKey="",inflight=null,revision=0,loadedAt=0,saving=false;
 function badge(uid){
  const code=uid===owner?chosen:flair[uid];
- return CODES[code]?'<span class="sec-school-badge" title="Supports '+esc(CODES[code])+'" aria-label="Supports '+esc(CODES[code])+'">★ '+esc(code)+'</span>':"";
+ return valid(code)?'<span class="sec-school-badge" title="Supports '+esc(CODES[code])+
+  '" aria-label="Supports '+esc(CODES[code])+'">★ '+esc(code)+'</span>':"";
 }
-function myBadge(){return badge(owner);}
-function setProfile(p){
- const id=user()?.id||null;
- if(id!==owner){owner=id;chosen=null;flair={};leagueKey="";revision++;}
- if(!id||saving)return;
- const next=CODES[p?.favorite_school_code]?p.favorite_school_code:null;
- if(chosen!==next){
-  chosen=next;
-  const state=window.SEC_BRIDGE?.state?.();
-  if(state)state.favorite=next;
-  window.SEC_BRIDGE?.renderHeader?.();
-  if(window.SEC_BRIDGE?.view?.()==="teams")window.SEC_BRIDGE?.renderTeams?.();
+function myBadge(){return owner?badge(owner):"";}
+function refreshBadges(){
+ if(typeof document!=="undefined"&&typeof document.querySelectorAll==="function"){
+  for(const node of document.querySelectorAll("#league-view [data-player-id]")){
+   const id=node.getAttribute("data-player-id");
+   node.querySelector?.(".sec-school-badge")?.remove();
+   const html=badge(id);if(html)node.insertAdjacentHTML?.("beforeend",html);
+  }
  }
+ window.SEC_POWER?.render?.();
+ window.SEC_BRAGS?.render?.();
+ window.SEC_SOCIAL?.refreshDisplay?.();
 }
-async function saveFavorite(code){
- const next=CODES[code]?code:null;
- const u=user(),db=client();
- if(!u||!db){chosen=next;return;}
- saving=true;
+function redraw(){window.SEC_BRIDGE?.renderHeader?.();refreshBadges();}
+function setProfile(profile){
+ const id=user()?.id||null;
+ if(id!==owner){owner=id;chosen=null;flair={};leagueKey="";inflight=null;loadedAt=0;revision++;}
+ if(!id||saving)return;
+ const remote=valid(profile?.favorite_school_code),state=window.SEC_BRIDGE?.state?.();
+ const existing=read(key(id)),local=valid(state?.favorite),prior=read(lastKey);
+ // Existing players picked a team before account syncing existed. Adopt that
+ // local choice once, only for its original account; never another user's.
+ const migrate=!remote&&existing===null&&local&&(!prior||prior===id);
+ chosen=remote||(migrate?local:null);
+ if(state)state.favorite=chosen;
+ write(lastKey,id);
+ if(remote)write(key(id),remote);
+ redraw();
+ if(migrate)void saveFavorite(local,{quiet:true});
+}
+async function saveFavorite(value,{quiet=false}={}){
+ const next=valid(value),u=user(),db=client();
+ const state=window.SEC_BRIDGE?.state?.();
+ if(state)state.favorite=next;
+ if(!u||!db){chosen=next;redraw();return;}
+ const id=u.id;
+ chosen=next;if(next)flair[id]=next;else delete flair[id];
+ redraw();saving=true;
  try{
-  const result=await db.from("sec_profiles").update({favorite_school_code:next}).eq("user_id",u.id);
+  const result=await db.from("sec_profiles").update({favorite_school_code:next})
+   .eq("user_id",id).select("user_id");
   if(result.error)throw result.error;
-  chosen=next;flair[u.id]=next;
-  window.SEC_BRIDGE?.renderHeader?.();
-  window.secOnline?.renderLeague?.();
-  window.SEC_LEAGUE_SETTINGS?.render?.();
-  window.SEC_BRAGS?.render?.();
+  if(Array.isArray(result.data)&&result.data.length===0){
+   const name=String(state?.name||u.user_metadata?.display_name||"").trim().slice(0,32);
+   if(name.length<2)throw Error("Save your player profile first.");
+   const missing=await db.from("sec_profiles").upsert({user_id:id,display_name:name,favorite_school_code:next},{onConflict:"user_id"});
+   if(missing.error)throw missing.error;
+  }
+  if(user()?.id!==id||owner!==id)return;
+  write(key(id),next||"none");write(lastKey,id);
+  const selected=window.SEC_LEAGUE_SETTINGS?.getSelected?.();
+  if(selected)void load(selected.kind,selected.id,true);
  }catch(e){
-  window.SEC_BRIDGE?.toast?.("School saved on this device only. Online sync unavailable.");
+  console.warn("Favorite school sync:",e?.message||e);
+  if(user()?.id===id)window.SEC_BRIDGE?.toast?.(
+   quiet?"Favorite school needs online sync. Select it again in Teams.":
+   "Favorite shows locally but is not saved online. Select it again to retry.");
  }finally{saving=false;}
 }
 async function load(kind,id,force=false){
- const u=user(),db=client(),valid=["club","football","basketball","baseball"];
- if(!u||!db||!valid.includes(kind)||!id){flair={};leagueKey="";return;}
+ const u=user(),db=client();
+ if(!u||!db||!["club","football","basketball","baseball"].includes(kind)||!id){
+  flair={};leagueKey="";loadedAt=0;return;
+ }
  const k=u.id+":"+kind+":"+id;
- if(!force&&k===leagueKey)return;
- if(inflight&&k===inflight)return;
- leagueKey=k;inflight=k;const myRevision=++revision;
+ if(inflight===k)return;
+ if(!force&&k===leagueKey&&Date.now()-loadedAt<60000)return;
+ leagueKey=k;inflight=k;const token=++revision;
  try{
   const response=await db.rpc("sec_member_pride",{p_kind:kind,p_league:id});
   if(response.error)throw response.error;
-  if(myRevision!==revision||k!==leagueKey)return;
-  flair=Object.fromEntries((response.data||[]).filter(r=>r.user_id&&CODES[r.favorite_school_code])
+  if(token!==revision||k!==leagueKey||user()?.id!==u.id)return;
+  flair=Object.fromEntries((response.data||[]).filter(r=>r.user_id&&valid(r.favorite_school_code))
    .map(r=>[r.user_id,r.favorite_school_code]));
-  if(chosen)flair[u.id]=chosen;
-  // No form state changed. Re-render league views to show newly loaded badges.
-  if(window.SEC_BRIDGE?.view?.()==="league"){
-   window.SEC_LEAGUE_SETTINGS?.render?.();
-   window.secOnline?.renderLeague?.();
-   window.SEC_SOCIAL?.refreshDisplay?.();
-  }
- }catch(e){if(myRevision===revision)console.info("School flair unavailable",e.message);}
- finally{if(inflight===k)inflight=null;}
+  loadedAt=Date.now();redraw();
+ }catch(e){
+  if(token===revision){loadedAt=Date.now()-45000;console.info("School badges unavailable",e?.message||e);}
+ }finally{if(inflight===k)inflight=null;}
 }
-window.SEC_PRIDE=Object.freeze({badge,myBadge,setProfile,saveFavorite,load,getCode:()=>chosen,names:CODES});
+window.SEC_PRIDE=Object.freeze({badge,myBadge,setProfile,saveFavorite,load,refreshBadges,getCode:()=>chosen,names:CODES});
 })();
