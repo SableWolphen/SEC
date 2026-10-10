@@ -106,9 +106,18 @@ Deno.serve(async req=>{
    const winner=rawStatus==="final"&&awayScore!==null&&homeScore!==null&&awayScore!==homeScore
       ?(homeScore>awayScore?g.home_code:g.away_code):null;
    const status=rawStatus==="final"&&!winner?"live":rawStatus;
+   // Never undo a previously verified final if the provider briefly regresses.
+   if(g.game_status==="final"&&status!=="final"){skipped++;continue;}
+   const liveStatus=ev.status||comp.status||{};
+   const period=Number(liveStatus.period);
+   const rawClock=String(liveStatus.displayClock||"").trim();
+   const clock=/^\\d{1,2}:\\d{2}$/.test(rawClock)?rawClock:null;
+   const periodName=period>=1&&period<=4?"Q"+period:period>=5&&period<=8?"OT"+(period-4):null;
+   const stage=status==="live"&&clock&&periodName?periodName+" · "+clock:null;
+   const detail=stage||String(ev.status?.type?.shortDetail||comp.status?.type?.shortDetail||"");
    const patch:any={
      game_status:status,
-     status_detail:String(ev.status?.type?.shortDetail||comp.status?.type?.shortDetail||"").slice(0,80),
+     status_detail:detail.slice(0,80),
      away_score:awayScore,
      home_score:homeScore,
      score_updated_at:stamp(),
