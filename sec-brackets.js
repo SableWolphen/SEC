@@ -113,6 +113,6 @@ document.addEventListener("click",e=>{
  if(btn.disabled)return;
  void select(btn.dataset.bracketGame,btn.dataset.bracketPick);
 });
-window.SEC_BRACKETS=Object.freeze({mount:()=>load(),getFixtures:()=>fixtures.slice()});
+window.SEC_BRACKETS=Object.freeze({mount:(force=false)=>load(force),getFixtures:()=>fixtures.slice()});
 if(app()?.view?.()==="league")void load();
 })();
