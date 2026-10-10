@@ -520,3 +520,30 @@ body{overflow-x:clip}
  #league-view .fan-sport-tag{font-size:10px;padding:6px 7px}
  #league-view .fan-league-drawer>summary{padding:12px}
 }
+
+/* Second calmness pass: clear primary league content and tucked-away actions. */
+#league-view .fan-league-home-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+#league-view .fan-league-home-actions>.fan-small{min-height:44px;white-space:nowrap}
+#league-view .fan-club-focus{margin:9px 0 13px;padding:16px 18px}
+#league-view .fan-club-focus h2{font-size:20px;margin:4px 0 6px}
+#league-view .fan-club-focus .fan-club-title{margin-bottom:13px}
+#league-view .fan-club-focus .fan-club-title p{font-size:11px;margin:0}
+#league-view .fan-club-focus .fan-sport-links{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
+#league-view .fan-club-focus .fan-sport-links>.fan-small{min-height:44px}
+#league-view .fan-club-settings{margin-top:13px}
+#league-view .fan-club-settings>.fan-club-invite{margin-top:14px}
+#league-view .fan-standalone-settings{margin:9px 0 13px}
+#league-view .fan-football-scoreboard{max-width:100%;min-width:0}
+#league-view .fan-football-advanced{margin-top:12px}
+#league-view .fan-football-advanced .content-card{margin:13px 0}
+#league-view .fan-football-scoreboard .league-hero{padding:15px;margin:0 0 11px}
+#league-view .fan-football-scoreboard .league-hero h2{font-size:20px}
+#league-view .fan-football-scoreboard .league-hero p{font-size:11px}
+@media(max-width:540px){
+ #league-view .fan-league-title-row{flex-wrap:wrap;align-items:start}
+ #league-view .fan-league-home-actions{width:100%;justify-content:stretch}
+ #league-view .fan-league-home-actions>.fan-small{flex:1 1 130px}
+ #league-view .fan-club-focus{padding:13px}
+ #league-view .fan-club-focus .fan-sport-links>.fan-small{flex:1 1 125px}
+ #league-view .fan-football-scoreboard .league-hero{padding:13px}
+}
