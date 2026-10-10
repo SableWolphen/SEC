@@ -120,10 +120,7 @@
       standingsHtml = '<div class="league-hero"><div><div class="label">LIVE ONLINE LEAGUE · '+safe(window.SEC_FEATURES?.MODES?.[choice.mode]?.name||'Straight Picks')+'</div><h2>'+safe(choice.name)+'</h2><p>'+(standingsError?'Standings unavailable':standings.length+' players')+' · Week '+w.num+' · Invite code '+safe(choice.invite_code)+'</p></div><span class="big-emoji" aria-hidden="true">🏆</span></div>'+
        card('League scoreboard',
         '<p>Scores update as confirmed results are posted. Everyone in this league shares these standings.</p>'+
-        (leagues.length>1?'<div class="sec-scoreboard-league-choice"><label class="input-label" for="scoreboard-league-select">Scoreboard &amp; chat for</label>'+
-        '<select id="scoreboard-league-select" class="field" aria-label="Select league scoreboard and private chat">'+list+'</select>'+
-        '<p class="helper">Change leagues to switch both the standings and chat.</p></div>':
-        '<div class="sec-scoreboard-current-league">🔒 Private league chat · '+safe(choice.name)+'</div>')+
+        '<div class="sec-scoreboard-current-league">🔒 Private scoreboard &amp; chat · '+safe(choice.name)+'</div>'+
         (standingsError?'<div class="help-note" role="alert">Scoreboard could not load: '+safe(standingsError)+'. Try Refresh standings.</div>':'')+
         '<div class="chip-line">'+button('Make my picks','go-picks','primary-btn')+' '+button('Share invite link','copy-invite')+' '+button('Refresh standings','refresh')+'</div>'+
         '<div style="margin:14px 0"><label for="league-week" class="input-label">Week</label><select class="field" id="league-week">'+app.weeks.map(function(x){return '<option value="'+x.num+'" '+(x.num===w.num?'selected':'')+'>Week '+x.num+'</option>';}).join('')+'</select></div>'+
@@ -137,9 +134,11 @@
     // legacy football league controls are available, but no longer dominate mobile.
     var secondary = choice?
       '<details class="fan-fold fan-football-tools"><summary>⚙ Account &amp; other football leagues</summary>'+
-       nameForm+leaguesForm+'</details>':nameForm;
+       nameForm+'</details>':nameForm;
     host.innerHTML='<div class="secondary-grid"><div class="setting-stack">'+
-      (choice?standingsHtml+(window.SEC_FEATURES?.leagueDetails?.()||''):leaguesForm+standingsHtml)+
+      (choice?standingsHtml+'<details class="fan-fold fan-football-management"><summary>⚙ Football rules &amp; commissioner tools</summary>'+
+         (window.SEC_FEATURES?.leagueDetails?.()||'')+'</details>':
+         (window.SEC_LEAGUE_SETTINGS?standingsHtml:leaguesForm+standingsHtml))+
       '</div><div class="setting-stack">'+secondary+'</div></div>'+
       '<p id="online-status" class="helper" role="status" aria-live="polite">'+safe(lastError)+'</p>';
   }

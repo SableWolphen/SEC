@@ -60,8 +60,11 @@ async function run(){
  const multiplayer=fs.readFileSync("multiplayer.js","utf8");
  const featureSource=fs.readFileSync("league-features.js","utf8");
  assert.match(multiplayer,/sec-scoreboard-chat/,"chat mounted inside scoreboard card");
- assert.match(multiplayer,/scoreboard-league-select/,"switch leagues from scoreboard");
- assert.match(multiplayer,/\["online-league-select","scoreboard-league-select"\]/,"both league menus use same switch handler");
+ assert.match(multiplayer,/sec-scoreboard-current-league/,"chat labels the active league");
+ assert.doesNotMatch(multiplayer,/id="scoreboard-league-select"/,
+   "duplicate scoreboard league chooser no longer renders");
+ assert.match(fs.readFileSync("league-settings.js","utf8"),/id="fan-selected-league"/,
+   "one canonical league switcher controls all sport scoreboards");
  assert.doesNotMatch(featureSource,/leagueDetails\(\)[\s\S]*?SEC_SOCIAL\?\.render\?\.\(\)/,"no second chat under league settings");
  const other={id:"league-b",name:"Other League",owner_id:"player-b",mode:"straight"};
  feature.connect(client,other,user,[{user_id:"player-a",display_name:"Guest",season_points:0}]);

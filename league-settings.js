@@ -61,10 +61,7 @@ function formState(){
    if(boxes.length)state.choices[kind]=boxes.filter(b=>b.checked).map(b=>b.value);
   }
  }
- for(const [id,selector] of [
-  ["fan-league-create",".fan-new-league"],
-  ["fan-join-league",".fan-join-league"],
-  ["fan-club-hub",".fan-edit-league"]]){
+ for(const [id,selector] of [["fan-club-hub",".fan-edit-league"]]){
   const node=id==="fan-join-league"?byId("fan-league-create"):byId(id);
   const details=node?.querySelector?.(selector);
   if(details)state.open[id]=details.open;
@@ -81,10 +78,7 @@ function restoreForms(state){
   for(const input of region.querySelectorAll('input[data-league-sports]'))
    input.checked=selected.includes(input.value);
  }
- for(const [id,selector] of [
-  ["fan-league-create",".fan-new-league"],
-  ["fan-join-league",".fan-join-league"],
-  ["fan-club-hub",".fan-edit-league"]]){
+ for(const [id,selector] of [["fan-club-hub",".fan-edit-league"]]){
   if(!(id in state.open))continue;
   const node=id==="fan-join-league"?byId("fan-league-create"):byId(id);
   const details=node?.querySelector?.(selector);
@@ -98,30 +92,35 @@ function render(){
   single=byId("fan-single-league"),multi=byId("fan-club-hub"),football=byId("league-content");
  if(!heading)return;
  const logged=!!me(),all=items(),item=selectedItem(),current=club();
- heading.innerHTML='<section class="fan-format-wrap"><div class="card-kicker">YOUR LEAGUES</div>'+
- '<h2>Each league chooses its own sports.</h2><p>One league can play football, another basketball and baseball, and another all three. League owners can change their league later.</p>'+
- (logged?(all.length?'<label class="fan-league-select-label" for="fan-selected-league">Choose a league to manage</label>'+
- '<select class="fan-league-select" id="fan-selected-league" aria-label="Choose league">'+
+ heading.innerHTML='<section class="fan-format-wrap fan-league-summary">'+
+ '<div class="fan-league-title-row"><div><div class="card-kicker">YOUR LEAGUES</div>'+
+ '<h2>League hub</h2><p>Each league chooses its own sports.</p></div>'+
+ (logged?'<button class="fan-small fan-refresh" type="button" data-league-action="reload" aria-label="Refresh leagues">↻ Refresh</button>':'')+'</div>'+
+ (logged?(all.length?'<label class="fan-league-select-label" for="fan-selected-league">Playing in</label>'+
+ '<select class="fan-league-select" id="fan-selected-league" aria-label="Choose your league">'+
  all.map(x=>'<option value="'+html(ident(x))+'" '+(ident(x)===selection?"selected":"")+'>'+html(x.name)+
- ' · '+x.sports.map(s=>names[s]).join(" + ")+(olderSeason(x)?" · "+x.detail.season+" archive":"")+'</option>').join("")+'</select>'+
- '<p class="fan-format-note">'+html(item?.name||"Your league")+' · '+item?.sports.length+
- ' active sport'+(item?.sports.length===1?"":"s")+'. Changes here do not affect other leagues.</p>':
- '<p class="fan-format-note">'+(loading?"Loading your leagues…":"No leagues joined yet. Make your first league below.")+'</p>'):
- '<p class="fan-format-note">One account for all sports. Log in below to manage your leagues.</p>')+
- (message?'<p class="fan-warning" role="status">'+html(message)+'</p>':"")+
- (logged?'<button class="fan-small" type="button" data-league-action="reload">↻ Refresh my leagues</button>':"")+'</section>';
- if(create)create.innerHTML=logged?'<details class="fan-fold fan-new-league" '+(!all.length?'open':'')+
- '><summary>＋ Create a league <span>Choose 1, 2 or 3 sports</span></summary>'+
+ ' · '+x.sports.map(s=>names[s].split(" ")[0]).join("")+(olderSeason(x)?" · "+x.detail.season+" archive":"")+'</option>').join("")+'</select>'+
+ (item?'<div class="fan-current-league-meta"><div class="fan-sport-tags" aria-label="Sports in this league">'+
+ item.sports.map(s=>'<span class="fan-sport-tag">'+names[s]+'</span>').join("")+'</div>'+
+ (olderSeason(item)?'<span class="fan-archive-tag">Past season</span>':'')+'</div>':''):
+ '<p class="fan-format-note">'+(loading?"Loading your leagues…":"No leagues yet. Create one below or join a friend.")+'</p>'):
+ '<p class="fan-format-note">Log in below to create or join a league.</p>')+
+ (message?'<p class="fan-warning" role="status">'+html(message)+'</p>':"")+'</section>';
+ const tools=byId("fan-league-tools"),extras=byId("fan-league-extras");
+ if(tools){tools.hidden=!logged;if(logged&&!all.length&&!loading)tools.open=true;}
+ if(extras)extras.hidden=!logged||!item;
+ if(create)create.innerHTML=logged?'<div class="fan-league-action-grid">'+
+ '<section class="fan-league-action fan-new-league"><h3>Create a league</h3>'+
+ '<p class="fan-subtle">Choose one, two or all three sports.</p>'+
  '<label class="fan-league-select-label" for="fan-new-name">League name</label>'+
  '<input class="field" id="fan-new-name" maxlength="50" placeholder="SEC Legends">'+
- '<p class="fan-subtle">Pick one sport or any combination. You can adjust this league later.</p>'+
  '<div id="fan-create-sport-options">'+checkboxes(["football"],"create")+'</div>'+
- '<button class="fan-small fan-primary" type="button" data-league-action="create">Create league →</button></details>'+
- '<details class="fan-fold fan-join-league"><summary>✉ Join with an invite code</summary>'+
- '<p class="fan-subtle">One code works for a single-sport league or a combination of sports. No second account needed.</p>'+
+ '<button class="fan-small fan-primary" type="button" data-league-action="create">Create league →</button></section>'+
+ '<section class="fan-league-action fan-join-league"><h3>Join with an invite code</h3>'+
+ '<p class="fan-subtle">Use the code a friend sent you. One account works for every sport.</p>'+
  '<label class="fan-league-select-label" for="fan-join-code">10-character league code</label>'+
  '<input class="field" id="fan-join-code" autocomplete="off" maxlength="10" placeholder="Paste your invite code" autocapitalize="characters">'+
- '<button class="fan-small fan-primary" type="button" data-league-action="join">Join this league →</button></details>':"";
+ '<button class="fan-small fan-primary" type="button" data-league-action="join">Join league →</button></section></div>':"";
  if(single){
   single.hidden=!logged||!item||item.kind==="club";
   if(!single.hidden){
@@ -163,7 +162,7 @@ function renderClub(c,host){
  '<div class="fan-title-row"><div><div class="card-kicker">🏆 THIS LEAGUE</div><h2>'+html(c.name)+'</h2>'+
  '<p>'+sports.map(s=>names[s]).join(" · ")+' · '+sports.length+' active sport'+(sports.length===1?"":"s")+
  '. Only these sports count toward this league’s leaderboard.</p></div>'+
- '<button class="fan-small" type="button" data-league-action="reload">↻ Refresh</button></div>'+
+ '</div>'+
  (owner?'<details class="fan-fold fan-edit-league"><summary>⚙️ Change sports for this league <span>Owner only</span></summary>'+
  '<p>Select one, two, or all three. Turning a sport off will NOT delete its picks or results. You can enable it again anytime.</p>'+
  '<div id="fan-edit-sport-options">'+checkboxes(sports,"edit")+'</div>'+
@@ -180,9 +179,10 @@ function renderClub(c,host){
  '<div class="fan-metrics">'+sports.map(s=>'<span><strong>'+score(info[s+"_correct"])+
  '</strong><small>'+names[s]+' correct</small></span>').join("")+'</div></details>':"")+
  '<div class="fan-club-invite"><span>Invite code: <strong>'+html(c.invite_code)+'</strong></span>'+
- '<button class="fan-small" type="button" data-league-action="share">Share invite ↗</button>'+
- '<button class="fan-small" type="button" data-league-action="sync">Join newly added sports</button></div>'+
- '<p class="fan-subtle">Existing members can opt into newly enabled sports. Historical picks stay saved if a sport is disabled.</p>'+
+ '<button class="fan-small" type="button" data-league-action="share">Share invite ↗</button></div>'+
+ '<details class="fan-fold fan-member-sync"><summary>Member sync options</summary>'+
+ '<p class="fan-subtle">Opt into newly enabled sports. Disabled sports never erase old picks.</p>'+
+ '<button class="fan-small" type="button" data-league-action="sync">Join newly added sports</button></details>'+
  '</section>';
 }
 async function standings(){
@@ -300,6 +300,7 @@ async function action(name,button){
     selection=sport+":"+id;
    }
    app()?.toast?.("New league created with "+sports.length+" sport"+(sports.length===1?"":"s")+"!");
+   if(byId("fan-league-tools"))byId("fan-league-tools").open=false;
   }else if(name==="join"){
    const invite=(byId("fan-join-code")?.value||"").trim().toUpperCase();
    if(!/^[A-Z0-9]{10}$/.test(invite))throw Error("Enter a valid 10-character league code.");
@@ -322,6 +323,7 @@ async function action(name,button){
      (x.kind==="club"||x.kind==="football"||x.kind==="basketball"||x.kind==="baseball"));
    if(match){await choose(ident(match));saveCache(ident(match));}
    app()?.toast?.("Joined the league with your existing account!");
+   if(byId("fan-league-tools"))byId("fan-league-tools").open=false;
    return;
   }else if(name==="save-sports"){
    if(!c||c.owner_id!==me().id)throw Error("Only the league owner can edit these sports.");

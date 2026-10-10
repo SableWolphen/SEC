@@ -477,3 +477,46 @@ body{overflow-x:clip}
  .sec-live-score-strip{margin-top:4px;margin-bottom:12px}
  .sec-live-mini-score{overflow-wrap:anywhere}
 }
+
+/* 2026-10-10 League hub: one league selector, one primary scoreboard, optional tools. */
+#league-view .fan-league-summary{padding:15px 17px;margin:13px 0 9px}
+#league-view .fan-league-title-row{display:flex;justify-content:space-between;align-items:center;gap:14px}
+#league-view .fan-league-title-row h2{font-size:clamp(19px,3vw,24px);margin:3px 0 2px;letter-spacing:-.45px}
+#league-view .fan-league-title-row p{font-size:11px;margin:0;color:#b1c6c8}
+#league-view .fan-refresh{min-width:89px;min-height:44px;flex-shrink:0}
+#league-view .fan-league-select-label{margin-top:12px}
+#league-view .fan-current-league-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:10px}
+#league-view .fan-sport-tags{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+#league-view .fan-sport-tag{display:inline-flex;align-items:center;padding:6px 9px;border-radius:999px;background:#d7fa6515;border:1px solid #648567;color:#daedd7;font-size:11px;font-weight:800}
+#league-view .fan-archive-tag{color:#f8c98c;font-size:11px}
+#league-view .fan-league-drawer{margin:9px 0 14px;padding:0;background:#142631;border:1px solid #446265}
+#league-view .fan-league-drawer>summary{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:49px;padding:13px 15px;font-size:13px;color:#e7f3e8;font-weight:850;list-style:none}
+#league-view .fan-league-drawer>summary::-webkit-details-marker{display:none}
+#league-view .fan-league-drawer>summary::after{content:"⌄";font-size:19px;color:#d7fa65;transition:transform .15s}
+#league-view .fan-league-drawer[open]>summary::after{transform:rotate(180deg)}
+#league-view .fan-drawer-note{margin-left:auto;font-size:11px;color:#a5bdb7;text-align:right;font-weight:650}
+#league-view .fan-league-drawer>div{padding:0 13px 13px}
+#league-view .fan-league-action-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding-top:10px}
+#league-view .fan-league-action{border:1px solid #3e575d;border-radius:12px;padding:14px;background:#10222d;min-width:0}
+#league-view .fan-league-action h3{font-size:15px;margin:0 0 5px;color:#f3f9ed}
+#league-view .fan-league-action .fan-subtle{font-size:11px;line-height:1.5;margin:6px 0}
+#league-view .fan-league-action .fan-small{min-height:44px;margin-top:10px}
+#league-view .fan-league-action .field{max-width:100%;width:100%;font-size:16px;min-height:45px}
+#league-view .fan-extras-drawer .fan-power-card{margin-top:10px}
+#league-view .fan-extras-drawer .fan-tournament{margin:10px 0}
+#fan-single-league .sport-league-top,#fan-single-league .sport-active-choice,#fan-single-league .sport-league-tools{display:none}
+#fan-single-league .sport-league-shell{margin-top:9px}
+#league-view .fan-football-management{margin:13px 0}
+#league-view .fan-football-management>summary{min-height:44px}
+#league-view .fan-member-sync{margin:12px 0 0}
+@media(max-width:650px){
+ #league-view .fan-league-action-grid{grid-template-columns:minmax(0,1fr)}
+ #league-view .fan-league-drawer>summary{flex-wrap:wrap}
+ #league-view .fan-drawer-note{max-width:52%;font-size:10px}
+ #league-view .fan-league-summary{padding:13px}
+}
+@media(max-width:360px){
+ #league-view .fan-refresh{min-width:44px;padding:8px}
+ #league-view .fan-sport-tag{font-size:10px;padding:6px 7px}
+ #league-view .fan-league-drawer>summary{padding:12px}
+}

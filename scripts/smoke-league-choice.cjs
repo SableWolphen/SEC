@@ -198,6 +198,12 @@ const run=async()=>{
  const h=fs.readFileSync("index.html","utf8");
  assert.match(h,/league-settings\.js\?v=/);
  assert.match(h,/id="fan-league-create"/);
+ assert.match(h,/id="fan-league-tools"/,"create and join share one expandable drawer");
+ assert.match(h,/id="fan-league-extras"/,"rankings and brackets live in a separate drawer");
+ assert.ok(h.indexOf('id="league-content"')<h.indexOf('id="fan-league-extras"'),
+   "football scoreboard and chat stay ahead of optional extras");
+ assert.match(sourceManager,/fan-league-action-grid/,"create and join controls share one tidy panel");
+ assert.match(sourceManager,/fan-current-league-meta/,"league sports remain visible at a glance");
  const fan=fs.readFileSync("fan-experience.js","utf8");
  assert.match(fan,/v==="league"\)return window\.SEC_LEAGUE_SETTINGS\?\.onView/);
  assert.doesNotMatch(fan,/sec_player_league_preferences|playChoice\s*=|changeClub\(/,
