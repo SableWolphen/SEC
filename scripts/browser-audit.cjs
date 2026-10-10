@@ -101,6 +101,7 @@ fs.mkdirSync(output,{recursive:true});
      g.statusDetail="Q2 · 8:04";g.scoreUpdatedAt=new Date().toISOString();
      g.kickoff=new Date(Date.now()-4*60000).toISOString();
      window.SEC_LIVE_SCORES?.renderStatus?.();
+     window.SEC_BRIDGE.renderPicks();
    });
    const live=await page.evaluate(()=>{
      const strip=document.querySelector("#sec-live-score-strip"),r=strip.getBoundingClientRect();
@@ -113,6 +114,22 @@ fs.mkdirSync(output,{recursive:true});
      problems.push(viewport.width+"px live strip clipped: "+JSON.stringify(live));
    if(viewport.width<=390&&!live.next)
      problems.push(viewport.width+"px missing mobile shortcut to remaining football picks");
+
+   const oneLive=await page.evaluate(()=>{
+     const id=window.SEC_BRIDGE.week().games[0].id;
+     const card=[...document.querySelectorAll("#games-list .game-card")].find(el=>el.dataset.gameId===id);
+     const row=card?.querySelector(".fan-center > summary");
+     return {
+       rendered:!!card,liveBadges:card?.querySelectorAll(".fan-center > summary .fan-live").length||0,
+       phase:row?.textContent.includes("Q2 · 8:04")||false,
+       score:row?.textContent.includes("14 – 10")||false,
+       duplicateStatus:!!card?.querySelector(".sec-live,.sec-score-phase"),
+       hasDetail:!!card?.querySelector(".fan-center-detail")
+     };
+   });
+   if(!oneLive.rendered||oneLive.liveBadges!==1||!oneLive.phase||
+      !oneLive.score||oneLive.duplicateStatus||!oneLive.hasDetail)
+     problems.push(viewport.width+"px duplicate live game status: "+JSON.stringify(oneLive));
    await page.screenshot({path:path.join(output,viewport.width+"-gameday.png")});
    if(viewport.width<=390){
     await page.evaluate(()=>window.SEC_BRIDGE.setView("league"));
