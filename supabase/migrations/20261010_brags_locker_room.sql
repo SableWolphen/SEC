@@ -82,7 +82,7 @@ begin
     from members m left join public.sec_profiles pr on pr.user_id=m.user_id),'[]'::jsonb),
    'games',coalesce((select jsonb_agg(jsonb_build_object(
      'id',g.id,'sport',g.sport,'week',g.week,'kickoff_at',g.kickoff_at,
-     'away_code',g.away_code,'home_code',g.home_code,'game_status',g.game_status,
+     'away_code',g.away_code,'home_code',g.home_code, 'away_name',(case when g.sport='football' then g.away_code else (select sg.away_name from public.sec_sport_games sg where sg.id=g.id) end), 'home_name',(case when g.sport='football' then g.home_code else (select sg.home_name from public.sec_sport_games sg where sg.id=g.id) end), 'game_status',g.game_status,
      'away_score',g.away_score,'home_score',g.home_score,
      'winner',g.verified_winner,'spread_home',g.spread_home,
      'spread_source',g.spread_source,'season',g.season,'mode',g.scoring_mode
