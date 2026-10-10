@@ -17,6 +17,7 @@
   var authReadyResolve;
   var authReady = new Promise(function(resolve){authReadyResolve=resolve;});
   var authRestored = !client, previousAuthUserId;
+  var refreshVersion=0,standingsVersion=0;
   if(authRestored)authReadyResolve();
   function publishAccount(){
     if(!authRestored){authRestored=true;authReadyResolve();}
@@ -158,8 +159,10 @@
   }
   async function refresh(options){
     if(!client)return;
+    var version=++refreshVersion;
     try{
       var session=extract(await client.auth.getSession()).session;
+      if(version!==refreshVersion)return;
       user=session?.user||null;
       publishAccount();
       var s=app.state();
@@ -169,8 +172,10 @@
         window.SDSTrophyCase?.sync({authenticated:false,schedule:app.gameById});
         window.SEC_SOCIAL?.connect?.(client,null,null,[]);
         if(window.SEC_FEATURES?.reload)await window.SEC_FEATURES.reload(client,null,null,app);
+        if(version!==refreshVersion)return;
         try{
           var publicGames=extract(await client.from("sec_games").select("id,kickoff_at,winner,provisional,game_status,status_detail,away_score,home_score,spread_home,spread_source,score_updated_at"))||[];
+          if(version!==refreshVersion)return;
           window.SEC_FEATURES?.updateGames?.(publicGames,app);
           publicGames.forEach(function(g){var local=app.gameById[g.id];if(local){
             if(g.kickoff_at)local.kickoff=g.kickoff_at;
@@ -186,6 +191,7 @@
         client.from("sec_picks").select("game_id,pick_code").eq("user_id",user.id),
         client.from("sec_games").select("id,kickoff_at,winner,provisional,game_status,status_detail,away_score,home_score,spread_home,spread_source,score_updated_at")
       ]);
+      if(version!==refreshVersion||user?.id!==session?.user?.id)return;
       results.forEach(extract);
       profile=results[0].data;
       // The sign-up display name is untrusted cosmetic metadata, never used for access control.
@@ -194,6 +200,7 @@
         if(display.length>=2&&display.length<=32){
           try{
             extract(await client.from("sec_profiles").upsert({user_id:user.id,display_name:display},{onConflict:"user_id"}));
+            if(version!==refreshVersion||user?.id!==session?.user?.id)return;
             profile={user_id:user.id,display_name:display};
           }catch(profileErr){console.warn("SEC display name sync:",profileErr);}
         }
@@ -210,11 +217,19 @@
       active=leagues.some(function(l){return l.id===stored;})?stored:(leagues[0]?.id||null);
       if(inviteCode && !leagues.some(function(l){return l.invite_code===inviteCode.toUpperCase();})){
         // Explicitly joining an invite URL is equivalent to redeeming the invite.
-        try{var id=extract(await client.rpc("sec_join_league",{p_code:inviteCode}));inviteCode=null;leagues=extract(await client.from("sec_leagues").select("id,name,invite_code,owner_id,mode").order("created_at",{ascending:true}))||[];active=id;history.replaceState(null,"",location.pathname+"#league");}
+        try{
+          var id=extract(await client.rpc("sec_join_league",{p_code:inviteCode}));
+          if(version!==refreshVersion||user?.id!==session?.user?.id)return;
+          var joined=extract(await client.from("sec_leagues").select("id,name,invite_code,owner_id,mode").order("created_at",{ascending:true}))||[];
+          if(version!==refreshVersion||user?.id!==session?.user?.id)return;
+          inviteCode=null;leagues=joined;active=id;
+          history.replaceState(null,"",location.pathname+"#league");
+        }
         catch(err){status(err.message);inviteCode=null;}
       }
       if(active)localStorage.setItem("ss-sec-league",active);
       if(window.SEC_FEATURES?.reload)await window.SEC_FEATURES.reload(client,currentLeague(),user,app);
+      if(version!==refreshVersion||user?.id!==session?.user?.id)return;
       window.SDSTrophyCase?.sync({
         games:results[3].data||[],picks:app.state().picks,schedule:app.gameById,
         leagueId:currentLeague()?.id||null,leagueName:currentLeague()?.name||"",
@@ -223,29 +238,38 @@
       if(currentLeague()&&window.SDSTrophyCase?.setPermanentResults){
         try{
           var historyRows=extract(await client.rpc("sec_sync_trophy_history",{p_league:active}))||[];
+          if(version!==refreshVersion||user?.id!==session?.user?.id)return;
           window.SDSTrophyCase.setPermanentResults(historyRows);
         }catch(trophyErr){console.warn("Saved trophy history unavailable",trophyErr);}
       }
       await refreshStandings(false);
+      if(version!==refreshVersion||user?.id!==session?.user?.id)return;
       window.SEC_SOCIAL?.connect?.(client,currentLeague(),user,standings);
       window.SEC_FEATURES?.remind?.();
       show();
     }catch(err){
+      if(version!==refreshVersion)return;
       // A failed session lookup must not leave the other sports stuck on "Restoring account".
       if(!authRestored){authRestored=true;authReadyResolve();}
       busy(err);show();
     }
   }
   async function refreshStandings(shouldShow){
+    var version=++standingsVersion,expectedUser=user?.id,expectedLeague=active;
     if(!client||!user||!active){standings=[];return;}
     try{
-      standings=extract(await client.rpc("sec_league_standings_v3",{p_league:active,p_week:app.week().num}))||[];
+      var received=extract(await client.rpc("sec_league_standings_v3",{p_league:expectedLeague,p_week:app.week().num}))||[];
+      if(version!==standingsVersion||user?.id!==expectedUser||active!==expectedLeague)return;
+      standings=received;
       window.SEC_FEATURES?.setStandings?.(standings);
       window.SEC_SOCIAL?.setStandings?.(standings);
       if(shouldShow&&window.SEC_FEATURES?.reload)await window.SEC_FEATURES.reload(client,currentLeague(),user,app);
       standingsError='';if(shouldShow)show();
     }
-    catch(err){standings=[];standingsError=err.message||'Server error';busy(err);if(shouldShow)show();}
+    catch(err){
+      if(version!==standingsVersion||user?.id!==expectedUser||active!==expectedLeague)return;
+      standings=[];standingsError=err.message||'Server error';busy(err);if(shouldShow)show();
+    }
   }
   function show(){
     if(app.view()==="picks")app.renderPicks();
@@ -383,8 +407,11 @@
   }
   function useLeague(id){
     if(!id||typeof id!=="string")return;
+    if(active===id)return;
     localStorage.setItem("ss-sec-league",id);
     active=id;
+    ++standingsVersion;
+    standings=[];standingsError="";
     void refresh();
   }
   window.secOnline={
@@ -424,7 +451,12 @@
         recoveryMode=true;
         setTimeout(function(){app.setView("league");renderLeague();},0);
       }else if(event==="SIGNED_IN"||event==="SIGNED_OUT"){
-        if(event==="SIGNED_OUT"){user=null;publishAccount();}
+        if(event==="SIGNED_OUT"){
+          ++refreshVersion;++standingsVersion;
+          user=null;leagues=[];active=null;profile=null;standings=[];
+          app.state().picks={};app.state().results={};
+          publishAccount();show();
+        }
         setTimeout(function(){void refresh();},0);
       }
     });
