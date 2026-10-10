@@ -98,18 +98,25 @@ function render(){
   single=byId("fan-single-league"),multi=byId("fan-club-hub"),football=byId("league-content");
  if(!heading)return;
  const logged=!!me(),all=items(),item=selectedItem(),current=club();
- heading.innerHTML='<section class="fan-format-wrap"><div class="card-kicker">YOUR LEAGUES</div>'+
- '<h2>Each league chooses its own sports.</h2><p>One league can play football, another basketball and baseball, and another all three. League owners can change their league later.</p>'+
- (logged?(all.length?'<label class="fan-league-select-label" for="fan-selected-league">Choose a league to manage</label>'+
+ const manage=byId("fan-league-management"),seasonExtras=byId("fan-season-extras");
+ if(manage){
+  manage.hidden=!logged;
+  if(logged&&!all.length&&!loading)manage.open=true;
+ }
+ heading.innerHTML='<section class="fan-format-wrap fan-league-home">'+
+ '<div class="fan-league-home-head"><div><div class="card-kicker">YOUR LEAGUES</div>'+
+ '<h2>League home</h2><p>Each league chooses its own sports. Pick one to see standings and chat.</p></div>'+
+ (logged&&item&&(current||item.kind==="football")?
+ '<button type="button" class="fan-small fan-primary" data-league-action="share">↗ Invite friends</button>':"")+'</div>'+
+ (logged?(all.length?'<label class="fan-league-select-label" for="fan-selected-league">Current league</label>'+
  '<select class="fan-league-select" id="fan-selected-league" aria-label="Choose league">'+
  all.map(x=>'<option value="'+html(ident(x))+'" '+(ident(x)===selection?"selected":"")+'>'+html(x.name)+
- ' · '+x.sports.map(s=>names[s]).join(" + ")+(olderSeason(x)?" · "+x.detail.season+" archive":"")+'</option>').join("")+'</select>'+
- '<p class="fan-format-note">'+html(item?.name||"Your league")+' · '+item?.sports.length+
- ' active sport'+(item?.sports.length===1?"":"s")+'. Changes here do not affect other leagues.</p>':
- '<p class="fan-format-note">'+(loading?"Loading your leagues…":"No leagues joined yet. Make your first league below.")+'</p>'):
- '<p class="fan-format-note">One account for all sports. Log in below to manage your leagues.</p>')+
- (message?'<p class="fan-warning" role="status">'+html(message)+'</p>':"")+
- (logged?'<button class="fan-small" type="button" data-league-action="reload">↻ Refresh my leagues</button>':"")+'</section>';
+ (olderSeason(x)?" · "+x.detail.season+" archive":"")+'</option>').join("")+'</select>'+
+ '<p class="fan-format-note fan-league-sports-note">'+item?.sports.map(s=>names[s]).join(" · ")+
+ ' <span>· '+item?.sports.length+' sport'+(item?.sports.length===1?"":"s")+'</span></p>':
+ '<p class="fan-format-note">'+(loading?"Loading your leagues…":"No leagues yet. Create or join one below.")+'</p>'):
+ '<p class="fan-format-note">Log in below to join your friends’ leagues.</p>')+
+ (message?'<p class="fan-warning" role="status">'+html(message)+'</p>':"")+'</section>';
  if(create)create.innerHTML=logged?'<details class="fan-fold fan-new-league" '+(!all.length?'open':'')+
  '><summary>＋ Create a league <span>Choose 1, 2 or 3 sports</span></summary>'+
  '<label class="fan-league-select-label" for="fan-new-name">League name</label>'+
@@ -126,19 +133,20 @@ function render(){
   single.hidden=!logged||!item||item.kind==="club";
   if(!single.hidden){
    const kind=item.kind,owner=item.owner_id===me().id;
-   single.innerHTML='<section class="fan-panel fan-single-panel"><div class="card-kicker">SINGLE-SPORT LEAGUE</div>'+
+   single.innerHTML='<section class="fan-panel fan-single-panel">'+
+    (kind==="football"?'':'<div class="card-kicker">SINGLE-SPORT LEAGUE</div>')+
     '<h3>'+html(item.name)+'</h3><p class="fan-subtle">'+names[kind]+
     ' · Your original scores, picks and membership remain available.</p>'+
     (owner?'<details class="fan-fold"><summary>⚙️ Add sports to this league</summary>'+
       '<p>Add a second or third sport without losing the existing league. Members can choose to join the newly added competitions.</p>'+
       '<div id="fan-upgrade-sport-options">'+checkboxes([kind],"upgrade")+'</div>'+
       '<button class="fan-small fan-primary" type="button" data-league-action="upgrade">Save league sports →</button></details>':
-      '<p class="fan-subtle">Only this league’s owner can change its sports.</p>')+
+      '')+
     (olderSeason(item)?'<p class="fan-warning" role="status">'+item.detail.season+
        ' season archive. Your historical membership is preserved, but current picks use the new season.</p>':
      kind!=="football"?'<button class="fan-small" type="button" data-league-action="open-sport" data-sport="'+kind+
        '">Open '+names[kind]+' picks →</button>':
-       '<p class="fan-subtle">Your football scoreboard and league chat are below.</p>')+
+       '')+
     (kind!=="football"&&!olderSeason(item)?(win.SEC_SPORTS?.renderLeaguePanel?.(kind)||
       '<p class="fan-subtle">Loading this sport’s league controls…</p>'):"")+
     '</section>';
@@ -148,7 +156,9 @@ function render(){
   multi.hidden=!logged||!current;
   if(current&&!multi.hidden)renderClub(current,multi);
  }
- for(const id of ["fan-brackets","fan-series"]){const el=byId(id);if(el)el.hidden=!current||!validSports(current).some(s=>s!=="football");}
+ const hasOtherSports=Boolean(current&&validSports(current).some(s=>s!=="football"));
+ if(seasonExtras)seasonExtras.hidden=!hasOtherSports;
+ for(const id of ["fan-brackets","fan-series"]){const el=byId(id);if(el)el.hidden=!hasOtherSports;}
  // Guests always retain the shared login and password recovery.
  if(football)football.hidden=logged&&(!item||item.kind!=="football");
  restoreForms(preserved);
