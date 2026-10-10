@@ -8,7 +8,7 @@
   "Mississippi State","Missouri","Oklahoma","Ole Miss","South Carolina","Tennessee",
   "Texas","Texas A&M","Vanderbilt"];
  let entries=[],updated=null,checked=null,warning="",error="",loading=false,lastFetch=0;
- let team="all",breakingOnly=false,search="",sourceNames=[],sport=null;
+ let team="all",breakingOnly=false,search="",sourceNames=[],sport=null,headlineLimit=8;
  const SPORTS={
   football:{label:"Football",emoji:"🏈"},
   baseball:{label:"Baseball",emoji:"⚾"},
@@ -87,7 +87,7 @@
    button.setAttribute("data-news-sport",key);
    button.setAttribute("aria-pressed",String(selectedSport()===key));
    button.setAttribute("aria-label","Show "+meta.label+" news");
-   button.addEventListener("click",()=>{sport=key;render();});
+   button.addEventListener("click",()=>{sport=key;headlineLimit=8;render();});
    chooser.append(button);
   }
   root.append(chooser);
@@ -99,21 +99,21 @@
    const selected=breakingOnly?(key==="breaking"):(key==="all");
    const button=make("button","sec-news-filter"+(selected?" active":""),label);
    button.type="button";button.setAttribute("aria-pressed",String(selected));
-   button.addEventListener("click",()=>{breakingOnly=key==="breaking";render();});
+   button.addEventListener("click",()=>{breakingOnly=key==="breaking";headlineLimit=8;render();});
    left.append(button);
   }
   const select=document.createElement("select");select.className="sec-news-school";
   select.setAttribute("aria-label","Filter SEC news by school");
   select.append(new Option("All SEC schools","all"));
   for(const name of SEC)select.append(new Option(name,name));
-  select.value=team;select.addEventListener("change",()=>{team=select.value;render();});
+  select.value=team;select.addEventListener("change",()=>{team=select.value;headlineLimit=8;render();});
   const input=make("input","sec-news-search");input.type="search";
   input.placeholder="Find a player, coach, or school…";
   input.setAttribute("aria-label","Search SEC headlines");
   input.value=search;
   input.addEventListener("input",()=>{
    search=input.value.toLowerCase().trim();
-   drawResults();
+   headlineLimit=8;drawResults();
   });
   area.append(left,select,input);root.append(area);
  }
@@ -151,21 +151,27 @@
   if(breakingOnly&&!matchingArticles().some(isBreaking))
    host.append(make("p","sec-news-no-breaking","No verified breaking headlines in the last 6 hours. Showing the latest "+SPORTS[selectedSport()].label.toLowerCase()+" articles instead."));
   const grid=make("div","sec-news-grid");
-  items.forEach((item,index)=>grid.append(card(item,index===0&&!breakingOnly&&!search&&team==="all")));
+  items.slice(0,headlineLimit).forEach((item,index)=>grid.append(card(item,index===0&&!breakingOnly&&!search&&team==="all")));
   host.append(grid);
+  if(items.length>8){
+   const more=make("button","sec-news-more",headlineLimit>=items.length?"Show fewer stories ↑":"Show more stories · "+(items.length-8)+" ↓");
+   more.type="button";more.setAttribute("aria-expanded",String(headlineLimit>=items.length));
+   more.addEventListener("click",()=>{headlineLimit=headlineLimit>=items.length?8:items.length;drawResults();});
+   host.append(more);
+  }
  }
  function render(){
   const root=$("sec-news-root");if(!root)return;
   root.replaceChildren();
   const heading=make("section","sec-news-head");
   const top=make("div","sec-news-eyebrow","THE LATEST · SEC "+SPORTS[selectedSport()].label.toUpperCase());
-  const title=make("h2","","News in a nutshell.");
-  const intro=make("p","","Short summaries. Real sources. Tap any story to read the full article.");
+  const title=make("h2","","Big games. Bigger headlines.");
+  const intro=make("p","","Final scores, quick recaps, and everything happening around the SEC.");
   const status=make("div","sec-news-status");
   status.append(make("span","",updated?"Updated "+elapsed(updated):"Waiting for first automatic update"));
   const refresh=make("button","sec-news-refresh",loading?"Refreshing…":"↻ Refresh");
   refresh.type="button";refresh.disabled=loading;
-  refresh.addEventListener("click",()=>{void reload(true);});
+  refresh.addEventListener("click",()=>{void reload(true);void window.SEC_RECAPS?.refresh?.();});
   status.append(refresh);heading.append(top,title,intro,status);
   root.append(heading);
   if(error)root.append(make("p","sec-news-alert",error));
@@ -173,6 +179,12 @@
   const details=make("p","sec-news-byline","Source excerpts, not independent reporting. Published times are from the original outlets. Feed checks run approximately hourly; alerts aren't instantaneous.");
   root.append(details);
   sportFilters(root);
+  const recap=make("section","");recap.id="sec-recap-root";root.append(recap);
+  window.SEC_RECAPS?.mount?.(selectedSport(),team);
+  const storyHeading=make("div","sec-news-stories-heading");
+  storyHeading.append(make("span","sec-news-eyebrow","THE LATEST"),
+   make("h3","","Around the conference"));
+  root.append(storyHeading);
   filters(root);
   const count=make("p","sec-news-result-count");count.id="sec-news-count";root.append(count);
   const feed=make("div","");feed.id="sec-news-results";root.append(feed);
@@ -212,7 +224,7 @@
  function showSchool(name,newsSport){
    if(!SEC.includes(name))return;
    team=name;
-   search="";breakingOnly=false;
+   search="";breakingOnly=false;headlineLimit=8;
    if(SPORTS[newsSport])sport=newsSport;
    window.SEC_BRIDGE?.setView?.("news");
    render();void reload();

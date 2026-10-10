@@ -630,3 +630,45 @@ body{overflow-x:clip}
 .sport-team-context{display:block;margin-top:3px;line-height:1.45;font-size:10px;color:#a8d6c4;font-weight:750}
 .sport-team-option.selected .sport-team-context{color:#e1f7b1}
 @media(max-width:410px){.sport-team-context{font-size:9px}}
+
+/* Final Whistle: editorial game recaps, no simulated games or invented plays. */
+.sec-news-stories-heading{margin:24px 2px 10px}
+.sec-news-stories-heading h3{font-size:clamp(19px,3vw,25px);letter-spacing:-.6px;color:#f0f8f4;margin:3px 0 0;font-weight:950}
+.sec-news-head{padding:18px 21px}
+.sec-news-head h2{font-size:clamp(23px,4vw,31px)}
+.sec-news-byline{margin:9px 2px 12px}
+.sec-news-sports{margin:10px 0 15px}
+#sec-recap-root{margin:10px 0 18px}
+.sec-recap-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-bottom:12px}
+.sec-recap-kicker{color:#a6ccae;font-size:10px;letter-spacing:1.4px;font-weight:900}
+.sec-recap-heading h3{color:#f2f9f4;letter-spacing:-.7px;font-size:clamp(22px,3.1vw,28px);margin:2px 0 2px;font-weight:950}
+.sec-recap-heading p{color:#a9c5c4;font-size:11px;margin:0}
+.sec-recap-mine{background:#233f39;border:1px solid #517967;border-radius:9px;color:#caeca4;padding:10px 12px;font-size:11px;font-weight:900;white-space:nowrap;min-height:42px}
+.sec-recap-mine.active{background:#d5ff65;color:#173021;border-color:#d5ff65}
+.sec-recap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.sec-recap-card{position:relative;min-width:0;display:flex;flex-direction:column;border:1px solid #3c5864;border-radius:16px;background:linear-gradient(155deg,#1a313c,#10212e);padding:15px;gap:11px;box-shadow:0 8px 23px #060e1822}
+.sec-recap-card.is-featured{border-color:#81a675;background:radial-gradient(circle at 90% 10%,#4e75463b,transparent 46%),linear-gradient(145deg,#244439,#172f35 78%)}
+.sec-recap-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.sec-recap-state{background:#d5ff651d;border:1px solid #d5ff653f;color:#d5ff65;font-size:10px;font-weight:950;border-radius:7px;padding:4px 7px;letter-spacing:.4px}
+.sec-recap-date{color:#a8c0c6;font-size:10px;font-weight:800}
+.sec-recap-match{display:flex;flex-direction:column;gap:3px;padding:2px 0 4px}
+.sec-recap-team{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#a8bdc7;border-radius:9px;padding:7px 9px;font-size:12px}
+.sec-recap-team strong{font-size:12px;font-weight:850;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sec-recap-team.is-winner{color:#f7fff4;background:#2f503b88}
+.sec-recap-score{font-size:24px;line-height:1.05;font-weight:950;font-variant-numeric:tabular-nums;letter-spacing:-.7px;color:#c3d0d5}
+.sec-recap-team.is-winner .sec-recap-score{color:#d5ff65}
+.sec-recap-tldr{margin:0;display:grid;gap:6px;color:#dae7e8;font-size:11px;line-height:1.5}
+.sec-recap-flag{font-size:9px;letter-spacing:.7px;color:#c7e99c;font-weight:950}
+.sec-recap-footer{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap;border-top:1px solid #38515a;padding-top:10px;margin-top:auto}
+.sec-recap-footer small{color:#819dab;font-size:9px}
+.sec-recap-link{color:#d5ff65;font-size:11px;font-weight:900;text-decoration:none;white-space:nowrap}
+.sec-recap-link:hover{text-decoration:underline}
+.sec-recap-link:focus-visible,.sec-recap-mine:focus-visible,.sec-recap-more:focus-visible,.sec-news-more:focus-visible{outline:3px solid #d5ff65;outline-offset:3px}
+.sec-recap-actions{text-align:center}
+.sec-recap-more,.sec-news-more{display:block;margin:11px auto 0;color:#d5ff65;background:#1e363d;border:1px solid #49695d;border-radius:10px;padding:12px 18px;font-size:11px;font-weight:900;min-height:42px}
+.sec-news-more{margin:13px auto 4px}
+.sec-recap-placeholder{border:1px dashed #41615d;border-radius:14px;padding:17px 18px;background:#142830;color:#a6c1c6;font-size:12px;display:flex;flex-direction:column;gap:6px;line-height:1.6}
+.sec-recap-placeholder strong{color:#e1f1ee;font-size:13px}
+.sec-recap-caution{color:#f0c5a1;display:block;margin:8px 2px}
+@media(max-width:840px){.sec-recap-grid{display:flex;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;padding:1px 0 8px;gap:10px}.sec-recap-card{flex:0 0 min(82vw,320px);scroll-snap-align:start}.sec-recap-team{font-size:12px}}
+@media(max-width:440px){.sec-news-head{padding:15px}.sec-recap-card{flex-basis:min(85vw,300px)}.sec-news-stories-heading{margin-top:22px}}
