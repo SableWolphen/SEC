@@ -235,12 +235,14 @@ def build(now=None, get=download, existing=None, fallback=None):
 
         games = sorted(saved.values(), key=lambda g: (g['kickoff_at'], g['id']))
         issue = None
-        if not successes and not database_ok:
+        if not games:
+            issue = ('No verified individual first-pitch times yet; SEC baseball '
+                     'weekend series previews remain available.' if sport == 'baseball' else
+                     'No verified individual basketball matchups are available yet.')
+        elif not successes and not database_ok:
             issue = 'Live schedule sources unavailable; retaining previously confirmed games.'
         elif not successes and database_ok:
             issue = 'Live ESPN feed unavailable; displaying verified SEC/university fixtures.'
-        elif not games:
-            issue = 'No individual matchups have been published with verified start times yet.'
         result['sports'][sport] = {
             'season': year, 'games': games,
             'source': 'Verified SEC/university fixtures + ESPN',
