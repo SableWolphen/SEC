@@ -79,6 +79,52 @@ function rivalry(m,myId,otherId){
  }
  return {wins,losses,draws,both:both.length,rounds:[...byWeek.values()].sort((a,b)=>b.latest-a.latest)};
 }
+
+/* Rotating weekly pairings, fixed to Monday 12 a.m. America/Chicago.
+ * Circle-method round-robin. With odd membership each participant gets a
+ * fair bye during the cycle; with only two members the same pair repeats. */
+function texasWeek(when=new Date()){
+ const dt=new Date(when);
+ if(!Number.isFinite(dt.getTime()))throw Error("Invalid weekly rivalry date");
+ const parts=new Intl.DateTimeFormat("en-US",{timeZone:"America/Chicago",
+  year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(dt);
+ const fields=Object.fromEntries(parts.filter(x=>x.type!=="literal").map(x=>[x.type,Number(x.value)]));
+ const today=Math.floor(Date.UTC(fields.year,fields.month-1,fields.day)/86400000);
+ const weekday=new Date(today*86400000).getUTCDay();
+ const monday=today-(weekday+6)%7;
+ const label=new Date(monday*86400000).toLocaleDateString("en-US",
+  {month:"short",day:"numeric",timeZone:"UTC"});
+ return {start:monday,label:"Week of "+label,round:Math.floor((monday-Math.floor(Date.UTC(2026,7,31)/86400000))/7)};
+}
+function weeklyPairing(players,viewerId,date=new Date()){
+ const week=texasWeek(date);
+ const roster=[...new Set(players.map(p=>typeof p==="string"?p:p?.user_id).filter(Boolean))]
+  .sort((a,b)=>a.localeCompare(b));
+ if(!roster.includes(viewerId)||roster.length<2)return {...week,opponent:null,bye:true,pairings:[]};
+ const slots=roster.slice();
+ if(slots.length%2)slots.push(null);
+ const count=slots.length,rounds=count-1;
+ const index=((week.round%rounds)+rounds)%rounds;
+ let circle=slots.slice();
+ for(let step=0;step<index;step++)circle=[circle[0],circle[count-1],...circle.slice(1,count-1)];
+ const pairings=[];
+ for(let i=0;i<count/2;i++){
+  if(circle[i]&&circle[count-1-i])pairings.push([circle[i],circle[count-1-i]]);
+ }
+ const matching=pairings.find(pair=>pair.includes(viewerId));
+ return {...week,opponent:matching?.find(id=>id!==viewerId)||null,
+  bye:!matching,pairings};
+}
+function weeklyMatch(m,viewerId,otherId,date=new Date()){
+ const week=texasWeek(date);
+ const games=m.finals.filter(g=>texasWeek(g.kickoff_at).start===week.start);
+ const scoreFor=id=>games.reduce((a,g)=>a+Number(result(g,m.get(id,g))===true),0);
+ const gradedFor=id=>games.filter(g=>result(g,m.get(id,g))!==null).length;
+ return {...week,my:scoreFor(viewerId),their:otherId?scoreFor(otherId):0,
+  myGraded:gradedFor(viewerId),theirGraded:otherId?gradedFor(otherId):0,
+  finals:games.length};
+}
+
 function awards(m){
  const known=m.players.size,eligible=m.finals;
  const byPlayer=[...m.players.values()].map(p=>{
@@ -225,33 +271,44 @@ function highlightCards(m){
    '<small>'+c.note+'</small></div></div>').join("")+'</div>';
 }
 function featuredRivalry(m,me,roster,opponent){
+ const week=weeklyPairing([...m.players.values()],me.user_id);
+ const weekly=weeklyMatch(m,me.user_id,opponent?.user_id);
  const series=opponent?rivalry(m,me.user_id,opponent.user_id):null;
- const sel=roster.length?'<label class="brag-showcase-select">Rival '+
-  '<select data-brag-rival aria-label="Choose a league rival">'+
-  roster.map(p=>'<option value="'+esc(p.user_id)+'"'+(p.user_id===chosenOpponent?' selected':'')+'>'+
+ const selected=m.players.get(chosenOpponent)||opponent;
+ const archived=selected?rivalry(m,me.user_id,selected.user_id):null;
+ const sel=roster.length?'<label class="brag-showcase-select">Explore all-time rivalries '+
+  '<select data-brag-rival aria-label="Compare all-time league rivals">'+
+  roster.map(p=>'<option value="'+esc(p.user_id)+'"'+(p.user_id===selected?.user_id?' selected':'')+'>'+
    esc(p.display_name||"Player")+'</option>').join("")+'</select></label>':"";
- const latest=series?.rounds?.slice(0,4).map(r=>'<div class="brag-round"><span>'+
-  esc(sportIcon[r.sport]||"")+" Week "+esc(r.week)+'</span><strong>'+r.my+'–'+r.their+
-  '</strong><small>'+r.games+' final'+(r.games===1?"":"s")+'</small></div>').join("")||"";
- return '<section class="brag-showcase-section brag-featured-rival" aria-label="Head-to-head rivalry">'+
-  '<div class="brag-showcase-heading"><h3>⚔️ HEAD-TO-HEAD</h3><span>Verified pick rivalry</span></div>'+
+ const brief=opponent?
+  weekly.finals?weekly.my+"–"+weekly.their+" correct picks so far":"Waiting for verified final games":
+  week.bye&&roster.length?"Bye week · next matchup rotates Monday":"Invite friends to start weekly matchups";
+ return '<section class="brag-showcase-section brag-featured-rival" aria-label="Weekly head-to-head rivalry">'+
+  '<div class="brag-showcase-heading"><h3>⚔️ WEEKLY HEAD-TO-HEAD</h3>'+
+   '<span>'+esc(week.label)+' · New matchups every Monday CT</span></div>'+
   (opponent?'<div class="brag-showcase-duel">'+
     '<div class="brag-showcase-duelist"><span class="brag-duelist-symbol">'+
-    esc(m.players.get(me.user_id)?.school||"★")+'</span><strong>'+bestName(me)+
+    esc(me.school||"★")+'</span><strong>'+bestName(me)+
     '</strong><small>You</small></div>'+
-    '<div class="brag-showcase-count"><strong>'+series.wins+'</strong><small>WINS</small></div>'+
+    '<div class="brag-showcase-count"><strong>'+weekly.my+'</strong><small>CORRECT</small></div>'+
     '<div class="brag-duel-vs">VS</div>'+
-    '<div class="brag-showcase-count"><strong>'+series.losses+'</strong><small>WINS</small></div>'+
+    '<div class="brag-showcase-count"><strong>'+weekly.their+'</strong><small>CORRECT</small></div>'+
     '<div class="brag-showcase-duelist"><span class="brag-duelist-symbol is-rival">'+
-    esc(opponent.school||"★")+'</span><strong>'+bestName(opponent)+'</strong><small>Rival</small></div>'+
+    esc(opponent.school||"★")+'</span><strong>'+bestName(opponent)+'</strong><small>This week</small></div>'+
     '<button type="button" class="brag-showcase-cta" data-brag-share="challenge">⚔️ Call out rival</button>'+
    '</div>':
-   '<div class="brag-showcase-empty">Invite another league member to start your first grudge match.</div>')+
+   '<div class="brag-showcase-empty">'+
+    (week.bye&&roster.length?'🏖️ You have a bye this week. The next round of rivals starts Monday (Central Time).':
+    'Invite another league member to start rotating weekly rivalries.')+'</div>')+
+  '<div class="brag-weekly-note">'+esc(brief)+(opponent?
+    ' · '+weekly.myGraded+' and '+weekly.theirGraded+' graded picks · No bonus league points.':'')+'</div>'+
   '<details class="brag-showcase-more" data-brag-panel="rivals"'+fold("rivals")+'>'+
-   '<summary>Grudge Match · '+(series?series.both+' shared confirmed games':'Waiting for a rival')+' <span>View history &amp; choose rival</span></summary>'+
+   '<summary>All-time grudge match records <span>View history</span></summary>'+
    '<div class="brag-showcase-more-body">'+sel+
-   (opponent?renderDuel(m,me,opponent):'<p class="fan-subtle">No other members yet.</p>')+
-   (latest?'<div class="brag-rounds">'+latest+'</div>':"")+'</div></details>'+
+   (selected?renderDuel(m,me,selected):'<p class="fan-subtle">Choose a member to view past rivalries.</p>')+
+   (archived?'<p class="fan-subtle">All-time: '+archived.wins+'–'+archived.losses+
+    ' ('+archived.draws+' ties), across '+archived.both+' shared verified games.</p>':"")+
+   '</div></details>'+
   '</section>';
 }
 function featuredBulletin(m){
@@ -332,7 +389,8 @@ function render(data,itemInfo){
  const roster=[...m.players.values()].filter(p=>p.user_id!==me.user_id);
  if(!roster.some(p=>p.user_id===chosenOpponent))chosenOpponent=roster[0]?.user_id||"";
  if(!m.players.has(chosenReceipt))chosenReceipt=me.user_id;
- const opponent=m.players.get(chosenOpponent);
+ const pairing=weeklyPairing([...m.players.values()],me.user_id);
+ const opponent=m.players.get(pairing.opponent);
  el.innerHTML='<div class="brag-arena brag-showcase" aria-label="League Bragging Arena">'+
   '<header class="brag-showcase-hero"><span class="brag-hero-crown" aria-hidden="true">👑</span>'+
    '<div class="brag-hero-copy"><span class="brag-hero-kicker">THE LOCKER ROOM · '+esc(itemInfo.name||"My league")+'</span>'+
@@ -420,14 +478,15 @@ document.addEventListener("click",e=>{
   const n=bulletin(m)[Number(b.dataset.bragBulletin)];
   if(n)void copy(n.text+"\nSEC Pick’em · "+(item()?.name||"League"));
  }else if(b.hasAttribute("data-brag-share")){
-  const rival=m.players.get(chosenOpponent);
+  const pairing=weeklyPairing([...m.players.values()],me.id);
+  const rival=m.players.get(pairing.opponent);
   if(!rival)return;
-  const h=rivalry(m,me.id,rival.user_id);
+  const week=weeklyMatch(m,me.id,rival.user_id);
   void copy("⚔️ "+(m.players.get(me.id)?.display_name||"Player")+" challenges "+
-    (rival.display_name||"Player")+"! Our rivalry: "+h.wins+"–"+h.losses+
-    " ("+h.draws+" ties) on "+h.both+" shared final picks. Let's see who calls the next SEC game! "+
-    "· "+(item()?.name||"League"));
+    (rival.display_name||"Player")+" this week ("+pairing.label+")! "+
+    "Verified picks: "+week.my+"–"+week.their+" so far. "+
+    "New SEC rivalry opponents every Monday CT. · "+(item()?.name||"League"));
  }
 });
-window.SEC_BRAG_ARENA=Object.freeze({load,render:updateUI,model,rivalry,bulletin,awards,verified});
+window.SEC_BRAG_ARENA=Object.freeze({load,render:updateUI,model,rivalry,bulletin,awards,verified,texasWeek,weeklyPairing,weeklyMatch});
 })();
