@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b111b">
-  <meta name="sec-build" content="2026.10.09-minute-scores.16">
+  <meta name="sec-build" content="2026.10.09-gameday-health.17">
   <link rel="manifest" href="./manifest.webmanifest">
   <meta name="description" content="An unofficial SEC football, basketball and baseball pick'em game. Switch sports instantly, make picks and keep score with friends.">
   <meta property="og:title" content="Saturdays Down South — SEC Pick'em">
@@ -188,7 +188,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 @media(max-width:440px){.sec-news-sports{gap:5px;padding:6px}.sec-news-sport-choice{font-size:11px;padding:9px 2px;min-height:50px}}
 </style>
   <title>Saturdays Down South · SEC Pick'em</title>
-<link rel="stylesheet" href="./multi-sport.css?v=20261009-live-v5">
+<link rel="stylesheet" href="./multi-sport.css?v=20261009-gameday-v6">
 </head>
 <body>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
@@ -528,7 +528,17 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     window.scrollTo({top:0,behavior:'instant'});
   }
   function renderHeader(){document.getElementById('header-name').textContent=getName();document.getElementById('header-avatar').textContent=getName().slice(0,1).toUpperCase();}
-  function renderWeekPicker(){document.getElementById('week-picker').innerHTML=WEEKS.map(w=>`<button type="button" class="week-pill ${w.num===currentWeek?'active':''}" data-week="${w.num}" aria-pressed="${w.num===currentWeek}"><strong>WEEK ${w.num}</strong><small>${displayDate(w.date)}</small></button>`).join('');const bar=document.getElementById('week-picker');const active=bar.querySelector('.week-pill.active');if(active)bar.scrollLeft=Math.max(0,active.offsetLeft-bar.offsetLeft-10);}
+  let lastRenderedPickerWeek=null;
+  function renderWeekPicker(){
+    const bar=document.getElementById('week-picker');
+    // Live scores update frequently; do not reset the user's horizontal week
+    // scrolling position every time the visible picks are repainted.
+    if(lastRenderedPickerWeek===currentWeek&&bar.firstElementChild)return;
+    bar.innerHTML=WEEKS.map(w=>`<button type="button" class="week-pill ${w.num===currentWeek?'active':''}" data-week="${w.num}" aria-pressed="${w.num===currentWeek}"><strong>WEEK ${w.num}</strong><small>${displayDate(w.date)}</small></button>`).join('');
+    lastRenderedPickerWeek=currentWeek;
+    const active=bar.querySelector('.week-pill.active');
+    if(active)bar.scrollLeft=Math.max(0,active.offsetLeft-bar.offsetLeft-10);
+  }
   function makeTeamButton(g,id,hero=false){const t=team(id), sel=selected(g,id);const decided=state.results[g.id];const blocked=isLocked(g)||Boolean(window.SEC_FEATURES?.isUnavailable?.(g));if(hero)return `<button class="spotlight-team ${sel?'chosen':''}" type="button" data-pick="${g.id}" data-team="${id}" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<b>${esc(t.name)}</b>${sel?' ✓':''}</button>`;return `<button type="button" class="team-choice ${sel?'selected':''} ${decided===id?'winner':''} ${decided&&decided!==id?'loser':''}" data-pick="${g.id}" data-team="${id}" aria-label="Pick ${esc(t.name)} to win" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<span class="team-copy"><span class="team-name">${esc(t.name)}</span><span class="team-nick">${esc(t.nick)}</span></span><span class="select-mark">${sel?'✓':''}</span></button>`;}
   // Editorial fallback for weeks without ranking data. The featured matchup is NEVER selected from favorites.
   const EDITORIAL_FEATURED={
@@ -675,7 +685,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./multi-sport.js?v=20261009-single-league-v5"></script>
 <script src="./sec-news.js?v=20261009-news-sports-v2"></script>
 <script src="./fan-experience.js?v=20261009-live-center-v4"></script>
-<script src="./sec-live-scores.js?v=20261009-live-score-v1"></script>
+<script src="./sec-live-scores.js?v=20261009-gameday-scores-v2"></script>
 <script src="./league-settings.js?v=20261009-power-v2"></script>
 <script src="./sec-power-rankings.js?v=20261009-power-v1"></script>
 <script src="./sec-brackets.js?v=20261009-perleague-bracket-v3"></script>

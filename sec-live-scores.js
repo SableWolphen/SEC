@@ -26,9 +26,13 @@ function shouldFetchFast(){
 function renderStatus(){
  const el=host(),a=app();if(!el||a?.view?.()!=="picks")return;
  const games=a.week()?.games||[];
+ const unpicked=games.filter(g=>now()<clock(g)&&
+   !a.state?.().picks?.[g.id]&&!window.SEC_FEATURES?.isUnavailable?.(g));
  const live=games.filter(g=>g.liveStatus==="live");
  const starting=games.filter(g=>liveWindow(g));
- if(!live.length&&!starting.length){el.hidden=true;el.innerHTML="";return;}
+ const gameDay=live.length>0||starting.length>0;
+ document.body?.classList?.toggle?.("sec-game-day-active",gameDay);
+ if(!gameDay){el.hidden=true;el.innerHTML="";return;}
  el.hidden=false;
  const recent=live.map(g=>g.scoreUpdatedAt).filter(Boolean).map(Date.parse).filter(Number.isFinite);
  const newest=recent.length?Math.max(...recent):0;
@@ -41,16 +45,22 @@ function renderStatus(){
  el.innerHTML='<div class="sec-live-strip-title"><strong>'+heading+'</strong><span>'+
    (stale?'Score feed delayed':lastError?'Retrying score feed':live.length?'Checks every 30 seconds':'Automatic updates near kickoff')+
    '</span></div>'+(scores?'<div class="sec-live-mini-scores">'+scores+'</div>':'')+
+   (unpicked.length?'<button type="button" data-slate-next class="sec-live-next-pick">'+
+     unpicked.length+' open pick'+(unpicked.length===1?'':'s')+' · Jump to next ↓</button>':'')+
    '<small>Provider-confirmed scores · refreshes automatically while this page is open</small>';
 }
 function matchValue(g){
  return [g.game_status,g.status_detail,g.away_score,g.home_score,g.winner,g.kickoff_at].join("|");
 }
 async function refresh(force=false){
- const a=app(),c=client();if(!a||a.view?.()!=="picks"||!visible()||!c||busy)return;
+ const a=app(),c=client();
+ const viewing=a?.view?.();
+ if(!a||!["picks","league"].includes(viewing)||!visible()||!c||busy)return;
  // Unchanged pregame schedules need just an occasional recheck, never 30s.
  if(!force&&now()-lastRequest<(shouldFetchFast()?30000:180000))return;
- const selected=a.week?.(),games=selected?.games||[];
+ const selected=a.week?.();
+ const games=viewing==="picks"?(selected?.games||[]):(a.weeks||[]).flatMap(w=>w.games)
+   .filter(g=>Math.abs(now()-clock(g))<12*3600000||g.liveStatus==="live");
  if(!games.length)return;
  const ids=games.map(g=>g.id);
  const selectedWeek=selected.num;
@@ -62,14 +72,17 @@ async function refresh(force=false){
   if(response?.error)throw response.error;
   if(!Array.isArray(response?.data))throw Error("Missing score response");
   const rows=response.data.filter(g=>ids.includes(g.id));
-  // Don't paint an old week's scoreboard into the newly chosen week.
-  if(request!==activeRequest)return;
+  // Never let a response from a previous view/week repaint a new one.
+  if(request!==activeRequest||a.view?.()!==viewing||
+     (viewing==="picks"&&a.week?.()?.num!==selectedWeek))return;
   const valid=rows.filter(g=>["scheduled","live","final","canceled","postponed"].includes(g.game_status));
-  let changed=false;
+  let changed=false,justFinal=false;
   for(const row of valid){
    const previous=fingerprints.get(row.id),signature=matchValue(row);
    if(previous!==signature){changed=true;fingerprints.set(row.id,signature);}
    const local=a.gameById?.[row.id];
+   if(local&&row.game_status==="final"&&local.liveStatus!=="final"&&
+      now()-Date.parse(row.kickoff_at)<30*3600000)justFinal=true;
    if(local){
     if(row.kickoff_at)local.kickoff=row.kickoff_at;
     local.liveStatus=row.game_status;
@@ -84,9 +97,16 @@ async function refresh(force=false){
   window.SEC_FEATURES?.updateGames?.(valid,a);
   window.SEC_FAN?.ingestScores?.(valid);
   lastError="";
-  if(a.view?.()==="picks"&&a.week?.()?.num===selectedWeek){
+  if(viewing==="picks"){
    if(changed&&!document.activeElement?.matches?.("input,textarea,select"))a.renderPicks?.();
    renderStatus();
+  }
+  if(justFinal&&window.secOnline?.isSignedIn?.()){
+   // Refresh only after an actual verified final, never on live estimates.
+   // Club, football leaderboard and power rankings all use server RPCs.
+   void window.secOnline?.refreshStandings?.(false);
+   void window.SEC_LEAGUE_SETTINGS?.load?.(true);
+   void window.SEC_POWER?.show?.(undefined,true);
   }
  }catch(e){
   lastError="Scores temporarily unavailable";
@@ -95,7 +115,7 @@ async function refresh(force=false){
  }finally{busy=false;}
 }
 document.addEventListener("click",event=>{
- if(event.target.closest?.('[data-week],[data-nav="picks"],[data-sport-tab="football"],[data-nav="current-sport"]')){
+ if(event.target.closest?.('[data-week],[data-nav="picks"],[data-sport-tab="football"],[data-nav="current-sport"],[data-nav="league"]')){
   setTimeout(()=>{renderStatus();void refresh(true);},0);
  }
 });

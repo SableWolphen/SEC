@@ -4,6 +4,7 @@ const id="2026-6-TEX-OU",kickoff=new Date(Date.now()-25*60000).toISOString();
 const game={id,away:"TEX",home:"OU",kickoff,liveStatus:"scheduled"};
 const saved={picks:{[id]:"TEX"},results:{}},timers=[],listeners={};
 const strip={innerHTML:"",hidden:true};let view="picks",reads=0,renders=0,ingested=[];
+let standingRefresh=0,clubRefresh=0,powerRefresh=0;
 let scores=[{id,kickoff_at:kickoff,game_status:"live",status_detail:"Q2 · 8:04",
  away_score:14,home_score:10,score_updated_at:new Date().toISOString(),winner:null}];
 const client={from(table){assert.equal(table,"sec_games");return {select(fields){
@@ -12,9 +13,12 @@ const client={from(table){assert.equal(table,"sec_games");return {select(fields)
 }}}};
 const app={view:()=>view,week:()=>({num:6,games:[game]}),gameById:{[id]:game},
  state:()=>saved,renderPicks(){renders++;}};
-const window={SEC_BRIDGE:app,secOnline:{getClient:()=>client},
- SEC_FEATURES:{updateGames:()=>{}},SEC_FAN:{ingestScores:rows=>ingested=rows}};
-const document={visibilityState:"visible",activeElement:{matches:()=>false},
+const window={SEC_BRIDGE:app,secOnline:{getClient:()=>client,isSignedIn:()=>true,
+ refreshStandings:()=>{standingRefresh++;}},
+ SEC_FEATURES:{updateGames:()=>{}},SEC_FAN:{ingestScores:rows=>ingested=rows},
+ SEC_LEAGUE_SETTINGS:{load:()=>{clubRefresh++;}},
+ SEC_POWER:{show:()=>{powerRefresh++;}}};
+const document={visibilityState:"visible",body:{classList:{toggle:()=>{}}},activeElement:{matches:()=>false},
  getElementById:x=>x==="sec-live-score-strip"?strip:null,
  addEventListener:(name,fn)=>listeners[name]=fn};
 const sandbox={window,document,console,Date,Promise,Number,
@@ -38,10 +42,14 @@ const flush=async()=>{for(let i=0;i<4;i++)await new Promise(resolve=>setImmediat
  assert.equal(saved.results[id],"TEX");
  assert.equal(saved.picks[id],"TEX");
  assert.equal(strip.hidden,true);
+ assert.equal(standingRefresh,1,"standings refresh only after a verified final");
+ assert.equal(clubRefresh,1,"combined-sport league points refresh on final");
+ assert.equal(powerRefresh,1,"weekly rankings refresh on final");
  view="news";const count=reads;
  await window.SEC_LIVE_SCORES.refresh(true);
  assert.equal(reads,count);
  assert.equal(timers.length,1);
+ assert.equal(standingRefresh,1,"no duplicate final-triggered ranking updates");
  const sql=fs.readFileSync("supabase/migrations/20261009_active_game_minute_scores.sql","utf8");
  assert.ok(sql.includes("g.game_status in ('scheduled','live')"));
  assert.ok(sql.includes("vault.decrypted_secrets"));
