@@ -32,7 +32,7 @@ assert.match(html,/id="fan-power-rankings"/);
 assert.match(html,/id="fan-club-hub"/);
 assert.match(html,/id="fan-single-league"/);
 assert.match(html,/id="fan-brackets"/);
-assert.match(worker,/sec-pickem-v37/);
+assert.match(worker,/sec-pickem-v38/);
 assert.match(worker,/20261009-reliable-v4/);
 assert.match(html,/20261009-reliable-v4/);
 const league=fs.readFileSync("league-settings.js","utf8");
