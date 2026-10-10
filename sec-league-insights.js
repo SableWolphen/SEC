@@ -115,8 +115,8 @@ function weekly(item,rows){
  if(!item||!Array.isArray(rows)){el.innerHTML="";return;}
  const graded=rows.filter(p=>Number(p.weekly_graded)>=3);
  if(!graded.length){
-  el.innerHTML='<div class="sec-weekly-recap"><div class="sec-recap-kicker">🏅 THE WEEKLY RECEIPTS</div>'+
-    '<p class="fan-subtle">Winners and bounce-backs appear after enough league picks have verified final results.</p></div>';
+  // Don't put a large empty award panel above active bragging features.
+  el.innerHTML="";
   return;
  }
  const sorted=graded.slice().sort((a,b)=>

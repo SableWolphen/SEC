@@ -30,6 +30,6 @@ assert.match(html,/\['MIZ','KANS','20:00','FOX',null,'2026-09-11'\]/,
  "Friday Missouri–Kansas game appears on correct date");
 assert.match(html,/if\(month>=7\)return 'picks'/,
  "October home routing keeps football ahead of future sports");
-assert.match(html,/2026\.10\.10-calm-ui\.2/);
-assert.match(sw,/sec-pickem-v55/);
+assert.match(html,/2026\.10\.10-brags-showcase\.1/);
+assert.match(sw,/sec-pickem-v56/);
 console.log("2026 live football synchronization regression passed: private Cron, correct FCS teams, ESPN verified finals, Friday game, football landing and cache.");

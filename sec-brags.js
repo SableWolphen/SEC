@@ -34,13 +34,25 @@ function render(){
  const grid=champions.map(([emoji,title,player,value])=>'<div class="sec-brag-award"><span>'+emoji+'</span>'+
   '<small>'+title+'</small><strong>'+esc(player?.display_name||names[player?.user_id]||"Unclaimed")+
   (player?school(player.user_id):"")+'</strong><em>'+esc(value)+'</em></div>').join("");
+ const mine=rows.find(r=>r.user_id===user()?.id);
+ const rank=window.SEC_POWER?.getRows?.(selected)||[];
+ const position=rank.find(r=>r.user_id===user()?.id);
+ const owned=mine&&Number(mine.graded_picks)>0;
+ const metrics=[
+  ["🎯",owned?pct(mine.accuracy_pct):"—","My accuracy"],
+  ["⚡",owned?String(Number(mine.upsets_correct)||0):"—","My upsets"],
+  ["🏈",owned?String(Number(mine.graded_picks)||0):"—","Graded picks"],
+  ["🏆",position&&Number(position.season_graded)>0?"#"+Number(position.current_rank):"—","League rank"]
+ ];
+ const glance='<div class="brag-season-glance">'+metrics.map(([icon,value,title])=>
+  '<span class="brag-season-metric"><b>'+icon+' '+esc(value)+'</b><small>'+esc(title)+'</small></span>').join("")+'</div>';
  const table=rows.map(r=>'<tr><td>'+esc(r.display_name||names[r.user_id]||"Player")+school(r.user_id)+'</td>'+
   '<td>'+(Number(r.graded_picks)>0?pct(r.accuracy_pct):"—")+'</td>'+
   '<td>'+Number(r.upsets_correct||0)+'</td><td>'+pct(r.favorite_pick_pct)+'</td>'+
   '<td>'+(r.biggest_upset==null?"—":Number(r.biggest_upset).toFixed(1))+'</td></tr>').join("");
  slot.innerHTML='<details id="sec-brags-season-details" class="fan-panel sec-brags-panel brag-fold"'+
   (expanded?' open':'')+' aria-label="Verified season bragging rights">'+
-  '<summary>📊 Season statistics <small>Accuracy, upsets &amp; picks</small></summary><div class="brag-fold-body">'+
+  '<summary class="brag-season-summary"><span class="brag-season-title">📊 SEASON STATISTICS <small>View full stats ↗</small></span>'+glance+'</summary><div class="brag-fold-body">'+
   '<div class="card-kicker">BRAGGING RIGHTS</div><h2>Receipts or it didn’t happen.</h2>'+
   '<p class="fan-subtle">Numbers include confirmed final games with a recorded pick. Underdogs and favorites require a published point spread. Spread leagues use cover accuracy.</p>'+
   '<div class="sec-brag-awards">'+grid+'</div>'+
