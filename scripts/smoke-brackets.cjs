@@ -5,15 +5,16 @@ const fixture={id:"sec-2027-basketball-test123",sport:"basketball",season:2027,
  round_label:"Quarterfinal",away_code:"ALA",away_name:"Alabama",home_code:"TENN",
  home_name:"Tennessee",kickoff_at:"2027-03-15T20:00:00Z",winner_code:null,status:"scheduled",
  source_url:"https://www.secsports.com/sport/mens-basketball"};
-let writes=[];
+let writes=[],fixtureRows=[fixture],privateReads=0;
 const client={
  from:(name)=>name==="sec_bracket_games"?{
-  select:()=>({order:async()=>({data:[fixture],error:null})})
+  select:()=>({order:async()=>({data:fixtureRows,error:null})})
  }:{
   select:()=>({eq:()=>({eq:async()=>({data:[],error:null})})})
  },
  rpc:async(name,args)=>{
   if(name==="sec_bracket_save"){writes.push(args);return {data:null,error:null};}
+  privateReads++;
   return {data:[],error:null};
  }
 };
@@ -39,6 +40,12 @@ const run=async()=>{
  assert.equal(writes.length,1);
  assert.equal(writes[0].p_pick,"TENN");
  assert.equal(writes[0].p_club,"club-one");
+ // No official brackets should trigger no picks/standings queries.
+ fixtureRows=[];const before=privateReads;
+ await window.SEC_BRACKETS.mount(true);
+ assert.equal(window.SEC_BRACKETS.getFixtures().length,0);
+ assert.equal(privateReads,before,"unpublished tournament fixtures never trigger extra private data queries");
+ assert.match(root.innerHTML,/Awaiting official matchups/);
  const sql=fs.readFileSync("supabase/migrations/20261009_secure_postseason_brackets.sql","utf8");
  assert.match(sql,/clock_timestamp\(\)>=g.kickoff_at/);
  assert.match(sql,/sec_club_is_member/);
