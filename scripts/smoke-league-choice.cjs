@@ -2,7 +2,7 @@
 /* League sports are PER LEAGUE, independently editable by the league owner. */
 const assert=require("node:assert/strict"),fs=require("node:fs"),vm=require("node:vm");
 const ids=["fan-league-choice","fan-league-create","fan-single-league","fan-club-hub",
- "fan-brackets","fan-series","league-content","fan-create-sport-options",
+ "fan-brackets","fan-series","league-content","fan-join-code","fan-create-sport-options",
  "fan-edit-sport-options","fan-upgrade-sport-options","fan-new-name"];
 const nodes=Object.fromEntries(ids.map(id=>[id,{innerHTML:"",hidden:false,value:"",querySelectorAll:()=>[]}]));
 const handlers={},local=new Map(),rpcCalls=[],pickWrites=[],selectedCalls=[],toasts=[];
@@ -55,7 +55,18 @@ const db={from:table,rpc:async(fn,args)=>{
    baseball_league:"bs-4",basketball_season:2027,baseball_season:2027});
   return {data:"club-D",error:null};
  }
- if(fn==="sec_club_join")return {data:"club-A",error:null};
+ if(fn==="sec_club_join"){
+  if(args.p_code==="ABCDEFGHIJ")return {data:"club-A",error:null};
+  return {error:{message:"League invitation not found"}};
+ }
+ if(fn==="sec_join_league"){
+  if(args.p_code==="FOOTBALL01")return {data:"fb-original",error:null};
+  return {error:{message:"League not found — check the invite code"}};
+ }
+ if(fn==="sec_sport_join_league"){
+  if(args.p_code==="BASKET123")return {data:"bb-original",error:null};
+  return {error:{message:"Invite code not found"}};
+ }
  return {error:{message:"Unexpected RPC "+fn}};
  }};
 const window={secOnline:{getClient:()=>db,getUser:()=>current,whenAuthReady:()=>Promise.resolve(),
@@ -92,6 +103,17 @@ const run=async()=>{
  assert.doesNotMatch(fs.readFileSync("league-settings.js","utf8"),/sec_player_league_preferences/,"no global account format");
  assert.deepEqual(clubs[0].enabled_sports,["football","basketball"]);
  assert.deepEqual(clubs[1].enabled_sports,["baseball"]);
+ assert.match(nodes["fan-league-create"].innerHTML,/Join with an invite code/,
+   "existing join flow remains available for every league type");
+ nodes["fan-join-code"].value="ABCDEFGHIJ";
+ await click("join");
+ assert.equal(manager.getClub()?.id,"club-A","club invite picks the joined club automatically");
+ nodes["fan-join-code"].value="BASKET123";
+ await click("join");
+ assert.equal(manager.getSelected()?.kind,"basketball","sport invite joins with the same existing account");
+ nodes["fan-join-code"].value="FOOTBALL01";
+ await click("join");
+ assert.equal(manager.getSelected()?.kind,"football","legacy football league invite still works");
  await manager.choose("club:club-A");
  assert.match(nodes["fan-club-hub"].innerHTML,/⚙️ Change sports/);
  assert.match(nodes["fan-club-hub"].innerHTML,/🏀 Basketball/);
