@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b111b">
-  <meta name="sec-build" content="2026.10.10-weekly-rivals.2">
+  <meta name="sec-build" content="2026.10.10-team-scores.1">
   <link rel="manifest" href="./manifest.webmanifest">
   <meta name="description" content="An unofficial SEC football, basketball and baseball pick'em game. Switch sports instantly, make picks and keep score with friends.">
   <meta property="og:title" content="Saturdays Down South — SEC Pick'em">
@@ -188,7 +188,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 @media(max-width:440px){.sec-news-sports{gap:5px;padding:6px}.sec-news-sport-choice{font-size:11px;padding:9px 2px;min-height:50px}}
 </style>
   <title>Saturdays Down South · SEC Pick'em</title>
-<link rel="stylesheet" href="./multi-sport.css?v=20261010-showcase-v1">
+<link rel="stylesheet" href="./multi-sport.css?v=20261010-team-scores-v1">
 </head>
 <body>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
@@ -566,7 +566,22 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     const active=bar.querySelector('.week-pill.active');
     if(active)bar.scrollLeft=Math.max(0,active.offsetLeft-bar.offsetLeft-10);
   }
-  function makeTeamButton(g,id,hero=false){const t=team(id), sel=selected(g,id);const decided=state.results[g.id];const blocked=isLocked(g)||Boolean(window.SEC_FEATURES?.isUnavailable?.(g));const context=window.SEC_STATS?.pickContext?.(g,id)||'';if(hero)return `<button class="spotlight-team ${sel?'chosen':''}" type="button" data-pick="${g.id}" data-team="${id}" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<span class="team-copy"><b>${esc(t.name)}</b>${context}</span>${sel?' ✓':''}</button>`;return `<button type="button" class="team-choice ${sel?'selected':''} ${decided===id?'winner':''} ${decided&&decided!==id?'loser':''}" data-pick="${g.id}" data-team="${id}" aria-label="Pick ${esc(t.name)} to win" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<span class="team-copy"><span class="team-name">${esc(t.name)}</span><span class="team-nick">${esc(t.nick)}</span>${context}</span><span class="select-mark">${sel?'✓':''}</span></button>`;}
+  function validGameScore(value){
+    return value!==null && value!==undefined && value!=='' && Number.isInteger(Number(value)) && Number(value)>=0 && Number(value)<=999;
+  }
+  function makeTeamButton(g,id,hero=false){
+    const t=team(id),sel=selected(g,id),decided=state.results[g.id];
+    const blocked=isLocked(g)||Boolean(window.SEC_FEATURES?.isUnavailable?.(g));
+    const context=window.SEC_STATS?.pickContext?.(g,id)||'';
+    const status=String(g.liveStatus||g.game_status||'scheduled').toLowerCase();
+    const away=g.awayScore??g.away_score,home=g.homeScore??g.home_score;
+    const scored=['live','final'].includes(status)&&validGameScore(away)&&validGameScore(home);
+    const n=id===g.away?Number(away):Number(home);
+    const lead=scored&&Number(away)!==Number(home)&&n>Number(id===g.away?home:away);
+    const scoreHtml=scored?`<span class="pick-team-score ${lead?'is-leading':''}" aria-label="${esc(t.name)} score ${n}">${n}</span>`:'';
+    if(hero)return `<button class="spotlight-team ${sel?'chosen':''} ${scored?'has-team-score':''}" type="button" data-pick="${g.id}" data-team="${id}" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<span class="team-copy"><b>${esc(t.name)}</b>${context}</span><span class="pick-team-trailing">${scoreHtml}${sel?'<span class="pick-team-hero-check" aria-label="Your pick">✓</span>':''}</span></button>`;
+    return `<button type="button" class="team-choice ${sel?'selected':''} ${decided===id?'winner':''} ${decided&&decided!==id?'loser':''} ${scored?'has-team-score':''}" data-pick="${g.id}" data-team="${id}" aria-label="Pick ${esc(t.name)} to win${scored?'; score '+n:''}" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<span class="team-copy"><span class="team-name">${esc(t.name)}</span><span class="team-nick">${esc(t.nick)}</span>${context}</span><span class="pick-team-trailing">${scoreHtml}<span class="select-mark">${sel?'✓':''}</span></span></button>`;
+  }
   // Editorial fallback for weeks without ranking data. The featured matchup is NEVER selected from favorites.
   const EDITORIAL_FEATURED={
     1:'CLEM-LSU',2:'OHST-TEX',3:'LSU-MISS',4:'OU-UGA',5:'VAN-UGA',
@@ -710,7 +725,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./multiplayer.js?v=20261010-pride-fix-v1"></script>
 <script src="./matchup-stats.js?v=20261010-community-v1"></script>
 <script src="./team-records.js?v=20261009-officialsources-v8"></script>
-<script src="./multi-sport.js?v=20261010-healthfix-v1"></script>
+<script src="./multi-sport.js?v=20261010-team-scores-v1"></script>
 <script src="./sec-recaps.js?v=20261010-recaps-v1"></script>
 <script src="./sec-news.js?v=20261010-recaps-v1"></script>
 <script src="./sec-league-insights.js?v=20261010-showcase-v1"></script>

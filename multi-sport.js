@@ -275,11 +275,15 @@ function sportTeamContext(s,g,code){
  }
  return parts.length?'<small class="sport-team-context">'+parts.join(" · ")+'</small>':"";
 }
+function validSportScore(value){
+ return value!==null&&value!==undefined&&value!==""&&Number.isInteger(Number(value))&&Number(value)>=0&&Number(value)<=999;
+}
 function gameCard(s,g,league,picks){
  const mode=league?.mode||"straight",old=picks[g.id];
  const start=new Date(g.kickoff_at).getTime();
  const locked=!(Number.isFinite(start)&&start>Date.now()&&g.game_status==="scheduled");
  const canPick=Boolean(league&&user()&&g.imported&&!locked&&(mode!=="spread"||g.spread_home!==null&&g.spread_home!==undefined));
+ const scored=["live","final"].includes(g.game_status)&&validSportScore(g.away_score)&&validSportScore(g.home_score);
  const result=g.game_status==="final"?(g.winner_code?"FINAL · "+(g.winner_code===g.home_code?g.home_name:g.away_name)+" wins":"FINAL") :
   g.game_status==="live"?"LIVE":g.game_status==="canceled"?"CANCELED":timeLabel(g.kickoff_at);
  const verdict=old&&g.game_status==="final"?(g.winner_code===old.pick_code?'✓ Correct pick':'✕ Incorrect pick'):"";
@@ -288,7 +292,9 @@ function gameCard(s,g,league,picks){
  const opt=code=>'<button type="button" class="sport-team-option '+(old?.pick_code===code?'selected':'')+
   '" data-sport-action="pick" data-sport="'+s+'" data-game="'+esc(g.id)+'" data-pick="'+esc(code)+'" '+
   (!canPick?'disabled':'')+' aria-pressed="'+(old?.pick_code===code)+'">'+
-  '<span class="sport-team-name">'+esc(code===g.away_code?g.away_name:g.home_name)+sportTeamContext(s,g,code)+'</span>'+
+  '<span class="sport-team-top"><span class="sport-team-name">'+esc(code===g.away_code?g.away_name:g.home_name)+sportTeamContext(s,g,code)+'</span>'+
+  (scored?'<span class="sport-team-score '+(Number(code===g.away_code?g.away_score:g.home_score)>Number(code===g.away_code?g.home_score:g.away_score)?"is-leading":"")+
+   '" aria-label="'+esc(code===g.away_code?g.away_name:g.home_name)+' score">'+Number(code===g.away_code?g.away_score:g.home_score)+'</span>':"")+'</span>'+
   '<span class="sport-check">'+(old?.pick_code===code?"✓":"○")+'</span></button>';
  const num=curWeek(s)?.games.length||1;
  const used=new Set(Object.entries(picks).filter(([id,p])=>id!==g.id&&allGames(s).find(x=>x.id===id)?.week===g.week).map(([,p])=>p.confidence_points));
@@ -299,7 +305,7 @@ function gameCard(s,g,league,picks){
   '<p class="sport-kickoff">'+esc(String(g.source||"").includes("provisional")?
    "Tipoff TBA · provisional pick lock "+prettyTime(g.kickoff_at):
    prettyTime(g.kickoff_at))+
-  (["live","final"].includes(g.game_status)&&g.away_score!==null&&g.away_score!==undefined&&g.home_score!==null&&g.home_score!==undefined?
+  (scored?
     ' · '+Number(g.away_score)+'–'+Number(g.home_score):'')+'</p>'+
   '<div class="sport-team-options">'+opt(g.away_code)+'<span class="sport-vs">VS</span>'+opt(g.home_code)+'</div>'+
   (mode==="confidence"&&canPick?'<div class="sport-confidence"><label>Confidence value</label>'+

@@ -19,6 +19,8 @@ jobs:
           node --check multi-sport.js
           node --check scripts/smoke-multi-sport.cjs
           node scripts/smoke-multi-sport.cjs
+          node --check scripts/smoke-team-scores.cjs
+          node scripts/smoke-team-scores.cjs
           python3 -m unittest discover -s tests -p test_sports.py -v
           python3 -m py_compile scripts/update_sports.py
           node --check multiplayer.js

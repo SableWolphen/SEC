@@ -997,3 +997,32 @@ color:#ecf8ee;font-size:13px;font-weight:900;background:#1c353b}
  .brag-featured-rival .brag-showcase-heading>span{font-size:10px}
  .brag-weekly-note{padding:10px; font-size:10px}
 }
+
+/* Verified team scores directly beside each team in Picks cards. */
+.team-choice .pick-team-trailing,.spotlight-team .pick-team-trailing{
+ display:flex;flex-direction:column;align-items:flex-end;justify-content:center;
+ gap:3px;flex:0 0 auto;min-width:20px;margin-left:auto;
+}
+.pick-team-score{font-size:21px;font-weight:950;line-height:1.05;letter-spacing:-.5px;
+ color:#e9f1f2;font-variant-numeric:tabular-nums;text-align:right}
+.pick-team-score.is-leading{color:#d7fa65}
+.spotlight-team.chosen .pick-team-score{color:#20371e}
+.spotlight-team.chosen .pick-team-score.is-leading{color:#233b16}
+.pick-team-hero-check{font-size:11px;font-weight:950;line-height:1}
+.team-choice.has-team-score .select-mark{height:15px;width:15px;font-size:9px}
+.spotlight-team.has-team-score{min-width:0}
+.sport-team-top{display:flex;align-items:flex-start;justify-content:space-between;gap:7px;width:100%;min-width:0}
+.sport-team-top .sport-team-name{min-width:0;flex:1;overflow-wrap:anywhere}
+.sport-team-score{flex:0 0 auto;font-size:21px;line-height:1.1;font-weight:950;
+ color:#f0f4f5;font-variant-numeric:tabular-nums}
+.sport-team-score.is-leading{color:#d7fa65}
+.sport-team-option.selected .sport-team-score{color:#e6ffb2}
+@media(max-width:540px){
+ .pick-team-score,.sport-team-score{font-size:18px}
+ .team-choice.has-team-score{gap:4px;padding:6px}
+ .team-choice.has-team-score .mini-logo{width:25px;height:25px}
+ .team-choice.has-team-score .team-name{font-size:10px}
+ .sport-team-option{padding:10px 8px}
+}
+@media(max-width:380px){.pick-team-score,.sport-team-score{font-size:16px}
+ .team-choice.has-team-score .team-nick{font-size:9px}}
