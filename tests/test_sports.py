@@ -96,7 +96,7 @@ class SportFeedTests(unittest.TestCase):
   self.assertEqual(actual['home_score'],73)
  def test_invalid_database_rows_cannot_create_false_games(self):
   bad={'id':'basketball-2027-forged','sport':'basketball','season':2027,'week':1,
-      'kickoff_at':'2026-11-03T22:00:00Z','away_code':'1','home_code':'2',
+      'kickoff_at':'2026-11-03T22:00:00Z','away_code':'55','home_code':'66',
       'game_status':'final','source':'Unverified'}
   self.assertEqual(sport.validated_public_games([bad],'basketball',2027),[])
 
