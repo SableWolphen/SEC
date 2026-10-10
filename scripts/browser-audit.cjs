@@ -216,9 +216,10 @@ fs.mkdirSync(output,{recursive:true});
      problems.push(viewport.width+"px broken team name: "+JSON.stringify(t));
     }
    }
-   if(!teamNames.some(x=>x.name==="Missouri")||
-      !teamNames.some(x=>x.name==="South Carolina"))
-      problems.push(viewport.width+"px actual team name fixtures missing: "+JSON.stringify(teamNames));
+   // The default week rolls forward during the season. Check its current
+   // actual teams rather than hard-coding two teams from a past week.
+   if(teamNames.length<4||teamNames.some(x=>!x.name.trim()))
+      problems.push(viewport.width+"px current-week team names missing: "+JSON.stringify(teamNames));
 
    // The user can choose to see everything, and score refreshes must not
    // unexpectedly collapse the game they've just opened.
