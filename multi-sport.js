@@ -284,9 +284,9 @@ function gameCard(s,g,league,picks){
  const locked=!(Number.isFinite(start)&&start>Date.now()&&g.game_status==="scheduled");
  const canPick=Boolean(league&&user()&&g.imported&&!locked&&(mode!=="spread"||g.spread_home!==null&&g.spread_home!==undefined));
  const scored=["live","final"].includes(g.game_status)&&validSportScore(g.away_score)&&validSportScore(g.home_score);
+ const phase=String(g.status_detail||"").slice(0,42);
  const result=g.game_status==="final"?(g.winner_code?"FINAL · "+(g.winner_code===g.home_code?g.home_name:g.away_name)+" wins":"FINAL") :
   g.game_status==="live"?"LIVE"+(phase?" · "+phase:""):g.game_status==="canceled"?"CANCELED":timeLabel(g.kickoff_at);
- const phase=String(g.status_detail||"").slice(0,42);
  const verdict=old&&g.game_status==="final"?(g.winner_code===old.pick_code?'✓ Correct pick':'✕ Incorrect pick'):"";
  const availability=!league?"Join a league to pick":!g.imported?"Syncing game to secure pick server":locked?"Picks locked":
   mode==="spread"&&(g.spread_home===null||g.spread_home===undefined)?"Waiting for a published spread":"Choose a winner";
