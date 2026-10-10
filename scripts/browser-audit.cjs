@@ -91,7 +91,7 @@ fs.mkdirSync(output,{recursive:true});
     }
    }
    // Signed-in DOM fixture: no real account, no mutations, no server requests.
-   // Verify league tabs actually move chat/commissioner sections and shorten standings.
+   // Verify league tabs separate chat and manager tools while keeping the full roster.
    await page.evaluate(()=>{
      document.activeElement?.blur?.();
      window.SEC_BRIDGE.setView("league");
@@ -119,8 +119,8 @@ fs.mkdirSync(output,{recursive:true});
        movedRules:!!d("fan-league-football-manager").querySelector(".fan-football-management"),
        movedAccount:!!d("fan-league-football-manager").querySelector(".fan-football-advanced")};
    });
-   if(!tabChecks.tabs||!tabChecks.scores||tabChecks.visibleRows!==6||
-      !tabChecks.expander||!tabChecks.movedChat||!tabChecks.movedRules||!tabChecks.movedAccount)
+   if(!tabChecks.tabs||!tabChecks.scores||tabChecks.visibleRows!==10||
+      tabChecks.expander||!tabChecks.movedChat||!tabChecks.movedRules||!tabChecks.movedAccount)
      problems.push(viewport.width+"px signed-in league tabs: "+JSON.stringify(tabChecks));
    await page.locator("#fan-tab-chat").click();
    const chatOkay=await page.evaluate(()=>document.getElementById("fan-pane-scores").hidden&&

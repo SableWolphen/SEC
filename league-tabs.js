@@ -34,31 +34,7 @@ function relocate(source,selector,target){
   else mount.replaceChildren(child);
  }
 }
-function trimFootball(){
- const board=byId("league-content")?.querySelector(".leaderboard");
- if(!board||board.nextElementSibling?.classList.contains("fan-player-expander"))return;
- const rows=[...board.querySelectorAll(".standing-row:not(.head)")];
- if(rows.length<=5)return;
- const details=document.createElement("details"),summary=document.createElement("summary");
- details.className="fan-player-expander";summary.textContent="See all "+rows.length+" players";
- details.appendChild(summary);
- rows.slice(5).forEach(row=>details.appendChild(row));
- board.after(details);
-}
-function trimClub(){
- const table=byId("fan-club-hub")?.querySelector(".fan-table");
- if(!table||table.parentElement?.nextElementSibling?.classList.contains("fan-player-expander"))return;
- const rows=[...table.querySelectorAll("tbody tr")];
- if(rows.length<=5)return;
- const details=document.createElement("details"),summary=document.createElement("summary");
- summary.textContent="See all "+rows.length+" players";details.className="fan-player-expander";
- const wrap=document.createElement("div"),rest=document.createElement("table"),body=document.createElement("tbody");
- wrap.className="fan-table-wrap";rest.className="fan-table";
- if(table.tHead)rest.appendChild(table.tHead.cloneNode(true));
- rows.slice(5).forEach(row=>body.appendChild(row));
- rest.appendChild(body);wrap.appendChild(rest);details.append(summary,wrap);
- table.parentElement.after(details);
-}
+// Keep every player visible in standings; controls live in separate tabs.
 function synchronize(){
  const {member,item}=eligible();
  const key=member?item?item.kind+":"+item.id:"empty":"guest";
@@ -70,7 +46,7 @@ function synchronize(){
  if(!member)return;
  if(item?.kind==="club"){
   relocate("fan-club-hub",".fan-club-settings","fan-league-club-manager");
-  trimClub();
+
  }else if(item){
   relocate("fan-single-league",".fan-standalone-settings","fan-league-single-manager");
   relocate("fan-single-league",".fan-single-panel > details.fan-fold","fan-league-single-manager");
@@ -80,7 +56,7 @@ function synchronize(){
     relocate("league-content",".sec-scoreboard-chat","fan-league-chat-content");
     relocate("league-content",".fan-football-management","fan-league-football-manager");
     relocate("league-content",".fan-football-advanced","fan-league-football-manager");
-    trimFootball();
+
    }else{
     // Never show the previous league's messages during a fast league switch.
     byId("fan-league-chat-content")?.replaceChildren();

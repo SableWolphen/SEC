@@ -117,13 +117,18 @@
   });
   area.append(left,select,input);root.append(area);
  }
- function filtered(){
+ function matchingArticles(){
   return entries.filter(i=>{
    if(articleSport(i)!==selectedSport())return false;
-   if(breakingOnly&&!isBreaking(i))return false;
    if(team!=="all"&&!(Array.isArray(i.teams)&&i.teams.includes(team)))return false;
    return !search||(i.title+" "+i.summary+" "+(i.teams||[]).join(" ")).toLowerCase().includes(search);
   });
+ }
+ function filtered(){
+  const candidates=matchingArticles();
+  if(!breakingOnly)return candidates;
+  const breaking=candidates.filter(isBreaking);
+  return breaking.length?breaking:candidates.slice(0,12);
  }
  function drawResults(){
   const host=$("sec-news-results");if(!host)return;
@@ -143,6 +148,8 @@
      "This sport may be between seasons. The feed updates from original publishers; try Refresh or check again later."));
    host.append(state);return;
   }
+  if(breakingOnly&&!matchingArticles().some(isBreaking))
+   host.append(make("p","sec-news-no-breaking","No verified breaking headlines in the last 6 hours. Showing the latest "+SPORTS[selectedSport()].label.toLowerCase()+" articles instead."));
   const grid=make("div","sec-news-grid");
   items.forEach((item,index)=>grid.append(card(item,index===0&&!breakingOnly&&!search&&team==="all")));
   host.append(grid);

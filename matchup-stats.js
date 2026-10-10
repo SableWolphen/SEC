@@ -50,6 +50,22 @@ function render(g){
   }
   return '<div class="matchup-insight">'+result+'</div>';
 }
+function pickContext(g,id){
+  const d=games[g?.id],side=id===g?.away?"away":id===g?.home?"home":null;
+  if(!side)return "";
+  const info=d?.[side]||{},bits=[],rank=Number(info.rank);
+  if(info.rank!=null&&Number.isInteger(rank)&&rank>=1&&rank<=25)
+   bits.push('<b class="pick-context-rank">#'+rank+'</b>');
+  if(typeof info.record==="string"&&/^\d{1,3}-\d{1,3}(?:-\d{1,3})?$/.test(info.record))
+   bits.push('<span>'+esc(info.record)+'</span>');
+  const line=g?.spread_home;
+  if(g?.spread_source&&line!==null&&line!==undefined&&line!==""&&Number.isFinite(Number(line))){
+   const value=(side==="home"?1:-1)*Number(line);
+   bits.push('<span title="Published point spread from '+esc(g.spread_source)+' (not betting odds)">Line '+
+    (value>0?"+":"")+value.toFixed(1)+'</span>');
+  }
+  return bits.length?'<span class="team-pick-context">'+bits.join('<i aria-hidden="true">·</i>')+'</span>':"";
+}
 async function refresh(){
   try{
     var res=await fetch("./stats.json",{cache:"no-store"});
@@ -60,6 +76,6 @@ async function refresh(){
     if(window.SEC_BRIDGE&&window.SEC_BRIDGE.view()==="picks")window.SEC_BRIDGE.renderPicks();
   }catch(err){console.info("SEC matchup insights unavailable",err);}
 }
-window.SEC_STATS={render:render,featured:featured,refresh:refresh,lastUpdated:function(){return generated;},count:function(){return Object.keys(games).length;}};
+window.SEC_STATS={render:render,featured:featured,pickContext:pickContext,refresh:refresh,lastUpdated:function(){return generated;},count:function(){return Object.keys(games).length;}};
 void refresh();
 })();

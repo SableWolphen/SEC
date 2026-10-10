@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b111b">
-  <meta name="sec-build" content="2026.10.10-league-tabs.3">
+  <meta name="sec-build" content="2026.10.10-feedback.1">
   <link rel="manifest" href="./manifest.webmanifest">
   <meta name="description" content="An unofficial SEC football, basketball and baseball pick'em game. Switch sports instantly, make picks and keep score with friends.">
   <meta property="og:title" content="Saturdays Down South — SEC Pick'em">
@@ -188,7 +188,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 @media(max-width:440px){.sec-news-sports{gap:5px;padding:6px}.sec-news-sport-choice{font-size:11px;padding:9px 2px;min-height:50px}}
 </style>
   <title>Saturdays Down South · SEC Pick'em</title>
-<link rel="stylesheet" href="./multi-sport.css?v=20261010-leaguetabs-v3">
+<link rel="stylesheet" href="./multi-sport.css?v=20261010-feedback-v1">
 </head>
 <body>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
@@ -560,7 +560,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     const active=bar.querySelector('.week-pill.active');
     if(active)bar.scrollLeft=Math.max(0,active.offsetLeft-bar.offsetLeft-10);
   }
-  function makeTeamButton(g,id,hero=false){const t=team(id), sel=selected(g,id);const decided=state.results[g.id];const blocked=isLocked(g)||Boolean(window.SEC_FEATURES?.isUnavailable?.(g));if(hero)return `<button class="spotlight-team ${sel?'chosen':''}" type="button" data-pick="${g.id}" data-team="${id}" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<b>${esc(t.name)}</b>${sel?' ✓':''}</button>`;return `<button type="button" class="team-choice ${sel?'selected':''} ${decided===id?'winner':''} ${decided&&decided!==id?'loser':''}" data-pick="${g.id}" data-team="${id}" aria-label="Pick ${esc(t.name)} to win" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<span class="team-copy"><span class="team-name">${esc(t.name)}</span><span class="team-nick">${esc(t.nick)}</span></span><span class="select-mark">${sel?'✓':''}</span></button>`;}
+  function makeTeamButton(g,id,hero=false){const t=team(id), sel=selected(g,id);const decided=state.results[g.id];const blocked=isLocked(g)||Boolean(window.SEC_FEATURES?.isUnavailable?.(g));const context=window.SEC_STATS?.pickContext?.(g,id)||'';if(hero)return `<button class="spotlight-team ${sel?'chosen':''}" type="button" data-pick="${g.id}" data-team="${id}" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<span class="team-copy"><b>${esc(t.name)}</b>${context}</span>${sel?' ✓':''}</button>`;return `<button type="button" class="team-choice ${sel?'selected':''} ${decided===id?'winner':''} ${decided&&decided!==id?'loser':''}" data-pick="${g.id}" data-team="${id}" aria-label="Pick ${esc(t.name)} to win" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<span class="team-copy"><span class="team-name">${esc(t.name)}</span><span class="team-nick">${esc(t.nick)}</span>${context}</span><span class="select-mark">${sel?'✓':''}</span></button>`;}
   // Editorial fallback for weeks without ranking data. The featured matchup is NEVER selected from favorites.
   const EDITORIAL_FEATURED={
     1:'CLEM-LSU',2:'OHST-TEX',3:'LSU-MISS',4:'OU-UGA',5:'VAN-UGA',
@@ -701,15 +701,15 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./league-features.js?v=20261009-isolation-v2"></script>
 <script src="./league-social.js?v=20261009-chat-scoreboard-v1"></script>
 <script src="./multiplayer.js?v=20261010-leaguetabs-v3"></script>
-<script src="./matchup-stats.js"></script>
+<script src="./matchup-stats.js?v=20261010-pickcontext-v1"></script>
 <script src="./team-records.js?v=20261009-officialsources-v8"></script>
 <script src="./multi-sport.js?v=20261009-single-league-v5"></script>
-<script src="./sec-news.js?v=20261009-news-sports-v2"></script>
+<script src="./sec-news.js?v=20261010-feedback-v1"></script>
 <script src="./fan-experience.js?v=20261009-live-center-v4"></script>
 <script src="./sec-live-scores.js?v=20261009-gameday-scores-v2"></script>
 <script src="./league-settings.js?v=20261010-leaguetabs-v3"></script>
 <script src="./sec-power-rankings.js?v=20261009-power-v1"></script>
 <script src="./sec-brackets.js?v=20261009-perleague-bracket-v3"></script>
-<script src="./league-tabs.js?v=20261010-leaguetabs-v3"></script>
+<script src="./league-tabs.js?v=20261010-feedback-v1"></script>
 </body>
 </html>

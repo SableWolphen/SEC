@@ -67,6 +67,13 @@ async function run(){
  assert.match(baseballText,/Tennessee baseball announces a new series/);
  assert.doesNotMatch(baseballText,/SEC announces a new football award/);
  assert.doesNotMatch(baseballText,/Kentucky basketball coach/);
+ const breakingButton=traverse(root,x=>x.tag==="button"&&x.textContent==="Breaking")[0];
+ assert.ok(breakingButton,"breaking button exists");breakingButton.handlers.click();
+ const noBreakingText=JSON.stringify(root);
+ assert.match(noBreakingText,/No verified breaking headlines in the last 6 hours/);
+ assert.match(noBreakingText,/Tennessee baseball announces/,"verified latest story shown when no breaking");
+ assert.doesNotMatch(noBreakingText,/● BREAKING/,"ordinary story never falsely labeled breaking");
+ traverse(root,x=>x.tag==="button"&&x.textContent==="All news")[0].handlers.click();
  sportButtons=traverse(root,x=>x.attrs?.["data-news-sport"]);
  sportButtons.find(x=>x.attrs["data-news-sport"]==="basketball").handlers.click();
  assert.equal(feature.getSport(),"basketball");

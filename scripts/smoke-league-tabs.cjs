@@ -5,7 +5,6 @@ for(const value of ["fan-league-tabs","fan-pane-scores","fan-pane-chat","fan-pan
  assert.ok(h.includes('id="'+value+'"'),"Missing tab mount "+value);
 assert.match(js,/actual\?\.id===item\.id/,"chat must belong to selected football league");
 assert.match(js,/relocate\("league-content",".sec-scoreboard-chat"/,"chat leaves long scoreboard view");
-assert.match(js,/trimClub\(\)/,"club standings collapse long tables");
-assert.match(js,/trimFootball\(\)/,"football leaderboard collapses to five rows");
+assert.doesNotMatch(js,/trimClub\(\)|trimFootball\(\)/,"all players visible by default");
 assert.match(js,/queueMicrotask/,"refresh relocation coalesces without polling");
 console.log("League tabs regression passed: isolated panels, guarded chat, compact scoreboards and retained management.");

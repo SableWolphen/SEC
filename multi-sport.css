@@ -596,3 +596,13 @@ body{overflow-x:clip}
  #league-view .fan-league-summary{padding:10px}
  #league-view .fan-league-home-actions>.fan-small{min-height:40px}
 }
+
+/* Source-linked matchup context, compact in pick buttons and featured matchup. */
+.team-pick-context{display:flex;align-items:center;flex-wrap:wrap;gap:4px;font-size:10px;line-height:1.3;margin-top:3px;font-weight:800;color:#bce2c9}
+.team-pick-context i{font-style:normal;color:#739189}
+.team-pick-context span{white-space:nowrap}
+.pick-context-rank{color:#d7fa65}
+.team-choice.selected .pick-context-rank,.spotlight-team.chosen .pick-context-rank{color:#b5dd42}
+.spotlight-team .team-copy{display:flex;flex-direction:column;align-items:flex-start;min-width:0;text-align:left}
+.sec-news-no-breaking{border:1px solid #4d6872;background:#19313b;color:#d8e9ef;border-radius:12px;padding:12px 14px;font-size:12px;line-height:1.5;margin:0 0 13px}
+@media(max-width:400px){.team-pick-context{font-size:9px}.team-choice .team-copy{min-width:0}}
