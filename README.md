@@ -36,7 +36,7 @@ Every selected SEC league now includes an unobtrusive **⚡ Power Rankings** car
 
 ### Each league chooses its own sports — change per league
 
-The **League** page now lists each league independently. Owners can create a **Football-only**, **Basketball-only**, **Baseball-only**, any **two-sport**, or **three-sport** league. Players can join and belong to multiple leagues with different configurations using their one existing account.
+The **League** page now lists each league independently. The old, account-wide single/all-sports switch has been removed from the app: a league's sports belong to that league. Owners can create a **Football-only**, **Basketball-only**, **Baseball-only**, any **two-sport**, or **three-sport** league. Players can join and belong to multiple leagues with different configurations using their one existing account.
 
 Use the League selector to pick which league to manage. For a one-sport league, its original picks, standings and chat stay in place; the owner can select **⚙️ Add sports to this league**, choose additional sports, and safely upgrade the league. For a multi-sport league, the owner can open **⚙️ Change sports for this league** and choose any **1, 2 or 3**. An inactive sport is omitted from **that league's combined leaderboard only**: it retains all underlying picks, games, members, and historical scores, and can be re-enabled later. This choice does not change any other league or set an account-wide default. Only the owner can change league sports; other members can use **Join newly added sports** to opt into newly enabled competitions. Their existing picks are not erased.
 
