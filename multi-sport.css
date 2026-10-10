@@ -483,6 +483,8 @@ body{overflow-x:clip}
 .fan-league-home{padding:17px 19px;margin-bottom:9px}
 .fan-league-home-head{display:flex;gap:12px;align-items:center;justify-content:space-between}
 .fan-league-home-head>div{min-width:0;flex:1}
+.fan-league-home-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;align-items:center}
+.fan-league-home-actions>.fan-small{min-height:43px;white-space:nowrap}
 .fan-league-home-head h2{font-size:20px;margin:5px 0 4px;letter-spacing:-.55px}
 .fan-league-home-head p{font-size:12px;line-height:1.45;max-width:550px;margin:0;color:#abc1c1}
 .fan-league-home-head>.fan-small{flex:none;min-height:43px;white-space:nowrap}
@@ -518,7 +520,8 @@ body{overflow-x:clip}
  .fan-league-home,.fan-club-focus{padding:13px;margin:9px 0}
  .fan-league-home-head{flex-wrap:wrap;gap:8px}
  .fan-league-home-head h2{font-size:18px}
- .fan-league-home-head>.fan-small{width:100%}
+ .fan-league-home-actions{width:100%;justify-content:stretch}
+ .fan-league-home-actions>.fan-small{flex:1 1 120px}
  .fan-club-focus .fan-club-title{align-items:start}
  .fan-club-focus .fan-secondary-action{min-height:40px}
  .fan-club-focus .fan-sport-links .fan-small{flex:1 1 130px}
