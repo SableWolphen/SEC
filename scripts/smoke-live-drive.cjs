@@ -8,7 +8,7 @@ const g={away:"TAMU",home:"MIZ",livePossessionCode:"MIZ",liveDown:1,liveDistance
  liveFieldPercent:35,liveDriveSummary:"4 plays, 28 yards",liveLastPlay:"Pass completed",
  liveSituationUpdatedAt:new Date().toISOString()};
 const html=render(g,null,"live");
-assert.match(html,/Current drive/);
+assert.match(html,/Football field/);
 assert.match(html,/MIZ ball · 1st &amp; 10/);
 assert.match(html,/left:clamp\(10px,65%,calc\(100% - 10px\)\)/);
 assert.match(html,/🏈/);
