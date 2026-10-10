@@ -1186,3 +1186,22 @@ color:#ecf8ee;font-size:13px;font-weight:900;background:#1c353b}
 .sec-competition-fold button[data-competition]{margin:6px 12px 12px;min-height:36px}
 .sec-competition-preview button[data-competition]{margin:9px 0 3px}
 @media(max-width:340px){.sec-competition-transfer{grid-template-columns:1fr}}
+
+
+/* Genuinely live, compact league race (no stale full-height player list). */
+.sec-live-race-scores{display:flex;flex-wrap:wrap;gap:5px;margin:9px 0 6px}
+.sec-live-race-score{padding:5px 7px;border:1px solid #47675f;border-radius:7px;background:#102b35;
+ color:#d0e5de;font-size:10px;font-weight:650;font-variant-numeric:tabular-nums}
+.sec-live-race-score b{color:#ecffc8}
+.sec-day-rankings .sec-live-race-row{min-height:31px;padding:7px 9px;align-items:center}
+.sec-live-race-row.is-you{border-color:#aacb62;background:#22382e}
+.sec-live-race-name{min-width:0;overflow-wrap:anywhere;display:block;line-height:1.3;font-weight:650}
+.sec-live-race-name b{color:#d5ff65}
+.sec-live-race-name small{margin-left:5px;white-space:nowrap}
+.sec-live-race-more{margin:7px 0 0;border-top:1px solid #44635e}
+.sec-live-race-more summary{padding:8px 4px;font-size:11px;color:#d5ff65;cursor:pointer}
+.sec-live-race-more .sec-day-rankings{margin:2px 0 0}
+.sec-live-race-note{font-size:10px;line-height:1.5;color:#a5c5bd}
+@media(max-width:430px){.sec-live-race-score{font-size:9px}
+ .sec-day-rankings .sec-live-race-row{gap:6px}
+ .sec-day-rankings strong{font-size:12px}}
