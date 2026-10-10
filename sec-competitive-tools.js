@@ -207,72 +207,143 @@ function scenario(standings,games,picks,uid){
  }
  return {best,winning,ties,total:2**relevant.length};
 }
+// A live scenario is a snapshot of confirmed games and revealed picks.
+// Upcoming games NEVER block it; they stay excluded to preserve pick privacy.
+// Official league rankings may apply tiebreakers absent from the simulation.
+function rankStatus(rows,who){
+ if(!rows.length)return {rank:null,count:0,gap:null,points:null};
+ const points=p=>number(p.season_points);
+ const mine=rows.find(p=>p.user_id===who),valid=rows.map(points).filter(x=>x!==null);
+ if(!mine||!valid.length||points(mine)===null)return {rank:null,count:rows.length,gap:null,points:null};
+ const minePoints=points(mine),top=Math.max(...valid);
+ return {rank:1+rows.filter(p=>points(p)!==null&&points(p)>minePoints).length,
+  count:rows.length,gap:Math.max(0,top-minePoints),points:minePoints};
+}
+function followingWeek(){
+ const weeks=app()?.weeks||[],now=day();
+ return weeks.flatMap(w=>w.games?.map(g=>({week:w.num,kickoff:Date.parse(g.kickoff||g.date+"T23:59:00Z")}))||[])
+  .filter(x=>Number.isFinite(x.kickoff)&&x.kickoff>now)
+  .sort((a,b)=>a.kickoff-b.kickoff)[0]||null;
+}
 async function loadPath(item){
  if(!footballLeague(item)||!me()||!client())return;
  const k=key(item),league=footballLeague(item),who=me().id;
- if(pathPending===k||pathCache?.key===k&&Date.now()-pathCache.at<45000)return;
+ if(pathPending===k||pathCache?.key===k&&day()-pathCache.at<45000)return;
  pathPending=k;
  try{
-  const info=await client().from("sec_leagues").select("id,mode").eq("id",league).single();
+  const db=client();
+  const info=await db.from("sec_leagues").select("id,mode").eq("id",league).single();
   if(info.error)throw info.error;
-  if(!["straight","h2h"].includes(info.data?.mode)){
-   pathCache={key:k,at:day(),message:"Available for Straight Picks and Head-to-Head football leagues.",details:[]};
+  const mode=info.data?.mode;
+  if(!["straight","h2h"].includes(mode)){
+   pathCache={key:k,at:day(),message:"This league uses "+String(mode||"custom")+
+    " scoring. An exact Path to 1st isn't supported for those scoring rules yet.",details:[]};
    renderPath();return;
   }
-  const gs=open().map(g=>{const row=gameRow(g);return {id:g.id,
-   away_code:g.away,home_code:g.home,kickoff_at:row.kickoff||g.kickoff,
-   game_status:row.liveStatus||row.game_status||"scheduled",
-   away_score:row.awayScore??row.away_score,home_score:row.homeScore??row.home_score,
-   winner:row.winner};});
-  const unsettled=gs.filter(g=>g.game_status!=="final");
-  if(unsettled.some(g=>!["live","final"].includes(g.game_status))){
-   pathCache={key:k,at:day(),message:"Waiting for confirmed live game status before calculating possible standings.",details:[]};
-   renderPath();return;
-  }
-  if(unsettled.some(g=>Date.parse(g.kickoff_at)>Date.now())){
-   pathCache={key:k,at:day(),message:"Opponent picks stay hidden until kickoff. Check back after the remaining games start.",details:[]};
-   renderPath();return;
-  }
-  if(unsettled.length===0){pathCache={key:k,at:day(),message:"All games are final. See official league standings.",details:[]};renderPath();return;}
-  if(unsettled.length>11){pathCache={key:k,at:day(),message:"Too many open outcomes to calculate a reliable path yet.",details:[]};renderPath();return;}
+  const gs=open().map(g=>{
+   const row=gameRow(g);
+   return {id:g.id,away_code:g.away,home_code:g.home,
+    kickoff_at:row.kickoff||g.kickoff,
+    game_status:row.liveStatus||row.game_status||"scheduled",
+    away_score:row.awayScore??row.away_score??null,
+    home_score:row.homeScore??row.home_score??null,
+    winner:row.winner||null};
+  });
+  const live=gs.filter(g=>g.game_status==="live"&&!g.winner&&
+   Number.isFinite(Date.parse(g.kickoff_at))&&Date.parse(g.kickoff_at)<=day());
+  const remaining=gs.filter(g=>g.game_status!=="final"&&
+    !live.includes(g));
+  const standingsRequest=item.kind==="club"?
+   db.rpc("sec_club_standings",{p_club:item.id}):
+   db.rpc("sec_league_standings_v3",{p_league:league,p_week:app().week().num});
+  // Never request another member's picks until the kickoff-gated RPC permits
+  // it. The server filters non-kicked-off picks even within the same week.
   const [s,r]=await Promise.all([
-   item.kind==="club"?client().rpc("sec_club_standings",{p_club:item.id}):
-    client().rpc("sec_league_standings_v3",{p_league:league,p_week:app().week().num}),
-   client().rpc("sec_revealed_league_picks",{p_league:league,p_week:app().week().num})
+   standingsRequest,
+   live.length&&live.length<=11?
+    db.rpc("sec_revealed_league_picks",{p_league:league,p_week:app().week().num}):
+    Promise.resolve({data:[],error:null})
   ]);
   if(s.error||r.error)throw s.error||r.error;
   if(key(selected())!==k||me()?.id!==who)return;
   const rows=(s.data||[]).map(p=>item.kind==="club"?{...p,season_points:p.total}:p);
-  const outcomes=scenario(rows,gs,r.data||[],who);
+  const rank=rankStatus(rows,who);
+  const headline=rank.rank===null?"League standings are not available yet.":
+   "Currently #"+rank.rank+" of "+rank.count+" · "+
+   (rank.gap===0?"tied for the lead or leading":
+    rank.gap+" point"+(rank.gap===1?"":"s")+" behind the leader");
   let message="",details=[];
-  if(!outcomes)message="Waiting for an active game and verified league standings.";
-  else if(!outcomes.best)message=outcomes.ties?
-   "An outright first-place finish isn't possible on the remaining games; a tie still is.":
-   "The remaining games can't change your position into first place.";
-  else{
-   message=outcomes.winning+" of "+outcomes.total+" remaining outcome combinations could put you in outright first.";
-   details=outcomes.best.games.map((g,i)=>({id:g.id,code:outcomes.best.outcome[i]}));
+  if(!live.length){
+   const next=followingWeek();
+   if(remaining.length){
+    message=headline+". No confirmed live games right now. "+
+     remaining.length+" matchup"+(remaining.length===1?" hasn't":"s haven't")+
+     " started or been confirmed live yet. Opponents' picks stay hidden until kickoff.";
+   }else{
+    message=headline+". Week "+app().week().num+
+     " has finished. "+(next?"Next games are in Week "+next.week+".":"No upcoming football games are scheduled.");
+   }
+  }else if(live.length>11){
+   message=headline+". "+live.length+" games are live; too many combinations to show an exact scenario.";
+  }else{
+   const outcome=scenario(rows,live,r.data||[],who);
+   if(!outcome){
+    message=headline+". Waiting for confirmed live picks and standings.";
+   }else{
+    const qualify=outcome.winning+" of "+outcome.total;
+    if(outcome.best){
+     message=qualify+" live-game outcomes put you in outright first "+
+      (remaining.length?"temporarily":"for the current slate")+".";
+     details=outcome.best.games.map((g,i)=>({id:g.id,code:outcome.best.outcome[i]}));
+    }else if(outcome.ties){
+     message="No outright-first live outcome right now, but "+outcome.ties+
+      " of "+outcome.total+" scenarios can tie for the lead.";
+    }else{
+     message="No combination of the currently live games moves you to outright first.";
+    }
+    if(remaining.length)message+=" "+remaining.length+
+     " game"+(remaining.length===1?" has":"s have")+" not started or reached confirmed live status;"+
+     " these future results are not included.";
+    message=headline+". "+message;
+   }
   }
-  if(item.kind==="club")message="Football-only path, assuming other sports' points stay unchanged. "+message;
-  pathCache={key:k,at:day(),message,details};
+  if(item.kind==="club")
+   message="Football-only scenarios; other sports' points held constant. "+message;
+  pathCache={key:k,at:day(),message,details,liveCount:live.length,
+   pendingCount:remaining.length,week:app().week().num};
   renderPath();
- }catch(e){if(key(selected())===k){pathCache={key:k,at:day(),message:"Couldn't calculate this week's path. Retry shortly.",details:[]};renderPath();}}
- finally{if(pathPending===k)pathPending=null;}
+ }catch(e){
+  if(key(selected())===k){
+   console.info("Path to 1st:",e?.message||"Unable to load");
+   pathCache={key:k,at:day(),message:"Unable to load verified league standings. "+
+    "Use Recheck to retry; your existing picks were not changed.",details:[]};
+   renderPath();
+  }
+ }finally{if(pathPending===k)pathPending=null;}
 }
 function renderPath(){
  const host=document.getElementById("sec-path-first"),item=selected();
  if(!host)return;
  if(!footballLeague(item)||!me()){host.innerHTML="";host.hidden=true;return;}
+ const expanded=host.querySelector?.("#sec-path-fold")?.open||false;
  host.hidden=false;
  const valid=pathCache?.key===key(item);
- host.innerHTML='<details class="sec-competition-fold" id="sec-path-fold"><summary>🏆 Path to 1st <span>What needs to happen?</span></summary>'+
-  '<div class="sec-competition-preview"><p>'+esc(valid?pathCache.message:"Checking league outcomes…")+'</p>'+
-  (valid&&pathCache.details.length?'<strong>One possible route:</strong>'+
-   '<div class="sec-competition-rows">'+pathCache.details.map(x=>
-    '<div class="sec-competition-row">'+esc(codeToName(x.code))+' needs to win</div>').join("")+'</div>'+
-   '<small class="sec-competition-muted">A conditional scenario, not a forecast. Other outcomes may also work.</small>':"")+
-  '<button type="button" class="fan-small" data-competition="path">↻ Recheck</button></div></details>';
+ const data=valid?pathCache:null;
+ host.innerHTML='<details class="sec-competition-fold" id="sec-path-fold"'+
+  (expanded?' open':'')+'><summary>🏆 Path to 1st <span>'+
+  (data?.liveCount?data.liveCount+" live game"+(data.liveCount===1?"":"s"):"Your league outlook")+
+  '</span></summary>'+
+  '<div class="sec-competition-preview" role="status" aria-live="polite"><p>'+
+  esc(data?.message||"Checking league standings and game status…")+'</p>'+
+  (data?.details?.length?'<strong>One possible live-game route:</strong>'+
+   '<div class="sec-competition-rows">'+data.details.map(x=>
+    '<div class="sec-competition-row">'+esc(codeToName(x.code))+
+    ' needs to win</div>').join("")+'</div>'+
+   '<small class="sec-competition-muted">Provisional scenario, not a forecast or an official tiebreaker. Opponents’ unstarted picks stay private.</small>':"")+
+  '<button type="button" class="fan-small" data-competition="path">↻ Recheck</button>'+
+  '</div></details>';
 }
+
 document.addEventListener("change",e=>{
  if(!e.target.matches?.("[data-copy-source],[data-copy-target]"))return;
  const host=document.getElementById("sec-competition-league"),from=host?.querySelector("[data-copy-source]")?.value,to=host?.querySelector("[data-copy-target]")?.value;
@@ -287,7 +358,8 @@ document.addEventListener("click",e=>{
  if(button.dataset.competition==="apply")void applyCopy();
  if(button.dataset.competition==="path"){pathCache=null;void loadPath(selected());}
 },true);
-W.SEC_COMPETITIVE=Object.freeze({onPicks,onLeague,renderUpsets,scenario,choices});
+W.SEC_COMPETITIVE=Object.freeze({onPicks,onLeague,renderUpsets,scenario,rankStatus,choices,
+ refreshPath:()=>{const item=selected();if(footballLeague(item)&&app()?.view?.()==="league")void loadPath(item);}});
 if(app()?.view?.()==="league")onLeague();
 else if(app()?.view?.()==="picks")onPicks();
 })();
