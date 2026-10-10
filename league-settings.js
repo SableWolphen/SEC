@@ -93,6 +93,8 @@ function render(){
  for(const id of ["fan-brackets","fan-series"]){const el=byId(id);if(el)el.hidden=!current||!validSports(current).some(s=>s!=="football");}
  // Guests always retain the shared login and password recovery.
  if(football)football.hidden=logged&&(!item||item.kind!=="football");
+ // Power rankings are specific to the selected league, never a player-wide score.
+ win.SEC_POWER?.show?.(item);
 }
 function renderClub(c,host){
  const sports=validSports(c),owner=c.owner_id===me()?.id,info=leaderboard.find(x=>x.user_id===me()?.id);
