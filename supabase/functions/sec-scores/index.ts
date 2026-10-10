@@ -63,6 +63,64 @@ async function espn(date:string):Promise<any[]>{
  if(!res.ok)throw Error("ESPN returned "+res.status+" for "+date);
  const data=await res.json();return data.events||[];
 }
+
+const ESPN_SUMMARY="https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=";
+const SITUATION_KEYS=["live_possession_code","live_down","live_distance","live_position_text",
+ "live_field_percent","live_drive_summary","live_last_play"];
+function liveSituation(summary:any,away:any,home:any):Record<string,unknown>{
+ const info=summary?.situation||summary?.header?.competitions?.[0]?.situation||{};
+ const current=summary?.drives?.current||null;
+ const plays=Array.isArray(current?.plays)?current.plays:[];
+ const latest=info?.lastPlay||plays[plays.length-1]||null;
+ const ids=[away?.team?.id,home?.team?.id].map(x=>String(x||""));
+ let possession=info?.possession??current?.team?.id??null;
+ if(possession&&typeof possession==="object"){
+  possession=possession.id||possession.team?.id||String(possession.$ref||"").split("/").pop();
+ }
+ const raw=String(possession??"").trim();
+ let code=raw&&raw===ids[0]?away.team.abbreviation:raw&&raw===ids[1]?home.team.abbreviation:null;
+ // Drive team is reliable only if it matches one of the verified participants.
+ if(!code&&current?.team){
+  if(String(current.team.id)===ids[0])code=away.team.abbreviation;
+  else if(String(current.team.id)===ids[1])code=home.team.abbreviation;
+ }
+ const idToCode=new Map([[ids[0],away?.team?.abbreviation],[ids[1],home?.team?.abbreviation]]);
+ // Normalize ESPN's external abbreviations to our own matching code at caller.
+ const validDown=(x:unknown)=>Number.isInteger(Number(x))&&Number(x)>=1&&Number(x)<=4?Number(x):null;
+ const validDistance=(x:unknown)=>x!==null&&x!==undefined&&x!==""&&
+  Number.isInteger(Number(x))&&Number(x)>=0&&Number(x)<=99?Number(x):null;
+ const down=validDown(info.down??latest?.end?.down);
+ const distance=validDistance(info.distance??latest?.end?.distance);
+ const posStrings=[info.possessionText,info.downDistanceText,latest?.end?.text]
+  .filter(x=>typeof x==="string"&&x.length<140);
+ let positionText:string|null=null;
+ for(const str of posStrings){
+  const m=String(str).match(/(?:^|\bat\s+)([A-Z][A-Za-z0-9&.' -]{0,16})\s+(\d{1,2})(?:\b|$)/);
+  if(m&&Number(m[2])<=50){positionText=(m[1].trim()+" "+m[2]).slice(0,34);break;}
+ }
+ const endzone=latest?.end?.yardsToEndzone??info.yardsToEndzone;
+ const yards=endzone!==null&&endzone!==undefined&&endzone!==""?Number(endzone):NaN;
+ // The marker moves only when ESPN explicitly reports yards remaining to goal
+ // AND which verified team has possession. No guess from an ambiguous yardLine.
+ const pct=code&&down!==null&&Number.isInteger(yards)&&yards>=0&&yards<=100?100-yards:null;
+ const summaryText=typeof current?.description==="string"?current.description.slice(0,90):null;
+ const playText=typeof latest?.text==="string"?latest.text.slice(0,180):null;
+ return {live_possession_code:code||null,live_down:down,live_distance:distance,
+  live_position_text:positionText,live_field_percent:pct,
+  live_drive_summary:summaryText,live_last_play:playText};
+}
+async function liveSummary(id:string):Promise<any|null>{
+ if(!/^\d{6,14}$/.test(id))return null;
+ try{
+  const res=await fetch(ESPN_SUMMARY+id,{
+   headers:{"Accept":"application/json","User-Agent":"SaturdaysDownSouth-SEC-Pickem/1.0"},
+   signal:AbortSignal.timeout(3000)
+  });
+  if(!res.ok)return null;
+  return await res.json();
+ }catch{return null;}
+}
+
 Deno.serve(async req=>{
  if(req.method!=="POST")return jsonify({error:"POST only"},405);
  if(!PROJECT||!SERVICE)return jsonify({error:"Server not configured"},503);
@@ -75,7 +133,7 @@ Deno.serve(async req=>{
   if(valid!==true)return jsonify({error:"Forbidden"},403);
  }catch(e){console.error("SEC job authorization failed",e);return jsonify({error:"Authorization unavailable"},503);}
  try{
-  const games:any[]=await api("sec_games?select=id,game_date,kickoff_at,away_code,home_code,game_status,status_detail,away_score,home_score,espn_event_id,spread_home,score_updated_at&order=game_date.asc");
+  const games:any[]=await api("sec_games?select=id,game_date,kickoff_at,away_code,home_code,game_status,status_detail,away_score,home_score,espn_event_id,spread_home,score_updated_at,live_possession_code,live_down,live_distance,live_position_text,live_field_percent,live_drive_summary,live_last_play,live_situation_updated_at&order=game_date.asc");
   const today=new Date().toISOString().slice(0,10);
   const min=new Date(Date.now()-65*86400000).toISOString().slice(0,10);
   const max=new Date(Date.now()+3*86400000).toISOString().slice(0,10);
@@ -101,6 +159,34 @@ Deno.serve(async req=>{
     catch(e){failures++;console.warn("ESPN fetch",day,String(e));}
    }));
   }
+
+  // Enrich only matched live SEC games, in bounded concurrent batches.
+  // One bad ESPN summary must never interfere with official score grading.
+  const liveEvents=new Set<string>();
+  const currentTime=Date.now();
+  for(const g of eligible){
+   const kick=Date.parse(g.kickoff_at||"");
+   if(!Number.isFinite(kick)||kick<currentTime-9*3600000||kick>currentTime+2*3600000)continue;
+   for(const entries of Object.values(matches)){
+    for(const ev of entries){
+     const c=ev.competitions?.[0];
+     if(!c||stateFrom(ev,c)!=="live")continue;
+     const a=(c.competitors||[]).find((x:any)=>x.homeAway==="away");
+     const h=(c.competitors||[]).find((x:any)=>x.homeAway==="home");
+     if(a&&h&&recognize(g.away_code,a)&&recognize(g.home_code,h)&&/^\d{6,14}$/.test(String(ev.id)))
+      liveEvents.add(String(ev.id));
+    }
+   }
+  }
+  const detailed=new Map<string,any>();
+  const ids=[...liveEvents].slice(0,24);
+  for(let i=0;i<ids.length;i+=6){
+   await Promise.all(ids.slice(i,i+6).map(async id=>{
+    const data=await liveSummary(id);
+    if(data)detailed.set(id,data);
+   }));
+  }
+
   let updated=0, skipped=0,finals=0,lines=0;
   for(const g of eligible){
    const all=[...(matches[g.game_date]||[])];
@@ -154,6 +240,24 @@ Deno.serve(async req=>{
      home_score:homeScore,
      espn_event_id:String(ev.id)
    };
+
+   const summary=status==="live"?detailed.get(String(ev.id)):null;
+   const situation=summary?liveSituation(summary,away,home):null;
+   if(status!=="live"){
+    for(const field of SITUATION_KEYS)patch[field]=null;
+    patch.live_situation_updated_at=null;
+   }else if(situation){
+    const possession=String(situation.live_possession_code||"");
+    const verifiedCode=possession&&recognize(g.away_code,away)&&
+      norm(possession)===norm(away.team.abbreviation)?g.away_code:
+      possession&&norm(possession)===norm(home.team.abbreviation)?g.home_code:null;
+    situation.live_possession_code=verifiedCode;
+    if(!verifiedCode)situation.live_field_percent=null;
+    Object.assign(patch,situation);
+    const detailChanged=SITUATION_KEYS.some(k=>(situation[k]??null)!==(g[k]??null));
+    if(detailChanged)patch.live_situation_updated_at=stamp();
+   }
+
    if(safeReschedule && officialKickoff!==originalKickoff){
       patch.kickoff_at=new Date(officialKickoff).toISOString();
       patch.game_date=new Date(officialKickoff).toISOString().slice(0,10);
@@ -180,7 +284,9 @@ Deno.serve(async req=>{
      awayScore!==g.away_score || homeScore!==g.home_score ||
      patch.kickoff_at!==undefined ||
      (patch.spread_home!==undefined&&patch.spread_home!==g.spread_home) ||
-     (g.espn_event_id||null)!==String(ev.id);
+     (g.espn_event_id||null)!==String(ev.id) ||
+     SITUATION_KEYS.some(k=>Object.hasOwn(patch,k) && (patch[k]??null)!==(g[k]??null)) ||
+     (Object.hasOwn(patch,"live_situation_updated_at")&&patch.live_situation_updated_at===null&&g.live_situation_updated_at!==null);
    if(!changed){skipped++;continue;}
    patch.score_updated_at=stamp();
    try{
