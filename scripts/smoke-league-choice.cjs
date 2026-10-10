@@ -101,6 +101,9 @@ const run=async()=>{
  assert.equal(list.length,4,"2 clubs plus 2 unrelated standalone leagues");
 
  assert.match(nodes["fan-league-choice"].innerHTML,/Each league chooses its own sports/);
+ assert.match(nodes["fan-league-choice"].innerHTML,/data-league-action="manage"/,"single Manage shortcut exists");
+ assert.match(fs.readFileSync("index.html","utf8"),/id="fan-league-tools"/,"league tools remain accessible");
+ assert.match(nodes["fan-club-hub"].innerHTML||" "+fs.readFileSync("league-settings.js","utf8"),/fan-club-settings/,"club settings are collapsed");
  assert.match(nodes["fan-league-choice"].innerHTML,/SEC Crew/);
  assert.match(nodes["fan-league-choice"].innerHTML,/Diamond Fans/);
  assert.match(nodes["fan-league-choice"].innerHTML,/Original Football/);
