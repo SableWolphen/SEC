@@ -65,7 +65,12 @@ function render(){
  '<input class="field" id="fan-new-name" maxlength="50" placeholder="SEC Legends">'+
  '<p class="fan-subtle">Pick one sport or any combination. You can adjust this league later.</p>'+
  '<div id="fan-create-sport-options">'+checkboxes(["football"],"create")+'</div>'+
- '<button class="fan-small fan-primary" type="button" data-league-action="create">Create league →</button></details>':"";
+ '<button class="fan-small fan-primary" type="button" data-league-action="create">Create league →</button></details>'+
+ '<details class="fan-fold fan-join-league"><summary>✉ Join with an invite code</summary>'+
+ '<p class="fan-subtle">One code works for a single-sport league or a combination of sports. No second account needed.</p>'+
+ '<label class="fan-league-select-label" for="fan-join-code">10-character league code</label>'+
+ '<input class="field" id="fan-join-code" autocomplete="off" maxlength="10" placeholder="Paste your invite code" autocapitalize="characters">'+
+ '<button class="fan-small fan-primary" type="button" data-league-action="join">Join this league →</button></details>':"";
  if(single){
   single.hidden=!logged||!item||item.kind==="club";
   if(!single.hidden){
@@ -222,6 +227,29 @@ async function action(name,button){
     selection=sport+":"+id;
    }
    app()?.toast?.("New league created with "+sports.length+" sport"+(sports.length===1?"":"s")+"!");
+  }else if(name==="join"){
+   const invite=(byId("fan-join-code")?.value||"").trim().toUpperCase();
+   if(!/^[A-Z0-9]{10}$/.test(invite))throw Error("Enter a valid 10-character league code.");
+   // Try the club's code first. Single-sport invites use the existing secure RPCs.
+   // Only genuine "not found" responses fall through; permission errors are surfaced.
+   const methods=["sec_club_join","sec_join_league","sec_sport_join_league"];
+   let joined=null;
+   for(const method of methods){
+    try{
+     joined=unwrap(await db().rpc(method,{p_code:invite}));
+     if(joined)break;
+    }catch(e){
+     if(!/not found|check the invite code/i.test(e.message||""))throw e;
+    }
+   }
+   if(!joined)throw Error("No league matches that code. Check the invitation and try again.");
+   lastLoad=0;
+   await load(true);
+   const match=items().find(x=>x.id===joined&&
+     (x.kind==="club"||x.kind==="football"||x.kind==="basketball"||x.kind==="baseball"));
+   if(match){await choose(ident(match));saveCache(ident(match));}
+   app()?.toast?.("Joined the league with your existing account!");
+   return;
   }else if(name==="save-sports"){
    if(!c||c.owner_id!==me().id)throw Error("Only the league owner can edit these sports.");
    const picked=checked("edit");
