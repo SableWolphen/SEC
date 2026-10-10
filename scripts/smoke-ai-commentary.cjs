@@ -74,7 +74,7 @@ const football={id:"g-1",away:"ALA",home:"UGA",game_status:"scheduled",kickoff:"
  assert.match(baseball.text,/4/);
  const spread=c.narrative({...football,spread_home:-3.5,spread_source:"verified"},"football");
  assert.match(spread.text,/favors Georgia by 3.5/);
- assert.doesNotMatch(spread.text,/guaranteed outcome\./);
+ assert.match(spread.text,/isn't a guaranteed outcome/);
  const unverified=c.narrative({...football,spread_home:-3.5,spread_source:null},"football");
  assert.doesNotMatch(unverified.text,/listed point spread/);
  c.panel(live,"football");
