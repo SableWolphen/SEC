@@ -37,9 +37,11 @@ function stateFrom(event:any,comp:any):string{
  const typ=event?.status?.type || comp?.status?.type || {};
  const state=String(typ.state||"").toLowerCase();
  const name=String(typ.name||"").toLowerCase();
- if(typ.completed===true && (name.includes("final")||state==="post"))return "final";
+ // ESPN can mark a canceled game 'completed'. Cancellation and postponement
+ // must take precedence, so a non-game cannot be scored as a final.
  if(name.includes("postpon"))return "postponed";
  if(name.includes("cancel"))return "canceled";
+ if(typ.completed===true && (name.includes("final")||state==="post"))return "final";
  if(state==="in")return "live";
  return "scheduled";
 }
@@ -73,14 +75,24 @@ Deno.serve(async req=>{
   if(valid!==true)return jsonify({error:"Forbidden"},403);
  }catch(e){console.error("SEC job authorization failed",e);return jsonify({error:"Authorization unavailable"},503);}
  try{
-  const games:any[]=await api("sec_games?select=id,game_date,kickoff_at,away_code,home_code,game_status,espn_event_id,spread_home&order=game_date.asc");
+  const games:any[]=await api("sec_games?select=id,game_date,kickoff_at,away_code,home_code,game_status,status_detail,away_score,home_score,espn_event_id,spread_home,score_updated_at&order=game_date.asc");
   const today=new Date().toISOString().slice(0,10);
   const min=new Date(Date.now()-65*86400000).toISOString().slice(0,10);
   const max=new Date(Date.now()+3*86400000).toISOString().slice(0,10);
   // No fake ESPN predictions: only reported competitions with both teams matched.
   const eligible=games.filter(g=>g.game_date>=min&&g.game_date<=max&&
     (g.game_status!=="final" || g.game_date>=new Date(Date.now()-3*86400000).toISOString().slice(0,10)));
-  const dates=[...new Set(eligible.map(g=>g.game_date))];
+  const datesSet=new Set<string>(eligible.map(g=>g.game_date));
+  // Search adjacent published scoreboard days only for near-term games. This
+  // safely picks up ESPN changes from Saturday to Friday/Sunday without
+  // making broad historical or next-season requests every minute.
+  for(const g of eligible){
+   const at=Date.parse(g.kickoff_at);
+   if(g.game_status==="final" || !Number.isFinite(at) ||
+      at<Date.now()-36*3600000 || at>Date.now()+72*3600000)continue;
+   for(const d of [-1,1])datesSet.add(new Date(Date.parse(g.game_date+"T12:00:00Z")+d*86400000).toISOString().slice(0,10));
+  }
+  const dates=[...datesSet].sort();
   const matches:Record<string,any[]>={};
   let failures=0;
   for(let i=0;i<dates.length;i+=5){
@@ -91,15 +103,28 @@ Deno.serve(async req=>{
   }
   let updated=0, skipped=0,finals=0,lines=0;
   for(const g of eligible){
-   const events=matches[g.game_date]||[];
-   const valid=events.map(ev=>{
+   const all=[...(matches[g.game_date]||[])];
+   // Adjacent-day candidates must match the exact event ID when known, or
+   // uniquely match both competitors; never trust only one school/name.
+   const at=Date.parse(g.kickoff_at);
+   if(g.game_status!=="final" && Number.isFinite(at) &&
+      at>=Date.now()-36*3600000 && at<=Date.now()+72*3600000){
+     for(const d of [-1,1]){
+       const day=new Date(Date.parse(g.game_date+"T12:00:00Z")+d*86400000).toISOString().slice(0,10);
+       all.push(...(matches[day]||[]));
+     }
+   }
+   const unique=[...new Map(all.map(ev=>[String(ev.id),ev])).values()];
+   const valid=unique.map(ev=>{
      const comp=(ev.competitions||[])[0];
      const away=(comp?.competitors||[]).find((c:any)=>c.homeAway==="away");
      const home=(comp?.competitors||[]).find((c:any)=>c.homeAway==="home");
      return away&&home&&recognize(g.away_code,away)&&recognize(g.home_code,home)?{ev,comp,away,home}:null;
    }).filter(Boolean);
-   if(valid.length!==1){skipped++;continue;}
-   const {ev,comp,away,home}=valid[0];
+   const byId=g.espn_event_id?valid.filter(v=>String(v.ev.id)===String(g.espn_event_id)):[];
+   const candidates=byId.length?byId:valid;
+   if(candidates.length!==1){skipped++;continue;}
+   const {ev,comp,away,home}=candidates[0];
    const rawStatus=stateFrom(ev,comp);
    const awayScore=parseNum(away.score),homeScore=parseNum(home.score);
    // Only declare winners from an official completed event with two distinct scores.
@@ -115,14 +140,26 @@ Deno.serve(async req=>{
    const periodName=period>=1&&period<=4?"Q"+period:period>=5&&period<=8?"OT"+(period-4):null;
    const stage=status==="live"&&clock&&periodName?periodName+" · "+clock:null;
    const detail=stage||String(ev.status?.type?.shortDetail||comp.status?.type?.shortDetail||"");
+   const officialKickoff=Date.parse(ev.date||comp.date||"");
+   const originalKickoff=Date.parse(g.kickoff_at);
+   // Never silently reopen a kicked-off or completed game. A source-verified
+   // reschedule may change the deadline only while the old lock is still open.
+   const safeReschedule=g.game_status==="scheduled"&&status==="scheduled"&&
+      Number.isFinite(officialKickoff)&&Number.isFinite(originalKickoff)&&
+      Date.now()<originalKickoff&&Math.abs(officialKickoff-originalKickoff)<=72*3600000;
    const patch:any={
      game_status:status,
      status_detail:detail.slice(0,80),
      away_score:awayScore,
      home_score:homeScore,
-     score_updated_at:stamp(),
      espn_event_id:String(ev.id)
    };
+   if(safeReschedule && officialKickoff!==originalKickoff){
+      patch.kickoff_at=new Date(officialKickoff).toISOString();
+      patch.game_date=new Date(officialKickoff).toISOString().slice(0,10);
+      // Move only verified upcoming kickoffs. No guesses about TBD games.
+      patch.provisional=false;
+   }
    if(winner){patch.winner=winner;finals++;}
    // Capture sourced pregame spread as points added to HOME; never change after kickoff.
    const kickoff=Date.parse(g.kickoff_at);
@@ -137,6 +174,15 @@ Deno.serve(async req=>{
      lines++;
     }
    }
+   // Track when the *published* scoreboard changes, not merely when our job
+   // re-polls an unchanged response. This enables meaningful stale-feed alerts.
+   const changed=status!==g.game_status || patch.status_detail!==g.status_detail ||
+     awayScore!==g.away_score || homeScore!==g.home_score ||
+     patch.kickoff_at!==undefined ||
+     (patch.spread_home!==undefined&&patch.spread_home!==g.spread_home) ||
+     (g.espn_event_id||null)!==String(ev.id);
+   if(!changed){skipped++;continue;}
+   patch.score_updated_at=stamp();
    try{
      await api("sec_games?id=eq."+encodeURIComponent(g.id),{
       method:"PATCH",headers:{"Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify(patch)
