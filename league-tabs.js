@@ -40,13 +40,14 @@ function synchronize(){
  const key=member?item?item.kind+":"+item.id:"empty":"guest";
  if(selectedKey!==key){
   selectedKey=key;pane=member&&!item?"more":"scores";
-  if(member&&item){void window.SEC_PRIDE?.load?.(item.kind,item.id);void window.SEC_BRAGS?.load?.(item);}
+  if(member&&item){void window.SEC_PRIDE?.load?.(item.kind,item.id);void window.SEC_BRAGS?.load?.(item);
+   window.SEC_BRAG_ARENA?.render?.();}
   else window.SEC_BRAGS?.render?.();
   for(const id of ["fan-league-club-manager","fan-league-single-manager","fan-league-football-manager","fan-league-chat-content"])byId(id)?.replaceChildren();
  }
  switchPane(pane);
  if(!member)return;
- if(pane==="brags")window.SEC_BRAGS?.render?.();
+ if(pane==="brags"){window.SEC_BRAGS?.render?.();void window.SEC_BRAG_ARENA?.load?.(item);}
  if(item?.kind==="club"){
   relocate("fan-club-hub",".fan-club-settings","fan-league-club-manager");
 
@@ -77,6 +78,10 @@ document.addEventListener("click",e=>{
  if(tab){
   e.preventDefault();
   switchPane(tab.dataset.leaguePane);
+  if(tab.dataset.leaguePane==="brags"){
+   void window.SEC_BRAG_ARENA?.load?.(eligible().item);
+   void window.SEC_POWER?.show?.(eligible().item);
+  }
   if(["scores","brags"].includes(tab.dataset.leaguePane)){
    const item=eligible().item;
    if(item)void window.SEC_PRIDE?.load?.(item.kind,item.id,true);

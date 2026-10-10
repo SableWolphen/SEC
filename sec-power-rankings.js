@@ -116,5 +116,6 @@ document.addEventListener("click",event=>{
  event.preventDefault();
  void show(manager()?.getSelected?.(),true);
 });
-window.SEC_POWER=Object.freeze({show,render,movement,rankRow});
+window.SEC_POWER=Object.freeze({show,render,movement,rankRow,
+ getRows:item=>{const q=fromItem(item);return q?(cache.get(q.key)?.rows||[]).slice():[];}});
 })();

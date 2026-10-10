@@ -723,3 +723,63 @@ body{overflow-x:clip}
 .sec-weekly-award span{font-size:11px;color:#c9e4e2}
 @media(max-width:520px){.sec-weekly-awards{display:flex;overflow-x:auto;padding-bottom:5px;scroll-snap-type:x mandatory}
 .sec-weekly-award{flex:0 0 72%;scroll-snap-align:start}.sec-shockwave-head{flex-wrap:wrap}}
+
+/* Bragging Arena — dark, compact, scroll-safe competition hub. */
+.brag-arena{display:grid;gap:13px;max-width:100%;min-width:0;margin:14px 0 19px}
+.brag-arena-intro,.brag-block{background:linear-gradient(140deg,#172e36,#142632);border:1px solid #40645a;border-radius:16px;padding:17px;min-width:0}
+.brag-arena-intro{background:radial-gradient(circle at 100% 0%,#4371474a,transparent 55%),linear-gradient(140deg,#173a39,#152936);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brag-arena-intro h2{color:#f4ffef;font-size:clamp(19px,4vw,27px);margin:6px 0;letter-spacing:-.6px}
+.brag-arena-intro p{font-size:12px;color:#bad1cb;margin:0;line-height:1.5}
+.brag-block h3{color:#f5f9ee;font-size:19px;margin:6px 0 12px;letter-spacing:-.35px}
+.brag-block .fan-subtle{color:#aac2be;font-size:11px;line-height:1.55}
+.brag-block-head{display:flex;justify-content:space-between;align-items:start;gap:14px;flex-wrap:wrap}
+.brag-label{font-size:10px;font-weight:850;display:flex;flex-direction:column;gap:5px;color:#a9c8b8;min-width:155px;max-width:100%}
+.brag-label select{border:1px solid #6d9981;background:#102c30;color:#ecfbee;min-height:42px;border-radius:9px;padding:9px;max-width:100%;font-size:12px}
+.brag-versus{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:10px;background:#102b30;border:1px solid #3d6556;border-radius:13px;padding:13px;margin:10px 0}
+.brag-versus>div{display:flex;flex-direction:column;gap:5px;min-width:0}
+.brag-versus>div:last-child{text-align:right}
+.brag-versus>div>small{font-size:10px;color:#b5c8c5;font-weight:800}
+.brag-versus>div>strong{font-size:14px;color:#f1f8ef;overflow-wrap:anywhere}
+.brag-versus>span{font-size:14px;color:#d7fa65;font-weight:950}
+.brag-headline-score{display:flex;align-items:center;justify-content:center;gap:17px;padding:7px 0}
+.brag-headline-score strong{font-size:31px;color:#d7fa65;font-variant-numeric:tabular-nums}
+.brag-headline-score span{font-size:10px;text-align:center;font-weight:850;color:#c2d8d2}
+.brag-rounds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
+.brag-round{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid #3d615b;background:#20363b;padding:10px;border-radius:9px}
+.brag-round span,.brag-round small{font-size:10px;color:#accbc1}
+.brag-round strong{font-size:14px;color:#d5ff65}
+.brag-bulletin{border-left:3px solid #d7fa65;background:#233d39;border-radius:8px;padding:10px 12px;margin:8px 0;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brag-bulletin p{color:#e5f2e8;font-size:12px;line-height:1.5;margin:0;overflow-wrap:anywhere}
+.brag-bulletin .fan-small{flex-shrink:0}
+.brag-receipt-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.brag-receipt{background:#1c343d;border:1px solid #47685d;border-radius:11px;padding:12px;display:flex;flex-direction:column;gap:7px;min-width:0}
+.brag-receipt.is-loss{border-color:#705d57;background:#302d34}
+.brag-receipt-status{font-size:10px;color:#d7fa65;font-weight:850}
+.brag-receipt.is-loss .brag-receipt-status{color:#ffb59c}
+.brag-receipt strong{font-size:13px;color:#f7fbf3;overflow-wrap:anywhere}
+.brag-receipt small{color:#b5ccca;font-size:11px}
+.brag-receipt .fan-small{align-self:start;margin-top:auto}
+.brag-belt{display:flex;align-items:center;gap:14px;background:linear-gradient(115deg,#2f3f29,#1c3634);border:1px solid #9fa86f;border-radius:12px;padding:14px;margin:10px 0 21px}
+.brag-belt-icon{font-size:30px}
+.brag-belt>div{min-width:0;flex:1}
+.brag-belt small{display:block;font-size:9px;color:#def39e;font-weight:900;letter-spacing:.3px}
+.brag-belt strong{display:block;font-size:17px;color:#f5ffed;margin:4px 0;overflow-wrap:anywhere}
+.brag-belt p{font-size:10px;color:#c1d2b9;line-height:1.5;margin:0}
+.brag-honors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 21px}
+.brag-honor{border-radius:10px;border:1px solid #49695d;background:#20363a;padding:11px;display:flex;flex-direction:column;gap:7px;min-width:0}
+.brag-honor>span{font-size:19px}.brag-honor small{color:#aecbc4;font-size:10px}
+.brag-honor strong{color:#f0fae7;font-size:12px;overflow-wrap:anywhere}
+.brag-honor em{color:#d5ff65;font-size:10px;font-style:normal;line-height:1.4}
+.brag-school-head{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.brag-school-head small{font-size:10px;color:#a9c3bf}
+.brag-schools{display:grid;gap:7px;margin:10px 0}
+.brag-school{display:flex;align-items:center;gap:10px;border:1px solid #405c53;background:#1d3339;border-radius:9px;padding:10px;font-size:11px}
+.brag-school span{flex:1;color:#e0f4e9;font-weight:800;overflow-wrap:anywhere}
+.brag-school strong{color:#d5ff65;font-size:15px}
+.brag-school small{color:#b0c8c3}
+@media(max-width:740px){.brag-honors{grid-template-columns:repeat(2,minmax(0,1fr))}.brag-receipt-list{grid-template-columns:1fr}}
+@media(max-width:490px){.brag-arena-intro,.brag-bulletin,.brag-belt{flex-wrap:wrap}
+.brag-arena-intro,.brag-block{padding:13px}.brag-bulletin .fan-small{margin-left:auto}
+.brag-rounds{grid-template-columns:1fr}.brag-school{flex-wrap:wrap}
+.brag-school span{min-width:55%}.brag-honors{gap:6px}.brag-honor{padding:9px}
+.brag-versus{padding:10px;gap:7px}.brag-versus>div>strong{font-size:12px}}
