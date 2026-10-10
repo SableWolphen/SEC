@@ -41,7 +41,7 @@ assert.match(js,/sec_copy_my_league_picks/,"transfer uses atomic server-side RPC
 assert.match(js,/W\.confirm/,"transfer requires user confirmation");
 assert.match(js,/sec_revealed_league_picks/,"opponent picks use kickoff-gated RPC");
 assert.match(js,/sec_club_standings/,"multi-sport clubs can calculate football-only scenarios");
-assert.match(js,/Football-only path, assuming other sports/,"club scenarios always disclose limitation");
+assert.match(js,/Football-only scenarios; other sports/, "club scenarios always disclose limitation");
 assert.match(js,/const live=gs\.filter/,"live matches are scoped before scenario calculation");
 assert.match(js,/const remaining=gs\.filter/,"unstarted games never block active live scenarios");
 assert.match(js,/sec_revealed_league_picks/,"only secured kickoff-revealed picks are used");
