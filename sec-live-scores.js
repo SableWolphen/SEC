@@ -103,6 +103,7 @@ async function refresh(force=false){
   if(viewing==="picks"){
    if(changed&&!document.activeElement?.matches?.("input,textarea,select"))a.renderPicks?.();
    renderStatus();
+   window.SEC_GAMEDAY?.refresh?.();
   }
   if(justFinal&&window.secOnline?.isSignedIn?.()){
    // Refresh only after an actual verified final, never on live estimates.

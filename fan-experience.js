@@ -164,7 +164,9 @@ function alertSettings(){
  const on=localStorage.getItem(key("alerts"))==="on";
  slot.innerHTML='<div class="card-kicker">🔔 PICK REMINDERS</div><h3>Useful alerts, not noise</h3>'+
  '<p>Opt-in pick deadlines and final scores while the website is open. Background push requires a future push server.</p>'+
- '<button class="fan-small" data-fan="alerts">'+(on?"Disable alerts":"Enable alerts")+'</button>';
+ '<button class="fan-small" data-fan="alerts">'+(on?"Disable alerts":"Enable alerts")+'</button>'+
+ '<div id="sec-day-alert-settings"></div>';
+ window.SEC_GAMEDAY?.settings?.();
 }
 async function toggleAlerts(){
  const on=localStorage.getItem(key("alerts"))!=="on";
@@ -185,7 +187,7 @@ function remind(){
 async function onView(v){
  if(v==="league")return window.SEC_LEAGUE_SETTINGS?.onView?.();
  resetAccount();
- if(v==="picks"){enhanceRecap();extras();void loadGames().then(()=>{enhanceRecap();remind();});}
+ if(v==="picks"){enhanceRecap();extras();window.SEC_GAMEDAY?.refresh?.();void loadGames().then(()=>{enhanceRecap();remind();window.SEC_GAMEDAY?.refresh?.();});}
  if(v==="teams"){enhanceTeam();void loadTeamGames();}
  if(v==="trophies"){honors();void loadGames().then(honors);}
  if(v==="settings")alertSettings();

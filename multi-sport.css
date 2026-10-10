@@ -1026,3 +1026,35 @@ color:#ecf8ee;font-size:13px;font-weight:900;background:#1c353b}
 }
 @media(max-width:380px){.pick-team-score,.sport-team-score{font-size:16px}
  .team-choice.has-team-score .team-nick{font-size:9px}}
+
+/* Verified game-day pick tracker and opt-in updates. */
+.sec-day-summary,.sec-day-league,.sec-day-rivalry,.sec-day-recap{margin-top:10px;border:1px solid #41645e;border-radius:12px;padding:13px;background:linear-gradient(115deg,#17343a,#142b36);min-width:0}
+.sec-day-heading{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sec-day-heading small,.sec-day-recap small{font-size:9px;font-weight:900;letter-spacing:1px;color:#d5ff65}
+.sec-day-heading h3{margin:3px 0;font-size:15px;color:#f0f8f1}.sec-day-heading>span{font-size:10px;color:#b2cac8}
+.sec-day-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:10px}
+.sec-day-metrics>div{text-align:center;padding:10px 5px;border:1px solid #436158;background:#1b343c;border-radius:9px}
+.sec-day-metrics strong{display:block;font-size:23px;line-height:1.1;color:#d5ff65}
+.sec-day-metrics small{font-size:9px;color:#c7d6d0}
+.sec-day-pick-list{margin-top:9px;display:grid;gap:6px}
+.sec-day-pick-row{display:flex;justify-content:space-between;align-items:center;gap:8px;border-top:1px solid #395550;padding-top:7px;font-size:11px}
+.sec-day-pick-row span{min-width:0;overflow-wrap:anywhere;color:#e9f6f2}.sec-day-pick-row span small{display:block;color:#9fbab6;font-size:10px}
+.sec-day-pick-row b{font-size:10px;white-space:nowrap}.sec-day-pick-row .is-correct,.sec-day-pick-row .is-leading{color:#d5ff65}
+.sec-day-pick-row .is-miss,.sec-day-pick-row .is-trailing{color:#ffb59b}
+.sec-day-rankings{display:grid;gap:5px;margin-top:10px}
+.sec-day-rankings>div{display:flex;justify-content:space-between;gap:9px;padding:7px;border:1px solid #3d5854;background:#192f37;border-radius:7px}
+.sec-day-rankings span{color:#e2f0ec;font-size:11px}.sec-day-rankings span small{font-size:10px;color:#a8c0bc}
+.sec-day-rankings strong{font-size:13px;color:#d5ff65;white-space:nowrap}
+.sec-day-rankings strong small{font-size:9px;color:#c5d8cf}.sec-day-league>small{display:block;font-size:10px;color:#a5c5bd;margin-top:10px}
+.sec-day-league>summary{cursor:pointer;font-size:12px;font-weight:850;color:#d5ff65}.sec-day-league>p{font-size:11px;color:#bbd5cf}
+.sec-day-rivalry,.sec-day-recap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:9px}
+.sec-day-rivalry>strong{color:#d5ff65;font-size:13px}.sec-day-rivalry>span{font-size:12px;color:#eff8ee}
+.sec-day-recap>div{display:flex;flex-direction:column;gap:2px}.sec-day-recap strong{font-size:13px;color:#f6fbf4}.sec-day-recap span{font-size:10px;color:#acc2bc}
+.sec-day-rivalry button,.sec-day-recap button{background:#d5ff65;color:#20332a;border:0;border-radius:8px;font-size:11px;font-weight:900;min-height:37px;padding:8px 11px}
+.sec-day-notices{margin:8px 0;border:1px solid #6d7d57;border-radius:9px;padding:9px 12px;background:#203b3b}
+.sec-day-notices summary{cursor:pointer;color:#d5ff65;font-size:12px;font-weight:900}.sec-day-notices p{font-size:11px;margin:7px 0;color:#e0f2ec}
+.sec-day-sport{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:11px;color:#c7e2d6;margin:8px 0}
+.sec-day-sport strong{color:#d5ff65}.sec-day-alert-options{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:12px;font-size:11px}
+.sec-day-alert-options p,.sec-day-alert-options small{width:100%;margin:0;color:#abc7be}
+.sec-day-alert-options label{display:flex;align-items:center;gap:5px}
+@media(max-width:540px){.sec-day-heading{align-items:start;flex-direction:column}.sec-day-pick-row{align-items:start;flex-direction:column;gap:5px}.sec-day-metrics strong{font-size:19px}}

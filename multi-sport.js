@@ -402,7 +402,7 @@ async function load(s,force=false){
   if(active)localStorage.setItem("ss-sec-sport-league-"+s+"-"+yr,active);
  }catch(e){cache[s].error=e.message||"This sport is temporarily unavailable";console.warn("SEC sports:",e);}
  finally{
-  loading[s]=false;renderSport(s);renderHub();
+  loading[s]=false;renderSport(s);renderHub();window.SEC_GAMEDAY?.renderSport?.(s);
   if(window.SEC_BRIDGE?.view?.()==="league")window.SEC_FAN?.renderLeagueChoice?.();
   if(pendingReload[s]){pendingReload[s]=false;void load(s,true);}
  }

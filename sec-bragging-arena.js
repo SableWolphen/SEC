@@ -429,6 +429,8 @@ async function load(selected=item(),force=false){
    if(!scopeOk(selected,u,k))return;
    cache.set(k,{data:validate(response.data),at:Date.now()});
    render(cache.get(k).data,selected);
+   window.SEC_GAMEDAY?.leagueOutlook?.();
+   window.SEC_GAMEDAY?.previousRivalry?.();
   }catch(e){
    if(scopeOk(selected,u,k))el.innerHTML='<section class="brag-block"><h3>Locker room unavailable</h3>'+
     '<p class="fan-subtle">The secure league recap could not load. Try refreshing.</p>'+
@@ -509,5 +511,7 @@ if(typeof setInterval==="function")setInterval(()=>{
 window.addEventListener?.("focus",()=>{
  if(renderedWeek!==null&&user()&&texasWeek().start!==renderedWeek)void load(item(),true);
 });
-window.SEC_BRAG_ARENA=Object.freeze({load,render:updateUI,model,rivalry,bulletin,awards,verified,texasWeek,weeklyPairing,weeklyMatch});
+window.SEC_BRAG_ARENA=Object.freeze({load,render:updateUI,model,rivalry,bulletin,awards,verified,texasWeek,weeklyPairing,weeklyMatch,
+ getData:active=>{const k=active&&user()?ref(active):null;return k?cache.get(k)?.data||null:null;},
+ getModel:()=>currentModel()});
 })();

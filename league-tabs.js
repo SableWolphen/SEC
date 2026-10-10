@@ -48,6 +48,7 @@ function synchronize(){
  switchPane(pane);
  if(!member)return;
  if(pane==="brags"){window.SEC_BRAGS?.render?.();void window.SEC_BRAG_ARENA?.load?.(item);}
+ if(pane==="scores")window.SEC_GAMEDAY?.leagueOutlook?.();
  if(item?.kind==="club"){
   relocate("fan-club-hub",".fan-club-settings","fan-league-club-manager");
 
@@ -78,6 +79,11 @@ document.addEventListener("click",e=>{
  if(tab){
   e.preventDefault();
   switchPane(tab.dataset.leaguePane);
+  if(tab.dataset.leaguePane==="scores"){
+   void window.SEC_BRAG_ARENA?.load?.(eligible().item);
+   void window.SEC_POWER?.show?.(eligible().item);
+   window.SEC_GAMEDAY?.leagueOutlook?.();
+  }
   if(tab.dataset.leaguePane==="brags"){
    void window.SEC_BRAG_ARENA?.load?.(eligible().item);
    void window.SEC_POWER?.show?.(eligible().item);
