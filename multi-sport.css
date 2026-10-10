@@ -454,3 +454,26 @@ body{overflow-x:clip}
 .sec-live-score-strip>small{display:block;color:#a3c6b3;font-size:10px;margin-top:7px}
 @media(max-width:430px){.sec-live-score-strip{padding:10px}.sec-live-mini-scores{flex-direction:column}
 .sec-live-mini-score{width:100%;font-size:12px}.sec-live-strip-title strong{font-size:11px}}
+
+
+/* Game-day polish: visible scores and unpicked games take priority on phones,
+   without adding another fixed overlay or hiding the current league controls. */
+.sec-live-next-pick{display:inline-flex;align-items:center;justify-content:center;
+ min-height:42px;margin-top:9px;padding:9px 13px;border:1px solid #c4f187;
+ border-radius:9px;background:#d7fa65;color:#16231d;font-size:12px;font-weight:900}
+.sec-live-next-pick:focus-visible{outline:3px solid #fff;outline-offset:2px}
+@media(max-width:540px){
+ body.sec-game-day-active #picks-view .spotlight{
+   min-height:0;padding:13px 14px 12px;border-radius:14px;
+   box-shadow:none
+ }
+ body.sec-game-day-active #picks-view .spotlight-title{font-size:20px;margin:6px 0 3px}
+ body.sec-game-day-active #picks-view .spotlight-sub{font-size:11px;margin:0 0 9px}
+ body.sec-game-day-active #picks-view .spotlight-team{min-height:42px}
+ body.sec-game-day-active #picks-view .spotlight-team .mini-logo{width:25px;height:25px}
+ body.sec-game-day-active #picks-view .spotlight-label{margin-top:7px}
+ body.sec-game-day-active #picks-view .section-title-row{margin-top:15px}
+ .sec-live-next-pick{width:100%;font-size:11px}
+ .sec-live-score-strip{margin-top:4px;margin-bottom:12px}
+ .sec-live-mini-score{overflow-wrap:anywhere}
+}
