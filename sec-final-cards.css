@@ -98,3 +98,152 @@
  .sec-final-action-symbol{display:none}
  .sec-final-action-label b{white-space:normal}
 }
+
+/* v2: balanced winner/result design. Names must wrap at WORD boundaries,
+   never break "Missouri" or "Carolina" between letters. */
+#picks-view .sec-final-teams{
+ display:grid;
+ grid-template-columns:minmax(0,1fr) 15px minmax(0,1fr);
+ align-items:stretch;
+ gap:8px;
+}
+#picks-view .sec-final-team{
+ display:grid;
+ grid-template-columns:clamp(27px,5vw,38px) minmax(0,1fr) max-content;
+ grid-template-rows:minmax(42px,auto) auto;
+ column-gap:7px;
+ row-gap:5px;
+ align-content:center;
+ align-items:center;
+ min-width:0;
+ min-height:108px;
+ padding:10px 9px;
+ overflow:hidden;
+}
+#picks-view .sec-final-team .mini-logo{
+ grid-column:1;grid-row:1;
+ width:clamp(27px,5vw,38px);
+ height:clamp(27px,5vw,38px);
+ margin:0;
+ flex:none;
+}
+#picks-view .sec-final-team-copy{
+ grid-column:2;grid-row:1;
+ display:flex;flex-direction:column;justify-content:center;
+ gap:3px;min-width:0;max-width:100%;
+}
+#picks-view .sec-final-team-copy>strong{
+ font-size:clamp(11px,1.45vw,14px);
+ line-height:1.18;
+ letter-spacing:-.2px;
+ font-weight:900;
+ overflow-wrap:normal;
+ word-break:normal;
+ hyphens:none;
+ white-space:normal;
+}
+#picks-view .sec-final-team-copy>small{
+ font-size:10px;line-height:1.3;
+ overflow-wrap:normal;word-break:normal;hyphens:none;
+}
+#picks-view .sec-final-team-score{
+ grid-column:3;grid-row:1;
+ display:block;
+ justify-self:end;
+ font-size:clamp(24px,3.4vw,34px);
+ line-height:1;
+ letter-spacing:-.7px;
+ font-weight:950;
+ font-variant-numeric:tabular-nums;
+ color:#d7e1f2;
+ white-space:nowrap;
+}
+#picks-view .sec-final-team.is-winner .sec-final-team-score{color:#d6fa65}
+#picks-view .sec-final-team-foot{
+ grid-column:1 / -1;grid-row:2;
+ display:flex;align-items:center;justify-content:space-between;
+ flex-wrap:wrap;gap:3px;
+ width:100%;min-width:0;
+}
+#picks-view .sec-final-team-context{min-width:0;max-width:100%;flex:1 1 auto;}
+#picks-view .sec-final-team-foot .team-pick-context{
+ display:flex;flex-wrap:wrap;align-items:center;
+ gap:2px 4px;
+ min-width:0;max-width:100%;
+ font-size:9px;
+ line-height:1.35;
+ overflow-wrap:normal;
+ word-break:normal;
+}
+#picks-view .sec-final-team-foot .team-pick-context>span,
+#picks-view .sec-final-team-foot .team-pick-context>b{white-space:nowrap}
+#picks-view .sec-final-team-foot .team-pick-context>i{opacity:.6}
+#picks-view .sec-final-winner-label{
+ margin-left:auto;
+ align-self:flex-end;
+ white-space:nowrap;
+ flex:0 0 auto;
+}
+#picks-view .sec-final-vs{font-size:10px}
+#picks-view .sec-final-grade{gap:8px;margin:10px 0 12px}
+#picks-view .sec-final-metric{
+ border:1px solid #20445c;
+ border-radius:12px;
+ background:#102638;
+ padding:9px 8px;
+ gap:6px;
+ min-width:0;
+}
+#picks-view .sec-final-metric:first-child{padding-left:9px}
+#picks-view .sec-final-metric+.sec-final-metric{border-left:1px solid #20445c}
+#picks-view .sec-final-metric>span:last-child{flex:1;min-width:0}
+#picks-view .sec-final-metric-icon{width:24px;height:24px;flex-basis:24px;font-size:14px}
+#picks-view .sec-final-metric b,#picks-view .sec-final-metric strong{
+ overflow-wrap:normal;word-break:normal;hyphens:none;
+}
+#picks-view .sec-final-actions{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
+@media(max-width:560px){
+ #picks-view .sec-final-teams{gap:5px;grid-template-columns:minmax(0,1fr) 12px minmax(0,1fr)}
+ #picks-view .sec-final-team{
+  grid-template-columns:30px minmax(0,1fr) max-content;
+  column-gap:5px;
+  row-gap:4px;
+  padding:8px 7px;
+  min-height:114px;
+ }
+ #picks-view .sec-final-team .mini-logo{width:30px;height:30px}
+ #picks-view .sec-final-team-copy>strong{font-size:11px;letter-spacing:-.25px}
+ #picks-view .sec-final-team-copy>small{font-size:9px}
+ #picks-view .sec-final-team-score{font-size:25px}
+ #picks-view .sec-final-metric{padding:9px 6px;gap:5px}
+ #picks-view .sec-final-metric:first-child{padding-left:6px}
+ #picks-view .sec-final-metric-icon{display:grid;width:20px;height:20px;flex-basis:20px;font-size:12px}
+ #picks-view .sec-final-metric b,#picks-view .sec-final-metric strong{font-size:10px}
+}
+@media(max-width:390px){
+ #picks-view .sec-final-team{
+  grid-template-columns:27px minmax(0,1fr) max-content;
+  column-gap:4px;
+  padding:8px 6px;
+  min-height:115px;
+ }
+ #picks-view .sec-final-team .mini-logo{width:27px;height:27px}
+ #picks-view .sec-final-team-copy>strong{font-size:10px;letter-spacing:-.15px}
+ #picks-view .sec-final-team-copy>small{font-size:9px}
+ #picks-view .sec-final-team-score{font-size:23px}
+ #picks-view .sec-final-team-foot .team-pick-context{font-size:8px}
+ #picks-view .sec-final-winner-label{font-size:8px}
+ #picks-view .sec-final-metric-icon{display:none}
+ #picks-view .sec-final-metric{padding:7px 5px}
+ #picks-view .sec-final-metric:first-child{padding-left:5px}
+ #picks-view .sec-final-metric b,#picks-view .sec-final-metric strong{font-size:9px}
+ #picks-view .sec-final-metric small{font-size:8px}
+}
+@media(max-width:340px){
+ #picks-view .sec-final-teams{gap:3px;grid-template-columns:minmax(0,1fr) 10px minmax(0,1fr)}
+ #picks-view .sec-final-team{grid-template-columns:25px minmax(0,1fr) max-content;column-gap:3px;padding:8px 5px}
+ #picks-view .sec-final-team .mini-logo{width:25px;height:25px}
+ #picks-view .sec-final-team-copy>strong{font-size:9px}
+ #picks-view .sec-final-team-score{font-size:20px}
+ #picks-view .sec-final-winner-label{font-size:7px;padding:2px 4px}
+}
