@@ -34,12 +34,12 @@ function field(info,mini){
  const {g,marker,code}=info;
  const description=marker!==null&&code?code+" football possession at "+Math.round(marker)+
   "% along the field, "+(info.detail||""): "Live field display. Verified ball position not yet available";
- return '<div class="fan-football-field '+(mini?"fan-field-mini":"fan-field-large")+'" role="img" aria-label="'+esc(description)+'">'+
+ return '<span class="fan-football-field '+(mini?"fan-field-mini":"fan-field-large")+'" role="img" aria-label="'+esc(description)+'">'+
   '<span class="fan-endzone away">'+esc(g.away)+'</span>'+
   '<span class="fan-endzone home">'+esc(g.home)+'</span>'+
   (marker!==null?'<span class="fan-football-marker" style="left:clamp(10px,'+marker+'%,calc(100% - 10px))" aria-hidden="true">🏈</span>':
     '<span class="fan-field-pending" aria-hidden="true">POSITION PENDING</span>')+
-  '</div>';
+  '</span>';
 }
 function renderCompact(g,d,status){
  const info=situation(g,d,status);
