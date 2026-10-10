@@ -689,3 +689,10 @@ body{overflow-x:clip}
 .sec-ai-links a{font-size:10px;font-weight:900;color:#d5ff65;text-decoration:underline;text-underline-offset:3px}
 .sec-ai-injury{font-size:11px;color:#e0c8a4;margin:7px 0 0}
 @media(max-width:430px){.sec-ai-panel{padding:12px}.sec-ai-narrative{font-size:12px}}
+
+/* Source-grounded SEC analyst labels. LIVE/FINAL visible without any generative AI service. */
+.sec-ai-status{max-width:100%;overflow-wrap:anywhere}
+.sec-ai-panel[data-commentary-state^="LIVE"] .sec-ai-status{background:#4a3021;color:#ffd09d;border-color:#ad7652}
+.sec-ai-panel[data-commentary-state^="FINAL"] .sec-ai-status{background:#244b40;color:#caff9b;border-color:#699b7b}
+.sec-ai-panel .sec-ai-narrative p{font-size:12px;line-height:1.7}
+.sec-ai-coverage{overflow-wrap:anywhere}

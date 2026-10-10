@@ -44,9 +44,12 @@ function ingestScores(rows){
 }
 const isScore=n=>Number.isInteger(n)&&n>=0;
 function gameCenter(g,insights){
- const d=gameRows[g.id],status=d?.game_status||"scheduled";
- const scored=isScore(d?.away_score)&&isScore(d?.home_score);
- const text=scored?esc(g.away)+" "+d.away_score+" – "+d.home_score+" "+esc(g.home):"Score pending";
+ const d=gameRows[g.id],status=["live","final"].includes(g.liveStatus)?g.liveStatus:d?.game_status||g.liveStatus||"scheduled";
+ const awayScore=g.awayScore??d?.away_score,homeScore=g.homeScore??d?.home_score;
+ const scored=isScore(awayScore)&&isScore(homeScore);
+ const text=scored?esc(g.away)+" "+awayScore+" – "+homeScore+" "+esc(g.home):"Score pending";
+ const game={...g,game_status:status,away_score:awayScore,home_score:homeScore,
+  winner:d?.winner||g.winner||null};
  const rows=(revealed[g.id]||[]).filter(x=>x===g.away||x===g.home),num=rows.filter(x=>x===g.away).length;
  const locked=Number.isFinite(Date.parse(d?.kickoff_at||g.kickoff))&&Date.parse(d?.kickoff_at||g.kickoff)<=Date.now();
  const trend=locked&&rows.length?'<p class="fan-subtle">League trends (revealed after lock): '+esc(g.away)+' '+Math.round(num/rows.length*100)+
@@ -55,7 +58,7 @@ function gameCenter(g,insights){
   '<summary><b class="'+(status==="live"?"fan-live":"")+'">'+(status==="live"?"🔴 LIVE":status==="final"?"✓ FINAL":"Game center")+'</b>'+
   '<span>'+(scored?text:"Scores & matchup stats")+'</span><span>⌄</span></summary>'+
   '<div class="fan-center-detail"><p>'+text+'</p>'+trend+(insights||'<p class="fan-subtle">Matchup details pending.</p>')+
-  (window.SEC_GAME_COMMUNITY?.panel?.(g,"football")||"")+
+  (window.SEC_GAME_COMMUNITY?.panel?.(game,"football")||"")+
   '<small>Verified game feed, updated periodically while this tab is open. No simulated play-by-play.</small></div></details>';
 }
 function sportCenter(s,g){
