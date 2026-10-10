@@ -58,6 +58,8 @@ jobs:
           node scripts/smoke-game-day-health.cjs
           node --check scripts/smoke-league-choice.cjs
           node scripts/smoke-league-choice.cjs
+          node --check league-tabs.js
+          node scripts/smoke-league-tabs.cjs
           node --check scripts/smoke-fan-experience.cjs
           node scripts/smoke-fan-experience.cjs
           node --check team-records.js

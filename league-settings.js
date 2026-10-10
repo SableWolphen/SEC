@@ -66,7 +66,7 @@ function formState(){
   const details=node?.querySelector?.(selector);
   if(details)state.open[id]=details.open;
  }
- const clubSettings=byId("fan-club-hub")?.querySelector?.(".fan-club-settings");
+ const clubSettings=(byId("fan-league-club-manager")?.querySelector?.(".fan-club-settings")||byId("fan-club-hub")?.querySelector?.(".fan-club-settings"));
  if(clubSettings&&state.sameSelection)state.open["club-settings"]=clubSettings.open;
  return state;
 }
@@ -86,7 +86,7 @@ function restoreForms(state){
   const details=node?.querySelector?.(selector);
   if(details)details.open=state.open[id];
  }
- const clubSettings=byId("fan-club-hub")?.querySelector?.(".fan-club-settings");
+ const clubSettings=(byId("fan-league-club-manager")?.querySelector?.(".fan-club-settings")||byId("fan-club-hub")?.querySelector?.(".fan-club-settings"));
  if(clubSettings&&"club-settings" in state.open)clubSettings.open=state.open["club-settings"];
 }
 function render(){

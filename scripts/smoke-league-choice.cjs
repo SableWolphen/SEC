@@ -203,6 +203,9 @@ const run=async()=>{
  assert.match(h,/id="fan-league-create"/);
  assert.match(h,/id="fan-league-tools"/,"create and join share one expandable drawer");
  assert.match(h,/id="fan-league-extras"/,"rankings and brackets live in a separate drawer");
+ assert.match(h,/id="fan-tab-chat"/,"chat is separate from scoreboard");
+ assert.match(h,/id="fan-pane-more"/,"advanced options are one tap away");
+ assert.match(h,/league-tabs\.js\?v=/,"tabs are wired into the production page");
  assert.ok(h.indexOf('id="league-content"')<h.indexOf('id="fan-league-extras"'),
    "football scoreboard and chat stay ahead of optional extras");
  assert.match(sourceManager,/fan-league-action-grid/,"create and join controls share one tidy panel");

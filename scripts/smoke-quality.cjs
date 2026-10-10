@@ -34,8 +34,8 @@ assert.match(html,/sec-live-scores\.js\?v=/,"live score refresh loads on every s
 assert.match(html,/id="fan-club-hub"/);
 assert.match(html,/id="fan-single-league"/);
 assert.match(html,/id="fan-brackets"/);
-assert.match(worker,/sec-pickem-v42/);
-assert.match(worker,/20261010-leaguehub-v2/);
+assert.match(worker,/sec-pickem-v43/);
+assert.match(worker,/20261010-leaguetabs-v3/);
 assert.match(html,/20261010-leaguehub-v2/);
 const league=fs.readFileSync("league-settings.js","utf8");
 assert.match(league,/lastRenderedSelection===selection/,"draft edit states only restore into same selected league");
