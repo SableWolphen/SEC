@@ -6,5 +6,8 @@ for(const value of ["fan-league-tabs","fan-pane-scores","fan-pane-chat","fan-pan
 assert.match(js,/actual\?\.id===item\.id/,"chat must belong to selected football league");
 assert.match(js,/relocate\("league-content",".sec-scoreboard-chat"/,"chat leaves long scoreboard view");
 assert.doesNotMatch(js,/trimClub\(\)|trimFootball\(\)/,"all players visible by default");
+assert.ok(h.includes("sec-pride.js?v="),"player school pride loads");
+assert.ok(h.includes("sec-brags.js?v="),"season bragging stats load");
+assert.ok(h.includes("sec-game-community.js?v="),"fan reactions load");
 assert.match(js,/queueMicrotask/,"refresh relocation coalesces without polling");
 console.log("League tabs regression passed: isolated panels, guarded chat, compact scoreboards and retained management.");

@@ -50,7 +50,7 @@ async function load(item=kindOf(),force=false){
  if(!force&&k===key&&(loading||Date.now()-loadedAt<120000)){render();return;}
  key=k;rows=[];loading=true;error="";render();const v=++request;
  try{
-  const result=await db.rpc("sec_league_brag_stats",{p_kind:item.kind,p_league:item.id});
+  const result=await db.rpc("sec_league_brag_stats_v2",{p_kind:item.kind,p_league:item.id});
   if(result.error)throw result.error;
   if(v!==request||key!==k)return;
   rows=result.data||[];
