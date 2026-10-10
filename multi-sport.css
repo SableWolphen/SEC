@@ -337,8 +337,8 @@
 .fan-power-card button:disabled{opacity:.6;cursor:wait}
 .power-highlights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}
 .power-highlights>div{background:#112631;border:1px solid #365954;border-radius:11px;padding:10px;min-width:0}
-.power-highlights small{color:#9fbdbd;font-size:10px;display:block;margin-bottom:5px}
-.power-highlights strong{color:#e5f5de;font-size:11px;font-weight:900;line-height:1.45;display:block;overflow-wrap:anywhere}
+.power-highlights small{color:#9fbdbd;font-size:11px;display:block;margin-bottom:5px}
+.power-highlights strong{color:#e5f5de;font-size:12px;font-weight:900;line-height:1.45;display:block;overflow-wrap:anywhere}
 .power-rank-list{margin:10px 0 0;padding:0;list-style:none;border:1px solid #365257;border-radius:12px;overflow:hidden}
 .power-rank-row{display:grid;grid-template-columns:40px minmax(0,1fr) 64px 50px;gap:10px;align-items:center;
  padding:11px 10px;border-bottom:1px solid #345158;background:#142832;min-width:0}
@@ -346,8 +346,8 @@
 .power-rank-row.is-you{background:#244034}
 .power-position{font-size:15px;font-weight:950;color:#d7fa65;text-align:center;white-space:nowrap}
 .power-player{min-width:0;overflow:hidden}
-.power-player strong{font-size:12px;color:#f3f6ee;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.power-player small{color:#a4bac0;font-size:10px;display:block;margin-top:2px;line-height:1.3}
+.power-player strong{font-size:13px;color:#f3f6ee;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.power-player small{color:#a4bac0;font-size:11px;display:block;margin-top:2px;line-height:1.3}
 .power-points{text-align:right;min-width:0}
 .power-points strong{font-size:15px;display:block;color:#e7f2dd}
 .power-points small{font-size:9px;display:block;color:#abc3b8}
@@ -366,3 +366,12 @@
  .power-highlights{gap:5px}.power-highlights>div{padding:8px}.power-highlights strong{font-size:10px}
  .power-movement{font-size:10px;padding:3px}}
 @media(max-width:340px){.power-highlights{grid-template-columns:1fr}.power-rank-row{grid-template-columns:25px minmax(0,1fr) 43px 37px;gap:4px}}
+
+/* Focus and touch targets on the simplified League page. */
+.fan-power-card .fan-small{min-height:44px}
+.power-rest summary{padding:12px 6px;min-height:44px;display:flex;align-items:center}
+.fan-football-tools{margin:0;padding:11px 13px}
+.fan-football-tools>.content-card{margin:12px 0}
+.fan-football-tools summary{min-height:44px;display:flex;align-items:center}
+@media(max-width:620px){.power-player strong{font-size:12px}.power-player small{font-size:10px}
+.power-highlights strong{font-size:11px}}
