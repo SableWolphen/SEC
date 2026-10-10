@@ -100,6 +100,9 @@ fs.mkdirSync(output,{recursive:true});
      const g=w.games[0];g.liveStatus="live";g.awayScore=14;g.homeScore=10;
      g.statusDetail="Q2 · 8:04";g.scoreUpdatedAt=new Date().toISOString();
      g.kickoff=new Date(Date.now()-4*60000).toISOString();
+     g.livePossessionCode=g.away;g.liveDown=2;g.liveDistance=7;
+     g.liveFieldPercent=37;g.liveDriveSummary="5 plays, 24 yards";
+     g.liveLastPlay="Pass for 12 yards";g.liveSituationUpdatedAt=new Date().toISOString();
      window.SEC_LIVE_SCORES?.renderStatus?.();
      window.SEC_BRIDGE.renderPicks();
    });
@@ -124,11 +127,15 @@ fs.mkdirSync(output,{recursive:true});
        phase:row?.textContent.includes("Q2 · 8:04")||false,
        score:row?.textContent.includes("14 – 10")||false,
        duplicateStatus:!!card?.querySelector(".sec-live,.sec-score-phase"),
-       hasDetail:!!card?.querySelector(".fan-center-detail")
+       hasDetail:!!card?.querySelector(".fan-center-detail"),
+       hasLiveDrive:!!card?.querySelector(".fan-drive"),
+       hasBall:!!card?.querySelector(".fan-drive-ball"),
+       liveText:card?.querySelector(".fan-drive")?.textContent.includes("2nd & 7")||false
      };
    });
    if(!oneLive.rendered||oneLive.liveBadges!==1||!oneLive.phase||
-      !oneLive.score||oneLive.duplicateStatus||!oneLive.hasDetail)
+      !oneLive.score||oneLive.duplicateStatus||!oneLive.hasDetail||
+      !oneLive.hasLiveDrive||!oneLive.hasBall||!oneLive.liveText)
      problems.push(viewport.width+"px duplicate live game status: "+JSON.stringify(oneLive));
    await page.screenshot({path:path.join(output,viewport.width+"-gameday.png")});
    if(viewport.width<=390){
