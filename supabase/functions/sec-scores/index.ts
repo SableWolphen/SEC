@@ -261,6 +261,8 @@ Deno.serve(async req=>{
 
    if(status==="scheduled"&&ncaa?.state==="I"&&
       Date.now()>=Date.parse(g.kickoff_at)-10*60000)status="live";
+   // Do not regress a started game to scheduled if either feed lags.
+   if(status==="scheduled"&&g.game_status==="live")status="live";
    const preferred=status==="final"?{away:awayScore,home:homeScore,source:"ESPN"}:
     pickLive(awayScore,homeScore,ncaa,g.away_score,g.home_score,status==="live");
    if(preferred.source==="NCAA")ncaaAhead++;
@@ -274,8 +276,10 @@ Deno.serve(async req=>{
    const stage=status==="live"&&clock&&periodName?periodName+" · "+clock:null;
    const espnDetail=stage||String(ev.status?.type?.shortDetail||comp.status?.type?.shortDetail||"");
    const phaseRank=(x:string)=>x==="Halftime"?2.5:Number(x.match(/Q([1-4])/i)?.[1]||0);
-   const detail=status==="live"&&ncaa?.period&&phaseRank(ncaa.period)>phaseRank(espnDetail)
+   const proposed=status==="live"&&ncaa?.period&&phaseRank(ncaa.period)>phaseRank(espnDetail)
     ?ncaa.period:espnDetail;
+   const detail=status==="live"&&g.game_status==="live"&&
+      phaseRank(g.status_detail||"")>phaseRank(proposed)?g.status_detail:proposed;
    const officialKickoff=Date.parse(ev.date||comp.date||"");
    const originalKickoff=Date.parse(g.kickoff_at);
    // Never silently reopen a kicked-off or completed game. A source-verified
@@ -328,7 +332,8 @@ Deno.serve(async req=>{
      lines++;
     }
    }
-   if(preferred.away!==g.away_score||preferred.home!==g.home_score)
+   if(status==="final")patch.live_score_source="ESPN";
+   else if(preferred.away!==g.away_score||preferred.home!==g.home_score)
     patch.live_score_source=preferred.source;
    // Track when the *published* scoreboard changes, not merely when our job
    // re-polls an unchanged response. This enables meaningful stale-feed alerts.
