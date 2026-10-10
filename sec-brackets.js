@@ -6,7 +6,7 @@ const app=()=>window.SEC_BRIDGE,db=()=>window.secOnline?.getClient?.(),user=()=>
 const esc=x=>String(x==null?"":x).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const unpack=x=>{if(x?.error)throw x.error;return x?.data;};
 const html=id=>document.getElementById(id);
-let fixtures=[],own=[],basketball=[],baseball=[],currentClub=null,currentUser=null,last=0,pending=false,error="";
+let fixtures=[],own=[],basketball=[],baseball=[],currentClub=null,currentUser=null,last=0,pendingPromise=null,pendingKey=null,error="";
 const dates=iso=>{const n=Date.parse(iso);return Number.isFinite(n)?new Date(n).toLocaleString("en-US",
  {timeZone:"America/Chicago",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}):"Time pending";};
 const sportLabel={basketball:"🏀 Men's Basketball",baseball:"⚾ Baseball"};
@@ -50,27 +50,54 @@ function render(){
   (error?'<p class="fan-warning">'+esc(error)+'</p>':"")+
   '<div class="fan-tournament-columns">'+bracket("basketball")+bracket("baseball")+'</div></details>';
 }
-async function load(force=false){
+function load(force=false){
  const c=club(),u=user();
- if(!db()||!u||!c){fixtures=[];own=[];currentClub=null;currentUser=u?.id||null;render();return;}
- if(pending)return;
- if(!force&&currentClub===c.id&&currentUser===u.id&&Date.now()-last<2*60000){render();return;}
- pending=true;error="";
- try{
-  const rr=await db().from("sec_bracket_games").select("id,sport,season,round_label,away_code,away_name,home_code,home_name,kickoff_at,winner_code,status,source_url").order("kickoff_at");
-  const fetched=unpack(rr)||[];
-  fixtures=fetched.filter(g=>["baseball","basketball"].includes(g.sport)&&
-    (!Array.isArray(c.enabled_sports)||c.enabled_sports.includes(g.sport))&&
-    g.season===sportYear(c,g.sport));
-  const [p,b,base]=await Promise.all([
-   db().from("sec_bracket_picks").select("game_id,pick_code").eq("club_id",c.id).eq("user_id",u.id),
-   db().rpc("sec_bracket_standings",{p_club:c.id,p_sport:"basketball"}),
-   db().rpc("sec_bracket_standings",{p_club:c.id,p_sport:"baseball"})
-  ]);
-  own=unpack(p)||[];basketball=unpack(b)||[];baseball=unpack(base)||[];
-  currentClub=c.id;currentUser=u.id;last=Date.now();
- }catch(e){error="Tournament feed unavailable. Try again.";console.info("SEC brackets",e.message);}
- finally{pending=false;render();}
+ if(!db()||!u||!c){
+  fixtures=[];own=[];basketball=[];baseball=[];
+  currentClub=null;currentUser=u?.id||null;last=0;render();return Promise.resolve();
+ }
+ const key=c.id+":"+u.id;
+ if(pendingPromise){
+  // Fast league switches must never display the preceding league's bracket.
+  return pendingKey===key?pendingPromise:pendingPromise.then(()=>load(true));
+ }
+ if(!force&&currentClub===c.id&&currentUser===u.id&&Date.now()-last<120000){
+  render();return Promise.resolve();
+ }
+ pendingKey=key;error="";
+ pendingPromise=(async()=>{
+  try{
+   const rr=await db().from("sec_bracket_games").select(
+    "id,sport,season,round_label,away_code,away_name,home_code,home_name,kickoff_at,winner_code,status,source_url"
+   ).order("kickoff_at");
+   const fetched=unpack(rr)||[];
+   if(club()?.id!==c.id||user()?.id!==u.id)return;
+   const nextFixtures=fetched.filter(g=>["baseball","basketball"].includes(g.sport)&&
+      (!Array.isArray(c.enabled_sports)||c.enabled_sports.includes(g.sport))&&
+      g.season===sportYear(c,g.sport));
+   let newOwn=[],newBasketball=[],newBaseball=[];
+   if(nextFixtures.length){
+    // No official bracket yet? Don't make three unnecessary private API requests.
+    const [p,b,base]=await Promise.all([
+     db().from("sec_bracket_picks").select("game_id,pick_code").eq("club_id",c.id).eq("user_id",u.id),
+     db().rpc("sec_bracket_standings",{p_club:c.id,p_sport:"basketball"}),
+     db().rpc("sec_bracket_standings",{p_club:c.id,p_sport:"baseball"})
+    ]);
+    newOwn=unpack(p)||[];newBasketball=unpack(b)||[];newBaseball=unpack(base)||[];
+   }
+   if(club()?.id!==c.id||user()?.id!==u.id)return;
+   fixtures=nextFixtures;own=newOwn;basketball=newBasketball;baseball=newBaseball;
+   currentClub=c.id;currentUser=u.id;last=Date.now();
+  }catch(e){
+   if(club()?.id===c.id&&user()?.id===u.id){
+    error="Tournament feed unavailable. Try again.";
+    console.info("SEC brackets",e.message||"Unable to load");
+   }
+  }finally{
+   if(club()?.id===c.id&&user()?.id===u.id)render();
+  }
+ })().finally(()=>{pendingPromise=null;pendingKey=null;});
+ return pendingPromise;
 }
 async function select(gameId,code){
  const c=club(),g=fixtures.find(x=>x.id===gameId);if(!c||!g||!user())return;
