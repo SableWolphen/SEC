@@ -173,12 +173,24 @@ function renderSport(s){
  const person=user(),signed=Boolean(person&&client()),data=cache[s]||{};
  const picks=data.picks||{},saved=data.tiebreakers||{};
 
- const weekFinal=w?w.games.filter(g=>g.game_status==="final"):[],
-   chosen=w?w.games.filter(g=>Boolean(picks[g.id]?.pick_code)).length:0,
-   graded=weekFinal.filter(g=>g.winner_code&&picks[g.id]?.pick_code),
-   right=graded.filter(g=>g.winner_code===picks[g.id].pick_code).length;
+ const isSpread=active?.mode==="spread";
+ const weekFinal=w?w.games.filter(g=>g.game_status==="final"):[];
+ const chosen=w?w.games.filter(g=>Boolean(picks[g.id]?.pick_code)).length:0;
+ const graded=weekFinal.filter(g=>{
+   if(!picks[g.id]?.pick_code)return false;
+   if(!isSpread)return Boolean(g.winner_code);
+   const margin=Number(g.home_score)-Number(g.away_score)+Number(g.spread_home);
+   return g.spread_home!==null&&g.spread_home!==undefined&&g.spread_home!==""&&
+     validSportScore(g.home_score)&&validSportScore(g.away_score)&&margin!==0;
+ });
+ const right=graded.filter(g=>{
+   if(!isSpread)return g.winner_code===picks[g.id].pick_code;
+   const margin=Number(g.home_score)-Number(g.away_score)+Number(g.spread_home);
+   return (margin>0&&picks[g.id].pick_code===g.home_code)||(margin<0&&picks[g.id].pick_code===g.away_code);
+ }).length;
+ const scoreLabel=isSpread?"COVERS RIGHT":"RIGHT PICKS";
  const sportStrip=w?'<section class="weekly-score-strip sport-week-score" aria-label="Your Week '+w.num+' results">'+
-   '<div class="week-score-primary"><small>WEEK '+w.num+' · RIGHT PICKS</small><strong>'+right+'<span> / '+graded.length+'</span></strong>'+
+   '<div class="week-score-primary"><small>WEEK '+w.num+' · '+scoreLabel+'</small><strong>'+right+'<span> / '+graded.length+'</span></strong>'+
    '<small>'+(graded.length?(graded.length-right)+' missed · confirmed winners':'No picks graded yet')+'</small></div>'+
    '<div class="week-score-metric"><strong>'+chosen+'<span>/'+w.games.length+'</span></strong><small>Picks made</small></div>'+
    '<div class="week-score-metric"><strong>'+weekFinal.length+'<span>/'+w.games.length+'</span></strong><small>Final games</small></div></section>':"";
