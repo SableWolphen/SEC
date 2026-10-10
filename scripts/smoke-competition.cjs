@@ -32,6 +32,8 @@ assert.match(js,/p_expected:p\.candidates\.map/,"transfer is limited to explicit
 assert.match(js,/sec_copy_my_league_picks/,"transfer uses atomic server-side RPC");
 assert.match(js,/W\.confirm/,"transfer requires user confirmation");
 assert.match(js,/sec_revealed_league_picks/,"opponent picks use kickoff-gated RPC");
+assert.match(js,/sec_club_standings/,"multi-sport clubs can calculate football-only scenarios");
+assert.match(js,/Football-only path, assuming other sports/,"club scenarios always disclose limitation");
 assert.match(js,/unsettled\.some\(g=>Date\.parse\(g\.kickoff_at\)>Date\.now\(\)\)/,
  "path scenarios wait until unstarted games become public");
 const sql=fs.readFileSync("supabase/migrations/20261010_copy_football_picks_atomic.sql","utf8");
