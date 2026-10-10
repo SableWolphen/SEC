@@ -292,7 +292,7 @@ function leagueOutlook(){
    '<p class="sec-live-race-note">Loading post-kickoff league picks…</p>')+
   '<small class="sec-live-race-note">'+(model.projected?
    'Provisional = official points + live leading picks · not awarded until final.':
-   'Live leading-pick counts, not projected ranks · final results determine standings.')+
+   'Provisional live leading-pick counts, not projected ranks · final results determine standings.')+
   (fresh?' · Scores updated '+Math.max(0,Math.floor(delay/1000))+'s ago':
    ' · Waiting for next score update')+'</small></section>';
 }
