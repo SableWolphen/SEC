@@ -30,7 +30,9 @@ function renderStatus(){
    !a.state?.().picks?.[g.id]&&!window.SEC_FEATURES?.isUnavailable?.(g));
  const live=games.filter(g=>g.liveStatus==="live");
  const starting=games.filter(g=>liveWindow(g));
- if(!live.length&&!starting.length){el.hidden=true;el.innerHTML="";return;}
+ const gameDay=live.length>0||starting.length>0;
+ document.body?.classList?.toggle?.("sec-game-day-active",gameDay);
+ if(!gameDay){el.hidden=true;el.innerHTML="";return;}
  el.hidden=false;
  const recent=live.map(g=>g.scoreUpdatedAt).filter(Boolean).map(Date.parse).filter(Number.isFinite);
  const newest=recent.length?Math.max(...recent):0;
