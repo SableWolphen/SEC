@@ -150,7 +150,7 @@ trophy.sync({authenticated:false,userId:null});
 assert.equal(trophy.getResults().length,0,"past-season trophies clear on sign out");
 
 // Accordion UI regression: render actual faux DOM, not just string expectations.
-assert.equal(trophy.getExpandedSchool(),"ALA","Alabama shelf opens by default, showing trophies immediately");
+assert.equal(trophy.getExpandedSchool(),null,"the new museum starts with school shelves collapsed to reduce scrolling");
 const alabamaPreviews=trophy.getSchoolPreview("ALA");
 assert.equal(alabamaPreviews.length,3,"school cards show a row of three trophy previews");
 assert.ok(alabamaPreviews.every(t=>typeof t.symbol==="string"&&t.symbol.length>0),"previews contain trophy artwork");
