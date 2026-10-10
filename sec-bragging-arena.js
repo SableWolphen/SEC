@@ -13,7 +13,7 @@ const sportIcon={football:"🏈",basketball:"🏀",baseball:"⚾"};
 const scoped=i=>i&&["club","football","basketball","baseball"].includes(i.kind)&&i.id;
 const ref=i=>user()?.id+":"+i.kind+":"+i.id;
 const cache=new Map(),inflight=new Map();
-let chosenOpponent="",chosenReceipt="",lastScope="";
+let chosenOpponent="",chosenReceipt="",lastScope="",renderedWeek=null;
 const expanded=new Set();
 const fold=id=>expanded.has(id)?" open":"";
 const isNumber=x=>x!==null&&x!==undefined&&x!==""&&Number.isFinite(Number(x));
@@ -391,6 +391,7 @@ function render(data,itemInfo){
  if(!m.players.has(chosenReceipt))chosenReceipt=me.user_id;
  const pairing=weeklyPairing([...m.players.values()],me.user_id);
  const opponent=m.players.get(pairing.opponent);
+ renderedWeek=pairing.start;
  el.innerHTML='<div class="brag-arena brag-showcase" aria-label="League Bragging Arena">'+
   '<header class="brag-showcase-hero"><span class="brag-hero-crown" aria-hidden="true">👑</span>'+
    '<div class="brag-hero-copy"><span class="brag-hero-kicker">THE LOCKER ROOM · '+esc(itemInfo.name||"My league")+'</span>'+
@@ -487,6 +488,17 @@ document.addEventListener("click",e=>{
     "Verified picks: "+week.my+"–"+week.their+" so far. "+
     "New SEC rivalry opponents every Monday CT. · "+(item()?.name||"League"));
  }
+});
+// Recompute automatically at the Central-Time weekly rollover even if the
+// site stays open. The timer does no network work unless the week changes.
+if(typeof setInterval==="function")setInterval(()=>{
+ if(renderedWeek!==null&&user()&&root()&&texasWeek().start!==renderedWeek){
+  renderedWeek=null;
+  void load(item(),true);
+ }
+},10*60*1000);
+window.addEventListener?.("focus",()=>{
+ if(renderedWeek!==null&&user()&&texasWeek().start!==renderedWeek)void load(item(),true);
 });
 window.SEC_BRAG_ARENA=Object.freeze({load,render:updateUI,model,rivalry,bulletin,awards,verified,texasWeek,weeklyPairing,weeklyMatch});
 })();
