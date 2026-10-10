@@ -11,6 +11,37 @@ const day=()=>Date.now();
 const footballLeague=item=>item?.kind==="football"?item.id:item?.kind==="club"&&item.sports?.includes("football")?item.detail?.football_league:null;
 const key=item=>me()?.id+":"+item?.kind+":"+item?.id+":"+app()?.week?.()?.num;
 let busy=false,preview=null,lastSelection="",pathCache=null,pathPending=null;
+const upsetImpact=new Map(),upsetPending=new Set();
+async function loadUpsetImpact(g){
+ const item=selected(),u=me(),db=client();
+ if(!item?.id||!u||!db||!["club","football"].includes(item.kind))return;
+ const id=String(g.id),cacheKey=u.id+":"+item.kind+":"+item.id+":"+id;
+ const value=upsetImpact.get(cacheKey);
+ if(upsetPending.has(cacheKey)||value&&Date.now()-value.at<45000)return;
+ upsetPending.add(cacheKey);
+ try{
+  const r=await db.rpc("sec_league_game_pulse",{
+   p_kind:item.kind,p_league:item.id,p_sport:"football",p_game:id
+  });
+  if(r.error)throw r.error;
+  if(me()?.id!==u.id||selected()?.id!==item.id||selected()?.kind!==item.kind)return;
+  const row=Array.isArray(r.data)?r.data[0]:null;
+  upsetImpact.set(cacheKey,{row,at:Date.now()});
+  if(app()?.view?.()==="picks")renderUpsets();
+ }catch{
+  upsetImpact.set(cacheKey,{row:null,at:Date.now()});
+ }finally{upsetPending.delete(cacheKey);}
+}
+function getImpact(g,underdog){
+ const item=selected(),u=me();
+ if(!item||!u)return "";
+ const entry=upsetImpact.get(u.id+":"+item.kind+":"+item.id+":"+g.id)?.row;
+ if(!entry?.locked||!Number.isFinite(Number(entry.total_picks)))return "";
+ const home=underdog===g.away_code,atRisk=Number(home?entry.home_picks:entry.away_picks);
+ const count=Number(entry.total_picks);
+ if(!Number.isFinite(atRisk)||count<=0)return "";
+ return atRisk+" of "+count+" league picks are on the favorite";
+}
 const toast=s=>app()?.toast?.(s);
 function codeToName(c){return W.SEC_PRIDE?.names?.[c]||c;}
 function renderUpsets(){
@@ -29,13 +60,15 @@ function renderUpsets(){
   const underdog=u.underdog;
   const lead=underdog===obj.away_code?a-h:h-a;
   if(a===null||h===null||lead<=0)return null;
-  return {id:g.id,label:codeToName(underdog),lead,match:obj.away_code+" – "+obj.home_code};
+  void loadUpsetImpact(obj);
+  return {id:g.id,label:codeToName(underdog),lead,match:obj.away_code+" – "+obj.home_code,
+   impact:getImpact(obj,underdog)};
  }).filter(Boolean).slice(0,3);
  if(!rows.length){host.innerHTML="";host.hidden=true;return;}
  host.hidden=false;
  host.innerHTML='<details class="sec-competition-fold"><summary>⚡ Upset watch <span>'+rows.length+' underdog'+(rows.length===1?"":"s")+' leading</span></summary>'+
   '<div class="sec-competition-rows">'+rows.map(r=>'<div class="sec-competition-row"><strong>'+esc(r.label)+' leading by '+r.lead+
-   '</strong><small>'+esc(r.match)+' · live, not final</small></div>').join("")+
+   '</strong><small>'+esc(r.match)+' · live, not final'+(r.impact?' · '+esc(r.impact):"")+'</small></div>').join("")+
   '</div><small class="sec-competition-muted">Based on published pregame lines; results are not final until confirmed.</small></details>';
 }
 function choices(){
