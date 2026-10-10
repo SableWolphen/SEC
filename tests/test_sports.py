@@ -35,6 +35,8 @@ class SportFeedTests(unittest.TestCase):
   self.assertEqual(result['sports']['basketball']['season'],2027)
   self.assertEqual(len(result['sports']['basketball']['games']),1)
   self.assertEqual(result['sports']['baseball']['games'],[])
+  self.assertIn('first-pitch',result['sports']['baseball']['warning'])
+  self.assertNotIn('displaying verified',result['sports']['baseball']['warning'])
   self.assertEqual(result['sports']['basketball']['source_windows']>0,True)
  def test_offline_reuses_only_verified_old_fixture(self):
   existing={'sports':{'basketball':{'games':[
