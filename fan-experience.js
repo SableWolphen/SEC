@@ -40,7 +40,7 @@ async function loadGames(force=false){
 // Live score polling can update one week without refetching every league's picks.
 function ingestScores(rows){
  for(const row of rows||[])if(row?.id)gameRows[row.id]={...gameRows[row.id],...row};
- if((rows||[]).length)gamesAt=Date.now();
+ // Keep the normal two-minute private-picks refresh independent of live public scores.
 }
 const isScore=n=>Number.isInteger(n)&&n>=0;
 function gameCenter(g,insights){
