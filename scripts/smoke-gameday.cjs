@@ -49,13 +49,13 @@ assert.match(nodes["sec-day-league"].innerHTML,/provisional/);
 assert.match(nodes["sec-day-league"].innerHTML,/Official #1/);
 assert.match(nodes["sec-day-league"].innerHTML,/TAMU <b>14–10<\/b> MIZ/,"live score appears inside League");
 assert.match(nodes["sec-day-league"].innerHTML,/1 live game/);
-assert.match(nodes["sec-day-league"].innerHTML,/Alice[\\s\\S]*?1 <small>leading pick/,"Alice's live call leads");
+assert.match(nodes["sec-day-league"].innerHTML,/Alice.*?1 <small>leading pick/,"Alice's live call leads");
 games[0].awayScore=14;games[0].homeScore=17;games[0].statusDetail="Q3 · 3:55";
 app.leagueOutlook();
 const reversed=nodes["sec-day-league"].innerHTML;
 assert.match(reversed,/TAMU <b>14–17<\/b> MIZ/,"outlook overlays latest public score instead of cached league snapshot");
 assert.ok(reversed.indexOf("Bob")<reversed.indexOf("Alice"),"live leader order changes as the scoreboard changes");
-assert.match(reversed,/Bob[\\s\\S]*?1 <small>leading pick/,"Bob now has the live lead");
+assert.match(reversed,/Bob.*?1 <small>leading pick/,"Bob now has the live lead");
 games.push({id:"g4",away:"MISS",home:"VAN",kickoff:new Date(Date.now()-2*3600000).toISOString(),
  liveStatus:"live",awayScore:0,homeScore:0,statusDetail:"Q1 · 12:00"});
 app.leagueOutlook();
