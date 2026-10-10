@@ -6,6 +6,7 @@ const ids=["fan-league-choice","fan-league-create","fan-single-league","fan-club
  "fan-edit-sport-options","fan-upgrade-sport-options","fan-new-name"];
 const nodes=Object.fromEntries(ids.map(id=>[id,{innerHTML:"",hidden:false,value:"",querySelectorAll:()=>[]}]));
 const handlers={},local=new Map(),rpcCalls=[],pickWrites=[],selectedCalls=[],toasts=[];
+let pauseClubA=false,resolveClubA=null;
 let current={id:"owner-1",email:"owner@example.com"};
 let view="league";
 const clubs=[
@@ -36,8 +37,11 @@ function table(name){
 }
 const db={from:table,rpc:async(fn,args)=>{
  rpcCalls.push({fn,args});
- if(fn==="sec_club_standings")return {data:[{user_id:"owner-1",display_name:"Owner",football:4,basketball:2,baseball:1,
+ if(fn==="sec_club_standings"){
+  if(pauseClubA&&args.p_club==="club-A")await new Promise(resolve=>{resolveClubA=resolve;});
+  return {data:[{user_id:"owner-1",display_name:"Owner",football:4,basketball:2,baseball:1,
   total:args.p_club==="club-A"?6:1,football_correct:4,basketball_correct:2,baseball_correct:1}],error:null};
+ }
  if(fn==="sec_club_set_sports"){
   const c=clubs.find(x=>x.id===args.p_club);if(c.owner_id!==current.id)return {error:{message:"Owner only"}};
   c.enabled_sports=[...args.p_sports];return {data:c.enabled_sports,error:null};
@@ -152,6 +156,31 @@ const run=async()=>{
  await manager.choose("club:club-D");
  assert.equal(manager.getClub().football_league,"fb-original","upgraded football league is still the original competition");
  assert.match(nodes["fan-club-hub"].innerHTML,/🏈 Football picks/,"original football picks are accessible in upgraded league");
+ // Regression: a slower response from league A must never overwrite the selected
+ // league B leaderboard when someone changes leagues quickly.
+ pauseClubA=true;
+ const slowA=manager.choose("club:club-A");
+ await new Promise(setImmediate);
+ assert.ok(resolveClubA,"league A request is pending");
+ await manager.choose("club:club-B");
+ assert.equal(manager.getClub()?.id,"club-B");
+ assert.equal(manager.getStandings()[0]?.total,1);
+ pauseClubA=false;resolveClubA();await slowA;
+ assert.equal(manager.getClub()?.id,"club-B","older response cannot change selected league");
+ assert.equal(manager.getStandings()[0]?.total,1,"older scoreboard cannot bleed into new league");
+ assert.match(nodes["fan-league-create"].innerHTML,/fan-join-code/,"join remains available after switches");
+ // An old basketball league must not silently open this year's unrelated picks.
+ other.push({id:"bb-archive",name:"2026 Hoops",sport:"basketball",season:2026,
+   owner_id:"owner-1",mode:"straight"});
+ await manager.load(true);
+ const callCount=selectedCalls.length;
+ await manager.choose("basketball:bb-archive");
+ assert.match(nodes["fan-single-league"].innerHTML,/2026 season archive/);
+ assert.equal(selectedCalls.length,callCount,"archived season must not redirect to current picks");
+ const sourceManager=fs.readFileSync("league-settings.js","utf8");
+ assert.match(sourceManager,/function formState\(\)/,"preserves unsaved league inputs");
+ assert.match(sourceManager,/function restoreForms\(state\)/,"restores checked sport controls");
+ assert.match(sourceManager,/if\(actionPending\)return/,"blocks duplicate forms submissions");
  current=null;await manager.onView();
  assert.match(nodes["fan-league-choice"].innerHTML,/Log in below/);
  assert.equal(nodes["league-content"].hidden,false,"guest still has shared login");
