@@ -78,6 +78,8 @@ Deno.serve(async(req:Request)=>{
   const sport=String(body.sport||"");
   if(!LEAGUES[sport])return reply({error:"Unsupported sport"},400);
   const now=new Date(),season=currentSeason(now),start=seasonStart(sport,season);
+  // An empty future-season scoreboard is not a failing live-score service.
+  if(now.getTime()<start.getTime()-3*86400000)return reply({ok:true,sport,season,offseason:true,imported:0});
   const prev=await database.from("sec_sport_sync_state").select("last_checked_at,imported").eq("sport",sport).maybeSingle();
   const last=prev.data?.last_checked_at?new Date(prev.data.last_checked_at).getTime():0;
   // A two-minute refresh is useful only around active games. Otherwise the
@@ -91,25 +93,25 @@ Deno.serve(async(req:Request)=>{
   if(now.getTime()-last<ttl)return reply({ok:true,sport,season,cached:true,imported:prev.data?.imported||0,active});
   // The server fetches from a fixed official provider and does NOT accept any
   // game IDs, kickoff dates, winners or scores from a user request.
-  const first=active?new Date(Math.max(start.getTime(),now.getTime()-2*86400000)):
-   new Date(Math.max(start.getTime(),now.getTime()-10*86400000));
-  const end=active?new Date(Math.min(new Date(Date.UTC(season,6,1)).getTime(),now.getTime()+3*86400000)):
-   new Date(Math.min(new Date(Date.UTC(season,6,1)).getTime(),Math.max(now.getTime(),start.getTime())+90*86400000));
-  const unique=new Map<string,any>();let success=0;
+  const first=new Date(Math.max(start.getTime(),now.getTime()-(active?1:2)*86400000));
+  const end=new Date(Math.min(new Date(Date.UTC(season,6,1)).getTime(),
+    now.getTime()+(active?2:8)*86400000));
+  const unique=new Map<string,any>();let success=0,providerErrors=0;
   const compact=(d:Date)=>d.toISOString().slice(0,10).replaceAll("-","");
-  for(let at=new Date(first);at<end;at=new Date(at.getTime()+14*86400000)){
-   const until=new Date(Math.min(end.getTime(),at.getTime()+13*86400000));
-   const path=LEAGUES[sport]+"/scoreboard?dates="+compact(at)+"-"+compact(until)+"&groups=8&limit=500";
+  // ESPN site scoreboards can reject inclusive date ranges with HTTP 400.
+  // Read individual days (only 3 during live games), deduplicating event IDs.
+  for(let at=new Date(first);at<end;at=new Date(at.getTime()+86400000)){
+   const path=LEAGUES[sport]+"/scoreboard?dates="+compact(at)+"&limit=800";
    try{
     const response=await fetch("https://site.api.espn.com/apis/site/v2/sports/"+path,{
      headers:{"Accept":"application/json"},signal:AbortSignal.timeout(10000)});
-    if(!response.ok)continue;
+    if(!response.ok){providerErrors++;continue;}
     const data=await response.json();
     for(const g of parseEvents(data,sport,season,start))unique.set(g.id,g);
     success++;
-   }catch(_){/* Keep previously imported verified games. */}
+   }catch(_){providerErrors++;/* Keep previously imported verified games. */}
   }
-  if(success===0)return reply({error:"Schedule source unavailable; existing games have not been changed"},503);
+  if(success===0)return reply({error:"Schedule source unavailable; existing games have not been changed",providerErrors},503);
   const games=[...unique.values()];
   // Reconcile ESPN event IDs with the verified SEC / university fixture IDs.
   // Preserve existing IDs (and all player picks) when ESPN later publishes an
