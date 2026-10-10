@@ -55,6 +55,9 @@ jobs:
           node --check sec-live-scores.js
           node --check scripts/smoke-live-scores.cjs
           node scripts/smoke-live-scores.cjs
+          node --check sec-gameday.js
+          node --check scripts/smoke-gameday.cjs
+          node scripts/smoke-gameday.cjs
           node --check scripts/check-football-health.cjs
           node --check scripts/smoke-game-day-health.cjs
           node scripts/smoke-game-day-health.cjs
