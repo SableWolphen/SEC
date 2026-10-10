@@ -48,6 +48,8 @@ jobs:
           node scripts/smoke-power-rankings.cjs
           node --check scripts/smoke-quality.cjs
           node scripts/smoke-quality.cjs
+          node --check scripts/smoke-football-scores.cjs
+          node scripts/smoke-football-scores.cjs
           node --check scripts/smoke-league-choice.cjs
           node scripts/smoke-league-choice.cjs
           node --check scripts/smoke-fan-experience.cjs
