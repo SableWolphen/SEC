@@ -53,25 +53,26 @@ function gameCenter(g,insights){
   winner:d?.winner||g.winner||null,
   spread_home:d?.spread_home??g.spread_home,
   spread_source:d?.spread_source||g.spread_source||null};
- const rows=(revealed[g.id]||[]).filter(x=>x===g.away||x===g.home),num=rows.filter(x=>x===g.away).length;
- const locked=Number.isFinite(Date.parse(d?.kickoff_at||g.kickoff))&&Date.parse(d?.kickoff_at||g.kickoff)<=Date.now();
- const trend=locked&&rows.length?'<p class="fan-subtle">League trends (revealed after lock): '+esc(g.away)+' '+Math.round(num/rows.length*100)+
-  '% · '+esc(g.home)+' '+Math.round((rows.length-num)/rows.length*100)+'%</p>':"";
+ // Revealed league pick totals live in one place: the League picks line.
  return '<details class="fan-center" data-fan-center="'+esc(g.id)+'" '+(openDetails.has(g.id)?"open":"")+'>'+
   '<summary><b class="'+(status==="live"?"fan-live":"")+'">'+(status==="live"?"🔴 LIVE":status==="final"?"✓ FINAL":"Game center")+'</b>'+
   '<span>'+(scored?text:"Scores & matchup stats")+'</span><span>⌄</span></summary>'+
-  '<div class="fan-center-detail"><p>'+text+'</p>'+trend+(insights||'<p class="fan-subtle">Matchup details pending.</p>')+
+  '<div class="fan-center-detail">'+
   (window.SEC_GAME_COMMUNITY?.panel?.(game,"football")||"")+
-  '<small>Verified game feed, updated periodically while this tab is open. No simulated play-by-play.</small></div></details>';
+  (insights?'<details class="sec-game-more sec-matchup-fold"><summary>📊 Matchup stats &amp; prediction</summary><div class="sec-game-more-body">'+insights+'</div></details>':"")+
+  '</div></details>';
 }
 function sportCenter(s,g){
  const scored=["live","final"].includes(g.game_status)&&isScore(g.away_score)&&isScore(g.home_score),id=s+"-"+g.id;
  return '<details class="fan-center" data-fan-center="'+esc(id)+'" '+(openDetails.has(id)?"open":"")+'>'+
   '<summary><b class="'+(g.game_status==="live"?"fan-live":"")+'">'+(g.game_status==="live"?"🔴 LIVE":g.game_status==="final"?"✓ FINAL":"Game center")+'</b>'+
   '<span>'+(scored?g.away_score+" – "+g.home_score:"Score & source")+'</span><span>⌄</span></summary>'+
-  '<div class="fan-center-detail">'+esc(g.away_name)+' vs '+esc(g.home_name)+'<p class="fan-subtle">'+
-  (scored?"Confirmed score "+g.away_score+"–"+g.home_score:"Verified score pending")+' · '+esc(g.source||"Schedule feed")+'</p>'+
-  (window.SEC_GAME_COMMUNITY?.panel?.(g,s)||"")+'</div></details>';
+  '<div class="fan-center-detail">'+
+  (window.SEC_GAME_COMMUNITY?.panel?.(g,s)||"")+
+  '<details class="sec-game-more"><summary>Matchup &amp; score source</summary>'+
+  '<div class="sec-game-more-body">'+esc(g.away_name)+' vs '+esc(g.home_name)+
+  '<p>'+(scored?"Confirmed score "+g.away_score+"–"+g.home_score:"Verified score pending")+
+  ' · '+esc(g.source||"Schedule feed")+'</p></div></details></div></details>';
 }
 function recap(){
  const w=app()?.week?.();if(!w)return "";

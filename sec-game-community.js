@@ -114,7 +114,9 @@ function matching(g,item){
  const teams=Array.isArray(item.teams)?item.teams:[];
  const candidates=[g.away,g.home,g.away_code,g.home_code,g.away_name,g.home_name]
   .filter(Boolean).map(c=>name(c).toLowerCase());
- return teams.some(t=>candidates.includes(String(t).toLowerCase()));
+ // A matchup article must identify both schools, not just one school mentioned elsewhere.
+ return [g.away_name||name(g.away_code||g.away),g.home_name||name(g.home_code||g.home)]
+  .every(team=>teams.some(t=>String(t).toLowerCase()===String(team).toLowerCase()));
 }
 async function loadNews(){
  if(Date.now()-newsAt<300000)return;
@@ -132,28 +134,47 @@ async function loadNews(){
 function related(g,sport){
  return articles.filter(a=>(a.sport||"football")===sport&&matching(g,a)).slice(0,4);
 }
+function brief(report){
+ const v=report.context;
+ if(!v)return report.text;
+ if(v.status==="scheduled"){
+  const ranks=[v.rankA?"#"+v.rankA+" "+v.away:null,v.rankH?"#"+v.rankH+" "+v.home:null].filter(Boolean);
+  const lead=ranks.length?ranks.join(" vs ")+".":v.away+" at "+v.home+".";
+  if(v.publishedLine!==null&&v.publishedLine!==0){
+   const favorite=v.publishedLine<0?v.home:v.away;
+   return lead+" Listed favorite: "+favorite+" by "+Math.abs(v.publishedLine).toFixed(1)+".";
+  }
+  if(v.ar&&v.hr)return lead+" Records: "+v.away+" "+v.ar+", "+v.home+" "+v.hr+".";
+  return lead+" Matchup preview available below.";
+ }
+ if(v.status==="live"&&v.scoreReady){
+  if(v.pointsA===v.pointsH)return "Tied "+v.pointsA+"–"+v.pointsH+": "+v.away+" and "+v.home+".";
+  return (v.pointsA>v.pointsH?v.away:v.home)+" leads "+v.pointsA+"–"+v.pointsH+" ("+v.away+" vs "+v.home+").";
+ }
+ if(v.status==="final"&&v.scoreReady&&!/VERIFYING|AWAITING/.test(report.label)){
+  const winner=v.pointsA>v.pointsH?v.away:v.home,loser=v.pointsA>v.pointsH?v.home:v.away;
+  return "Final: "+winner+" over "+loser+", "+Math.max(v.pointsA,v.pointsH)+"–"+Math.min(v.pointsA,v.pointsH)+".";
+ }
+ return report.text;
+}
 function commentary(g,sport){
- const report=narrative(g,sport),hits=related(g,sport);
- const source=hits.find(a=>safeUrl(a.url)),famous=report.context?.stats?.source_url;
- const trustedStats=safeUrl(famous)?famous:null;
- const links=[...hits.slice(0,2).map(a=>({url:safeUrl(a.url),title:a.source||"Original coverage"})),
-   ...(trustedStats?[{url:trustedStats,title:"ESPN game center"}]:[])]
-   .filter(x=>x.url).filter((x,i,list)=>list.findIndex(y=>y.url===x.url)===i);
- const selected=source?'Recent '+source.source+" coverage: “"+String(source.title).slice(0,145)+"”":"";
- const caution=hits.some(a=>/\binjur|ruled out|questionable|inactive|scratched|surgery/i.test(a.title+" "+(a.summary||"")));
+ const report=narrative(g,sport),hits=related(g,sport),source=hits[0];
+ const origin=report.context?.stats?.source_url,statsLink=safeUrl(origin)?origin:null;
+ const links=[...hits.slice(0,2).map(a=>({url:safeUrl(a.url),title:a.source||"Original story"})),
+  ...(statsLink?[{url:statsLink,title:"ESPN matchup"}]:[])]
+  .filter(x=>x.url).filter((x,i,list)=>list.findIndex(y=>y.url===x.url)===i);
  const upsetting=window.SEC_LEAGUE_INSIGHTS?.upset?.(g,sport);
- return '<div class="sec-ai-panel" data-commentary-state="'+esc(report.label)+'">'+
-  '<div class="sec-ai-top"><h5>🎙️ SEC Smart Commentary</h5>'+
-  '<span class="sec-ai-status">'+esc(report.label)+'</span></div>'+
-  '<div class="sec-ai-narrative"><p>'+esc(report.text)+'</p>'+
-  (selected?'<p class="sec-ai-coverage">'+esc(selected)+'</p>':"")+
-  (upsetting?'<div class="sec-upset-watch"><strong>'+esc(upsetting.label)+'</strong><p>'+esc(upsetting.message)+'</p></div>':"")+
-  '</div>'+
-  (caution?'<p class="sec-ai-injury">Injury-related coverage exists. Check the linked original reporting for current status.</p>':"")+
-  '<div class="sec-ai-attribution"><small>Automatically written from published game data. No paid AI API, simulated plays or invented injuries.</small>'+
-  (links.length?'<div class="sec-ai-links">'+links.map(x=>
-   '<a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.title)+" ↗</a>").join("")+'</div>':"")+
-  '</div></div>';
+ const alert=upsetting&&["live","final"].includes(String(g.game_status||g.liveStatus||"").toLowerCase())?upsetting:null;
+ return '<div class="sec-ai-panel sec-ai-compact" data-commentary-state="'+esc(report.label)+'">'+
+  '<div class="sec-ai-top"><h5>🎙️ Game take</h5><span class="sec-ai-status">'+esc(report.label)+'</span></div>'+
+  '<p class="sec-ai-brief">'+esc(brief(report))+'</p>'+
+  (alert?'<p class="sec-ai-alert">⚡ '+esc(alert.message)+'</p>':"")+
+  '<details class="sec-game-more"><summary>Analysis &amp; sources</summary><div class="sec-game-more-body">'+
+   '<p>'+esc(report.text)+'</p>'+
+   (source?'<p class="sec-ai-coverage">Related '+esc(source.source||"")+' story: “'+esc(String(source.title).slice(0,145))+'”</p>':"")+
+   (links.length?'<div class="sec-ai-links">'+links.map(x=>
+    '<a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.title)+' ↗</a>').join("")+'</div>':"")+
+   '<small>Automated from published game data. No paid AI or simulated plays.</small></div></details></div>';
 }
 function reactionMarkup(rows,gameKey){
  const authenticated=!!viewer();
@@ -165,7 +186,7 @@ function reactionMarkup(rows,gameKey){
  }).join("");
  return '<div class="sec-community-reaction-group"><h5>Fan reactions · entire site</h5>'+
   '<div class="sec-community-votes">'+buttons+'</div>'+
-  '<p class="fan-subtle">One reaction per signed-in fan per game; tap again to undo. No public text or anonymous posting.'+
+  '<p class="fan-subtle sec-reaction-help">One reaction per signed-in fan; tap again to undo.'+
   (!authenticated?' <button type="button" data-community-login class="fan-small">Log in to react</button>':'')+
   '</p></div>';
 }
@@ -174,7 +195,7 @@ function panel(g,sport="football"){
  const k=key(g,sport),stored=cache.get(k)||{};
  games.set(k,{g,sport});
  return '<section class="sec-game-community" data-community-game="'+esc(k)+'" aria-label="SEC game commentary and fan reactions">'+
-  '<h4>🏟️ Game Center · fan zone</h4>'+
+  '<h4 class="sec-community-title">Updates &amp; league</h4>'+
   '<div class="sec-community-news">'+commentary(g,sport)+'</div>'+
   '<div class="sec-league-shockwave">'+(window.SEC_LEAGUE_INSIGHTS?.initial?.(g,sport)||"")+'</div>'+
   '<div class="sec-community-reactions">'+(stored.reactions||'<p class="fan-subtle">Checking fan reactions…</p>')+'</div></section>';

@@ -46,33 +46,29 @@ function upset(g,sport="football"){
    " Line sourced from "+source+"; historical pregame pricing is not archived.",underdog};
 }
 function pulseMarkup(item,g,sport,row){
- const ts=names(g,sport);
- const tag=upset(g,sport);
- const counts=Number(row?.total_picks||0);
+ const ts=names(g,sport),counts=Number(row?.total_picks||0);
  const a=Number(row?.away_picks||0),h=Number(row?.home_picks||0);
  const pct=counts?Math.round(a/counts*100):0;
  const correct=Number(row?.winner_picks||0),wrong=Number(row?.losing_picks||0);
  const final=row?.finalized===true,locked=row?.locked===true;
- const msg=!locked?"League picks are revealed after kickoff.":
-  !counts?"No locked picks recorded for this matchup yet.":
-  final?correct+" of "+counts+" league picks backed the verified winner. "+wrong+" picked the other team.":
-  a===h?"Your league is evenly split on this matchup.":
-  (a>h?ts.away:ts.home)+" is the league's most-picked team so far.";
- return '<section class="sec-shockwave-card" aria-label="League Shockwave">'+
-  '<div class="sec-shockwave-head"><strong>⚡ League Shockwave</strong><small>'+esc(item.name||"My league")+'</small></div>'+
-  (tag?'<div class="sec-upset-watch"><strong>'+esc(tag.label)+'</strong><p>'+esc(tag.message)+'</p></div>':"")+
-  '<p class="sec-shockwave-summary">'+esc(msg)+'</p>'+
-  (locked&&counts?'<div class="sec-shockwave-bars" role="img" aria-label="'+esc(ts.away)+" "+a+
-   " picks, "+esc(ts.home)+" "+h+' picks">'+
-   '<div class="sec-shockwave-labels"><span>'+esc(ts.away)+" "+a+
-    '</span><span>'+esc(ts.home)+" "+h+'</span></div>'+
-   '<div class="sec-shockwave-track"><i style="width:'+pct+'%"></i></div></div>':"")+
-  '<small class="sec-shockwave-note">Only locked pick totals are revealed to league members. This counts picks for the winner, not spread or confidence points.</small>'+
-  '</section>';
+ const summary=!locked?"Picks reveal at kickoff.":
+  !counts?"No league picks yet.":
+  final?correct+" of "+counts+" called the winner.":
+  a===h?"Your league is split evenly.":
+  (a>h?ts.away:ts.home)+" has the most league picks.";
+ return '<div class="sec-shockwave-compact" aria-label="League picks">'+
+  '<div class="sec-shockwave-head"><strong>⚡ League picks</strong><small>'+esc(item.name||"My league")+'</small></div>'+
+  '<p class="sec-shockwave-summary">'+esc(summary)+'</p>'+
+  (locked&&counts?'<details class="sec-game-more"><summary>See the '+counts+' picks</summary>'+
+   '<div class="sec-game-more-body"><div class="sec-shockwave-labels"><span>'+esc(ts.away)+" "+a+
+   '</span><span>'+esc(ts.home)+" "+h+'</span></div>'+
+   '<div class="sec-shockwave-track"><i style="width:'+pct+'%"></i></div>'+
+   (final?'<small>'+correct+' correct, '+wrong+' missed based on outright results.</small>':"")+
+   '</div></details>':"")+'</div>';
 }
 function initial(g,sport){
  const item=selected();
- if(!user()||!allowed(item,sport))return '<p class="fan-subtle sec-shockwave-hint">Join a league in this sport to see your friends’ picks after kickoff.</p>';
+ if(!user()||!allowed(item,sport))return "";
  const k=cacheKey(item,g,sport),found=ROWS.get(k);
  return pulseMarkup(item,g,sport,found?.row||null);
 }
