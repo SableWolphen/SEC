@@ -59,7 +59,10 @@ const arena=window.SEC_BRAG_ARENA;
 (async()=>{
  await arena.load(selected);
  assert.equal(fetches,1);
- assert.match(html.innerHTML,/Grudge Match/);
+ assert.match(html.innerHTML,/All-time grudge match records/);
+ assert.match(html.innerHTML,/WEEKLY HEAD-TO-HEAD/);
+ assert.match(html.innerHTML,/New matchups every Monday CT/);
+ assert.match(html.innerHTML,/CORRECT/,"weekly score uses correct picks, not season totals");
  assert.match(html.innerHTML,/PICK RECEIPTS/);
  assert.match(html.innerHTML,/League bulletin/);
  assert.match(html.innerHTML,/<section class="brag-showcase-section brag-featured-rival"/,"Featured rivalry is visible");
@@ -91,7 +94,46 @@ const arena=window.SEC_BRAG_ARENA;
  assert.equal(h.wins,2);
  assert.equal(h.losses,0);
  assert.equal(h.draws,1);
- assert.match(html.innerHTML,/2 shared verified finals compared|3 shared verified finals compared/);
+ assert.match(html.innerHTML,/shared verified games/,"all-time record in expandable history");
+ const week1=arena.weeklyPairing(players,"alice","2026-10-05T17:00:00Z");
+ const week2=arena.weeklyPairing(players,"alice","2026-10-12T17:00:00Z");
+ const week3=arena.weeklyPairing(players,"alice","2026-10-19T17:00:00Z");
+ assert.equal(week1.label,"Week of Oct 5");
+ assert.equal(week2.label,"Week of Oct 12");
+ assert.equal(week3.label,"Week of Oct 19");
+ const threeWeeks=[week1,week2,week3];
+ assert.equal(new Set(threeWeeks.map(w=>w.opponent||"bye")).size,3,
+  "three-person league cycles two different rivals and a fair bye");
+ for(const w of threeWeeks){
+  for(const pair of w.pairings){
+   assert.ok(pair.every(id=>players.some(p=>p.user_id===id)));
+   assert.equal(pair.length,2);
+   assert.notEqual(pair[0],pair[1]);
+  }
+  assert.equal(w.pairings.length,1);
+ }
+ const beforeSunday=arena.texasWeek("2026-10-11T23:58:00Z"),
+  onMonday=arena.texasWeek("2026-10-12T05:00:00Z");
+ assert.equal(beforeSunday.label,"Week of Oct 5","Sunday CT remains in previous matchup");
+ assert.equal(onMonday.label,"Week of Oct 12","exact Monday midnight CT resets rivalry");
+ const midweek=arena.weeklyMatch(m,"alice","bob","2026-10-10T17:00:00Z");
+ assert.equal(midweek.finals,3,"weekly matchup counts verified football, basketball and baseball finals");
+ assert.equal(midweek.my,3);
+ assert.equal(midweek.their,1);
+ const newWeek=arena.weeklyMatch(m,"alice","bob","2026-10-12T17:00:00Z");
+ assert.equal(newWeek.my,0,"new weekly scores reset before final games");
+ assert.equal(newWeek.their,0);
+ const twoPeople=[players[0],players[1]];
+ assert.equal(arena.weeklyPairing(twoPeople,"alice","2026-10-05T17:00:00Z").opponent,"bob");
+ assert.equal(arena.weeklyPairing(twoPeople,"alice","2026-10-12T17:00:00Z").opponent,"bob",
+  "two-person leagues keep the only available opponent");
+ const fourPeople=[...players,{user_id:"dave",display_name:"Dave"}];
+ for(const date of ["2026-10-05T17:00:00Z","2026-10-12T17:00:00Z","2026-10-19T17:00:00Z"]){
+  const pairs=arena.weeklyPairing(fourPeople,"alice",date).pairings;
+  assert.equal(pairs.length,2,"four people yield two balanced one-on-one matches");
+  assert.equal(new Set(pairs.flat()).size,4,"no duplicated players in a weekly round");
+ }
+
  assert.equal(arena.verified(games[0]),true);
  assert.equal(arena.verified({...games[0],winner:"UGA"}),false,"mismatched winner rejected");
  const bullets=arena.bulletin(m);
@@ -111,10 +153,17 @@ const arena=window.SEC_BRAG_ARENA;
  assert.match(copied[0],/24–17/);
  const challenger={dataset:{bragShare:"challenge"},
   hasAttribute:x=>x==="data-brag-share",matches:()=>false};
+ const presentPair=arena.weeklyPairing(players,"alice");
  listeners.click({target:{closest:()=>challenger},preventDefault(){}});
  await new Promise(resolve=>setImmediate(resolve));
- assert.equal(copied.length,2);
- assert.match(copied[1],/challenges Bob/);
+ if(presentPair.opponent){
+  assert.equal(copied.length,2);
+  assert.match(copied[1],/challenges /);
+  assert.match(copied[1],/this week/);
+  assert.match(copied[1],/Verified picks:/);
+ }else{
+  assert.equal(copied.length,1,"bye weeks cannot issue a false weekly rival challenge");
+ }
  await arena.load(selected);
  assert.equal(fetches,1,"cached data scoped to selected league");
  selected={kind:"football",id:"different-league",name:"Other",sports:["football"]};
