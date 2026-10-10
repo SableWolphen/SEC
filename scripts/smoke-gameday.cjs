@@ -12,7 +12,7 @@ const games=[
  {id:"g3",away:"LSU",home:"TENN",kickoff:"2026-10-11T15:00:00Z",liveStatus:"scheduled",awayScore:0,homeScore:0}
 ];
 const picks={g1:"TAMU",g2:"ALA"};
-let uid="alice",selected={kind:"club",id:"club-A",name:"A"},copied=[],calls=0,shared=[];
+let uid="alice",selected={kind:"club",id:"club-A",name:"A",sports:["football"]},copied=[],calls=0,shared=[];
 const previous=new Date("2026-10-05T18:00:00Z"),weekStart=Math.floor(previous.getTime()/86400000);
 const locker={players:[{user_id:"alice",display_name:"Alice"},{user_id:"bob",display_name:"Bob"}],
  games:[{id:"g1",away_code:"TAMU",home_code:"MIZ",kickoff_at:games[0].kickoff,game_status:"live",
@@ -47,6 +47,26 @@ assert.match(nodes["sec-day-league"].innerHTML,/LIVE LEAGUE OUTLOOK/);
 assert.match(nodes["sec-day-league"].innerHTML,/leading picks/);
 assert.match(nodes["sec-day-league"].innerHTML,/provisional/);
 assert.match(nodes["sec-day-league"].innerHTML,/Official #1/);
+assert.match(nodes["sec-day-league"].innerHTML,/TAMU <b>14–10<\/b> MIZ/,"live score appears inside League");
+assert.match(nodes["sec-day-league"].innerHTML,/1 live game/);
+assert.match(nodes["sec-day-league"].innerHTML,/Alice[\\s\\S]*?1 <small>leading pick/,"Alice's live call leads");
+games[0].awayScore=14;games[0].homeScore=17;games[0].statusDetail="Q3 · 3:55";
+app.leagueOutlook();
+const reversed=nodes["sec-day-league"].innerHTML;
+assert.match(reversed,/TAMU <b>14–17<\/b> MIZ/,"outlook overlays latest public score instead of cached league snapshot");
+assert.ok(reversed.indexOf("Bob")<reversed.indexOf("Alice"),"live leader order changes as the scoreboard changes");
+assert.match(reversed,/Bob[\\s\\S]*?1 <small>leading pick/,"Bob now has the live lead");
+games.push({id:"g4",away:"MISS",home:"VAN",kickoff:new Date(Date.now()-2*3600000).toISOString(),
+ liveStatus:"live",awayScore:0,homeScore:0,statusDetail:"Q1 · 12:00"});
+app.leagueOutlook();
+assert.match(nodes["sec-day-league"].innerHTML,/2 live games/,"tied 0-0 games count as live even when nobody has a winning pick");
+assert.match(nodes["sec-day-league"].innerHTML,/MISS <b>0–0<\/b> VAN/,"newly started game appears before its pick snapshot refreshes");
+games[0].liveStatus="final";
+app.leagueOutlook();
+assert.match(nodes["sec-day-league"].innerHTML,/1 live game/,"a final is removed despite stale live status inside the cached league RPC");
+assert.doesNotMatch(nodes["sec-day-league"].innerHTML,/TAMU <b>14–17<\/b> MIZ/,"final is not still described as live");
+games[0].liveStatus="live";games[0].homeScore=10;games.pop();
+app.leagueOutlook();
 assert.equal(app.personalStatus(games[0],"TAMU").kind,"leading");
 assert.equal(app.personalStatus(games[0],"MIZ").kind,"trailing");
 assert.equal(app.personalStatus(games[0],null).kind,"none");
@@ -66,6 +86,11 @@ Promise.resolve().then(()=>{
  assert.match(copied[0],/verified/i);
  uid=null;app.refresh();
  assert.equal(nodes["sec-day-league"].innerHTML,"","switching to guest clears league data");
+ const sync=fs.readFileSync("sec-live-scores.js","utf8");
+ assert.match(sync,/if\(viewing==="league"\)window\.SEC_GAMEDAY\?\.leagueOutlook\?\.\(\)/,
+ "each league-view score poll rerenders the live outlook");
+ assert.match(fs.readFileSync("sec-gameday.js","utf8"),/sec_brags_locker_room/,
+ "post-kickoff private picks are periodically refreshed, not locked into Brags cache");
  const backend=fs.readFileSync("supabase/functions/sec-sport-sync/index.ts","utf8");
  assert.match(backend,/sec_verify_scores_job/,"background refresh validates existing Vault job token");
  assert.match(backend,/status_detail/,"server stores sourced sport periods");
