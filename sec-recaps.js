@@ -27,7 +27,7 @@ function normalize(g,sport,now=Date.now()){
  const winner=String(sport==="football"?g.winner:g.winner_code);
  if(!aw||!hm||aw===hm||winner!==aw&&winner!==hm||g.away_score===g.home_score)return null;
  if(winner===aw&&g.away_score<=g.home_score||winner===hm&&g.home_score<=g.away_score)return null;
- return {...g,sport,time,away_code:aw,home_code:hm,
+ return {...g,sport,time,winner,away_code:aw,home_code:hm,
   away_name:label(aw,g.away_name),home_name:label(hm,g.home_name),margin:Math.abs(g.away_score-g.home_score)};
 }
 function gameLink(g){

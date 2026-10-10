@@ -672,3 +672,20 @@ body{overflow-x:clip}
 .sec-recap-caution{color:#f0c5a1;display:block;margin:8px 2px}
 @media(max-width:840px){.sec-recap-grid{display:flex;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;padding:1px 0 8px;gap:10px}.sec-recap-card{flex:0 0 min(82vw,320px);scroll-snap-align:start}.sec-recap-team{font-size:12px}}
 @media(max-width:440px){.sec-news-head{padding:15px}.sec-recap-card{flex-basis:min(85vw,300px)}.sec-news-stories-heading{margin-top:22px}}
+
+/* Matchup AI commentary: compact, clearly attributed, consistent with dark fan zone. */
+.sec-ai-panel{background:radial-gradient(circle at 95% 0%,#54724742,transparent 43%),linear-gradient(145deg,#1b353b,#142933);
+ border:1px solid #4e7065;border-radius:14px;padding:13px 14px;margin:10px 0 14px;min-width:0}
+.sec-ai-top{display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap;margin-bottom:11px}
+.sec-ai-top h5{margin:0!important;color:#f2f9ef;font-size:15px;font-weight:950;letter-spacing:-.4px}
+.sec-ai-status{border:1px solid #6e9272;border-radius:7px;padding:4px 7px;color:#d5ff65;background:#314a38;font-size:9px;font-weight:950;letter-spacing:.8px}
+.sec-ai-narrative{color:#dcebe7;font-size:12px;line-height:1.65;overflow-wrap:anywhere}
+.sec-ai-narrative p{margin:0 0 8px}.sec-ai-narrative p:last-child{margin:0}
+.sec-ai-narrative strong{color:#dcf4ba}
+.sec-ai-coverage{color:#b9d7d5;margin-top:10px!important;border-left:2px solid #7ca278;padding-left:10px}
+.sec-ai-attribution{border-top:1px solid #3d5c59;padding-top:9px;margin-top:12px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+.sec-ai-attribution small{font-size:10px;line-height:1.5;color:#9bb8b7}
+.sec-ai-links{display:flex;flex-wrap:wrap;gap:9px}
+.sec-ai-links a{font-size:10px;font-weight:900;color:#d5ff65;text-decoration:underline;text-underline-offset:3px}
+.sec-ai-injury{font-size:11px;color:#e0c8a4;margin:7px 0 0}
+@media(max-width:430px){.sec-ai-panel{padding:12px}.sec-ai-narrative{font-size:12px}}

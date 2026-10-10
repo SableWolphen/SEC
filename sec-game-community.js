@@ -1,4 +1,5 @@
-/* League-independent reactions and source-only Game Center. No invented injuries or LLM output. */
+/* League-independent reactions and source-grounded Game Center commentary.
+   AI output is generated server-side only when configured; rule-based fallback is labeled. */
 (()=>{
 "use strict";
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -6,6 +7,7 @@ const schools={ALA:"Alabama",ARK:"Arkansas",AUB:"Auburn",FLA:"Florida",UGA:"Geor
  MSST:"Mississippi State",MIZ:"Missouri",OU:"Oklahoma",SC:"South Carolina",TENN:"Tennessee",TEX:"Texas",TAMU:"Texas A&M",VAN:"Vanderbilt"};
 const emojis={fire:"🔥",upset:"⚡",hype:"🙌",wow:"😱"};
 let articles=[],newsAt=0;
+const aiAttempts=new Map();
 const cache=new Map(),pending=new Set(),games=new Map();
 const db=()=>window.secOnline?.getClient?.();
 const viewer=()=>window.secOnline?.getUser?.();
@@ -15,9 +17,8 @@ function panel(g,sport="football"){
  if(!g?.id)return "";
  const k=key(g,sport),stored=cache.get(k)||{};games.set(k,{g,sport});
  return '<section class="sec-game-community" data-community-game="'+esc(k)+'" aria-label="Fan Game Center extras">'+
-  '<h4>🏟️ Fans &amp; matchup intel</h4>'+
-  '<div class="sec-community-commentary">'+(stored.commentary||'Open Game Center for a source-grounded matchup preview.')+'</div>'+
-  '<div class="sec-community-news">'+(stored.news||'<p class="fan-subtle">Loading team headlines and injury watch…</p>')+'</div>'+
+  '<h4>🏟️ Game Center · fan zone</h4>'+
+  '<div class="sec-community-news">'+(stored.news||'<p class="fan-subtle">Loading AI commentary and verified matchup details…</p>')+'</div>'+
   '<div class="sec-community-reactions">'+(stored.reactions||'<p class="fan-subtle">Loading fan reactions…</p>')+'</div></section>';
 }
 const safeUrl=u=>{
@@ -57,18 +58,25 @@ async function loadNews(){
   newsAt=Date.now();
  }catch(e){newsAt=Date.now();articles=[];}
 }
-function newsFor(g,sport){
+function commentaryFor(g,sport,generated){
  const hits=articles.filter(a=>(a.sport||"football")===sport&&matching(g,a)).slice(0,5);
  const injury=hits.filter(a=>/\binjur|ruled out|out for season|questionable|surgery|inactive|scratched/i.test(a.title+" "+(a.summary||"")));
- const cards=hits.slice(0,3).map(a=>'<li><a href="'+esc(safeUrl(a.url))+'" target="_blank" rel="noopener noreferrer">'+esc(a.title)+'</a> <small>'+esc(a.source)+'</small></li>').join("");
- const alerts=injury.length?'<p class="fan-subtle">Injury-related reports from linked articles: '+injury.length+'. Check the original publisher for status.</p>':
-  '<p class="fan-subtle">Injury watch: No verified injury-related headline found for these teams in the recent news feed. This does not mean no one is injured.</p>';
- return '<div class="sec-community-news-section"><h5>📰 Matchup headlines</h5>'+
-  (cards?'<ul>'+cards+'</ul>':'<p class="fan-subtle">No recent source-linked team headlines in this feed.</p>')+
-  alerts+
-  (sport==="football"&&safeUrl(window.SEC_STATS?.getGame?.(g)?.source_url)?
-   '<p><a href="'+esc(safeUrl(window.SEC_STATS.getGame(g).source_url))+'" target="_blank" rel="noopener noreferrer">Check ESPN for more team updates ↗</a></p>':'')+
-  '</div>';
+ const best=hits.find(a=>a.title&&safeUrl(a.url));
+ const story=best?'Recent reporting: '+String(best.title).slice(0,145)+'.':"";
+ const fallback=(analysis(g,sport)||"")+
+  (story?'<p class="sec-ai-coverage">'+esc(story)+'</p>':"");
+ const text=typeof generated==="string"&&generated.length>35?
+  '<p class="sec-ai-copy">'+esc(generated)+'</p>':fallback;
+ const hint=generated?"Generated from verified SEC game data and recent source-linked reporting. AI can make mistakes; follow source links for details.":
+  "Source-grounded automated preview · Generative AI writing is not currently available for this matchup.";
+ const links=hits.slice(0,2).filter(a=>safeUrl(a.url)).map(a=>
+  '<a href="'+esc(safeUrl(a.url))+'" target="_blank" rel="noopener noreferrer">'+esc(a.source||"Publisher")+' ↗</a>').join("");
+ return '<div class="sec-ai-panel"><div class="sec-ai-top">'+
+  '<h5>🎙️ AI Commentary</h5><span class="sec-ai-status">'+(generated?"AI-GENERATED":"MATCHUP PREVIEW")+'</span></div>'+
+  '<div class="sec-ai-narrative">'+text+'</div>'+
+  (injury.length?'<p class="sec-ai-injury">Injury-related reporting is available. Verify the latest status with the original publisher.</p>':"")+
+  '<div class="sec-ai-attribution"><small>'+esc(hint)+'</small>'+
+  (links?'<div class="sec-ai-links">'+links+'</div>':"")+'</div></div>';
 }
 function reactionMarkup(rows,gameKey){
  const authenticated=!!viewer();
@@ -88,8 +96,7 @@ function update(k){
  const root=[...document.querySelectorAll("[data-community-game]")].find(el=>el.dataset.communityGame===k);
  const state=cache.get(k);
  if(!root||!state)return;
- for(const [cls,value] of [[".sec-community-commentary",state.commentary],
-  [".sec-community-news",state.news],[".sec-community-reactions",state.reactions]])
+ for(const [cls,value] of [[".sec-community-news",state.news],[".sec-community-reactions",state.reactions]])
   if(value!=null){const node=root.querySelector(cls);if(node)node.innerHTML=value;}
 }
 async function load(g,sport="football",force=false){
@@ -100,9 +107,22 @@ async function load(g,sport="football",force=false){
  if(!force&&record&&Date.now()-record.updated<60000){update(k);return;}
  pending.add(k);
  const next=record||{};
- next.commentary=analysis(g,sport);cache.set(k,next);update(k);
+ cache.set(k,next);update(k);
  try{
-  await loadNews();next.news=newsFor(g,sport);update(k);
+  await loadNews();next.news=commentaryFor(g,sport,next.ai);update(k);
+  // Try server-side generative commentary, never expose provider credentials to the browser.
+  // Unconfigured AI keeps the honest source-grounded matchup preview, not a fake answer.
+  if(viewer()&&db()?.functions?.invoke&&
+     (!aiAttempts.has(k)||Date.now()-aiAttempts.get(k)>5*60000)&&!next.ai){
+   aiAttempts.set(k,Date.now());
+   void db().functions.invoke("sec-commentary",{body:{game_id:String(g.id),sport}})
+    .then(response=>{
+      if(response?.error||!response?.data?.available||!response?.data?.generated)return;
+      if(typeof response.data.commentary!=="string"||response.data.commentary.length<35)return;
+      next.ai=response.data.commentary.slice(0,1150);
+      next.news=commentaryFor(g,sport,next.ai);update(k);
+    }).catch(()=>{});
+  }
   if(db()){
    const result=await db().rpc("sec_game_reaction_totals",{p_game:k});
    if(result.error)throw result.error;
