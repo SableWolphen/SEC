@@ -65,6 +65,28 @@ fs.mkdirSync(output,{recursive:true});
      if(!tidy.topVisible||tidy.repeated.length)
       problems.push(viewport.width+"px duplicate football summaries: "+JSON.stringify(tidy));
     }
+    if(route==="trophies"){
+     const museum=await page.evaluate(()=>{
+      const root=document.querySelector("#sds-trophy-case");
+      return {rendered:root?.classList.contains("sds-museum"),
+       championships:root?.querySelectorAll(".museum-champ").length||0,
+       locked:root?.querySelectorAll(".museum-champ .museum-lock").length||0,
+       schools:root?.querySelectorAll("[data-museum-school]").length||0,
+       medallist:!!root?.querySelector(".museum-medals"),
+       openByDefault:root?.querySelectorAll('.museum-school[aria-expanded="true"]').length||0};
+     });
+     if(!museum.rendered||museum.championships!==3||museum.locked!==3||
+        museum.schools!==16||!museum.medallist||museum.openByDefault!==0)
+      problems.push(viewport.width+"px trophy museum failed: "+JSON.stringify(museum));
+     if(museum.schools===16){
+      await page.locator('[data-museum-school="ALA"]').click();
+      const opened=await page.locator('#sds-trophy-case .museum-school-expanded .sds-trophy-card').count();
+      if(opened<1)problems.push(viewport.width+"px Alabama trophies cannot expand");
+      await page.locator('[data-museum-school="ALA"]').click();
+      const closed=await page.locator('#sds-trophy-case .museum-school-expanded').count();
+      if(closed)problems.push(viewport.width+"px Alabama trophies cannot collapse");
+     }
+    }
     await page.screenshot({path:path.join(output,viewport.width+"-"+route+".png")});
     total++;
    }
