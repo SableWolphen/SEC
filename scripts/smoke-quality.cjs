@@ -31,6 +31,15 @@ assert.match(html,/id="fan-league-create"/);
 assert.match(html,/id="fan-power-rankings"/);
 assert.match(html,/id="sec-live-score-strip"/,"compact football-only score strip exists");
 assert.match(html,/sec-live-scores\.js\?v=/,"live score refresh loads on every site session");
+
+const fan=fs.readFileSync("fan-experience.js","utf8");
+const features=fs.readFileSync("league-features.js","utf8");
+assert.doesNotMatch(html,/sec-score-phase/,"matchup headers do not repeat live status");
+assert.doesNotMatch(features,/class="sec-live"/,"league extras do not duplicate the Game Center score");
+assert.match(fan,/status==="live"\?"🔴 LIVE"/,"Game Center retains one live badge");
+assert.match(fan,/statusDetail\|\|d\?\.status_detail/,"quarter and clock remain beside the Game Center score");
+assert.match(features,/Friends’ picks revealed/,"revealed friends picks stay available");
+
 assert.match(html,/id="fan-club-hub"/);
 assert.match(html,/id="fan-single-league"/);
 assert.match(html,/id="fan-brackets"/);
