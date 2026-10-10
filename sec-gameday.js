@@ -215,7 +215,7 @@ function liveOutlookModel(item,data,power,clubs,uid){
  const active=liveLeagueGames(item,data);
  const picks=(data?.picks||[]).filter(p=>typeof p?.user_id==="string"&&typeof p?.game_id==="string");
  const lookup=new Map(picks.map(p=>[p.user_id+"|"+p.game_id,p.pick_code]));
- const official=new Map((item.kind==="club"?clubs:power).map(r=>[r.user_id,r]));
+ const official=new Map((item.kind==="club"&&clubs.length?clubs:power).map(r=>[r.user_id,r]));
  const modes=new Set((data?.games||[]).filter(g=>g.sport==="football").map(g=>g.mode).filter(Boolean));
  const mode=item.kind==="football"?window.SEC_FEATURES?.getMode?.()||[...modes][0]:[...modes][0];
  const allOnePoint=["straight","h2h"].includes(mode)&&[...modes].every(m=>["straight","h2h"].includes(m));
@@ -223,7 +223,7 @@ function liveOutlookModel(item,data,power,clubs,uid){
   const leads=active.reduce((sum,g)=>sum+Number(lookup.get(p.user_id+"|"+g.id)===win(g)&&win(g)!==null),0);
   const entered=active.reduce((sum,g)=>sum+Number(lookup.has(p.user_id+"|"+g.id)),0);
   const officialRow=official.get(p.user_id);
-  const officialPoints=number(item.kind==="club"?officialRow?.total:officialRow?.season_points);
+  const officialPoints=number(item.kind==="club"?officialRow?.total??officialRow?.season_points:officialRow?.season_points);
   return {id:p.user_id,name:String(p.display_name||"Player"),leads,entered,
    officialRank:officialRow?.current_rank??null,
    officialPoints,projected:allOnePoint&&officialPoints!==null?officialPoints+leads:null,
