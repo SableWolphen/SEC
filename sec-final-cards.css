@@ -394,3 +394,7 @@
  #picks-view .sec-final-team-copy>strong{font-size:9px}
  #picks-view .sec-final-team-score{font-size:20px}
 }
+
+/* Force consistent closed <details> layout in all Chromium/WebKit versions. */
+#picks-view .sec-final-card .sec-final-details:not([open]) > .sec-final-detail-body{display:none!important}
+#picks-view .sec-final-card .sec-final-details[open] > .sec-final-detail-body{display:block}
