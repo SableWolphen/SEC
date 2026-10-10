@@ -8,6 +8,7 @@ const client=()=>window.secOnline?.getClient?.();
 const host=()=>document.getElementById("sec-live-score-strip");
 const esc=x=>String(x==null?"":x).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 let busy=false,lastRequest=0,lastError="",activeRequest=0;
+let realtimeConnected=false,realtimeChannel=null;
 const fingerprints=new Map();
 const now=()=>Date.now();
 const visible=()=>document.visibilityState!=="hidden";
@@ -43,7 +44,7 @@ function renderStatus(){
     ' <span aria-hidden="true">·</span> '+(isScore(g.homeScore)?g.homeScore:'–')+' <b>'+esc(g.home)+'</b>'+
     (g.statusDetail?' <small>'+esc(g.statusDetail)+'</small>':'')+'</span>').join("");
  el.innerHTML='<div class="sec-live-strip-title"><strong>'+heading+'</strong><span>'+
-   (stale?'Score feed delayed':lastError?'Retrying score feed':live.length?'Checks every 30 seconds':'Automatic updates near kickoff')+
+   (stale?'Score feed delayed':lastError?'Retrying score feed':live.length?(realtimeConnected?'Live updates on':'Auto-updating scores'):'Automatic updates near kickoff')+
    '</span></div>'+(scores?'<div class="sec-live-mini-scores">'+scores+'</div>':'')+
    (unpicked.length?'<button type="button" data-slate-next class="sec-live-next-pick">'+
      unpicked.length+' open pick'+(unpicked.length===1?'':'s')+' · Jump to next ↓</button>':'')+
@@ -129,6 +130,35 @@ async function refresh(force=false){
   console.info("SEC live score refresh:",e?.message||"Unavailable");
  }finally{busy=false;}
 }
+// A game-score change is safe to use only as a notification; re-read the
+// RLS-controlled score rows rather than blindly trusting a WebSocket payload.
+// Realtime reduces the UI lag after the server's ESPN import, while polling
+// remains essential if the socket is disconnected, suspended, or blocked.
+function subscribeToScores(){
+ const c=client();
+ if(!c?.channel||realtimeChannel)return;
+ try{
+  realtimeChannel=c.channel("sec-public-game-scores");
+  realtimeChannel.on("postgres_changes",{
+   event:"UPDATE",schema:"public",table:"sec_games"
+  },event=>{
+   const id=String(event?.new?.id||"");
+   const a=app();
+   if(!id||!visible()||!["picks","league"].includes(a?.view?.()))return;
+   // Only refresh if the updated result matters to the visible slate.
+   if(a.view()==="picks"&&!a.week?.()?.games?.some(g=>g.id===id))return;
+   void refresh(true);
+  }).subscribe(status=>{
+   realtimeConnected=status==="SUBSCRIBED";
+   if(app()?.view?.()==="picks")renderStatus();
+  });
+ }catch(e){
+  realtimeConnected=false;
+  realtimeChannel=null;
+  console.info("SEC realtime unavailable; timed updates remain active:",e?.message||"Unavailable");
+ }
+}
+
 document.addEventListener("click",event=>{
  if(event.target.closest?.('[data-week],[data-nav="picks"],[data-sport-tab="football"],[data-nav="current-sport"],[data-nav="league"]')){
   setTimeout(()=>{renderStatus();void refresh(true);},0);
@@ -140,5 +170,6 @@ document.addEventListener("visibilitychange",()=>{
 setInterval(()=>{if(visible())void refresh();},30000);
 renderStatus();
 void refresh(true);
+subscribeToScores();
 window.SEC_LIVE_SCORES=Object.freeze({refresh,liveWindow,renderStatus});
 })();
