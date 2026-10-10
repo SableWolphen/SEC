@@ -182,7 +182,7 @@ function renderDuel(m,me,other){
   '<div class="brag-headline-score"><strong>'+match.wins+'</strong><span>WINS · '+match.draws+' TIES · '+match.losses+' LOSSES</span><strong>'+match.losses+'</strong></div>'+
   '<p class="fan-subtle">'+match.both+' shared verified finals compared. A win means you called the winner and your rival missed; matching calls are ties.</p>'+
   (rec?'<div class="brag-rounds">'+rec+'</div>':'<p class="fan-subtle">No shared confirmed results yet. Your first face-off begins after a final score.</p>')+
-  '<button type="button" class="fan-small fan-primary" data-brag-share="challenge">⚔️ Call out rival ↗</button>';
+  '<button type="button" class="fan-small fan-primary" data-brag-share="history">⚔️ Share all-time record ↗</button>';
 }
 function receiptText(g,p,m){
  const pick=take(g,p),selected=pick===g.home_code?(g.home_name||name(g.home_code)):(g.away_name||name(g.away_code));
@@ -479,14 +479,23 @@ document.addEventListener("click",e=>{
   const n=bulletin(m)[Number(b.dataset.bragBulletin)];
   if(n)void copy(n.text+"\nSEC Pick’em · "+(item()?.name||"League"));
  }else if(b.hasAttribute("data-brag-share")){
+  const history=b.dataset.bragShare==="history";
   const pairing=weeklyPairing([...m.players.values()],me.id);
-  const rival=m.players.get(pairing.opponent);
+  const rival=m.players.get(history?chosenOpponent:pairing.opponent);
   if(!rival)return;
-  const week=weeklyMatch(m,me.id,rival.user_id);
-  void copy("⚔️ "+(m.players.get(me.id)?.display_name||"Player")+" challenges "+
-    (rival.display_name||"Player")+" this week ("+pairing.label+")! "+
-    "Verified picks: "+week.my+"–"+week.their+" so far. "+
-    "New SEC rivalry opponents every Monday CT. · "+(item()?.name||"League"));
+  if(history){
+   const all=rivalry(m,me.id,rival.user_id);
+   void copy("⚔️ "+(m.players.get(me.id)?.display_name||"Player")+" vs "+
+    (rival.display_name||"Player")+" — all-time: "+all.wins+"–"+all.losses+
+    " with "+all.draws+" ties across "+all.both+" shared verified final picks. "+
+    "· "+(item()?.name||"League"));
+  }else{
+   const week=weeklyMatch(m,me.id,rival.user_id);
+   void copy("⚔️ "+(m.players.get(me.id)?.display_name||"Player")+" challenges "+
+     (rival.display_name||"Player")+" this week ("+pairing.label+")! "+
+     "Verified picks: "+week.my+"–"+week.their+" so far. "+
+     "New SEC rivalry opponents every Monday CT. · "+(item()?.name||"League"));
+  }
  }
 });
 // Recompute automatically at the Central-Time weekly rollover even if the
