@@ -151,18 +151,24 @@ const arena=window.SEC_BRAG_ARENA;
  assert.equal(copied.length,1);
  assert.match(copied[0],/PICK RECEIPT|UPSET RECEIPT/);
  assert.match(copied[0],/24–17/);
+ const archivedShare={dataset:{bragShare:"history"},
+  hasAttribute:x=>x==="data-brag-share",matches:()=>false};
+ listeners.click({target:{closest:()=>archivedShare},preventDefault(){}});
+ await new Promise(resolve=>setImmediate(resolve));
+ assert.equal(copied.length,2);
+ assert.match(copied[1],/all-time:/,"historical rivalry share is distinct from the weekly challenge");
  const challenger={dataset:{bragShare:"challenge"},
   hasAttribute:x=>x==="data-brag-share",matches:()=>false};
  const presentPair=arena.weeklyPairing(players,"alice");
  listeners.click({target:{closest:()=>challenger},preventDefault(){}});
  await new Promise(resolve=>setImmediate(resolve));
  if(presentPair.opponent){
-  assert.equal(copied.length,2);
-  assert.match(copied[1],/challenges /);
-  assert.match(copied[1],/this week/);
-  assert.match(copied[1],/Verified picks:/);
+  assert.equal(copied.length,3);
+  assert.match(copied[2],/challenges /);
+  assert.match(copied[2],/this week/);
+  assert.match(copied[2],/Verified picks:/);
  }else{
-  assert.equal(copied.length,1,"bye weeks cannot issue a false weekly rival challenge");
+  assert.equal(copied.length,2,"bye weeks cannot issue a false weekly rival challenge");
  }
  await arena.load(selected);
  assert.equal(fetches,1,"cached data scoped to selected league");
