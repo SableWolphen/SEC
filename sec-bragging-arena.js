@@ -202,6 +202,122 @@ function accolade(m,me){
   (pride?'<div class="brag-schools">'+pride+'</div>':'<p class="fan-subtle">School pride standings appear after fans with a chosen favorite school have at least three graded picks.</p>')+
   '<p class="fan-subtle">These informal honors compare outright game winners only and never award additional league points.</p></div></details>';
 }
+function highlightCards(m){
+ const scoreRows=window.SEC_POWER?.getRows?.(item())||[];
+ const leader=scoreRows.find(p=>Number(p.current_rank)===1&&Number(p.season_graded)>0);
+ const ranks=awards(m).byPlayer;
+ const streak=ranks.slice().sort((a,b)=>b.streak-a.streak)[0];
+ const upset=ranks.slice().sort((a,b)=>b.upsets-a.upsets)[0];
+ const accurate=ranks.filter(p=>p.graded>=5).sort((a,b)=>b.correct/b.graded-a.correct/a.graded||b.graded-a.graded)[0];
+ const point=leader&&Number.isFinite(Number(leader.season_points))?
+  Number(leader.season_points).toLocaleString("en-US",{maximumFractionDigits:1})+" pts":"Verified points leader";
+ const cards=[
+  {icon:"👑",cls:"king",label:"LEAGUE KING",value:leader?.display_name||"Unclaimed",note:leader?point:"Awaiting final games",target:"honors"},
+  {icon:"🔥",cls:"streak",label:"HOT STREAK",value:streak?.streak>0?String(streak.streak):"—",
+   note:streak?.streak>0?"Best correct-pick streak":"No verified streak yet",target:"honors"},
+  {icon:"⚡",cls:"upset",label:"UPSET HUNTER",value:upset?.upsets>0?String(upset.upsets):"—",
+   note:upset?.upsets>0?esc(upset.display_name||"Player")+" · sourced upsets":"No verified upsets",target:"honors"},
+  {icon:"🎯",cls:"accuracy",label:"MOST ACCURATE",value:accurate?Math.round(100*accurate.correct/accurate.graded)+"%":"—",
+   note:accurate?esc(accurate.display_name||"Player")+" · "+accurate.graded+" graded":"Requires 5 graded picks",target:"honors"}
+ ];
+ return '<div class="brag-showcase-stats" aria-label="Current bragging highlights">'+
+  cards.map(c=>'<div class="brag-showcase-stat is-'+c.cls+'">'+
+   '<span class="brag-stat-icon" aria-hidden="true">'+c.icon+'</span>'+
+   '<div class="brag-stat-copy"><span>'+c.label+'</span><strong>'+esc(c.value)+'</strong>'+
+   '<small>'+c.note+'</small></div></div>').join("")+'</div>';
+}
+function featuredRivalry(m,me,roster,opponent){
+ const series=opponent?rivalry(m,me.user_id,opponent.user_id):null;
+ const sel=roster.length?'<label class="brag-showcase-select">Rival '+
+  '<select data-brag-rival aria-label="Choose a league rival">'+
+  roster.map(p=>'<option value="'+esc(p.user_id)+'"'+(p.user_id===chosenOpponent?' selected':'')+'>'+
+   esc(p.display_name||"Player")+'</option>').join("")+'</select></label>':"";
+ const latest=series?.rounds?.slice(0,4).map(r=>'<div class="brag-round"><span>'+
+  esc(sportIcon[r.sport]||"")+" Week "+esc(r.week)+'</span><strong>'+r.my+'–'+r.their+
+  '</strong><small>'+r.games+' final'+(r.games===1?"":"s")+'</small></div>').join("")||"";
+ return '<section class="brag-showcase-section brag-featured-rival" aria-label="Head-to-head rivalry">'+
+  '<div class="brag-showcase-heading"><h3>⚔️ HEAD-TO-HEAD</h3><span>Verified pick rivalry</span></div>'+
+  (opponent?'<div class="brag-showcase-duel">'+
+    '<div class="brag-showcase-duelist"><span class="brag-duelist-symbol">'+
+    esc(m.players.get(me.user_id)?.school||"★")+'</span><strong>'+bestName(me)+
+    '</strong><small>You</small></div>'+
+    '<div class="brag-showcase-count"><strong>'+series.wins+'</strong><small>WINS</small></div>'+
+    '<div class="brag-duel-vs">VS</div>'+
+    '<div class="brag-showcase-count"><strong>'+series.losses+'</strong><small>WINS</small></div>'+
+    '<div class="brag-showcase-duelist"><span class="brag-duelist-symbol is-rival">'+
+    esc(opponent.school||"★")+'</span><strong>'+bestName(opponent)+'</strong><small>Rival</small></div>'+
+    '<button type="button" class="brag-showcase-cta" data-brag-share="challenge">⚔️ Call out rival</button>'+
+   '</div>':
+   '<div class="brag-showcase-empty">Invite another league member to start your first grudge match.</div>')+
+  '<details class="brag-showcase-more" data-brag-panel="rivals"'+fold("rivals")+'>'+
+   '<summary>Grudge Match · '+(series?series.both+' shared confirmed games':'Waiting for a rival')+' <span>View history &amp; choose rival</span></summary>'+
+   '<div class="brag-showcase-more-body">'+sel+
+   (opponent?renderDuel(m,me,opponent):'<p class="fan-subtle">No other members yet.</p>')+
+   (latest?'<div class="brag-rounds">'+latest+'</div>':"")+'</div></details>'+
+  '</section>';
+}
+function featuredBulletin(m){
+ const stories=bulletin(m);
+ return '<section class="brag-showcase-section" aria-label="League bulletin">'+
+  '<div class="brag-showcase-heading"><h3>📣 LEAGUE BULLETIN</h3>'+
+  '<span>Share the best calls and biggest misses</span></div>'+
+  (stories.length?'<div class="brag-showcase-stories">'+stories.slice(0,2).map((n,i)=>
+   '<article class="brag-showcase-story"><span class="brag-story-mark">📣</span>'+
+   '<p>'+esc(n.text)+'</p><button type="button" class="fan-small" data-brag-bulletin="'+i+
+   '">↗ Copy brag</button></article>').join("")+'</div>':
+   '<div class="brag-showcase-empty">The league bulletin comes alive after verified results. Be ready to claim that first upset.</div>')+
+  (stories.length>2?'<details class="brag-showcase-more" data-brag-panel="bulletins"'+fold("bulletins")+
+   '><summary>More league stories <span>View all</span></summary><div class="brag-showcase-more-body">'+
+   stories.slice(2).map((n,j)=>'<div class="brag-bulletin"><p>'+esc(n.text)+
+   '</p><button type="button" class="fan-small" data-brag-bulletin="'+(j+2)+
+   '">↗ Copy brag</button></div>').join("")+'</div></details>':"")+
+  '</section>';
+}
+function featuredReceipts(m,me){
+ const featured=m.finals.flatMap(g=>{
+  const picks=m.byGame.get(g.id)||[];
+  return picks.map(p=>({g,p,win:result(g,p.pick)}));
+ }).filter(x=>x.win!==null).slice(0,3);
+ const icons={football:"🏈",basketball:"🏀",baseball:"⚾"};
+ return '<section class="brag-showcase-section" aria-label="Pick Receipts">'+
+ '<div class="brag-showcase-heading"><h3>🎯 PICK RECEIPTS</h3><span>Proof after the final whistle</span></div>'+
+ (featured.length?'<div class="brag-showcase-receipts">'+featured.map(({g,p,win})=>{
+   const upset=win&&lineUnderdog(g)===p.pick.pick_code;
+   const team=p.pick.pick_code===g.away_code?(g.away_name||name(g.away_code)):(g.home_name||name(g.home_code));
+   return '<article class="brag-showcase-receipt '+(upset?"is-upset":win?"is-correct":"is-miss")+'">'+
+    '<span class="brag-receipt-pill">'+(upset?"⚡ UPSET CALLED":win?"✓ CALLED IT":"✕ COLD TAKE")+'</span>'+
+    '<strong>'+esc(team)+' pick</strong><small>'+esc(p.player.display_name||"Player")+
+    ' · '+esc(icons[g.sport]||"")+" Final "+score(g.away_score)+"–"+score(g.home_score)+'</small>'+
+    '<button type="button" class="fan-small" data-brag-receipt="'+esc(g.id)+
+    '" data-brag-player="'+esc(p.player.user_id)+'">↗ Share receipt</button></article>';
+ }).join("")+'</div>':
+ '<div class="brag-showcase-empty">Receipts unlock when your league has confirmed final games.</div>')+
+ // Keep player selection and historical receipts available without another large default card.
+ '<details class="brag-showcase-more" data-brag-panel="receipts"'+fold("receipts")+
+ '><summary>All pick receipts <span>Choose a player &amp; explore</span></summary>'+
+ '<div class="brag-showcase-more-body">'+receipts(m,me,chosenReceipt)+'</div></details></section>';
+}
+function featuredHonors(m){
+ const a=awards(m),best=a.byPlayer.slice().sort((x,y)=>y.streak-x.streak)[0],
+  upset=a.byPlayer.slice().sort((x,y)=>y.upsets-x.upsets)[0],
+  crowd=a.byPlayer.slice().sort((x,y)=>y.crowd-x.crowd)[0],
+  schools=a.schools[0];
+ const awardsPreview=[
+  {icon:"🔥",title:"STREAK KING",value:best?.streak>=3?best.streak+" straight":"Unclaimed"},
+  {icon:"⚡",title:"UPSET MASTER",value:upset?.upsets>0?upset.upsets+" correct":"Unclaimed"},
+  {icon:"🧠",title:"CROWD BEATER",value:crowd?.crowd>0?crowd.crowd+" lone picks":"Unclaimed"},
+  {icon:"🏫",title:"SCHOOL PRIDE",value:schools?name(schools.code)+" · "+Math.round(100*schools.correct/schools.graded)+"%":"Awaiting results"}
+ ];
+ return '<section class="brag-showcase-section" aria-label="Trophies and school pride">'+
+ '<div class="brag-showcase-heading"><h3>🏆 TROPHIES &amp; SCHOOL PRIDE</h3>'+
+ '<button type="button" class="brag-showcase-link" data-brag-trophies>Open trophy case ↗</button></div>'+
+ '<div class="brag-showcase-honors">'+awardsPreview.map(a=>
+  '<div class="brag-showcase-honor"><span>'+a.icon+'</span><div><strong>'+a.title+'</strong><small>'+
+  esc(a.value)+'</small></div></div>').join("")+'</div>'+
+ '<details class="brag-showcase-more" data-brag-panel="honors"'+fold("honors")+
+ '><summary>Championship belt &amp; detailed honors <span>View all</span></summary>'+
+ '<div class="brag-showcase-more-body">'+accolade(m,m.players.get(user()?.id))+'</div></details></section>';
+}
 function render(data,itemInfo){
  const el=root();if(!el)return;
  const m=model(data),me=m.players.get(user()?.id);
@@ -210,33 +326,18 @@ function render(data,itemInfo){
  if(!roster.some(p=>p.user_id===chosenOpponent))chosenOpponent=roster[0]?.user_id||"";
  if(!m.players.has(chosenReceipt))chosenReceipt=me.user_id;
  const opponent=m.players.get(chosenOpponent);
- const news=bulletin(m);
- el.innerHTML='<div class="brag-arena" aria-label="League Bragging Arena">'+
-  '<div class="brag-arena-intro"><div><div class="card-kicker">🔥 THE LOCKER ROOM</div>'+
-  '<h2>Bragging rights</h2><p>'+esc(itemInfo.name||"Your league")+
-  ' · Rivalries, receipts &amp; league honors</p></div>'+
-  '<button type="button" class="fan-small" data-brag-refresh>↻ Refresh</button></div>'+
-  '<details class="brag-block brag-fold" data-brag-panel="rivals"'+fold("rivals")+
-   ' aria-label="Head-to-head grudge matches"><summary>⚔️ Head-to-head <small>'+
-    (opponent?esc(opponent.display_name||"Your rival"):"Pick a rival")+'</small></summary><div class="brag-fold-body">'+
-   '<div class="brag-block-head"><div><div class="card-kicker">⚔️ HEAD TO HEAD</div><h3>Grudge Match</h3></div>'+
-   (roster.length?'<label class="brag-label">Your rival<select data-brag-rival aria-label="Choose a league rival">'+
-    roster.map(p=>'<option value="'+esc(p.user_id)+'" '+(p.user_id===chosenOpponent?"selected":"")+'>'+
-     esc(p.display_name||"Player")+'</option>').join("")+'</select></label>':"")+'</div>'+
-   (roster.length?renderDuel(m,me,opponent):'<p class="fan-subtle">Invite another member to unlock head-to-head rivalry tracking.</p>')+
-  '</div></details>'+
-  '<details class="brag-block brag-fold" data-brag-panel="bulletins"'+fold("bulletins")+
- ' aria-label="Automatic league bulletin"><summary>📣 League bulletin <small>'+
- (news.length?esc(news.length+" verified stories"):"Waiting for results")+
- '</small></summary><div class="brag-fold-body">'+
-  '<h3>The automatic trash-talk desk</h3>'+
-  '<p class="fan-subtle">Verified results write the story. Copy a bulletin to share; nothing posts without your action.</p>'+
-  (news.length?news.map((n,i)=>'<div class="brag-bulletin"><p>'+esc(n.text)+'</p>'+
-   '<button type="button" class="fan-small" data-brag-bulletin="'+i+'">↗ Share this</button></div>').join(""):
-   '<p class="fan-subtle">No spicy outcomes in this league yet. First confirmed surprises will show up here.</p>')+
-  '</div></details>'+
-  receipts(m,me,chosenReceipt)+accolade(m,me)+
-  (m.limited?'<p class="fan-subtle">Only the 2,000 most recent post-lock picks are included in these comparisons.</p>':"")+
+ el.innerHTML='<div class="brag-arena brag-showcase" aria-label="League Bragging Arena">'+
+  '<header class="brag-showcase-hero"><span class="brag-hero-crown" aria-hidden="true">👑</span>'+
+   '<div class="brag-hero-copy"><span class="brag-hero-kicker">THE LOCKER ROOM · '+esc(itemInfo.name||"My league")+'</span>'+
+    '<h2>BRAGGING <em>RIGHTS</em></h2><p>Rivalries. Receipts. League honors. <b>Talk big. Back it up.</b></p></div>'+
+   '<button type="button" class="fan-small brag-hero-refresh" data-brag-refresh>↻ Refresh</button>'+
+  '</header>'+
+  highlightCards(m)+
+  featuredRivalry(m,me,roster,opponent)+
+  featuredBulletin(m)+
+  featuredReceipts(m,me)+
+  featuredHonors(m)+
+  (m.limited?'<p class="fan-subtle">These comparisons cover only the 2,000 most recent post-kickoff league picks.</p>':"")+
   '</div>';
 }
 function updateUI(selected=item()){
@@ -286,7 +387,7 @@ function currentModel(){
 }
 document.addEventListener("toggle",e=>{
  const node=e.target;
- if(!node?.matches?.(".brag-fold[data-brag-panel]"))return;
+ if(!node?.matches?.("[data-brag-panel]"))return;
  if(node.open)expanded.add(node.dataset.bragPanel);
  else expanded.delete(node.dataset.bragPanel);
 },true);
