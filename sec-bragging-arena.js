@@ -151,8 +151,7 @@ function receiptText(g,p,m){
 function receipts(m,me,who){
  const player=m.players.get(who)||me;
  const found=m.finals.filter(g=>m.get(player.user_id,g)).slice(0,5);
- return '<details class="brag-block brag-fold" data-brag-panel="receipts"'+fold("receipts")+
-  ' aria-label="Pick Receipts"><summary>🎯 Pick receipts <small>Browse &amp; share final picks</small></summary><div class="brag-fold-body"><div class="brag-block-head"><div>'+
+ return '<div class="brag-receipts-full"><div class="brag-block-head"><div>'+
   '<div class="card-kicker">🎯 PICK RECEIPTS</div><h3>The picks are permanent.</h3></div>'+
   '<label class="brag-label">Player<select aria-label="Receipt player" data-brag-receipts>'+
   [...m.players.values()].map(p=>'<option value="'+esc(p.user_id)+'" '+(p.user_id===player.user_id?"selected":"")+'>'+
@@ -167,7 +166,7 @@ function receipts(m,me,who){
      " · Final "+g.away_score+"–"+g.home_score+'</small>'+
     '<button type="button" class="fan-small" data-brag-receipt="'+esc(g.id)+'" data-brag-player="'+esc(player.user_id)+'">↗ Copy receipt</button>'+
     '</article>';
-  }).join("")+'</div>':'<p class="fan-subtle">No confirmed final-game receipts for this player yet.</p>')+'</div></details>';
+  }).join("")+'</div>':'<p class="fan-subtle">No confirmed final-game receipts for this player yet.</p>')+'</div>';
 }
 function accolade(m,me){
  const a=awards(m),top=a.byPlayer.slice().sort((a,b)=>b.streak-a.streak)[0];
@@ -184,8 +183,7 @@ function accolade(m,me){
   '<div class="brag-school"><span>'+(i+1)+'. ★ '+esc(codes[s.code])+'</span>'+
    '<strong>'+Math.round(100*s.correct/s.graded)+'%</strong><small>'+
     s.correct+'/'+s.graded+' picks · '+s.fans+' fan'+(s.fans===1?"":"s")+'</small></div>').join("");
- return '<details class="brag-block brag-fold" data-brag-panel="honors"'+fold("honors")+
- ' aria-label="Championships and awards"><summary>🏆 Trophies &amp; school pride <small>Belt, achievements &amp; fans</small></summary><div class="brag-fold-body">'+
+ return '<div class="brag-honors-full">'+
   '<div class="card-kicker">👑 BELT CHASE</div><h3>Who owns the league?</h3>'+
   '<div class="brag-belt">'+
    '<span class="brag-belt-icon">🏆</span><div><small>VERIFIED SEASON POINTS LEADER · BELT IN PLAY</small>'+
@@ -200,7 +198,7 @@ function accolade(m,me){
   '</div>'+
   '<div class="brag-school-head"><div class="card-kicker">🏫 SEC SCHOOL PRIDE</div><small>Accuracy of fans’ verified picks</small></div>'+
   (pride?'<div class="brag-schools">'+pride+'</div>':'<p class="fan-subtle">School pride standings appear after fans with a chosen favorite school have at least three graded picks.</p>')+
-  '<p class="fan-subtle">These informal honors compare outright game winners only and never award additional league points.</p></div></details>';
+  '<p class="fan-subtle">These informal honors compare outright game winners only and never award additional league points.</p></div>';
 }
 function highlightCards(m){
  const scoreRows=window.SEC_POWER?.getRows?.(item())||[];
