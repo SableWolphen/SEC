@@ -783,3 +783,61 @@ body{overflow-x:clip}
 .brag-rounds{grid-template-columns:1fr}.brag-school{flex-wrap:wrap}
 .brag-school span{min-width:55%}.brag-honors{gap:6px}.brag-honor{padding:9px}
 .brag-versus{padding:10px;gap:7px}.brag-versus>div>strong{font-size:12px}}
+
+/* Calm Game Center: one quick read, expandable details. */
+.fan-center-detail{padding:10px 12px}
+.sec-game-community{margin-top:0;padding-top:0;border-top:0;display:grid;gap:8px}
+.sec-community-title{font-size:11px!important;color:#aec9c1;margin:0!important;letter-spacing:.2px}
+.sec-ai-compact{padding:12px!important;margin:0!important;background:#183039!important;border-radius:11px!important}
+.sec-ai-compact .sec-ai-top{margin:0 0 6px}
+.sec-ai-compact .sec-ai-top h5{font-size:13px!important}
+.sec-ai-compact .sec-ai-status{font-size:9px;padding:3px 6px;letter-spacing:.25px}
+.sec-ai-brief{font-size:12px!important;line-height:1.55;color:#edf7ec;margin:0!important;overflow-wrap:anywhere}
+.sec-ai-alert{font-size:11px;line-height:1.5;color:#f0d3a4;border-left:3px solid #e5c36d;padding:5px 0 5px 9px;margin:9px 0 0!important}
+.sec-game-more{margin:7px 0 0;border-top:1px solid #365a52}
+.sec-game-more>summary{min-height:35px!important;cursor:pointer;display:flex;align-items:center;gap:7px;padding:7px 1px!important;color:#b5d5c7!important;font-size:11px!important;font-weight:850!important;list-style:none;justify-content:flex-start!important}
+.sec-game-more>summary::-webkit-details-marker{display:none}
+.sec-game-more>summary:after{content:"⌄";margin-left:auto;color:#d5ff65}
+.sec-game-more[open]>summary:after{transform:rotate(180deg)}
+.sec-game-more>summary:focus-visible{outline:2px solid #d7fa65;outline-offset:2px}
+.sec-game-more-body{padding:8px 0;font-size:11px;line-height:1.6;color:#c8dad4}
+.sec-game-more-body p{margin:0 0 8px}
+.sec-game-more-body small{font-size:10px;color:#99b4ac}
+.sec-game-more-body .sec-ai-links{margin:8px 0}
+.sec-game-more-body .sec-ai-links a{font-size:11px}
+.sec-matchup-fold{margin:6px 1px 0}
+.sec-matchup-fold .sec-game-more-body{padding:4px 0}
+.sec-shockwave-compact{background:#142d31;border:1px solid #3b6156;border-radius:10px;padding:9px 12px;margin:0}
+.sec-shockwave-compact .sec-shockwave-head strong{font-size:11px;color:#d5ff65}
+.sec-shockwave-compact .sec-shockwave-head small{font-size:10px}
+.sec-shockwave-compact .sec-shockwave-summary{font-size:11px;margin:4px 0;color:#d5e7df}
+.sec-shockwave-compact .sec-game-more{margin-top:3px}
+.sec-community-reactions{margin-top:1px}
+.sec-community-reaction-group h5{margin:0 0 5px!important;font-size:11px!important;color:#b8d4ce}
+.sec-community-votes{gap:5px}
+.sec-community-reaction{padding:6px 9px;min-height:35px;font-size:11px}
+.sec-reaction-help{font-size:9px!important;margin:4px 0 0!important;color:#8caeaa!important}
+
+/* Calm Brags: 5 compact rows; expanded content remains fully functional. */
+#fan-pane-brags{max-width:100%;min-width:0}
+#fan-weekly-recap,#fan-bragging-content,#fan-brag-arena{min-width:0}
+.brag-arena{display:flex;flex-direction:column;gap:8px;margin:9px 0}
+.brag-arena-intro{padding:12px 14px;border-radius:11px;min-height:68px}
+.brag-arena-intro h2{font-size:19px;margin:2px 0}
+.brag-arena-intro p{font-size:11px}
+.brag-fold{padding:0!important;overflow:hidden;border-radius:11px!important;margin:0!important}
+.brag-fold>summary{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
+padding:12px 14px!important;min-height:46px;cursor:pointer;list-style:none;
+color:#ecf8ee;font-size:13px;font-weight:900;background:#1c353b}
+.brag-fold>summary::-webkit-details-marker{display:none}
+.brag-fold>summary small{font-size:10px;line-height:1.45;color:#b1c8c2;font-weight:600;overflow-wrap:anywhere}
+.brag-fold>summary::after{content:"⌄";color:#d5ff65;font-size:17px;line-height:1;margin-left:4px}
+.brag-fold[open]>summary::after{content:"⌃"}
+.brag-fold>summary:focus-visible{outline:3px solid #d7fa65;outline-offset:-3px}
+.brag-fold-body{padding:13px 14px;border-top:1px solid #3b625c}
+.brag-fold-body>h3{margin:0 0 10px}
+#fan-weekly-recap .sec-weekly-recap{margin-bottom:8px}
+.sec-brags-panel .brag-fold-body>.sec-brag-awards{margin-top:10px}
+@media(max-width:520px){.brag-fold>summary{padding:11px 12px!important;align-items:flex-start}
+.brag-fold>summary small{max-width:75%}.brag-fold-body{padding:11px}
+.brag-arena-intro{padding:11px}.sec-ai-compact{padding:11px!important}}
