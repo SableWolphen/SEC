@@ -9,7 +9,7 @@ const MODES={
  h2h:{name:"Head-to-Head",detail:"Pick winners as usual, but compete against a paired league rival each week."}
 };
 const own={},games={},revealedByGame={},notes={};
-let current=null,user=null,client=null,app=null,confidence={},tiebreakers={},tieDrafts={},standings=[],history=[];
+let current=null,user=null,client=null,app=null,confidence={},tiebreakers={},tieDrafts={},standings=[],history=[],reloadVersion=0;
 const err=(r)=>{if(r?.error)throw r.error;return r?.data;};
 const esc=s=>app?.esc?app.esc(String(s??"")):String(s??"").replaceAll("<","&lt;");
 const mode=()=>current?.mode||"straight";
@@ -19,6 +19,7 @@ const leagueGame=g=>games[g.id]||g;
 const isOpen=g=>Date.now()<Date.parse(leagueGame(g).kickoff_at||g.kickoff);
 const hasNumber=n=>n!==null&&n!==undefined&&n!=="";
 async function reload(c,l,u,a){
+ const version=++reloadVersion;
  const switched=current?.id!==l?.id||user?.id!==u?.id;
  if(switched)tieDrafts={};
  client=c;current=l;user=u;app=a;
@@ -33,6 +34,9 @@ async function reload(c,l,u,a){
   c.from("sec_week_tiebreakers").select("week,game_id,predicted_total").eq("league_id",l.id).eq("user_id",u.id),
   l.mode==="h2h"?c.rpc("sec_h2h_history",{p_league:l.id}):Promise.resolve({data:[]})
  ]);
+ // An old request can finish after logout or after changing leagues. It must
+ // never overwrite another player's saved picks or reveal another league's data.
+ if(version!==reloadVersion||current?.id!==l.id||user?.id!==u.id)return;
  for(const row of err(my)||[]){own[row.game_id]=row.pick_code;confidence[row.game_id]=row.confidence_points;}
  for(const row of err(reveals)||[])(revealedByGame[row.game_id]??=[]).push(row);
  for(const t of err(ties)||[])tiebreakers[t.week]=t;
@@ -150,6 +154,7 @@ async function save(g,id,c,l,u,a){
   p_league:l.id,p_game:g.id,p_pick:id,p_confidence:value
  });
  const row=err(res);
+ if(current?.id!==l.id||user?.id!==u.id)return row;
  own[g.id]=id;confidence[g.id]=row.confidence_points;
  a.state().picks[g.id]=id;
  a.renderPicks();
