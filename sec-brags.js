@@ -3,7 +3,10 @@
 "use strict";
 const host=()=>document.getElementById("fan-bragging-content");
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let key="",rows=[],loading=false,error="",request=0,loadedAt=0;
+let key="",rows=[],loading=false,error="",request=0,loadedAt=0,expanded=false;
+document.addEventListener("toggle",e=>{
+ if(e.target?.id==="sec-brags-season-details")expanded=e.target.open;
+},true);
 const user=()=>window.secOnline?.getUser?.();
 const manager=()=>window.SEC_LEAGUE_SETTINGS;
 const kindOf=()=>manager()?.getSelected?.();
@@ -35,13 +38,15 @@ function render(){
   '<td>'+(Number(r.graded_picks)>0?pct(r.accuracy_pct):"—")+'</td>'+
   '<td>'+Number(r.upsets_correct||0)+'</td><td>'+pct(r.favorite_pick_pct)+'</td>'+
   '<td>'+(r.biggest_upset==null?"—":Number(r.biggest_upset).toFixed(1))+'</td></tr>').join("");
- slot.innerHTML='<section class="fan-panel sec-brags-panel" aria-label="Verified season bragging rights">'+
+ slot.innerHTML='<details id="sec-brags-season-details" class="fan-panel sec-brags-panel brag-fold"'+
+  (expanded?' open':'')+' aria-label="Verified season bragging rights">'+
+  '<summary>📊 Season statistics <small>Accuracy, upsets &amp; picks</small></summary><div class="brag-fold-body">'+
   '<div class="card-kicker">BRAGGING RIGHTS</div><h2>Receipts or it didn’t happen.</h2>'+
   '<p class="fan-subtle">Numbers include confirmed final games with a recorded pick. Underdogs and favorites require a published point spread. Spread leagues use cover accuracy.</p>'+
   '<div class="sec-brag-awards">'+grid+'</div>'+
   '<div class="fan-table-wrap"><table class="fan-table sec-brag-table"><thead><tr><th>Player</th><th>Accuracy</th><th>Upsets</th><th>Picked fav.</th><th>Biggest</th></tr></thead>'+
   '<tbody>'+(table||'<tr><td colspan="5">No members yet.</td></tr>')+'</tbody></table></div>'+
-  '<p class="fan-subtle">Accuracy = correct / graded picks. Favorite % uses games with nonzero published spreads. Biggest = point spread of a correctly called outright upset. These stats never change official league points.</p></section>';
+  '<p class="fan-subtle">Accuracy = correct / graded picks. Favorite % uses games with nonzero published spreads. Biggest = point spread of a correctly called outright upset. These stats never change official league points.</p></div></details>';
 }
 async function load(item=kindOf(),force=false){
  const u=user(),db=window.secOnline?.getClient?.();

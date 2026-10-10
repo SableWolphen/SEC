@@ -7,6 +7,10 @@ const selected=()=>window.SEC_LEAGUE_SETTINGS?.getSelected?.();
 const FIELDS=["club","football","basketball","baseball"];
 const ROWS=new Map(),PENDING=new Set(),GAMES=new Map();
 let weeklyKey="";
+let weeklyExpanded=false;
+document.addEventListener("toggle",e=>{
+ if(e.target?.id==="sec-weekly-fold")weeklyExpanded=e.target.open;
+},true);
 const code=g=>({away:String(g.away_code||g.away||""),home:String(g.home_code||g.home||"")});
 function allowed(item,sport){
  return Boolean(item?.id&&FIELDS.includes(item.kind)&&
@@ -126,14 +130,17 @@ function weekly(item,rows){
   '<small>'+emoji+" "+title+'</small><strong>'+
    (p?esc(p.display_name||"Player")+badge(p):"Unclaimed")+
   '</strong><span>'+esc(detail)+'</span></div>';
- el.innerHTML='<section class="sec-weekly-recap" aria-label="Weekly league winners and losers">'+
+ el.innerHTML='<details id="sec-weekly-fold" class="sec-weekly-recap brag-fold"'+
+  (weeklyExpanded?' open':'')+' aria-label="Weekly league winners and losers">'+
+  '<summary>🏅 Weekly awards <small>'+esc(best.display_name||"Top picker")+
+  ' · '+Number(best.weekly_correct)+'/'+Number(best.weekly_graded)+' correct</small></summary><div class="brag-fold-body">'+
   '<div class="sec-recap-kicker">🏅 THE WEEKLY RECEIPTS</div>'+
   '<h3>This week’s winners &amp; comeback stories</h3>'+
   '<div class="sec-weekly-awards">'+
    block("🎯","Sharpest picker",best,Number(best.weekly_correct)+"/"+Number(best.weekly_graded)+" correct")+
    block("😬","Toughest slate",tough,tough?Number(tough.weekly_correct)+"/"+Number(tough.weekly_graded)+" correct":"Not enough players")+
    block("🚀","Biggest comeback",rise,rise?"Up "+(Number(rise.previous_rank)-Number(rise.current_rank))+" places":"No movement yet")+
-   '</div><p class="sec-shockwave-note">Calculated from verified weekly picks and league rankings · minimum 3 graded picks for accuracy awards.</p></section>';
+   '</div><p class="sec-shockwave-note">Calculated from verified weekly picks and league rankings · minimum 3 graded picks for accuracy awards.</p></div></details>';
 }
 window.SEC_LEAGUE_INSIGHTS=Object.freeze({upset,initial,load,weekly,pulseMarkup});
 })();

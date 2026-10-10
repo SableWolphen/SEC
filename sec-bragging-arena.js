@@ -14,6 +14,8 @@ const scoped=i=>i&&["club","football","basketball","baseball"].includes(i.kind)&
 const ref=i=>user()?.id+":"+i.kind+":"+i.id;
 const cache=new Map(),inflight=new Map();
 let chosenOpponent="",chosenReceipt="",lastScope="";
+const expanded=new Set();
+const fold=id=>expanded.has(id)?" open":"";
 const isNumber=x=>x!==null&&x!==undefined&&x!==""&&Number.isFinite(Number(x));
 const score=x=>isNumber(x)?Number(x):null;
 function scopeOk(i,u,k){return u?.id===user()?.id&&ref(i)===k&&ref(item()||{})===k;}
@@ -149,7 +151,8 @@ function receiptText(g,p,m){
 function receipts(m,me,who){
  const player=m.players.get(who)||me;
  const found=m.finals.filter(g=>m.get(player.user_id,g)).slice(0,5);
- return '<section class="brag-block" aria-label="Pick Receipts"><div class="brag-block-head"><div>'+
+ return '<details class="brag-block brag-fold" data-brag-panel="receipts"'+fold("receipts")+
+  ' aria-label="Pick Receipts"><summary>🎯 Pick receipts <small>Browse &amp; share final picks</small></summary><div class="brag-fold-body"><div class="brag-block-head"><div>'+
   '<div class="card-kicker">🎯 PICK RECEIPTS</div><h3>The picks are permanent.</h3></div>'+
   '<label class="brag-label">Player<select aria-label="Receipt player" data-brag-receipts>'+
   [...m.players.values()].map(p=>'<option value="'+esc(p.user_id)+'" '+(p.user_id===player.user_id?"selected":"")+'>'+
@@ -164,7 +167,7 @@ function receipts(m,me,who){
      " · Final "+g.away_score+"–"+g.home_score+'</small>'+
     '<button type="button" class="fan-small" data-brag-receipt="'+esc(g.id)+'" data-brag-player="'+esc(player.user_id)+'">↗ Copy receipt</button>'+
     '</article>';
-  }).join("")+'</div>':'<p class="fan-subtle">No confirmed final-game receipts for this player yet.</p>')+'</section>';
+  }).join("")+'</div>':'<p class="fan-subtle">No confirmed final-game receipts for this player yet.</p>')+'</div></details>';
 }
 function accolade(m,me){
  const a=awards(m),top=a.byPlayer.slice().sort((a,b)=>b.streak-a.streak)[0];
@@ -181,7 +184,8 @@ function accolade(m,me){
   '<div class="brag-school"><span>'+(i+1)+'. ★ '+esc(codes[s.code])+'</span>'+
    '<strong>'+Math.round(100*s.correct/s.graded)+'%</strong><small>'+
     s.correct+'/'+s.graded+' picks · '+s.fans+' fan'+(s.fans===1?"":"s")+'</small></div>').join("");
- return '<section class="brag-block" aria-label="Championships and awards">'+
+ return '<details class="brag-block brag-fold" data-brag-panel="honors"'+fold("honors")+
+ ' aria-label="Championships and awards"><summary>🏆 Trophies &amp; school pride <small>Belt, achievements &amp; fans</small></summary><div class="brag-fold-body">'+
   '<div class="card-kicker">👑 BELT CHASE</div><h3>Who owns the league?</h3>'+
   '<div class="brag-belt">'+
    '<span class="brag-belt-icon">🏆</span><div><small>VERIFIED SEASON POINTS LEADER · BELT IN PLAY</small>'+
@@ -196,7 +200,7 @@ function accolade(m,me){
   '</div>'+
   '<div class="brag-school-head"><div class="card-kicker">🏫 SEC SCHOOL PRIDE</div><small>Accuracy of fans’ verified picks</small></div>'+
   (pride?'<div class="brag-schools">'+pride+'</div>':'<p class="fan-subtle">School pride standings appear after fans with a chosen favorite school have at least three graded picks.</p>')+
-  '<p class="fan-subtle">These informal honors compare outright game winners only and never award additional league points.</p></section>';
+  '<p class="fan-subtle">These informal honors compare outright game winners only and never award additional league points.</p></div></details>';
 }
 function render(data,itemInfo){
  const el=root();if(!el)return;
@@ -209,23 +213,28 @@ function render(data,itemInfo){
  const news=bulletin(m);
  el.innerHTML='<div class="brag-arena" aria-label="League Bragging Arena">'+
   '<div class="brag-arena-intro"><div><div class="card-kicker">🔥 THE LOCKER ROOM</div>'+
-  '<h2>Talk big. Keep receipts.</h2><p>'+esc(itemInfo.name||"Your league")+
-  ' · All sports, one rivalry hub. Verified final results only.</p></div>'+
+  '<h2>Bragging rights</h2><p>'+esc(itemInfo.name||"Your league")+
+  ' · Rivalries, receipts &amp; league honors</p></div>'+
   '<button type="button" class="fan-small" data-brag-refresh>↻ Refresh</button></div>'+
-  '<section class="brag-block" aria-label="Head-to-head grudge matches">'+
+  '<details class="brag-block brag-fold" data-brag-panel="rivals"'+fold("rivals")+
+   ' aria-label="Head-to-head grudge matches"><summary>⚔️ Head-to-head <small>'+
+    (opponent?esc(opponent.display_name||"Your rival"):"Pick a rival")+'</small></summary><div class="brag-fold-body">'+
    '<div class="brag-block-head"><div><div class="card-kicker">⚔️ HEAD TO HEAD</div><h3>Grudge Match</h3></div>'+
    (roster.length?'<label class="brag-label">Your rival<select data-brag-rival aria-label="Choose a league rival">'+
     roster.map(p=>'<option value="'+esc(p.user_id)+'" '+(p.user_id===chosenOpponent?"selected":"")+'>'+
      esc(p.display_name||"Player")+'</option>').join("")+'</select></label>':"")+'</div>'+
    (roster.length?renderDuel(m,me,opponent):'<p class="fan-subtle">Invite another member to unlock head-to-head rivalry tracking.</p>')+
-  '</section>'+
-  '<section class="brag-block" aria-label="Automatic league bulletin"><div class="card-kicker">📣 LEAGUE BULLETIN</div>'+
+  '</div></details>'+
+  '<details class="brag-block brag-fold" data-brag-panel="bulletins"'+fold("bulletins")+
+ ' aria-label="Automatic league bulletin"><summary>📣 League bulletin <small>'+
+ (news.length?esc(news.length+" verified stories"):"Waiting for results")+
+ '</small></summary><div class="brag-fold-body">'+
   '<h3>The automatic trash-talk desk</h3>'+
   '<p class="fan-subtle">Verified results write the story. Copy a bulletin to share; nothing posts without your action.</p>'+
   (news.length?news.map((n,i)=>'<div class="brag-bulletin"><p>'+esc(n.text)+'</p>'+
    '<button type="button" class="fan-small" data-brag-bulletin="'+i+'">↗ Share this</button></div>').join(""):
    '<p class="fan-subtle">No spicy outcomes in this league yet. First confirmed surprises will show up here.</p>')+
-  '</section>'+
+  '</div></details>'+
   receipts(m,me,chosenReceipt)+accolade(m,me)+
   (m.limited?'<p class="fan-subtle">Only the 2,000 most recent post-lock picks are included in these comparisons.</p>':"")+
   '</div>';
@@ -242,7 +251,7 @@ async function load(selected=item(),force=false){
  const el=root(),u=user(),c=db();
  if(!el||!scoped(selected)||!u||!c){updateUI(null);return;}
  const k=ref(selected),old=cache.get(k);
- if(lastScope!==k){chosenOpponent="";chosenReceipt="";lastScope=k;}
+ if(lastScope!==k){chosenOpponent="";chosenReceipt="";expanded.clear();lastScope=k;}
  if(!force&&old&&Date.now()-old.at<120000){updateUI(selected);return;}
  if(inflight.has(k))return inflight.get(k);
  updateUI(selected);
@@ -275,6 +284,12 @@ function currentModel(){
  const i=item();if(!i||!user())return null;
  const found=cache.get(ref(i));return found?model(found.data):null;
 }
+document.addEventListener("toggle",e=>{
+ const node=e.target;
+ if(!node?.matches?.(".brag-fold[data-brag-panel]"))return;
+ if(node.open)expanded.add(node.dataset.bragPanel);
+ else expanded.delete(node.dataset.bragPanel);
+},true);
 document.addEventListener("change",e=>{
  if(e.target?.matches?.("[data-brag-rival]")){
   chosenOpponent=e.target.value;updateUI();return;
