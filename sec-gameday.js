@@ -26,11 +26,38 @@ const key=()=>me()?.id||"guest";
 const alertBase=()=> "sec-fan-alerts-"+key();
 const setting=()=>{try{return localStorage.getItem("sec-fan-alerts-"+key())==="on";}catch{return false;}};
 const preference=type=>{try{return localStorage.getItem("sec-gameday-"+key()+"-"+type)!=="off";}catch{return true;}};
-const seen=new Set();let messages=[],lastLeague="",lastWeek="";
+const seen=new Set();let messages=[],lastLeague="",lastWeek="",lastUser="",lastToast=0;
+function resetIdentity(){
+ const current=key();if(current===lastUser)return;
+ lastUser=current;messages=[];seen.clear();lastLeague="";
+ const box=root("sec-gameday-alerts");if(box)box.innerHTML="";
+}
+function recentUpdate(g,minutes=20){
+ const stamp=g.score_updated_at||g.scoreUpdatedAt||g.updated_at;
+ const at=Date.parse(stamp||"");
+ return Number.isFinite(at)&&now()-at>=0&&now()-at<minutes*60000;
+}
+function recentKickoff(g,hours=12){
+ const at=Date.parse(g.kickoff_at||g.kickoff||"");
+ return Number.isFinite(at)&&now()-at>=0&&now()-at<hours*3600000;
+}
+function previouslySeen(id){
+ try{return (JSON.parse(localStorage.getItem("sec-gameday-seen-"+key())||"[]")||[]).includes(id);}catch{return false;}
+}
+function markSeen(id){
+ try{
+  const k="sec-gameday-seen-"+key();
+  const old=JSON.parse(localStorage.getItem(k)||"[]")||[];
+  localStorage.setItem(k,JSON.stringify([...old.filter(x=>x!==id),id].slice(-180)));
+ }catch{}
+}
 function announce(type,id,message){
- if(!setting()||!preference(type)||!me()||!id||seen.has(type+":"+id))return;
- seen.add(type+":"+id);messages.unshift({type,id,message,time:now()});messages=messages.slice(0,12);
- if(document.visibilityState==="visible"){bridge()?.toast?.(message);}
+ const token=type+":"+id;
+ if(!setting()||!preference(type)||!me()||!id||seen.has(token)||previouslySeen(token))return;
+ seen.add(token);markSeen(token);messages.unshift({type,id,message,time:now()});messages=messages.slice(0,12);
+ if(document.visibilityState==="visible"){
+  if(now()-lastToast>15000){bridge()?.toast?.(message);lastToast=now();}
+ }
  else if("Notification" in window&&Notification.permission==="granted"){
   try{new Notification("SEC Pick'em",{body:message,tag:type+":"+id});}catch{}
  }
@@ -84,9 +111,15 @@ function pickDashboard(){
  if(setting()){
   const userId=key();
   for(const {g,chosen,status:choice} of rows){
-   if(confirmed(g)&&chosen)announce("final",userId+":"+g.id,"Final: "+team(win(g))+" won. Your pick was "+(choice.kind==="correct"?"correct.":"incorrect."));
-   const alert=window.SEC_LEAGUE_INSIGHTS?.upset?.(g,"football");
-   if(confirmed(g)&&alert&&alert.label?.includes("UNDERDOG WIN"))announce("upset",userId+":"+g.id,"Upset final: "+team(win(g))+" wins.");
+   if(status(g)==="live"&&recentUpdate(g)&&recentKickoff(g,0.5))
+    announce("kickoff",userId+":"+g.id,"🔴 "+team(g.away)+" vs "+team(g.home)+" is underway.");
+   if(confirmed(g)&&recentUpdate(g)&&recentKickoff(g,12)&&chosen)
+    announce("final",userId+":"+g.id,"Final: "+team(win(g))+" won. Your pick was "+(choice.kind==="correct"?"correct.":"incorrect."));
+   if(confirmed(g)&&recentUpdate(g)&&recentKickoff(g,12)){
+    const alert=window.SEC_LEAGUE_INSIGHTS?.upset?.(g,"football");
+    if(alert?.label?.includes("UNDERDOG WIN"))
+     announce("upset",userId+":"+g.id,"Upset final: "+team(win(g))+" wins.");
+   }
   }
  }
 }
@@ -105,7 +138,7 @@ function renderSport(s){
  el.innerHTML='<div class="sec-day-sport"><strong>📈 My '+esc(s)+" picks</strong><span>"+
   finished+' correct finals · '+leader+' leading live · '+next+' still unpicked</span></div>';
  for(const {g,chosen,status:choice} of rows){
-  if(!setting()||!chosen||!confirmed(g))continue;
+  if(!setting()||!chosen||!confirmed(g)||!recentUpdate(g)||!recentKickoff(g,12))continue;
   announce("final",key()+":"+g.id,"Final: "+(g.away_name||team(g.away_code))+" vs "+(g.home_name||team(g.home_code))+
    ". Your "+s+" pick was "+(choice.kind==="correct"?"correct.":"incorrect."));
  }
@@ -155,7 +188,8 @@ function previousRivalry(){
    '<span>'+esc(m.players.get(me().id)?.display_name||"You")+' '+round.my+'–'+round.their+
    ' '+esc(other.display_name||"Rival")+'</span>'+
    '<button type="button" data-day-share="rival">↗ Share result</button></section>';
- if(setting()&&round.my>round.their)announce("rival",key()+":"+pair.start+":"+pair.opponent,"You won last week's SEC pick rivalry!");
+ if(setting()&&round.my>round.their&&now()-(monday.start*86400000)<24*3600000)
+  announce("rival",key()+":"+pair.start+":"+pair.opponent,"You won last week's SEC pick rivalry!");
 }
 async function shareText(text){
  if(!text)return;
@@ -194,13 +228,13 @@ function shareWeekly(){
 }
 function settings(){
  const el=root("sec-day-alert-settings");if(!el)return;
- const types=[["final","Final scores"],["upset","Upset results"],["rival","Weekly rivalry wins"]];
+ const types=[["kickoff","Kickoff"],["final","Final scores"],["upset","Upset results"],["rival","Weekly rivalry wins"]];
  el.innerHTML='<div class="sec-day-alert-options"><p>Choose what to hear about while SEC Pick’em is open:</p>'+
   types.map(([id,label])=>'<label><input type="checkbox" data-day-alert="'+id+'" '+
    (preference(id)?"checked ":"")+'/> '+label+'</label>').join("")+
    '<small>Uses your existing opt-in alert switch. No background push or paid service.</small></div>';
 }
-function refresh(){pickDashboard();leagueOutlook();previousRivalry();shareWeekly();showInbox();}
+function refresh(){resetIdentity();pickDashboard();leagueOutlook();previousRivalry();shareWeekly();showInbox();}
 document.addEventListener("click",e=>{
  const b=e.target.closest?.("[data-day-share]");if(!b)return;
  e.preventDefault();
@@ -218,9 +252,10 @@ document.addEventListener("click",e=>{
 });
 document.addEventListener("change",e=>{
  const type=e.target?.dataset?.dayAlert;
- if(!["final","upset","rival"].includes(type))return;
+ if(!["kickoff","final","upset","rival"].includes(type))return;
  try{localStorage.setItem("sec-gameday-"+key()+"-"+type,e.target.checked?"on":"off");}catch{}
 });
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refresh();});
 window.SEC_GAMEDAY=Object.freeze({refresh,pickDashboard,renderSport,leagueOutlook,previousRivalry,shareWeekly,recapText,settings,personalStatus,confirmed,period});
+Promise.resolve().then(()=>{if(bridge()?.view?.()==="picks")refresh();});
 })();
