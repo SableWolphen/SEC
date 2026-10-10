@@ -50,7 +50,9 @@ function renderStatus(){
    '<small>Provider-confirmed scores · refreshes automatically while this page is open</small>';
 }
 function matchValue(g){
- return [g.game_status,g.status_detail,g.away_score,g.home_score,g.winner,g.kickoff_at].join("|");
+ return [g.game_status,g.status_detail,g.away_score,g.home_score,g.winner,g.kickoff_at,
+  g.live_possession_code,g.live_down,g.live_distance,g.live_position_text,g.live_field_percent,
+  g.live_drive_summary,g.live_last_play,g.live_situation_updated_at].join("|");
 }
 async function refresh(force=false){
  const a=app(),c=client();
@@ -67,7 +69,8 @@ async function refresh(force=false){
  busy=true;lastRequest=now();const request=++activeRequest;
  try{
   const response=await c.from("sec_games").select(
-   "id,kickoff_at,winner,game_status,status_detail,away_score,home_score,score_updated_at,provisional,spread_home,spread_source"
+   "id,kickoff_at,winner,game_status,status_detail,away_score,home_score,score_updated_at,provisional,spread_home,spread_source,"+
+   "live_possession_code,live_down,live_distance,live_position_text,live_field_percent,live_drive_summary,live_last_play,live_situation_updated_at"
   ).in("id",ids);
   if(response?.error)throw response.error;
   if(!Array.isArray(response?.data))throw Error("Missing score response");
@@ -90,6 +93,14 @@ async function refresh(force=false){
     local.awayScore=row.away_score;
     local.homeScore=row.home_score;
     local.scoreUpdatedAt=row.score_updated_at;
+    local.livePossessionCode=row.live_possession_code||null;
+    local.liveDown=row.live_down??null;
+    local.liveDistance=row.live_distance??null;
+    local.livePositionText=row.live_position_text||null;
+    local.liveFieldPercent=row.live_field_percent??null;
+    local.liveDriveSummary=row.live_drive_summary||null;
+    local.liveLastPlay=row.live_last_play||null;
+    local.liveSituationUpdatedAt=row.live_situation_updated_at||null;
     if(row.spread_home!=null&&row.spread_source){
      local.spread_home=row.spread_home;local.spread_source=row.spread_source;
     }
