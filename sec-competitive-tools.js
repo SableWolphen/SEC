@@ -54,7 +54,7 @@ function copyUI(item){
  const dst=cachedTarget&&els.some(i=>i.k===cachedTarget&&i.footballId!==els.find(x=>x.k===src)?.footballId)?
   cachedTarget:(els.find(i=>i.footballId!==els.find(x=>x.k===src)?.footballId)?.k||"");
  if(!dst){host.hidden=true;host.innerHTML="";return;}
- const validPreview=preview?.source===src&&preview?.target===dst&&preview?.user===u.id&&preview?.week===app()?.week?.()?.num;
+ const validPreview=preview?.at>0&&preview?.source===src&&preview?.target===dst&&preview?.user===u.id&&preview?.week===app()?.week?.()?.num;
  host.innerHTML='<details class="sec-competition-fold" id="sec-copy-fold" '+(preview?.open?'open':'')+'><summary>⇄ Copy picks between leagues <span>Only your picks</span></summary>'+
   '<p class="sec-competition-muted">Copy available football picks from one league into another. Existing destination picks are never replaced.</p>'+
   '<div class="sec-competition-transfer"><label>From<select data-copy-source aria-label="Copy picks from league">'+options.replace('value="'+esc(src)+'"','value="'+esc(src)+'" selected')+'</select></label>'+
@@ -121,7 +121,7 @@ async function previewCopy(){
     "No eligible picks to copy. Existing or locked games were skipped."};
   copyUI(selected());
  }catch(e){toast("Could not preview picks: "+(e.message||"Try again"));}
- finally{busy=false;}
+ finally{busy=false;copyUI(selected());}
 }
 async function applyCopy(){
  if(busy||!preview||!me()||!client())return;
@@ -130,32 +130,22 @@ async function applyCopy(){
    day()-p.at>90000){preview=null;toast("Preview expired. Check again.");copyUI(selected());return;}
  if(!W.confirm("Copy "+p.candidates.length+" football picks from "+source.name+
    " to "+target.name+"? Only unpicked, unlocked games will be changed."))return;
- busy=true;let saved=0,skipped=0;
+ busy=true;
  try{
-  // Reread live rows at confirmation time: never overwrite picks saved in another device.
-  const ids=p.candidates.map(x=>x.game_id),who=p.user;
-  const [mine,latest]=await Promise.all([
-   client().from("sec_league_picks").select("game_id").eq("league_id",target.footballId).eq("user_id",who).in("game_id",ids),
-   client().from("sec_games").select("id,kickoff_at,away_code,home_code,spread_home").in("id",ids)
-  ]);
-  if(mine.error||latest.error)throw mine.error||latest.error;
-  if(me()?.id!==who||app()?.week?.()?.num!==p.week)throw Error("League or account changed. No picks were copied.");
-  const exists=new Set((mine.data||[]).map(x=>x.game_id)),current=new Map((latest.data||[]).map(x=>[x.id,x]));
-  for(const pick of p.candidates){
-   if(me()?.id!==who)break;
-   const g=current.get(pick.game_id);
-   if(!g||exists.has(pick.game_id)||Date.now()>=Date.parse(g.kickoff_at)||
-      ![g.away_code,g.home_code].includes(pick.pick_code)||
-      (p.mode==="spread"&&g.spread_home==null)){skipped++;continue;}
-   const r=await client().rpc("sec_save_league_pick",{
-    p_league:target.footballId,p_game:pick.game_id,p_pick:pick.pick_code,p_confidence:null
-   });
-   if(r.error){skipped++;continue;}
-   saved++;exists.add(pick.game_id);
-  }
-  preview=null;toast(saved+" picks copied to "+target.name+(skipped?"; "+skipped+" skipped.":"."));
+  // One server-side transaction: check membership, selected source picks,
+  // game locks, destination rules and conflicts atomically. Never overwrites.
+  const who=p.user;
+  const result=await client().rpc("sec_copy_my_league_picks",{
+   p_source:source.footballId,p_target:target.footballId,p_week:p.week,
+   p_expected:p.candidates.map(x=>({game_id:x.game_id,pick_code:x.pick_code}))
+  });
+  if(result.error)throw result.error;
+  if(me()?.id!==who)return;
+  const saved=Number(result.data?.copied)||0,skipped=Number(result.data?.skipped)||0;
+  preview=null;
+  toast(saved+" pick"+(saved===1?"":"s")+" copied to "+target.name+(skipped?"; "+skipped+" skipped.":"."));
   if(W.secOnline?.getLeague?.()?.id===target.footballId)void W.secOnline?.refresh?.();
- }catch(e){toast("Copy stopped: "+(e.message||"Please retry"));}
+ }catch(e){toast("Could not copy picks: "+(e.message||"Try again"));}
  finally{busy=false;copyUI(selected());}
 }
 function scenario(standings,games,picks,uid){
@@ -202,6 +192,10 @@ async function loadPath(item){
    away_score:row.awayScore??row.away_score,home_score:row.homeScore??row.home_score,
    winner:row.winner};});
   const unsettled=gs.filter(g=>g.game_status!=="final");
+  if(unsettled.some(g=>!["live","final"].includes(g.game_status))){
+   pathCache={key:k,at:day(),message:"Waiting for confirmed live game status before calculating possible standings.",details:[]};
+   renderPath();return;
+  }
   if(unsettled.some(g=>Date.parse(g.kickoff_at)>Date.now())){
    pathCache={key:k,at:day(),message:"Opponent picks stay hidden until kickoff. Check back after the remaining games start.",details:[]};
    renderPath();return;
@@ -258,4 +252,6 @@ document.addEventListener("click",e=>{
  if(button.dataset.competition==="path"){pathCache=null;void loadPath(selected());}
 },true);
 W.SEC_COMPETITIVE=Object.freeze({onPicks,onLeague,renderUpsets,scenario,choices});
+if(app()?.view?.()==="league")onLeague();
+else if(app()?.view?.()==="picks")onPicks();
 })();
