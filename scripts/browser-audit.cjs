@@ -57,6 +57,29 @@ fs.mkdirSync(output,{recursive:true});
     await page.screenshot({path:path.join(output,viewport.width+"-"+route+".png")});
     total++;
    }
+   // Confirm the *real rendered* live strip and compressed matchup layout on
+   // narrow phones. This is a local browser-only fixture; no real score is
+   // submitted or modified in the production database.
+   await page.evaluate(()=>{
+     window.SEC_BRIDGE.setView("picks");
+     const a=window.SEC_BRIDGE,w=a.week();
+     const g=w.games[0];g.liveStatus="live";g.awayScore=14;g.homeScore=10;
+     g.statusDetail="Q2 · 8:04";g.scoreUpdatedAt=new Date().toISOString();
+     g.kickoff=new Date(Date.now()-4*60000).toISOString();
+     window.SEC_LIVE_SCORES?.renderStatus?.();
+   });
+   const live=await page.evaluate(()=>{
+     const strip=document.querySelector("#sec-live-score-strip"),r=strip.getBoundingClientRect();
+     return {visible:!strip.hidden&&r.width>0,score:strip.textContent.includes("14"),
+       next:!!strip.querySelector("[data-slate-next]"),
+       compressed:document.body.classList.contains("sec-game-day-active"),
+       width:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth};
+   });
+   if(!live.visible||!live.score||!live.compressed||live.width>live.viewport+2)
+     problems.push(viewport.width+"px live strip clipped: "+JSON.stringify(live));
+   if(viewport.width<=390&&!live.next)
+     problems.push(viewport.width+"px missing mobile shortcut to remaining football picks");
+   await page.screenshot({path:path.join(output,viewport.width+"-gameday.png")});
    if(viewport.width<=390){
     await page.evaluate(()=>window.SEC_BRIDGE.setView("league"));
     const input=page.locator("#online-email");
