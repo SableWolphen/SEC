@@ -8,9 +8,12 @@ function team(g,id,d,ctx){
  const n=id===g.away?d.awayScore:d.homeScore;
  return '<div class="sec-final-team'+(winner?' is-winner':'')+(mine?' is-my-pick':'')+'">'+
  ctx.logo(id)+'<span class="sec-final-team-copy"><strong>'+e(t.name)+'</strong>'+
- '<small>'+e(t.nick)+'</small>'+(window.SEC_STATS?.pickContext?.(g,id)||"")+'</span>'+
- '<span class="sec-final-team-end"><b>'+n+'</b>'+
- (winner?'<small class="sec-final-winner-label">🏆 WINNER</small>':'')+'</span></div>';
+ '<small>'+e(t.nick)+'</small></span>'+
+ '<strong class="sec-final-team-score" aria-label="'+e(t.name)+' scored '+n+'">'+n+'</strong>'+
+ '<span class="sec-final-team-foot"><span class="sec-final-team-context">'+
+ (window.SEC_STATS?.pickContext?.(g,id)||'')+'</span>'+
+ (winner?'<small class="sec-final-winner-label">🏆 WINNER</small>':'')+
+ '</span></div>';
 }
 function grade(g,d,ctx){
  const winner=e(ctx.team(d.winner).name),margin=Math.abs(d.homeScore-d.awayScore);
