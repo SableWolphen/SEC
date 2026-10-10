@@ -131,7 +131,7 @@ fs.mkdirSync(output,{recursive:true});
        compactFieldVisible:(()=>{const el=card?.querySelector(".fan-center > summary .fan-field-mini");return !!el&&el.getBoundingClientRect().height>0;})(),
        compactMarker:!!card?.querySelector(".fan-center > summary .fan-football-marker"),
        hasLiveDrive:!!card?.querySelector(".fan-drive"),
-       hasBall:!!card?.querySelector(".fan-drive-ball"),
+       hasBall:!!card?.querySelector(".fan-drive .fan-football-marker"),
        liveText:card?.querySelector(".fan-drive")?.textContent.includes("2nd & 7")||false
      };
    });
