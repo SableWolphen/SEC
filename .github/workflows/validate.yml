@@ -50,6 +50,9 @@ jobs:
           node scripts/smoke-quality.cjs
           node --check scripts/smoke-football-scores.cjs
           node scripts/smoke-football-scores.cjs
+          node --check sec-live-scores.js
+          node --check scripts/smoke-live-scores.cjs
+          node scripts/smoke-live-scores.cjs
           node --check scripts/smoke-league-choice.cjs
           node scripts/smoke-league-choice.cjs
           node --check scripts/smoke-fan-experience.cjs
