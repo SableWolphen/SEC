@@ -247,3 +247,150 @@
  #picks-view .sec-final-team-score{font-size:20px}
  #picks-view .sec-final-winner-label{font-size:7px;padding:2px 4px}
 }
+
+
+/* FINAL v3: short scoreboard first. Only the details summary is visible until
+   the player opens it. No duplicate full-width final score or giant empty rows. */
+#picks-view .game-card.sec-final-card{
+ padding:10px 12px 9px;
+ border-radius:14px;
+}
+#picks-view .sec-final-card .game-header{
+ margin-bottom:7px;
+ align-items:center;
+ min-width:0;
+}
+#picks-view .sec-final-card .game-index{
+ display:flex;
+ gap:5px;
+ align-items:center;
+ white-space:nowrap;
+ font-size:10px;
+ letter-spacing:1.1px;
+}
+#picks-view .sec-final-status-label{
+ color:#d7fa65;
+ letter-spacing:.35px;
+}
+#picks-view .sec-final-card .game-meta{
+ font-size:10px;
+ color:#a8bfd1;
+ white-space:nowrap;
+}
+#picks-view .sec-final-teams{
+ grid-template-columns:minmax(0,1fr) 12px minmax(0,1fr);
+ gap:6px;
+ align-items:center;
+}
+#picks-view .sec-final-team{
+ grid-template-columns:clamp(26px,4vw,33px) minmax(0,1fr) max-content;
+ grid-template-rows:minmax(37px,auto);
+ column-gap:6px;
+ row-gap:0;
+ min-height:60px;
+ padding:8px 7px;
+ border-radius:10px;
+}
+#picks-view .sec-final-team .mini-logo{
+ grid-row:1;
+ grid-column:1;
+ width:clamp(26px,4vw,33px);
+ height:clamp(26px,4vw,33px);
+}
+#picks-view .sec-final-team-copy{grid-row:1;grid-column:2}
+#picks-view .sec-final-team-copy>strong{
+ font-size:12px;
+ line-height:1.2;
+ word-break:normal;
+ overflow-wrap:normal;
+ hyphens:none;
+}
+#picks-view .sec-final-team-score{
+ grid-row:1;grid-column:3;
+ font-size:25px;
+}
+#picks-view .sec-final-vs{font-size:9px;letter-spacing:0}
+#picks-view .sec-final-team.is-winner{
+ border-color:#9ed55e;
+ background:linear-gradient(110deg,#16382c,#162e33);
+}
+#picks-view .sec-final-details{margin-top:7px;border-top:1px solid #304759}
+#picks-view .sec-final-details>summary{
+ list-style:none;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:8px;
+ cursor:pointer;
+ min-height:32px;
+ color:#b4c9d8;
+ font-size:11px;
+ font-weight:800;
+ padding:7px 2px 2px;
+}
+#picks-view .sec-final-details>summary::-webkit-details-marker{display:none}
+#picks-view .sec-final-more-arrow{
+ color:#d7fa65;
+ font-size:17px;
+ line-height:1;
+ transition:transform .16s ease;
+}
+#picks-view .sec-final-details[open] .sec-final-more-arrow{transform:rotate(180deg)}
+#picks-view .sec-final-details>summary:focus-visible{
+ outline:2px solid #d7fa65;outline-offset:2px;border-radius:4px;
+}
+#picks-view .sec-final-details>.sec-final-detail-body{padding-top:5px}
+#picks-view .sec-final-detail-body .sec-final-grade{margin:4px 0 11px}
+#picks-view .sec-final-detail-body .sec-final-actions{margin-top:9px}
+@media(max-width:560px){
+ #picks-view .sec-final-teams{gap:4px;grid-template-columns:minmax(0,1fr) 10px minmax(0,1fr)}
+ #picks-view .sec-final-team{
+  grid-template-columns:27px minmax(0,1fr) max-content;
+  grid-template-rows:minmax(36px,auto);
+  min-height:60px;
+  column-gap:5px;
+  padding:7px 6px;
+ }
+ #picks-view .sec-final-team .mini-logo{width:27px;height:27px}
+ #picks-view .sec-final-team-copy>strong{font-size:11px}
+ #picks-view .sec-final-team-score{font-size:24px}
+ #picks-view .sec-final-detail-body .sec-final-grade{
+  grid-template-columns:1fr;
+  gap:6px;
+ }
+ #picks-view .sec-final-detail-body .sec-final-metric{
+  border-radius:9px;
+  flex-direction:row;
+  min-height:42px;
+  align-items:center;
+ }
+ #picks-view .sec-final-detail-body .sec-final-metric-icon{display:grid}
+ #picks-view .sec-final-detail-body .sec-final-metric>span:last-child{
+  flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:3px 8px;
+ }
+ #picks-view .sec-final-detail-body .sec-final-metric small{width:100%}
+ #picks-view .sec-final-detail-body .sec-final-metric b,
+ #picks-view .sec-final-detail-body .sec-final-metric strong{font-size:11px}
+}
+@media(max-width:390px){
+ #picks-view .game-card.sec-final-card{padding:9px}
+ #picks-view .sec-final-teams{gap:3px}
+ #picks-view .sec-final-team{
+  grid-template-columns:25px minmax(0,1fr) max-content;
+  column-gap:4px;
+  padding:7px 5px;
+ }
+ #picks-view .sec-final-team .mini-logo{width:25px;height:25px}
+ #picks-view .sec-final-team-copy>strong{font-size:10px}
+ #picks-view .sec-final-team-score{font-size:21px}
+}
+@media(max-width:340px){
+ #picks-view .sec-final-team{
+  grid-template-columns:24px minmax(0,1fr) max-content;
+  column-gap:3px;
+  padding:6px 4px;
+ }
+ #picks-view .sec-final-team .mini-logo{width:24px;height:24px}
+ #picks-view .sec-final-team-copy>strong{font-size:9px}
+ #picks-view .sec-final-team-score{font-size:20px}
+}
