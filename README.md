@@ -230,3 +230,7 @@ This is a reliability pass, not another large new feature:
 - **Automatic failure detection:** The football-health GitHub workflow checks public scores every 15 minutes Thu–Sun and every three hours Mon–Wed. It creates one reusable GitHub issue for stale live data, missing feeds, invalid finals or long-overdue scheduled games, then closes the issue after recovery. Watch repo GitHub notifications if you want these alerts; a GitHub issue is not a guaranteed direct email or phone push.
 - **Mobile polish:** Picks live banner includes a next-unpicked-game shortcut; spotlight takes less height during games and frequent updates preserve week-picker scroll. Real Chromium checks eight screens at five sizes and simulates a live scoreboard.
 Provider publication time, connection failures and GitHub scheduling are best effort, not second-by-second guarantees.
+
+## Streamlined league home
+
+The selected league now gets priority: one picker, its standings, league chat, and a quick invitation action. Duplicate football selectors were removed. Owner sport options, existing create/join flows, advanced scoring modes, tournaments and account settings remain available in collapsed, clearly named sections. No picks, saved league history, sports or private chats were removed. The mobile interface has fewer visible panels and the responsive browser audit protects against screen overflow.
