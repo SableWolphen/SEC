@@ -10,7 +10,7 @@ const ALL=["football","basketball","baseball"];
 const names={football:"🏈 Football",basketball:"🏀 Basketball",baseball:"⚾ Baseball"};
 const validSports=c=>(Array.isArray(c?.enabled_sports)?c.enabled_sports:ALL).filter(s=>ALL.includes(s));
 let clubs=[],singles=[],selection=null,leaderboard=[],lastUser=null,loading=false,lastLoad=0,message="";
-let inflight=null,inflightUser=null,standingsVersion=0,standingsLoading=false,lastRenderedSelection=null;
+let inflight=null,inflightUser=null,standingsVersion=0,standingsLoading=false,lastRenderedSelection=null,actionPending=false;
 const ident=i=>i?.kind+":"+i?.id;
 const key=()=> "sec-selected-league:"+(me()?.id||"guest");
 const cached=()=>{try{return localStorage.getItem(key());}catch(e){return null;}};
@@ -263,6 +263,10 @@ async function invitation(){
 }
 async function action(name,button){
  if(!me()||!db()){app()?.toast?.("Log in first.");return;}
+ // Avoid duplicate league creation/joining from double-taps or slow networks.
+ if(actionPending)return;
+ actionPending=true;
+ if(button)button.disabled=true;
  const item=selectedItem(),c=club();
  try{
   if(name==="create"){
@@ -359,6 +363,10 @@ async function action(name,button){
   else if(/^(basketball|baseball):/.test(selection||""))
     void win.SEC_SPORTS?.load?.(selection.split(":")[0],true);
  }catch(e){message=e.message||"Could not update league.";render();}
+ finally{
+  actionPending=false;
+  if(button)button.disabled=false;
+ }
 }
 async function onView(){
  reset();render();
