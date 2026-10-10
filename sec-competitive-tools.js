@@ -116,7 +116,7 @@ function onLeague(){
  if(lastSelection!==k){preview=null;lastSelection=k;pathCache=null;}
  copyUI(item);
  renderPath();
- if(item?.kind==="football"&&me()&&app()?.view?.()==="league")void loadPath(item);
+ if(footballLeague(item)&&me()&&app()?.view?.()==="league")void loadPath(item);
 }
 async function previewCopy(){
  if(busy||!me()||!client())return;
@@ -208,7 +208,7 @@ function scenario(standings,games,picks,uid){
  return {best,winning,ties,total:2**relevant.length};
 }
 async function loadPath(item){
- if(!item||item.kind!=="football"||!me()||!client())return;
+ if(!footballLeague(item)||!me()||!client())return;
  const k=key(item),league=footballLeague(item),who=me().id;
  if(pathPending===k||pathCache?.key===k&&Date.now()-pathCache.at<45000)return;
  pathPending=k;
@@ -236,12 +236,14 @@ async function loadPath(item){
   if(unsettled.length===0){pathCache={key:k,at:day(),message:"All games are final. See official league standings.",details:[]};renderPath();return;}
   if(unsettled.length>11){pathCache={key:k,at:day(),message:"Too many open outcomes to calculate a reliable path yet.",details:[]};renderPath();return;}
   const [s,r]=await Promise.all([
-   client().rpc("sec_league_standings_v3",{p_league:league,p_week:app().week().num}),
+   item.kind==="club"?client().rpc("sec_club_standings",{p_club:item.id}):
+    client().rpc("sec_league_standings_v3",{p_league:league,p_week:app().week().num}),
    client().rpc("sec_revealed_league_picks",{p_league:league,p_week:app().week().num})
   ]);
   if(s.error||r.error)throw s.error||r.error;
   if(key(selected())!==k||me()?.id!==who)return;
-  const outcomes=scenario(s.data||[],gs,r.data||[],who);
+  const rows=(s.data||[]).map(p=>item.kind==="club"?{...p,season_points:p.total}:p);
+  const outcomes=scenario(rows,gs,r.data||[],who);
   let message="",details=[];
   if(!outcomes)message="Waiting for an active game and verified league standings.";
   else if(!outcomes.best)message=outcomes.ties?
@@ -251,6 +253,7 @@ async function loadPath(item){
    message=outcomes.winning+" of "+outcomes.total+" remaining outcome combinations could put you in outright first.";
    details=outcomes.best.games.map((g,i)=>({id:g.id,code:outcomes.best.outcome[i]}));
   }
+  if(item.kind==="club")message="Football-only path, assuming other sports' points stay unchanged. "+message;
   pathCache={key:k,at:day(),message,details};
   renderPath();
  }catch(e){if(key(selected())===k){pathCache={key:k,at:day(),message:"Couldn't calculate this week's path. Retry shortly.",details:[]};renderPath();}}
@@ -259,7 +262,7 @@ async function loadPath(item){
 function renderPath(){
  const host=document.getElementById("sec-path-first"),item=selected();
  if(!host)return;
- if(item?.kind!=="football"||!me()){host.innerHTML="";host.hidden=true;return;}
+ if(!footballLeague(item)||!me()){host.innerHTML="";host.hidden=true;return;}
  host.hidden=false;
  const valid=pathCache?.key===key(item);
  host.innerHTML='<details class="sec-competition-fold" id="sec-path-fold"><summary>🏆 Path to 1st <span>What needs to happen?</span></summary>'+
