@@ -285,7 +285,8 @@ function gameCard(s,g,league,picks){
  const canPick=Boolean(league&&user()&&g.imported&&!locked&&(mode!=="spread"||g.spread_home!==null&&g.spread_home!==undefined));
  const scored=["live","final"].includes(g.game_status)&&validSportScore(g.away_score)&&validSportScore(g.home_score);
  const result=g.game_status==="final"?(g.winner_code?"FINAL · "+(g.winner_code===g.home_code?g.home_name:g.away_name)+" wins":"FINAL") :
-  g.game_status==="live"?"LIVE":g.game_status==="canceled"?"CANCELED":timeLabel(g.kickoff_at);
+  g.game_status==="live"?"LIVE"+(phase?" · "+phase:""):g.game_status==="canceled"?"CANCELED":timeLabel(g.kickoff_at);
+ const phase=String(g.status_detail||"").slice(0,42);
  const verdict=old&&g.game_status==="final"?(g.winner_code===old.pick_code?'✓ Correct pick':'✕ Incorrect pick'):"";
  const availability=!league?"Join a league to pick":!g.imported?"Syncing game to secure pick server":locked?"Picks locked":
   mode==="spread"&&(g.spread_home===null||g.spread_home===undefined)?"Waiting for a published spread":"Choose a winner";
@@ -500,10 +501,17 @@ function mount(route){
  if(route==="baseball")void getBaseballSeries();
  void load(route);
 }
+// Faster live-game browser refresh, standard polling outside the game window.
+let lastPoll=0;
 setInterval(()=>{
  const active=window.SEC_BRIDGE?.view?.();
- if(SPORT[active]&&document.visibilityState==="visible"&&!document.activeElement?.matches?.("input,textarea,select"))void load(active,true);
-},5*60000);
+ if(!SPORT[active]||document.visibilityState!=="visible"||
+    document.activeElement?.matches?.("input,textarea,select"))return;
+ const moment=Date.now(),fast=(cache[active]?.games||[]).some(x=>x.game_status==="live"||
+  x.game_status==="scheduled"&&moment>=Date.parse(x.kickoff_at)-30*60000&&moment<Date.parse(x.kickoff_at)+5*3600000);
+ if(moment-lastPoll<(fast?60000:300000))return;
+ lastPoll=moment;void load(active,true);
+},30000);
 window.SEC_SPORTS=Object.freeze({mount,recommended,year,groups,renderHub,load,authChanged,selectLeague,renderLeaguePanel,getState:s=>cache[s]});
 if(["sports","basketball","baseball"].includes(window.SEC_BRIDGE?.view?.()))mount(window.SEC_BRIDGE.view());
 })();
