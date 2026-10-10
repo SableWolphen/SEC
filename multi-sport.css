@@ -439,3 +439,18 @@ body{overflow-x:clip}
   .week-picker{margin-right:-11px;padding-right:11px}
   .bottom-nav{width:100%;max-width:100%;box-sizing:border-box}
 }
+
+/* Football game-day live scores: one small ticker, visible only near kickoff. */
+.sec-live-score-strip{padding:11px 15px;margin:10px 0 18px;border-radius:13px;
+ border:1px solid #56856c;background:#153329;color:#e6f2e4;line-height:1.45}
+.sec-live-score-strip[hidden]{display:none!important}
+.sec-live-strip-title{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap}
+.sec-live-strip-title strong{font-size:12px;font-weight:900}
+.sec-live-strip-title>span{color:#a3d3b0;font-size:11px;font-weight:700}
+.sec-live-mini-scores{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.sec-live-mini-score{background:#234535;border-radius:9px;padding:7px 10px;font-size:13px;font-variant-numeric:tabular-nums}
+.sec-live-mini-score b{font-weight:900}
+.sec-live-mini-score small{display:inline-block;margin-left:4px;color:#b8d9bc;font-size:11px}
+.sec-live-score-strip>small{display:block;color:#a3c6b3;font-size:10px;margin-top:7px}
+@media(max-width:430px){.sec-live-score-strip{padding:10px}.sec-live-mini-scores{flex-direction:column}
+.sec-live-mini-score{width:100%;font-size:12px}.sec-live-strip-title strong{font-size:11px}}

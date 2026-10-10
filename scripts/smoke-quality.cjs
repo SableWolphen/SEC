@@ -29,12 +29,14 @@ assert.match(css,/\.fan-sport-checkbox>span\{font-size:11px/,
 assert.match(css,/:focus-visible/,"keyboard focus remains visible");
 assert.match(html,/id="fan-league-create"/);
 assert.match(html,/id="fan-power-rankings"/);
+assert.match(html,/id="sec-live-score-strip"/,"compact football-only score strip exists");
+assert.match(html,/sec-live-scores\.js\?v=/,"live score refresh loads on every site session");
 assert.match(html,/id="fan-club-hub"/);
 assert.match(html,/id="fan-single-league"/);
 assert.match(html,/id="fan-brackets"/);
-assert.match(worker,/sec-pickem-v38/);
-assert.match(worker,/20261009-reliable-v4/);
-assert.match(html,/20261009-reliable-v4/);
+assert.match(worker,/sec-pickem-v39/);
+assert.match(worker,/20261009-live-v5/);
+assert.match(html,/20261009-live-v5/);
 const league=fs.readFileSync("league-settings.js","utf8");
 assert.match(league,/lastRenderedSelection===selection/,"draft edit states only restore into same selected league");
 assert.match(league,/standingsVersion/,"late asynchronous results cannot bleed between leagues");

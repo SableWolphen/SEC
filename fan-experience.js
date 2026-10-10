@@ -37,6 +37,11 @@ async function loadGames(force=false){
  }catch(e){console.info("SEC game status unavailable:",e.message);}
  finally{gamesLoading=false;if(app()?.view?.()==="picks"&&!document.activeElement?.matches?.("input,textarea,select"))app()?.renderPicks?.();}
 }
+// Live score polling can update one week without refetching every league's picks.
+function ingestScores(rows){
+ for(const row of rows||[])if(row?.id)gameRows[row.id]={...gameRows[row.id],...row};
+ // Keep the normal two-minute private-picks refresh independent of live public scores.
+}
 const isScore=n=>Number.isInteger(n)&&n>=0;
 function gameCenter(g,insights){
  const d=gameRows[g.id],status=d?.game_status||"scheduled";
@@ -239,7 +244,7 @@ window.SEC_FAN=Object.freeze({onView,
  renderLeagueChoice:()=>window.SEC_LEAGUE_SETTINGS?.render?.(),
  getClub:()=>window.SEC_LEAGUE_SETTINGS?.getClub?.()||null,
  getStandings:()=>window.SEC_LEAGUE_SETTINGS?.getStandings?.()||[],
- gameCenter,sportCenter,seriesPreviewCard,enhanceRecap,enhanceTeam,honors});
+ gameCenter,sportCenter,seriesPreviewCard,enhanceRecap,enhanceTeam,honors,ingestScores});
 if(app()?.view?.())void onView(app().view());
 setInterval(()=>{if(document.visibilityState!=="visible")return;
  if(app()?.view?.()==="picks")void loadGames().then(remind);
