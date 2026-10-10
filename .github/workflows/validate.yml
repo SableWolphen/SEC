@@ -94,6 +94,8 @@ jobs:
           assert Path('supabase/migrations/20261009_unified_three_sport_leagues.sql').exists(), "Unified club migration missing"
           assert Path('supabase/migrations/20261009_switchable_league_preferences.sql').exists(), "Switchable league preference migration missing"
           assert Path('supabase/migrations/20261009_secure_postseason_brackets.sql').exists(), "Secure postseason bracket migration missing"
+          assert Path('supabase/migrations/20261009_per_league_sport_selection.sql').exists(), "Per-league sport settings migration missing"
+          assert Path('supabase/migrations/20261009_weekly_power_rankings.sql').exists(), "Weekly power rankings migration missing"
           assert Path('supabase/functions/sec-sport-sync/index.ts').exists(), "Source-verified importer missing"
           assert "window.SEC_BRIDGE" in html
           assert "./config.js" in html and "./multiplayer.js" in html
