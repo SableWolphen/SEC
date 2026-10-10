@@ -65,7 +65,10 @@ function newsFor(g,sport){
   '<p class="fan-subtle">Injury watch: No verified injury-related headline found for these teams in the recent news feed. This does not mean no one is injured.</p>';
  return '<div class="sec-community-news-section"><h5>📰 Matchup headlines</h5>'+
   (cards?'<ul>'+cards+'</ul>':'<p class="fan-subtle">No recent source-linked team headlines in this feed.</p>')+
-  alerts+'</div>';
+  alerts+
+  (sport==="football"&&safeUrl(window.SEC_STATS?.getGame?.(g)?.source_url)?
+   '<p><a href="'+esc(safeUrl(window.SEC_STATS.getGame(g).source_url))+'" target="_blank" rel="noopener noreferrer">Check ESPN for more team updates ↗</a></p>':'')+
+  '</div>';
 }
 function reactionMarkup(rows,gameKey){
  const authenticated=!!viewer();

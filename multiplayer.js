@@ -105,7 +105,7 @@
        '<p>Signed in as <strong>'+safe(user.email||"Member")+'</strong></p>'+
        '<label class="input-label" for="online-name">Leaderboard display name</label>'+
        '<input class="field" id="online-name" maxlength="32" autocomplete="nickname" value="'+safe(profile?.display_name||user.user_metadata?.display_name||"")+'" placeholder="Your name">'+
-       '<div style="margin-top:12px">'+button('Save name','save-name','primary-btn')+' '+button('Sign out','logout')+'</div>');
+       '<div style="margin-top:12px">'+button('Save name','save-name','primary-btn')+' '+button('Choose favorite school','go-teams')+' '+button('Sign out','logout')+'</div>');
     var leaguesForm=card('Create or join a league',
        '<label class="input-label" for="online-new-league">Make a new league</label>'+
        '<input class="field" id="online-new-league" maxlength="50" placeholder="Saturday Crew">'+
@@ -303,6 +303,7 @@
       status("");renderLeague();return;
     }
     if(action==="go-league"){app.setView("league");return;}
+    if(action==="go-teams"){app.setView("teams");return;}
     if(action==="go-picks"){app.setView("picks");return;}
     if(action==="copy-invite"){return copyInvite();}
     if(action==="refresh"){await refresh();return;}
