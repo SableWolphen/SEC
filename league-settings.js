@@ -168,6 +168,7 @@ function render(){
  lastRenderedSelection=selection;
  // Power rankings are specific to the selected league, never a player-wide score.
  win.SEC_POWER?.show?.(item);
+ win.SEC_COMPETITIVE?.onLeague?.();
 }
 function renderClub(c,host){
  const sports=validSports(c),owner=c.owner_id===me()?.id,info=leaderboard.find(x=>x.user_id===me()?.id);
