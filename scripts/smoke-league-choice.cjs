@@ -101,6 +101,12 @@ const run=async()=>{
  assert.equal(list.length,4,"2 clubs plus 2 unrelated standalone leagues");
 
  assert.match(nodes["fan-league-choice"].innerHTML,/Each league chooses its own sports/);
+ assert.match(nodes["fan-league-choice"].innerHTML,/League home/,"one calm league landing");
+ assert.match(nodes["fan-league-choice"].innerHTML,/Current league/,"one selected league");
+ assert.doesNotMatch(nodes["fan-league-choice"].innerHTML,/fan-new-name|fan-join-code/,"creation and joining are not shoved into main header");
+ assert.match(fs.readFileSync("index.html","utf8"),/id="fan-league-management"/,"rare actions collapsed below active league");
+ assert.match(fs.readFileSync("index.html","utf8"),/id="fan-season-extras"/,"off-season tournaments are collapsed");
+ assert.match(fs.readFileSync("multiplayer.js","utf8"),/fan-football-tools/,"legacy football scoring modes are optional");
  assert.match(nodes["fan-league-choice"].innerHTML,/SEC Crew/);
  assert.match(nodes["fan-league-choice"].innerHTML,/Diamond Fans/);
  assert.match(nodes["fan-league-choice"].innerHTML,/Original Football/);
