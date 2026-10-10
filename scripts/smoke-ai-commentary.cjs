@@ -84,8 +84,8 @@ const football={id:"g-1",away:"ALA",home:"UGA",game_status:"scheduled",kickoff:"
  const source=fs.readFileSync("sec-game-community.js","utf8");
  assert.doesNotMatch(source,/functions\.invoke|api\.openai\.com|OPENAI_API_KEY|aiAttempts/);
  const html=fs.readFileSync("index.html","utf8");
- assert.match(html,/sec-game-community\.js\?v=20261010-free-commentary-v1/);
- assert.match(html,/fan-experience\.js\?v=20261010-free-commentary-v1/);
+ assert.match(html,/sec-game-community\.js\?v=20261010-shockwave-v1/);
+ assert.match(html,/fan-experience\.js\?v=20261010-shockwave-v1/);
  const fan=fs.readFileSync("fan-experience.js","utf8");
  assert.match(fan,/game_status:status,away_score:awayScore/,"verified football status passed to Game Center");
  console.log("Free SEC commentary passed: 3 sports, upcoming/live/final, safe sourcing, zero LLM requests.");
