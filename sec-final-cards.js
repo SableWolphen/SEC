@@ -6,14 +6,10 @@ const points=x=>x===null?"—":Number(x).toLocaleString("en-US",{maximumFraction
 function team(g,id,d,ctx){
  const t=ctx.team(id),winner=d.winner===id,mine=d.pick===id;
  const n=id===g.away?d.awayScore:d.homeScore;
- return '<div class="sec-final-team'+(winner?' is-winner':'')+(mine?' is-my-pick':'')+'">'+
- ctx.logo(id)+'<span class="sec-final-team-copy"><strong>'+e(t.name)+'</strong>'+
- '<small>'+e(t.nick)+'</small></span>'+
- '<strong class="sec-final-team-score" aria-label="'+e(t.name)+' scored '+n+'">'+n+'</strong>'+
- '<span class="sec-final-team-foot"><span class="sec-final-team-context">'+
- (window.SEC_STATS?.pickContext?.(g,id)||'')+'</span>'+
- (winner?'<small class="sec-final-winner-label">🏆 WINNER</small>':'')+
- '</span></div>';
+ return '<div class="sec-final-team'+(winner?' is-winner':'')+(mine?' is-my-pick':'')+
+ '" aria-label="'+e(t.name)+(winner?', winner':'')+(mine?', your pick':'')+'">'+
+ ctx.logo(id)+'<span class="sec-final-team-copy"><strong>'+e(t.name)+'</strong></span>'+
+ '<strong class="sec-final-team-score" aria-label="'+e(t.name)+' scored '+n+'">'+n+'</strong></div>';
 }
 function grade(g,d,ctx){
  const winner=e(ctx.team(d.winner).name),margin=Math.abs(d.homeScore-d.awayScore);
@@ -51,6 +47,14 @@ function friends(g,d){
  '<div class="sec-final-pick-people">'+d.reveal.map(x=>'<span>'+e(x.display_name||"Player")+
  ': <b>'+e(x.pick_code)+'</b></span>').join("")+'</div></div></details>';
 }
+// Preserve the user's expanded card when live-score refreshes rerender Picks.
+function wasOpen(id,selector){
+ if(typeof document==="undefined")return false;
+ const cards=document.querySelectorAll("#games-list .sec-final-card");
+ for(const card of cards)if(card.dataset.gameId===id)
+   return Boolean(card.querySelector(selector)?.open);
+ return false;
+}
 function render(g,index,ctx){
  const d=window.SEC_FEATURES?.finalData?.(g);
  if(!d)return "";
@@ -62,19 +66,20 @@ function render(g,index,ctx){
  '<span class="sec-final-action-label"><b>'+name+'</b><small>'+desc+'</small></span>'+
  '<span class="sec-final-action-arrow" aria-hidden="true">›</span></'+(url?'a':'div')+'>';
  return '<article class="game-card sec-final-card" data-game-id="'+e(g.id)+'" data-final-game="true" tabindex="-1">'+
- '<div class="game-header"><div class="game-index"><strong>'+String(index+1).padStart(2,"0")+'</strong> / MATCHUP</div>'+
- '<div class="game-meta">'+ctx.displayDate(g.date,g.date!==ctx.weekDate)+' · '+e(ctx.gameTime(g))+
- (g.network?' · '+e(g.network):"")+'</div></div>'+
+ '<div class="game-header"><div class="game-index"><strong>'+String(index+1).padStart(2,"0")+
+ '</strong> / <span class="sec-final-status-label">✓ FINAL</span></div>'+
+ '<div class="game-meta">'+ctx.displayDate(g.date,g.date!==ctx.weekDate)+'</div></div>'+
  '<div class="sec-final-teams">'+team(g,g.away,d,ctx)+'<span class="sec-final-vs">VS</span>'+
  team(g,g.home,d,ctx)+'</div>'+
- '<div class="sec-final-scoreline"><strong>✓ FINAL</strong><span>'+e(g.away)+' '+
- d.awayScore+' – '+d.homeScore+' '+e(g.home)+'</span></div>'+
+ '<details class="sec-final-details" data-game-id="'+e(g.id)+'"'+(wasOpen(g.id,".sec-final-details")?' open':'')+'>'+
+ '<summary><span>Game details</span><span class="sec-final-more-arrow" aria-hidden="true">⌄</span></summary>'+
+ '<div class="sec-final-detail-body">'+
  grade(g,d,ctx)+friends(g,d)+
  '<div class="sec-final-actions">'+
  link("Game Recap",url?"Final stats, scoring summary and key plays":"Recap not yet available",
  "game","▤","sec-final-recap-link")+
  link("View Box Score",url?"Official game statistics":"Stats not yet available",
- "boxscore","▥","sec-final-box-link")+'</div></article>';
+ "boxscore","▥","sec-final-box-link")+'</div></div></details></article>';
 }
 window.SEC_FINAL_CARDS=Object.freeze({render});
 if(window.SEC_BRIDGE?.view?.()==="picks")window.SEC_BRIDGE.renderPicks?.();
