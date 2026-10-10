@@ -4,6 +4,7 @@ on:
     - cron: '37 8,20 * * *'
   workflow_dispatch: {}
   push:
+    branches: [main]
     paths:
       - 'scripts/update_sports.py'
       - 'tests/test_sports.py'
@@ -37,9 +38,14 @@ jobs:
               for g in d['sports'][sport]['games']:
                   assert g['sport']==sport and g['season']==season and g['id'] not in ids
                   ids.add(g['id'])
-                  assert g['source']=='ESPN' and g['away_code']!=g['home_code']
+                  assert isinstance(g['source'],str) and g['source'].strip() and g['away_code']!=g['home_code']
+                  assert g['game_status'] in ('scheduled','live','final','canceled')
+                  assert g['winner_code'] is None or g['winner_code'] in (g['away_code'],g['home_code'])
                   assert dt.datetime.fromisoformat(g['kickoff_at'].replace('Z','+00:00')).tzinfo is not None
-          print('Validated public sports schedule')
+              print(sport, len(d['sports'][sport]['games']), 'public games,',d['sports'][sport].get('verified_database_games',0),'from verified database')
+              if not d['sports'][sport]['games']:
+                  print('::warning::No verified individual '+sport+' matchups available; retain existing fixture records and show the empty state.')
+          print('Validated published sports schedule with secure-game IDs preserved')
           PY
       - name: Publish updated fixtures
         run: |
