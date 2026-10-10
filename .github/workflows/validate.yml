@@ -43,6 +43,9 @@ jobs:
           node --check scripts/smoke-brackets.cjs
           node scripts/smoke-brackets.cjs
           node --check fan-experience.js
+          node --check sec-power-rankings.js
+          node --check scripts/smoke-power-rankings.cjs
+          node scripts/smoke-power-rankings.cjs
           node --check scripts/smoke-league-choice.cjs
           node scripts/smoke-league-choice.cjs
           node --check scripts/smoke-fan-experience.cjs
