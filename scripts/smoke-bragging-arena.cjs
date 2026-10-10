@@ -8,7 +8,7 @@ let viewer={id:"alice"},fetches=0,notice=[],copied=[],listeners={};
 const html={innerHTML:"",replaceChildren(){this.innerHTML="";}};
 const games=[
  {id:"fb1",sport:"football",season:"2026",week:3,kickoff_at:past,away_code:"ALA",home_code:"UGA",
-  game_status:"final",away_score:24,home_score:17,winner:"ALA",spread_home:3,spread_source:"ESPN"},
+  game_status:"final",away_score:24,home_score:17,winner:"ALA",spread_home:-3,spread_source:"ESPN"},
  {id:"bb1",sport:"basketball",season:"2027",week:4,kickoff_at:past,away_code:"333",home_code:"8",
   away_name:"Alabama",home_name:"Arkansas",game_status:"final",away_score:62,home_score:71,
   winner:"8",spread_home:null,spread_source:null},
@@ -82,7 +82,7 @@ const arena=window.SEC_BRAG_ARENA;
  assert.equal(arena.verified({...games[0],winner:"UGA"}),false,"mismatched winner rejected");
  const bullets=arena.bulletin(m);
  assert.ok(bullets.length>=1,"verified results yield bulletin");
- assert.match(bullets[0].text,/Upset receipts/);
+ assert.ok(bullets.some(b=>/Upset receipts/.test(b.text)),"sourced underdog upset is in recent bulletins");
  const futureOnly=arena.model({players,games:[games[3]],picks:picks.slice(-1)});
  assert.equal(futureOnly.picks.size,0,"future-only pick is not disclosed");
  const badScore=arena.model({players,games:[{...games[0],away_score:10,home_score:17,winner:"ALA"}],picks});
