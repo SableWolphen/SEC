@@ -841,3 +841,142 @@ color:#ecf8ee;font-size:13px;font-weight:900;background:#1c353b}
 @media(max-width:520px){.brag-fold>summary{padding:11px 12px!important;align-items:flex-start}
 .brag-fold>summary small{max-width:75%}.brag-fold-body{padding:11px}
 .brag-arena-intro{padding:11px}.sec-ai-compact{padding:11px!important}}
+
+/* Bragging Rights showcase — matches the existing navy/teal SEC web design.
+   All highlight values are sourced from the selected league, never mock values. */
+#fan-pane-brags{max-width:100%;min-width:0}
+#fan-brag-arena{min-width:0}
+.brag-showcase{display:grid!important;gap:10px!important;margin:8px 0 12px!important}
+.brag-showcase-hero{position:relative;overflow:hidden;display:flex;align-items:center;gap:17px;
+ min-height:118px;border:1px solid #467a81;border-radius:14px;padding:18px 20px;
+ background:radial-gradient(ellipse at 79% 15%,#bfe69924 0%,transparent 26%),
+ radial-gradient(ellipse at 90% 120%,#a3c77422,transparent 47%),
+ repeating-linear-gradient(159deg,transparent 0px,transparent 9px,#aad7b20a 10px,#aad7b20a 11px),
+ linear-gradient(105deg,#112e3b 5%,#0a2434 48%,#102b37 100%);}
+.brag-showcase-hero:after{content:"";pointer-events:none;position:absolute;right:8%;bottom:-65px;
+ width:260px;height:160px;border-radius:50%;border:6px solid #b9d9ce12;
+ box-shadow:0 0 0 12px #9cbfc812,0 0 0 32px #b9d9ce08,0 0 90px #d6e89535;
+ transform:rotate(-22deg)}
+.brag-hero-crown{font-size:44px;line-height:1;filter:drop-shadow(0 5px 16px #ddaf4542);z-index:1}
+.brag-hero-copy{flex:1;min-width:0;position:relative;z-index:1}
+.brag-hero-kicker{display:block;color:#b3d1ca;font-weight:950;font-size:10px;letter-spacing:1.25px;text-transform:uppercase}
+.brag-showcase-hero h2{color:#f4fbf8;font-weight:1000;font-size:clamp(25px,3.4vw,39px);
+ line-height:1.04;letter-spacing:-1.3px;margin:5px 0!important;text-transform:uppercase}
+.brag-showcase-hero h2 em{color:#d7fa65;font-style:italic}
+.brag-showcase-hero p{color:#c5d7d9;font-size:12px;line-height:1.5;margin:0!important}
+.brag-showcase-hero p b{color:#f4faed}
+.brag-hero-refresh{position:relative;z-index:1;min-height:40px;padding:9px 12px;white-space:nowrap;
+ background:#143139;color:#edf6ee;border:1px solid #588076}
+.brag-showcase-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.brag-showcase-stat{display:flex;align-items:center;gap:12px;min-width:0;border-radius:13px;
+ padding:14px 13px;border:1px solid #607963;background:linear-gradient(112deg,#182e36,#18342f)}
+.brag-showcase-stat.is-king{border-left:3px solid #f6c75a;background:linear-gradient(110deg,#2c342b,#283833)}
+.brag-showcase-stat.is-streak{border-left:3px solid #f18c75;background:linear-gradient(110deg,#352c38,#242c36)}
+.brag-showcase-stat.is-upset{border-left:3px solid #ac80ed;background:linear-gradient(110deg,#242e49,#202944)}
+.brag-showcase-stat.is-accuracy{border-left:3px solid #69d6ad;background:linear-gradient(110deg,#143d3d,#173532)}
+.brag-stat-icon{font-size:clamp(22px,3vw,34px);line-height:1.1;flex-shrink:0}
+.brag-stat-copy{min-width:0;display:flex;flex-direction:column;gap:4px}
+.brag-stat-copy>span{font-size:9px;letter-spacing:.8px;color:#cee6c1;font-weight:950}
+.brag-stat-copy strong{font-size:clamp(15px,1.8vw,21px);font-weight:950;color:#f3f9f2;
+ line-height:1.13;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brag-stat-copy small{font-size:10px;color:#b9cbc8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brag-showcase-section{border:1px solid #3e6c69;border-radius:13px;overflow:hidden;
+ background:linear-gradient(125deg,#122e38,#102a32);min-width:0}
+.brag-showcase-heading{min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:10px;
+ padding:8px 13px;border-bottom:1px solid #3a6160;background:linear-gradient(90deg,#153941,#123039)}
+.brag-showcase-heading h3{font-size:12px!important;letter-spacing:.8px;margin:0!important;
+ color:#f0faf2;font-weight:950}
+.brag-showcase-heading>span{font-size:10px;color:#abc6c1}
+.brag-showcase-link{min-height:32px;padding:5px 6px;color:#d6f996;cursor:pointer;font-size:11px;font-weight:900;
+ background:transparent;border:0;border-radius:6px}
+.brag-showcase-link:hover{text-decoration:underline}
+.brag-showcase-duel{display:grid;grid-template-columns:minmax(0,1fr) 53px 40px 53px minmax(0,1fr) auto;
+ align-items:center;gap:13px;padding:17px 15px;background:radial-gradient(ellipse at 50% 50%,#74bc5538,transparent 23%),#112936}
+.brag-showcase-duelist{display:flex;align-items:center;gap:8px;min-width:0;flex-wrap:wrap}
+.brag-duelist-symbol{font-size:11px;font-weight:950;display:grid;place-items:center;color:#d5ff65;
+ border:2px solid #a4c96f;background:#203a39;border-radius:50%;width:39px;height:39px;
+ box-shadow:0 0 15px #9bbd4966;flex-shrink:0;overflow:hidden}
+.brag-duelist-symbol.is-rival{border-color:#e3ab72;color:#ffe0a1}
+.brag-showcase-duelist strong{min-width:0;overflow-wrap:anywhere;font-size:13px;color:#f5f8f6}
+.brag-showcase-duelist small{font-size:10px;color:#b1c3c6}
+.brag-showcase-count{text-align:center;display:flex;flex-direction:column;gap:1px}
+.brag-showcase-count strong{font-size:clamp(22px,2.5vw,31px);line-height:1;font-weight:1000;color:#f6fbfa;font-variant-numeric:tabular-nums}
+.brag-showcase-count small{font-size:9px;color:#c8dfdb;font-weight:850}
+.brag-duel-vs{font-size:20px;font-weight:1000;color:#d7fa65;text-shadow:0 0 14px #d7fa6588;text-align:center}
+.brag-showcase-cta{border:0;background:#d7fa65;color:#162822;border-radius:9px;padding:11px 14px;
+ font-weight:950;font-size:12px;min-height:42px;white-space:nowrap;cursor:pointer;box-shadow:0 4px 16px #d7fa6530}
+.brag-showcase-cta:hover{background:#e8ff9a}
+.brag-showcase-stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:10px}
+.brag-showcase-story{display:flex;align-items:center;gap:10px;padding:10px 12px;min-width:0;
+ background:#182f39;border:1px solid #466c6f;border-radius:10px}
+.brag-story-mark{font-size:19px;flex-shrink:0}
+.brag-showcase-story p{flex:1;min-width:0;font-size:11px;line-height:1.5;color:#e8f0ed;margin:0;overflow-wrap:anywhere}
+.brag-showcase-story .fan-small{font-size:10px;white-space:nowrap;min-height:34px}
+.brag-showcase-empty{padding:12px 15px;color:#a9c6c6;font-size:11px;line-height:1.5}
+.brag-showcase-receipts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;padding:10px}
+.brag-showcase-receipt{display:flex;flex-direction:column;gap:4px;min-width:0;border:1px solid #56806d;
+ border-radius:10px;background:linear-gradient(115deg,#1c3839,#102f38);padding:12px}
+.brag-showcase-receipt.is-upset{border-color:#9171c1;background:linear-gradient(115deg,#302b49,#182a3f)}
+.brag-showcase-receipt.is-miss{border-color:#6783a6;background:linear-gradient(115deg,#223751,#152c3e)}
+.brag-receipt-pill{align-self:flex-start;color:#152e23;background:#c5f87b;border-radius:6px;
+ font-size:9px;font-weight:950;padding:3px 7px}
+.brag-showcase-receipt.is-upset .brag-receipt-pill{background:#c49aff;color:#23183a}
+.brag-showcase-receipt.is-miss .brag-receipt-pill{background:#a6c8f5;color:#1b2d42}
+.brag-showcase-receipt strong{font-size:12px;color:#f1f8ee;overflow-wrap:anywhere}
+.brag-showcase-receipt small{font-size:10px;line-height:1.45;color:#b5cbd0;overflow-wrap:anywhere}
+.brag-showcase-receipt .fan-small{align-self:flex-start;margin-top:auto;font-size:10px;min-height:34px}
+.brag-showcase-honors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding:10px}
+.brag-showcase-honor{min-width:0;display:flex;align-items:center;gap:9px;padding:10px;
+ border-radius:10px;border:1px solid #466a69;background:#19323a}
+.brag-showcase-honor>span{font-size:24px;flex-shrink:0}
+.brag-showcase-honor>div{min-width:0;display:flex;flex-direction:column;gap:4px}
+.brag-showcase-honor strong{font-size:10px;letter-spacing:.5px;color:#dbf3c4}
+.brag-showcase-honor small{font-size:10px;color:#d2e0df;overflow-wrap:anywhere}
+.brag-showcase-more{border-top:1px solid #355a57;margin:0}
+.brag-showcase-more>summary{display:flex;justify-content:space-between;gap:12px;align-items:center;cursor:pointer;
+ list-style:none;color:#c1dcd1;padding:9px 13px!important;min-height:37px;font-size:11px;font-weight:900;
+ background:#18343a}
+.brag-showcase-more>summary::-webkit-details-marker{display:none}
+.brag-showcase-more>summary>span{font-size:10px;color:#d5ff65;font-weight:850}
+.brag-showcase-more>summary>span:after{content:" ▾"}
+.brag-showcase-more[open]>summary>span:after{content:" ▴"}
+.brag-showcase-more-body{padding:12px 14px;border-top:1px solid #385e58;overflow:hidden}
+.brag-showcase-more-body .brag-block{margin:0;border:0}
+.brag-showcase-more-body .brag-fold>summary{background:#1e3d43}
+.brag-showcase-more-body .brag-fold-body{background:#172e35}
+.brag-showcase-select{font-size:11px;color:#b7d4cb;display:flex;align-items:center;gap:9px;margin-bottom:10px}
+.brag-showcase-select select{background:#122c33;border:1px solid #638e80;color:#f3fcf5;
+ border-radius:8px;padding:7px;min-height:40px;max-width:100%}
+.brag-showcase .brag-rounds{margin-bottom:10px}
+.brag-showcase :is(button,summary,select):focus-visible{outline:3px solid #d7fa65;outline-offset:2px}
+@media(max-width:940px){
+ .brag-showcase-stats,.brag-showcase-honors{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .brag-showcase-duel{grid-template-columns:minmax(0,1fr) 44px 30px 44px minmax(0,1fr);gap:7px}
+ .brag-showcase-cta{grid-column:1/-1;justify-self:stretch}
+}
+@media(max-width:640px){
+ .brag-showcase-hero{min-height:107px;padding:13px;gap:9px;flex-wrap:wrap}
+ .brag-hero-crown{font-size:29px}
+ .brag-showcase-hero h2{font-size:clamp(20px,6vw,29px)}
+ .brag-hero-kicker{font-size:9px}
+ .brag-hero-refresh{margin-left:auto;min-height:34px;font-size:10px}
+ .brag-showcase-stories{grid-template-columns:1fr}
+ .brag-showcase-receipts{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}
+ .brag-showcase-receipt{flex:0 0 min(76vw,255px);scroll-snap-align:start}
+ .brag-showcase-heading{flex-wrap:wrap}
+ .brag-showcase-duelist{flex-direction:column;text-align:center;gap:4px}
+ .brag-showcase-duelist strong{font-size:11px}
+ .brag-showcase-duelist small{display:none}
+ .brag-duelist-symbol{height:31px;width:31px}
+ .brag-showcase-duel{grid-template-columns:minmax(0,1fr) 32px 26px 32px minmax(0,1fr);padding:11px 9px}
+ .brag-showcase-count strong{font-size:22px}.brag-duel-vs{font-size:16px}
+}
+@media(max-width:400px){
+ .brag-showcase-stat{padding:10px 8px;gap:7px}
+ .brag-stat-icon{font-size:21px}.brag-stat-copy strong{font-size:14px}
+ .brag-stat-copy>span{font-size:8px}.brag-stat-copy small{font-size:9px}
+ .brag-showcase-hero{padding:11px}
+ .brag-hero-copy{flex-basis:60%}
+ .brag-showcase-honor{padding:8px;gap:6px}
+ .brag-showcase-honor>span{font-size:19px}
+}
