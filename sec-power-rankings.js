@@ -104,7 +104,11 @@ function show(item=manager()?.getSelected?.(),force=false){
    console.info("Weekly power rankings:",e?.message||"Unable to load");
   }finally{
    pending.delete(input.key);
-   if(activeKey===input.key&&userId===me()?.id)render(manager()?.getSelected?.());
+   if(activeKey===input.key&&userId===me()?.id){
+    render(manager()?.getSelected?.());
+    // Update the belt after verified rankings resolve without reloading private picks.
+    window.SEC_BRAG_ARENA?.render?.();
+   }
   }
  })();
  pending.set(input.key,task);
