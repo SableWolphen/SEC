@@ -64,7 +64,7 @@ const db={from:table,rpc:async(fn,args)=>{
   return {error:{message:"League not found — check the invite code"}};
  }
  if(fn==="sec_sport_join_league"){
-  if(args.p_code==="BASKET123")return {data:"bb-original",error:null};
+  if(args.p_code==="BASKET1234")return {data:"bb-original",error:null};
   return {error:{message:"Invite code not found"}};
  }
  return {error:{message:"Unexpected RPC "+fn}};
@@ -108,7 +108,7 @@ const run=async()=>{
  nodes["fan-join-code"].value="ABCDEFGHIJ";
  await click("join");
  assert.equal(manager.getClub()?.id,"club-A","club invite picks the joined club automatically");
- nodes["fan-join-code"].value="BASKET123";
+ nodes["fan-join-code"].value="BASKET1234";
  await click("join");
  assert.equal(manager.getSelected()?.kind,"basketball","sport invite joins with the same existing account");
  nodes["fan-join-code"].value="FOOTBALL01";
