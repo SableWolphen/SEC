@@ -375,3 +375,53 @@
 .fan-football-tools summary{min-height:44px;display:flex;align-items:center}
 @media(max-width:620px){.power-player strong{font-size:12px}.power-player small{font-size:10px}
 .power-highlights strong{font-size:11px}}
+
+
+/* Quality pass: predictable spacing, safe-area navigation and readable forms. */
+html{scroll-padding-top:16px}
+body{overflow-x:clip}
+.view,.app-shell,main,.secondary-grid,.setting-stack,.fan-panel,.fan-fold{min-width:0}
+.view :is(input,textarea,select){max-width:100%}
+:is(button,a,summary,input,select,textarea):focus-visible{outline:3px solid var(--lime,#d7fa65);outline-offset:3px}
+:is(button,summary){touch-action:manipulation}
+.fan-league-select,.fan-new-league .field,.fan-join-league .field{font-size:14px;min-height:45px}
+.fan-new-league>.fan-small,.fan-join-league>.fan-small,.fan-edit-league>.fan-small{min-height:44px;margin:11px 0 4px}
+.fan-single-panel,.fan-club-invite,.fan-power-card{overflow-wrap:anywhere}
+.fan-club-invite{align-items:center}
+.fan-club-invite strong{font-variant-numeric:tabular-nums;letter-spacing:.6px}
+.fan-format-wrap p{line-height:1.55}
+.fan-power-card,.fan-league-select,.fan-table-wrap{max-width:100%}
+.fan-new-league summary,.fan-join-league summary,.fan-edit-league summary,.fan-single-panel details summary{min-height:44px;align-items:center}
+@media(max-width:790px){
+  .bottom-nav{grid-template-columns:repeat(6,minmax(0,1fr));min-height:68px;
+    padding:7px max(6px,env(safe-area-inset-right))
+      calc(7px + env(safe-area-inset-bottom))
+      max(6px,env(safe-area-inset-left))}
+  .mobile-nav-btn{min-width:0;min-height:48px;padding:6px 2px;
+    border-radius:9px;white-space:nowrap;gap:4px}
+  .mobile-nav-btn:focus-visible{outline-offset:-3px}
+  .mobile-nav-btn span{max-width:100%;overflow:hidden;text-overflow:ellipsis}
+  .mobile-nav-btn.active{background:#d7fa6515}
+  main{padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+  .footer{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
+  .toast{bottom:calc(84px + env(safe-area-inset-bottom));max-width:calc(100vw - 24px)}
+}
+@media(max-width:430px){
+  .mobile-nav-btn{font-size:9.5px}
+  .mobile-nav-btn svg{width:21px;height:21px}
+  .fan-new-league .field,.fan-join-league .field,.fan-league-select{
+    font-size:16px
+  }
+  .fan-sport-checkboxes{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .fan-sport-checkbox>span{font-size:11px;line-height:1.2;min-height:52px}
+  .fan-club-invite .fan-small{min-height:44px}
+}
+@media(max-width:345px){
+  .app-shell{padding-left:11px;padding-right:11px}
+  .mobile-nav-btn{font-size:9px}
+  .mobile-nav-btn svg{width:20px;height:20px}
+  .fan-sport-checkbox>span{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .fan-format-card,.fan-power-card,.fan-center,.fan-fold{transition:none!important}
+}
