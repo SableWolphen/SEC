@@ -1125,3 +1125,15 @@ color:#ecf8ee;font-size:13px;font-weight:900;background:#1c353b}
 #picks-view #sec-day-recap,
 #picks-view #fan-rivalries,
 #picks-view #summary-slot { display:none!important; }
+
+/* Live drive: source-verified and present only when fresh ESPN play data exists. */
+.fan-drive{border:1px solid #3d685b;border-radius:10px;padding:10px 11px;margin:0 0 10px;background:linear-gradient(135deg,#18382e,#122634)}
+.fan-drive-heading{display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap}
+.fan-drive-heading strong{font-size:12px;color:#d9f5b5}
+.fan-drive-heading span{font-size:11px;font-weight:700;color:#e6f1e8;min-width:0;overflow-wrap:anywhere}
+.fan-drive-track{height:19px;margin:8px 5px 12px;position:relative;border:1px solid #608b74;border-radius:5px;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 1px),#bce9b933 calc(10% - 1px) 10%),linear-gradient(#1d5140,#153f36)}
+.fan-drive-progress{height:100%;display:block;background:#cffc5166}
+.fan-drive-ball{position:absolute;top:50%;transform:translate(-50%,-50%);font-size:18px;filter:drop-shadow(0 1px 2px #05160d);line-height:1}
+.fan-drive-summary,.fan-drive-play{font-size:11px;color:#e4ece8;line-height:1.5;margin:5px 0!important;overflow-wrap:anywhere}
+.fan-drive-play b{color:#d4faad}
+.fan-drive small{font-size:9px;color:#93b9aa;display:block;margin-top:7px}
