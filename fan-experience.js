@@ -59,6 +59,7 @@ function gameCenter(g,insights){
   '<summary><b class="'+(status==="live"?"fan-live":"")+'">'+(status==="live"?"🔴 LIVE":status==="final"?"✓ FINAL":"Game center")+'</b>'+
   '<span>'+(scored?text:"Scores & matchup stats")+(phase?' · '+esc(phase):'')+'</span><span>⌄</span></summary>'+
   '<div class="fan-center-detail">'+
+  (window.SEC_LIVE_DRIVE?.render?.(g,d,status)||"")+
   (window.SEC_GAME_COMMUNITY?.panel?.(game,"football")||"")+
   (insights?'<details class="sec-game-more sec-matchup-fold"><summary>📊 Matchup stats &amp; prediction</summary><div class="sec-game-more-body">'+insights+'</div></details>':"")+
   '</div></details>';
