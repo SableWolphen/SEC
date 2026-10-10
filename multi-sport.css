@@ -1115,3 +1115,13 @@ color:#ecf8ee;font-size:13px;font-weight:900;background:#1c353b}
  #picks-view .slate-filter{flex:1 1 auto;padding:7px 6px}
  #picks-view .game-meta{font-size:9px;gap:4px}
 }
+
+
+/* One scoreboard, one source of visible results.
+   Keep background game-day notifications running, but avoid a second
+   recap/live-picks/receipt/rivalry stack after the football matchup list. */
+#picks-view #fan-recap,
+#picks-view #sec-gameday-picks,
+#picks-view #sec-day-recap,
+#picks-view #fan-rivalries,
+#picks-view #summary-slot { display:none!important; }
