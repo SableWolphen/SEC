@@ -37,6 +37,9 @@ function upset(g,sport="football"){
  const a=Number(g.away_score??g.awayScore),h=Number(g.home_score??g.homeScore);
  const ahead=a>h?away:h>a?home:null;
  if(ahead!==underdog)return null;
+ // A final upset must agree with the confirmed winner, not only the score.
+ // A provisional or conflicting final may not be announced as a completed upset.
+ if(current==="final"&&String(g.winner||g.winner_code||"")!==ahead)return null;
  return {label:current==="live"?"⚡ UPSET WATCH":"⚡ UNDERDOG WIN",
   message:challenger+(current==="live"?" leads right now. If that result holds, it would surprise the listed favorite.":
    " finished ahead of the currently listed favorite.")+

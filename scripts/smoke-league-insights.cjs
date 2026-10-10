@@ -29,6 +29,8 @@ const game={id:"game-01",away:"ALA",home:"UGA",game_status:"final",away_score:34
  assert.equal(insights.upset({...game,spread_source:null},"football"),null,"no unsourced upset claims");
  assert.equal(insights.upset({...game,spread_home:null},"football"),null);
  assert.equal(insights.upset({...game,away_score:21,home_score:28},"football"),null,"no upset if favorite leads");
+ assert.equal(insights.upset({...game,winner:"UGA"},"football"),null,"conflicting final winner cannot be called an upset");
+ assert.equal(insights.upset({...game,winner:null},"football"),null,"unconfirmed final winner cannot be called an upset");
  assert.match(insights.upset({...game,game_status:"live"},"football").label,/UPSET WATCH/);
  assert.match(insights.initial(game,"football"),/League picks are revealed after kickoff/);
  const waiting={...game,kickoff:future,id:"game-02"};

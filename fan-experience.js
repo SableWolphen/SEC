@@ -46,7 +46,8 @@ const isScore=n=>Number.isInteger(n)&&n>=0;
 function gameCenter(g,insights){
  const d=gameRows[g.id],status=["live","final"].includes(g.liveStatus)?g.liveStatus:d?.game_status||g.liveStatus||"scheduled";
  const awayScore=g.awayScore??d?.away_score,homeScore=g.homeScore??d?.home_score;
- const scored=isScore(awayScore)&&isScore(homeScore);
+ // The provider uses 0–0 placeholders before kickoff; never present them as a live score.
+ const scored=["live","final"].includes(status)&&isScore(awayScore)&&isScore(homeScore);
  const text=scored?esc(g.away)+" "+awayScore+" – "+homeScore+" "+esc(g.home):"Score pending";
  const game={...g,game_status:status,away_score:awayScore,home_score:homeScore,
   winner:d?.winner||g.winner||null,
@@ -64,7 +65,7 @@ function gameCenter(g,insights){
   '<small>Verified game feed, updated periodically while this tab is open. No simulated play-by-play.</small></div></details>';
 }
 function sportCenter(s,g){
- const scored=isScore(g.away_score)&&isScore(g.home_score),id=s+"-"+g.id;
+ const scored=["live","final"].includes(g.game_status)&&isScore(g.away_score)&&isScore(g.home_score),id=s+"-"+g.id;
  return '<details class="fan-center" data-fan-center="'+esc(id)+'" '+(openDetails.has(id)?"open":"")+'>'+
   '<summary><b class="'+(g.game_status==="live"?"fan-live":"")+'">'+(g.game_status==="live"?"🔴 LIVE":g.game_status==="final"?"✓ FINAL":"Game center")+'</b>'+
   '<span>'+(scored?g.away_score+" – "+g.home_score:"Score & source")+'</span><span>⌄</span></summary>'+
