@@ -2,6 +2,7 @@
 const assert=require("node:assert/strict"),fs=require("node:fs");
 const edge=fs.readFileSync("supabase/functions/sec-scores/index.ts","utf8");
 const activation=fs.readFileSync("supabase/migrations/20261009_activate_football_score_cron.sql","utf8");
+const fast=fs.readFileSync("supabase/migrations/20261010_football_30_second_espn_refresh.sql","utf8");
 const fix=fs.readFileSync("supabase/migrations/20261009_missouri_kansas_football_date.sql","utf8");
 const html=fs.readFileSync("index.html","utf8");
 const sw=fs.readFileSync("sw.js","utf8");
@@ -15,6 +16,13 @@ for(const code of ["AUSTPEAY","NALA","TNSTATE","CAMP"]){
 assert.match(edge,/KSU:\["KSU","KENN","KENNESAW","KENNESAW STATE"\]/,
  "Kennesaw State is not confused with Kansas State");
 assert.doesNotMatch(edge,/KSU:\[[^\]]*"KANSAS STATE"/,"incorrect team recognition would change outcomes");
+assert.match(fast,/cron\.schedule\('sec-scores-live-minute','30 seconds'/,
+ "active live-game importer runs every 30 seconds, replacing the existing named job");
+assert.match(fast,/where exists\(/,"30-second ESPN polling remains conditional on live games");
+assert.match(fast,/game_status in \('scheduled','live'\)/);
+assert.match(fast,/vault\.decrypted_secrets/,"job token stays secure in Vault");
+assert.doesNotMatch(fast,/cron\.schedule\('sec-scores-weekend-half-hour'/,
+ "30-second upgrade must not duplicate catch-up jobs");
 assert.match(activation,/pg_cron/);
 assert.match(activation,/pg_net/);
 assert.match(activation,/sec_scores_job_token/);
