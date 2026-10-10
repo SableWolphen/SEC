@@ -169,6 +169,14 @@ const run=async()=>{
  assert.equal(manager.getClub()?.id,"club-B","older response cannot change selected league");
  assert.equal(manager.getStandings()[0]?.total,1,"older scoreboard cannot bleed into new league");
  assert.match(nodes["fan-league-create"].innerHTML,/fan-join-code/,"join remains available after switches");
+ // An old basketball league must not silently open this year's unrelated picks.
+ other.push({id:"bb-archive",name:"2026 Hoops",sport:"basketball",season:2026,
+   owner_id:"owner-1",mode:"straight"});
+ await manager.load(true);
+ const callCount=selectedCalls.length;
+ await manager.choose("basketball:bb-archive");
+ assert.match(nodes["fan-single-league"].innerHTML,/2026 season archive/);
+ assert.equal(selectedCalls.length,callCount,"archived season must not redirect to current picks");
  const sourceManager=fs.readFileSync("league-settings.js","utf8");
  assert.match(sourceManager,/function formState\(\)/,"preserves unsaved league inputs");
  assert.match(sourceManager,/function restoreForms\(state\)/,"restores checked sport controls");
