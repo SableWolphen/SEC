@@ -9,6 +9,7 @@ const me=()=>window.secOnline?.getUser?.();
 const league=()=>window.SEC_LEAGUE_SETTINGS?.getSelected?.();
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const score=v=>v!==null&&v!==undefined&&v!==""&&Number.isInteger(Number(v))&&Number(v)>=0&&Number(v)<=999?Number(v):null;
+const number=v=>v!==null&&v!==undefined&&v!==""&&Number.isFinite(Number(v))?Number(v):null;
 const now=()=>Date.now(),started=g=>Number.isFinite(Date.parse(g.kickoff_at||g.kickoff))&&Date.parse(g.kickoff_at||g.kickoff)<=now();
 const win=g=>{const a=score(g.away_score??g.awayScore),h=score(g.home_score??g.homeScore);
  const away=String(g.away_code||g.away),home=String(g.home_code||g.home);
