@@ -1161,3 +1161,28 @@ color:#ecf8ee;font-size:13px;font-weight:900;background:#1c353b}
 .fan-field-mini .fan-field-pending{font-size:8px}
 .fan-drive>.fan-football-field{margin:9px 0}
 @media(max-width:355px){.fan-field-mini .fan-endzone{min-width:28px;font-size:7px}}
+
+
+/* SEC competition extras: zero-cost when idle, one compact row when relevant. */
+#sec-competition-picks[hidden],#sec-competition-league[hidden],#sec-path-first[hidden]{display:none!important}
+#sec-competition-picks:empty{display:none}
+#sec-path-first,#sec-competition-league{margin:8px 0}
+#sec-competition-picks{margin:4px 0 9px}
+.sec-competition-fold{margin:0;border:1px solid #36505a;border-radius:11px;background:#111e29;color:#e4eee7;overflow:hidden}
+.sec-competition-fold>summary{display:flex;align-items:center;gap:9px;justify-content:space-between;list-style:none;cursor:pointer;padding:11px 13px;min-height:40px;font-size:12px;font-weight:850}
+.sec-competition-fold>summary::-webkit-details-marker{display:none}
+.sec-competition-fold>summary>span{font-size:10px;font-weight:650;color:#acd0b8;text-align:right}
+.sec-competition-fold>summary:focus-visible{outline:2px solid #d7fa65;outline-offset:-2px}
+.sec-competition-fold[open]>summary{border-bottom:1px solid #344853}
+.sec-competition-preview,.sec-competition-rows{padding:9px 12px;display:grid;gap:7px}
+.sec-competition-preview p{font-size:11px;color:#d6e8db;line-height:1.55;margin:3px 0 8px}
+.sec-competition-preview strong{font-size:11px}
+.sec-competition-row{padding:6px 8px;background:#182b35;border-radius:7px;display:flex;justify-content:space-between;align-items:center;gap:9px;flex-wrap:wrap;font-size:11px}
+.sec-competition-row small{color:#b2c9ca;font-size:10px}
+.sec-competition-muted{display:block;margin:8px 12px;font-size:10px;line-height:1.45;color:#b1c7c9}
+.sec-competition-transfer{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:4px 12px 6px}
+.sec-competition-transfer label{min-width:0;font-size:10px;font-weight:800;color:#b7d3be;display:grid;gap:5px}
+.sec-competition-transfer select{width:100%;min-width:0;border:1px solid #51715e;background:#162c31;color:#eaf5ec;border-radius:7px;padding:9px 6px;font-size:11px;min-height:38px}
+.sec-competition-fold button[data-competition]{margin:6px 12px 12px;min-height:36px}
+.sec-competition-preview button[data-competition]{margin:9px 0 3px}
+@media(max-width:340px){.sec-competition-transfer{grid-template-columns:1fr}}
