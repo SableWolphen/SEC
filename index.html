@@ -603,13 +603,24 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   
   function renderWeeklyScoreStrip(w){
     const total=w.games.length,made=activePicks(w),finalGames=resultsCount(w);
-    const graded=w.games.filter(g=>state.results[g.id]&&(state.picks[g.id]===g.away||state.picks[g.id]===g.home)).length;
-    const correct=correctCount(w),wrong=graded-correct;
+    const mode=window.SEC_FEATURES?.getMode?.()||"straight",isSpread=mode==="spread";
+    const decided=w.games.filter(g=>state.results[g.id]&&(state.picks[g.id]===g.away||state.picks[g.id]===g.home));
+    const gradedGames=isSpread?decided.filter(g=>{
+      const line=g.spreadHome??g.spread_home,home=g.homeScore??g.home_score,away=g.awayScore??g.away_score;
+      return line!==null&&line!==undefined&&line!==""&&validGameScore(home)&&validGameScore(away)&&Number(home)-Number(away)+Number(line)!==0;
+    }):decided;
+    const graded=gradedGames.length;
+    const correct=isSpread?gradedGames.filter(g=>{
+      const margin=Number(g.homeScore??g.home_score)-Number(g.awayScore??g.away_score)+Number(g.spreadHome??g.spread_home);
+      return (margin>0&&state.picks[g.id]===g.home)||(margin<0&&state.picks[g.id]===g.away);
+    }).length:correctCount(w);
+    const wrong=graded-correct;
     const scoring=window.SEC_FEATURES?.summaryPoints?.(w);
-    const extra=scoring&&window.SEC_FEATURES?.getMode?.()!=="straight"?" · "+esc(scoring.label)+": "+esc(String(scoring.score)):"";
+    const extra=scoring&&["confidence","spread"].includes(mode)?" · "+esc(scoring.label)+": "+esc(String(scoring.score)):"";
+    const scoreLabel=isSpread?"COVERS RIGHT":"RIGHT PICKS";
     const host=document.getElementById("weekly-score-strip");if(!host)return;
     host.innerHTML='<section class="weekly-score-strip" aria-label="Your Week '+w.num+' results">'+
-      '<div class="week-score-primary"><small>WEEK '+w.num+' · RIGHT PICKS</small><strong>'+correct+'<span> / '+graded+'</span></strong><small>'+
+      '<div class="week-score-primary"><small>WEEK '+w.num+' · '+scoreLabel+'</small><strong>'+correct+'<span> / '+graded+'</span></strong><small>'+
       (graded?wrong+' missed · confirmed winners only':'No picks graded yet')+extra+'</small></div>'+
       '<div class="week-score-metric"><strong>'+made+'<span>/'+total+'</span></strong><small>Picks made</small></div>'+
       '<div class="week-score-metric"><strong>'+finalGames+'<span>/'+total+'</span></strong><small>Final games</small></div>'+
