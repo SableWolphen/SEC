@@ -10,7 +10,7 @@ const ALL=["football","basketball","baseball"];
 const names={football:"🏈 Football",basketball:"🏀 Basketball",baseball:"⚾ Baseball"};
 const validSports=c=>(Array.isArray(c?.enabled_sports)?c.enabled_sports:ALL).filter(s=>ALL.includes(s));
 let clubs=[],singles=[],selection=null,leaderboard=[],lastUser=null,loading=false,lastLoad=0,message="";
-let inflight=null,inflightUser=null;
+let inflight=null,inflightUser=null,standingsVersion=0,standingsLoading=false,lastRenderedSelection=null;
 const ident=i=>i?.kind+":"+i?.id;
 const key=()=> "sec-selected-league:"+(me()?.id||"guest");
 const cached=()=>{try{return localStorage.getItem(key());}catch(e){return null;}};
@@ -23,6 +23,7 @@ function reset(){
  const id=me()?.id||"guest";
  if(lastUser===id)return;
  lastUser=id;clubs=[];singles=[];selection=null;leaderboard=[];lastLoad=0;message="";
+ standingsVersion++;standingsLoading=false;lastRenderedSelection=null;
 }
 function items(){
  return [
@@ -41,8 +42,55 @@ function checked(group){
  return [...box.querySelectorAll('input[data-league-sports="'+group+'"]:checked')]
   .map(x=>x.value).filter(s=>ALL.includes(s));
 }
+
+/* Preserve an in-progress league name, invitation code, and chosen checkboxes.
+   Automatic refreshes must not erase a form while someone is typing. */
+function formState(){
+ const state={sameSelection:lastRenderedSelection===selection,inputs:{},choices:{},open:{}};
+ for(const id of ["fan-new-name","fan-join-code"]){
+  const node=byId(id);if(node&&typeof node.value==="string")state.inputs[id]=node.value;
+ }
+ for(const kind of ["create","edit","upgrade"]){
+  if(kind!=="create"&&!state.sameSelection)continue;
+  const region=byId("fan-"+kind+"-sport-options");
+  if(region?.querySelectorAll){
+   const boxes=[...region.querySelectorAll('input[data-league-sports]')];
+   if(boxes.length)state.choices[kind]=boxes.filter(b=>b.checked).map(b=>b.value);
+  }
+ }
+ for(const [id,selector] of [
+  ["fan-league-create",".fan-new-league"],
+  ["fan-join-league",".fan-join-league"],
+  ["fan-club-hub",".fan-edit-league"]]){
+  const node=id==="fan-join-league"?byId("fan-league-create"):byId(id);
+  const details=node?.querySelector?.(selector);
+  if(details)state.open[id]=details.open;
+ }
+ return state;
+}
+function restoreForms(state){
+ for(const [id,value] of Object.entries(state.inputs)){
+  const node=byId(id);if(node&&typeof node.value==="string")node.value=value;
+ }
+ for(const [kind,selected] of Object.entries(state.choices)){
+  const region=byId("fan-"+kind+"-sport-options");
+  if(!region?.querySelectorAll)continue;
+  for(const input of region.querySelectorAll('input[data-league-sports]'))
+   input.checked=selected.includes(input.value);
+ }
+ for(const [id,selector] of [
+  ["fan-league-create",".fan-new-league"],
+  ["fan-join-league",".fan-join-league"],
+  ["fan-club-hub",".fan-edit-league"]]){
+  if(!(id in state.open))continue;
+  const node=id==="fan-join-league"?byId("fan-league-create"):byId(id);
+  const details=node?.querySelector?.(selector);
+  if(details)details.open=state.open[id];
+ }
+}
 function render(){
  reset();
+ const preserved=formState();
  const heading=byId("fan-league-choice"),create=byId("fan-league-create"),
   single=byId("fan-single-league"),multi=byId("fan-club-hub"),football=byId("league-content");
  if(!heading)return;
@@ -55,7 +103,7 @@ function render(){
  ' · '+x.sports.map(s=>names[s]).join(" + ")+'</option>').join("")+'</select>'+
  '<p class="fan-format-note">'+html(item?.name||"Your league")+' · '+item?.sports.length+
  ' active sport'+(item?.sports.length===1?"":"s")+'. Changes here do not affect other leagues.</p>':
- '<p class="fan-format-note">No leagues joined yet. Make your first league below.</p>'):
+ '<p class="fan-format-note">'+(loading?"Loading your leagues…":"No leagues joined yet. Make your first league below.")+'</p>'):
  '<p class="fan-format-note">One account for all sports. Log in below to manage your leagues.</p>')+
  (message?'<p class="fan-warning" role="status">'+html(message)+'</p>':"")+
  (logged?'<button class="fan-small" type="button" data-league-action="reload">↻ Refresh my leagues</button>':"")+'</section>';
@@ -98,6 +146,8 @@ function render(){
  for(const id of ["fan-brackets","fan-series"]){const el=byId(id);if(el)el.hidden=!current||!validSports(current).some(s=>s!=="football");}
  // Guests always retain the shared login and password recovery.
  if(football)football.hidden=logged&&(!item||item.kind!=="football");
+ restoreForms(preserved);
+ lastRenderedSelection=selection;
  // Power rankings are specific to the selected league, never a player-wide score.
  win.SEC_POWER?.show?.(item);
 }
@@ -131,8 +181,15 @@ function renderClub(c,host){
  '</section>';
 }
 async function standings(){
- const c=club();
- leaderboard=c?(unwrap(await db().rpc("sec_club_standings",{p_club:c.id}))||[]):[];
+ const currentClub=club(),who=me()?.id,version=++standingsVersion;
+ if(!currentClub){leaderboard=[];standingsLoading=false;return;}
+ standingsLoading=true;
+ try{
+  const rows=unwrap(await db().rpc("sec_club_standings",{p_club:currentClub.id}))||[];
+  if(version===standingsVersion&&me()?.id===who&&club()?.id===currentClub.id)leaderboard=rows;
+ }finally{
+  if(version===standingsVersion)standingsLoading=false;
+ }
 }
 function load(force=false){
  if(inflight){
@@ -170,6 +227,7 @@ async function loadNow(force=false){
     win.SEC_SPORTS?.getState?.(item.kind)?.active!==item.id)
    win.SEC_SPORTS?.selectLeague?.(item.kind,item.id);
   await standings();
+  if(me()?.id!==id)return;
   lastLoad=Date.now();
  }catch(e){if(me()?.id===id)message="Could not load league settings: "+(e.message||"Try refreshing.");}
  finally{
@@ -178,10 +236,16 @@ async function loadNow(force=false){
 }
 async function choose(value){
  const x=items().find(x=>ident(x)===value);if(!x)return;
+ const previous=selection;
  selection=value;saveCache(value);
- if(x.kind==="football")win.secOnline?.useLeague?.(x.id);
- else if(x.kind!=="club")win.SEC_SPORTS?.selectLeague?.(x.kind,x.id);
- await standings();render();win.SEC_BRACKETS?.mount?.();
+ if(previous!==value){leaderboard=[];standingsVersion++;}
+ render();
+ try{
+  if(x.kind==="football")win.secOnline?.useLeague?.(x.id);
+  else if(x.kind!=="club")win.SEC_SPORTS?.selectLeague?.(x.kind,x.id);
+  await standings();
+ }catch(e){message="Could not refresh this league’s standings: "+(e.message||"Please retry.");}
+ render();win.SEC_BRACKETS?.mount?.();
 }
 async function invitation(){
  const code=new URLSearchParams(location.search).get("club");
