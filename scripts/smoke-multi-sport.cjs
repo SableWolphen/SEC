@@ -133,7 +133,7 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
  assert.ok(html.includes('data-nav="current-sport"'),"mobile and desktop Picks tabs return to the selected sport");
  assert.ok(!html.includes('data-nav="sports"'),"no mandatory choose-sport navigation");
  assert.ok(html.includes("lastSportView"),"returning from other pages preserves chosen sport");
- assert.ok(html.includes("20261010-leaguehub-v2"),"site loads updated shared-auth scripts rather than an old cached build");
+ assert.ok(html.includes("20261010-leaguetabs-v3"),"site loads updated shared-auth scripts rather than an old cached build");
  const shared=fs.readFileSync("multiplayer.js","utf8");
  assert.match(shared,/whenAuthReady:function/,"one Supabase login exposes session restoration to all sports");
  assert.match(shared,/publishAccount\(\)/,"auth restoration triggers sport refresh");

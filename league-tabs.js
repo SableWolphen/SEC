@@ -29,7 +29,10 @@ function relocate(source,selector,target){
  const parent=byId(source),mount=byId(target);
  if(!parent||!mount)return;
  const child=parent.querySelector(selector);
- if(child)mount.replaceChildren(child);
+ if(child){
+  if(target==="fan-league-football-manager"&&selector===".fan-football-advanced")mount.appendChild(child);
+  else mount.replaceChildren(child);
+ }
 }
 function trimFootball(){
  const board=byId("league-content")?.querySelector(".leaderboard");
