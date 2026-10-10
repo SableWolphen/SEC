@@ -60,6 +60,8 @@ jobs:
           python3 -m py_compile scripts/update_team_records.py scripts/sportradar_baseball.py
           node --check scripts/smoke-online.cjs
           node scripts/smoke-online.cjs
+          node --check scripts/smoke-two-accounts.cjs
+          node scripts/smoke-two-accounts.cjs
           python3 -m py_compile scripts/update_stats.py
           python3 - <<'PY'
           from pathlib import Path
