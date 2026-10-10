@@ -1,0 +1,62 @@
+name: SEC football game-day health
+on:
+  schedule:
+    - cron: '*/15 * * * 4,5,6,0'
+    - cron: '0 */3 * * 1,2,3'
+  workflow_dispatch: {}
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: sec-football-health
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check public live and final football score health
+        id: verify
+        continue-on-error: true
+        run: node scripts/check-football-health.cjs
+      - name: Report problems to one reusable GitHub issue
+        if: steps.verify.outcome == 'failure' || steps.verify.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHECK_RESULT: ${{ steps.verify.outcome }}
+        run: |
+          set -euo pipefail
+          TITLE="SEC football score feed alert"
+          ISSUE="$(gh issue list -R "$GITHUB_REPOSITORY" --state open --limit 100 --json number,title --jq '.[] | select(.title == "SEC football score feed alert") | .number' | head -n 1)"
+          if [ "$CHECK_RESULT" = "failure" ]; then
+            {
+              echo "Automatic SEC football score health check found an issue."
+              echo
+              echo "Run: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+              echo
+              echo 'Please check the latest verified game results, score importer and scheduled jobs. No user data or service keys are included.'
+            } > /tmp/sec-health-issue.md
+            if [ -z "$ISSUE" ]; then
+              gh issue create -R "$GITHUB_REPOSITORY" --title "$TITLE" --body-file /tmp/sec-health-issue.md
+            else
+              gh issue comment -R "$GITHUB_REPOSITORY" "$ISSUE" --body-file /tmp/sec-health-issue.md
+            fi
+          elif [ -n "$ISSUE" ]; then
+            gh issue comment -R "$GITHUB_REPOSITORY" "$ISSUE" --body "Football game-day score health is passing again. Closing this alert."
+            gh issue close -R "$GITHUB_REPOSITORY" "$ISSUE" --reason completed
+          fi
+      - name: Preserve non-sensitive health summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: football-health-check
+          path: football-health-status.json
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Fail when a score issue was detected
+        if: steps.verify.outcome == 'failure'
+        run: exit 1
