@@ -251,7 +251,7 @@ function renderStandings(s,league){
  if(!rows.length)return head+'<p class="helper">No verified standings yet.</p>';
  const table='<div class="sport-score-scroll"><table class="sport-standings"><thead><tr>'+
   '<th>Rank</th><th>Player</th><th>Picks</th><th>Week</th><th>Season</th></tr></thead><tbody>'+
-  rows.map((r,i)=>'<tr><td>'+String(i+1)+'</td><td>'+esc(r.display_name||"Player")+
+  rows.map((r,i)=>'<tr><td>'+String(i+1)+'</td><td>'+esc(r.display_name||"Player")+(window.SEC_PRIDE?.badge?.(r.user_id)||"")+
    (r.user_id===user()?.id?' ★':'')+'</td><td>'+Number(r.picked||0)+'</td>'+
    '<td>'+Number(r.week_points||0)+'</td><td>'+Number(r.season_points||0)+'</td></tr>').join("")+
   '</tbody></table></div>';
@@ -264,6 +264,16 @@ function renderStandings(s,league){
     ' <span>'+esc(p.status)+'</span></div>').join(""):'<p class="helper">Matchups appear when players join.</p>')+'</div>';
  }
  return head+table+extra;
+}
+const SEC_IDS={333:"ALA",8:"ARK",2:"AUB",57:"FLA",61:"UGA",96:"UK",99:"LSU",145:"MISS",344:"MSST",142:"MIZ",201:"OU",2579:"SC",2633:"TENN",251:"TEX",245:"TAMU",238:"VAN"};
+function sportTeamContext(s,g,code){
+ const school=SEC_IDS[String(code)],record=school?window.SEC_TEAM_RECORDS?.entry?.(school,s):null,parts=[];
+ if(record?.overall)parts.push("Record "+esc(record.overall));
+ if(g.spread_home!=null&&Number.isFinite(Number(g.spread_home))){
+  const spread=(String(code)===String(g.home_code)?1:-1)*Number(g.spread_home);
+  parts.push("Line "+(spread>0?"+":"")+spread.toFixed(1));
+ }
+ return parts.length?'<small class="sport-team-context">'+parts.join(" · ")+'</small>':"";
 }
 function gameCard(s,g,league,picks){
  const mode=league?.mode||"straight",old=picks[g.id];
@@ -278,7 +288,7 @@ function gameCard(s,g,league,picks){
  const opt=code=>'<button type="button" class="sport-team-option '+(old?.pick_code===code?'selected':'')+
   '" data-sport-action="pick" data-sport="'+s+'" data-game="'+esc(g.id)+'" data-pick="'+esc(code)+'" '+
   (!canPick?'disabled':'')+' aria-pressed="'+(old?.pick_code===code)+'">'+
-  '<span class="sport-team-name">'+esc(code===g.away_code?g.away_name:g.home_name)+'</span>'+
+  '<span class="sport-team-name">'+esc(code===g.away_code?g.away_name:g.home_name)+sportTeamContext(s,g,code)+'</span>'+
   '<span class="sport-check">'+(old?.pick_code===code?"✓":"○")+'</span></button>';
  const num=curWeek(s)?.games.length||1;
  const used=new Set(Object.entries(picks).filter(([id,p])=>id!==g.id&&allGames(s).find(x=>x.id===id)?.week===g.week).map(([,p])=>p.confidence_points));
@@ -478,6 +488,9 @@ function mount(route){
  renderHub();
  if(!SPORT[route]){void fetchFeed();return;}
  renderSport(route);
+ void window.SEC_TEAM_RECORDS?.refresh?.()?.then?.(()=>{
+  if(window.SEC_BRIDGE?.view?.()===route)renderSport(route);
+ });
  if(route==="baseball")void getBaseballSeries();
  void load(route);
 }
