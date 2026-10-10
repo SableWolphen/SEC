@@ -151,13 +151,24 @@ fs.mkdirSync(output,{recursive:true});
    await page.evaluate(()=>{
      const w=window.SEC_BRIDGE.week(),g=w.games[0];
      g.liveStatus="final";g.awayScore=6;g.homeScore=27;
-     window.SEC_FEATURES.finalData=x=>x.id!==g.id?null:{
-      winner:g.home,pick:g.away,points:0,mode:"straight",
-      awayScore:6,homeScore:27,spread:-4.5,cover:g.home,push:false,
-      eventId:"401856716",majority:g.away,majorityCount:4,
-      missed:4,total:6,awayCount:4,homeCount:2,
-      reveal:Array.from({length:6},(_,i)=>({display_name:"Fan "+(i+1),
-       pick_code:i<4?g.away:g.home}))
+     const second=w.games[1];
+     if(second){second.liveStatus="final";second.awayScore=38;second.homeScore=19;}
+     window.SEC_FEATURES.finalData=x=>{
+      if(x.id===g.id)return {
+       winner:g.home,pick:g.away,points:0,mode:"straight",
+       awayScore:6,homeScore:27,spread:-4.5,cover:g.home,push:false,
+       eventId:"401856716",majority:g.away,majorityCount:4,
+       missed:4,total:6,awayCount:4,homeCount:2,
+       reveal:Array.from({length:6},(_,i)=>({display_name:"Fan "+(i+1),
+        pick_code:i<4?g.away:g.home}))
+      };
+      if(second&&x.id===second.id)return {
+       winner:second.away,pick:second.home,points:0,mode:"straight",
+       awayScore:38,homeScore:19,spread:-10.5,cover:second.away,push:false,
+       eventId:"401856714",majority:second.home,majorityCount:5,
+       missed:5,total:6,awayCount:1,homeCount:5,reveal:[]
+      };
+      return null;
      };
      window.SEC_BRIDGE.renderPicks();
    });
@@ -175,6 +186,30 @@ fs.mkdirSync(output,{recursive:true});
    if(!post.hasCard||!post.winner||!post.result||!post.recap||!post.box||
       !post.leagueImpact||!post.friendsClosed||post.width>post.viewport+2)
      problems.push(viewport.width+"px final game layout regression: "+JSON.stringify(post));
+
+   const teamNames=await page.evaluate(()=>{
+    const all=[...document.querySelectorAll("#games-list .sec-final-team-copy > strong")];
+    const context=document.createElement("canvas").getContext("2d");
+    return all.map(el=>{
+     const style=getComputedStyle(el);
+     context.font=style.font;
+     const words=el.textContent.trim().split(/\s+/);
+     const widest=Math.max(...words.map(word=>context.measureText(word).width));
+     return {name:el.textContent,available:el.getBoundingClientRect().width,
+      widest:Math.round(widest*10)/10,wrap:style.overflowWrap,break:style.wordBreak,
+      scroll:el.scrollWidth,client:el.clientWidth};
+    });
+   });
+   for(const t of teamNames){
+    if(t.wrap!=="normal"||t.break!=="normal"||t.available+2<t.widest||
+       t.scroll>t.client+2){
+     problems.push(viewport.width+"px broken team name: "+JSON.stringify(t));
+    }
+   }
+   if(!teamNames.some(x=>x.name==="Missouri")||
+      !teamNames.some(x=>x.name==="South Carolina"))
+      problems.push(viewport.width+"px actual team name fixtures missing: "+JSON.stringify(teamNames));
+
    const friendToggle=page.locator("#games-list .sec-final-card .sec-final-reveal > summary").first();
    if(await friendToggle.count()){
      await friendToggle.click();
