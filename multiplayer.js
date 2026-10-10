@@ -98,6 +98,7 @@
         card('Compete with friends','<p><strong>1.</strong> Create a free player account.<br><strong>2.</strong> Make a private league and share your invitation.<br><strong>3.</strong> Pick winners before kickoff.<br><strong>4.</strong> Follow the weekly and season leaderboard.</p><div class="help-note">All SEC games count, including nonconference matchups. One correct pick earns one point.</div>')+'</div>';
       return;
     }
+    var toolsOpen=Boolean(host.querySelector?.(".fan-football-tools")?.open);
     var choice = currentLeague();
     var list = leagues.map(function(l){return '<option value="'+safe(l.id)+'" '+(active===l.id?'selected':'')+'>'+safe(l.name)+'</option>';}).join('');
     var nameForm=card('Your player profile',
@@ -117,13 +118,10 @@
     var standingsHtml = "";
     if(choice){
       var w=app.week();
-      standingsHtml = '<div class="league-hero"><div><div class="label">LIVE ONLINE LEAGUE · '+safe(window.SEC_FEATURES?.MODES?.[choice.mode]?.name||'Straight Picks')+'</div><h2>'+safe(choice.name)+'</h2><p>'+(standingsError?'Standings unavailable':standings.length+' players')+' · Week '+w.num+' · Invite code '+safe(choice.invite_code)+'</p></div><span class="big-emoji" aria-hidden="true">🏆</span></div>'+
+      standingsHtml = '<div class="league-hero fan-compact-football-hero"><div><div class="label">🏈 FOOTBALL · '+safe(window.SEC_FEATURES?.MODES?.[choice.mode]?.name||'Straight Picks')+'</div><h2>'+safe(choice.name)+'</h2><p>'+(standingsError?'Standings unavailable':standings.length+' players')+' · Week '+w.num+'</p></div></div>'+
        card('League scoreboard',
         '<p>Scores update as confirmed results are posted. Everyone in this league shares these standings.</p>'+
-        (leagues.length>1?'<div class="sec-scoreboard-league-choice"><label class="input-label" for="scoreboard-league-select">Scoreboard &amp; chat for</label>'+
-        '<select id="scoreboard-league-select" class="field" aria-label="Select league scoreboard and private chat">'+list+'</select>'+
-        '<p class="helper">Change leagues to switch both the standings and chat.</p></div>':
-        '<div class="sec-scoreboard-current-league">🔒 Private league chat · '+safe(choice.name)+'</div>')+
+        '<div class="sec-scoreboard-current-league">🔒 Private league chat · '+safe(choice.name)+'</div>'+
         (standingsError?'<div class="help-note" role="alert">Scoreboard could not load: '+safe(standingsError)+'. Try Refresh standings.</div>':'')+
         '<div class="chip-line">'+button('Make my picks','go-picks','primary-btn')+' '+button('Share invite link','copy-invite')+' '+button('Refresh standings','refresh')+'</div>'+
         '<div style="margin:14px 0"><label for="league-week" class="input-label">Week</label><select class="field" id="league-week">'+app.weeks.map(function(x){return '<option value="'+x.num+'" '+(x.num===w.num?'selected':'')+'>Week '+x.num+'</option>';}).join('')+'</select></div>'+
@@ -133,14 +131,16 @@
         '<div class="sec-scoreboard-chat" aria-label="Chat for '+safe(choice.name)+'">'+
         (window.SEC_SOCIAL?.render?.()||'<p class="helper">Loading private league chat…</p>')+'</div>');
     } else standingsHtml=card('Start the competition','<p>Create a league or join one with an invitation code. Invite your friends by sending the link.</p>');
-    // Keep the scoreboard and league chat prominent. Rarely used account and
-    // legacy football league controls are available, but no longer dominate mobile.
-    var secondary = choice?
-      '<details class="fan-fold fan-football-tools"><summary>⚙ Account &amp; other football leagues</summary>'+
-       nameForm+leaguesForm+'</details>':nameForm;
-    host.innerHTML='<div class="secondary-grid"><div class="setting-stack">'+
-      (choice?standingsHtml+(window.SEC_FEATURES?.leagueDetails?.()||''):leaguesForm+standingsHtml)+
-      '</div><div class="setting-stack">'+secondary+'</div></div>'+
+    // Only one league selector (above). Advanced football modes and profile
+    // remain available, but never occupy a full second column by default.
+    var secondary=choice?
+      '<details class="fan-fold fan-football-tools" '+(toolsOpen?'open ':'')+
+       '><summary>⚙ Football league options <span>Advanced setup · Profile</span></summary>'+
+       nameForm+leaguesForm+(window.SEC_FEATURES?.leagueDetails?.()||'')+'</details>':
+      nameForm;
+    host.innerHTML='<div class="fan-football-scoreboard">'+
+      (choice?standingsHtml:leaguesForm+standingsHtml)+
+      '</div><div class="fan-football-advanced">'+secondary+'</div>'+
       '<p id="online-status" class="helper" role="status" aria-live="polite">'+safe(lastError)+'</p>';
   }
   function renderSettings(){
