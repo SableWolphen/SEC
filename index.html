@@ -258,15 +258,21 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 
     <section id="league-view" class="view hidden" aria-labelledby="league-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> FRIENDLY COMPETITION</div>
-      <div class="page-intro"><div><h1 id="league-heading">Your <em>people.</em></h1><p>Talk your talk. Then let the picks do the talking.</p></div></div>
+      <div class="page-intro"><div><h1 id="league-heading">Your <em>league.</em></h1><p>Standings, friends and game-day chat in one place.</p></div></div>
       <div id="fan-league-choice" aria-live="polite"></div>
-      <div id="fan-power-rankings" aria-live="polite"></div>
-      <div id="fan-league-create"></div>
       <div id="fan-single-league"></div>
       <div id="fan-club-hub" aria-live="polite"></div>
-      <div id="fan-brackets"></div>
-      <div id="fan-series"></div>
       <div id="league-content"></div>
+      <div id="fan-power-rankings" aria-live="polite"></div>
+      <details id="fan-season-extras" class="fan-fold fan-league-more" hidden>
+        <summary>🏀 Tournaments &amp; series <span>Basketball and baseball</span></summary>
+        <div id="fan-brackets"></div>
+        <div id="fan-series"></div>
+      </details>
+      <details id="fan-league-management" class="fan-fold fan-league-management" hidden>
+        <summary>⚙ Manage leagues <span>Create · Join · League settings</span></summary>
+        <div id="fan-league-create"></div>
+      </details>
     </section>
 
     <section id="trophies-view" class="view hidden" aria-labelledby="trophies-heading">
@@ -686,7 +692,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./sec-news.js?v=20261009-news-sports-v2"></script>
 <script src="./fan-experience.js?v=20261009-live-center-v4"></script>
 <script src="./sec-live-scores.js?v=20261009-gameday-scores-v2"></script>
-<script src="./league-settings.js?v=20261009-power-v2"></script>
+<script src="./league-settings.js?v=20261009-simple-leagues-v3"></script>
 <script src="./sec-power-rankings.js?v=20261009-power-v1"></script>
 <script src="./sec-brackets.js?v=20261009-perleague-bracket-v3"></script>
 </body>
