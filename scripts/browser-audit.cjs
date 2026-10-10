@@ -13,7 +13,7 @@ const output=path.resolve("artifacts/sec-browser-audit");
 fs.mkdirSync(output,{recursive:true});
 (async()=>{
  const browser=await chromium.launch({headless:true,args:["--no-sandbox"]});
- let total=0;
+ let total=0,problems=[];
  try{
   for(const viewport of sizes){
    const context=await browser.newContext({viewport,deviceScaleFactor:1,
@@ -37,16 +37,23 @@ fs.mkdirSync(output,{recursive:true});
       heading:!!el.querySelector("h1"),navCount:buttons.length,
       navVisible:getComputedStyle(nav).display!=="none",isMobile,
       navWithin:buttons.every(x=>{const r=x.getBoundingClientRect();return r.left>=-2&&r.right<=width+2&&r.width>16}),
-      navFits:nr.left>=-2&&nr.right<=width+2};
+      navFits:nr.left>=-2&&nr.right<=width+2,
+      navRect:{left:nr.left,right:nr.right,width:nr.width},
+      overflow:[...document.querySelectorAll("body *")].filter(el=>{
+        const st=getComputedStyle(el),r=el.getBoundingClientRect();
+        return st.display!=="none"&&r.width>0&&r.right>width+2&&st.position!=="fixed";
+      }).slice(0,7).map(el=>({tag:el.tagName,class:el.className?.baseVal||el.className||"",
+        width:Math.round(el.getBoundingClientRect().width),right:Math.round(el.getBoundingClientRect().right)}))
+    };
     },route);
     const prefix=viewport.width+"px "+route;
-    assert.ok(audit.active,prefix+" selected section is invisible");
-    assert.ok(audit.heading,prefix+" missing a heading");
-    assert.ok(audit.pageWidth<=audit.width+3,prefix+" horizontal page overflow: "+JSON.stringify(audit));
-    assert.equal(audit.navCount,6,prefix+" all navigation tabs present");
-    if(audit.isMobile)assert.ok(audit.navVisible&&audit.navFits&&audit.navWithin,
-      prefix+" mobile navigation clipped: "+JSON.stringify(audit));
-    else assert.equal(audit.navVisible,false,prefix+" desktop should not have mobile nav");
+    if(!audit.active)problems.push(prefix+" selected section invisible");
+    if(!audit.heading)problems.push(prefix+" missing heading");
+    if(audit.pageWidth>audit.width+2)problems.push(prefix+" overflow: "+JSON.stringify(audit));
+    if(audit.navCount!==6)problems.push(prefix+" missing mobile nav tabs");
+    if(audit.isMobile&&!audit.navVisible)problems.push(prefix+" mobile nav hidden");
+    if(audit.isMobile&&(!audit.navFits||!audit.navWithin))problems.push(prefix+" clipped nav: "+JSON.stringify(audit.navRect));
+    if(!audit.isMobile&&audit.navVisible)problems.push(prefix+" mobile nav on desktop");
     await page.screenshot({path:path.join(output,viewport.width+"-"+route+".png")});
     total++;
    }
@@ -62,6 +69,8 @@ fs.mkdirSync(output,{recursive:true});
    if(errors.length)console.log(viewport.width+"px nonfatal client errors:",errors.slice(0,3));
    await context.close();
   }
-  console.log("Chromium SEC responsive audit passed:",total,"screens across eight pages, 320–1280px.");
+  console.log("Chromium SEC responsive audit completed:",total,"screens at five sizes.");
+  if(problems.length)throw Error("Real viewport issues ("+problems.length+"):\n"+problems.join("\n"));
+  console.log("No page overflow or navigation clipping detected.");
  }finally{await browser.close();}
 })().catch(err=>{console.error(err);process.exitCode=1;});
