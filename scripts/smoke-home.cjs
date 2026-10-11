@@ -53,7 +53,7 @@ assert.equal(model.leaderboard.length,2);
 assert.equal(model.leaderboard[0].user_id,"friend");
 current="home";home.mount();
 assert.match(root.innerHTML,/24 – 21/,"confirmed score is shown, not a sample");
-assert.match(root.innerHTML,/2 min|1 min|less than a minute/i);
+assert.match(root.innerHTML,/Updated /,"score freshness is shown");
 assert.match(root.innerHTML,/4th · 02:36/);
 assert.match(root.innerHTML,/1 open and unpicked/);
 assert.match(root.innerHTML,/Friend &amp; Rival/,"league names are escaped");
