@@ -12,22 +12,22 @@
  // Each school gets a room. An SEC-vs-SEC matchup is listed under BOTH schools,
  // while the underlying trophy and saved award remain one unique record.
  const SEC_SCHOOLS=Object.freeze([
-  {code:"ALA",name:"Alabama",monogram:"A"},
-  {code:"ARK",name:"Arkansas",monogram:"AR"},
-  {code:"AUB",name:"Auburn",monogram:"AU"},
-  {code:"FLA",name:"Florida",monogram:"UF"},
-  {code:"UGA",name:"Georgia",monogram:"G"},
-  {code:"UK",name:"Kentucky",monogram:"UK"},
-  {code:"LSU",name:"LSU",monogram:"LSU"},
-  {code:"MSST",name:"Mississippi State",monogram:"MS"},
-  {code:"MIZ",name:"Missouri",monogram:"MU"},
-  {code:"OU",name:"Oklahoma",monogram:"OU"},
-  {code:"MISS",name:"Ole Miss",monogram:"OM"},
-  {code:"SC",name:"South Carolina",monogram:"SC"},
-  {code:"TENN",name:"Tennessee",monogram:"T"},
-  {code:"TEX",name:"Texas",monogram:"TX"},
-  {code:"TAMU",name:"Texas A&M",monogram:"ATM"},
-  {code:"VAN",name:"Vanderbilt",monogram:"V"}
+  {code:"ALA",name:"Alabama"},
+  {code:"ARK",name:"Arkansas"},
+  {code:"AUB",name:"Auburn"},
+  {code:"FLA",name:"Florida"},
+  {code:"UGA",name:"Georgia"},
+  {code:"UK",name:"Kentucky"},
+  {code:"LSU",name:"LSU"},
+  {code:"MSST",name:"Mississippi State"},
+  {code:"MIZ",name:"Missouri"},
+  {code:"OU",name:"Oklahoma"},
+  {code:"MISS",name:"Ole Miss"},
+  {code:"SC",name:"South Carolina"},
+  {code:"TENN",name:"Tennessee"},
+  {code:"TEX",name:"Texas"},
+  {code:"TAMU",name:"Texas A&M"},
+  {code:"VAN",name:"Vanderbilt"}
  ]);
  const SCHOOL_BY_CODE=new Map(SEC_SCHOOLS.map(s=>[s.code,s]));
  function inSchool(t,code){return code==="all"||t.codes.includes(code);}
@@ -78,7 +78,7 @@
    card.setAttribute("aria-controls","sds-school-panel-"+entry.code);
    card.setAttribute("aria-label",(opened?"Collapse ":"Expand ")+entry.name+" trophy collection, "+entry.count+" named rivalries");
    const emblem=document.createElement("span");emblem.className="sds-school-emblem";
-   emblem.textContent=entry.monogram;
+   emblem.textContent=window.SDS_VISUALS?.shortLabel?.(entry.code)||"•";
    const info=document.createElement("span");info.className="sds-school-info";
    const name=document.createElement("strong");name.textContent=entry.name;
    const count=document.createElement("small");count.textContent=entry.count+" named rivalries · "+entry.earned+" earned";
