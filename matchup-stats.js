@@ -14,9 +14,13 @@ function estimate(a,b){
 }
 function featured(list){
   if(!list || !list.length)return null;
+  // Only promote a matchup as ranked when the latest published football poll
+  // is validated. Archived ESPN curatedRank from a game must not set today's rank.
+  if(!window.SEC_RANKINGS?.hasCurrent?.("football"))return null;
   var ranked=list.map(function(g){
     var d=games[g.id];if(!d)return null;
-    var ar=Number(d.away&&d.away.rank)||99, hr=Number(d.home&&d.home.rank)||99;
+    var ar=window.SEC_RANKINGS.rank(g.away,"football")||99,
+        hr=window.SEC_RANKINGS.rank(g.home,"football")||99;
     if(ar>25&&hr>25)return null;
     var both=ar<=25&&hr<=25;
     // Two ranked teams get priority, then top ranking strength, then estimated competitiveness.
@@ -32,11 +36,14 @@ function render(g){
   var away=d.away||{},home=d.home||{},p=num(d.home_win_pct),method="ESPN matchup projection";
   if(p===null||p<0||p>100){p=estimate(away,home);method="Record-based estimate";}
   var ar=away.record||"Not listed",hr=home.record||"Not listed";
-  var ap=away.rank&&Number(away.rank)<=25?" · #"+Number(away.rank):"";
-  var hp=home.rank&&Number(home.rank)<=25?" · #"+Number(home.rank):"";
+  var arank=window.SEC_RANKINGS?.rank?.(g.away,"football"),
+      hrank=window.SEC_RANKINGS?.rank?.(g.home,"football");
+  var ap=arank?" · #"+arank:"",hp=hrank?" · #"+hrank:"";
   var url=d.source_url&&/^https:\/\/www\.espn\.com\/college-football\/game\//.test(d.source_url)?d.source_url:"";
   var link=url?' · <a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">ESPN matchup ↗</a>':'';
-  var result='<div class="insight-head"><strong>📊 Matchup stats</strong><small>'+esc(d.updated_at?new Date(d.updated_at).toLocaleDateString("en-US",{month:"short",day:"numeric"}):"2026 season")+' · ESPN data'+link+'</small></div>'+
+  var poll=window.SEC_RANKINGS?.hasCurrent?.("football")?
+     " · "+esc(window.SEC_RANKINGS.note("football")):" · National ranking unavailable";
+  var result='<div class="insight-head"><strong>📊 Matchup stats</strong><small>'+esc(d.updated_at?new Date(d.updated_at).toLocaleDateString("en-US",{month:"short",day:"numeric"}):"2026 season")+' · ESPN data'+poll+link+'</small></div>'+
   '<div class="insight-records"><span><b>Away</b> '+esc(ar)+esc(ap)+'</span><span><b>Home</b> '+esc(hr)+esc(hp)+'</span></div>';
   if(p!==null){
     var awayPct=Math.round((100-p)*10)/10;
@@ -53,9 +60,9 @@ function render(g){
 function pickContext(g,id){
   const d=games[g?.id],side=id===g?.away?"away":id===g?.home?"home":null;
   if(!side)return "";
-  const info=d?.[side]||{},bits=[],rank=Number(info.rank);
-  if(info.rank!=null&&Number.isInteger(rank)&&rank>=1&&rank<=25)
-   bits.push('<b class="pick-context-rank">#'+rank+'</b>');
+  const info=d?.[side]||{},bits=[];
+  const pollBadge=window.SEC_RANKINGS?.badge?.(id,"football");
+  if(pollBadge)bits.push(pollBadge);
   if(typeof info.record==="string"&&/^\d{1,3}-\d{1,3}(?:-\d{1,3})?$/.test(info.record))
    bits.push('<span>'+esc(info.record)+'</span>');
   const line=g?.spread_home;
