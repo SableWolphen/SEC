@@ -277,6 +277,7 @@
     if(app.view()==="picks")app.renderPicks();
     if(app.view()==="league")renderLeague();
     if(app.view()==="settings")renderSettings();
+    if(app.view()==="home")window.SEC_HOME?.refresh?.();
     var el=document.getElementById("online-banner");
     if(el)el.innerHTML=user?'<span class="eyebrow-dot"></span> ONLINE · '+safe(user.email||"Signed in")+' · '+safe(currentLeague()?.name||"Create or join a league"):
       '<button type="button" class="online-signin-cta" data-online="go-league">👤 Create account or log in · Make a league with friends ↗</button>';
