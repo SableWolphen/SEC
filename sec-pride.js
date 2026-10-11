@@ -13,7 +13,7 @@ const write=(k,v)=>{try{localStorage.setItem(k,String(v));}catch{}};
 let owner=null,chosen=null,flair={},leagueKey="",inflight=null,revision=0,loadedAt=0,saving=false;
 function badge(uid){
  const code=uid===owner?chosen:flair[uid];
- return valid(code)?'<span class="sec-school-badge" title="Supports '+esc(CODES[code])+
+ return valid(code)?'<span class="sec-school-badge" data-sds-school="'+esc(code)+'" title="Supports '+esc(CODES[code])+
   '" aria-label="Supports '+esc(CODES[code])+'">★ '+esc(code)+'</span>':"";
 }
 function myBadge(){return owner?badge(owner):"";}

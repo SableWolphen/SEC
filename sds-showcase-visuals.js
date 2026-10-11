@@ -1,7 +1,7 @@
 /* Saturdays Down South — plain university abbreviations.
  * Names and short team identifiers are factual score labels. The badges are
- * neutral text, not school logos, athletic lettermarks, official typography,
- * mascots or university color branding. No third-party images are loaded.
+ * plain abbreviation text, not school logos, athletic lettermarks, official
+ * typography or mascots. School-inspired colors are assigned in CSS; no images.
  */
 (()=>{
 "use strict";

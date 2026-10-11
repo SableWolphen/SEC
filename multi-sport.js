@@ -288,6 +288,7 @@ function renderStandings(s,league){
  return head+table+extra;
 }
 const SEC_IDS={333:"ALA",8:"ARK",2:"AUB",57:"FLA",61:"UGA",96:"UK",99:"LSU",145:"MISS",344:"MSST",142:"MIZ",201:"OU",2579:"SC",2633:"TENN",251:"TEX",245:"TAMU",238:"VAN"};
+const schoolMark=code=>{const school=SEC_IDS[String(code)];return school?window.SDS_VISUALS?.mark?.(school,{className:"mini-logo"})||"":"";};
 function sportTeamContext(s,g,code){
  const school=SEC_IDS[String(code)],record=school?window.SEC_TEAM_RECORDS?.entry?.(school,s):null,parts=[];
  const badge=school?window.SEC_RANKINGS?.badge?.(school,s):"";
@@ -315,9 +316,9 @@ function gameCard(s,g,league,picks){
  const availability=!league?"Join a league to pick":!g.imported?"Syncing game to secure pick server":locked?"Picks locked":
   mode==="spread"&&(g.spread_home===null||g.spread_home===undefined)?"Waiting for a published spread":"Choose a winner";
  const opt=code=>'<button type="button" class="sport-team-option '+(old?.pick_code===code?'selected':'')+
-  '" data-sport-action="pick" data-sport="'+s+'" data-game="'+esc(g.id)+'" data-pick="'+esc(code)+'" '+
+  '" data-sport-action="pick" data-sport="'+s+'" data-game="'+esc(g.id)+'" data-pick="'+esc(code)+'"'+(SEC_IDS[String(code)]?' data-sds-school="'+SEC_IDS[String(code)]+'"':'')+' '+
   (!canPick?'disabled':'')+' aria-pressed="'+(old?.pick_code===code)+'">'+
-  '<span class="sport-team-top"><span class="sport-team-name">'+esc(code===g.away_code?g.away_name:g.home_name)+sportTeamContext(s,g,code)+'</span>'+
+  '<span class="sport-team-top"><span class="sport-team-label">'+schoolMark(code)+'<span class="sport-team-name">'+esc(code===g.away_code?g.away_name:g.home_name)+sportTeamContext(s,g,code)+'</span></span>'+
   (scored?'<span class="sport-team-score '+(Number(code===g.away_code?g.away_score:g.home_score)>Number(code===g.away_code?g.home_score:g.away_score)?"is-leading":"")+
    '" aria-label="'+esc(code===g.away_code?g.away_name:g.home_name)+' score">'+Number(code===g.away_code?g.away_score:g.home_score)+'</span>':"")+'</span>'+
   '<span class="sport-check">'+(old?.pick_code===code?"✓":"○")+'</span></button>';

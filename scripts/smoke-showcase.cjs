@@ -16,7 +16,7 @@ for(const route of views){
  route==="results"?"#results-view":"#"+route+"-view"),"no mockup skin for "+route);
 }
 const links=[...html.matchAll(/<link rel="stylesheet" href="([^"]+)"/g)].map(x=>x[1]);
-assert.equal(links.at(-1),"./sds-showcase.css?v=20261011-abbreviations-v1",
+assert.equal(links.at(-1),"./sds-showcase.css?v=20261011-team-colors-v2",
  "approved stadium skin loads after original design tokens");
 assert.match(css,/@media\(max-width:360px\)/);
 assert.match(css,/safe-area-inset-bottom/);
@@ -27,9 +27,9 @@ assert.match(premium,/data-sdsx-team-tab/);
 assert.match(premium,/data-sdsx-team-panel/);
 assert.match(premium,/hasCurrent/,"no stale national ranking on Team Hub");
 assert.match(home,/SDS_VISUALS\?\.mark/,"favorite school and matchups get original badges");
-assert.match(worker,/sec-pickem-v98/);
+assert.match(worker,/sec-pickem-v99/);
 for(const f of ["sds-showcase.css","sds-showcase-visuals.js","sds-showcase-preferences.js"]){
- assert.ok(worker.includes(f+"?v="+(f==="sds-showcase-preferences.js"?"20261011-ten-screens-v1":"20261011-abbreviations-v1")),"PWA core must include "+f);
+ assert.ok(worker.includes(f+"?v="+(f==="sds-showcase-preferences.js"?"20261011-ten-screens-v1":"20261011-team-colors-v2")),"PWA core must include "+f);
 }
 assert.match(html,/sds-settings-notifications/);
 assert.match(html,/sds-showcase-visuals\.js\?v=/);
@@ -42,6 +42,16 @@ const document={addEventListener:(name,fn)=>{events[name]=fn;}};
 vm.runInNewContext(read("sds-showcase-visuals.js"),{window,document,console},{filename:"sds-showcase-visuals.js"});
 const visual=window.SDS_VISUALS;
 assert.equal(Object.keys(visual.teams).length,16);
+for(const school of Object.keys(visual.teams)){
+ assert.ok(css.includes('[data-sds-school="'+school+'"]{--sds-school-primary:'),
+  "university color palette missing for "+school);
+}
+assert.match(read("multi-sport.js"),/schoolMark\(code\)/,
+ "basketball and baseball must render SEC abbreviation badges");
+assert.match(read("sec-pride.js"),/data-sds-school/,
+ "league favorites use the same university palette");
+assert.match(html,/data-sds-school="\$\{esc\(id\)\}"/,
+ "team directory cards carry school color identity");
 const expected={ALA:"ALA",ARK:"ARK",AUB:"AUB",FLA:"FLA",UGA:"UGA",
  UK:"UK",LSU:"LSU",MISS:"MISS",MSST:"MSST",MIZ:"MIZ",
  OU:"OU",SC:"SC",TENN:"TENN",TEX:"TEX",TAMU:"TAMU",VAN:"VAN"};
@@ -90,4 +100,4 @@ assert.match(roots.get("sds-settings-notifications").innerHTML,/Turn on Alerts/,
 viewer=null;w.SDS_PREFERENCES.mount();
 assert.match(roots.get("sds-settings-notifications").innerHTML,/Sign in/);
 assert.match(roots.get("sds-settings-notifications").innerHTML,/data-sds-alert-master disabled/);
-console.log("Saturdays Down South ten-screen stadium redesign: routes, plain university abbreviations, no external logos, 320px, alert privacy and PWA PASS");
+console.log("Saturdays Down South: 16 university color palettes, abbreviations, no logo art, 320px, alert privacy and PWA PASS");

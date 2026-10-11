@@ -197,7 +197,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <link rel="stylesheet" href="./sec-rankings.css?v=20261011-national-polls-v1">
 <link rel="stylesheet" href="./sec-premium.css?v=20261011-mockups-v1">
 <link rel="stylesheet" href="./sec-design-system.css?v=20261011-broadcast-v1">
-<link rel="stylesheet" href="./sds-showcase.css?v=20261011-abbreviations-v1">
+<link rel="stylesheet" href="./sds-showcase.css?v=20261011-team-colors-v2">
 </head>
 <body>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
@@ -393,12 +393,12 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
  <button type="button" data-nav="more" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span>More</span></button>
 </nav>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
-<script src="./sds-showcase-visuals.js?v=20261011-abbreviations-v1"></script>
+<script src="./sds-showcase-visuals.js?v=20261011-team-colors-v2"></script>
 <script>
 (() => {
   'use strict';
 
-  // Plain university abbreviations (ALA, ARK, TENN, TEX, etc.); no external school logos are loaded.
+  // University abbreviations and school colors; no external school logos or lettermark assets.
   const TEAMS = {
     ALA:{name:'Alabama',nick:'Crimson Tide',abbr:'BAMA',mark:'A',color:'#9a273d',city:'Tuscaloosa, Alabama'},
     ARK:{name:'Arkansas',nick:'Razorbacks',abbr:'ARK',mark:'AR',color:'#a82443',city:'Fayetteville, Arkansas'},
@@ -756,7 +756,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     const spotlight=records?.spotlight?.(favorite,TEAMS,logo)||
       '<div class="team-record-empty"><strong>Loading your team tracker…</strong></div>';
     const cards=Object.entries(TEAMS).map(([id,t])=>
-      `<article class="team-card ${favorite===id?'favorite':''}">
+      `<article class="team-card ${favorite===id?'favorite':''}" data-sds-school="${esc(id)}">
         <div class="team-card-top">${logo(id)}
           <button type="button" data-fav="${id}" class="favorite-btn ${favorite===id?'active':''}"
            aria-pressed="${favorite===id}" aria-label="${favorite===id?'Remove favorite':'Set '+esc(t.name)+' as favorite'}"
@@ -848,12 +848,12 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./trophy-case.js?v=20261011-neutral-v1"></script>
 <script src="./league-features.js?v=20261010-final-v1"></script>
 <script src="./league-social.js?v=20261010-museum-v1"></script>
-<script src="./sec-pride.js?v=20261011-school-v2"></script>
+<script src="./sec-pride.js?v=20261011-team-colors-v2"></script>
 <script src="./multiplayer.js?v=20261011-school-v2"></script>
 <script src="./sec-rankings.js?v=20261011-premium-v2"></script>
 <script src="./matchup-stats.js?v=20261011-national-polls-v1"></script>
 <script src="./team-records.js?v=20261011-premium-v2"></script>
-<script src="./multi-sport.js?v=20261011-national-polls-v1"></script>
+<script src="./multi-sport.js?v=20261011-team-colors-v2"></script>
 <script src="./sec-recaps.js?v=20261010-recaps-v1"></script>
 <script src="./sec-news.js?v=20261011-premium-v3"></script>
 <script src="./sec-league-insights.js?v=20261010-showcase-v1"></script>
@@ -870,7 +870,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./league-tabs.js?v=20261010-standings-only-v1"></script>
 <script src="./sec-competitive-tools.js?v=20261010-path-fixed-v4"></script>
 <script src="./sec-final-cards.js?v=20261010-pick-result-v4"></script>
-<script src="./sec-home.js?v=20261011-neutral-v1"></script>
+<script src="./sec-home.js?v=20261011-team-colors-v2"></script>
 <script src="./sds-showcase-preferences.js?v=20261011-ten-screens-v1"></script>
 <script src="./sec-premium.js?v=20261011-ten-screens-v2"></script>
 </body>

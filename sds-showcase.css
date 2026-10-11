@@ -60,9 +60,9 @@ body:before{content:"";pointer-events:none;position:fixed;inset:0 0 auto;height:
  outline:2px solid #ffe3a1;outline-offset:2px
 }
 
-/* ═══════ 02. PLAIN UNIVERSITY ABBREVIATION BADGES ═══════
- * These plain text codes are matchup labels, NOT school monograms,
- * rankings, team insignia, athletic logos or school-color reproductions.
+/* ═══════ 02. ABBREVIATION BADGES — NO LOGO ARTWORK ═══════
+ * Plain text school identifiers; school-inspired colors are supplied below.
+ * No university lettermarks, official fonts, mascots or logo assets.
  */
 .sds-team-brand{position:relative;display:inline-grid;place-items:center;
  flex:none;overflow:hidden;background:linear-gradient(145deg,#34516b,#132a3c 72%);
@@ -530,4 +530,95 @@ body:before{content:"";pointer-events:none;position:fixed;inset:0 0 auto;height:
 @media(max-width:360px){
  #teams-view .team-card .sds-team-fallback{font-size:10px}
  #picks-view .mini-logo.sds-team-brand{font-size:8px;letter-spacing:-.3px}
+}
+
+/* ═══════ 11. SCHOOL-COLOR IDENTITIES ═══════
+ * Shared across football, basketball, baseball, directory, home and badges.
+ * Colors + plain text codes; no official school imagery or lettermarks.
+ */
+[data-sds-school="ALA"]{--sds-school-primary:#9E1B32;--sds-school-accent:#FFFFFF;--sds-school-ink:#FFFFFF}
+[data-sds-school="ARK"]{--sds-school-primary:#9D2235;--sds-school-accent:#FFFFFF;--sds-school-ink:#FFFFFF}
+[data-sds-school="AUB"]{--sds-school-primary:#0C2340;--sds-school-accent:#E87722;--sds-school-ink:#FFFFFF}
+[data-sds-school="FLA"]{--sds-school-primary:#0021A5;--sds-school-accent:#FA4616;--sds-school-ink:#FFFFFF}
+[data-sds-school="UGA"]{--sds-school-primary:#BA0C2F;--sds-school-accent:#FFFFFF;--sds-school-ink:#FFFFFF}
+[data-sds-school="UK"]{--sds-school-primary:#0033A0;--sds-school-accent:#FFFFFF;--sds-school-ink:#FFFFFF}
+[data-sds-school="LSU"]{--sds-school-primary:#461D7C;--sds-school-accent:#FDD023;--sds-school-ink:#FFFFFF}
+[data-sds-school="MISS"]{--sds-school-primary:#CE1126;--sds-school-accent:#14213D;--sds-school-ink:#FFFFFF}
+[data-sds-school="MSST"]{--sds-school-primary:#660000;--sds-school-accent:#FFFFFF;--sds-school-ink:#FFFFFF}
+[data-sds-school="MIZ"]{--sds-school-primary:#F1B82D;--sds-school-accent:#000000;--sds-school-ink:#111111}
+[data-sds-school="OU"]{--sds-school-primary:#841617;--sds-school-accent:#FFFFFF;--sds-school-ink:#FFFFFF}
+[data-sds-school="SC"]{--sds-school-primary:#73000A;--sds-school-accent:#FFFFFF;--sds-school-ink:#FFFFFF}
+[data-sds-school="TENN"]{--sds-school-primary:#FF8200;--sds-school-accent:#FFFFFF;--sds-school-ink:#171717}
+[data-sds-school="TEX"]{--sds-school-primary:#BF5700;--sds-school-accent:#FFFFFF;--sds-school-ink:#FFFFFF}
+[data-sds-school="TAMU"]{--sds-school-primary:#500000;--sds-school-accent:#FFFFFF;--sds-school-ink:#FFFFFF}
+[data-sds-school="VAN"]{--sds-school-primary:#000000;--sds-school-accent:#CFAE70;--sds-school-ink:#FFFFFF}
+/* Unrecognized/nonconference schools retain a neutral fallback. */
+.sds-team-brand[data-sds-school],
+.sdsx-hero-mark .sdsx-crest.sds-team-brand[data-sds-school]{
+ background:linear-gradient(150deg,var(--sds-school-primary,#28465b) 0%,
+  color-mix(in srgb,var(--sds-school-primary,#28465b) 78%,#081625) 100%);
+ border-color:var(--sds-school-accent,#9aacc1);
+ color:var(--sds-school-ink,#fff);
+ font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+ font-weight:900;letter-spacing:-.025em;text-shadow:none;
+ box-shadow:inset 0 1px 1px #ffffff38,0 5px 11px #0006;
+}
+.sds-team-brand[data-sds-school] .sds-team-fallback{
+ color:inherit;text-shadow:none;white-space:nowrap;max-width:100%;
+ font-weight:950;letter-spacing:-.035em;
+}
+#teams-view .team-card[data-sds-school]{
+ border-color:color-mix(in srgb,var(--sds-school-primary) 55%,#617587);
+ background:linear-gradient(135deg,
+  color-mix(in srgb,var(--sds-school-primary) 16%,#11283b),#0b1b2d 78%);
+}
+#teams-view .team-card.favorite[data-sds-school]{
+ border-color:var(--sds-school-accent);
+ box-shadow:inset 0 2px var(--sds-school-primary),0 6px 23px #0005;
+}
+#teams-view .team-card[data-sds-school] .sds-team-brand{
+ box-shadow:0 0 0 1px color-mix(in srgb,var(--sds-school-accent) 60%,transparent),0 5px 14px #0006;
+}
+.sdsx-team-hero[data-sds-school]{
+ border-color:color-mix(in srgb,var(--sds-school-accent) 60%,#607084);
+}
+.sdsx-team-hero[data-sds-school]:after,
+#sec-home-root .hq-stadium-hero[data-sds-school]:after{
+ background:linear-gradient(90deg,var(--sds-school-primary),var(--sds-school-accent),var(--sds-school-primary));
+}
+.sdsx-team-hero[data-sds-school] .sdsx-hero-mark{
+ background:radial-gradient(circle,
+  color-mix(in srgb,var(--sds-school-primary) 32%,transparent),transparent 72%);
+}
+#sec-home-root .hq-stadium-hero[data-sds-school]{
+ border-color:color-mix(in srgb,var(--sds-school-primary) 65%,#91a3af);
+}
+#sec-home-root .sds-home-favorite-mini[data-sds-school]{
+ border-left:4px solid var(--sds-school-primary);
+ border-top-color:color-mix(in srgb,var(--sds-school-accent) 45%,#43566c);
+}
+.sec-school-badge[data-sds-school]{
+ background:var(--sds-school-primary);color:var(--sds-school-ink);
+ border:1px solid var(--sds-school-accent);font-weight:900;
+ box-shadow:0 2px 8px #0004;
+}
+.sport-team-option[data-sds-school]{
+ border-color:color-mix(in srgb,var(--sds-school-primary) 55%,#47617a);
+ background:linear-gradient(145deg,
+  color-mix(in srgb,var(--sds-school-primary) 16%,#152e40),#112636);
+}
+.sport-team-option[data-sds-school].selected{
+ border-color:var(--sds-school-accent);
+ box-shadow:inset 0 0 0 1px var(--sds-school-primary);
+}
+.sport-team-label{display:flex;align-items:center;gap:8px;min-width:0;flex:1}
+.sport-team-label>.mini-logo.sds-team-brand{
+ width:35px;height:35px;min-width:35px;font-size:10px;border-radius:8px;
+}
+.sport-team-label>.sport-team-name{min-width:0;flex:1}
+@media(max-width:540px){
+ .sport-team-label{gap:5px;align-items:flex-start}
+ .sport-team-label>.mini-logo.sds-team-brand{width:28px;height:30px;min-width:28px;font-size:8px}
+ .sport-team-option{min-width:0}
+ .sport-team-option .sport-team-top{min-width:0}
 }

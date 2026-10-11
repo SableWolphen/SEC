@@ -116,10 +116,10 @@ function hero(m){
  const line=m.liveCount?m.liveCount+" live football game"+(m.liveCount===1?"":"s"):
   m.progress.unpickedOpen?m.progress.unpickedOpen+" unpicked games still open":
   "Your school. Your league. Your season.";
- return '<section class="hq-stadium-hero" aria-label="Game Day HQ">'+
+ return '<section class="hq-stadium-hero" aria-label="Game Day HQ"'+(m.favoriteSchool?' data-sds-school="'+esc(m.favoriteSchool)+'"':'')+'>'+
  '<div class="hq-hero-copy"><span class="hq-eyebrow">SATURDAYS DOWN SOUTH</span>'+
  '<h2>Game Day <em>HQ</em></h2>'+
- (m.favoriteSchool?'<div class="sds-home-favorite-mini">'+
+ (m.favoriteSchool?'<div class="sds-home-favorite-mini" data-sds-school="'+esc(m.favoriteSchool)+'">'+
  (window.SDS_VISUALS?.mark?.(m.favoriteSchool,{className:"sdsx-crest"})||'<span>'+esc(m.favoriteSchool)+'</span>')+
  '<div><span>★ FOLLOWING YOUR SCHOOL</span><strong>'+esc(m.favoriteName||m.favoriteSchool)+'</strong>'+
  '<small>'+(window.SEC_RANKINGS?.rank?.(m.favoriteSchool,"football")?
