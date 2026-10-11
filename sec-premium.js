@@ -9,6 +9,9 @@ const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 const app=()=>window.SEC_BRIDGE;
 const user=()=>window.secOnline?.getUser?.();
 const codes=()=>window.SEC_PRIDE?.names||{};
+const mascots={ALA:"Crimson Tide",ARK:"Razorbacks",AUB:"Tigers",FLA:"Gators",UGA:"Bulldogs",
+ UK:"Wildcats",LSU:"Tigers",MISS:"Rebels",MSST:"Bulldogs",MIZ:"Tigers",
+ OU:"Sooners",SC:"Gamecocks",TENN:"Volunteers",TEX:"Longhorns",TAMU:"Aggies",VAN:"Commodores"};
 const verifiedId=s=>Object.prototype.hasOwnProperty.call(codes(),s);
 const teamName=s=>codes()[s]||String(s||"Unknown");
 const gameList=()=>app()?.weeks?.flatMap(w=>w.games)||[];
@@ -97,7 +100,8 @@ function header(code,label,tag){
  const rank=ranking(code,"football"),record=records(code,"football");
  return '<div class="sdsx-team-hero"><div class="sdsx-hero-mark">'+logo(code)+'</div>'+
   '<div class="sdsx-hero-body"><span class="sdsx-eyebrow">'+esc(tag||"YOUR SEC TEAM")+'</span>'+
-  '<h2>'+esc(teamName(code))+'</h2><strong>'+esc(label||"Game day starts here")+'</strong>'+
+  '<h2>'+esc(teamName(code))+'</h2><strong>'+esc(mascots[code]||"SEC University")+'</strong>'+
+  '<p class="sdsx-hero-caption">'+esc(label||"Game day starts here")+'</p>'+
   '<div class="sdsx-hero-meta">'+(rank?'<span>#'+rank+' · '+esc(window.SEC_RANKINGS?.note?.("football")||"AP poll")+'</span>':"")+
   (record?'<span>'+esc(record.overall)+' record</span>':"")+'</div></div></div>';
 }
@@ -361,6 +365,8 @@ function mount(v){
  if(v==="results")void window.SEC_LEAGUE_SETTINGS?.load?.();
 }
 document.addEventListener("click",ev=>{
+ const school=ev.target.closest?.("[data-sdsx-school]");
+ if(school){openTeam(school.dataset.sdsxSchool);return;}
  const g=ev.target.closest?.("[data-sdsx-game]");
  if(g){const id=g.dataset.sdsxGame;if(id)openGame(id);return;}
  const route=ev.target.closest?.("[data-sdsx-view]");
