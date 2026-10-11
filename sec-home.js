@@ -39,15 +39,20 @@ function discovery(model){
  const school=model.favoriteSchool;
  const name=model.favoriteName;
  const schoolLabel=school?'★ '+esc(school):'☆';
+ const game=model.favoriteUpcoming;
  const schoolCard='<section class="hq-feature-card hq-school-spotlight" aria-label="Your favorite SEC school">'+
-  '<div class="hq-feature-kicker"><span>⭐ YOUR SCHOOL</span><span>Personalize game day</span></div>'+
-  '<div class="hq-school-content"><span class="hq-school-emblem" aria-hidden="true">'+schoolLabel+'</span><div>'+
-  '<h3>'+(school?esc(name):"Pick your SEC school")+'</h3>'+
-  '<p>'+(school?"Your school pride follows your account, picks and league.":"Choose a school to personalize your Home, team coverage and league badge.")+'</p></div></div>'+
-  '<div class="hq-feature-actions"><button type="button" data-hq-route="teams" class="hq-primary">'+
-   (school?"Explore "+esc(name)+" →":"Choose favorite school →")+'</button>'+
-   (school?'<button type="button" data-hq-route="teams" class="hq-text-link">Change school</button>':"")+
-  '</div></section>';
+ '<div class="hq-feature-kicker"><span>⭐ YOUR TEAM</span><span>Follow your school</span></div>'+
+ '<div class="hq-school-content"><span class="hq-school-emblem" aria-hidden="true">'+schoolLabel+'</span><div>'+
+ '<h3>'+(school?esc(name):"Pick your SEC school")+'</h3>'+
+ '<p>'+(school?(model.favoriteRecord?"Football · "+esc(model.favoriteRecord)+" overall":
+ "Your SEC school, across all three sports."):
+ "Choose a school for personalized news, records, and your league badge.")+'</p></div></div>'+
+ (game?'<div class="hq-team-next"><span>NEXT VERIFIED GAME</span><strong>'+
+ esc(game.away)+' vs '+esc(game.home)+'</strong><small>'+esc(niceTime(game.clock))+' CT</small></div>':"")+
+ '<div class="hq-feature-actions"><button type="button" data-hq-route="teams" class="hq-primary">'+
+ (school?"Team Hub →":"Choose favorite school →")+'</button>'+
+ (school?'<button type="button" data-hq-route="teams" class="hq-text-link">Edit</button>':"")+
+ '</div></section>';
  const stories=model.headlines.length?model.headlines.map(item=>
   '<a class="hq-headline" target="_blank" rel="noopener noreferrer" href="'+esc(item.url)+'" aria-label="Read article from '+esc(item.source)+': '+esc(item.title)+'">'+
   '<span class="hq-headline-meta">'+(item.schoolRelated?"★ YOUR SCHOOL · ":"")+esc(item.source)+
@@ -61,6 +66,106 @@ function discovery(model){
   '</section>';
  return '<div class="hq-discover">'+schoolCard+newsCard+'</div>';
 }
+
+function nextKickoff(games,now=Date.now()){
+ return games.filter(g=>g.status==="scheduled"&&!g.provisional&&g.clock&&g.clock>now)
+  .sort((a,b)=>a.clock-b.clock)[0]||null;
+}
+function countdown(kickoff,now=Date.now()){
+ if(!kickoff||kickoff<=now)return null;
+ const total=Math.max(1,Math.ceil((kickoff-now)/60000));
+ const days=Math.floor(total/1440),hours=Math.floor(total%1440/60),mins=total%60;
+ return (days?days+"d ":"")+hours+"h "+String(mins).padStart(2,"0")+"m";
+}
+function teamRecord(code){
+ const entry=code&&window.SEC_TEAM_RECORDS?.entry?.(code,"football");
+ return entry&&/^\d{1,3}-\d{1,3}(?:-\d{1,3})?$/.test(entry.overall||"")?entry.overall:null;
+}
+function favoriteGame(code,games,now=Date.now()){
+ return code?games.filter(g=>g.status==="scheduled"&&!g.provisional&&g.clock>now&&
+  (g.away===code||g.home===code)).sort((a,b)=>a.clock-b.clock)[0]||null:null;
+}
+function moreNews(primary){
+ const used=new Set(primary.map(x=>x.url));
+ return (window.SEC_NEWS?.getArticles?.()||[])
+  .filter(x=>x?.title&&validDate(x.published_at)&&window.SEC_NEWS?.safeUrl?.(x.url))
+  .sort((a,b)=>Date.parse(b.published_at)-Date.parse(a.published_at))
+  .filter(x=>!used.has(x.url)&&used.add(x.url)).slice(0,3)
+  .map(x=>({title:String(x.title).slice(0,200),
+   source:String(x.source||"Publisher").slice(0,50),
+   url:window.SEC_NEWS.safeUrl(x.url),published:x.published_at}));
+}
+function closestRival(model){
+ if(!model.loggedIn)return null;
+ const rows=model.leaderboard||[],mine=rows.find(r=>r.user_id===user()?.id);
+ if(!mine)return null;
+ const value=r=>number(model.leagueKind==="club"?r.total:r.season_points);
+ const others=rows.filter(r=>r.user_id!==user()?.id);
+ if(!others.length)return null;
+ const rival=others.sort((a,b)=>Math.abs(value(a)-value(mine))-Math.abs(value(b)-value(mine)))[0];
+ return {name:String(rival.display_name||"League rival").slice(0,40),
+  yourPoints:value(mine),theirPoints:value(rival),gap:Math.abs(value(mine)-value(rival))};
+}
+
+
+function hero(m){
+ const game=m.nextKickoff,action=m.progress.unpickedOpen?"picks":m.liveCount?"picks":"league";
+ const line=m.liveCount?m.liveCount+" live football game"+(m.liveCount===1?"":"s"):
+  m.progress.unpickedOpen?m.progress.unpickedOpen+" unpicked games still open":
+  "Your school. Your league. Your season.";
+ return '<section class="hq-stadium-hero" aria-label="Game Day HQ">'+
+ '<div class="hq-hero-copy"><span class="hq-eyebrow">SATURDAYS DOWN SOUTH</span>'+
+ '<h2>Game Day <em>HQ</em></h2>'+
+ '<strong>Same schools. Bigger rivalries.</strong><p>'+esc(line)+'</p>'+
+ '<div class="hq-hero-buttons"><button type="button" data-hq-route="'+action+'" class="hq-primary">'+
+ (m.progress.unpickedOpen?"Make my picks →":m.liveCount?"Open live games →":"View my league →")+
+ '</button><button type="button" data-hq-route="news" class="hq-hero-alt">SEC headlines ↗</button>'+
+ '</div></div><div class="hq-next-kickoff"><span class="hq-hero-next-label">'+
+ (game?"NEXT VERIFIED KICKOFF":"COMING UP")+'</span>'+
+ (game?'<div class="hq-next-teams"><span>'+esc(game.away)+'</span><small>VS</small><span>'+esc(game.home)+'</span></div>'+
+ '<strong>'+esc(countdown(game.clock)||"Starting soon")+'</strong><small>'+
+ esc(niceTime(game.clock))+' CT</small><button type="button" data-hq-route="picks">Game details →</button>':
+ '<p>No confirmed upcoming football kickoff in the selected week.</p>'+
+ '<button type="button" data-hq-route="'+routeFor(m.recommended)+'">Open '+esc(sportText[m.recommended]||"football")+' →</button>')+
+ '</div></section>';
+}
+function actionCards(m){
+ const p=m.progress,idx=m.leaderboard.findIndex(r=>r.user_id===user()?.id);
+ const tiles=[
+ ["picks","✓","MAKE PICKS",p.unpickedOpen?p.unpickedOpen+" remaining":p.chosen+"/"+p.total+" selected"],
+ ["teams","★","MY TEAM",m.favoriteName||"Choose a school"],
+ ["picks","◉","LIVE SCORES",m.liveCount?m.liveCount+" live now":"Game Center"],
+ ["league","▥","LEAGUE RACE",idx>=0?"You're #"+(idx+1):"View standings"],
+ ["league","⚔","RIVALS",m.rival?m.rival.gap+"-point gap":"Meet your league"],
+ ["trophies","🏆","TROPHY ROOM","Your collection"],
+ ["news","▤","SEC NEWS","Latest headlines"]
+ ];
+ return '<nav class="hq-actions" aria-label="Game Day shortcuts">'+tiles.map(t=>
+ '<button type="button" data-hq-route="'+t[0]+'" class="hq-action"><span class="hq-action-icon" aria-hidden="true">'+
+ t[1]+'</span><strong>'+t[2]+'</strong><small>'+esc(t[3])+'</small></button>').join("")+'</nav>';
+}
+function rivalCard(m){
+ const r=m.rival;
+ return '<section class="hq-rival-card" aria-label="Closest league rival"><div class="hq-panel-header">'+
+ '<span>⚔ YOUR LEAGUE RIVAL</span><button type="button" data-hq-route="league" class="hq-inline">League →</button></div>'+
+ (r?'<p class="hq-panel-sub">Closest opponent by verified season points.</p>'+
+ '<div class="hq-rival-score"><div><small>YOU</small><strong>'+r.yourPoints+'</strong><small>points</small></div>'+
+ '<span>VS</span><div><small>'+esc(r.name)+'</small><strong>'+r.theirPoints+'</strong><small>points</small></div></div>'+
+ '<div class="hq-rival-track"><span style="width:'+(r.yourPoints+r.theirPoints>0?
+ Math.round(100*r.yourPoints/(r.yourPoints+r.theirPoints)):50)+'%"></span></div>'+
+ '<small>'+r.gap+' point'+(r.gap===1?"":"s")+' apart · Season totals, not a separate challenge</small>':
+ '<p class="hq-empty">Join a league with friends to unlock your closest-rival spotlight.</p>')+'</section>';
+}
+function extraNews(m){
+ return '<section class="hq-feature-card hq-around-news" aria-label="Around the SEC">'+
+ '<div class="hq-panel-header"><span>📰 AROUND THE SEC</span>'+
+ '<button type="button" data-hq-route="news" class="hq-inline">All news →</button></div>'+
+ (m.moreHeadlines.length?'<div class="hq-extra-news">'+m.moreHeadlines.map(x=>
+ '<a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer" class="hq-extra-story"><small>'+
+ esc(x.source)+'</small><strong>'+esc(x.title)+'</strong><span aria-hidden="true">↗</span></a>').join("")+'</div>':
+ '<p class="hq-empty">More verified headlines will appear as publishers update.</p>')+'</section>';
+}
+
 function gameState(g){
  const status=["live","final","scheduled","canceled","postponed"].includes(g?.liveStatus)?g.liveStatus:"scheduled";
  const updated=validDate(g?.scoreUpdatedAt)?Date.parse(g.scoreUpdatedAt):null;
@@ -71,7 +176,9 @@ function gameState(g){
   possession:status==="live"?g.livePossessionCode||null:null,
   fieldPercent:status==="live"&&Number.isFinite(Number(g.liveFieldPercent))?
    Math.min(100,Math.max(0,Number(g.liveFieldPercent))):null,
-  clock:validDate(g.kickoff)?Date.parse(g.kickoff):validDate(g.date)?Date.parse(g.date+"T17:00:00Z"):null};
+  clock:validDate(g.kickoff)?Date.parse(g.kickoff):null,
+  provisional:Boolean(g.onlineProvisional)||!validDate(g.kickoff),
+  down:g.liveDown??null,distance:g.liveDistance??null,position:g.livePositionText||null};
 }
 function pickProgress(games,picks,locked,unavailable){
  const total=games.length;let chosen=0,unpickedOpen=0,lockedMissing=0,open=0;
@@ -97,6 +204,7 @@ function snapshot(a=app(),today=Date.now()){
  const finals=gameList.filter(g=>g.status==="final")
   .sort((x,y)=>(y.clock??0)-(x.clock??0));
  const visible=[...live,...upcoming,...finals].slice(0,3);
+ const next=nextKickoff(gameList,today);
  const selected=window.SEC_LEAGUE_SETTINGS?.getSelected?.()||null;
  let leagueName=selected?.name||null,rows=[];
  if(selected?.kind==="club"){
@@ -113,14 +221,17 @@ function snapshot(a=app(),today=Date.now()){
  const ordered=rows.filter(r=>r&&r.user_id).slice().sort((x,y)=>{
   const score=r=>number(selected?.kind==="club"?r.total:r.season_points);
   return score(y)-score(x);
- }).slice(0,4);
- return {week:Number(w?.num)||null,season:"football",progress,visible,liveCount:live.length,
+ }).slice(0,5);
+ const favorite=favoriteFor(a),headlines=newsPreview(favorite);
+ const model={week:Number(w?.num)||null,season:"football",progress,visible,liveCount:live.length,
   leagueName,leaderboard:hasIdentity?ordered:[],leagueKind:selected?.kind||"football",
   loggedIn:hasIdentity,authConfigured:authenticated,
   scoreFreshness:Math.max(0,...live.map(g=>g.updated||0)),
-  favoriteSchool:favoriteFor(a),favoriteName:schoolNames()[favoriteFor(a)]||null,
-  headlines:newsPreview(favoriteFor(a)),
+  favoriteSchool:favorite,favoriteName:schoolNames()[favorite]||null,
+  favoriteRecord:teamRecord(favorite),favoriteUpcoming:favoriteGame(favorite,gameList,today),
+  headlines,moreHeadlines:moreNews(headlines),nextKickoff:next,
   recommended:window.SEC_SPORTS?.recommended?.()||"football"};
+ return {...model,rival:closestRival(model)};
 }
 function niceTime(ms){
  if(!Number.isFinite(ms)||ms<=0)return "Kickoff TBA";
@@ -174,14 +285,10 @@ function render(model){
   p.unpickedOpen?"Make your remaining selections before kickoff.":
   "Review your saved choices or explore the league.";
  const sportNames=["football","basketball","baseball"];
- root.innerHTML='<div class="hq-welcome"><div><span class="hq-eyebrow">YOUR HOME FIELD</span>'+
-  '<h2>Every game. Every pick. <em>Your league.</em></h2>'+
-  '<p>One place for your next slate, live SEC games and the race with friends.</p></div>'+
-  '<div class="hq-hero-emblem" aria-hidden="true">🏆</div></div>'+
-  discovery(model)+
-  '<div class="hq-sport-tabs" role="group" aria-label="Pick a sport">'+sportNames.map(s=>
-   '<button type="button" data-hq-route="'+routeFor(s)+'"'+(model.recommended===s?' class="suggested"':'')+'>'+
-   sportIcon[s]+' '+sportText[s]+(model.recommended===s?'<small>Latest season</small>':"")+'</button>').join("")+'</div>'+
+ root.innerHTML=hero(model)+actionCards(model)+discovery(model)+
+ '<div class="hq-sport-tabs" role="group" aria-label="Pick a sport">'+sportNames.map(s=>
+ '<button type="button" data-hq-route="'+routeFor(s)+'"'+(model.recommended===s?' class="suggested"':'')+'>'+
+ sportIcon[s]+' '+sportText[s]+(model.recommended===s?'<small>Latest season</small>':"")+'</button>').join("")+'</div>'+
   '<div class="hq-grid">'+
    '<section class="hq-panel hq-picks" aria-label="Your football picks"><div class="hq-panel-header">'+
     '<span>01 · YOUR PICKS</span><strong>Week '+(model.week||"—")+'</strong></div>'+
@@ -210,7 +317,8 @@ function render(model){
     '<div class="hq-quick-links"><button type="button" data-hq-route="trophies">🏆 Trophy Room <span>→</span></button>'+
     '<button type="button" data-hq-route="news">📰 SEC News <span>→</span></button>'+
     '<button type="button" data-hq-route="teams">⭐ Favorite Teams <span>→</span></button></div></section>'+
-  '</div><p class="hq-disclaimer">Independent SEC fan game · No live score is shown until confirmed by the score feed. '+
+  '</div><div class="hq-bottom-grid">'+rivalCard(model)+extraNews(model)+'</div>'+
+  '<p class="hq-disclaimer">Independent SEC fan game · No live score is shown until confirmed by the score feed. '+
    '3D trophies and player information load only when you open their sections.</p>';
 }
 let ticking=false;
@@ -234,6 +342,7 @@ function mount(){
  // Share the existing verified feeds; never run a second independent news scraper.
  void window.SEC_LIVE_SCORES?.refresh?.();
  void window.SEC_NEWS?.reload?.();
+ void Promise.resolve(window.SEC_TEAM_RECORDS?.refresh?.()).then(()=>refresh()).catch(()=>{});
  if(window.secOnline?.isAuthReady?.()!==false){
   void Promise.resolve(window.SEC_LEAGUE_SETTINGS?.load?.()).then(()=>refresh()).catch(()=>{});
  }else{
@@ -253,6 +362,6 @@ document.addEventListener("click",e=>{
  }
 });
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refresh();});
-window.SEC_HOME=Object.freeze({mount,refresh,snapshot,pickProgress,gameState});
+window.SEC_HOME=Object.freeze({mount,refresh,snapshot,pickProgress,gameState,nextKickoff,countdown});
 if(app()?.view?.()==="home")mount();
 })();

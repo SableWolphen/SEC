@@ -74,6 +74,20 @@ fs.mkdirSync(output,{recursive:true});
       return visible;
      });
      if(!openPicks)problems.push(viewport.width+"px home pick button fails to navigate");
+     const stadium=await page.evaluate(()=>{
+      const hero=document.querySelector('#sec-home-root .hq-stadium-hero');
+      const shortcut=[...document.querySelectorAll('#sec-home-root .hq-action')];
+      const rival=document.querySelector('#sec-home-root .hq-rival-card');
+      const extra=document.querySelector('#sec-home-root .hq-around-news');
+      const name=hero?.textContent||'';
+      return {hero:!!hero&&hero.getBoundingClientRect().height>0,
+       brand:name.includes('SATURDAYS DOWN SOUTH'),
+       shortcuts:shortcut.length,rival:!!rival,around:!!extra,
+       bleed:document.documentElement.scrollWidth>innerWidth+2};
+     });
+     if(!stadium.hero||!stadium.brand||stadium.shortcuts!==7||!stadium.rival||
+        !stadium.around||stadium.bleed)
+      problems.push(viewport.width+"px stadium homepage regression: "+JSON.stringify(stadium));
      const discovery=await page.evaluate(()=>{
       const root=document.querySelector("#sec-home-root"),promos=root?.querySelectorAll(".hq-feature-card")||[];
       const links=[...root?.querySelectorAll(".hq-headline[href]")||[]];
@@ -84,7 +98,7 @@ fs.mkdirSync(output,{recursive:true});
       const firstVisible=promos.length?promos[0].getBoundingClientRect().top<window.innerHeight:false;
       return {count:promos.length,school,news,safe,firstVisible,headlines:links.length};
      });
-     if(discovery.count!==2||!discovery.school||!discovery.news||!discovery.safe||!discovery.firstVisible)
+     if(discovery.count!==3||!discovery.school||!discovery.news||!discovery.safe||!discovery.firstVisible)
       problems.push(viewport.width+"px Home news/team discovery issue: "+JSON.stringify(discovery));
      const navSpotlights=await page.evaluate(()=>{
       const a=window.SEC_BRIDGE;
