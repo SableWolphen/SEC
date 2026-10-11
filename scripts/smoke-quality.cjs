@@ -3,7 +3,7 @@ const assert=require("node:assert/strict"),fs=require("node:fs");
 const html=fs.readFileSync("index.html","utf8");
 const css=fs.readFileSync("multi-sport.css","utf8");
 const worker=fs.readFileSync("sw.js","utf8");
-const pages=["home","picks","basketball","baseball","league","trophies","news","teams","settings","more"];
+const pages=["home","team-hub","game-center","results","team-news","picks","basketball","baseball","league","trophies","news","teams","settings","more"];
 for(const page of pages){
  assert.equal((html.match(new RegExp('id="'+page+'-view"','g'))||[]).length,1,
   "every section has one unique view: "+page);
@@ -62,4 +62,4 @@ assert.match(league,/olderSeason\(item\)/,"prior seasons have explicit archive s
 const brackets=fs.readFileSync("sec-brackets.js","utf8");
 assert.match(brackets,/pendingKey===key/,"old bracket request cannot overwrite newly selected club");
 assert.match(brackets,/if\(nextFixtures\.length\)/,"no extra bracket standings requests without verified matchups");
-console.log("SEC quality checks passed: 10 sections, 5-button mobile nav, safe areas, keyboard, draft persistence, stale data, seasons, PWA.");
+console.log("SEC quality checks passed: 14 sections, 5-button mobile nav, safe areas, keyboard, drafts, stale data, seasons, PWA.");
