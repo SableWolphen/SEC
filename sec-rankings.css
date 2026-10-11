@@ -1,0 +1,63 @@
+/* Source-attributed national Top 25 university rankings, across football, basketball, baseball. */
+.sds-poll-rank{display:inline-flex;vertical-align:middle;align-items:center;gap:5px;
+  border:1px solid #cfac6b;border-radius:8px;background:#473b2b;color:#ffe1a1;
+  padding:3px 6px;white-space:nowrap;max-width:100%;font-size:11px;line-height:1.2;
+  font-weight:900;box-shadow:0 2px 6px #0003}
+.sds-poll-rank strong{font-size:12px;color:#ffe2a9;line-height:1.2}
+.sds-poll-rank small{font-size:9px;color:#e4d4b6;font-weight:800;max-width:105px;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.sds-poll-unranked{display:inline-flex;align-items:center;justify-content:center;
+  background:#192d3b;border:1px solid #587184;color:#b3c3cf;border-radius:7px;
+  font-size:10px;font-weight:800;padding:2px 5px;vertical-align:middle}
+.team-card h3 .sds-poll-rank,.team-card h3 .sds-poll-unranked{margin-left:4px}
+.team-card h3 .sds-poll-rank small{display:none}
+.team-card h3 .sds-poll-rank{padding:2px 5px;letter-spacing:0}
+.team-card h3{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}
+.sds-poll-source{display:inline;color:#e6c786;font-size:11px;line-height:1.4}
+a.sds-poll-source:hover{color:#ffebb9;text-decoration:underline}
+.sds-polls-panel{min-width:0;border:1px solid #607288;border-top-color:#b59b67;
+  border-radius:14px;padding:16px 17px;margin:14px 0;
+  background:linear-gradient(135deg,#152d42,#0e2032);box-shadow:0 8px 22px #0004}
+.sds-polls-heading{display:flex;flex-wrap:wrap;justify-content:space-between;
+  align-items:center;gap:9px;margin:0 0 12px}
+.sds-polls-heading>strong{color:#f4d18c;letter-spacing:1px;font-size:11px;font-weight:950}
+.sds-polls-heading button{background:#253d4d;border:1px solid #967d50;
+  border-radius:9px;min-height:38px;padding:8px 12px;color:#f3d397;font-weight:850;
+  font-size:11px;cursor:pointer}
+.sds-polls-heading button:hover{background:#374a56;border-color:#e0bd83}
+.sds-polls-heading button:focus-visible{outline:2px solid #f4d18c;outline-offset:2px}
+.sds-polls-heading button:disabled{opacity:.6;cursor:wait}
+.sds-poll-rows{display:grid;gap:1px;border:1px solid #364f61;border-radius:12px;
+  background:#102335;overflow:hidden}
+.sds-poll-row{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,.4fr) minmax(0,1.4fr);
+  align-items:center;gap:9px;padding:12px;background:#172a3d}
+.sds-poll-row:nth-child(2){background:#13293d}
+.sds-poll-row>span:first-child{font-size:12px;color:#eef3f8;font-weight:800}
+.sds-poll-position{font-size:17px;font-weight:950;font-variant-numeric:tabular-nums;color:#ffe0a0}
+.sds-poll-position.unranked,.sds-poll-position.historic{font-size:12px;color:#c3d1dd}
+.sds-poll-position.unavailable{color:#8a9fae}
+.sds-poll-row>small{color:#b0c8d7;font-size:11px;line-height:1.5}
+.sds-polls-disclaimer{margin:12px 0 0;color:#aebfcf;line-height:1.55;font-size:11px}
+.sds-favorite-rank{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;margin:5px 0 8px}
+.sds-favorite-rank .sds-poll-rank{font-size:11px}
+.sds-favorite-rank .sds-poll-source{font-size:10px}
+.hq-school-spotlight .sds-favorite-rank{margin:6px 0 4px}
+.hq-school-spotlight .sds-poll-rank small{display:inline}
+.sport-team-context .sds-poll-rank{margin-right:5px;vertical-align:middle}
+.sport-team-context .sds-poll-rank small{display:none}
+.team-pick-context .sds-poll-rank{margin-right:3px}
+.team-pick-context .sds-poll-rank small{display:none}
+.insight-records .sds-poll-rank small{display:none}
+@media(max-width:790px){
+ .sds-polls-panel{padding:12px;margin:10px 0}
+ .sds-poll-row{padding:9px;gap:5px}
+ .sds-poll-row>span:first-child{font-size:11px}
+ .sds-poll-row>small{font-size:10px}
+}
+@media(max-width:390px){
+ .sds-poll-row{grid-template-columns:1fr auto;gap:5px 9px}
+ .sds-poll-row>small{grid-column:1/-1}
+ .sds-polls-heading>strong{font-size:10px}
+ .sds-polls-heading button{min-height:38px}
+ .hq-school-spotlight .sds-favorite-rank{gap:4px}
+}
