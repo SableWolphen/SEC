@@ -9,6 +9,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import re
+from html.parser import HTMLParser
 from pathlib import Path
 from urllib.request import Request, urlopen
 
@@ -28,6 +29,83 @@ CODES={
 }
 ALL_CODES=set(CODES.values())
 UTC=dt.timezone.utc
+NCAA_BASEBALL_URL="https://www.ncaa.com/rankings/baseball/d1/d1baseballcom-top-25"
+# Exact labels displayed by the NCAA D1Baseball table. No approximate school matching.
+NCAA_SEC_NAMES={
+ "alabama":"ALA","arkansas":"ARK","auburn":"AUB","florida":"FLA",
+ "georgia":"UGA","kentucky":"UK","lsu":"LSU","ole miss":"MISS",
+ "mississippi state":"MSST","missouri":"MIZ","oklahoma":"OU",
+ "south carolina":"SC","tennessee":"TENN","texas":"TEX",
+ "texas a&m":"TAMU","vanderbilt":"VAN"
+}
+
+class RankingsTable(HTMLParser):
+ def __init__(self):
+  super().__init__()
+  self.tables=[];self.table=None;self.row=None;self.cell=None
+ def handle_starttag(self,tag,attrs):
+  if tag=="table":
+   self.table=[];self.tables.append(self.table)
+  elif tag=="tr" and self.table is not None:self.row=[]
+  elif tag in ("td","th") and self.row is not None:self.cell=[]
+ def handle_data(self,data):
+  if self.cell is not None:self.cell.append(data)
+ def handle_endtag(self,tag):
+  if tag in ("td","th") and self.cell is not None and self.row is not None:
+   self.row.append(re.sub(r"\\s+"," "," ".join(self.cell)).strip());self.cell=None
+  elif tag=="tr" and self.row is not None:
+   if self.row:self.table.append(self.row)
+   self.row=None
+  elif tag=="table":self.table=None
+
+def get_html(url):
+ req=Request(url,headers={"User-Agent":"Mozilla/5.0 (Saturdays Down South ranking update)"})
+ with urlopen(req,timeout=20) as response:
+  return response.read(1600000).decode("utf-8","replace")
+
+def parse_ncaa_baseball(html,now=None):
+ """D1Baseball.com's Top 25 as displayed with a through-games date by NCAA."""
+ now=now or dt.datetime.now(UTC)
+ if not isinstance(html,str) or len(html)<500:return None
+ clean=re.sub(r"<[^>]+>"," ",html)
+ clean=re.sub(r"&nbsp;|&#160;"," ",clean,flags=re.I)
+ match=re.search(r"Through\s+Games\s+([A-Za-z]{3,9})\.?\s+(\d{1,2}),?\s+(\d{4})",clean,re.I)
+ if not match:return None
+ try:
+  month=dt.datetime.strptime(match.group(1)[:3].title(),"%b").month
+  day=dt.date(int(match.group(3)),month,int(match.group(2)))
+ except ValueError:return None
+ if day>now.date()+dt.timedelta(days=2):return None
+ expected=season_for("baseball",now.date())
+ season=season_for("baseball",day)
+ if season<expected-1 or season>expected:return None
+ parser=RankingsTable();parser.feed(html)
+ result=None
+ for table in parser.tables:
+  ranks={};mapped={};names=set()
+  for row in table:
+   if len(row)<2:continue
+   r=re.fullmatch(r"#?\s*(\d{1,2})",row[0])
+   if not r:continue
+   rank=int(r.group(1))
+   if not 1<=rank<=25 or rank in ranks:continue
+   name=row[1].strip().lower()
+   if not name or name in names:continue
+   ranks[rank]=name;names.add(name)
+   code=NCAA_SEC_NAMES.get(name)
+   if code:
+    previous=None
+    if len(row)>=4:
+     p=re.fullmatch(r"\d{1,2}",row[3].strip())
+     if p and 1<=int(p.group())<=25:previous=int(p.group())
+    mapped[code]={"rank":rank,"previous":previous}
+  if len(ranks)>=20 and (result is None or len(ranks)>result[0]):
+   result=(len(ranks),mapped)
+ if not result:return None
+ return {"poll":"D1Baseball.com Top 25","published_at":day.isoformat(),
+         "season":season,"source":"NCAA","source_url":NCAA_BASEBALL_URL,
+         "poll_size":result[0],"teams":result[1]}
+
 
 def get_json(url):
  req=Request(url,headers={"User-Agent":"SaturdaysDownSouth/1.0 (read public polls)",
@@ -135,13 +213,26 @@ def build(now=None,get=get_json,prior=None):
    print(f"{sport}: valid current-season national poll unavailable")
   except Exception as exc:
    print(f"{sport}: source unavailable ({type(exc).__name__}); keeping dated poll if applicable")
+  if sport=="baseball":
+   try:
+    ncaa=parse_ncaa_baseball(get_html(NCAA_BASEBALL_URL),now)
+    if ncaa:
+     published[sport]=ncaa
+     print(f"baseball: NCAA D1Baseball.com Top 25 through {ncaa['published_at']} "
+           f"({len(ncaa['teams'])} SEC schools ranked)")
+     continue
+   except Exception as exc:
+    print(f"baseball: official NCAA fallback unavailable ({type(exc).__name__})")
   old=(prior or {}).get("sports",{}).get(sport)
   if valid_previous(old,sport,now):
    published[sport]=old
  return {"source":"ESPN","checked_at":checked,"sports":published}
 
 def valid_previous(poll,sport,now):
- if not isinstance(poll,dict) or poll.get("source")!="ESPN":return False
+ if not isinstance(poll,dict) or not (
+  poll.get("source")=="ESPN" or
+  (sport=="baseball" and poll.get("source")=="NCAA" and poll.get("source_url")==NCAA_BASEBALL_URL)
+ ):return False
  d=parse_day(poll.get("published_at"))
  if d is None or d>now.date()+dt.timedelta(days=2):return False
  if poll.get("season")!=season_for(sport,d) or poll["season"]<season_for(sport,now.date())-1:return False
