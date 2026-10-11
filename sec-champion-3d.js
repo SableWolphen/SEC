@@ -18,19 +18,22 @@ function beforeRender(root){
  for(const stage of root.querySelectorAll(".museum-art[data-champion-sport]")){
   const sport=stage.dataset.championSport;
   if(!SPORTS.has(sport))continue;
-  const previous=preserved.get(sport);
+  // A player may have multiple titles for one sport; identify by sport AND year.
+  const key=stage.dataset.championKey||sport;
+  const previous=preserved.get(key);
   if(previous&&previous!==stage){
    const old=[...instances].find(i=>i.stage===previous);
    if(old)dispose(old);
   }
-  preserved.set(sport,stage);
+  preserved.set(key,stage);
   stage.remove();
  }
 }
 function restore(root){
  for(const replacement of root.querySelectorAll(".museum-art[data-champion-sport]")){
   const sport=replacement.dataset.championSport;
-  const original=preserved.get(sport);
+  const key=replacement.dataset.championKey||sport;
+  const original=preserved.get(key);
   if(!original||original.isConnected)continue;
   // Keep the artwork but use the latest authorized locked/earned state.
   original.querySelector(".museum-lock")?.remove();
@@ -39,7 +42,7 @@ function restore(root){
   replacement.replaceWith(original);
   const instance=[...instances].find(i=>i.stage===original);
   if(instance)instance.visible=true;
-  preserved.delete(sport);
+  preserved.delete(key);
  }
  for(const original of preserved.values()){
   const entry=[...instances].find(i=>i.stage===original);
@@ -83,11 +86,16 @@ function decal(THREE,label,opts={}){
   g.lineWidth=9;g.strokeStyle="#e7b75e";g.strokeRect(7,8,498,144);
  }
  g.font=(opts.size||82)+"px Georgia, serif";g.textAlign="center";g.textBaseline="middle";
- g.fillStyle="#ffe6a4";g.shadowColor="#fbd17b88";g.shadowBlur=6;g.fillText(label,256,85);
+ g.fillStyle="#ffe6a4";g.shadowColor="#fbd17b88";g.shadowBlur=6;
+ if(opts.season){
+  // Engrave the archived season as part of the model's actual plaque texture.
+  g.fillText(label,256,64);
+  g.font="bold 42px Arial, sans-serif";g.fillText("CHAMPION",256,127);
+ }else g.fillText(label,256,85);
  const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;
  return t;
 }
-function model(THREE,sport){
+function model(THREE,sport,season=null){
  const root=new THREE.Group();
  const gold=new THREE.MeshStandardMaterial({color:0xe2a947,metalness:.83,roughness:.23});
  const bright=new THREE.MeshStandardMaterial({color:0xffdc8a,metalness:.78,roughness:.19});
@@ -114,7 +122,7 @@ function model(THREE,sport){
  const plate=box(1.28,.22,.045,.403,edge);
  plate.position.z=.616;
  const plaque=add(new THREE.PlaneGeometry(1.17,.19),new THREE.MeshBasicMaterial({
-  map:decal(THREE,"CHAMPION",{backing:true,size:66}),transparent:true,depthWrite:false
+  map:decal(THREE,season?String(season):"CHAMPION",{backing:true,size:season?92:66,season:Boolean(season)}),transparent:true,depthWrite:false
  }));
  plaque.position.set(0,.404,.645);
  // Curling 3D arms, each independent tube to catch specular highlights.
@@ -198,7 +206,8 @@ async function mount(stage){
   const scene=new THREE.Scene();
   const camera=new THREE.PerspectiveCamera(32,1,.1,50);
   camera.position.set(4.1,2.8,7.6);camera.lookAt(0,1.43,0);
-  const modelRoot=model(THREE,stage.dataset.championSport);scene.add(modelRoot);
+  const season=stage.dataset.championSeason||null;
+  const modelRoot=model(THREE,stage.dataset.championSport,season);scene.add(modelRoot);
   scene.add(new THREE.AmbientLight(0xffdfb0,1.25));
   const lights=[
    [0xffdc9a,120,-3,5,4],[0xffffff,115,3,4,2],[0xe69d3b,70,0,1,-4],[0x76b2ee,32,-2,2,-3]
@@ -217,7 +226,8 @@ async function mount(stage){
   renderer.setClearColor(0x0c1c2a,0);
   renderer.domElement.className="museum-champion-canvas";
   renderer.domElement.setAttribute("role","img");
-  renderer.domElement.setAttribute("aria-label",stage.dataset.championSport+" rotating three-dimensional championship trophy");
+  renderer.domElement.setAttribute("aria-label",stage.dataset.championSport+
+   (season?" "+season:"")+" rotating three-dimensional championship trophy");
   const holder=document.createElement("div");holder.className="museum-champion-canvas-holder";
   holder.append(renderer.domElement);
   const w=()=>{const rect=stage.getBoundingClientRect();const w=Math.max(70,Math.round(rect.width)),h=Math.max(90,Math.round(rect.height));
