@@ -417,6 +417,12 @@ input[type="checkbox"],input[type="radio"]{accent-color:#e3b66e}
  .content-card{padding:15px}
  #picks-view .picks-layout{grid-template-columns:1fr;gap:12px}
  #picks-view .spotlight{min-height:0;padding:16px}
+ /* Keep football week carousel within mobile content width (legacy -15px gutter). */
+ #picks-view .week-picker{
+   margin-right:0;margin-left:0;width:100%;max-width:100%;min-width:0;
+   padding:1px 1px 11px;overflow-x:auto;overscroll-behavior-x:contain;
+ }
+ #picks-view .week-pill{flex:0 0 auto}
  #picks-view .spotlight-title{font-size:24px;margin:10px 0 6px}
  #picks-view .game-card{padding:12px 10px}
  #picks-view .section-title-row{margin:17px 0 11px}
