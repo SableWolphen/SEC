@@ -74,6 +74,30 @@ fs.mkdirSync(output,{recursive:true});
       return visible;
      });
      if(!openPicks)problems.push(viewport.width+"px home pick button fails to navigate");
+     const discovery=await page.evaluate(()=>{
+      const root=document.querySelector("#sec-home-root"),promos=root?.querySelectorAll(".hq-feature-card")||[];
+      const links=[...root?.querySelectorAll(".hq-headline[href]")||[]];
+      const safe=links.every(a=>a.protocol==="https:"&&
+       ["www.espn.com","espn.com","www.ncaa.com","ncaa.com"].includes(a.hostname));
+      const school=!!root?.querySelector('.hq-school-spotlight [data-hq-route="teams"]');
+      const news=!!root?.querySelector('.hq-news-spotlight [data-hq-route="news"]');
+      const firstVisible=promos.length?promos[0].getBoundingClientRect().top<window.innerHeight:false;
+      return {count:promos.length,school,news,safe,firstVisible,headlines:links.length};
+     });
+     if(discovery.count!==2||!discovery.school||!discovery.news||!discovery.safe||!discovery.firstVisible)
+      problems.push(viewport.width+"px Home news/team discovery issue: "+JSON.stringify(discovery));
+     const navSpotlights=await page.evaluate(()=>{
+      const a=window.SEC_BRIDGE;
+      document.querySelector('.hq-news-spotlight [data-hq-route="news"]')?.click();
+      const news=a.view()==="news";
+      a.setView("home");
+      document.querySelector('.hq-school-spotlight [data-hq-route="teams"]')?.click();
+      const teams=a.view()==="teams";
+      a.setView("home");
+      return {news,teams};
+     });
+     if(!navSpotlights.news||!navSpotlights.teams)
+      problems.push(viewport.width+"px Home News/Teams shortcuts broken: "+JSON.stringify(navSpotlights));
     }
     if(route==="more"){
      const secondary=await page.evaluate(()=>[
@@ -90,6 +114,19 @@ fs.mkdirSync(output,{recursive:true});
      }));
      if(simple.duplicate||!simple.scoreboard||!simple.tabs)
       problems.push(viewport.width+"px unexpected duplicate league leaderboard: "+JSON.stringify(simple));
+     const favoriteSignup=await page.evaluate(()=>{
+      if(window.secOnline?.isSignedIn?.())return {skipped:true};
+      const button=document.querySelector('#league-content [data-online="mode-signup"]');
+      if(!button)return {skipped:true,reason:"Login not available"};
+      button.click();
+      const select=document.getElementById("online-signup-school");
+      const schools=select?[...select.options].filter(o=>o.value).length:0;
+      const skip=!!select?.querySelector('option[value=""]');
+      document.querySelector('#league-content [data-online="mode-login"]')?.click();
+      return {skipped:false,schools,skip};
+     });
+     if(!favoriteSignup.skipped&&(favoriteSignup.schools!==16||!favoriteSignup.skip))
+      problems.push(viewport.width+"px signup favorite-school picker: "+JSON.stringify(favoriteSignup));
     }
     if(route==="picks"){
      const tidy=await page.evaluate(()=>{

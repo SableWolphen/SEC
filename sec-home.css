@@ -104,3 +104,36 @@
  body .mobile-nav-btn{font-size:10px;padding:4px 1px}
 }
 @media(prefers-reduced-motion:reduce){.hq-progress span{transition:none}}
+
+
+/* Above-the-fold favorites & news: first-class destinations, not hidden in More. */
+.hq-discover{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:12px;margin:12px 0 16px}
+.hq-feature-card{display:flex;flex-direction:column;min-width:0;padding:19px 20px;border-radius:17px;border:1px solid #93774b;box-shadow:inset 0 1px #f9e4bd33,0 11px 18px #0004}
+.hq-school-spotlight{background:radial-gradient(ellipse at 100% 0%,#64502d70,transparent 65%),linear-gradient(137deg,#28343b,#102030)}
+.hq-news-spotlight{background:radial-gradient(ellipse at 100% 0%,#32524675,transparent 65%),linear-gradient(135deg,#14342f,#0e202f);border-color:#497764}
+.hq-feature-kicker{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:13px;color:#ffdb91;font-size:10px;font-weight:900;letter-spacing:1px}
+.hq-feature-kicker>span+span{color:#a9c5bf;letter-spacing:0;font-weight:600}
+.hq-school-content{display:flex;align-items:center;gap:14px;margin-bottom:14px;min-height:102px}
+.hq-school-emblem{display:grid;place-items:center;flex:none;width:74px;height:74px;border:1px solid #d9b571;border-radius:16px;background:linear-gradient(145deg,#5e4b2b,#1c2d35);font-size:24px;color:#ffe7b0;font-weight:950;box-shadow:inset 0 2px #f3d68a33,0 7px 19px #0006}
+.hq-feature-card h3{margin:0 0 7px;font-size:clamp(18px,2.4vw,24px);font-weight:900;line-height:1.15;color:#fff0ce}
+.hq-school-content p{font-size:12px;line-height:1.55;color:#bbced9;margin:0}
+.hq-feature-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:auto}
+.hq-feature-actions .hq-primary{margin:0;flex:1;min-width:145px}
+.hq-text-link{color:#ffda98;text-decoration:underline;text-underline-offset:3px;padding:10px;cursor:pointer;font-weight:750;border:0;background:transparent;font-size:12px}
+.hq-headlines{display:grid;gap:7px;margin-bottom:13px}
+.hq-headline{position:relative;text-decoration:none;border:1px solid #3a6558;border-radius:11px;min-height:65px;padding:10px 34px 10px 12px;background:#0a2024;display:flex;flex-direction:column;gap:5px}
+.hq-headline:hover{border-color:#cae9a1;background:#173b31}
+.hq-headline:focus-visible,.hq-news-all:focus-visible,.hq-text-link:focus-visible{outline:2px solid #ffe5a4;outline-offset:3px}
+.hq-headline-meta{color:#b5d5c5;font-size:9px;letter-spacing:.3px;font-weight:800}
+.hq-headline strong{color:#fff8ed;font-size:12px;line-height:1.42;font-weight:800;overflow-wrap:anywhere}
+.hq-headline-arrow{position:absolute;right:11px;top:50%;transform:translateY(-50%);color:#e5d69c}
+.hq-news-all{cursor:pointer;margin-top:auto;min-height:42px;border:1px solid #8ab68e;border-radius:10px;background:#24463d;color:#edffdc;font-size:12px;font-weight:900;padding:9px 12px;text-align:center}
+.hq-news-all:hover{background:#315e51}
+.sec-signup-school{margin:13px 0;padding:13px;border:1px solid #827047;border-radius:12px;background:linear-gradient(145deg,#273333,#17232e)}
+.sec-signup-school .input-label{font-weight:900;color:#ffe4a1}
+.sec-signup-school .input-label span{font-weight:500;color:#b6c9d2}
+.sec-signup-school .helper{color:#c9d3dc;line-height:1.5;margin:7px 0 11px}
+.sec-signup-school select.field{min-height:46px;max-width:100%;font-weight:800;color:#f6edda}
+@media(max-width:790px){.hq-discover{grid-template-columns:1fr;gap:9px}.hq-feature-card{padding:15px}.hq-school-content{min-height:0}.hq-headlines{grid-template-columns:repeat(2,minmax(0,1fr))}.hq-headline{min-height:86px}}
+@media(max-width:540px){.hq-school-emblem{width:60px;height:60px;font-size:19px}.hq-feature-card h3{font-size:19px}.hq-school-content{gap:11px}.hq-headlines{grid-template-columns:1fr;gap:7px}.hq-headline{min-height:55px}.hq-feature-kicker{margin-bottom:9px}.hq-school-content{margin-bottom:10px}.hq-feature-card{padding:12px 13px}.hq-news-spotlight .hq-headline:nth-child(n+3){display:none}}
+@media(max-width:355px){.hq-school-emblem{width:50px;height:54px;font-size:16px}.hq-school-content p{font-size:11px}.hq-feature-actions .hq-primary{min-width:135px}}

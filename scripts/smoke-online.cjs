@@ -12,6 +12,7 @@ const sampleGame={id:'2026-6-UGA-ALA',away:'UGA',home:'ALA',kickoff:new Date(Dat
 const fields={
   'online-email':{value:'sample.person.middle@gmail.com\u200B '},
   'online-signup-name':{value:'Sally SEC'},
+  'online-signup-school':{value:'TENN'},
   'online-password':{value:'aStrongTestPass123!'},
   'online-password-confirm':{value:'aStrongTestPass123!'},
   'online-new-league':{value:'Saturday Friends'},
@@ -55,7 +56,8 @@ const client={
    async getSession(){return {data:{session:state.session}};},
    onAuthStateChange(){return {data:{subscription:{unsubscribe(){}}}};},
    async signUp(credentials){
-     state.requests.push({type:'signup',email:credentials.email,passwordLength:credentials.password.length});
+     state.requests.push({type:'signup',email:credentials.email,passwordLength:credentials.password.length,
+      school:credentials.options?.data?.favorite_school_code});
      assert.equal(credentials.email,'sample.person.middle@gmail.com');
      state.session={user};
      return {data:{user,session:state.session}};
@@ -91,6 +93,7 @@ const client={
 const env={
  console,Promise,URL,URLSearchParams,localStorage,sessionStorage,document,
  window:{
+   SEC_PRIDE:{names:{TENN:"Tennessee",ALA:"Alabama"},setProfile(profile){state.lastFavorite=profile?.favorite_school_code;}},
    SEC_BRIDGE:{
      esc:s=>String(s).replaceAll('<','&lt;'),
      weeks:[{num:6,games:[sampleGame]}],gameById:{'2026-6-UGA-ALA':sampleGame},state:()=>pickState,
@@ -126,11 +129,16 @@ function click(action){
  assert.doesNotMatch(fs.readFileSync('multiplayer.js','utf8'),/Enter a valid email address\\./,'old client-side email rejection removed');
  click('mode-signup');assert.match(host.innerHTML,/Create my account/,'new users can explicitly choose account creation');
  assert.match(host.innerHTML,/online-password-confirm/,'signup asks to confirm password');
+ assert.match(host.innerHTML,/online-signup-school/,'signup includes a favorite school picker');
+ assert.match(host.innerHTML,/Tennessee/,'signup picker lists SEC schools');
  click('mode-login');assert.match(host.innerHTML,/Log in/);assert.doesNotMatch(host.innerHTML,/online-password-confirm/);
  click('mode-signup');click('register');
  await sleep();await sleep();await sleep();
  assert.equal(state.requests.some(x=>x.type==='signup'),true,'signup called');
  assert.equal(state.profile?.display_name,'Sally SEC','player profile created');
+ assert.equal(state.requests.find(x=>x.type==='signup')?.school,'TENN','favorite choice passed to auth metadata for confirmation');
+ assert.equal(state.profile?.favorite_school_code,'TENN','favorite choice saved in account profile');
+ assert.equal(state.lastFavorite,'TENN','school branding becomes available immediately');
  assert.match(host.innerHTML,/Create league/,'create league appears for signed-in user');
  click('create-league');
  await sleep();await sleep();await sleep();

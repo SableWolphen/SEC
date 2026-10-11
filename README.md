@@ -4,6 +4,28 @@ An **unofficial fan-made SEC football, basketball and baseball pick’em website
 
 **Website:** https://sablewolphen.github.io/SEC/ (GitHub Pages publishes from `main` branch root).
 
+## Favorite School & Featured SEC News (October 2026)
+
+The Home screen now features **Your School** and **Latest SEC News** near the top
+on desktop and mobile, not merely in the More menu. Headlines come from the
+existing source-attributed `news.json` feed with safe HTTPS publisher links;
+favorite-school stories are prioritized when available and broader headlines
+fill the remaining slots. Missing or stale feeds never show invented stories.
+
+New account signup offers a **16-school SEC favorite picker** plus **Choose later**.
+The one *primary* school is stored in `sec_profiles.favorite_school_code`
+and in initial signup metadata so it can be synchronized after verification.
+Existing favorites are preserved, changes are made in Teams, and signout
+does not expose the previous account's preferred school.
+
+### Validation
+- `scripts/smoke-school-onboarding.cjs`: verification recovery, remote save,
+  account switching, change/clear favorite, and profile isolation.
+- `scripts/smoke-online.cjs`: signup metadata and immediate profile favorite.
+- `scripts/smoke-home.cjs`: trusted article previews, favorite-first order,
+  no fake headlines, and no signed-out profile leak.
+- Real-browser audit checks 320px–1280px with News/Teams routes and signup picker.
+
 ## Game Day HQ (October 2026)
 
 The app now opens on **Home** (unless someone follows a direct-view link).
