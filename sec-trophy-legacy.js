@@ -200,6 +200,8 @@
   const existing=[...root.children].filter(n=>n.classList.contains("museum-section"));
   if(existing.length<3)return;
   const [champ,week,_oldAchievements,rival,schools]=existing;
+  // The legacy badge row is duplicate UI; do not remove or alter any stored award records.
+  _oldAchievements?.remove?.();
   const champRows=champions(),rows=standings();
   const ownTitleCount=champRows.filter(c=>String(c.champion_user_id)===String(user()?.id)).length;
   const nAwards=data.awards.filter(a=>a.earned).length;
