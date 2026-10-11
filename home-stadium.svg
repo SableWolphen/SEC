@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 410" preserveAspectRatio="xMidYMid slice">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2=".65" y2="1"><stop stop-color="#162942"/><stop offset=".38" stop-color="#66462d"/><stop offset=".71" stop-color="#be7844"/><stop offset="1" stop-color="#15273c"/></linearGradient>
+ <radialGradient id="sun"><stop stop-color="#f9d8a0" stop-opacity=".85"/><stop offset="1" stop-color="#b77845" stop-opacity="0"/></radialGradient>
+ <linearGradient id="shade" x1="0" x2="1"><stop stop-color="#08192c" stop-opacity=".88"/><stop offset=".52" stop-color="#0c2031" stop-opacity=".34"/><stop offset="1" stop-color="#0b1b2d" stop-opacity=".82"/></linearGradient>
+ <pattern id="crowd" width="18" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.8" fill="#e8c8a1" opacity=".75"/><circle cx="12" cy="7" r="2" fill="#e5e5e2" opacity=".67"/><circle cx="17" cy="2" r="1.6" fill="#cb864b" opacity=".85"/></pattern>
+</defs>
+<rect width="1400" height="410" fill="url(#sky)"/>
+<ellipse cx="920" cy="120" rx="330" ry="220" fill="url(#sun)"/>
+<path d="M0 166 1400 141v93L0 274z" fill="#192638" opacity=".65"/>
+<g fill="#0d1e2a"><path d="M0 212 240 192 440 210 660 179 930 211 1180 186 1400 210v200H0z"/></g>
+<path d="M0 251Q700 185 1400 254v156H0z" fill="#152334"/>
+<path d="M0 251Q700 185 1400 254v156H0z" fill="url(#crowd)" opacity=".65"/>
+<path d="M0 318Q700 242 1400 317v93H0z" fill="#0a1929"/>
+<path d="M0 318Q700 242 1400 317v93H0z" fill="url(#crowd)" opacity=".55"/>
+<path d="M0 352Q700 278 1400 350v60H0z" fill="#132d34"/>
+<path d="M0 352Q700 278 1400 350" fill="none" stroke="#d2b78b" stroke-width="4" opacity=".46"/>
+<g stroke="#151e2b" stroke-width="7"><path d="M150 17v223M1220 5v230"/></g>
+<g stroke="#e6dabc" stroke-width="3" fill="#fff4d6"><path d="M107 33h88M1176 26h88"/></g>
+<g fill="#fff2cf" opacity=".8"><circle cx="115" cy="33" r="5"/><circle cx="130" cy="33" r="5"/><circle cx="145" cy="33" r="5"/><circle cx="160" cy="33" r="5"/><circle cx="175" cy="33" r="5"/><circle cx="1192" cy="26" r="5"/><circle cx="1210" cy="26" r="5"/><circle cx="1228" cy="26" r="5"/><circle cx="1246" cy="26" r="5"/></g>
+<rect width="1400" height="410" fill="url(#shade)"/>
+</svg>
