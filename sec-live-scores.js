@@ -58,11 +58,11 @@ function matchValue(g){
 async function refresh(force=false){
  const a=app(),c=client();
  const viewing=a?.view?.();
- if(!a||!["picks","league"].includes(viewing)||!visible()||!c||busy)return;
+ if(!a||!["home","picks","league"].includes(viewing)||!visible()||!c||busy)return;
  // Unchanged pregame schedules need just an occasional recheck, never 30s.
  if(!force&&now()-lastRequest<(shouldFetchFast()?30000:180000))return;
  const selected=a.week?.();
- const games=viewing==="picks"?(selected?.games||[]):(a.weeks||[]).flatMap(w=>w.games)
+ const games=["home","picks"].includes(viewing)?(selected?.games||[]):(a.weeks||[]).flatMap(w=>w.games)
    .filter(g=>Math.abs(now()-clock(g))<12*3600000||g.liveStatus==="live");
  if(!games.length)return;
  const ids=games.map(g=>g.id);
@@ -78,7 +78,7 @@ async function refresh(force=false){
   const rows=response.data.filter(g=>ids.includes(g.id));
   // Never let a response from a previous view/week repaint a new one.
   if(request!==activeRequest||a.view?.()!==viewing||
-     (viewing==="picks"&&a.week?.()?.num!==selectedWeek))return;
+     (["home","picks"].includes(viewing)&&a.week?.()?.num!==selectedWeek))return;
   const valid=rows.filter(g=>["scheduled","live","final","canceled","postponed"].includes(g.game_status));
   let changed=false,justFinal=false;
   for(const row of valid){
@@ -118,6 +118,7 @@ async function refresh(force=false){
    renderStatus();
    window.SEC_GAMEDAY?.refresh?.();
   }
+  if(viewing==="home"&&(changed||justFinal))window.SEC_HOME?.refresh?.();
   if(viewing==="league")window.SEC_COMPETITIVE?.refreshPath?.();
   if(justFinal&&window.secOnline?.isSignedIn?.()){
    // Refresh only after an actual verified final, never on live estimates.
@@ -146,9 +147,9 @@ function subscribeToScores(){
   },event=>{
    const id=String(event?.new?.id||"");
    const a=app();
-   if(!id||!visible()||!["picks","league"].includes(a?.view?.()))return;
+   if(!id||!visible()||!["home","picks","league"].includes(a?.view?.()))return;
    // Only refresh if the updated result matters to the visible slate.
-   if(a.view()==="picks"&&!a.week?.()?.games?.some(g=>g.id===id))return;
+   if(["home","picks"].includes(a.view())&&!a.week?.()?.games?.some(g=>g.id===id))return;
    void refresh(true);
   }).subscribe(status=>{
    realtimeConnected=status==="SUBSCRIBED";
@@ -162,7 +163,7 @@ function subscribeToScores(){
 }
 
 document.addEventListener("click",event=>{
- if(event.target.closest?.('[data-week],[data-nav="picks"],[data-sport-tab="football"],[data-nav="current-sport"],[data-nav="league"]')){
+ if(event.target.closest?.('[data-week],[data-nav="picks"],[data-sport-tab="football"],[data-nav="current-sport"],[data-nav="league"],[data-nav="home"]')){
   setTimeout(()=>{renderStatus();void refresh(true);},0);
  }
 });
