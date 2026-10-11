@@ -100,6 +100,35 @@ fs.mkdirSync(output,{recursive:true});
      });
      if(discovery.count!==3||!discovery.school||!discovery.news||!discovery.safe||!discovery.firstVisible)
       problems.push(viewport.width+"px Home news/team discovery issue: "+JSON.stringify(discovery));
+     if(viewport.width<=790){
+      const compact=await page.evaluate(()=>{
+       const root=document.getElementById("sec-home-root");
+       const shown=selector=>!!document.querySelector(selector)&&
+        getComputedStyle(document.querySelector(selector)).display!=="none";
+       const shortcuts=[...root.querySelectorAll(".hq-action")]
+        .filter(el=>getComputedStyle(el).display!=="none");
+       const first=document.querySelector(".hq-stadium-hero");
+       const oldScroll=scrollY;
+       window.SEC_HOME.refresh();
+       window.SEC_HOME.refresh();
+       const stable=first===document.querySelector(".hq-stadium-hero")&&scrollY===oldScroll;
+       const toggle=root.querySelector("[data-hq-expand]");
+       const hidden=!shown(".hq-rival-card")&&!shown(".hq-around-news")&&!shown(".hq-quick");
+       toggle?.click();
+       const expanded=shown(".hq-rival-card")&&shown(".hq-around-news")&&
+        toggle?.getAttribute("aria-expanded")==="true";
+       toggle?.click();
+       const closed=!shown(".hq-rival-card")&&toggle?.getAttribute("aria-expanded")==="false";
+       return {shortcuts:shortcuts.map(x=>x.textContent.trim().slice(0,20)),
+        stable,hidden,expanded,closed,toggle:!!toggle,
+        horizontal:root.querySelector(".hq-actions")?.scrollWidth>
+         root.querySelector(".hq-actions")?.clientWidth+3};
+      });
+      if(compact.shortcuts.length!==4||!compact.stable||!compact.hidden||
+         !compact.expanded||!compact.closed||compact.horizontal)
+       problems.push(viewport.width+"px compact mobile homepage regression: "+JSON.stringify(compact));
+     }
+
      const navSpotlights=await page.evaluate(()=>{
       const a=window.SEC_BRIDGE;
       document.querySelector('.hq-news-spotlight [data-hq-route="news"]')?.click();

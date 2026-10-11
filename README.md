@@ -26,6 +26,22 @@ does not expose the previous account's preferred school.
   no fake headlines, and no signed-out profile leak.
 - Real-browser audit checks 320px–1280px with News/Teams routes and signup picker.
 
+## Compact mobile Home (October 2026)
+
+The **Saturdays Down South** homepage keeps its full desktop stadium dashboard,
+while phones use a shorter action-first view with four visible quick actions
+(Picks, Team, Scores, News), condensed kickoff, school, progress and headlines,
+and a single current football game and top two standings rows. Full results
+remain accessible on their existing screens. Extra league rival, broader SEC
+news and repeated Clubhouse links are under the accessible **More league & SEC
+coverage** toggle; no stored data or scores are removed.
+
+The four shortcuts are an ordinary grid rather than a horizontally scrollable
+carousel, to avoid accidental sideways swipes. Unchanged periodic data refreshes
+preserve the rendered Home elements while players scroll. Expanded state stays
+intact when source data changes. Responsive browser tests cover four phone
+widths, expanded/collapsed content, overflowing navigation and refresh stability.
+
 ## Game Day HQ (October 2026)
 
 The app now opens on **Home** (unless someone follows a direct-view link).

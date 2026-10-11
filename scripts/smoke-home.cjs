@@ -80,6 +80,13 @@ assert.match(root.innerHTML,/NEXT VERIFIED KICKOFF/,"countdown uses a scheduled 
 assert.match(root.innerHTML,/UGA/,"actual scheduled teams appear");
 assert.equal((root.innerHTML.match(/class="hq-action"/g)||[]).length,7,"seven quick actions");
 assert.match(root.innerHTML,/hq-rival-score/,"verified rival standings preview");
+assert.match(root.innerHTML,/class="hq-mobile-expand"/,"secondary mobile information has a show-more control");
+assert.match(root.innerHTML,/aria-controls="sec-home-extras"/,"expand control targets extra content");
+assert.match(src,/previousMarkup===markup/,"stable refresh keeps existing mobile page nodes when content is unchanged");
+assert.ok(css.includes('.hq-action:nth-child(-n+3)'),"mobile shows only the essential shortcuts");
+assert.ok(css.includes('.hq-headline:nth-child(n+2)'),"mobile news preview stays short");
+assert.ok(css.includes('.hq-matchup:nth-child(n+2)'),"mobile game preview stays short");
+assert.match(css,/.hq-mobile-expand/,"mobile details control has responsive styles");
 assert.match(root.innerHTML,/Our League/,"league identity is preserved");
 assert.match(root.innerHTML,/Headlines that matter/,"news is featured on Home");
 assert.match(root.innerHTML,/Tennessee wins late/,"real favorite-team story is shown");
