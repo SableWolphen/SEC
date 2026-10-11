@@ -1,11 +1,82 @@
 {
-  "updated_at": "2026-10-11T14:05:57.486946Z",
-  "checked_at": "2026-10-11T14:05:57.486946Z",
+  "updated_at": "2026-10-11T18:57:39.111479Z",
+  "checked_at": "2026-10-11T18:57:39.111479Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "ebf6f03533f160be",
+      "title": "Georgia climbs to No. 1 in AP Top 25 poll; Texas falls to 7",
+      "summary": "Georgia moved to the No. 1 spot in the Week 7 AP Top 25 following its win at Alabama, while Oregon was unranked for the first time in four years after falling to 3-2.",
+      "url": "https://www.espn.com/college-football/story/_/id/50159296/georgia-climbs-no-1-ap-top-25-poll-texas-falls-7",
+      "source": "ESPN",
+      "published_at": "2026-10-11T18:34:30Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6ffcedeff8c45f3b",
+      "title": "Assessing South Carolina's redemption win vs. Florida",
+      "summary": "The SEC Now crew express pride in the Gamecocks' performance after redeeming themselves against the Gators as they give credit to the defense for the victory.",
+      "url": "https://www.espn.com/video/clip/_/id/50159341/assessing-south-carolina-redemption-win-vs-florida",
+      "source": "ESPN",
+      "published_at": "2026-10-11T18:31:59Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7872f062ee4e973c",
+      "title": "Easton Royal, top WR in '27, flips to Florida from Texas",
+      "summary": "Five-star wide receiver prospect Easton Royal has flipped his commitment to Florida, his family told ESPN on Sunday.",
+      "url": "https://www.espn.com/college-football/story/_/id/50159015/easton-royal-top-wr-27-flips-florida-texas",
+      "source": "ESPN",
+      "published_at": "2026-10-11T18:04:46Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4913da025f859ad2",
+      "title": "How Will Stein's quick thinking, confidence in UK led to win vs. LSU",
+      "summary": "The SEC Now crew analyzes how Stein's quick thinking on pivotal plays has led to success for the Wildcats and discusses how it made the biggest difference in their win over the Tigers.",
+      "url": "https://www.espn.com/video/clip/_/id/50159171/how-stein-quick-thinking-confidence-uk-led-win-vs-lsu",
+      "source": "ESPN",
+      "published_at": "2026-10-11T18:02:58Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d8d5337c1a1431e9",
+      "title": "Analyzing Georgia's physicality-driven win vs. Alabama",
+      "summary": "SEC Now's Benjamin Watson and Chris Doering evaluate the intense physicality on both sides as they discuss why consistently running the ball was the key to success for the Bulldogs.",
+      "url": "https://www.espn.com/video/clip/_/id/50158988/analyzing-georgia-physicality-driven-win-vs-alabama",
+      "source": "ESPN",
+      "published_at": "2026-10-11T17:42:44Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
     {
       "id": "29ef6b05966f32a7",
       "title": "Lee's late personal foul ends Alabama's hopes in loss to Georgia",
@@ -211,33 +282,6 @@
       "sport": "football",
       "teams": [
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "53ebfd5566a2a7a2",
-      "title": "Eastern Illinois Panthers vs. Gardner-Webb Bulldogs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50153411/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-11T02:31:37Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b4c0ba87f08652c7",
-      "title": "Analyzing how OU was able to win the Red River Rivalry",
-      "summary": "As the Sooners complete the upset win over No. 1 Texas, the SEC Now crew breaks down how the defense and winning the turnover battle led to the victory.",
-      "url": "https://www.espn.com/video/clip/_/id/50152834/analyzing-how-ou-was-able-win-red-river-rivalry",
-      "source": "ESPN",
-      "published_at": "2026-10-11T01:29:33Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Texas"
       ],
       "breaking": false
     },
