@@ -4,9 +4,9 @@
 The user-approved ten-phone showcase is the visual target. This rollout upgrades the **working GitHub Pages app**, preserving its existing Home, Teams, Picks, league, news, game center, trophies, settings, basketball, and baseball behaviors.
 
 ## Design system
-- Deep midnight-blue surfaces (#071423), stadium-under-lights vector art, warm gold (#f1bf68) for active selections, ivory typography, authentic per-school accent colors, and compact mobile cards.
+- Deep midnight-blue surfaces (#071423), stadium-under-lights vector art, warm gold (#f1bf68) for active selections, ivory typography, neutral unbranded numbered school-directory badges, and compact mobile cards.
 - Serif display headings reinforce the "Saturdays Down South" brand. Regular readable system fonts remain for scores, labels, forms and statistics.
-- All 16 SEC universities have a source-mapped team identity. Editorial ESPN logo thumbnails are decorative only, with an original colored text crest fallback when assets fail or work offline. The unofficial/non-affiliated footer remains.
+- All 16 universities have original neutral numbered identifiers instead of official logos, school-specific wordmarks or school-color marks. No third-party logo artwork or external logo assets are downloaded. The unofficial/non-affiliated footer remains.
 - The five existing bottom tabs (Home, Picks, League, Trophies, More) **do not move**. New premium screens stay one tap away without creating more permanent phone tabs.
 - 320px minimum width, inset-aware fixed bottom navigation, reduced motion, no empty overlays or horizontal page overflow.
 
@@ -29,11 +29,11 @@ The basketball and baseball pick screens, news feed, all-sports hub and More pag
 
 ## Source and functionality limitations
 - The referenced mockups contain *illustrative* live stats, player cards, scores, dates, and odds. Only real official-source, verified feed data appears in this build. Missing box scores, roster photography or player names display honest availability messaging/source links.
-- University marks load as decorative public remote thumbnails when possible. The first-party fallback is always available, including offline.
+- The directory uses original neutral numbers only, including offline. University names and game statistics remain factual text; no graphic logos are copied or fetched.
 - App alerts operate **while the app is open**, and require opting in. They are **not** silent background mobile push notifications. No alert settings are shared between signed-in accounts on the same device.
 - The website/PWA deploys through GitHub Pages. Publishing native Android/iOS binaries requires separate signed builds and developer accounts.
 
 ## Verification
-`scripts/smoke-showcase.cjs` validates all ten screen routes, official team-ID display map and fallbacks, CSS/PWA asset delivery, source-bound controls, and user-scoped alerts. Full legacy smoke tests and `scripts/browser-audit.cjs` validate the complete app across five responsive sizes, including Team Hub tabs and all 16 logos.
+`scripts/smoke-showcase.cjs` validates all ten screen routes, 16 neutral team-number identifiers without external image downloads, CSS/PWA asset delivery, source-bound controls, and user-scoped alerts. Full legacy smoke tests and `scripts/browser-audit.cjs` validate the complete app across five responsive sizes, including Team Hub tabs and all 16 logos.
 
 An editable Figma source file is not required to apply the already approved visual reference; working GitHub screens are the release source of truth.
