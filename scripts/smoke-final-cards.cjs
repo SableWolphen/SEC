@@ -19,6 +19,11 @@ assert.match(markup,/class="sec-final-team is-winner"/,"winner receives highligh
 assert.match(markup,/scored 6/);
 assert.match(markup,/scored 27/);
 assert.match(markup,/✓ FINAL/);
+assert.match(markup,/class="sec-final-pick-badge lost"/,
+ "finished games expose your losing pick before expanding Game details");
+assert.match(markup,/Pick lost/);
+assert.ok(markup.indexOf('Pick lost')<markup.indexOf('YOUR PICK'),
+ "pick result is visible in the collapsed summary, unlike detailed points");
 assert.match(markup,/Texas A&amp;M/);
 assert.match(markup,/0 pts/);
 assert.match(markup,/<details class="sec-final-details" data-game-id="2026-6-TAMU-MIZ">\s*<summary>/,
@@ -43,6 +48,25 @@ assert.match(markup,/rel="noopener noreferrer"/);
 assert.match(markup,/View Box Score/);
 win.SEC_FEATURES.finalData=()=>({...d,pick:"MIZ",points:1});
 assert.match(win.SEC_FINAL_CARDS.render(g,1,ctx),/1 pts/,"points reflect game mode returned by official scoring");
+assert.match(win.SEC_FINAL_CARDS.render(g,1,ctx),/class="sec-final-pick-badge won"/,
+ "winning personal pick gets green badge");
+assert.equal(win.SEC_FINAL_CARDS.outcome({...d,pick:"TAMU",points:0,mode:"spread",
+ cover:"TAMU",spread:4.5}).kind,"won",
+ "a team losing the game can still cover and win the spread pick");
+assert.equal(win.SEC_FINAL_CARDS.outcome({...d,pick:"MIZ",points:0,mode:"spread",
+ cover:"TAMU",spread:4.5}).kind,"lost",
+ "outright winning team can still lose a spread pick");
+assert.equal(win.SEC_FINAL_CARDS.outcome({...d,pick:"MIZ",mode:"spread",
+ push:true,spread:-21}).kind,"push","ATS push is not incorrectly called a win");
+assert.equal(win.SEC_FINAL_CARDS.outcome({...d,pick:null}).kind,"none",
+ "no pick must not be marked as a loss");
+assert.equal(win.SEC_FINAL_CARDS.outcome({...d,pick:"TAMU",mode:"spread",
+ spread:null}).kind,"pending","missing spread cannot be marked as a loss");
+assert.equal(win.SEC_FINAL_CARDS.outcome({...d,pick:"MIZ",points:0,mode:"confidence"}).kind,
+ "won","confidence pick accuracy follows winner even when assigned points are zero");
+win.SEC_FEATURES.finalData=()=>({...d,pick:null,points:null});
+assert.match(win.SEC_FINAL_CARDS.render(g,1,ctx),/No pick/,
+ "players who skipped the game get a neutral status");
 win.SEC_FEATURES.finalData=()=>({...d,eventId:"javascript:alert(1)"});
 const withoutUrl=win.SEC_FINAL_CARDS.render(g,1,ctx);
 assert.doesNotMatch(withoutUrl,/href="javascript:/);
