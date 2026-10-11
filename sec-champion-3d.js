@@ -187,7 +187,7 @@ async function mount(stage){
   const entry={stage,scene,camera,renderer,holder,modelRoot,frame:0,visible:true,last:0,dragging:false,spin:0};
   instances.add(entry);stage.dataset.trophy3d="ready";
   if(window.ResizeObserver){
-   if(!resizeObserver)resizeObserver=new ResizeObserver(entries=>{
+   if(!resizeObserver)resizeObserver=new window.ResizeObserver(entries=>{
     for(const item of entries){const instance=[...instances].find(i=>i.stage===item.target);
      if(instance?.stage.isConnected){const r=instance.stage.getBoundingClientRect();
       instance.renderer.setSize(Math.max(70,r.width),Math.max(90,r.height),false);
@@ -240,7 +240,7 @@ function enhance(root){
  if(!root)return;
  for(const old of [...instances])if(!old.stage.isConnected)dispose(old);
  if(!observer&&window.IntersectionObserver){
-  observer=new IntersectionObserver(items=>{
+  observer=new window.IntersectionObserver(items=>{
    for(const item of items){
     const stage=item.target;
     if(item.isIntersecting){
