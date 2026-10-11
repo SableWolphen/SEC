@@ -182,6 +182,13 @@ function mount(){
  }
  // Existing public score fetch is used; this creates no new endpoint or database writes.
  void window.SEC_LIVE_SCORES?.refresh?.();
+ if(window.secOnline?.isAuthReady?.()!==false){
+  void window.SEC_LEAGUE_SETTINGS?.load?.().then?.(()=>refresh())?.catch?.(()=>{});
+ }else{
+  window.secOnline?.whenAuthReady?.()?.then?.(()=>
+    window.SEC_LEAGUE_SETTINGS?.load?.()?.then?.(()=>refresh())
+  )?.catch?.(()=>{});
+ }
 }
 document.addEventListener("click",e=>{
  const b=e.target.closest?.("[data-hq-route]");
