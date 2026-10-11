@@ -98,7 +98,7 @@ fs.mkdirSync(output,{recursive:true});
       const firstVisible=promos.length?promos[0].getBoundingClientRect().top<window.innerHeight:false;
       return {count:promos.length,school,news,safe,firstVisible,headlines:links.length};
      });
-     if(discovery.count!==2||!discovery.school||!discovery.news||!discovery.safe||!discovery.firstVisible)
+     if(discovery.count!==3||!discovery.school||!discovery.news||!discovery.safe||!discovery.firstVisible)
       problems.push(viewport.width+"px Home news/team discovery issue: "+JSON.stringify(discovery));
      const navSpotlights=await page.evaluate(()=>{
       const a=window.SEC_BRIDGE;
