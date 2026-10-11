@@ -114,6 +114,7 @@ function repaint(){
   window.SEC_BRIDGE?.renderPicks?.();
  if(v==="home")window.SEC_HOME?.refresh?.();
  if(["basketball","baseball"].includes(v))window.SEC_SPORTS?.renderSport?.(v);
+ if(["team-hub","team-news"].includes(v))window.SEC_PREMIUM?.mount?.(v);
 }
 async function refresh(force=false){
  if(inFlight)return inFlight;
