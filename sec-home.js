@@ -102,6 +102,65 @@ function closestRival(model){
   yourPoints:value(mine),theirPoints:value(rival),gap:Math.abs(value(mine)-value(rival))};
 }
 
+
+function hero(m){
+ const game=m.nextKickoff,action=m.progress.unpickedOpen?"picks":m.liveCount?"picks":"league";
+ const line=m.liveCount?m.liveCount+" live football game"+(m.liveCount===1?"":"s"):
+  m.progress.unpickedOpen?m.progress.unpickedOpen+" unpicked games still open":
+  "Your school. Your league. Your season.";
+ return '<section class="hq-stadium-hero" aria-label="Game Day HQ">'+
+ '<div class="hq-hero-copy"><span class="hq-eyebrow">SATURDAYS DOWN SOUTH</span>'+
+ '<h2>Game Day <em>HQ</em></h2>'+
+ '<strong>Same schools. Bigger rivalries.</strong><p>'+esc(line)+'</p>'+
+ '<div class="hq-hero-buttons"><button type="button" data-hq-route="'+action+'" class="hq-primary">'+
+ (m.progress.unpickedOpen?"Make my picks →":m.liveCount?"Open live games →":"View my league →")+
+ '</button><button type="button" data-hq-route="news" class="hq-hero-alt">SEC headlines ↗</button>'+
+ '</div></div><div class="hq-next-kickoff"><span class="hq-hero-next-label">'+
+ (game?"NEXT VERIFIED KICKOFF":"COMING UP")+'</span>'+
+ (game?'<div class="hq-next-teams"><span>'+esc(game.away)+'</span><small>VS</small><span>'+esc(game.home)+'</span></div>'+
+ '<strong>'+esc(countdown(game.clock)||"Starting soon")+'</strong><small>'+
+ esc(niceTime(game.clock))+' CT</small><button type="button" data-hq-route="picks">Game details →</button>':
+ '<p>No confirmed upcoming football kickoff in the selected week.</p>'+
+ '<button type="button" data-hq-route="'+routeFor(m.recommended)+'">Open '+esc(sportText[m.recommended]||"football")+' →</button>')+
+ '</div></section>';
+}
+function actionCards(m){
+ const p=m.progress,idx=m.leaderboard.findIndex(r=>r.user_id===user()?.id);
+ const tiles=[
+ ["picks","✓","MAKE PICKS",p.unpickedOpen?p.unpickedOpen+" remaining":p.chosen+"/"+p.total+" selected"],
+ ["teams","★","MY TEAM",m.favoriteName||"Choose a school"],
+ ["picks","◉","LIVE SCORES",m.liveCount?m.liveCount+" live now":"Game Center"],
+ ["league","▥","LEAGUE RACE",idx>=0?"You're #"+(idx+1):"View standings"],
+ ["league","⚔","RIVALS",m.rival?m.rival.gap+"-point gap":"Meet your league"],
+ ["trophies","🏆","TROPHY ROOM","Your collection"],
+ ["news","▤","SEC NEWS","Latest headlines"]
+ ];
+ return '<nav class="hq-actions" aria-label="Game Day shortcuts">'+tiles.map(t=>
+ '<button type="button" data-hq-route="'+t[0]+'" class="hq-action"><span class="hq-action-icon" aria-hidden="true">'+
+ t[1]+'</span><strong>'+t[2]+'</strong><small>'+esc(t[3])+'</small></button>').join("")+'</nav>';
+}
+function rivalCard(m){
+ const r=m.rival;
+ return '<section class="hq-rival-card" aria-label="Closest league rival"><div class="hq-panel-header">'+
+ '<span>⚔ YOUR LEAGUE RIVAL</span><button type="button" data-hq-route="league" class="hq-inline">League →</button></div>'+
+ (r?'<p class="hq-panel-sub">Closest opponent by verified season points.</p>'+
+ '<div class="hq-rival-score"><div><small>YOU</small><strong>'+r.yourPoints+'</strong><small>points</small></div>'+
+ '<span>VS</span><div><small>'+esc(r.name)+'</small><strong>'+r.theirPoints+'</strong><small>points</small></div></div>'+
+ '<div class="hq-rival-track"><span style="width:'+(r.yourPoints+r.theirPoints>0?
+ Math.round(100*r.yourPoints/(r.yourPoints+r.theirPoints)):50)+'%"></span></div>'+
+ '<small>'+r.gap+' point'+(r.gap===1?"":"s")+' apart · Season totals, not a separate challenge</small>':
+ '<p class="hq-empty">Join a league with friends to unlock your closest-rival spotlight.</p>')+'</section>';
+}
+function extraNews(m){
+ return '<section class="hq-feature-card hq-around-news" aria-label="Around the SEC">'+
+ '<div class="hq-panel-header"><span>📰 AROUND THE SEC</span>'+
+ '<button type="button" data-hq-route="news" class="hq-inline">All news →</button></div>'+
+ (m.moreHeadlines.length?'<div class="hq-extra-news">'+m.moreHeadlines.map(x=>
+ '<a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer" class="hq-extra-story"><small>'+
+ esc(x.source)+'</small><strong>'+esc(x.title)+'</strong><span aria-hidden="true">↗</span></a>').join("")+'</div>':
+ '<p class="hq-empty">More verified headlines will appear as publishers update.</p>')+'</section>';
+}
+
 function gameState(g){
  const status=["live","final","scheduled","canceled","postponed"].includes(g?.liveStatus)?g.liveStatus:"scheduled";
  const updated=validDate(g?.scoreUpdatedAt)?Date.parse(g.scoreUpdatedAt):null;
