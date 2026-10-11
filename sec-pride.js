@@ -36,15 +36,17 @@ function setProfile(profile){
  if(!id||saving)return;
  const remote=valid(profile?.favorite_school_code),state=window.SEC_BRIDGE?.state?.();
  const existing=read(key(id)),local=valid(state?.favorite),prior=read(lastKey);
+ const fromSignup=valid(user()?.user_metadata?.favorite_school_code);
  // Existing players picked a team before account syncing existed. Adopt that
  // local choice once, only for its original account; never another user's.
- const migrate=!remote&&existing===null&&local&&(!prior||prior===id);
- chosen=remote||(migrate?local:null);
+ const migrateSignup=!remote&&existing===null&&fromSignup;
+ const migrateLocal=!remote&&!migrateSignup&&existing===null&&local&&(!prior||prior===id);
+ chosen=remote||(migrateSignup?fromSignup:migrateLocal?local:null);
  if(state)state.favorite=chosen;
  write(lastKey,id);
  if(remote)write(key(id),remote);
  redraw();
- if(migrate)void saveFavorite(local,{quiet:true});
+ if(migrateSignup||migrateLocal)void saveFavorite(chosen,{quiet:true});
 }
 async function saveFavorite(value,{quiet=false}={}){
  const next=valid(value),u=user(),db=client();
@@ -66,8 +68,17 @@ async function saveFavorite(value,{quiet=false}={}){
   }
   if(user()?.id!==id||owner!==id)return;
   write(key(id),next||"none");write(lastKey,id);
+  // Keep signup metadata aligned after a change/removal, preventing an old
+  // onboarding selection from reappearing on another phone.
+  if(user()?.user_metadata?.favorite_school_code!==next&&typeof db.auth?.updateUser==="function"){
+   try{
+    const meta=await db.auth.updateUser({data:{favorite_school_code:next}});
+    if(meta?.error)throw meta.error;
+   }catch(metaError){console.info("School metadata sync pending:",metaError?.message||metaError);}
+  }
   const selected=window.SEC_LEAGUE_SETTINGS?.getSelected?.();
   if(selected)void load(selected.kind,selected.id,true);
+  window.SEC_HOME?.refresh?.();
  }catch(e){
   console.warn("Favorite school sync:",e?.message||e);
   if(user()?.id===id)window.SEC_BRIDGE?.toast?.(
