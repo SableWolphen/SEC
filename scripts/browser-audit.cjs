@@ -115,6 +115,18 @@ fs.mkdirSync(output,{recursive:true});
       problems.push(viewport.width+"px trophy museum failed: "+JSON.stringify(museum));
      if(!museum.has3DModule||museum.threeStages.join(",")!=="football,basketball,baseball"||museum.svgFallbacks!==3)
       problems.push(viewport.width+"px 3D championship fallback/mount regression: "+JSON.stringify(museum));
+     const stability=await page.evaluate(()=>{
+      const view=()=>[...document.querySelectorAll('#sds-trophy-case .museum-art[data-champion-sport]')];
+      const first=view();
+      // Mimic server snapshots, tab visits and league refreshes without touching player data.
+      for(let i=0;i<4;i++)window.SEC_TROPHY_MUSEUM.refresh();
+      const next=view();
+      const copied=first.length===next.length&&first.every((el,i)=>el===next[i]);
+      return {before:first.map(s=>s.dataset.championSport),after:next.map(s=>s.dataset.championSport),
+       sameNodes:copied,canvases:next.filter(el=>el.querySelector('.museum-champion-canvas')).length};
+     });
+     if(!stability.sameNodes||stability.before.length!==3)
+      problems.push(viewport.width+"px trophy 3D canvas recreation on refresh: "+JSON.stringify(stability));
      if(museum.cases!==3||!museum.summary||museum.achievements<5||museum.duplicateBadges!==0||museum.rings!==0||museum.banners!==0)
       problems.push(viewport.width+"px trophy room duplicate or missing UI: "+JSON.stringify(museum));
      const playerCase=page.locator('details[data-legacy-case="player"]');
