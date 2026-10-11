@@ -42,17 +42,22 @@ const document={addEventListener:(name,fn)=>{events[name]=fn;}};
 vm.runInNewContext(read("sds-showcase-visuals.js"),{window,document,console},{filename:"sds-showcase-visuals.js"});
 const visual=window.SDS_VISUALS;
 assert.equal(Object.keys(visual.teams).length,16);
-assert.equal(visual.shortLabel("TENN"),"13");
-assert.equal(visual.shortLabel("ALA"),"01");
-assert.equal(visual.shortLabel("TEX"),"14");
-assert.equal(visual.shortLabel("SC"),"12");
+const expected={ALA:"ALA",ARK:"ARK",AUB:"AUB",FLA:"FLA",UGA:"UGA",
+ UK:"UK",LSU:"LSU",MISS:"MISS",MSST:"MSST",MIZ:"MIZ",
+ OU:"OU",SC:"SC",TENN:"TENN",TEX:"TEX",TAMU:"TAMU",VAN:"VAN"};
+for(const [code,abbr] of Object.entries(expected)){
+ assert.equal(visual.shortLabel(code),abbr,"use familiar plain university abbreviation");
+ assert.match(visual.mark(code),new RegExp(">"+abbr+"<\\/span>"),
+  "short text badge instead of logo or random number for "+code);
+}
 assert.equal(new Set(Object.keys(visual.teams).map(visual.shortLabel)).size,16,
- "all schools get stable neutral directory numbers");
-assert.match(visual.mark("TENN",{className:"mini-logo"}),/>13<\/span>/);
-assert.match(visual.mark("ALA"),/>01<\/span>/);
+ "all schools have distinct abbreviation labels");
+assert.equal(visual.shortLabel("BAY"),"BAY","nonconference opponents keep their abbreviations");
+assert.equal(visual.shortLabel("TXST"),"TXST");
+assert.equal(visual.shortLabel("<img onerror=alert(1)>"),"—");
 assert.doesNotMatch(visual.mark("TENN"),/<img|http|style=|--school-accent|sds-team-logo/);
 assert.doesNotMatch(visual.mark("<img src=x onerror=alert(1)>"),/<img src=x onerror=/);
-assert.match(visual.mark("TENN"),/sds-team-fallback/,"all badges use original neutral numbers");
+assert.match(visual.mark("TENN"),/sds-team-fallback/,"plain university abbreviation stays visible");
 for(const src of ["sds-showcase-visuals.js","sds-showcase.css","index.html"]){
  assert.doesNotMatch(read(src),/a\.espncdn\.com|\/teamlogos\/|img\.sds-team-logo/,
   "no outside school logo artwork may ship in "+src);
@@ -85,4 +90,4 @@ assert.match(roots.get("sds-settings-notifications").innerHTML,/Turn on Alerts/,
 viewer=null;w.SDS_PREFERENCES.mount();
 assert.match(roots.get("sds-settings-notifications").innerHTML,/Sign in/);
 assert.match(roots.get("sds-settings-notifications").innerHTML,/data-sds-alert-master disabled/);
-console.log("Saturdays Down South ten-screen stadium redesign: routes, original neutral badges, no external logos, 320px, alert privacy and PWA PASS");
+console.log("Saturdays Down South ten-screen stadium redesign: routes, plain university abbreviations, no external logos, 320px, alert privacy and PWA PASS");
