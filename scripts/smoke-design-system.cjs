@@ -7,7 +7,7 @@ const html=read("index.html"),css=read("sec-design-system.css"),
  sports=read("multi-sport.css"),football=read("sec-final-cards.css"),
  museum=read("trophy-case.js"),manifest=JSON.parse(read("manifest.webmanifest")),
  sw=read("sw.js"),icon=read("icon.svg");
-const paths=["home","sports","picks","basketball","baseball","league","trophies","news","teams","more","settings"];
+const paths=["home","team-hub","game-center","results","team-news","sports","picks","basketball","baseball","league","trophies","news","teams","more","settings"];
 const selected=html.match(/<link rel="stylesheet" href="[^"]+"/g)||[];
 assert.equal(selected.at(-1),'<link rel="stylesheet" href="./sec-design-system.css?v=20261011-broadcast-v1"',
  "shared visual styling must load LAST, after every screen-specific stylesheet");
@@ -26,7 +26,10 @@ assert.ok(css.includes(".brand-title>span")&&css.includes(".mobile-nav-btn.activ
  "brand and mobile active nav have dedicated gold treatment");
 for(const id of paths){
  assert.ok(html.includes('id="'+id+'-view"'),"all prior routes remain intact: "+id);
- if(id!=="home")assert.ok(css.includes("#"+id+"-view"),"design system intentionally styles "+id);
+ if(id!=="home"&&!["team-hub","game-center","results","team-news"].includes(id))
+  assert.ok(css.includes("#"+id+"-view"),"design system intentionally styles "+id);
+ if(["team-hub","game-center","results","team-news"].includes(id))
+  assert.ok(read("sec-premium.css").includes("#"+id+"-view"),"premium styling covers "+id);
 }
 for(const file of ["index.html","multi-sport.css","sec-final-cards.css","trophy-case.js"]){
  const source=read(file);
@@ -40,7 +43,7 @@ assert.equal(manifest.name,"Saturdays Down South — SEC Pick'em",
 assert.equal(manifest.theme_color,"#081321");
 assert.equal(manifest.background_color,"#081321");
 assert.match(html,/<meta name="theme-color" content="#081321"/);
-assert.match(sw,/sec-pickem-v94/,"new cache version reaches Android installs");
+assert.match(sw,/sec-pickem-v95/,"new cache version reaches Android installs");
 assert.match(sw,/sec-design-system\.css\?v=20261011-broadcast-v1/,
  "offline PWA pre-caches shared design system");
 for(const file of ["multi-sport.css","sec-final-cards.css","trophy-case.js"]){
@@ -51,4 +54,4 @@ assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length,
  "design stylesheet has balanced rule blocks");
 const noDB=/\bsupabase\b\s*\.\s*(?:from|rpc|auth)\s*\(|\.insert\(|\.update\(|\.delete\(/;
 assert.ok(!noDB.test(css),"CSS cannot change accounts or scores");
-console.log("SDS Broadcast UI system: all 11 views, navy/gold tokens, branding, mobile fit, PWA, accessibility PASS");
+console.log("SDS Broadcast UI system: all 15 views, navy/gold tokens, branding, mobile fit, PWA, accessibility PASS");

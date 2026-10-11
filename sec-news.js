@@ -219,7 +219,11 @@
   }catch(e){
    error="Live news is temporarily unavailable. "+(entries.length?
      "Previously loaded headlines are shown below.":"Try again later or visit the SEC's official news page.");
-  }finally{loading=false;render();window.SEC_HOME?.refresh?.();}
+  }finally{loading=false;render();window.SEC_HOME?.refresh?.();
+   const v=window.SEC_BRIDGE?.view?.();
+   if(v==="team-hub")window.SEC_PREMIUM?.teamHub?.();
+   if(v==="team-news")window.SEC_PREMIUM?.teamNews?.();
+  }
  }
  function showSchool(name,newsSport){
    if(!SEC.includes(name))return;

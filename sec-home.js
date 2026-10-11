@@ -52,8 +52,8 @@ function discovery(model){
  "Choose a school for personalized news, records, and your league badge.")+'</p></div></div>'+
  (game?'<div class="hq-team-next"><span>NEXT VERIFIED GAME</span><strong>'+
  esc(game.away)+' vs '+esc(game.home)+'</strong><small>'+esc(niceTime(game.clock))+' CT</small></div>':"")+
- '<div class="hq-feature-actions"><button type="button" data-hq-route="teams" class="hq-primary">'+
- (school?"Team Hub →":"Choose favorite school →")+'</button>'+
+ '<div class="hq-feature-actions"><button type="button" data-hq-route="'+(school?"team-hub":"teams")+'" class="hq-primary">'+
+ (school?"Open Team Hub →":"Choose favorite school →")+'</button>'+
  (school?'<button type="button" data-hq-route="teams" class="hq-text-link">Edit</button>':"")+
  '</div></section>';
  const stories=model.headlines.length?model.headlines.map(item=>
@@ -119,10 +119,11 @@ function hero(m){
  return '<section class="hq-stadium-hero" aria-label="Game Day HQ">'+
  '<div class="hq-hero-copy"><span class="hq-eyebrow">SATURDAYS DOWN SOUTH</span>'+
  '<h2>Game Day <em>HQ</em></h2>'+
- '<strong>Same schools. Bigger rivalries.</strong><p>'+esc(line)+'</p>'+
+ '<strong>'+(m.favoriteName?esc(m.favoriteName)+' · your SEC school':"Same schools. Bigger rivalries.")+'</strong><p>'+esc(line)+'</p>'+
  '<div class="hq-hero-buttons"><button type="button" data-hq-route="'+action+'" class="hq-primary">'+
  (m.progress.unpickedOpen?"Make my picks →":m.liveCount?"Open live games →":"View my league →")+
- '</button><button type="button" data-hq-route="news" class="hq-hero-alt">SEC headlines ↗</button>'+
+ '</button><button type="button" data-hq-route="'+(m.favoriteSchool?"team-hub":"teams")+
+ '" class="hq-hero-alt">'+(m.favoriteSchool?"★ My Team Hub →":"☆ Choose Team →")+'</button>'+
  '</div></div><div class="hq-next-kickoff"><span class="hq-hero-next-label">'+
  (game?"NEXT VERIFIED KICKOFF":"COMING UP")+'</span>'+
  (game?'<div class="hq-next-teams"><span>'+esc(game.away)+'</span><small>VS</small><span>'+esc(game.home)+'</span></div>'+
@@ -136,12 +137,12 @@ function actionCards(m){
  const p=m.progress,idx=m.leaderboard.findIndex(r=>r.user_id===user()?.id);
  const tiles=[
  ["picks","✓","MAKE PICKS",p.unpickedOpen?p.unpickedOpen+" remaining":p.chosen+"/"+p.total+" selected"],
- ["teams","★","MY TEAM",m.favoriteName||"Choose a school"],
- ["picks","◉","LIVE SCORES",m.liveCount?m.liveCount+" live now":"Game Center"],
+ ["team-hub","★","MY TEAM",m.favoriteName||"Choose a school"],
+ ["game-center","◉","LIVE SCORES",m.liveCount?m.liveCount+" live now":"Game Center"],
  ["league","▥","LEAGUE RACE",idx>=0?"You're #"+(idx+1):"View standings"],
  ["league","⚔","RIVALS",m.rival?m.rival.gap+"-point gap":"Meet your league"],
  ["trophies","🏆","TROPHY ROOM","Your collection"],
- ["news","▤","SEC NEWS","Latest headlines"]
+ ["team-news","▤","SEC NEWS","Latest headlines"]
  ];
  return '<nav class="hq-actions" aria-label="Game Day shortcuts">'+tiles.map(t=>
  '<button type="button" data-hq-route="'+t[0]+'" class="hq-action"><span class="hq-action-icon" aria-hidden="true">'+
@@ -303,13 +304,14 @@ function render(model){
     '<div class="hq-progress-caption"><span>'+p.percent+'% selected</span><span>'+p.unpickedOpen+' open and unpicked</span></div>'+
     (signedOut?'<p class="hq-note">Sign in to save picks to your account.</p>':"")+
     '<button type="button" data-hq-route="picks" data-hq-focus="'+(p.unpickedOpen?"next":"all")+
-    '" class="hq-primary">'+(p.unpickedOpen?"Finish my picks →":"Review football picks →")+'</button></section>'+
+    '" class="hq-primary">'+(p.unpickedOpen?"Finish my picks →":"Review football picks →")+'</button>'+
+  '<button type="button" data-hq-route="results" class="sdsx-home-results">View results 🏆</button></section>'+
    '<section class="hq-panel hq-games" aria-label="Current football scores"><div class="hq-panel-header">'+
     '<span>02 · GAME CENTER</span><span class="hq-feed-pill">'+(model.liveCount?model.liveCount+" LIVE":"Verified score feed")+'</span></div>'+
     '<h3>On the field</h3><p class="hq-panel-sub">Only confirmed results and scheduled SEC matchups.</p>'+
     '<div class="hq-games-list">'+(model.visible.length?model.visible.map(match).join(""):
       '<p class="hq-empty">No current football matchups available for Week '+(model.week||"—")+'. Switch sports or check back for updated fixtures.</p>')+'</div>'+
-    '<button type="button" data-hq-route="picks" class="hq-secondary">Open full Game Center →</button></section>'+
+    '<button type="button" data-hq-route="game-center" class="hq-secondary">Open Live Game Center →</button></section>'+
    '<section class="hq-panel hq-league" aria-label="League race"><div class="hq-panel-header">'+
     '<span>03 · LEAGUE RACE</span><span class="hq-feed-pill">Verified points</span></div>'+
     '<h3>'+esc(model.leagueName||"Your league")+'</h3>'+
@@ -376,7 +378,8 @@ document.addEventListener("click",e=>{
  const b=e.target.closest?.("[data-hq-route]");
  if(!b)return;
  const target=b.dataset.hqRoute;
- if(!["picks","basketball","baseball","league","trophies","news","teams","settings"].includes(target))return;
+ if(!["picks","basketball","baseball","league","trophies","news","teams","settings",
+  "team-hub","game-center","team-news","results"].includes(target))return;
  app()?.setView?.(target);
  if(target==="picks"&&b.dataset.hqFocus==="next"){
   document.querySelector('[data-slate-next]')?.click();

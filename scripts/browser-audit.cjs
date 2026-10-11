@@ -8,7 +8,7 @@ const assert=require("node:assert/strict");
 const base=process.env.SEC_BROWSER_URL||"http://127.0.0.1:8765/";
 const sizes=[{width:320,height:690},{width:360,height:780},{width:390,height:844},
  {width:768,height:1024},{width:1280,height:850}];
-const routes=["home","picks","basketball","baseball","league","trophies","news","teams","settings","more"];
+const routes=["home","team-hub","game-center","results","team-news","picks","basketball","baseball","league","trophies","news","teams","settings","more"];
 const output=path.resolve("artifacts/sec-browser-audit");
 fs.mkdirSync(output,{recursive:true});
 (async()=>{
@@ -66,10 +66,41 @@ fs.mkdirSync(output,{recursive:true});
      problems.push(prefix+" wrong shared broadcast color token: "+audit.designToken);
     if(audit.brandColor!=="rgb(255, 227, 164)")
      problems.push(prefix+" mismatched Saturdays Down South header accent: "+audit.brandColor);
-    if(!["home","trophies"].includes(route)&&
+    if(!["home","trophies","team-hub","game-center","results","team-news"].includes(route)&&
        (!audit.sectionHeader?.visible||audit.sectionHeader.height<60))
      problems.push(prefix+" missing redesigned section masthead: "+JSON.stringify(audit.sectionHeader));
 
+    if(["team-hub","game-center","results","team-news"].includes(route)){
+     const premium=await page.evaluate(id=>{
+      const root=document.getElementById("sdsx-"+(id==="team-hub"?"team":id==="game-center"?"game":id==="team-news"?"news":"results")+"-root");
+      const text=root?.textContent||"";
+      const cards=root?.querySelectorAll(".sdsx-section,.sdsx-team-hero,.sdsx-score-hero,.sdsx-results-hero")||[];
+      const gameCenter=id==="game-center"?!!root?.querySelector(".sdsx-score-hero"):true;
+      const results=id==="results"?!!root?.querySelector(".sdsx-results-list"):true;
+      const alerts=id==="team-news"?!!root?.querySelector(".sdsx-alert-tiles"):true;
+      const teamHub=id==="team-hub"?!!root?.querySelector(".sdsx-team-hero")||
+       text.includes("Choose your SEC school"):true;
+      return {exists:!!root,cardCount:cards.length,text:text.slice(0,120),
+       gameCenter,results,alerts,teamHub,
+       horizontal:document.documentElement.scrollWidth>innerWidth+2};
+     },route);
+     if(!premium.exists||!premium.gameCenter||!premium.results||!premium.alerts||
+        !premium.teamHub||premium.horizontal)
+      problems.push(viewport.width+"px "+route+" premium design issue: "+JSON.stringify(premium));
+     if(route==="game-center"){
+      const tabs=await page.evaluate(()=>{
+       const tabs=[...document.querySelectorAll("#sdsx-game-root [data-sdsx-tab]")];
+       const stats=tabs.find(x=>x.dataset.sdsxTab==="stats");
+       stats?.click();const statsActive=!!document.querySelector('#sdsx-game-root [data-sdsx-tab="stats"][aria-selected="true"]');
+       // Re-query after Game Center's intentional tab-content rerender.
+       document.querySelector('#sdsx-game-root [data-sdsx-tab="plays"]')?.click();
+       const playsActive=!!document.querySelector('#sdsx-game-root [data-sdsx-tab="plays"][aria-selected="true"]');
+       return {count:tabs.length,statsActive,playsActive};
+      });
+      if(tabs.count!==4||!tabs.statsActive||!tabs.playsActive)
+       problems.push(viewport.width+"px premium Game Center tabs broken: "+JSON.stringify(tabs));
+     }
+    }
     if(route==="home"){
      const hq=await page.evaluate(()=>{
       const root=document.getElementById("sec-home-root");
