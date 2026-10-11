@@ -119,7 +119,7 @@ function weeklyAwards(ctx){
 }
 function achievementData(ctx){
  const me=currentUser(),lg=currentLeague(),userId=me?.id;
- const ownedChamps=champions("football",userId);
+ const ownedChamps=champions("football",userId,lg);
  const results=new Map(ctx.verified.map(x=>[x.id,x]));
  const state=window.SEC_BRIDGE?.state?.()||{};
  const allWeeks=window.SEC_BRIDGE?.weeks||[];
