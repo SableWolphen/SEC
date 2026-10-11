@@ -109,6 +109,7 @@
   }finally{
    loading=false;
    if(window.SEC_BRIDGE?.view?.()==="teams")window.SEC_BRIDGE?.renderTeams?.();
+   if(window.SEC_BRIDGE?.view?.()==="team-hub")window.SEC_PREMIUM?.teamHub?.();
   }
  }
  document.addEventListener("click",event=>{
