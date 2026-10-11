@@ -4,6 +4,11 @@ on:
     # Official polls generally publish weekly. Recheck every 3 hours.
     - cron: '17 */3 * * *'
   workflow_dispatch: {}
+  pull_request:
+    paths:
+      - 'scripts/update_rankings.py'
+      - 'tests/test_rankings.py'
+      - '.github/workflows/update-rankings.yml'
   push:
     branches: [main]
     paths:
