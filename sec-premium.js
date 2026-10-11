@@ -98,7 +98,7 @@ function openResults(weekNo){
 }
 function header(code,label,tag){
  const rank=ranking(code,"football"),record=records(code,"football");
- return '<div class="sdsx-team-hero"><div class="sdsx-hero-mark">'+logo(code)+'</div>'+
+ return '<div class="sdsx-team-hero" data-sds-school="'+esc(code)+'"><div class="sdsx-hero-mark">'+logo(code)+'</div>'+
   '<div class="sdsx-hero-body"><span class="sdsx-eyebrow">'+esc(tag||"YOUR SEC TEAM")+'</span>'+
   '<h2>'+esc(teamName(code))+'</h2><strong>'+esc(mascots[code]||"SEC University")+'</strong>'+
   '<p class="sdsx-hero-caption">'+esc(label||"Game day starts here")+'</p>'+
@@ -347,11 +347,13 @@ function teamNews(){
  'Push notifications on a locked phone are not yet enabled.</p>'+
  '<div class="sdsx-alert-tiles">'+[
   ["🏈","Kickoff alerts"],["✓","Final scores"],["▥","Ranking changes"],["▤","Team news"]
- ].map(([i,title])=>'<div><span>'+i+'</span><strong>'+title+'</strong><small>Set up in Settings</small></div>').join("")+'</div></section>'+
+ ].map(([i,title])=>'<div><span>'+i+'</span><strong>'+title+'</strong><small>Set up in Settings</small></div>').join("")+'</div>'+
+ '<div id="sds-news-notifications"></div></section>'+
  '<section class="sdsx-section"><div class="sdsx-section-head"><h3>AP RANKING MOVERS</h3>'+
  '<button type="button" data-sdsx-view="teams">Full rankings ›</button></div>'+movers(code)+'</section>'+
  '<section class="sdsx-section"><div class="sdsx-section-head"><h3>LATEST VERIFIED HEADLINES</h3>'+
  '<button type="button" data-sdsx-view="news">All SEC News ›</button></div>'+stories(storiesList)+'</section>';
+ window.SDS_PREFERENCES?.mount?.();
 }
 function mount(v){
  if(!["team-hub","game-center","results","team-news"].includes(v))return;
