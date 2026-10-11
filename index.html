@@ -398,7 +398,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 (() => {
   'use strict';
 
-  // Team colors and resilient school marks supplement public editorial logo thumbnails.
+  // Neutral original team number badges; no university or ESPN logos are loaded.
   const TEAMS = {
     ALA:{name:'Alabama',nick:'Crimson Tide',abbr:'BAMA',mark:'A',color:'#9a273d',city:'Tuscaloosa, Alabama'},
     ARK:{name:'Arkansas',nick:'Razorbacks',abbr:'ARK',mark:'AR',color:'#a82443',city:'Fayetteville, Arkansas'},
@@ -563,8 +563,8 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   function week(){return WEEKS.find(w=>w.num===currentWeek)||WEEKS[0];}
   function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
   function team(id){return TEAMS[id]||(NONSEC[id]?{name:NONSEC[id],nick:'',mark:id.slice(0,3),color:'#415f76'}:{name:id,nick:'',mark:id,color:'#526271'});}
-  function logo(id){const t=team(id);return window.SDS_VISUALS?.mark?.(id,{className:'mini-logo'})||
-  `<span class="mini-logo" style="background:${t.color}" aria-hidden="true">${esc(t.mark)}</span>`;}
+  function logo(id){return window.SDS_VISUALS?.mark?.(id,{className:'mini-logo'})||
+  '<span class="mini-logo" aria-hidden="true">•</span>';}
   function displayDate(date,includeWeekday=false){return new Date(`${date}T17:00:00Z`).toLocaleDateString('en-US',{month:'short',day:'numeric',...(includeWeekday?{weekday:'short'}:{})});}
   function ctTime(timestamp){return new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',timeZone:'America/Chicago'}).format(new Date(timestamp));}
   function provisional(g){return typeof g.onlineProvisional==='boolean'?g.onlineProvisional:!g.kickoff;}
