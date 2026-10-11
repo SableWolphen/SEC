@@ -27,7 +27,7 @@ assert.match(premium,/data-sdsx-team-tab/);
 assert.match(premium,/data-sdsx-team-panel/);
 assert.match(premium,/hasCurrent/,"no stale national ranking on Team Hub");
 assert.match(home,/SDS_VISUALS\?\.mark/,"favorite school and matchups get original badges");
-assert.match(worker,/sec-pickem-v99/);
+assert.match(worker,/sec-pickem-v100/);
 for(const f of ["sds-showcase.css","sds-showcase-visuals.js","sds-showcase-preferences.js"]){
  assert.ok(worker.includes(f+"?v="+(f==="sds-showcase-preferences.js"?"20261011-ten-screens-v1":"20261011-team-colors-v2")),"PWA core must include "+f);
 }

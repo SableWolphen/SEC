@@ -149,14 +149,13 @@
 #sec-home-root>.hq-actions{order:1;grid-column:1/-1}
 #sec-home-root>.hq-discover,#sec-home-root>.hq-grid,#sec-home-root>.hq-bottom-grid{display:contents}
 #sec-home-root>.hq-sport-tabs{order:2;grid-column:1/-1;margin:0}
-#sec-home-root .hq-school-spotlight{order:3;grid-column:1;min-height:245px}
-#sec-home-root .hq-picks{order:4;grid-column:2;min-height:245px}
-#sec-home-root .hq-games{order:5;grid-column:1}
-#sec-home-root .hq-league{order:6;grid-column:2}
-#sec-home-root .hq-news-spotlight{order:7;grid-column:1}
-#sec-home-root .hq-rival-card{order:8;grid-column:2}
-#sec-home-root .hq-quick{order:9;grid-column:1}
-#sec-home-root .hq-around-news{order:10;grid-column:2}
+#sec-home-root .hq-picks{order:3;grid-column:1;min-height:245px}
+#sec-home-root .hq-games{order:4;grid-column:2}
+#sec-home-root .hq-league{order:5;grid-column:1}
+#sec-home-root .hq-news-spotlight{order:6;grid-column:2}
+#sec-home-root .hq-rival-card{order:7;grid-column:1}
+#sec-home-root .hq-quick{order:8;grid-column:2}
+#sec-home-root .hq-around-news{order:9;grid-column:1/-1}
 #sec-home-root .hq-disclaimer{order:11;grid-column:1/-1;margin:1px 5px}
 .hq-stadium-hero{position:relative;isolation:isolate;min-height:274px;display:grid;grid-template-columns:minmax(0,1fr) 275px;gap:16px;align-items:center;border:1px solid #826a48;border-radius:20px;padding:24px 25px;color:#fff7e6;overflow:hidden;background:#101e30;box-shadow:0 16px 24px #0005}
 .hq-stadium-hero:before{content:"";position:absolute;z-index:-2;inset:0;background-image:linear-gradient(90deg,#071827ed 0%,#0c1b3190 42%,#06152885 100%),url("./home-stadium.svg");background-size:cover;background-position:center}
@@ -237,15 +236,14 @@
  #sec-home-root .hq-school-spotlight,#sec-home-root .hq-picks,#sec-home-root .hq-games,
  #sec-home-root .hq-league,#sec-home-root .hq-news-spotlight,#sec-home-root .hq-rival-card,
  #sec-home-root .hq-quick,#sec-home-root .hq-around-news,#sec-home-root .hq-disclaimer{grid-column:1/-1}
- #sec-home-root .hq-school-spotlight{order:2;min-height:0}
+ #sec-home-root .hq-sport-tabs{order:2}
  #sec-home-root .hq-picks{order:3}
- #sec-home-root .hq-news-spotlight{order:4}
- #sec-home-root .hq-sport-tabs{order:5}
- #sec-home-root .hq-games{order:6}
- #sec-home-root .hq-league{order:7}
- #sec-home-root .hq-rival-card{order:8}
- #sec-home-root .hq-around-news{order:9}
- #sec-home-root .hq-quick{order:10}
+ #sec-home-root .hq-games{order:4}
+ #sec-home-root .hq-news-spotlight{order:5}
+ #sec-home-root .hq-league{order:6}
+ #sec-home-root .hq-rival-card{order:7}
+ #sec-home-root .hq-around-news{order:8}
+ #sec-home-root .hq-quick{order:9}
  .hq-stadium-hero{min-height:220px;grid-template-columns:minmax(0,1fr) 180px;padding:17px}
  .hq-hero-copy h2{font-size:clamp(36px,6vw,57px)}
  .hq-next-teams span{font-size:17px}
@@ -294,7 +292,7 @@
  #sec-home-root .hq-action{display:none;min-width:0;min-height:78px;flex:auto;
   padding:9px 2px;gap:4px;border-radius:10px}
  /* Home shortcuts on compact screens: Picks, League Race, Scores, News.
-    Keep all seven shortcuts available on desktop and My Team in its own Home panel. */
+    Team Hub and Edit School remain in the single favorite-school hero section. */
  #sec-home-root .hq-action:nth-child(1),
  #sec-home-root .hq-action:nth-child(3),
  #sec-home-root .hq-action:nth-child(4),
@@ -383,4 +381,24 @@
  #sec-home-root .hq-action strong{font-size:8px}
  #sec-home-root .hq-action small{font-size:8px}
  #sec-home-root .hq-next-teams span{font-size:12px}
+}
+
+/* Single favorite-school summary on Home, with accessible school shortcuts. */
+#sec-home-root .hq-stadium-hero.hq-no-upcoming{
+ grid-template-columns:minmax(0,1fr);min-height:0;
+}
+#sec-home-root .hq-stadium-hero.hq-no-upcoming .hq-hero-copy{max-width:760px}
+#sec-home-root .sds-home-favorite-actions{display:flex;flex-wrap:wrap;gap:0 14px;margin-top:3px}
+#sec-home-root .sds-home-favorite-actions button{
+ border:0;background:transparent;color:#f8d794;padding:3px 0;
+ font-size:11px;font-weight:900;text-align:left;cursor:pointer;min-height:27px;
+}
+#sec-home-root .sds-home-favorite-actions button:hover{text-decoration:underline;text-underline-offset:3px}
+#sec-home-root .sds-home-favorite-actions button:focus-visible{
+ outline:2px solid #ffe3a1;outline-offset:2px;border-radius:2px
+}
+@media(max-width:540px){
+ #sec-home-root .hq-hero-alt.school-picker{display:inline-flex;align-items:center}
+ #sec-home-root .sds-home-favorite-actions{gap:0 12px}
+ #sec-home-root .sds-home-favorite-actions button{font-size:10px;min-height:25px}
 }

@@ -180,12 +180,15 @@ fs.mkdirSync(output,{recursive:true});
       const links=[...root?.querySelectorAll(".hq-headline[href]")||[]];
       const safe=links.every(a=>a.protocol==="https:"&&
        ["www.espn.com","espn.com","www.ncaa.com","ncaa.com"].includes(a.hostname));
-      const school=!!root?.querySelector('.hq-school-spotlight [data-hq-route="teams"]');
-      const news=!!root?.querySelector('.hq-news-spotlight [data-hq-route="news"]');
-      const firstVisible=promos.length?promos[0].getBoundingClientRect().top<window.innerHeight:false;
-      return {count:promos.length,school,news,safe,firstVisible,headlines:links.length};
+      const school=!!root?.querySelector('.sds-home-favorite-actions [data-hq-route="teams"], .hq-hero-alt.school-picker');
+      const duplicate=!!root?.querySelector(".hq-school-spotlight");
+      const picks=root?.querySelector(".hq-picks");
+      const newsPanel=root?.querySelector(".hq-news-spotlight");
+      const news=!!newsPanel?.querySelector('[data-hq-route="news"]');
+      const picksFirst=!!picks&&!!newsPanel&&picks.getBoundingClientRect().top<=newsPanel.getBoundingClientRect().top;
+      return {count:promos.length,school,duplicate,news,safe,picksFirst,headlines:links.length};
      });
-     if(discovery.count!==3||!discovery.school||!discovery.news||!discovery.safe||!discovery.firstVisible)
+     if(discovery.count!==2||!discovery.school||discovery.duplicate||!discovery.news||!discovery.safe||!discovery.picksFirst)
       problems.push(viewport.width+"px Home news/team discovery issue: "+JSON.stringify(discovery));
      if(viewport.width<=790){
       const compact=await page.evaluate(()=>{
@@ -228,7 +231,7 @@ fs.mkdirSync(output,{recursive:true});
       document.querySelector('.hq-news-spotlight [data-hq-route="news"]')?.click();
       const news=a.view()==="news";
       a.setView("home");
-      document.querySelector('.hq-school-spotlight [data-hq-route="teams"]')?.click();
+      document.querySelector('.sds-home-favorite-actions [data-hq-route="teams"], .hq-hero-alt.school-picker')?.click();
       const teams=a.view()==="teams";
       a.setView("home");
       return {news,teams};

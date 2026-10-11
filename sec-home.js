@@ -36,26 +36,6 @@ function newsPreview(code){
  }));
 }
 function discovery(model){
- const school=model.favoriteSchool;
- const name=model.favoriteName;
- const schoolLabel=school?(window.SDS_VISUALS?.mark?.(school,{className:"sds-team-mark"})||'★'):'☆';
- const game=model.favoriteUpcoming;
- const schoolCard='<section class="hq-feature-card hq-school-spotlight" aria-label="Your favorite SEC school">'+
- '<div class="hq-feature-kicker"><span>⭐ YOUR TEAM</span><span>Follow your school</span></div>'+
- '<div class="hq-school-content"><span class="hq-school-emblem" aria-hidden="true">'+schoolLabel+'</span><div>'+
- '<h3>'+(school?esc(name):"Pick your SEC school")+'</h3>'+
- (school&&window.SEC_RANKINGS?.hasCurrent?.("football")?
-  '<div class="sds-favorite-rank">'+window.SEC_RANKINGS.badge(school,"football")+
-   window.SEC_RANKINGS.sourceLink("football")+'</div>':"")+
- '<p>'+(school?(model.favoriteRecord?"Football · "+esc(model.favoriteRecord)+" overall":
- "Your SEC school, across all three sports."):
- "Choose a school for personalized news, records, and your league badge.")+'</p></div></div>'+
- (game?'<div class="hq-team-next"><span>NEXT VERIFIED GAME</span><strong>'+
- esc(game.away)+' vs '+esc(game.home)+'</strong><small>'+esc(niceTime(game.clock))+' CT</small></div>':"")+
- '<div class="hq-feature-actions"><button type="button" data-hq-route="'+(school?"team-hub":"teams")+'" class="hq-primary">'+
- (school?"Open Team Hub →":"Choose favorite school →")+'</button>'+
- (school?'<button type="button" data-hq-route="teams" class="hq-text-link">Edit</button>':"")+
- '</div></section>';
  const stories=model.headlines.length?model.headlines.map(item=>
   '<a class="hq-headline" target="_blank" rel="noopener noreferrer" href="'+esc(item.url)+'" aria-label="Read article from '+esc(item.source)+': '+esc(item.title)+'">'+
   '<span class="hq-headline-meta">'+(item.schoolRelated?"★ YOUR SCHOOL · ":"")+esc(item.source)+
@@ -67,7 +47,7 @@ function discovery(model){
   '<h3>Headlines that matter.</h3><div class="hq-headlines">'+stories+'</div>'+
   '<button type="button" data-hq-route="news" class="hq-news-all">All SEC news &amp; breaking stories →</button>'+
   '</section>';
- return '<div class="hq-discover">'+schoolCard+newsCard+'</div>';
+ return '<div class="hq-discover">'+newsCard+'</div>';
 }
 
 function nextKickoff(games,now=Date.now()){
@@ -112,37 +92,43 @@ function closestRival(model){
 
 
 function hero(m){
- const game=m.favoriteUpcoming||m.nextKickoff,action=m.progress.unpickedOpen?"picks":m.liveCount?"game-center":"results";
+ const game=m.favoriteUpcoming||m.nextKickoff;
+ const p=m.progress;
+ const action=p.unpickedOpen?"picks":m.liveCount?"game-center":"results";
  const line=m.liveCount?m.liveCount+" live football game"+(m.liveCount===1?"":"s"):
-  m.progress.unpickedOpen?m.progress.unpickedOpen+" unpicked games still open":
-  "Your school. Your league. Your season.";
- return '<section class="hq-stadium-hero" aria-label="Game Day HQ"'+(m.favoriteSchool?' data-sds-school="'+esc(m.favoriteSchool)+'"':'')+'>'+
+  p.unpickedOpen?p.unpickedOpen+" football pick"+(p.unpickedOpen===1?"":"s")+" still open":
+  p.total?p.chosen+" of "+p.total+" football picks selected · Week "+(m.week||"—"):
+  "Pick your school and get ready for game day.";
+ return '<section class="hq-stadium-hero'+(game?"":" hq-no-upcoming")+
+  '" aria-label="Game Day HQ"'+(m.favoriteSchool?' data-sds-school="'+esc(m.favoriteSchool)+'"':'')+'>'+
  '<div class="hq-hero-copy"><span class="hq-eyebrow">SATURDAYS DOWN SOUTH</span>'+
  '<h2>Game Day <em>HQ</em></h2>'+
  (m.favoriteSchool?'<div class="sds-home-favorite-mini" data-sds-school="'+esc(m.favoriteSchool)+'">'+
- (window.SDS_VISUALS?.mark?.(m.favoriteSchool,{className:"sdsx-crest"})||'<span>'+esc(m.favoriteSchool)+'</span>')+
- '<div><span>★ FOLLOWING YOUR SCHOOL</span><strong>'+esc(m.favoriteName||m.favoriteSchool)+'</strong>'+
- '<small>'+(window.SEC_RANKINGS?.rank?.(m.favoriteSchool,"football")?
- '#'+window.SEC_RANKINGS.rank(m.favoriteSchool,"football")+' AP Top 25 · ':"")+
- esc(m.favoriteRecord?m.favoriteRecord+" overall":"Your university, all season")+
- '</small></div></div>':"")+
- '<strong>'+(m.favoriteName?esc(m.favoriteName)+' · your SEC school':"Same schools. Bigger rivalries.")+'</strong><p>'+esc(line)+'</p>'+
+  (window.SDS_VISUALS?.mark?.(m.favoriteSchool,{className:"sdsx-crest"})||'<span>'+esc(m.favoriteSchool)+'</span>')+
+  '<div><span>★ FOLLOWING YOUR SCHOOL</span><strong>'+esc(m.favoriteName||m.favoriteSchool)+'</strong>'+
+  '<small>'+(window.SEC_RANKINGS?.rank?.(m.favoriteSchool,"football")?
+   '#'+window.SEC_RANKINGS.rank(m.favoriteSchool,"football")+' AP Top 25 · ':"")+
+  esc(m.favoriteRecord?m.favoriteRecord+" overall":"Your university, all season")+'</small>'+
+  '<div class="sds-home-favorite-actions" role="group" aria-label="Favorite school shortcuts">'+
+  '<button type="button" data-hq-route="team-hub">Team Hub →</button>'+
+  '<button type="button" data-hq-route="teams">Edit school</button></div></div></div>':
+  '<strong>Same schools. Bigger rivalries.</strong>')+
+ '<p>'+esc(line)+'</p>'+
  '<div class="hq-hero-buttons"><button type="button" data-hq-route="'+action+'" class="hq-primary">'+
- (m.progress.unpickedOpen?"Make my picks →":m.liveCount?"Open live games →":"See my results →")+
+ (p.unpickedOpen?"Make my picks →":m.liveCount?"Open live games →":"See my results →")+
  '</button><button type="button" data-hq-route="'+(m.favoriteSchool?"team-hub":"teams")+
- '" class="hq-hero-alt">'+(m.favoriteSchool?"★ My Team Hub →":"☆ Choose Team →")+'</button>'+
- '</div></div><div class="hq-next-kickoff"><span class="hq-hero-next-label">'+
- (game?"NEXT VERIFIED KICKOFF":"COMING UP")+'</span>'+
- (game?'<div class="hq-next-teams"><span>'+
- (window.SDS_VISUALS?.mark?.(game.away,{className:"sdsx-crest"})||"")+
- '<b>'+esc(game.away)+'</b></span><small>VS</small><span>'+
- (window.SDS_VISUALS?.mark?.(game.home,{className:"sdsx-crest"})||"")+
- '<b>'+esc(game.home)+'</b></span></div>'+
- '<strong>'+esc(countdown(game.clock)||"Starting soon")+'</strong><small>'+
- esc(niceTime(game.clock))+' CT</small><button type="button" data-hq-route="game-center">Open Game Center →</button>':
- '<p>No confirmed upcoming football kickoff in the selected week.</p>'+
- '<button type="button" data-hq-route="'+routeFor(m.recommended)+'">Open '+esc(sportText[m.recommended]||"football")+' →</button>')+
- '</div></section>';
+ '" class="hq-hero-alt'+(m.favoriteSchool?"":" school-picker")+'">'+
+ (m.favoriteSchool?"★ My Team Hub →":"☆ Choose Team →")+'</button>'+
+ '</div></div>'+
+ (game?'<div class="hq-next-kickoff"><span class="hq-hero-next-label">NEXT VERIFIED KICKOFF</span>'+
+  '<div class="hq-next-teams"><span>'+
+  (window.SDS_VISUALS?.mark?.(game.away,{className:"sdsx-crest"})||"")+
+  '<b>'+esc(game.away)+'</b></span><small>VS</small><span>'+
+  (window.SDS_VISUALS?.mark?.(game.home,{className:"sdsx-crest"})||"")+
+  '<b>'+esc(game.home)+'</b></span></div>'+
+  '<strong>'+esc(countdown(game.clock)||"Starting soon")+'</strong><small>'+
+  esc(niceTime(game.clock))+' CT</small><button type="button" data-hq-route="game-center">Open Game Center →</button></div>':"")+
+ '</section>';
 }
 function actionCards(m){
  const p=m.progress,idx=m.leaderboard.findIndex(r=>r.user_id===user()?.id);
