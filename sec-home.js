@@ -162,7 +162,7 @@ function render(model){
   '</div><p class="hq-disclaimer">Independent SEC fan game · No live score is shown until confirmed by the score feed. '+
    '3D trophies and player information load only when you open their sections.</p>';
 }
-let ticking=false,scope=null;
+let ticking=false;
 function refresh(){
  if(app()?.view?.()!=="home")return;
  render(snapshot());
@@ -183,11 +183,11 @@ function mount(){
  // Existing public score fetch is used; this creates no new endpoint or database writes.
  void window.SEC_LIVE_SCORES?.refresh?.();
  if(window.secOnline?.isAuthReady?.()!==false){
-  void window.SEC_LEAGUE_SETTINGS?.load?.().then?.(()=>refresh())?.catch?.(()=>{});
+  void Promise.resolve(window.SEC_LEAGUE_SETTINGS?.load?.()).then(()=>refresh()).catch(()=>{});
  }else{
-  window.secOnline?.whenAuthReady?.()?.then?.(()=>
-    window.SEC_LEAGUE_SETTINGS?.load?.()?.then?.(()=>refresh())
-  )?.catch?.(()=>{});
+  void Promise.resolve(window.secOnline?.whenAuthReady?.()).then(()=>
+   window.SEC_LEAGUE_SETTINGS?.load?.()
+  ).then(()=>refresh()).catch(()=>{});
  }
 }
 document.addEventListener("click",e=>{
