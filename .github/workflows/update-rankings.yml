@@ -1,0 +1,66 @@
+name: Refresh SEC university poll rankings
+on:
+  schedule:
+    # Official polls generally publish weekly. Recheck every 3 hours.
+    - cron: '17 */3 * * *'
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/update_rankings.py'
+      - 'tests/test_rankings.py'
+      - '.github/workflows/update-rankings.yml'
+permissions:
+  contents: write
+concurrency:
+  group: sec-national-polls
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify ESPN ID, date, season and poll parser
+        run: python3 -m unittest discover -s tests -p test_rankings.py -v
+      - name: Fetch the latest national college polls
+        run: python3 scripts/update_rankings.py
+      - name: Validate the published poll data
+        run: |
+          python3 - <<'PY'
+          import json,datetime as dt
+          from pathlib import Path
+          d=json.loads(Path('rankings.json').read_text())
+          assert d['source']=='ESPN'
+          assert set(d['sports']) <= {'football','basketball','baseball'}
+          codes={'ALA','ARK','AUB','FLA','UGA','UK','LSU','MISS',
+                 'MSST','MIZ','OU','SC','TENN','TEX','TAMU','VAN'}
+          for sport,p in d['sports'].items():
+              assert p['source']=='ESPN' and p['poll_size']>=20
+              assert dt.date.fromisoformat(p['published_at'])
+              assert p['poll'] and p['season']>=2025
+              assert set(p['teams']) <= codes
+              for team,v in p['teams'].items():
+                  assert type(v['rank']) is int and 1<=v['rank']<=25
+              print(sport,p['poll'],p['published_at'],len(p['teams']),'ranked SEC schools')
+          if not d['sports']:
+              print('::warning::No verified poll is available yet; the app will show an honest unavailable state.')
+          PY
+      - name: Publish rankings only when the feed changes
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add rankings.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh dated national SEC university polls [automated]'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          else
+            echo "Poll feed unchanged"
+          fi
