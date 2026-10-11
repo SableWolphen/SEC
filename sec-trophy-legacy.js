@@ -134,7 +134,9 @@
    '<div class="legacy-leader"><strong>🏆 Traveling trophy</strong><small>No scored league leader yet. The trophy stays unassigned.</small></div>';
   const ownTitles=champs.filter(c=>String(c.champion_user_id)===String(user()?.id)).length;
   const distinct=rows.length;
-  const rarity=distinct&&ownTitles?" · "+(100*new Set(champs.map(c=>c.champion_user_id)).size/distinct).toFixed(0)+"% of members in current standings have an archived title":"";
+  const members=new Set(rows.map(r=>String(r.user_id)));
+  const winners=new Set(champs.filter(c=>members.has(String(c.champion_user_id))).map(c=>String(c.champion_user_id)));
+  const rarity=distinct&&ownTitles?" · "+(100*winners.size/distinct).toFixed(0)+"% of members in current standings have an archived title":"";
   return '<section class="legacy-panel">'+head("League Hall of Fame","Archived champions and the verified current leader.","🏛️")+
    current+
    '<div class="legacy-hall">'+(all.length?all.map(([id,n],i)=>
@@ -174,7 +176,7 @@
     (a.earned?'<button type="button" data-legacy-feature="'+esc(a.id)+'" aria-pressed="'+(featuredId===a.id)+'">'+(featuredId===a.id?"★ Featured":"☆ Feature")+'</button>':'')+'</article>';
   }).join("");
   const sports=fs.map(f=>'<div class="legacy-sport-stat"><strong>'+ICONS[f.sport]+' '+TITLES[f.sport]+'</strong><span>'+
-    (f.available?f.correct+' correct · '+f.graded+' graded · '+f.perfect+' perfect week'+(f.perfect===1?"":"s"):"Join a "+TITLES[f.sport].toLowerCase()+" league to earn")+'</span></div>').join("");
+    (f.available?f.correct+' correct · '+f.graded+' graded · '+f.perfect+' perfect week'+(f.perfect===1?"":"s"):"No verified league picks loaded — open "+TITLES[f.sport].toLowerCase()+" picks")+'</span></div>').join("");
   const tiers=LEVELS.map((t,i)=>'<div class="legacy-tier"><strong>'+t.icon+" "+t.label+'</strong><span>'+awards.filter(a=>a.tier>=i+1).length+' / '+awards.length+'</span></div>').join("");
   const achievements='<section class="legacy-panel">'+head("Upgradeable trophies","Earn Bronze, then keep playing toward Diamond.","💎")+
    '<div class="legacy-tiers">'+tiers+'</div>'+
@@ -203,7 +205,7 @@
   const sections=[
    {id:"league",icon:"👑",title:"League Championships",subtitle:"Rings, banners, Hall of Fame and the traveling trophy",nodes:[champ,week],extra:ringRows(champRows,rows)+banners(champRows,rows)+hall(champRows,rows,ctx)+compare(champRows,rows)},
    {id:"player",icon:"🏅",title:"My Achievements",subtitle:"Upgradeable awards, sport challenges and secret trophies",nodes:[achievement],extra:perks(data,ctx)},
-   {id:"school",icon:"🏛️",title:"SEC School & Rivalry Trophies",subtitle:"Named rivalry prizes, school shelves and history",nodes:[rival,schools].filter(Boolean),extra:""}
+   {id:"school",icon:"🏛️",title:"SEC School & Rivalry Trophies",subtitle:"Named rivalry prizes, school shelves and history",nodes:[rival,schools].filter(Boolean),extra:(!rival&&!schools?'<p class="legacy-empty">Switch to Football to explore the named school rivalry trophy collection.</p>':"")}
   ];
   const content=document.createElement("div");content.className="legacy-cases";
   for(const part of sections){
@@ -218,7 +220,7 @@
    if(part.extra){const host=document.createElement("div");host.className="legacy-extras";host.innerHTML=part.extra;inside.append(host);}
    details.append(inside);
    details.addEventListener("toggle",()=>{
-    if(!details.open)return;
+    if(!details.open||!details.isConnected)return;
     activeCase=part.id;
     for(const other of content.querySelectorAll("details.legacy-case"))if(other!==details)other.open=false;
    });
