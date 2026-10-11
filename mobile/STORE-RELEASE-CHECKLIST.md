@@ -68,3 +68,7 @@ inside the native container to avoid double caching.
 This first scaffold does NOT itself generate production-ready APK/AAB/IPA files.
 Do not submit until developer account access, permanent IDs, signing, policy
 requirements, native device testing, and review materials are complete.
+
+## University and publisher trademark review before store submission
+
+No university logo thumbnails or branded school insignia are bundled or downloaded by the PWA; schools are denoted by neutral numbered UI badges with text school names used for factual matchups. Do not restore school/SEC/NCAA logos, wordmarks, mascot graphics, or lookalikes without permission or legal review. Separately, the product name **Saturdays Down South** is close to the established sports publisher **Saturday Down South**, so qualified trademark counsel should clear the name and app-store branding before submission. An "unofficial fan app" notice does not guarantee non-infringement.
