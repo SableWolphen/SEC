@@ -106,5 +106,5 @@ async function load(kind,id,force=false){
   if(token===revision){loadedAt=Date.now()-45000;console.info("School badges unavailable",e?.message||e);}
  }finally{if(inflight===k)inflight=null;}
 }
-window.SEC_PRIDE=Object.freeze({badge,myBadge,setProfile,saveFavorite,load,refreshBadges,getCode:()=>chosen,names:CODES});
+window.SEC_PRIDE=Object.freeze({badge,myBadge,setProfile,saveFavorite,load,refreshBadges,getCode:()=>owner&&owner===user()?.id?chosen:null,names:CODES});
 })();
