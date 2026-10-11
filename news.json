@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-10-11T18:57:39.111479Z",
-  "checked_at": "2026-10-11T18:57:39.111479Z",
+  "updated_at": "2026-10-11T22:57:16.893422Z",
+  "checked_at": "2026-10-11T22:57:16.893422Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "ebf6f03533f160be",
-      "title": "Georgia climbs to No. 1 in AP Top 25 poll; Texas falls to 7",
-      "summary": "Georgia moved to the No. 1 spot in the Week 7 AP Top 25 following its win at Alabama, while Oregon was unranked for the first time in four years after falling to 3-2.",
-      "url": "https://www.espn.com/college-football/story/_/id/50159296/georgia-climbs-no-1-ap-top-25-poll-texas-falls-7",
+      "id": "df7e50f76f41658c",
+      "title": "Connelly: What's wrong with Texas and other Week 6 thoughts",
+      "summary": "Georgia is in great shape, but what about Alabama? And what's up with Texas and the ever-fluid hot seat?",
+      "url": "https://www.espn.com/college-football/story/_/id/50158869/connelly-wrong-texas-georgia-alabama-week-6-thoughts",
       "source": "ESPN",
-      "published_at": "2026-10-11T18:34:30Z",
+      "published_at": "2026-10-11T21:25:36Z",
       "sport": "football",
       "teams": [
         "Alabama",
@@ -22,266 +22,16 @@
       "breaking": false
     },
     {
-      "id": "6ffcedeff8c45f3b",
-      "title": "Assessing South Carolina's redemption win vs. Florida",
-      "summary": "The SEC Now crew express pride in the Gamecocks' performance after redeeming themselves against the Gators as they give credit to the defense for the victory.",
-      "url": "https://www.espn.com/video/clip/_/id/50159341/assessing-south-carolina-redemption-win-vs-florida",
-      "source": "ESPN",
-      "published_at": "2026-10-11T18:31:59Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7872f062ee4e973c",
-      "title": "Easton Royal, top WR in '27, flips to Florida from Texas",
-      "summary": "Five-star wide receiver prospect Easton Royal has flipped his commitment to Florida, his family told ESPN on Sunday.",
-      "url": "https://www.espn.com/college-football/story/_/id/50159015/easton-royal-top-wr-27-flips-florida-texas",
-      "source": "ESPN",
-      "published_at": "2026-10-11T18:04:46Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4913da025f859ad2",
-      "title": "How Will Stein's quick thinking, confidence in UK led to win vs. LSU",
-      "summary": "The SEC Now crew analyzes how Stein's quick thinking on pivotal plays has led to success for the Wildcats and discusses how it made the biggest difference in their win over the Tigers.",
-      "url": "https://www.espn.com/video/clip/_/id/50159171/how-stein-quick-thinking-confidence-uk-led-win-vs-lsu",
-      "source": "ESPN",
-      "published_at": "2026-10-11T18:02:58Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d8d5337c1a1431e9",
-      "title": "Analyzing Georgia's physicality-driven win vs. Alabama",
-      "summary": "SEC Now's Benjamin Watson and Chris Doering evaluate the intense physicality on both sides as they discuss why consistently running the ball was the key to success for the Bulldogs.",
-      "url": "https://www.espn.com/video/clip/_/id/50158988/analyzing-georgia-physicality-driven-win-vs-alabama",
-      "source": "ESPN",
-      "published_at": "2026-10-11T17:42:44Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "29ef6b05966f32a7",
-      "title": "Lee's late personal foul ends Alabama's hopes in loss to Georgia",
-      "summary": "Alabama coach Kalen DeBoer questioned sophomore cornerback Dijon Lee Jr.'s \"emotional maturity\" after his personal foul penalty extended a Georgia drive and secured the Bulldogs' 20-17 victory Saturday night.",
-      "url": "https://www.espn.com/college-football/story/_/id/50154518/lee-late-personal-foul-ends-alabama-hopes-loss-georgia",
-      "source": "ESPN",
-      "published_at": "2026-10-11T13:46:20Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "96a94ffd2cdde27b",
-      "title": "Kentucky converts 2-point play in OT to upset No. 10 LSU",
-      "summary": "Quarterback Kenneth Minchey ran for a 2-point conversion in overtime to lift Kentucky to a 35-34 victory over No. 10 LSU.",
-      "url": "https://www.espn.com/college-football/story/_/id/50154081/kentucky-converts-2-point-play-ot-upset-no-10-lsu",
-      "source": "ESPN",
-      "published_at": "2026-10-11T13:45:29Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4ceb37030c9029c0",
-      "title": "Georgia rallies, posts first victory at Alabama since 2007",
-      "summary": "Trailing at the half against an SEC rival on the road, Georgia coach Kirby Smart watched the Bulldogs rally to post a 20-17 victory over Alabama, his team's sixth win of the season in a game he described as…",
-      "url": "https://www.espn.com/college-football/story/_/id/50154761/no-2-georgia-rallies-posts-first-win-alabama-2007",
-      "source": "ESPN",
-      "published_at": "2026-10-11T13:38:13Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "32b19c3c5cd775b7",
-      "title": "Why Dinich and Finebaum aren't counting out Alabama after loss to Georgia",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50156119/why-dinich-finebaum-counting-alabama-loss-georgia",
-      "source": "ESPN",
-      "published_at": "2026-10-11T12:42:40Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "61d8e24093c9b6b1",
-      "title": "Georgia goes on the road and picks up big win over Alabama",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50154088/georgia-goes-road-picks-big-win-alabama",
-      "source": "ESPN",
-      "published_at": "2026-10-11T12:10:30Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5571ef8432255bba",
-      "title": "Best of Week 6: A Red River game winner and upsets galore in the SEC",
-      "summary": "With three top-10-ranked teams in the SEC losing, Week 6 had all the theatrics, starting with Oklahoma's win.",
-      "url": "https://www.espn.com/college-football/story/_/page/gamedayfinal101026/2026-college-football-week-6-highlights-top-plays-games-takeaways",
-      "source": "ESPN",
-      "published_at": "2026-10-11T05:54:59Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0e771c79d4feed7b",
-      "title": "West Georgia Wolves vs. Eastern Kentucky Colonels: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50154579/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-11T05:00:15Z",
+      "id": "3943ae737a50ea28",
+      "title": "Georgia rises to No. 1, LSU and Oregon fall in latest AP Top 25 college football rankings",
+      "summary": "Here’s what you need to know about the latest college football AP Top 25 Poll.",
+      "url": "https://www.ncaa.com/news/football/article/2026-10-11/georgia-rises-no-1-lsu-and-oregon-fall-latest-ap-top-25-college-football-rankings",
+      "source": "NCAA",
+      "published_at": "2026-10-11T18:55:31Z",
       "sport": "football",
       "teams": [
         "Georgia",
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "fafedba10dd0b345",
-      "title": "Georgia beats No. 6 Alabama to stake claim to No. 1 ranking",
-      "summary": "Dwight Phillips Jr. ran for 120 yards to help Georgia stake its claim to the No. 1 ranking with a 20-17 victory over No. 6 Alabama on Saturday night.",
-      "url": "https://www.espn.com/college-football/story/_/id/50154016/georgia-beats-no-6-alabama-stake-claim-no-1-ranking",
-      "source": "ESPN",
-      "published_at": "2026-10-11T04:33:45Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8d01a4b5c7eb0d23",
-      "title": "Oklahoma's jab at Texas tops trolls from Week 6 in college football",
-      "summary": "Oklahoma made sure to troll its rivals after Tate Sandell's winning kick sailed through the uprights.",
-      "url": "https://www.espn.com/college-football/story/_/id/50149322/college-football-trolls-week-6",
-      "source": "ESPN",
-      "published_at": "2026-10-11T04:16:32Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "feb16d7b87512f30",
-      "title": "LSU Tigers vs. Kentucky Wildcats: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50154030/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-11T03:54:15Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "650f7998e8a6ce49",
-      "title": "UGA's Gunner Stockton soaks in the moment after gritty win vs Bama",
-      "summary": "With a smile, Stockton calls No. 2 Georgia's triumph over No. 6 Alabama \"the kind of game you dream of playing in as a kid\" and lauds the Bulldogs perseverance through adversity.",
-      "url": "https://www.espn.com/video/clip/_/id/50154140/uga-gunner-stockton-soaks-moment-gritty-win-vs-bama",
-      "source": "ESPN",
-      "published_at": "2026-10-11T03:51:39Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e4cc6c3a5aeac082",
-      "title": "Kirby Smart: 'I don't care who wins... I just want them to feel us'",
-      "summary": "Instead of the scoreboard, Smart delights in the physicality and execution that No. 2 Georgia displayed in the win over No. 6 Alabama.",
-      "url": "https://www.espn.com/video/clip/_/id/50154132/care-wins-just-want-feel-us",
-      "source": "ESPN",
-      "published_at": "2026-10-11T03:51:04Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "bfd8a26e530eae3f",
-      "title": "Kentucky stuns LSU in overtime",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50154033/kentucky-stuns-lsu-over",
-      "source": "ESPN",
-      "published_at": "2026-10-11T03:38:45Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "cbc361d6893f0027",
-      "title": "Central Arkansas Bears vs. Abilene Christian Wildcats: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50153986/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-11T03:26:12Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas",
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "153b9c1be2964450",
-      "title": "Louisiana Ragin' Cajuns vs. Louisiana Tech Bulldogs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50153929/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-11T03:20:19Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
       ],
       "breaking": false
     },
@@ -390,20 +140,6 @@
       "sport": "football",
       "teams": [
         "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "2a39836bcc074371",
-      "title": "Mississippi State's Chris Jans speaks on current state of college athletics",
-      "summary": "The Bulldogs' Jans joins The Paul Finebaum Show describing how he's navigating through the different changes in collegiate athletics.",
-      "url": "https://www.espn.com/video/clip/_/id/50086246/mississippi-state-chris-jans-speaks-current-state-college-athletics",
-      "source": "ESPN",
-      "published_at": "2026-10-02T20:26:42Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia",
-        "Mississippi State"
       ],
       "breaking": false
     }
