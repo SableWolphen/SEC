@@ -11,8 +11,12 @@ and historical matchup stats.
 
 - **Football:** AP Top 25 from ESPN's latest published national poll.
 - **Men's basketball:** AP Top 25, season-aware.
-- **Baseball:** D1Baseball Top 25 when a valid ESPN-published ranking is available,
-  otherwise another explicitly named verified baseball poll if supplied.
+- **Baseball:** ESPN's D1Baseball Top 25 when published, or the
+  <https://www.ncaa.com/rankings/baseball/d1/d1baseballcom-top-25>
+  NCAA-published D1Baseball.com Top 25 table. Exact published dates and
+  university names are verified before release. The completed season's last
+  published rankings are explicitly labeled historical; they're not current
+  when baseball is out of season.
 - **Scope:** All 16 SEC schools are mapped by exact ESPN team ID, not a fuzzy
   school name or conference points. Unranked schools show **NR** only after
   receiving a complete, source-verified current poll.
