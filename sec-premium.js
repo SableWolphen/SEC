@@ -30,7 +30,7 @@ const time=g=>{const n=Date.parse(g?.kickoff||"");return Number.isFinite(n)?n:nu
 const fmt=t=>t?new Intl.DateTimeFormat("en-US",{weekday:"short",month:"short",day:"numeric",hour:"numeric",minute:"2-digit",timeZone:"America/Chicago",timeZoneName:"short"}).format(new Date(t)):"Kickoff time to be announced";
 const now=()=>Date.now();
 const dateText=g=>fmt(time(g))||"TBA";
-const logo=code=>'<span class="sdsx-crest" aria-hidden="true">'+esc(String(code||"SEC").slice(0,5))+'</span>';
+const logo=code=>window.SDS_VISUALS?.mark?.(code,{className:"sdsx-crest"})||'<span class="sdsx-crest" aria-hidden="true">'+esc(String(code||"SEC").slice(0,5))+'</span>';
 const named=code=>'<span class="sdsx-team">'+logo(code)+'<strong>'+esc(teamName(code))+'</strong></span>';
 const meta=(eyebrow,title,subtitle)=>'<div class="sdsx-section-intro"><span class="sdsx-eyebrow">'+eyebrow+'</span><h2>'+title+'</h2>'+(subtitle?'<p>'+subtitle+'</p>':"")+'</div>';
 const empty=(title,desc)=>'<div class="sdsx-empty"><strong>'+esc(title)+'</strong><p>'+esc(desc)+'</p></div>';
@@ -76,7 +76,7 @@ function scoreLine(g){
 }
 const ranking=(code,sport)=>window.SEC_RANKINGS?.rank?.(code,sport)||null;
 const records=(code,sport)=>window.SEC_TEAM_RECORDS?.entry?.(code,sport)||null;
-let pickedGame=null,pickedTeam=null,selectedWeek=null,gameTab="game";
+let pickedGame=null,pickedTeam=null,selectedWeek=null,gameTab="game",teamTab="overview";
 let accountScope=null;
 function selectTeam(code){
  const owner=window.secOnline?.configured===true?(user()?.id||"guest"):"offline";
@@ -137,6 +137,12 @@ function teamSchedule(code){
  }).join("")+'</div>':empty("Schedule unavailable","Your favorite school's 2026 football fixtures will appear here."))+
  '</section>';
 }
+function teamTabs(){
+ const tabs=[["overview","Overview"],["schedule","Schedule"],["roster","Roster"],["stats","Stats"]];
+ return '<nav class="sdsx-team-tabs" role="tablist" aria-label="Team Hub sections">'+tabs.map(([id,label])=>
+  '<button type="button" role="tab" data-sdsx-team-tab="'+id+'" aria-selected="'+(teamTab===id)+
+  '" class="'+(teamTab===id?"active":"")+'">'+label+'</button>').join("")+'</nav>';
+}
 function teamHub(){
  const code=selectTeam(pickedTeam),host=document.getElementById("sdsx-team-root");if(!host)return;
  if(!code){host.innerHTML=meta("TEAM HUB","Choose your SEC school","Your personalized team experience starts with one favorite.")+
@@ -147,22 +153,27 @@ function teamHub(){
   '<div class="sdsx-button-row"><button type="button" data-sdsx-game="'+esc(next?.id||"")+'" class="sdsx-gold-button" '+(!next?'disabled':'')+'>▶ Open Game Day</button>'+
   '<button type="button" class="sdsx-outline-button" data-sdsx-view="teams">★ Change team</button>'+
   '<button type="button" class="sdsx-outline-button" data-sdsx-view="team-news">▤ Team news</button></div>'+
+  teamTabs()+'<div data-sdsx-team-panel="overview"'+(teamTab==="overview"?"":' hidden')+'>'+
   (next?'<section class="sdsx-next"><span>YOUR NEXT VERIFIED MATCHUP</span><div>'+named(next.away)+
    '<strong>VS</strong>'+named(next.home)+'</div><p>'+esc(fmt(time(next)))+
    '</p><button type="button" data-sdsx-game="'+esc(next.id)+'">Open Game Center ›</button></section>':
    empty("No confirmed upcoming football game","Check the schedule below or switch to basketball/baseball picks."))+
-  rankings(code)+
+  rankings(code)+'</div>'+
+  '<div data-sdsx-team-panel="stats"'+(teamTab==="stats"?"":' hidden')+'>'+
   '<section class="sdsx-section"><div class="sdsx-section-head"><h3>SEASON SNAPSHOT</h3>'+
   '<span>Verified records</span></div><div class="sdsx-mini-metrics">'+
   [["🏈","Football",rec?.overall],["🏀","Basketball",records(code,"basketball")?.overall],
   ["⚾","Baseball",records(code,"baseball")?.overall]].map(([i,t,v])=>
   '<div><span>'+i+' '+esc(t)+'</span><strong>'+esc(v||"—")+'</strong></div>').join("")+'</div></section>'+
-  teamSchedule(code)+
+  '</div><div data-sdsx-team-panel="schedule"'+(teamTab==="schedule"?"":' hidden')+'>'+
+  teamSchedule(code)+'</div>'+
+  '<div data-sdsx-team-panel="overview"'+(teamTab==="overview"?"":' hidden')+'>'+
   '<section class="sdsx-section"><div class="sdsx-section-head"><h3>LATEST '+esc(teamName(code).toUpperCase())+
-  ' NEWS</h3><button type="button" data-sdsx-view="team-news">See all ›</button></div>'+stories(news)+'</section>'+
+  ' NEWS</h3><button type="button" data-sdsx-view="team-news">See all ›</button></div>'+stories(news)+'</section></div>'+
+  '<div data-sdsx-team-panel="roster"'+(teamTab==="roster"?"":' hidden')+'>'+
   '<section class="sdsx-section sdsx-roster-info"><div class="sdsx-section-head"><h3>ROSTER &amp; PLAYER STATS</h3></div>'+
   '<p>Verified roster photography and player data are not yet available in the app\'s feed. Use the official college football source for current player details.</p>'+
-  link("View college football team coverage","https://www.espn.com/college-football/teams")+'</section>';
+  link("View college football team coverage","https://www.espn.com/college-football/teams")+'</section></div>';
 }
 function chooseGame(){
  const games=recent(),all=gameList();
@@ -369,6 +380,12 @@ document.addEventListener("click",ev=>{
   if(["team-hub","game-center","results","team-news"].includes(name))app()?.setView?.(name);
   else if(["home","teams","news","settings","picks","league","basketball","baseball"].includes(name))
    app()?.setView?.(name);
+  return;
+ }
+ const teamTabButton=ev.target.closest?.("[data-sdsx-team-tab]");
+ if(teamTabButton&&["overview","schedule","roster","stats"].includes(teamTabButton.dataset.sdsxTeamTab)){
+  teamTab=teamTabButton.dataset.sdsxTeamTab;
+  if(app()?.view?.()==="team-hub")teamHub();
   return;
  }
  const tab=ev.target.closest?.("[data-sdsx-tab]");
