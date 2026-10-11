@@ -230,7 +230,7 @@
   const extras=hall(champRows,rows,ctx)+
    (compareBox?'<details class="legacy-optional"><summary>Compare players <span aria-hidden="true">⌄</span></summary>'+compareBox+'</details>':'');
   const parts=[
-   {id:"league",icon:"👑",title:"Championships",subtitle:"One trophy per sport · season records",nodes:[champ,weekly],extra:extras},
+   {id:"league",icon:"👑",title:"Championships",subtitle:"One trophy for every championship season",nodes:[champ,weekly],extra:extras},
    {id:"player",icon:"⭐",title:"My Achievements",subtitle:nAwards+" unlocked · earn, upgrade and feature awards",nodes:[],extra:perks(data,ctx)},
    {id:"school",icon:"⚔️",title:"Rivalry Collection",subtitle:data.ownedRivalries+" / "+ctx.trophies.length+" named trophies earned",nodes:[rival,schools].filter(Boolean),
     extra:(!rival&&!schools?'<p class="legacy-empty">Rivalry trophies are currently a football collection. Select Football to explore.</p>':"")}
