@@ -388,3 +388,19 @@
  cursor:pointer;min-height:40px;margin-top:10px}
 .sdsx-team-directory-link:hover{background:#29475e}
 @media(max-width:540px){.sdsx-hero-caption{font-size:10px;line-height:1.35;margin:5px 0}}
+
+/* On 320px phones each university card is narrower than its legacy three
+   sport chips. Let records wrap inside the card, not widen the whole page. */
+@media(max-width:390px){
+ #teams-view .teams-grid{min-width:0}
+ #teams-view .team-card{min-width:0;max-width:100%;overflow:hidden}
+ #teams-view .team-mini-records{
+   display:grid;grid-template-columns:minmax(0,1fr);gap:4px;min-width:0;
+   width:100%;max-width:100%
+ }
+ #teams-view .team-mini-record{
+   min-width:0;max-width:100%;width:100%;white-space:normal;
+   display:flex;flex-wrap:wrap;gap:3px;padding:4px;font-size:9px
+ }
+ #teams-view .team-mini-record :is(strong,span){min-width:0;max-width:100%}
+}
