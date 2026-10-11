@@ -761,6 +761,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
         <h3>${esc(t.name)} ${window.SEC_RANKINGS?.badge?.(id,"football",true)||""}</h3><p>${esc(t.nick)}</p>
         <div class="city">${esc(t.city)}</div>
         ${records?.compact?.(id)||''}
+        <button type="button" class="sdsx-team-directory-link" data-sdsx-school="${esc(id)}">View Team Hub →</button>
       </article>`).join('');
     document.getElementById('teams-content').innerHTML=
       spotlight+
