@@ -46,7 +46,9 @@ jobs:
           codes={'ALA','ARK','AUB','FLA','UGA','UK','LSU','MISS',
                  'MSST','MIZ','OU','SC','TENN','TEX','TAMU','VAN'}
           for sport,p in d['sports'].items():
-              assert p['source']=='ESPN' and p['poll_size']>=20
+              assert p['source'] in ('ESPN','NCAA') and p['poll_size']>=20
+              if p['source']=='NCAA':
+                  assert sport=='baseball' and p['source_url']=='https://www.ncaa.com/rankings/baseball/d1/d1baseballcom-top-25'
               assert dt.date.fromisoformat(p['published_at'])
               assert p['poll'] and p['season']>=2025
               assert set(p['teams']) <= codes
