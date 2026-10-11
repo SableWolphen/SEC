@@ -342,6 +342,7 @@ function mount(){
  // Share the existing verified feeds; never run a second independent news scraper.
  void window.SEC_LIVE_SCORES?.refresh?.();
  void window.SEC_NEWS?.reload?.();
+ void Promise.resolve(window.SEC_TEAM_RECORDS?.refresh?.()).then(()=>refresh()).catch(()=>{});
  if(window.secOnline?.isAuthReady?.()!==false){
   void Promise.resolve(window.SEC_LEAGUE_SETTINGS?.load?.()).then(()=>refresh()).catch(()=>{});
  }else{
