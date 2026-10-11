@@ -33,6 +33,7 @@ const window={
  SEC_LEAGUE_SETTINGS:{getSelected:()=>null,getStandings:()=>[],load:async()=>{}},
  secOnline:{configured:true,getUser:()=>authed,getLeague:()=>league,getStandings:()=>standings,isAuthReady:()=>true,whenAuthReady:()=>Promise.resolve()},
  SEC_LIVE_SCORES:{refresh:async()=>{}},
+ SEC_TEAM_RECORDS:{entry:()=>({overall:"5-1",source:"ESPN",season:2026}),refresh:async()=>{}},
  SEC_PRIDE:{names:{TENN:"Tennessee",TEX:"Texas"},getCode:()=>"TENN"},
  SEC_NEWS:{
   getArticles:()=>[
@@ -70,8 +71,16 @@ assert.match(root.innerHTML,/Updated /,"score freshness is shown");
 assert.match(root.innerHTML,/4th · 02:36/);
 assert.match(root.innerHTML,/1 open and unpicked/);
 assert.match(root.innerHTML,/Friend &amp; Rival/,"league names are escaped");
-assert.match(root.innerHTML,/YOUR SCHOOL/,"favorite gets a prominent Home card");
+assert.match(root.innerHTML,/YOUR TEAM/,"favorite gets a prominent Home card");
 assert.match(root.innerHTML,/Tennessee/,"the account favorite is visible");
+assert.match(root.innerHTML,/5-1 overall/,"verified favorite record is shown");
+assert.match(root.innerHTML,/SATURDAYS DOWN SOUTH/,"original brand is retained");
+assert.match(root.innerHTML,/Game Day <em>HQ<\/em>/,"cinematic hero is present");
+assert.match(root.innerHTML,/NEXT VERIFIED KICKOFF/,"countdown uses a scheduled kickoff");
+assert.match(root.innerHTML,/UGA/,"actual scheduled teams appear");
+assert.equal((root.innerHTML.match(/class="hq-action"/g)||[]).length,7,"seven quick actions");
+assert.match(root.innerHTML,/hq-rival-score/,"verified rival standings preview");
+assert.match(root.innerHTML,/Our League/,"league identity is preserved");
 assert.match(root.innerHTML,/Headlines that matter/,"news is featured on Home");
 assert.match(root.innerHTML,/Tennessee wins late/,"real favorite-team story is shown");
 assert.match(root.innerHTML,/Other SEC roundup/,"broader SEC headlines appear alongside favorites");
@@ -87,7 +96,12 @@ assert.equal(model.leaderboard.length,0,"guests must not see former user's leagu
 current="home";home.refresh();
 assert.match(root.innerHTML,/Sign in to see your private league/);
 assert.match(root.innerHTML,/Pick your SEC school/,"signed-out users never inherit a former account's school");
-assert.doesNotMatch(root.innerHTML,/Explore Tennessee/,"private favorite disappears on logout");
+assert.doesNotMatch(root.innerHTML,/5-1 overall/,"private favorite disappears on logout");
+assert.match(root.innerHTML,/Join a league with friends/,"guest sees honest rival empty state");
+assert.doesNotMatch(root.innerHTML,/Friend &amp; Rival/,"former opponent not shown to guest");
+const unknown={id:"fake",home:"TENN",away:"TEX",liveStatus:"scheduled",date:"2026-10-11"};
+assert.equal(home.nextKickoff([home.gameState(unknown)],now),null,"never guess a kickoff time");
+assert.equal(home.countdown(now-1,now),null,"expired kickoff not advertised");
 assert.match(src,/SEC_LIVE_SCORES\?\.refresh/,"reuse the confirmed score feed");
 assert.doesNotMatch(src,/\.from\(|\.rpc\(|\.insert\(|\.update\(|\.delete\(/,"homepage does not write to or separately query database");
 for(const view of ["home","more"])assert.ok(html.includes('id="'+view+'-view"'));
