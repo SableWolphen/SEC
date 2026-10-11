@@ -42,7 +42,7 @@ function champCard(sport,userId,league){
  const owned=champions(sport,userId).length>0,c=champions(sport,userId)[0];
  const future=sport!=="football";
  const note=owned?c.season+" · "+esc(league?.name||"Your league"):future?"Awaiting verified season titles":league?"Season underway":"Join a league to compete";
- return '<article class="museum-champ '+(owned?"earned":"locked")+'"><div class="museum-art">'+trophySvg(sport)+
+ return '<article class="museum-champ '+(owned?"earned":"locked")+'" data-champion-card="'+esc(sport)+'"><div class="museum-art" data-champion-sport="'+esc(sport)+'">'+trophySvg(sport)+
   (!owned?'<span class="museum-lock" aria-label="Not earned">🔒</span>':'')+'</div>'+
   '<div class="museum-caption"><strong>'+sportNames[sport]+' Champion</strong>'+
   '<small>Win your league at the end of the season</small>'+
@@ -198,6 +198,8 @@ function render(ctx){
  }
  loadWeekly(ctx);
  try{window.SEC_TROPHY_LEGACY?.render?.(ctx,root);}catch(error){console.warn("Trophy legacy display unavailable:",error);}
+ // Enhance only the final mounted trophy cards; never touch championship results.
+ try{window.SEC_CHAMPION_3D?.enhance?.(root);}catch(error){console.info("3D trophy enhancement unavailable:",error?.message||error);}
  if(!root.dataset.museumWired){
   root.dataset.museumWired="true";
   root.addEventListener("click",e=>{
