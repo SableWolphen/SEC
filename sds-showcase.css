@@ -501,3 +501,32 @@ body:before{content:"";pointer-events:none;position:fixed;inset:0 0 auto;height:
 @media(prefers-reduced-motion:reduce){
  .sds-notice-master input:before{transition:none}
 }
+
+/* Dynamic favorite-team micro-card and official next-matchup marks. */
+#sec-home-root .sds-home-favorite-mini{display:flex;align-items:center;gap:11px;
+ background:#091728b8;border:1px solid #aa855b;
+ border-radius:13px;padding:9px 12px;max-width:360px;margin:10px 0}
+#sec-home-root .sds-home-favorite-mini>.sdsx-crest.sds-team-brand{
+ width:58px;height:62px;min-width:58px;border-width:2px;font-size:16px}
+#sec-home-root .sds-home-favorite-mini>div{display:grid;gap:3px;min-width:0}
+#sec-home-root .sds-home-favorite-mini>div>span{font-size:9px;letter-spacing:1px;
+ color:#f4cb85;font-weight:950}
+#sec-home-root .sds-home-favorite-mini>div>strong{font-family:Georgia,serif;
+ font-size:17px;text-transform:none;letter-spacing:0;color:#ffe5b4}
+#sec-home-root .sds-home-favorite-mini>div>small{font-size:10px;color:#d4e3e7}
+#sec-home-root .hq-next-teams>span{display:grid;justify-items:center;gap:5px;min-width:0}
+#sec-home-root .hq-next-teams>span>b{font-size:11px;letter-spacing:.5px;
+ color:#ffe6af;font-weight:950}
+@media(max-width:790px){
+ #sec-home-root .sds-home-favorite-mini{max-width:340px;margin:8px 0;padding:7px 9px}
+ #sec-home-root .sds-home-favorite-mini>.sdsx-crest.sds-team-brand{width:47px;height:50px;min-width:47px}
+ #sec-home-root .sds-home-favorite-mini>div>strong{font-size:15px}
+}
+@media(max-width:540px){
+ #sec-home-root .sds-home-favorite-mini{margin:7px 0;padding:6px;gap:8px}
+ #sec-home-root .sds-home-favorite-mini>.sdsx-crest.sds-team-brand{width:39px;height:41px;min-width:39px}
+ #sec-home-root .sds-home-favorite-mini>div>span{font-size:8px}
+ #sec-home-root .sds-home-favorite-mini>div>small{font-size:9px}
+ #sec-home-root .hq-next-teams .sdsx-crest.sds-team-brand{width:30px;height:32px}
+ #sec-home-root .hq-next-teams>span>b{font-size:9px}
+}
