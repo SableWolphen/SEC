@@ -398,3 +398,38 @@
 /* Force consistent closed <details> layout in all Chromium/WebKit versions. */
 #picks-view .sec-final-card .sec-final-details:not([open]) > .sec-final-detail-body{display:none!important}
 #picks-view .sec-final-card .sec-final-details[open] > .sec-final-detail-body{display:block}
+
+
+/* Final result at a glance: one compact pick-status pill inside the existing
+   Game details row, without adding any height or duplicating team results. */
+#picks-view .sec-final-details>summary .sec-final-summary-right{
+ display:inline-flex;align-items:center;justify-content:flex-end;
+ gap:9px;min-width:0;flex:0 1 auto;
+}
+#picks-view .sec-final-pick-badge{
+ display:inline-flex;align-items:center;justify-content:center;
+ gap:3px;border-radius:999px;border:1px solid #536475;
+ padding:4px 8px;white-space:nowrap;
+ font-size:10px;font-weight:900;line-height:1.25;
+ background:#1c3040;color:#c7d6e2;
+}
+#picks-view .sec-final-pick-badge.won{
+ color:#d8ff77;background:#203c2c;border-color:#7cb155;
+}
+#picks-view .sec-final-pick-badge.lost{
+ color:#ffc2cb;background:#452631;border-color:#995667;
+}
+#picks-view .sec-final-pick-badge.push{
+ color:#ffe49b;background:#453923;border-color:#9c834e;
+}
+#picks-view .sec-final-pick-badge.pending{
+ color:#ffe2ac;background:#433524;border-color:#8b784f;
+}
+#picks-view .sec-final-pick-badge.none{
+ color:#aebdca;background:#202d3c;border-color:#3d5064;
+}
+#picks-view .sec-final-pick-badge>span{font-size:11px}
+@media(max-width:390px){
+ #picks-view .sec-final-details>summary .sec-final-summary-right{gap:5px}
+ #picks-view .sec-final-pick-badge{font-size:9px;padding:4px 6px}
+}
