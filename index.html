@@ -195,6 +195,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <link rel="stylesheet" href="./sec-champion-3d.css?v=20261011-cinematic-v1">
 <link rel="stylesheet" href="./sec-home.css?v=20261011-league-race-v5">
 <link rel="stylesheet" href="./sec-rankings.css?v=20261011-national-polls-v1">
+<link rel="stylesheet" href="./sec-premium.css?v=20261011-mockups-v1">
 <link rel="stylesheet" href="./sec-design-system.css?v=20261011-broadcast-v1">
 </head>
 <body>
@@ -220,6 +221,34 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR SEC CLUBHOUSE <span class="eyebrow-slash">/</span> GAME DAY HQ</div>
       <div class="page-intro"><div><h1 id="home-heading">Your game day <em>starts here.</em></h1><p>Live results, picks, and friends in one place.</p></div></div>
       <div id="sec-home-root" aria-live="polite"></div>
+    </section>
+    <section id="team-hub-view" class="view hidden" aria-labelledby="team-hub-heading">
+      <h1 id="team-hub-heading" class="sr-only">Favorite University Team Hub</h1>
+      <div class="sdsx-shell">
+        <div class="sdsx-brandline"><strong>Saturdays <em>Down South</em></strong><span>TEAM HUB</span></div>
+        <div id="sdsx-team-root" class="sdsx-shell" aria-live="polite"></div>
+      </div>
+    </section>
+    <section id="game-center-view" class="view hidden" aria-labelledby="game-center-heading">
+      <h1 id="game-center-heading" class="sr-only">Live College Game Center</h1>
+      <div class="sdsx-shell">
+        <div class="sdsx-brandline"><strong>Saturdays <em>Down South</em></strong><span>LIVE GAME CENTER</span></div>
+        <div id="sdsx-game-root" class="sdsx-shell" aria-live="polite"></div>
+      </div>
+    </section>
+    <section id="results-view" class="view hidden" aria-labelledby="results-heading">
+      <h1 id="results-heading" class="sr-only">My Pick'em Results</h1>
+      <div class="sdsx-shell">
+        <div class="sdsx-brandline"><strong>Saturdays <em>Down South</em></strong><span>PICK'EM RESULTS</span></div>
+        <div id="sdsx-results-root" class="sdsx-shell" aria-live="polite"></div>
+      </div>
+    </section>
+    <section id="team-news-view" class="view hidden" aria-labelledby="team-news-heading">
+      <h1 id="team-news-heading" class="sr-only">My University News and Rankings</h1>
+      <div class="sdsx-shell">
+        <div class="sdsx-brandline"><strong>Saturdays <em>Down South</em></strong><span>TEAM NEWS</span></div>
+        <div id="sdsx-news-root" class="sdsx-shell" aria-live="polite"></div>
+      </div>
     </section>
     <section id="sports-view" class="view" aria-labelledby="sports-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> SATURDAYS DOWN SOUTH <span class="eyebrow-slash">/</span> ALL SPORTS</div>
@@ -254,6 +283,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       <div id="weekly-score-strip" aria-live="polite"></div><div id="sec-live-score-strip" class="sec-live-score-strip" aria-live="polite" hidden></div>
       <div class="picks-layout">
         <div class="primary-column">
+          <div class="sdsx-picks-cta"><div><span>YOUR SEASON STORY</span><strong>Every pick. Every win.</strong><small>Review confirmed game results and your league position.</small></div><button type="button" data-sdsx-view="results">🏆 My Results →</button></div>
           <div id="hero-slot"></div>
           <div class="section-title-row"><div><div class="overline">THE SLATE</div><h2>Game day matchups <span id="matchup-count"></span></h2></div><div class="section-caption" id="slate-mode-caption">Straight Picks · 1 point per correct pick</div></div>
           <div id="slate-pick-tools" class="slate-pick-tools" role="group" aria-label="Filter matchups"></div>
@@ -320,12 +350,14 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     <section id="news-view" class="view hidden" aria-labelledby="news-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> THE SEC NEWSROOM <span class="eyebrow-slash">/</span> SOURCE-LINKED STORIES</div>
       <div class="page-intro"><div><h1 id="news-heading">Stay in the <em>know.</em></h1><p>Breaking news, fast recaps, and the full story one tap away.</p></div></div>
+      <div class="sdsx-news-launch"><div><span>★ YOUR UNIVERSITY</span><strong>Team News &amp; Ranking Movers</strong></div><button type="button" data-sdsx-view="team-news">Open Team News →</button></div>
       <div id="sec-news-root" aria-live="polite"></div>
     </section>
 
     <section id="teams-view" class="view hidden" aria-labelledby="teams-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> THE CONFERENCE</div>
       <div class="page-intro"><div><h1 id="teams-heading">All <em>16.</em> All in.</h1><p>Choose your favorite SEC school for records, schedules and news.</p></div></div>
+      <div class="sdsx-team-launch"><span>★ YOUR SCHOOL</span><strong>National rankings · Schedule · Matchups · Headlines</strong><button type="button" data-sdsx-view="team-hub">Open Personalized Team Hub →</button></div>
       <div id="teams-content"></div>
     </section>
 
@@ -333,8 +365,11 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR SEC CLUBHOUSE</div>
       <div class="page-intro"><div><h1 id="more-heading">The rest of the <em>clubhouse.</em></h1><p>All your news, teams and account controls, without cluttering game day.</p></div></div>
       <div class="hq-more-grid">
-        <button type="button" data-nav="news" class="hq-more-card"><span aria-hidden="true">📰</span><strong>SEC News</strong><small>Headlines, recaps and sources</small></button>
-        <button type="button" data-nav="teams" class="hq-more-card"><span aria-hidden="true">⭐</span><strong>Teams</strong><small>All 16 schools and their records</small></button>
+        <button type="button" data-sdsx-view="team-news" class="hq-more-card"><span aria-hidden="true">📰</span><strong>Team News</strong><small>Favorite school, rankings and alerts</small></button>
+        <button type="button" data-nav="news" class="hq-more-card"><span aria-hidden="true">▤</span><strong>SEC News</strong><small>All sports headlines and sources</small></button>
+        <button type="button" data-sdsx-view="team-hub" class="hq-more-card"><span aria-hidden="true">⭐</span><strong>My Team Hub</strong><small>Your school's schedule and standings</small></button>
+        <button type="button" data-nav="teams" class="hq-more-card"><span aria-hidden="true">🏟</span><strong>All Teams</strong><small>All 16 schools and their records</small></button>
+        <button type="button" data-sdsx-view="results" class="hq-more-card"><span aria-hidden="true">🏆</span><strong>Pick'em Results</strong><small>Graded picks and verified rankings</small></button>
         <button type="button" data-nav="settings" class="hq-more-card"><span aria-hidden="true">⚙️</span><strong>Settings</strong><small>Account, privacy and preferences</small></button>
       </div>
     </section>
@@ -552,7 +587,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   }
   function setView(v){
     if(v==='sports')v=seasonLanding(); // Old #sports links skip the selection homepage.
-    const views=['home','sports','picks','basketball','baseball','league','trophies','news','teams','settings','more'];
+    const views=['home','team-hub','game-center','results','team-news','sports','picks','basketball','baseball','league','trophies','news','teams','settings','more'];
     const sportViews=['picks','basketball','baseball'];
     if(!views.includes(v))return;
     if(sportViews.includes(v))lastSportView=v;
@@ -566,7 +601,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       pageIntro.insertAdjacentElement('afterend',sportSwitcher);
     }
     document.querySelectorAll('[data-nav]').forEach(el=>{
-      const on=el.dataset.nav===v||(el.dataset.nav==='current-sport'&&sportViews.includes(v))||(el.dataset.nav==='more'&&['news','teams','settings'].includes(v));
+      const on=el.dataset.nav===v||(el.dataset.nav==='home'&&['team-hub','game-center'].includes(v))||(el.dataset.nav==='current-sport'&&[...sportViews,'results'].includes(v))||(el.dataset.nav==='more'&&['news','teams','settings','team-news'].includes(v));
       el.classList.toggle('active',on);
       if(el.classList.contains('nav-link'))el.setAttribute('aria-current',on?'page':'false');
     });
@@ -591,6 +626,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     if(v==='news')window.SEC_NEWS?.mount();
     if(v==='teams'){renderTeams();window.SEC_TEAM_RECORDS?.refresh?.();}
     if(v==='settings')renderSettings();
+    if(['team-hub','game-center','results','team-news'].includes(v))window.SEC_PREMIUM?.mount?.(v);
     void window.SEC_FAN?.onView?.(v);
     if(location.hash!=='#'+v)history.replaceState(null,'','#'+v);
     window.scrollTo({top:0,behavior:'instant'});
@@ -777,9 +813,9 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   document.addEventListener('change',e=>{if(e.target.id==='league-week'){currentWeek=Number(e.target.value);manualWeekOverride=currentWeek!==initialWeek();renderLeague();}});
   document.addEventListener('keydown',e=>{if(e.key==='Enter' && (e.target.id==='display-name'||e.target.id==='league-name')){const a=e.target.id==='display-name'?'save-profile':'save-league';document.querySelector(`[data-action="${a}"]`)?.click();}});
   window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;});
-  window.addEventListener('hashchange',()=>{const v=location.hash.slice(1);if(['home','sports','picks','basketball','baseball','league','trophies','news','teams','settings','more'].includes(v)&&v!==currentView)setView(v);});
+  window.addEventListener('hashchange',()=>{const v=location.hash.slice(1);if(['home','team-hub','game-center','results','team-news','sports','picks','basketball','baseball','league','trophies','news','teams','settings','more'].includes(v)&&v!==currentView)setView(v);});
   if('serviceWorker'in navigator && /^https?:$/.test(location.protocol))navigator.serviceWorker.register('./sw.js').catch(err=>console.warn('Service worker unavailable',err));
-  renderHeader();setView(['home','sports','picks','basketball','baseball','league','trophies','news','teams','settings','more'].includes(location.hash.slice(1))?location.hash.slice(1):'home');
+  renderHeader();setView(['home','team-hub','game-center','results','team-news','sports','picks','basketball','baseball','league','trophies','news','teams','settings','more'].includes(location.hash.slice(1))?location.hash.slice(1):'home');
   setInterval(()=>{
     if(!manualWeekOverride){
       const calendarWeek=initialWeek();
@@ -829,6 +865,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./league-tabs.js?v=20261010-standings-only-v1"></script>
 <script src="./sec-competitive-tools.js?v=20261010-path-fixed-v4"></script>
 <script src="./sec-final-cards.js?v=20261010-pick-result-v4"></script>
-<script src="./sec-home.js?v=20261011-national-polls-v1"></script>
+<script src="./sec-home.js?v=20261011-premium-v2"></script>
+<script src="./sec-premium.js?v=20261011-mockups-v1"></script>
 </body>
 </html>
