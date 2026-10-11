@@ -39,15 +39,20 @@ function discovery(model){
  const school=model.favoriteSchool;
  const name=model.favoriteName;
  const schoolLabel=school?'★ '+esc(school):'☆';
+ const game=model.favoriteUpcoming;
  const schoolCard='<section class="hq-feature-card hq-school-spotlight" aria-label="Your favorite SEC school">'+
-  '<div class="hq-feature-kicker"><span>⭐ YOUR SCHOOL</span><span>Personalize game day</span></div>'+
-  '<div class="hq-school-content"><span class="hq-school-emblem" aria-hidden="true">'+schoolLabel+'</span><div>'+
-  '<h3>'+(school?esc(name):"Pick your SEC school")+'</h3>'+
-  '<p>'+(school?"Your school pride follows your account, picks and league.":"Choose a school to personalize your Home, team coverage and league badge.")+'</p></div></div>'+
-  '<div class="hq-feature-actions"><button type="button" data-hq-route="teams" class="hq-primary">'+
-   (school?"Explore "+esc(name)+" →":"Choose favorite school →")+'</button>'+
-   (school?'<button type="button" data-hq-route="teams" class="hq-text-link">Change school</button>':"")+
-  '</div></section>';
+ '<div class="hq-feature-kicker"><span>⭐ YOUR TEAM</span><span>Follow your school</span></div>'+
+ '<div class="hq-school-content"><span class="hq-school-emblem" aria-hidden="true">'+schoolLabel+'</span><div>'+
+ '<h3>'+(school?esc(name):"Pick your SEC school")+'</h3>'+
+ '<p>'+(school?(model.favoriteRecord?"Football · "+esc(model.favoriteRecord)+" overall":
+ "Your SEC school, across all three sports."):
+ "Choose a school for personalized news, records, and your league badge.")+'</p></div></div>'+
+ (game?'<div class="hq-team-next"><span>NEXT VERIFIED GAME</span><strong>'+
+ esc(game.away)+' vs '+esc(game.home)+'</strong><small>'+esc(niceTime(game.clock))+' CT</small></div>':"")+
+ '<div class="hq-feature-actions"><button type="button" data-hq-route="teams" class="hq-primary">'+
+ (school?"Team Hub →":"Choose favorite school →")+'</button>'+
+ (school?'<button type="button" data-hq-route="teams" class="hq-text-link">Edit</button>':"")+
+ '</div></section>';
  const stories=model.headlines.length?model.headlines.map(item=>
   '<a class="hq-headline" target="_blank" rel="noopener noreferrer" href="'+esc(item.url)+'" aria-label="Read article from '+esc(item.source)+': '+esc(item.title)+'">'+
   '<span class="hq-headline-meta">'+(item.schoolRelated?"★ YOUR SCHOOL · ":"")+esc(item.source)+
@@ -199,6 +204,7 @@ function snapshot(a=app(),today=Date.now()){
  const finals=gameList.filter(g=>g.status==="final")
   .sort((x,y)=>(y.clock??0)-(x.clock??0));
  const visible=[...live,...upcoming,...finals].slice(0,3);
+ const next=nextKickoff(gameList,today);
  const selected=window.SEC_LEAGUE_SETTINGS?.getSelected?.()||null;
  let leagueName=selected?.name||null,rows=[];
  if(selected?.kind==="club"){
@@ -215,14 +221,17 @@ function snapshot(a=app(),today=Date.now()){
  const ordered=rows.filter(r=>r&&r.user_id).slice().sort((x,y)=>{
   const score=r=>number(selected?.kind==="club"?r.total:r.season_points);
   return score(y)-score(x);
- }).slice(0,4);
- return {week:Number(w?.num)||null,season:"football",progress,visible,liveCount:live.length,
+ }).slice(0,5);
+ const favorite=favoriteFor(a),headlines=newsPreview(favorite);
+ const model={week:Number(w?.num)||null,season:"football",progress,visible,liveCount:live.length,
   leagueName,leaderboard:hasIdentity?ordered:[],leagueKind:selected?.kind||"football",
   loggedIn:hasIdentity,authConfigured:authenticated,
   scoreFreshness:Math.max(0,...live.map(g=>g.updated||0)),
-  favoriteSchool:favoriteFor(a),favoriteName:schoolNames()[favoriteFor(a)]||null,
-  headlines:newsPreview(favoriteFor(a)),
+  favoriteSchool:favorite,favoriteName:schoolNames()[favorite]||null,
+  favoriteRecord:teamRecord(favorite),favoriteUpcoming:favoriteGame(favorite,gameList,today),
+  headlines,moreHeadlines:moreNews(headlines),nextKickoff:next,
   recommended:window.SEC_SPORTS?.recommended?.()||"football"};
+ return {...model,rival:closestRival(model)};
 }
 function niceTime(ms){
  if(!Number.isFinite(ms)||ms<=0)return "Kickoff TBA";
@@ -276,14 +285,10 @@ function render(model){
   p.unpickedOpen?"Make your remaining selections before kickoff.":
   "Review your saved choices or explore the league.";
  const sportNames=["football","basketball","baseball"];
- root.innerHTML='<div class="hq-welcome"><div><span class="hq-eyebrow">YOUR HOME FIELD</span>'+
-  '<h2>Every game. Every pick. <em>Your league.</em></h2>'+
-  '<p>One place for your next slate, live SEC games and the race with friends.</p></div>'+
-  '<div class="hq-hero-emblem" aria-hidden="true">🏆</div></div>'+
-  discovery(model)+
-  '<div class="hq-sport-tabs" role="group" aria-label="Pick a sport">'+sportNames.map(s=>
-   '<button type="button" data-hq-route="'+routeFor(s)+'"'+(model.recommended===s?' class="suggested"':'')+'>'+
-   sportIcon[s]+' '+sportText[s]+(model.recommended===s?'<small>Latest season</small>':"")+'</button>').join("")+'</div>'+
+ root.innerHTML=hero(model)+actionCards(model)+discovery(model)+
+ '<div class="hq-sport-tabs" role="group" aria-label="Pick a sport">'+sportNames.map(s=>
+ '<button type="button" data-hq-route="'+routeFor(s)+'"'+(model.recommended===s?' class="suggested"':'')+'>'+
+ sportIcon[s]+' '+sportText[s]+(model.recommended===s?'<small>Latest season</small>':"")+'</button>').join("")+'</div>'+
   '<div class="hq-grid">'+
    '<section class="hq-panel hq-picks" aria-label="Your football picks"><div class="hq-panel-header">'+
     '<span>01 · YOUR PICKS</span><strong>Week '+(model.week||"—")+'</strong></div>'+
@@ -312,7 +317,8 @@ function render(model){
     '<div class="hq-quick-links"><button type="button" data-hq-route="trophies">🏆 Trophy Room <span>→</span></button>'+
     '<button type="button" data-hq-route="news">📰 SEC News <span>→</span></button>'+
     '<button type="button" data-hq-route="teams">⭐ Favorite Teams <span>→</span></button></div></section>'+
-  '</div><p class="hq-disclaimer">Independent SEC fan game · No live score is shown until confirmed by the score feed. '+
+  '</div><div class="hq-bottom-grid">'+rivalCard(model)+extraNews(model)+'</div>'+
+  '<p class="hq-disclaimer">Independent SEC fan game · No live score is shown until confirmed by the score feed. '+
    '3D trophies and player information load only when you open their sections.</p>';
 }
 let ticking=false;
@@ -355,6 +361,6 @@ document.addEventListener("click",e=>{
  }
 });
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refresh();});
-window.SEC_HOME=Object.freeze({mount,refresh,snapshot,pickProgress,gameState});
+window.SEC_HOME=Object.freeze({mount,refresh,snapshot,pickProgress,gameState,nextKickoff,countdown});
 if(app()?.view?.()==="home")mount();
 })();
