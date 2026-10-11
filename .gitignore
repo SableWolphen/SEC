@@ -1,0 +1,15 @@
+# Generated mobile projects and web bundle; keep private signing assets OUT of git.
+node_modules/
+mobile-dist/
+android/
+ios/
+*.keystore
+*.jks
+*.p12
+*.mobileprovision
+*.p8
+*.cer
+*.pem
+.env
+.env.*
+.DS_Store
