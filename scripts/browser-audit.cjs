@@ -73,6 +73,23 @@ fs.mkdirSync(output,{recursive:true});
      });
      if(!tidy.topVisible||tidy.repeated.length)
       problems.push(viewport.width+"px duplicate football summaries: "+JSON.stringify(tidy));
+
+     // A future slate should be available by choice, not auto-selected.
+     const manual=await page.evaluate(()=>{
+      const a=window.SEC_BRIDGE,selected=a.week().num;
+      const next=a.weeks.find(w=>w.num>selected);
+      if(!next)return {tested:false};
+      document.querySelector('#week-picker [data-week="'+next.num+'"]')?.click();
+      const canChooseFuture=a.week().num===next.num;
+      a.setView("league");a.setView("picks");
+      const staysChosen=a.week().num===next.num;
+      document.querySelector('#week-picker [data-week="'+selected+'"]')?.click();
+      return {tested:true,selected,next:next.num,canChooseFuture,staysChosen,
+       canReturn:a.week().num===selected};
+     });
+     if(manual.tested&&(!manual.canChooseFuture||!manual.staysChosen||!manual.canReturn))
+      problems.push(viewport.width+"px manual early-week navigation regression: "+JSON.stringify(manual));
+
     }
     if(route==="trophies"){
      const museum=await page.evaluate(()=>{
