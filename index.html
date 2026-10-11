@@ -478,6 +478,8 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   const defaults = {v:1,name:'You',favorite:null,league:'Saturdays Down South Crew',picks:{},results:{},members:[]};
   let state = load();
   let currentWeek = initialWeek();
+  // Only an explicit user selection can override the calendar's current week.
+  let manualWeekOverride = false;
    let slateFilter = "all";
   let currentView = 'picks';
   let lastSportView = 'picks';
@@ -486,7 +488,23 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 
   function load(){try{const raw=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(raw&&raw.v===1){return {...defaults,...raw,picks:raw.picks||{},results:raw.results||{},members:Array.isArray(raw.members)?raw.members:[]};}}catch(e){console.warn('Could not restore saved picks',e);}return {...defaults};}
   function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(e){console.warn('Storage unavailable',e);toast('Browser storage is unavailable — picks may not be saved.');}}
-  function initialWeek(){const now=Date.now();return WEEKS.find(w=>w.games.some(g=>Date.parse(lockTimestamp(g))>now))?.num||13;}
+  // Pick the real SEC football week (Monday–Sunday in Central time), not the
+  // first week with unlocked picks. Saturday night scores must stay on their
+  // actual week even after every pick locks; users can still choose ahead.
+  function initialWeek(at=Date.now()){
+    const parts=Object.fromEntries(new Intl.DateTimeFormat('en-US',{
+      timeZone:'America/Chicago',year:'numeric',month:'2-digit',day:'2-digit'
+    }).formatToParts(new Date(at)).map(p=>[p.type,p.value]));
+    const centralDay=parts.year+'-'+parts.month+'-'+parts.day;
+    for(let i=WEEKS.length-1;i>=0;i--){
+      const saturday=new Date(WEEKS[i].date+'T12:00:00Z');
+      // Monday of that slate's week (handles all DST transitions by comparing
+      // date-only values rather than adding 24-hour local-time offsets).
+      saturday.setUTCDate(saturday.getUTCDate()-((saturday.getUTCDay()+6)%7));
+      if(centralDay>=saturday.toISOString().slice(0,10))return WEEKS[i].num;
+    }
+    return WEEKS[0].num;
+  }
   function week(){return WEEKS.find(w=>w.num===currentWeek)||WEEKS[0];}
   function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
   function team(id){return TEAMS[id]||(NONSEC[id]?{name:NONSEC[id],nick:'',mark:id.slice(0,3),color:'#415f76'}:{name:id,nick:'',mark:id,color:'#526271'});}
@@ -706,11 +724,11 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   function sharePicks(){const w=week(),picks=validPicksForWeek(w,state.picks);if(!Object.keys(picks).length){toast('Make at least one pick first.');return;}const code=encodeCode('SS26P:',{v:1,sport:'SEC',week:w.num,name:getName(),picks,at:new Date().toISOString()});copyToClipboard(code,'Pick slip');}
   function importPicks(){const input=document.getElementById('import-code');try{const x=decodeCode(input.value,'SS26P:');const w=WEEKS.find(w=>w.num===x.week);if(typeof x.name!=='string'||!x.name.trim()||x.name.length>32)throw new Error('That slip needs a valid display name.');const name=x.name.trim();if(name.toLowerCase()===getName().toLowerCase())throw new Error('This is your display name. Ask your friend to use a different one.');const picks=validPicksForWeek(w,x.picks);if(!picks||!Object.keys(picks).length)throw new Error('No valid game picks found for that week.');const existing=state.members.find(m=>m.name.toLowerCase()===name.toLowerCase());if(existing){existing.weeks ||= {};existing.weeks[x.week]={picks,at:x.at||null};}else{state.members.push({id:'m-'+Date.now()+'-'+Math.random().toString(36).slice(2,7),name,weeks:{[x.week]:{picks,at:x.at||null}}});}save();renderLeague();toast(`Imported ${name}'s Week ${x.week} slip!`);}catch(e){toast(e.message||'Could not import picks.');}}
   function shareResults(){const w=week(),winners={};for(const g of w.games)if(state.results[g.id])winners[g.id]=state.results[g.id];if(!Object.keys(winners).length){toast('Enter at least one result first.');return;}copyToClipboard(encodeCode('SS26R:',{v:1,sport:'SEC',week:w.num,winners,at:new Date().toISOString()}),'Results');}
-  function importResults(){const raw=document.getElementById('import-results-code').value;try{const x=decodeCode(raw,'SS26R:');const w=WEEKS.find(w=>w.num===x.week);const winners=validPicksForWeek(w,x.winners);if(!winners||!Object.keys(winners).length)throw new Error('This code has no valid winners.');if(!confirm(`Import ${Object.keys(winners).length} game results for Week ${x.week}? This will replace matching local winners. Verify the source first.`))return;Object.assign(state.results,winners);currentWeek=x.week;save();renderSettings();toast(`Imported Week ${x.week} results.`);}catch(e){toast(e.message||'Could not import results.');}}
+  function importResults(){const raw=document.getElementById('import-results-code').value;try{const x=decodeCode(raw,'SS26R:');const w=WEEKS.find(w=>w.num===x.week);const winners=validPicksForWeek(w,x.winners);if(!winners||!Object.keys(winners).length)throw new Error('This code has no valid winners.');if(!confirm(`Import ${Object.keys(winners).length} game results for Week ${x.week}? This will replace matching local winners. Verify the source first.`))return;Object.assign(state.results,winners);currentWeek=x.week;manualWeekOverride=currentWeek!==initialWeek();save();renderSettings();toast(`Imported Week ${x.week} results.`);}catch(e){toast(e.message||'Could not import results.');}}
 
   document.addEventListener('click', e=>{
     const nav=e.target.closest('[data-nav]');if(nav){e.preventDefault();setView(nav.dataset.nav==='current-sport'?lastSportView:nav.dataset.nav);return;}
-    const weekEl=e.target.closest('[data-week]');if(weekEl){currentWeek=Number(weekEl.dataset.week);if(currentView==='picks')renderPicks();else if(currentView==='league')renderLeague();else if(currentView==='settings')renderSettings();return;}
+    const weekEl=e.target.closest('[data-week]');if(weekEl){currentWeek=Number(weekEl.dataset.week);manualWeekOverride=currentWeek!==initialWeek();if(currentView==='picks')renderPicks();else if(currentView==='league')renderLeague();else if(currentView==='settings')renderSettings();return;}
     const filter=e.target.closest('[data-slate-filter]');
     if(filter){slateFilter=filter.dataset.slateFilter;renderPicks();return;}
     const next=e.target.closest('[data-slate-next]');
@@ -735,16 +753,26 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       case 'save-league':{const val=document.getElementById('league-name').value.trim().slice(0,50);if(!val){toast('Enter a league name.');break;}state.league=val;save();toast('League renamed!');break;}
       case 'remove-member':{const m=state.members.find(x=>x.id===action.dataset.id);if(m&&confirm(`Remove ${m.name} and their imported picks?`)){state.members=state.members.filter(x=>x.id!==m.id);save();renderLeague();toast('Player removed.');}break;}
       case 'install':{if(installPrompt){installPrompt.prompt();installPrompt.userChoice.finally(()=>installPrompt=null);}else toast('Use your browser menu → Add to Home screen.');break;}
-      case 'reset-all':{if(confirm('Erase all your local picks, imported friends, winners and settings? This cannot be undone.')){try{localStorage.removeItem(STORAGE_KEY);}catch(e){}state={...defaults,picks:{},results:{},members:[]};currentWeek=initialWeek();renderHeader();renderSettings();toast('Local data reset.');}break;}
+      case 'reset-all':{if(confirm('Erase all your local picks, imported friends, winners and settings? This cannot be undone.')){try{localStorage.removeItem(STORAGE_KEY);}catch(e){}state={...defaults,picks:{},results:{},members:[]};currentWeek=initialWeek();manualWeekOverride=false;renderHeader();renderSettings();toast('Local data reset.');}break;}
     }
   });
-  document.addEventListener('change',e=>{if(e.target.id==='league-week'){currentWeek=Number(e.target.value);renderLeague();}});
+  document.addEventListener('change',e=>{if(e.target.id==='league-week'){currentWeek=Number(e.target.value);manualWeekOverride=currentWeek!==initialWeek();renderLeague();}});
   document.addEventListener('keydown',e=>{if(e.key==='Enter' && (e.target.id==='display-name'||e.target.id==='league-name')){const a=e.target.id==='display-name'?'save-profile':'save-league';document.querySelector(`[data-action="${a}"]`)?.click();}});
   window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;});
   window.addEventListener('hashchange',()=>{const v=location.hash.slice(1);if(['sports','picks','basketball','baseball','league','trophies','news','teams','settings'].includes(v)&&v!==currentView)setView(v);});
   if('serviceWorker'in navigator && /^https?:$/.test(location.protocol))navigator.serviceWorker.register('./sw.js').catch(err=>console.warn('Service worker unavailable',err));
   renderHeader();setView(['sports','picks','basketball','baseball','league','trophies','news','teams','settings'].includes(location.hash.slice(1))?location.hash.slice(1):seasonLanding());
-  setInterval(()=>{if(currentView==='picks'&&document.activeElement?.id!=='sec-total-guess')renderPicks();},60000);
+  setInterval(()=>{
+    if(!manualWeekOverride){
+      const calendarWeek=initialWeek();
+      if(calendarWeek!==currentWeek){
+        currentWeek=calendarWeek;
+        if(currentView==='league')renderLeague();
+        if(currentView==='settings')renderSettings();
+      }
+    }
+    if(currentView==='picks'&&document.activeElement?.id!=='sec-total-guess')renderPicks();
+  },60000);
   // Expose the narrow integration surface used by the separate hosted league module.
   window.SEC_BRIDGE={weeks:WEEKS,gameById:GAME_BY_ID,state:()=>state,week:week,view:()=>currentView,selectedSport:()=>lastSportView,setView:setView,renderPicks:renderPicks,renderLeague:renderLeague,renderSettings:renderSettings,renderTeams:renderTeams,renderHeader:renderHeader,esc:esc,toast:toast};
   // Expose deliberately tiny read-only diagnostic surface for smoke tests.
