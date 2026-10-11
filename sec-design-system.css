@@ -1,0 +1,481 @@
+/*
+ * Saturdays Down South — SDS Broadcast Design System 2026
+ * Shared visual layer only. All account data, sports results, pick logic,
+ * and component behavior remain in their existing scripts.
+ * Load LAST after screen CSS so every screen inherits the same identity.
+ */
+
+/* ───────────────────── 01. FOUNDATION ───────────────────── */
+:root{
+  color-scheme:dark;
+  --bg:#080f1b;--bg2:#0b1928;
+  --panel:#152538;--panel2:#1a3047;--card:#101f30;
+  --border:#334961;--text:#f7f5ee;--muted:#b5c5d3;--soft:#90a7bb;
+  --lime:#f0c775;--lime-dark:#c79c53;--teal:#8ac4d7;
+  --danger:#f18d91;--round:16px;
+  --shadow:0 14px 34px #03091291;
+  --sds-gold:#f0c775;--sds-gold-light:#ffe3a4;--sds-gold-deep:#aa7740;
+  --sds-navy:#0b1726;--sds-panel:#112538;--sds-panel-raised:#192e43;
+  --sds-stroke:#354e64;--sds-stroke-soft:#273b4e;
+  --sds-success:#8ed0ae;--sds-error:#f6a0a1;
+  --sds-radius:15px;--sds-radius-lg:21px;
+  --sds-elevation:0 7px 26px #0004,inset 0 1px #d5e8f50b;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+html{scroll-padding-top:16px}
+body{
+  color:var(--text);
+  background:radial-gradient(ellipse 850px 480px at 60% -180px,#34506950,transparent 70%),
+  linear-gradient(180deg,#0c1929 0,#08121e 45%,#070e19 100%);
+  background-attachment:fixed;
+  font-variant-numeric:lining-nums;
+}
+body::selection{background:#f0c77555;color:#fff}
+.ambient-one{background:#27516a;opacity:.2}
+.ambient-two{background:#65492a;opacity:.18}
+.app-shell{max-width:1360px}
+main{padding-top:25px}
+button,input,textarea,select{font-family:inherit}
+a{text-underline-offset:3px}
+:where(button,a,input,select,textarea,summary,[role="tab"]):focus-visible{
+  outline:3px solid #ffdb91;
+  outline-offset:3px;
+}
+:where(button,select):disabled{cursor:not-allowed}
+:where(.view,.content-card,.fan-panel,.sport-game-card,.sec-news-card,.team-card,.hq-panel,.fan-fold,.sport-league-shell){min-width:0}
+:where(.view) :is(h1,h2,h3,h4){overflow-wrap:break-word}
+:where(.view) :is(p,small){line-height:1.55}
+
+/* ───────────────────── 02. NAVIGATION & IDENTITY ───────────────────── */
+.site-header{
+  min-height:82px;height:auto;padding:12px 0;gap:18px;
+  border-bottom:1px solid #57728a50;
+  position:relative;
+}
+.site-header:after{content:"";position:absolute;bottom:-1px;left:0;width:190px;max-width:45%;height:2px;
+  background:linear-gradient(90deg,#f0c775,transparent)}
+.brand{gap:12px;min-width:225px}
+.brand-mark{
+  background:linear-gradient(145deg,#ffe8aa,#d9a351);
+  color:#0b1924;border:1px solid #fff4cd70;
+  box-shadow:0 5px 18px #f2c57529,inset 0 1px #fff9d9;
+  border-radius:14px;transform:rotate(-4deg);
+}
+.brand-mark svg{transform:rotate(4deg)}
+.brand-title{font-weight:950;letter-spacing:-.65px;line-height:1.06;color:#f8f6f1}
+.brand-title>span{color:var(--sds-gold-light)}
+.brand-title small{color:#adc1d1;letter-spacing:1.7px;font-size:8px;margin-top:5px}
+.desktop-nav{
+  border:1px solid #435c73;border-radius:14px;
+  background:linear-gradient(155deg,#14283b,#0e1e30);
+  padding:4px;gap:2px;box-shadow:inset 0 1px #e4eff21b;
+}
+.nav-link{
+  border-radius:10px;min-height:41px;padding:9px 15px;
+  color:#b8cad7;font-weight:820;font-size:12px;
+}
+.nav-link:hover{background:#274158;color:#fff5dc}
+.nav-link.active{background:linear-gradient(135deg,#fce1a0,#e5b56b);color:#152537;
+  box-shadow:0 2px 9px #0005}
+.profile-chip{
+  border:1px solid #526883;max-width:220px;
+  background:linear-gradient(145deg,#22374b,#142637);color:#f8f0da;
+  padding:5px 11px 5px 5px;box-shadow:0 3px 12px #0002;
+}
+.profile-chip #header-avatar{
+  background:#4b3b2a;border:1px solid #aa8d57;
+  color:#ffdf9f;box-shadow:inset 0 1px #fbd99f4f;
+}
+.profile-chip:focus-visible{outline-color:#ffde94}
+.footer{border-color:#30475d;color:#9bb0c2;gap:12px}
+.footer a{color:#ead096}
+.toast{background:linear-gradient(145deg,#ffe1a4,#d9ae6a);color:#132438;border:1px solid #fff2c4}
+
+/* ───────────────────── 03. PAGE MASTHEADS ───────────────────── */
+.view>.eyebrow{
+  display:flex;align-items:center;gap:9px;margin:1px 0 7px;
+  color:#f1c983;font-size:10px;letter-spacing:1.55px;font-weight:900;
+}
+.eyebrow-dot{background:#f3cd7d;box-shadow:0 0 0 4px #f3cd7d22}
+.eyebrow-slash{color:#7293a6}
+.view>.page-intro{
+  position:relative;isolation:isolate;overflow:hidden;align-items:center;
+  margin:7px 0 20px;border:1px solid #3c566c;
+  border-top-color:#92784e;border-radius:18px;padding:23px 26px;
+  background:radial-gradient(ellipse at 94% 8%,#6c543552 0,transparent 47%),
+   linear-gradient(110deg,#172f46,#0e2031 67%,#0b1b2a);
+  box-shadow:var(--sds-elevation);
+}
+.view>.page-intro::after{content:"";position:absolute;right:25px;bottom:-90px;width:200px;height:200px;
+  border:1px solid #e6bc6a21;border-radius:50%;box-shadow:0 0 0 29px #e8c27610,0 0 0 60px #e3c0780a;z-index:-1}
+.view>.page-intro h1{font-size:clamp(28px,4vw,44px);line-height:1.1;
+  letter-spacing:-1.55px;margin:0 0 6px;color:#fff8e9}
+.view>.page-intro h1 em{font-style:normal;color:#f8d896}
+.view>.page-intro p{color:#bdcfe0;font-size:13px;max-width:650px}
+#basketball-view>.page-intro{background:radial-gradient(ellipse at 85% 0%,#744a335c,transparent 53%),linear-gradient(110deg,#1b3045,#0e2031)}
+#baseball-view>.page-intro{background:radial-gradient(ellipse at 85% 0%,#4d695443,transparent 53%),linear-gradient(110deg,#1b3045,#0e2031)}
+#news-view>.page-intro{background:radial-gradient(ellipse at 87% 0%,#345e6c61,transparent 58%),linear-gradient(110deg,#1b3045,#0e2031)}
+#teams-view>.page-intro{background:radial-gradient(ellipse at 87% 0%,#66563c66,transparent 58%),linear-gradient(110deg,#1b3045,#0e2031)}
+#settings-view>.page-intro,#more-view>.page-intro{
+  background:linear-gradient(120deg,#172b40,#0e2032 76%);
+}
+#home-view>.eyebrow{display:none}
+#home-view>.page-intro{display:none}
+
+/* ───────────────────── 04. GLOBAL SURFACES & CONTENT ───────────────────── */
+:where(.content-card,.summary-card,.side-card,.league-hero,.fan-panel,.fan-single-panel,.fan-format-wrap,
+.sport-hub-intro,.sport-selection,.sport-game-card,.sport-league-shell,.sport-series-preview,
+.team-record-feature,.team-record-empty,.team-card,.sec-news-card,.sec-chat-card,
+.fan-fold,.fan-bracket-section){
+  border-radius:var(--sds-radius);
+  border-color:var(--sds-stroke);
+  background-color:#112335;
+  box-shadow:var(--sds-elevation);
+}
+:where(.content-card,.summary-card,.side-card,.sport-league-shell,.fan-panel,.fan-format-wrap){background-image:linear-gradient(140deg,#192e407d,#0d1c2c30)}
+:where(.content-card,.fan-panel,.sport-game-card,.team-card,.game-card){transition:border-color .16s ease,background-color .16s ease}
+:where(.content-card,.fan-panel,.sport-game-card,.team-card,.game-card):hover{border-color:#5b7691}
+.card-kicker,
+:where(.section-title-row .overline,.sport-kicker,.record-eyebrow,.fan-kicker){
+  font-size:10px;letter-spacing:1.5px;font-weight:950;color:var(--sds-gold);
+}
+:where(.view) :is(.section-title-row h2,.content-card h2,.fan-panel h2,.sport-heading h2){
+  letter-spacing:-.55px;
+}
+:where(.view) :is(.muted,.helper,.source-note,.fan-subtle,.sport-note){color:#aabfcf}
+:where(.view) :is(.primary-btn,.sport-current-badge,.fan-primary,.sport-week-button.active,
+.fan-format-card.active,.global-sport-button.active,.fan-sport-choice.active){
+  border-color:#f3d18b;
+}
+:where(.primary-btn,.fan-primary,.sport-week-button.active,
+.global-sport-button.active,.fan-sport-choice.active,.fan-format-card.active){
+  background:linear-gradient(145deg,#ffe2a1,#dbad62);
+  color:#122536;
+}
+:where(.primary-btn,.fan-primary):hover:not(:disabled){background:linear-gradient(145deg,#fff0bc,#e9c37f)}
+:where(.ghost-btn,.sport-change-btn,.fan-small):not(.fan-primary){
+  border-color:#4b6579;color:#f4dfb4;
+  background:#1b3043;
+}
+:where(.ghost-btn,.sport-change-btn,.fan-small):hover:not(:disabled){border-color:#dfba7a;background:#263d54}
+:where(.field,input,select,textarea):not([type="checkbox"]):not([type="radio"]){
+  accent-color:var(--sds-gold);
+}
+:where(.field,.fan-league-select,.sport-confidence select,.sport-series-margin select){
+  background:#0d2131;border:1px solid #516a7f;border-radius:10px;
+  color:#f7f2e8;
+}
+:where(.field,.fan-league-select):focus{border-color:#e7c17a;box-shadow:0 0 0 3px #e2b86c24;outline:0}
+input[type="checkbox"],input[type="radio"]{accent-color:#e3b66e}
+:where(.content-card,.fan-panel,.fan-fold,.sport-league-shell) :is(label,summary){color:#dfebf4}
+:where(.help-note,.sport-notice){background:#b39b5b12;border-color:#a08d5a55;color:#e5d1a4}
+:where(.empty-state,.sport-empty){background:#112538;color:#bbccdb;border-color:#4b6073}
+:where(.divider){background:#344a5e}
+:where(.week-pill,.sport-week-button){border-color:#415d72;background:#172e43;color:#c5d6e2}
+:where(.week-pill,.sport-week-button):hover{border-color:#f3cb7e}
+:where(.week-pill.active,.sport-week-button.active){color:#142635;background:linear-gradient(135deg,#ffe2a7,#e1b46d);border-color:#f6d897}
+:where(.week-pill.active,.sport-week-button.active) small{color:#374556}
+:where(.section-title-row){margin-top:22px}
+:where(.section-title-row .overline,.sport-mode-label){color:#eac880}
+
+/* ───────────────────── 05. FOOTBALL PICKS ───────────────────── */
+#picks-view .global-sport-switch,
+#picks-view .slate-pick-tools,
+#picks-view .sec-live-score-strip{
+  border-color:#3a556d;background:#112638;
+}
+#picks-view .global-sport-button.active{color:#14283b;background:linear-gradient(140deg,#f7d999,#dda963);border-color:#f6db9d}
+#picks-view .global-sport-button.active .global-season-dot{background:#152a3a;color:#ffe4a8}
+#picks-view .spotlight{
+  min-height:210px;padding:23px;
+  background:radial-gradient(circle at 89% 0%,#9e743958 0,transparent 46%),
+    linear-gradient(124deg,#243a50,#112737 76%);
+  border:1px solid #b28c526e;box-shadow:var(--sds-elevation);
+}
+#picks-view .spotlight:after{border-color:#f0ce8030;box-shadow:0 0 0 30px #f0cf7910,0 0 0 65px #f1c77a09}
+#picks-view .spotlight-top,#picks-view .spotlight-title span{color:#f2d28e}
+#picks-view .spotlight-team.chosen{background:#d9b978;color:#142435;border-color:#ffdda0}
+#picks-view .game-card{background:linear-gradient(145deg,#14293b,#0e1e2e);border-color:#3a5369;border-radius:13px}
+#picks-view .game-card:hover{border-color:#7b9aae}
+#picks-view .game-index strong{color:#f3cd82}
+#picks-view .team-choice{background:#1a3144;border-color:#435c74;border-radius:11px;min-height:62px}
+#picks-view .team-choice:hover:not(:disabled){background:#29435a;border-color:#e0bc7e}
+#picks-view .team-choice.selected{background:linear-gradient(145deg,#3e382c,#253a42);border-color:#e5c07a;box-shadow:inset 0 0 0 1px #f9d89724}
+#picks-view .team-choice.selected .select-mark{background:#f0c775;border-color:#f0c775;color:#0e2334}
+#picks-view .lock-tag{background:#25392f;color:#a9e0bb;border-color:#58876d}
+#picks-view .lock-tag.locked{background:#392532;color:#ffa7a4;border-color:#8e4d56}
+#picks-view .summary-card{background:linear-gradient(145deg,#20364b,#0f2032);border-color:#6a6d64}
+#picks-view .progress-track{background:#32485a}
+#picks-view .progress-track>span{background:linear-gradient(90deg,#b99150,#ffe1a1)}
+#picks-view .progress-label{color:#ffdfa2}
+#picks-view .summary-card .primary-btn{background:linear-gradient(145deg,#ffe0a2,#deb36d)}
+#picks-view .rules-card{border-color:#334b60;background:#142638}
+#picks-view .rules-card h3 span,#picks-view .rule-number,#picks-view .inline-link{color:#f3cf8a}
+#picks-view .team-choice.selected .team-nick{color:#d1dfe0}
+#picks-view .sec-final-card .sec-final-winner-label{background:#b1dfc2;color:#163b2b}
+#picks-view .sec-final-card .sec-final-team.is-winner{border-color:#69aa88}
+#picks-view .sec-final-card .sec-final-team.is-winner .sec-final-team-score{color:#b4f1cb}
+#picks-view .sec-final-card .sec-final-metric strong.correct,
+#picks-view .sec-final-card .sec-final-metric strong.success{color:#a0ddb2}
+
+/* ───────────────────── 06. BASKETBALL / BASEBALL ───────────────────── */
+#sports-view .sport-hub-intro{
+  background:radial-gradient(ellipse at 90% 0,#815c3d56,transparent 60%),linear-gradient(130deg,#21394d,#102638);
+  border-color:#89724f;
+}
+#sports-view .sport-selection{
+  min-height:246px;
+  background:linear-gradient(148deg,#182e45,#0e2033);
+  border-color:#435d71;
+}
+#sports-view .sport-selection.is-current{
+  border-color:#e8c078;
+  background:radial-gradient(circle at 90% 5%,#bc86454d,transparent 60%),linear-gradient(150deg,#273949,#112235);
+}
+#sports-view .sport-selection:hover{border-color:#ecc67f}
+#sports-view .sport-large-icon{filter:drop-shadow(0 6px 10px #0005)}
+#sports-view .sport-current-badge{background:#efd18f;color:#172738}
+#sports-view .sport-selection-footer span,#sports-view .sport-season-pill{color:#ffdc98!important}
+:where(#basketball-view,#baseball-view) .sport-heading{
+  background:linear-gradient(125deg,#21384c,#12273b);
+  border-color:#566a79;border-top-color:#b48a54;
+}
+:where(#basketball-view,#baseball-view) .sport-league-shell{
+  background:linear-gradient(145deg,#182e40,#101f31);
+  border-color:#405a6e;
+}
+:where(#basketball-view,#baseball-view) .sport-game-card{
+  border:1px solid #3f5972;
+  border-radius:13px;padding:15px;
+  background:linear-gradient(150deg,#1b3044,#102235);
+}
+:where(#basketball-view,#baseball-view) .sport-game-card:hover{border-color:#dabb78}
+:where(#basketball-view,#baseball-view) .sport-team-option{background:#162d41;border-color:#466278}
+:where(#basketball-view,#baseball-view) .sport-team-option.selected{background:#3e392b;border-color:#e5c17c}
+:where(#basketball-view,#baseball-view) .sport-tiebreak{
+  background:linear-gradient(140deg,#293a38,#102b36);border-color:#917850;
+}
+:where(#basketball-view,#baseball-view) .sport-games-grid{gap:13px}
+:where(#basketball-view,#baseball-view) .sport-score-scroll{border-color:#3f5770}
+:where(#basketball-view,#baseball-view) .sport-standings th{background:#203950;color:#e4e8ed}
+:where(#basketball-view,#baseball-view) .sport-week-button.active{background:#f5cf86;color:#172637}
+:where(#basketball-view,#baseball-view) .sport-current-league{background:#203b42;border-color:#5a7783}
+:where(#basketball-view,#baseball-view) .sport-empty{padding:33px 16px}
+:where(#basketball-view,#baseball-view) .sport-mode-label{color:#f1ca85}
+
+/* ───────────────────── 07. LEAGUES & COMMUNITY ───────────────────── */
+#league-view .fan-league-summary{
+  background:linear-gradient(120deg,#1c3044,#10283a);border:1px solid #587187;
+  border-top-color:#9e8052;border-radius:16px;box-shadow:var(--sds-elevation);
+}
+#league-view .fan-league-title-row h2{font-weight:930;color:#fff0d2}
+#league-view .fan-league-tabs{
+  background:#101f32;border:1px solid #445d74;
+  border-radius:12px;padding:4px;box-shadow:0 5px 15px #0003;
+}
+#league-view .fan-league-tabs button{color:#bbd0dd;border-radius:9px}
+#league-view .fan-league-tabs button.active{
+  background:linear-gradient(135deg,#fce1a2,#e0b06a);color:#142638;
+  box-shadow:0 3px 9px #0005;
+}
+#league-view :is(.fan-fold,.fan-panel,.fan-club-focus,.sec-chat-card,
+ .fan-brag-arena,.league-hero,.sport-current-league,.fan-league-drawer){
+  border-color:#445e71;background-color:#13293b;border-radius:13px;
+}
+#league-view .fan-club-focus{background:linear-gradient(142deg,#1a3347,#0d2030)}
+#league-view .fan-football-scoreboard .content-card{background:#12283b;border-color:#3f5b72}
+#league-view .fan-sport-tag,#league-view .sec-school-badge{
+  background:#4b3f2f;border-color:#8c7956;color:#ffe3a1;
+}
+#league-view :is(.fan-table,.sport-standings,.leaderboard){border-color:#3c5468}
+#league-view :is(.fan-table th,.sport-standings th,.standing-row.head){
+  background:#1b3449;color:#c7d9e6;
+}
+#league-view :is(.fan-table td,.sport-standings td,.standing-row){border-color:#30475c}
+#league-view .standing-row .score,#league-view .standing-row .rank{color:#f4cf8b}
+#league-view :is(.fan-format-card.active,.fan-sport-choice.active,.fan-sport-checkbox input:checked+span){
+  background:#f3cd83;border-color:#f5dca4;color:#172639;
+}
+#league-view .fan-player-expander{border-color:#456479;background:#112638}
+#league-view .fan-player-expander>summary{color:#f2d38f}
+#league-view .sec-chat-feed{scrollbar-color:#577c96 #15283a}
+#league-view .sec-chat-card{background:linear-gradient(140deg,#193246,#0f2334)}
+
+/* ───────────────────── 08. TROPHY ROOM ───────────────────── */
+#trophies-view #sds-trophy-case.sds-museum{
+  background:radial-gradient(ellipse at 50% 0,#27425b 0,transparent 40%),
+  linear-gradient(150deg,#101c2b,#081321 70%);
+  border-color:#415973;border-top-color:#a48754;
+  border-radius:20px;box-shadow:var(--sds-elevation);
+}
+#trophies-view .sds-museum .museum-sports{
+  background:#0c1d2d;border-color:#486179;border-radius:12px;
+}
+#trophies-view .sds-museum .museum-sports button.active{
+  color:#152536;background:linear-gradient(140deg,#ffe6a9,#e6b66e);
+}
+#trophies-view .sds-museum .legacy-overview{border-color:#957d50;border-radius:16px}
+#trophies-view .sds-museum .legacy-case{border-color:#466077;border-radius:13px}
+#trophies-view .sds-museum .legacy-case[open]{border-color:#ba9761}
+#trophies-view .sds-museum .museum-champ.earned{border-color:#d9b56f}
+#trophies-view .sds-museum .museum-caption strong{color:#ffe2aa}
+#trophies-view .sds-museum .museum-champ{overflow:hidden}
+
+/* ───────────────────── 09. NEWS & SCHOOL PAGES ───────────────────── */
+#news-view :is(.sec-news-head,.sec-recap-card,.sec-news-card){
+  border-color:#46637a;border-radius:14px;
+  background-color:#13283c;
+}
+#news-view .sec-news-head{
+  background:radial-gradient(ellipse at 95% 0,#54747f4d,transparent 58%),linear-gradient(145deg,#1b3549,#122639);
+}
+#news-view .sec-news-card{
+  background:linear-gradient(145deg,#192e43,#102337);
+  box-shadow:var(--sds-elevation);
+}
+#news-view .sec-news-card:hover{border-color:#c69d63}
+#news-view .sec-news-controls{
+  border-color:#3f5b71;background:#112639;border-radius:13px;
+}
+#news-view :is(.sec-news-filter,.sec-news-sport-choice,.sec-news-school,.sec-news-search){
+  border-color:#48647b;background:#162e42;color:#dce9f1;
+}
+#news-view :is(.sec-news-filter.active,.sec-news-sport-choice.active,[aria-pressed="true"].sec-news-filter){
+  background:#f0cb83;color:#152637;border-color:#f8dda3;
+}
+#news-view .sec-news-card :is(h3,h4){color:#fff0d4}
+#news-view .sec-news-card :is(a,.sec-news-source){color:#f3d18b}
+#teams-view .team-record-feature{
+  border-color:#92734c;background:radial-gradient(ellipse at 88% 0,#89683c50,transparent 55%),linear-gradient(145deg,#1e3649,#102538);
+}
+#teams-view .team-record-sport{border-color:#486278;background:#11283b;border-radius:13px}
+#teams-view .team-record-empty{border-color:#526980;background:#142b3d}
+#teams-view .teams-grid{gap:13px}
+#teams-view .team-card{
+  border:1px solid #415b72;background:linear-gradient(145deg,#172c40,#102234);
+  border-radius:14px;box-shadow:var(--sds-elevation);
+}
+#teams-view .team-card.favorite{
+  border-color:#d5ad69;background:linear-gradient(145deg,#24333c,#12263a);
+  box-shadow:inset 0 0 0 1px #d9b77435,0 7px 25px #0004;
+}
+#teams-view .team-card:hover{border-color:#e0bb79;transform:translateY(-1px)}
+#teams-view .favorite-btn{border-color:#5e778a;background:#233b50;color:#e0ecf2}
+#teams-view .favorite-btn.active{
+  border-color:#eed092;background:#5f4b2a;color:#ffe4a4;
+}
+#teams-view .team-record-resources a{border-color:#516c7e;color:#e5c888}
+
+/* ───────────────────── 10. SETTINGS & MORE ───────────────────── */
+#more-view .hq-more-card{
+  min-height:154px;border-color:#4c6881;
+  background:radial-gradient(circle at 100% 0,#6e583838,transparent 56%),linear-gradient(145deg,#20384c,#112538);
+  box-shadow:var(--sds-elevation);
+}
+#more-view .hq-more-card:hover{border-color:#e5c07e;background-color:#263f50}
+#more-view .hq-more-card strong{color:#ffe0a5}
+#settings-view .setting-stack{gap:13px}
+#settings-view .content-card{
+  border-color:#425e75;background:linear-gradient(145deg,#182f44,#0f2235);
+  border-radius:15px;
+}
+#settings-view .content-card h2{color:#ffe4ae}
+#settings-view .content-card :is(.field,select,textarea,input){max-width:100%}
+#settings-view .help-note{background:#b59b5b12}
+.auth-tabs{background:#0f2234;border-color:#496176}
+.auth-tab.active{background:#f0cd84;color:#162739}
+
+/* ───────────────────── 11. MOBILE FIT & ACCESSIBILITY ───────────────────── */
+@media(max-width:1050px){
+ .app-shell{padding-left:26px;padding-right:26px}
+ .nav-link{padding:9px 10px}
+ #sports-view .sport-selection{min-height:198px}
+}
+@media(max-width:790px){
+ html{scroll-behavior:auto}
+ body{background-attachment:scroll}
+ main{padding:15px 0 80px}
+ .app-shell{padding-left:18px;padding-right:18px}
+ .site-header{min-height:66px;padding:9px 0}
+ .brand{min-width:0}
+ .brand-title small{letter-spacing:1.2px}
+ .profile-chip{margin-left:auto}
+ .bottom-nav{
+   border-top:1px solid #59728a;
+   background:#0b1b2beb;backdrop-filter:blur(18px);
+   padding:5px max(7px,env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom))
+      max(7px,env(safe-area-inset-left));
+   box-shadow:0 -12px 28px #050d1baa;min-height:65px;
+ }
+ .mobile-nav-btn{min-height:51px;border-radius:11px;color:#afc4d2;gap:3px}
+ .mobile-nav-btn.active{background:#a078392e;color:#ffdf9d}
+ .mobile-nav-btn svg{stroke-width:1.95}
+ .view>.page-intro{padding:15px 16px;margin:7px 0 15px;border-radius:14px}
+ .view>.page-intro h1{font-size:clamp(27px,6vw,35px);letter-spacing:-1.25px}
+ .view>.page-intro p{font-size:12px}
+ .view>.eyebrow{font-size:9px;letter-spacing:1px}
+ .content-card{padding:15px}
+ #picks-view .picks-layout{grid-template-columns:1fr;gap:12px}
+ #picks-view .spotlight{min-height:0;padding:16px}
+ /* Keep football week carousel within mobile content width (legacy -15px gutter). */
+ #picks-view .week-picker{
+   margin-right:0;margin-left:0;width:100%;max-width:100%;min-width:0;
+   padding:1px 1px 11px;overflow-x:auto;overscroll-behavior-x:contain;
+ }
+ #picks-view .week-pill{flex:0 0 auto}
+ #picks-view .spotlight-title{font-size:24px;margin:10px 0 6px}
+ #picks-view .game-card{padding:12px 10px}
+ #picks-view .section-title-row{margin:17px 0 11px}
+ #picks-view .side-column{grid-template-columns:1fr}
+ #picks-view .source-note{font-size:10px}
+ #league-view .fan-league-tabs{top:0}
+ #league-view .fan-league-tabs button{min-height:43px}
+ #teams-view .team-card{padding:12px}
+ #sports-view .sport-selection{min-height:148px;padding:16px}
+ #sports-view .sport-selection h3{font-size:21px}
+ #sports-view .sport-large-icon{font-size:34px}
+ #sports-view .sport-hub-intro{padding:15px}
+ :where(#basketball-view,#baseball-view) .sport-heading{padding:15px}
+ :where(#basketball-view,#baseball-view) .sport-game-card{padding:12px}
+ :where(#basketball-view,#baseball-view) .sport-games-grid{gap:9px}
+ #trophies-view #sds-trophy-case.sds-museum{border-radius:15px;padding:13px 10px 18px}
+ #news-view .sec-news-controls{padding:10px}
+ #more-view .hq-more-grid{gap:8px}
+ #more-view .hq-more-card{min-height:106px}
+}
+@media(max-width:540px){
+ .app-shell{padding-left:13px;padding-right:13px}
+ .site-header{min-height:62px}
+ .brand-mark{width:38px;height:38px;border-radius:12px}
+ .brand-mark svg{width:25px;height:25px}
+ .brand-title{font-size:14px}
+ .brand-title small{font-size:7px;letter-spacing:.65px;margin-top:3px}
+ .view>.eyebrow{gap:6px;margin:0 0 5px}
+ .view>.page-intro{padding:13px 14px;margin:5px 0 12px}
+ .view>.page-intro h1{font-size:28px;margin-bottom:4px}
+ .view>.page-intro p{font-size:11px;line-height:1.45}
+ .page-intro .intro-side{margin-top:7px}
+ .team-card .team-card-top{margin-bottom:10px}
+ #teams-view .teams-grid{gap:7px}
+ #teams-view .team-card h3{font-size:12px}
+ #teams-view .team-card .city{margin-top:8px}
+ #news-view .sec-news-card{padding:13px}
+ #picks-view .team-choice{min-height:60px}
+ #picks-view .summary-card,#picks-view .side-card{padding:14px}
+ .footer{padding-bottom:105px;line-height:1.45}
+ #more-view .hq-more-card{border-radius:12px}
+ #league-view .fan-league-tabs button{font-size:10px;white-space:nowrap}
+ #settings-view .content-card{padding:14px}
+}
+@media(max-width:365px){
+ .app-shell{padding-left:11px;padding-right:11px}
+ .brand{gap:7px}
+ .brand-title{font-size:13px}
+ .brand-title small{font-size:6px}
+ .profile-chip{padding:3px}
+ .mobile-nav-btn{font-size:9px}
+ .view>.page-intro h1{font-size:25px}
+}
+@media(prefers-reduced-motion:reduce){
+ :where(.game-card,.content-card,.sport-game-card,.team-card){transition:none}
+}

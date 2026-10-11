@@ -35,6 +35,14 @@ fs.mkdirSync(output,{recursive:true});
      return {route:id,width,pageWidth:document.documentElement.scrollWidth,
       active:!el.classList.contains("hidden")&&el.getBoundingClientRect().width>0,
       heading:!!el.querySelector("h1"),navCount:buttons.length,
+      designToken:getComputedStyle(document.documentElement).getPropertyValue("--sds-gold").trim(),
+      brandColor:getComputedStyle(document.querySelector(".brand-title>span")).color,
+      sectionHeader:(()=>{
+       const intro=el.querySelector(":scope > .page-intro");
+       return intro?{visible:getComputedStyle(intro).display!=="none",
+        border:getComputedStyle(intro).borderTopColor,
+        height:Math.round(intro.getBoundingClientRect().height)}:null;
+      })(),
       navVisible:getComputedStyle(nav).display!=="none",isMobile,
       navWithin:buttons.every(x=>{const r=x.getBoundingClientRect();return r.left>=-2&&r.right<=width+2&&r.width>16}),
       navFits:nr.left>=-2&&nr.right<=width+2,
@@ -54,6 +62,14 @@ fs.mkdirSync(output,{recursive:true});
     if(audit.isMobile&&!audit.navVisible)problems.push(prefix+" mobile nav hidden");
     if(audit.isMobile&&(!audit.navFits||!audit.navWithin))problems.push(prefix+" clipped nav: "+JSON.stringify(audit.navRect));
     if(!audit.isMobile&&audit.navVisible)problems.push(prefix+" mobile nav on desktop");
+    if(audit.designToken!=="#f0c775")
+     problems.push(prefix+" wrong shared broadcast color token: "+audit.designToken);
+    if(audit.brandColor!=="rgb(255, 227, 164)")
+     problems.push(prefix+" mismatched Saturdays Down South header accent: "+audit.brandColor);
+    if(!["home","trophies"].includes(route)&&
+       (!audit.sectionHeader?.visible||audit.sectionHeader.height<60))
+     problems.push(prefix+" missing redesigned section masthead: "+JSON.stringify(audit.sectionHeader));
+
     if(route==="home"){
      const hq=await page.evaluate(()=>{
       const root=document.getElementById("sec-home-root");
