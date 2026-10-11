@@ -1,127 +1,116 @@
 {
-  "updated_at": "2026-10-10T21:48:22.889000Z",
-  "checked_at": "2026-10-10T21:48:22.889000Z",
+  "updated_at": "2026-10-11T01:01:44.755187Z",
+  "checked_at": "2026-10-11T01:01:44.755187Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "1e9a9e6430ea5fb0",
-      "title": "LaNorris Sellers sparks South Carolina rout of No. 16 Florida",
-      "summary": "LaNorris Sellers accounted for five TDs as South Carolina stunned No. 16 Florida to end an eight-game SEC skid and take some heat off embattled coach Shane Beamer.",
-      "url": "https://www.espn.com/college-football/story/_/id/50150629/lanorris-sellers-sparks-south-carolina-rout-no-16-florida",
+      "id": "8d01a4b5c7eb0d23",
+      "title": "Oklahoma's jab at Texas tops trolls from Week 6 in college football",
+      "summary": "Oklahoma made sure to troll its rivals after Tate Sandell's winning kick sailed through the uprights.",
+      "url": "https://www.espn.com/college-football/story/_/id/50149322/college-football-trolls-week-6",
       "source": "ESPN",
-      "published_at": "2026-10-10T21:17:54Z",
+      "published_at": "2026-10-11T00:45:55Z",
       "sport": "football",
       "teams": [
-        "Florida",
-        "South Carolina"
+        "Oklahoma",
+        "Texas"
       ],
       "breaking": false
     },
     {
-      "id": "73042af10f53ee15",
-      "title": "South Carolina State Bulldogs vs. Charleston Southern Buccaneers: Full Highlights",
+      "id": "d867aa158007de28",
+      "title": "Oklahoma stuns No. 1 Texas in last second in Red River Rivalry",
+      "summary": "Oklahoma kicks a late field goal to hand No. 1 Texas its first loss of the season, 27-24 in the Red River rivalry.",
+      "url": "https://www.espn.com/college-football/story/_/id/50151802/oklahoma-stuns-no-1-texas-last-second-fg-red-river",
+      "source": "ESPN",
+      "published_at": "2026-10-11T00:18:33Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "05f32d28b35e33be",
+      "title": "Heupel is pleased with Vols' resilience, MacIntyre's game control",
+      "summary": "Josh Heupel evaluates the Vols' toughness against the Razorbacks as he commends their full-game fight and George MacIntyre's impressive QB performance.",
+      "url": "https://www.espn.com/video/clip/_/id/50152178/heupel-pleased-vols-resilience-macintyre-game-control",
+      "source": "ESPN",
+      "published_at": "2026-10-11T00:15:48Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "56f9f0e6af4d019a",
+      "title": "Ole Miss Rebels vs. Vanderbilt Commodores: Full Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50150926/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50151764/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-10T21:17:47Z",
+      "published_at": "2026-10-11T00:06:49Z",
       "sport": "football",
       "teams": [
-        "Georgia"
+        "Ole Miss",
+        "Vanderbilt"
       ],
       "breaking": false
     },
     {
-      "id": "89906e7bc4f9a4d4",
-      "title": "Shane Beamer beams after Gamecocks' upset win over No. 14 Florida",
-      "summary": "Beamer celebrates the Gamecocks answering the call with a big SEC win and credits South Carolina's culture for keeping his players resilient through a tough start.",
-      "url": "https://www.espn.com/video/clip/_/id/50150895/shane-beamer-beams-gamecocks-upset-win-no-14-florida",
-      "source": "ESPN",
-      "published_at": "2026-10-10T21:16:02Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "de99086f69a48537",
-      "title": "South Carolina Gamecocks vs. Florida Gators: Full Highlights",
+      "id": "146239a690435d9b",
+      "title": "Texas Longhorns vs. Oklahoma Sooners: Full Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50150746/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50151907/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-10T21:02:27Z",
+      "published_at": "2026-10-11T00:00:36Z",
       "sport": "football",
       "teams": [
-        "Florida",
-        "South Carolina"
+        "Oklahoma",
+        "Texas"
       ],
       "breaking": false
     },
     {
-      "id": "a951ce07d83b2df0",
-      "title": "LaNorris Sellers credits Gamecocks teammates for making plays in win",
-      "summary": "Sellers discusses how South Carolina weathered the extra long halftime delay and shouts out his teammates for finding a way to win.",
-      "url": "https://www.espn.com/video/clip/_/id/50150702/lanorris-sellers-credits-gamecocks-teammates-making-plays-win",
-      "source": "ESPN",
-      "published_at": "2026-10-10T21:01:14Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c7383a3cbdacfb20",
-      "title": "South Carolina tops No. 16 Florida, North Carolina takes down No. 25 Pitt in top 25 upsets",
-      "summary": "There’s a lot of benefits that come with being a Top 25 team, but immunity isn’t one of them.",
-      "url": "https://www.ncaa.com/news/football/article/2026-10-10/south-carolina-tops-no-16-florida-north-carolina-takes-down-no-25-pitt-top-25-upsets",
+      "id": "0602cf9ede3f2d23",
+      "title": "Oklahoma stuns No. 1 Texas in a Red River Rivalry thriller",
+      "summary": "Oklahoma stunned No. 1 Texas, 27-24, winning its biggest game of the season and shocking the top-ranked team in the country with a game-winning field goal. It's the first Red River Rivalry win for OU since 2023.",
+      "url": "https://www.ncaa.com/news/football/article/2026-10-10/oklahoma-stuns-no-1-texas-red-river-rivalry-thriller",
       "source": "NCAA",
-      "published_at": "2026-10-10T20:38:35Z",
+      "published_at": "2026-10-10T23:54:02Z",
       "sport": "football",
       "teams": [
-        "Florida",
-        "South Carolina"
+        "Oklahoma",
+        "Texas"
       ],
       "breaking": false
     },
     {
-      "id": "fef3feb850edbc2b",
-      "title": "Texas A&M Aggies vs. Missouri Tigers: Full Highlights",
+      "id": "c3457b17c9401f14",
+      "title": "Tennessee Volunteers vs. Arkansas Razorbacks: Full Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50150141/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50151890/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-10T20:32:58Z",
+      "published_at": "2026-10-10T23:43:47Z",
       "sport": "football",
       "teams": [
-        "Missouri",
-        "Texas A&M"
+        "Arkansas",
+        "Tennessee"
       ],
       "breaking": false
     },
     {
-      "id": "e4b22db39168b1ea",
-      "title": "San Diego Toreros vs. Butler Bulldogs: Full Highlights",
+      "id": "04babaedb15cecf8",
+      "title": "Houston Cougars vs. Kansas State Wildcats: Full Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50150244/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50151710/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-10T20:21:03Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4c7eb1fce4c5916c",
-      "title": "Ball State Cardinals vs. Northwestern Wildcats: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50150102/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-10T20:14:38Z",
+      "published_at": "2026-10-10T23:28:47Z",
       "sport": "football",
       "teams": [
         "Kentucky"
@@ -129,43 +118,29 @@
       "breaking": false
     },
     {
-      "id": "c717af84644efd21",
-      "title": "East Tennessee State Buccaneers vs. The Citadel Bulldogs: Full Highlights",
+      "id": "988fcb51a78e67b8",
+      "title": "Furman Paladins vs. Tennessee Tech Golden Eagles: Full Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50150109/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50151529/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-10T20:11:27Z",
+      "published_at": "2026-10-10T23:01:59Z",
       "sport": "football",
       "teams": [
-        "Georgia",
         "Tennessee"
       ],
       "breaking": false
     },
     {
-      "id": "29e222d552ab7470",
-      "title": "Samford Bulldogs vs. Chattanooga Mocs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50149992/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-10T19:58:57Z",
+      "id": "262a13d06e2efff4",
+      "title": "UCLA, South Carolina and North Carolina pull off top-25 upsets on the road",
+      "summary": "There’s a lot of benefits that come with being a Top 25 team, but immunity isn’t one of them.",
+      "url": "https://www.ncaa.com/news/football/article/2026-10-10/ucla-south-carolina-and-north-carolina-pull-top-25-upsets-road",
+      "source": "NCAA",
+      "published_at": "2026-10-10T20:38:35Z",
       "sport": "football",
       "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "29438450f25b9bc1",
-      "title": "Jamal Roberts says Tigers were motivated to get revenge vs. Texas A&M",
-      "summary": "Roberts explains why he and his teammates were motivated to defend home field against the Aggies while saying how grateful he is for the opportunity to play at Missouri.",
-      "url": "https://www.espn.com/video/clip/_/id/50149948/jamal-roberts-says-tigers-were-motivated-get-revenge-vs-texas-am",
-      "source": "ESPN",
-      "published_at": "2026-10-10T19:54:22Z",
-      "sport": "football",
-      "teams": [
-        "Missouri",
-        "Texas A&M"
+        "Florida",
+        "South Carolina"
       ],
       "breaking": false
     },
@@ -181,59 +156,6 @@
         "Ole Miss"
       ],
       "breaking": true
-    },
-    {
-      "id": "4d973877a67c12fa",
-      "title": "Dartmouth Big Green vs. Yale Bulldogs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50149790/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-10T19:29:12Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1d05981183e2a999",
-      "title": "Bryant Bulldogs vs. Brown Bears: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50149708/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-10T19:19:16Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0bd05d7aad948489",
-      "title": "Davidson Wildcats vs. Presbyterian Blue Hose: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50149702/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-10T19:18:24Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ef92b3dd36938471",
-      "title": "Pat McAfee goes full heel with his Georgia-Alabama pick",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50148435/pat-mcafee-goes-full-heel-georgia-alabama-pick",
-      "source": "ESPN",
-      "published_at": "2026-10-10T16:24:27Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
     },
     {
       "id": "b22b2a3947d028f6",
