@@ -74,9 +74,15 @@ function scoreLine(g){
 const ranking=(code,sport)=>window.SEC_RANKINGS?.rank?.(code,sport)||null;
 const records=(code,sport)=>window.SEC_TEAM_RECORDS?.entry?.(code,sport)||null;
 let pickedGame=null,pickedTeam=null,selectedWeek=null,gameTab="game",newsTab="news",lastRendered="",timer=null;
-function selectTeam(code){if(verifiedId(code))pickedTeam=code;return pickedTeam||favorite();}
-function openTeam(code){
+let accountScope=null;
+function selectTeam(code){
+ const owner=window.secOnline?.configured===true?(user()?.id||"guest"):"offline";
+ if(owner!==accountScope){pickedTeam=null;accountScope=owner;}
  if(verifiedId(code))pickedTeam=code;
+ return pickedTeam||favorite();
+}
+function openTeam(code){
+ selectTeam(code);
  app()?.setView?.("team-hub");
 }
 function openGame(id){
@@ -382,4 +388,6 @@ document.addEventListener("visibilitychange",()=>{if(document.visibilityState===
 }});
 window.SEC_PREMIUM=Object.freeze({mount,openTeam,openGame,openResults,teamHub,gameCenter,teamNews,results,
  resultDetails,movers,storiesFor,chooseGame});
+const first=app()?.view?.();
+if(["team-hub","game-center","results","team-news"].includes(first))mount(first);
 })();
