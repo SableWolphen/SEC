@@ -11,7 +11,7 @@ const paths=["home","team-hub","game-center","results","team-news","sports","pic
 const selected=html.match(/<link rel="stylesheet" href="[^"]+"/g)||[];
 assert.equal(selected.at(-2),'<link rel="stylesheet" href="./sec-design-system.css?v=20261011-broadcast-v1"',
  "broadcast design tokens must load before the approved stadium skin");
-assert.equal(selected.at(-1),'<link rel="stylesheet" href="./sds-showcase.css?v=20261011-neutral-v1"',
+assert.equal(selected.at(-1),'<link rel="stylesheet" href="./sds-showcase.css?v=20261011-abbreviations-v1"',
  "approved ten-screen visual layer must load last");
 assert.match(css,/--sds-gold:#f0c775/);
 assert.match(css,/--sds-panel:#112538/);
