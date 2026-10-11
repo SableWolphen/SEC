@@ -44,6 +44,9 @@ function discovery(model){
  '<div class="hq-feature-kicker"><span>⭐ YOUR TEAM</span><span>Follow your school</span></div>'+
  '<div class="hq-school-content"><span class="hq-school-emblem" aria-hidden="true">'+schoolLabel+'</span><div>'+
  '<h3>'+(school?esc(name):"Pick your SEC school")+'</h3>'+
+ (school&&window.SEC_RANKINGS?.hasCurrent?.("football")?
+  '<div class="sds-favorite-rank">'+window.SEC_RANKINGS.badge(school,"football")+
+   window.SEC_RANKINGS.sourceLink("football")+'</div>':"")+
  '<p>'+(school?(model.favoriteRecord?"Football · "+esc(model.favoriteRecord)+" overall":
  "Your SEC school, across all three sports."):
  "Choose a school for personalized news, records, and your league badge.")+'</p></div></div>'+
