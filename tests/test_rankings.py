@@ -79,6 +79,27 @@ class RankingTests(unittest.TestCase):
   p["rankings"][0]["ranks"][0]["team"]={"id":"123456","displayName":"Alabama Crimson Tide"}
   rank=polls.parse_poll(p,"football",NOW)
   self.assertNotIn("ALA",rank["teams"],"ID mismatch must not map by displayName alone")
+ def test_official_ncaa_baseball_fallback_with_exact_labels(self):
+  names=["Oklahoma","North Carolina","Georgia","West Virginia","Texas",
+         "Alabama","Ole Miss","Troy","Auburn","Georgia Tech"] + [
+         "Verified University "+str(i) for i in range(11,26)]
+  rows="".join("<tr><td>"+str(i)+"</td><td>"+name+"</td><td>38-12</td><td>NR</td></tr>"
+               for i,name in enumerate(names,1))
+  html=("<html><body><h2>D1Baseball.com Top 25</h2><p>Through Games JUN. 23, 2026</p>"+("<span>poll</span>"*30)+
+       "<table><thead><tr><th>RANK</th><th>TEAM</th><th>OVERALL RECORD</th><th>PREVIOUS RANK</th></tr></thead><tbody>"+rows+"</tbody></table></body></html>")
+  parsed=polls.parse_ncaa_baseball(html,NOW)
+  self.assertIsNotNone(parsed)
+  self.assertEqual(parsed["source"],"NCAA")
+  self.assertEqual(parsed["poll"],"D1Baseball.com Top 25")
+  self.assertEqual(parsed["teams"]["OU"]["rank"],1)
+  self.assertEqual(parsed["teams"]["UGA"]["rank"],3)
+  self.assertEqual(parsed["teams"]["ALA"]["rank"],6)
+  self.assertEqual(parsed["source_url"],polls.NCAA_BASEBALL_URL)
+  self.assertNotIn("UK",parsed["teams"])
+  self.assertIsNone(polls.parse_ncaa_baseball(html.replace("Through Games JUN. 23, 2026",
+                                               "Through Games JUN. 23, 2023"),NOW))
+  incomplete=html.replace(rows,"".join(rows.split("</tr>")[:8]))
+  self.assertIsNone(polls.parse_ncaa_baseball(incomplete,NOW))
  def test_poll_season_boundaries(self):
   self.assertEqual(polls.season_for("football",dt.date(2027,1,4)),2026)
   self.assertEqual(polls.season_for("baseball",dt.date(2027,1,4)),2026)
