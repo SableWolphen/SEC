@@ -8,12 +8,50 @@
 "use strict";
 const SPORTS=new Set(["football","basketball","baseball"]);
 const SOURCE="https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js";
-const instances=new Set(), queued=new WeakSet();
-let threePromise=null,observer=null,resizeObserver=null,watching=false;
+const instances=new Set(), queued=new WeakSet(), preserved=new Map();
+let threePromise=null,observer=null,resizeObserver=null,libraryFailed=false;
+const mobile=()=>!!window.matchMedia?.("(pointer: coarse)")?.matches||window.innerWidth<=790;
+/* Trophy Room data updates rebuild the surrounding cards. Preserve the art
+ * nodes (and therefore their GPU contexts and drag listeners) across renders. */
+function beforeRender(root){
+ if(!root)return;
+ for(const stage of root.querySelectorAll(".museum-art[data-champion-sport]")){
+  const sport=stage.dataset.championSport;
+  if(!SPORTS.has(sport))continue;
+  const previous=preserved.get(sport);
+  if(previous&&previous!==stage){
+   const old=[...instances].find(i=>i.stage===previous);
+   if(old)dispose(old);
+  }
+  preserved.set(sport,stage);
+  stage.remove();
+ }
+}
+function restore(root){
+ for(const replacement of root.querySelectorAll(".museum-art[data-champion-sport]")){
+  const sport=replacement.dataset.championSport;
+  const original=preserved.get(sport);
+  if(!original||original.isConnected)continue;
+  // Keep the artwork but use the latest authorized locked/earned state.
+  original.querySelector(".museum-lock")?.remove();
+  const lock=replacement.querySelector(".museum-lock");
+  if(lock)original.append(lock);
+  replacement.replaceWith(original);
+  const instance=[...instances].find(i=>i.stage===original);
+  if(instance)instance.visible=true;
+  preserved.delete(sport);
+ }
+ for(const original of preserved.values()){
+  const entry=[...instances].find(i=>i.stage===original);
+  if(entry)dispose(entry);
+ }
+ preserved.clear();
+}
 const reduced=()=>!!window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 function library(){
+ if(libraryFailed)return Promise.reject(new Error("3D renderer unavailable for this session"));
  if(!threePromise)threePromise=import(SOURCE).catch(err=>{
-  threePromise=null;
+  libraryFailed=true;
   throw err;
  });
  return threePromise;
@@ -151,10 +189,12 @@ function model(THREE,sport){
  return root;
 }
 async function mount(stage){
- if(!stage?.isConnected||stage.dataset.trophy3d==="ready"||!SPORTS.has(stage.dataset.championSport))return;
+ if(!stage?.isConnected||!SPORTS.has(stage.dataset.championSport)||
+  ["pending","ready","fallback"].includes(stage.dataset.trophy3d))return;
+ stage.dataset.trophy3d="pending";
  try{
   const THREE=await library();
-  if(!stage.isConnected)return;
+  if(!stage.isConnected){stage.dataset.trophy3d="idle";return;}
   const scene=new THREE.Scene();
   const camera=new THREE.PerspectiveCamera(32,1,.1,50);
   camera.position.set(4.1,2.8,7.6);camera.lookAt(0,1.43,0);
@@ -184,7 +224,7 @@ async function mount(stage){
    renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();
   };
   stage.append(holder);w();
-  const entry={stage,scene,camera,renderer,holder,modelRoot,frame:0,visible:true,last:0,dragging:false,spin:0};
+  const entry={stage,scene,camera,renderer,holder,modelRoot,frame:0,visible:true,last:0,dragging:false,spin:0,staticMode:mobile()||reduced()};
   instances.add(entry);stage.dataset.trophy3d="ready";
   if(window.ResizeObserver){
    if(!resizeObserver)resizeObserver=new window.ResizeObserver(entries=>{
@@ -196,53 +236,70 @@ async function mount(stage){
    });
    resizeObserver.observe(stage);
   }
-  const start=e=>{if(e.pointerType==="touch"&&stage.closest(".museum-champ")?.querySelector(".museum-lock"))return;
-   entry.dragging=true;entry.pointerX=e.clientX;};
+  // Drag-to-rotate is available on locked cards too, without unlocking them.
+  const start=e=>{entry.dragging=true;entry.pointerX=e.clientX;};
   const drag=e=>{if(!entry.dragging)return;const dx=e.clientX-entry.pointerX;entry.pointerX=e.clientX;
    entry.spin+=dx*.012;modelRoot.rotation.y=-.16+entry.spin;
-   if(reduced())renderer.render(scene,camera);};
+   if(entry.staticMode)renderer.render(scene,camera);};
   const end=()=>{entry.dragging=false;};
   renderer.domElement.addEventListener("pointerdown",start,{passive:true});
   renderer.domElement.addEventListener("pointermove",drag,{passive:true});
   renderer.domElement.addEventListener("pointerup",end);
   renderer.domElement.addEventListener("pointercancel",end);
   renderer.domElement.addEventListener("pointerleave",end);
+  renderer.domElement.addEventListener("webglcontextlost",e=>{
+   e.preventDefault();
+   // On resource-constrained devices, use the stable SVG instead of flickering.
+   stage.classList.remove("museum-has-3d");
+   stage.dataset.trophy3d="fallback";
+   dispose(entry);
+  },{once:true});
+  // First paint BEFORE switching off the SVG prevents a blank frame on Android.
+  renderer.render(scene,camera);
   stage.classList.add("museum-has-3d");
   const frame=time=>{
    if(!stage.isConnected){dispose(entry);return;}
-   if(!entry.visible||document.visibilityState==="hidden"){entry.frame=requestAnimationFrame(frame);return;}
-   if(time-entry.last>34||reduced()){
+   if(!entry.visible||document.visibilityState==="hidden"){
+    if(!entry.staticMode)entry.frame=requestAnimationFrame(frame);
+    return;
+   }
+   if(time-entry.last>40||entry.staticMode){
     entry.last=time;
-    if(!entry.dragging&&!reduced()){
+    if(!entry.dragging&&!entry.staticMode){
      entry.spin+=.0017;modelRoot.rotation.y=-.16+entry.spin;
     }
     renderer.render(scene,camera);
    }
-   if(!reduced())entry.frame=requestAnimationFrame(frame);
+   if(!entry.staticMode)entry.frame=requestAnimationFrame(frame);
   };
-  entry.frame=requestAnimationFrame(frame);
+  if(!entry.staticMode)entry.frame=requestAnimationFrame(frame);
  }catch(err){
   // Surface art remains intact and accessible; do not interfere with trophy scoring.
-  stage.dataset.trophy3d="fallback";
+  if(stage?.dataset)stage.dataset.trophy3d="fallback";
   console.info("3D champion art unavailable; using SVG fallback:",String(err?.message||err));
  }
 }
 function dispose(item){
  cancelAnimationFrame(item.frame);
  resizeObserver?.unobserve(item.stage);
+ item.stage.classList.remove("museum-has-3d");
+ if(item.stage.dataset.trophy3d==="ready")item.stage.dataset.trophy3d="idle";
  item.modelRoot.traverse(obj=>{obj.geometry?.dispose?.();
   const mats=Array.isArray(obj.material)?obj.material:[obj.material];
   for(const mat of mats){mat?.map?.dispose?.();mat?.dispose?.();}
  });
- item.renderer.dispose();item.holder.remove();instances.delete(item);
+ try{item.renderer.dispose();}catch{}
+ item.holder.remove();instances.delete(item);
 }
 function enhance(root){
  if(!root)return;
+ restore(root);
  for(const old of [...instances])if(!old.stage.isConnected)dispose(old);
  if(!observer&&window.IntersectionObserver){
   observer=new window.IntersectionObserver(items=>{
    for(const item of items){
     const stage=item.target;
+    if(!stage.isConnected)continue;
     if(item.isIntersecting){
      const prev=[...instances].find(i=>i.stage===stage);
      if(prev)prev.visible=true;
@@ -260,5 +317,5 @@ function enhance(root){
   if(observer)observer.observe(stage);else void mount(stage);
  }
 }
-window.SEC_CHAMPION_3D=Object.freeze({enhance});
+window.SEC_CHAMPION_3D=Object.freeze({beforeRender,enhance});
 })();
