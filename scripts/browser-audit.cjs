@@ -103,6 +103,9 @@ fs.mkdirSync(output,{recursive:true});
        cases:root?.querySelectorAll("details.legacy-case").length||0,
        summary:!!root?.querySelector(".legacy-overview"),
        achievements:root?.querySelectorAll(".legacy-achievement").length||0,
+       has3DModule:typeof window.SEC_CHAMPION_3D?.enhance==="function",
+       threeStages:[...root?.querySelectorAll(".museum-art[data-champion-sport]")||[]].map(el=>el.dataset.championSport),
+       svgFallbacks:root?.querySelectorAll(".museum-art .museum-trophy-svg").length||0,
        duplicateBadges:root?.querySelectorAll(".museum-achieve").length||0,
        rings:root?.querySelectorAll(".legacy-ring,.legacy-rings").length||0,
        banners:root?.querySelectorAll(".legacy-banner,.legacy-banners").length||0};
@@ -110,6 +113,8 @@ fs.mkdirSync(output,{recursive:true});
      if(!museum.rendered||museum.championships!==3||museum.locked!==3||
         museum.schools!==16||!museum.medallist||museum.openByDefault!==0)
       problems.push(viewport.width+"px trophy museum failed: "+JSON.stringify(museum));
+     if(!museum.has3DModule||museum.threeStages.join(",")!=="football,basketball,baseball"||museum.svgFallbacks!==3)
+      problems.push(viewport.width+"px 3D championship fallback/mount regression: "+JSON.stringify(museum));
      if(museum.cases!==3||!museum.summary||museum.achievements<5||museum.duplicateBadges!==0||museum.rings!==0||museum.banners!==0)
       problems.push(viewport.width+"px trophy room duplicate or missing UI: "+JSON.stringify(museum));
      const playerCase=page.locator('details[data-legacy-case="player"]');
