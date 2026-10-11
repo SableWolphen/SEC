@@ -135,12 +135,19 @@ fs.mkdirSync(output,{recursive:true});
         toggle?.getAttribute("aria-expanded")==="true";
        toggle?.click();
        const closed=!shown(".hq-rival-card")&&toggle?.getAttribute("aria-expanded")==="false";
-       return {shortcuts:shortcuts.map(x=>x.textContent.trim().slice(0,20)),
+       const ordered=shortcuts.slice().sort((x,y)=>Number(getComputedStyle(x).order)-Number(getComputedStyle(y).order));
+       const shortcutTitles=ordered.map(x=>x.querySelector("strong")?.textContent.trim()||"");
+       const leagueTile=ordered[1];
+       leagueTile?.click();
+       const leagueLinkWorks=window.SEC_BRIDGE?.view?.()==="league";
+       window.SEC_BRIDGE?.setView?.("home");
+       return {shortcuts:shortcutTitles,leagueLinkWorks,
         stable,hidden,expanded,closed,toggle:!!toggle,
         horizontal:root.querySelector(".hq-actions")?.scrollWidth>
          root.querySelector(".hq-actions")?.clientWidth+3};
       });
-      if(compact.shortcuts.length!==4||!compact.stable||!compact.hidden||
+      if(compact.shortcuts.join("|")!=="MAKE PICKS|LEAGUE RACE|LIVE SCORES|SEC NEWS"||
+         !compact.leagueLinkWorks||!compact.stable||!compact.hidden||
          !compact.expanded||!compact.closed||compact.horizontal)
        problems.push(viewport.width+"px compact mobile homepage regression: "+JSON.stringify(compact));
      }
