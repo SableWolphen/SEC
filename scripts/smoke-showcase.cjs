@@ -62,7 +62,8 @@ let mark=roots.get("sds-settings-notifications").innerHTML;
 assert.match(mark,/NOTIFICATIONS/);
 assert.match(mark,/Turn on Alerts/);
 assert.match(mark,/background push notifications are not configured/);
-assert.ok(!mark.includes("data-day-alert=\"kickoff\" checked"),"default alerts need explicit opt-in");
+assert.match(mark,/data-sds-alert-master disabled|data-sds-alert-master aria-label/);
+assert.match(mark,/data-day-alert="kickoff" checked disabled/,"master switch disables individual categories by default");
 const master={checked:true,matches:selector=>selector==="[data-sds-alert-master]"};
 events.prefs_change({target:master});
 assert.equal(stored.get("sec-fan-alerts-userA"),"on");
@@ -75,5 +76,5 @@ assert.match(roots.get("sds-settings-notifications").innerHTML,/Turn on Alerts/,
  "preferences should be scoped to a user's own account");
 viewer=null;w.SDS_PREFERENCES.mount();
 assert.match(roots.get("sds-settings-notifications").innerHTML,/Sign in/);
-assert.match(roots.get("sds-settings-notifications").innerHTML,/data-sds-alert-master  disabled/);
+assert.match(roots.get("sds-settings-notifications").innerHTML,/data-sds-alert-master disabled/);
 console.log("Saturdays Down South ten-screen stadium redesign: routes, logos, safe fallbacks, 320px, notification account isolation and PWA PASS");
