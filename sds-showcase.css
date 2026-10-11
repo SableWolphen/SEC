@@ -530,3 +530,8 @@ body:before{content:"";pointer-events:none;position:fixed;inset:0 0 auto;height:
  #sec-home-root .hq-next-teams .sdsx-crest.sds-team-brand{width:30px;height:32px}
  #sec-home-root .hq-next-teams>span>b{font-size:9px}
 }
+
+/* Keep the compact League masthead readable at 320–390px without overflow. */
+@media(max-width:790px){
+ #league-view>.page-intro{min-height:65px;align-items:center}
+}
