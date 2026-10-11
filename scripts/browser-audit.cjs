@@ -189,7 +189,7 @@ fs.mkdirSync(output,{recursive:true});
         pick_code:i<4?g.away:g.home}))
       };
       if(second&&x.id===second.id)return {
-       winner:second.away,pick:second.home,points:0,mode:"straight",
+       winner:second.away,pick:second.away,points:1,mode:"straight",
        awayScore:38,homeScore:19,spread:-10.5,cover:second.away,push:false,
        eventId:"401856714",majority:second.home,majorityCount:5,
        missed:5,total:6,awayCount:1,homeCount:5,reveal:[]
@@ -211,6 +211,8 @@ fs.mkdirSync(output,{recursive:true});
       friendsClosed:!!friends&&!friends.open,
       detailsClosed:!!details&&!details.open,
       detailsPrompt:details?.querySelector("summary")?.textContent.includes("Game details")||false,
+      visibleLost:!!card?.querySelector(".sec-final-details > summary .sec-final-pick-badge.lost"),
+      visibleWon:!!document.querySelector("#games-list .sec-final-details > summary .sec-final-pick-badge.won"),
       resultHidden:!visible(card?.querySelector(".sec-final-grade")),
       linksHidden:!visible(card?.querySelector(".sec-final-actions")),
       noDuplicateScore:!card?.querySelector(".sec-final-scoreline"),
@@ -219,7 +221,8 @@ fs.mkdirSync(output,{recursive:true});
    });
    if(!post.hasCard||!post.winner||!post.result||!post.recap||!post.box||
       !post.leagueImpact||!post.friendsClosed||!post.detailsClosed||
-      !post.detailsPrompt||!post.resultHidden||!post.linksHidden||!post.noDuplicateScore||
+      !post.detailsPrompt||!post.visibleLost||!post.visibleWon||
+      !post.resultHidden||!post.linksHidden||!post.noDuplicateScore||
       post.compactHeight>210||post.width>post.viewport+2)
      problems.push(viewport.width+"px final game not compact/collapsed: "+JSON.stringify(post));
 
