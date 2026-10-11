@@ -32,7 +32,20 @@ const window={
  SEC_SPORTS:{recommended:()=>"football"},
  SEC_LEAGUE_SETTINGS:{getSelected:()=>null,getStandings:()=>[],load:async()=>{}},
  secOnline:{configured:true,getUser:()=>authed,getLeague:()=>league,getStandings:()=>standings,isAuthReady:()=>true,whenAuthReady:()=>Promise.resolve()},
- SEC_LIVE_SCORES:{refresh:async()=>{}}
+ SEC_LIVE_SCORES:{refresh:async()=>{}},
+ SEC_PRIDE:{names:{TENN:"Tennessee",TEX:"Texas"},getCode:()=>"TENN"},
+ SEC_NEWS:{
+  getArticles:()=>[
+   {title:"Tennessee wins late",source:"ESPN",url:"https://www.espn.com/test-article",
+    published_at:"2026-10-11T13:00:00Z",sport:"football",teams:["Tennessee"]},
+   {title:"Other SEC roundup",source:"NCAA",url:"https://www.ncaa.com/test-story",
+    published_at:"2026-10-11T16:00:00Z",sport:"football",teams:["Alabama"]},
+   {title:"Malicious headline",source:"Unknown",url:"javascript:alert(1)",
+    published_at:"2026-10-11T17:00:00Z",teams:["Tennessee"]}
+  ],
+  safeUrl:url=>/^https:\/\/(?:www\.espn\.com|www\.ncaa\.com)\//.test(url)?url:null,
+  reload:async()=>{}
+ }
 };
 const ctx={window,document:doc,console,Date,Number,Promise,setInterval:()=>{},setTimeout:()=>{}};
 vm.runInNewContext(src,ctx,{filename:"sec-home.js"});
@@ -57,6 +70,14 @@ assert.match(root.innerHTML,/Updated /,"score freshness is shown");
 assert.match(root.innerHTML,/4th · 02:36/);
 assert.match(root.innerHTML,/1 open and unpicked/);
 assert.match(root.innerHTML,/Friend &amp; Rival/,"league names are escaped");
+assert.match(root.innerHTML,/YOUR SCHOOL/,"favorite gets a prominent Home card");
+assert.match(root.innerHTML,/Tennessee/,"the account favorite is visible");
+assert.match(root.innerHTML,/Headlines that matter/,"news is featured on Home");
+assert.match(root.innerHTML,/Tennessee wins late/,"real favorite-team story is shown");
+assert.match(root.innerHTML,/Other SEC roundup/,"broader SEC headlines appear alongside favorites");
+assert.ok(root.innerHTML.indexOf("Tennessee wins late")<root.innerHTML.indexOf("Other SEC roundup"),
+ "favorite-team headlines are prioritized over generic news");
+assert.doesNotMatch(root.innerHTML,/Malicious headline|javascript:/,"untrusted news URLs are rejected");
 assert.match(root.innerHTML,/aria-label="Picks completed"/);
 assert.match(root.innerHTML,/data-hq-route="basketball"/);
 assert.doesNotMatch(root.innerHTML,/Rival A|Sample preview|Sample standings/,"never show mock numbers");
@@ -65,6 +86,8 @@ model=home.snapshot(a,now);
 assert.equal(model.leaderboard.length,0,"guests must not see former user's league");
 current="home";home.refresh();
 assert.match(root.innerHTML,/Sign in to see your private league/);
+assert.match(root.innerHTML,/Pick your SEC school/,"signed-out users never inherit a former account's school");
+assert.doesNotMatch(root.innerHTML,/Explore Tennessee/,"private favorite disappears on logout");
 assert.match(src,/SEC_LIVE_SCORES\?\.refresh/,"reuse the confirmed score feed");
 assert.doesNotMatch(src,/\.from\(|\.rpc\(|\.insert\(|\.update\(|\.delete\(/,"homepage does not write to or separately query database");
 for(const view of ["home","more"])assert.ok(html.includes('id="'+view+'-view"'));
