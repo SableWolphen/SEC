@@ -197,7 +197,7 @@ def parse_poll(payload,sport,now=None):
          "season":season,"source":"ESPN","source_url":SPORTS[sport][1],
          "poll_size":len(all_ranks),"teams":entries}
 
-def build(now=None,get=get_json,prior=None):
+def build(now=None,get=get_json,prior=None,get_page=get_html):
  now=now or dt.datetime.now(UTC)
  checked=now.strftime("%Y-%m-%dT%H:%M:%SZ")
  published={}
@@ -215,7 +215,7 @@ def build(now=None,get=get_json,prior=None):
    print(f"{sport}: source unavailable ({type(exc).__name__}); keeping dated poll if applicable")
   if sport=="baseball":
    try:
-    ncaa=parse_ncaa_baseball(get_html(NCAA_BASEBALL_URL),now)
+    ncaa=parse_ncaa_baseball(get_page(NCAA_BASEBALL_URL),now)
     if ncaa:
      published[sport]=ncaa
      print(f"baseball: NCAA D1Baseball.com Top 25 through {ncaa['published_at']} "
