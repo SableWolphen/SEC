@@ -63,10 +63,15 @@ assert.match(moduleText,/museum-trophy-svg|using SVG fallback|SVG fallback/,"SVG
 assert.doesNotMatch(moduleText,/\.from\(|\.rpc\(|\.functions\.invoke\(/,"visual layer must never access the database");
 assert.match(museum,/data-champion-sport/,"championship cards need per-sport 3D mounts");
 assert.match(museum,/SEC_CHAMPION_3D\?\.enhance/,"museum must activate 3D renderer");
-for(const file of ["sec-champion-3d.js","sec-champion-3d.css"]){
- assert.ok(html.includes("./"+file+"?v=20261011-cinematic-v1"),"app loads "+file);
- assert.ok(worker.includes("./"+file+"?v=20261011-cinematic-v1"),"offline cache recognizes "+file);
+for(const [file,version] of [
+ ["sec-champion-3d.js","20261011-stable-v2"],
+ ["trophy-case.js","20261011-stable-v2"],
+ ["sec-champion-3d.css","20261011-cinematic-v1"]
+]){
+ assert.ok(html.includes("./"+file+"?v="+version),"app loads "+file);
+ assert.ok(worker.includes("./"+file+"?v="+version),"offline cache recognizes "+file);
 }
+assert.match(worker,/sec-pickem-v86/,"service worker cache must invalidate old 3D trophy assets");
 assert.match(styles,/museum-champion-canvas/,"3D drawing surface styled");
 assert.match(styles,/@media\(max-width:375px\)/,"small phones remain supported");
 console.log("Cinematic 3D champion trophy smoke checks passed.");
