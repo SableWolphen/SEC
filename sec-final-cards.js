@@ -3,6 +3,30 @@
 "use strict";
 const e=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const points=x=>x===null?"—":Number(x).toLocaleString("en-US",{maximumFractionDigits:1})+" pts";
+// The selected team winning outright is not always a winning SPREAD pick.
+// Resolve the player's pick against their selected league's scoring rules.
+function outcome(d){
+ if(!d.pick)return {kind:"none",label:"No pick",text:"No pick made"};
+ if(d.mode==="spread"){
+  if(d.spread===null||d.spread===undefined||!Number.isFinite(Number(d.spread)))
+   return {kind:"pending",label:"Spread pending",text:"Spread result pending"};
+  if(d.push)return {kind:"push",label:"Spread push",text:"Spread push"};
+  if(!d.cover)return {kind:"pending",label:"Spread pending",text:"Spread result pending"};
+  return d.pick===d.cover?
+   {kind:"won",label:"Pick won",text:"Your pick won"}:
+   {kind:"lost",label:"Pick lost",text:"Your pick lost"};
+ }
+ return d.pick===d.winner?
+  {kind:"won",label:"Pick won",text:"Your pick won"}:
+  {kind:"lost",label:"Pick lost",text:"Your pick lost"};
+}
+function badge(d){
+ const result=outcome(d);
+ const symbol={won:"✓",lost:"✕",push:"↔",pending:"…",none:"–"}[result.kind];
+ return '<span class="sec-final-pick-badge '+result.kind+
+  '" role="status" aria-label="'+e(result.text)+'"><span aria-hidden="true">'+
+  symbol+'</span> '+e(result.label)+'</span>';
+}
 function team(g,id,d,ctx){
  const t=ctx.team(id),winner=d.winner===id,mine=d.pick===id;
  const n=id===g.away?d.awayScore:d.homeScore;
@@ -18,12 +42,13 @@ function grade(g,d,ctx){
   d.cover===d.winner?"Covered "+(d.winner===g.home?(d.spread>0?"+":"")+d.spread:
   (-d.spread>0?"+":"")+(-d.spread)):"Won by "+margin+" · did not cover":
   "Won by "+margin;
- const kind=d.points===null?"unknown":d.points>0?"correct":"missed";
- const icon=kind==="correct"?"✓":kind==="missed"?"✕":"–";
+ const result=outcome(d);
+ const kind=result.kind==="won"?"correct":result.kind==="lost"?"missed":"unknown";
+ const icon=kind==="correct"?"✓":kind==="missed"?"✕":result.kind==="push"?"↔":"–";
  return '<div class="sec-final-grade">'+
  '<div class="sec-final-metric"><span class="sec-final-metric-icon '+kind+'">'+icon+'</span>'+
  '<span><small>YOUR PICK</small><b>'+e(d.pick?ctx.team(d.pick).name:"No pick")+'</b>'+
- '<strong class="'+kind+'">'+e(points(d.points))+'</strong></span></div>'+
+ '<strong class="'+kind+'">'+e(result.kind==="pending"?"—":points(d.points))+'</strong></span></div>'+
  '<div class="sec-final-metric"><span class="sec-final-metric-icon success">▥</span>'+
  '<span><small>RESULT</small><b>'+winner+' won</b><strong class="success">'+e(label)+'</strong></span></div>'+
  '<div class="sec-final-metric"><span class="sec-final-metric-icon star">★</span>'+
@@ -72,7 +97,8 @@ function render(g,index,ctx){
  '<div class="sec-final-teams">'+team(g,g.away,d,ctx)+'<span class="sec-final-vs">VS</span>'+
  team(g,g.home,d,ctx)+'</div>'+
  '<details class="sec-final-details" data-game-id="'+e(g.id)+'"'+(wasOpen(g.id,".sec-final-details")?' open':'')+'>'+
- '<summary><span>Game details</span><span class="sec-final-more-arrow" aria-hidden="true">⌄</span></summary>'+
+ '<summary><span>Game details</span><span class="sec-final-summary-right">'+badge(d)+
+ '<span class="sec-final-more-arrow" aria-hidden="true">⌄</span></span></summary>'+
  '<div class="sec-final-detail-body">'+
  grade(g,d,ctx)+friends(g,d)+
  '<div class="sec-final-actions">'+
@@ -81,6 +107,6 @@ function render(g,index,ctx){
  link("View Box Score",url?"Official game statistics":"Stats not yet available",
  "boxscore","▥","sec-final-box-link")+'</div></div></details></article>';
 }
-window.SEC_FINAL_CARDS=Object.freeze({render});
+window.SEC_FINAL_CARDS=Object.freeze({render,outcome});
 if(window.SEC_BRIDGE?.view?.()==="picks")window.SEC_BRIDGE.renderPicks?.();
 })();
