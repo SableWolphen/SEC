@@ -13,6 +13,54 @@ const sportIcon={football:"🏈",basketball:"🏀",baseball:"⚾"};
 const number=n=>Number.isFinite(Number(n))?Number(n):0;
 const validScore=n=>Number.isInteger(n)&&n>=0;
 const validDate=s=>typeof s==="string"&&Number.isFinite(Date.parse(s));
+const schoolNames=()=>window.SEC_PRIDE?.names||{};
+function favoriteFor(a){
+ const authorized=window.secOnline?.configured===true;
+ const code=authorized?(user()?window.SEC_PRIDE?.getCode?.():null):
+  (a?.state?.()?.favorite||window.SEC_PRIDE?.getCode?.());
+ return Object.prototype.hasOwnProperty.call(schoolNames(),code)?code:null;
+}
+function newsPreview(code){
+ const all=window.SEC_NEWS?.getArticles?.()||[];
+ const trusted=all.filter(x=>x?.title&&window.SEC_NEWS?.safeUrl?.(x.url)&&validDate(x.published_at));
+ const school=schoolNames()[code]||null;
+ const published=trusted.sort((a,b)=>Date.parse(b.published_at)-Date.parse(a.published_at));
+ const favored=school?published.filter(x=>Array.isArray(x.teams)&&x.teams.includes(school)):[];
+ // Prioritize real school-specific stories but include broader SEC news.
+ const chosen=[...favored,...published].filter((item,index,list)=>
+  list.findIndex(x=>x.url===item.url)===index).slice(0,2);
+ return chosen.map(x=>({
+  title:String(x.title).slice(0,200),source:String(x.source||"Publisher").slice(0,50),
+  url:window.SEC_NEWS.safeUrl(x.url),published:x.published_at,
+  schoolRelated:Boolean(school&&Array.isArray(x.teams)&&x.teams.includes(school))
+ }));
+}
+function discovery(model){
+ const school=model.favoriteSchool;
+ const name=model.favoriteName;
+ const schoolLabel=school?'★ '+esc(school):'☆';
+ const schoolCard='<section class="hq-feature-card hq-school-spotlight" aria-label="Your favorite SEC school">'+
+  '<div class="hq-feature-kicker"><span>⭐ YOUR SCHOOL</span><span>Personalize game day</span></div>'+
+  '<div class="hq-school-content"><span class="hq-school-emblem" aria-hidden="true">'+schoolLabel+'</span><div>'+
+  '<h3>'+(school?esc(name):"Pick your SEC school")+'</h3>'+
+  '<p>'+(school?"Your school pride follows your account, picks and league.":"Choose a school to personalize your Home, team coverage and league badge.")+'</p></div></div>'+
+  '<div class="hq-feature-actions"><button type="button" data-hq-route="teams" class="hq-primary">'+
+   (school?"Explore "+esc(name)+" →":"Choose favorite school →")+'</button>'+
+   (school?'<button type="button" data-hq-route="teams" class="hq-text-link">Change school</button>':"")+
+  '</div></section>';
+ const stories=model.headlines.length?model.headlines.map(item=>
+  '<a class="hq-headline" target="_blank" rel="noopener noreferrer" href="'+esc(item.url)+'" aria-label="Read article from '+esc(item.source)+': '+esc(item.title)+'">'+
+  '<span class="hq-headline-meta">'+(item.schoolRelated?"★ YOUR SCHOOL · ":"")+esc(item.source)+
+  ' · '+esc(new Date(item.published).toLocaleDateString("en-US",{month:"short",day:"numeric"}))+'</span>'+
+  '<strong>'+esc(item.title)+'</strong><span class="hq-headline-arrow" aria-hidden="true">↗</span></a>').join(""):
+  '<p class="hq-empty">Checking recent, source-linked SEC headlines. Open News to browse all sports.</p>';
+ const newsCard='<section class="hq-feature-card hq-news-spotlight" aria-label="Latest SEC news">'+
+  '<div class="hq-feature-kicker"><span>📰 SEC NEWS</span><span>Publisher-linked</span></div>'+
+  '<h3>Headlines that matter.</h3><div class="hq-headlines">'+stories+'</div>'+
+  '<button type="button" data-hq-route="news" class="hq-news-all">All SEC news &amp; breaking stories →</button>'+
+  '</section>';
+ return '<div class="hq-discover">'+schoolCard+newsCard+'</div>';
+}
 function gameState(g){
  const status=["live","final","scheduled","canceled","postponed"].includes(g?.liveStatus)?g.liveStatus:"scheduled";
  const updated=validDate(g?.scoreUpdatedAt)?Date.parse(g.scoreUpdatedAt):null;
@@ -70,6 +118,8 @@ function snapshot(a=app(),today=Date.now()){
   leagueName,leaderboard:hasIdentity?ordered:[],leagueKind:selected?.kind||"football",
   loggedIn:hasIdentity,authConfigured:authenticated,
   scoreFreshness:Math.max(0,...live.map(g=>g.updated||0)),
+  favoriteSchool:favoriteFor(a),favoriteName:schoolNames()[favoriteFor(a)]||null,
+  headlines:newsPreview(favoriteFor(a)),
   recommended:window.SEC_SPORTS?.recommended?.()||"football"};
 }
 function niceTime(ms){
@@ -128,6 +178,7 @@ function render(model){
   '<h2>Every game. Every pick. <em>Your league.</em></h2>'+
   '<p>One place for your next slate, live SEC games and the race with friends.</p></div>'+
   '<div class="hq-hero-emblem" aria-hidden="true">🏆</div></div>'+
+  discovery(model)+
   '<div class="hq-sport-tabs" role="group" aria-label="Pick a sport">'+sportNames.map(s=>
    '<button type="button" data-hq-route="'+routeFor(s)+'"'+(model.recommended===s?' class="suggested"':'')+'>'+
    sportIcon[s]+' '+sportText[s]+(model.recommended===s?'<small>Latest season</small>':"")+'</button>').join("")+'</div>'+
@@ -180,8 +231,9 @@ function mount(){
   ticking=true;
   setInterval(()=>{if(document.visibilityState==="visible")refresh();},30000);
  }
- // Existing public score fetch is used; this creates no new endpoint or database writes.
+ // Share the existing verified feeds; never run a second independent news scraper.
  void window.SEC_LIVE_SCORES?.refresh?.();
+ void window.SEC_NEWS?.reload?.();
  if(window.secOnline?.isAuthReady?.()!==false){
   void Promise.resolve(window.SEC_LEAGUE_SETTINGS?.load?.()).then(()=>refresh()).catch(()=>{});
  }else{
