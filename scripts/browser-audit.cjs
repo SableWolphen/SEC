@@ -78,7 +78,7 @@ fs.mkdirSync(output,{recursive:true});
       const schedule=!!document.querySelector('#sdsx-team-root [data-sdsx-team-tab="schedule"][aria-selected="true"]');
       const visible=!!document.querySelector('#sdsx-team-root [data-sdsx-team-panel="schedule"]:not([hidden])');
       document.querySelector('#sdsx-team-root [data-sdsx-team-tab="overview"]')?.click();
-      const badge=!!document.querySelector('#sdsx-team-root .sds-team-brand[data-sds-school="TENN"] .sds-team-fallback');
+      const badge=document.querySelector('#sdsx-team-root .sds-team-brand[data-sds-school="TENN"] .sds-team-fallback')?.textContent==="TENN";
       return {count:tabs.length,schedule,visible,badge,overflow:document.documentElement.scrollWidth>innerWidth+2};
      });
      if(styled.count!==4||!styled.schedule||!styled.visible||!styled.badge||styled.overflow)
@@ -98,11 +98,17 @@ fs.mkdirSync(output,{recursive:true});
      const branding=await page.evaluate(()=>({
       cards:document.querySelectorAll('#teams-view .team-card').length,
       badge:document.querySelectorAll('#teams-view .team-card .sds-team-brand .sds-team-fallback').length,
+      labels:[...document.querySelectorAll('#teams-view .team-card .sds-team-brand .sds-team-fallback')]
+        .map(el=>el.textContent?.trim()||""),
+      approved:["ALA","ARK","AUB","FLA","UGA","UK","LSU","MISS","MSST","MIZ","OU","SC","TENN","TEX","TAMU","VAN"],
       externalImages:document.querySelectorAll('img[src*="espncdn.com/i/teamlogos"]').length,
       overflow:document.documentElement.scrollWidth>innerWidth+2
      }));
-     if(branding.cards!==16||branding.badge!==16||branding.externalImages||branding.overflow)
-      problems.push(viewport.width+"px 16-team neutral badge directory issue: "+JSON.stringify(branding));
+     if(branding.cards!==16||branding.badge!==16||
+        branding.labels.some(label=>!branding.approved.includes(label))||
+        new Set(branding.labels).size!==16||
+        branding.externalImages||branding.overflow)
+      problems.push(viewport.width+"px 16-team plain abbreviation directory issue: "+JSON.stringify(branding));
     }
     if(["team-hub","game-center","results","team-news"].includes(route)){
      const premium=await page.evaluate(id=>{

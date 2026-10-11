@@ -1,9 +1,7 @@
-/* Saturdays Down South — original, unbranded team identifiers.
- *
- * School names appear as factual matchup labels elsewhere in the app.
- * Badges are a neutral, numbered directory UI, NOT university logos,
- * athletic lettermarks, team colors, mascots, or licensed artwork.
- * No remote image request is made, including on installed PWAs.
+/* Saturdays Down South — plain university abbreviations.
+ * Names and short team identifiers are factual score labels. The badges are
+ * neutral text, not school logos, athletic lettermarks, official typography,
+ * mascots or university color branding. No third-party images are loaded.
  */
 (()=>{
 "use strict";
@@ -13,15 +11,19 @@ const ORDER=Object.freeze([
  ["MSST","Mississippi State"],["MIZ","Missouri"],["OU","Oklahoma"],["SC","South Carolina"],
  ["TENN","Tennessee"],["TEX","Texas"],["TAMU","Texas A&M"],["VAN","Vanderbilt"]
 ]);
-const TEAMS=Object.freeze(Object.fromEntries(ORDER.map(([code,label],i)=>
- [code,Object.freeze({label,slot:String(i+1).padStart(2,"0")})])));
+const TEAMS=Object.freeze(Object.fromEntries(ORDER.map(([code,label])=>
+ [code,Object.freeze({label,abbreviation:code})])));
 const safe=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-// Slots identify entries in the app's neutral directory. They are not standings or poll ranks.
-function shortLabel(code){return TEAMS[code]?.slot||"—";}
+// Use the same textual short codes that identify teams in fixtures and scores,
+// including nonconference opponents. Never infer an "official" athletic logo.
+function shortLabel(code){
+ const value=String(code??"").trim().toUpperCase();
+ return /^[A-Z0-9]{2,6}$/.test(value)?value:"—";
+}
 function mark(code,{className="sds-team-mark"}={}){
- const label=shortLabel(code);
+ const abbr=shortLabel(code);
  return '<span class="'+safe(className)+' sds-team-brand" data-sds-school="'+safe(code)+
-  '" aria-hidden="true"><span class="sds-team-fallback">'+safe(label)+'</span></span>';
+  '" aria-hidden="true"><span class="sds-team-fallback">'+safe(abbr)+'</span></span>';
 }
 window.SDS_VISUALS=Object.freeze({mark,shortLabel,teams:TEAMS});
 })();
