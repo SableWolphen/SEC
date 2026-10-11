@@ -8,7 +8,7 @@
  const TITLES={football:"Football",basketball:"Basketball",baseball:"Baseball"};
  const ICONS={football:"🏈",basketball:"🏀",baseball:"⚾"};
  const LEVELS=[{label:"Bronze",icon:"🥉"},{label:"Silver",icon:"🥈"},{label:"Gold",icon:"🥇"},{label:"Diamond",icon:"💎"}];
- let activeCase="league",compareId="",lastScope="",pendingCelebration=null,clickBound=false;
+ let activeCase="league",compareId="",lastScope="",achievementView="all",clickBound=false;
  function league(){return window.secOnline?.getLeague?.()||null;}
  function user(){return window.secOnline?.getUser?.()||null;}
  function standings(){return window.secOnline?.getStandings?.()||[];}
@@ -102,22 +102,6 @@
  function head(title,desc,emoji){
   return '<div class="legacy-heading"><span aria-hidden="true">'+emoji+'</span><div><h3>'+esc(title)+'</h3><p>'+esc(desc)+'</p></div></div>';
  }
- function ringRows(champs,rows){
-  const mine=champs.filter(c=>String(c.champion_user_id)===String(user()?.id));
-  const sorted=mine.slice().sort((a,b)=>Number(b.season)-Number(a.season));
-  const rings=sorted.map(c=>'<article class="legacy-ring earned"><span class="legacy-ring-icon" aria-hidden="true">💍</span><div><strong>'+esc(c.season)+' Football Ring</strong><small>'+esc(league()?.name||"Your league")+' · Verified league title</small></div></article>').join("");
-  return '<section class="legacy-panel">'+head("Championship rings","Every archived title gets its own ring.","💍")+
-   '<div class="legacy-rings">'+(rings||'<p class="legacy-empty">Win a completed football league season to collect your first ring.</p>')+
-   ['basketball','baseball'].map(s=>'<article class="legacy-ring locked"><span class="legacy-ring-icon" aria-hidden="true">'+ICONS[s]+'</span><div><strong>'+TITLES[s]+' Ring</strong><small>Locked until verified season champions are archived</small></div></article>').join("")+
-   '</div></section>';
- }
- function banners(champs,rows){
-  const name=id=>rows.find(r=>String(r.user_id)===String(id))?.display_name||"Archived champion";
-  return '<section class="legacy-panel">'+head("Championship banners","A banner for every official season title — no history overwritten.","🚩")+
-   (champs.length?'<div class="legacy-banners">'+champs.slice().sort((a,b)=>Number(b.season)-Number(a.season)).map(c=>
-    '<div class="legacy-banner"><span>🏈 '+esc(c.season)+'</span><strong>'+esc(name(c.champion_user_id))+'</strong><small>'+esc(c.mode||"League")+' champion</small></div>').join("")+'</div>':
-    '<p class="legacy-empty">Banners appear after the season is finalized. Current leaders are not champions yet.</p>')+'</section>';
- }
  function hall(champs,rows,ctx){
   const leaders=new Map();
   for(const c of champs){const k=String(c.champion_user_id);leaders.set(k,(leaders.get(k)||0)+1);}
@@ -160,62 +144,105 @@
  }
  function perks(data,ctx){
   const {awards,fs}=data;
-  const filter=ctx.root?.querySelector?.("[data-museum-select]")?.value||"all";
-  const visible=filter==="all"?awards:awards.filter(a=>a.sport===filter);
-  const shownFacts=filter==="all"?fs:fs.filter(f=>f.sport===filter);
-  const own=awards.filter(a=>a.earned);
+  const filter=ctx.root?.querySelector?.('[data-museum-sport][aria-pressed="true"]')?.dataset?.museumSport||"all";
+  const bySport=filter==="all"?awards:awards.filter(a=>a.sport===filter);
+  const available=achievementView==="earned"?bySport.filter(a=>a.earned):
+   achievementView==="locked"?bySport.filter(a=>!a.earned):bySport;
+  const owned=awards.filter(a=>a.earned);
   const featuredId=read(prefKey("featured"))||"";
-  const featured=own.find(a=>a.id===featuredId);
-  const trophyTiles=visible.map(a=>{
-   const current=LEVELS[Math.max(0,a.tier-1)];
-   const next=a.thresholds[a.tier]||null;
+  const featured=owned.find(a=>a.id===featuredId);
+  const tierName=tier=>LEVELS[Math.max(0,tier-1)];
+  const cards=available.map(a=>{
    const locked=a.secret&&!a.earned;
-   return '<article class="legacy-achievement '+(a.earned?"earned":"locked")+'">'+
-    '<div class="legacy-achievement-top"><span aria-hidden="true">'+(locked?"❔":a.icon)+'</span><small>'+(a.earned?esc(current.icon+" "+current.label):"🔒 Locked")+'</small></div>'+
-    '<strong>'+esc(locked?"Secret achievement":a.name)+'</strong><p>'+esc(locked?"Hidden until you unlock it":a.desc)+'</p>'+
-    '<div class="legacy-progress"><span style="width:'+Math.min(100,100*a.metric/(next||a.thresholds[3]||1))+'%"></span></div>'+
-    '<small>'+(locked?"Mystery":esc(a.metric)+" / "+esc(next||a.thresholds[3])+(a.tier===4?" · max tier":""))+'</small>'+
-    (a.earned?'<button type="button" data-legacy-feature="'+esc(a.id)+'" aria-pressed="'+(featuredId===a.id)+'">'+(featuredId===a.id?"★ Featured":"☆ Feature")+'</button>':'')+'</article>';
+   const level=a.earned?tierName(a.tier):null;
+   const next=a.thresholds[a.tier]||null;
+   const max=a.thresholds[3]||1;
+   const value=Math.min(a.metric,next||max);
+   const lower=a.tier? a.thresholds[a.tier-1]:0;
+   const percent=next?Math.min(100,100*(value-lower)/Math.max(1,next-lower)):100;
+   const heading=locked?"Mystery Award":a.name;
+   const reason=locked?"Unlock the challenge to reveal this trophy.":a.desc;
+   const counter=locked?"Hidden challenge":a.tier===4?"Maximum tier reached":a.metric+" / "+(next||max);
+   return '<article class="legacy-achievement '+(a.earned?"earned":"locked")+'" aria-label="'+esc(heading)+
+    (a.earned?" unlocked ":" locked ")+'">'+
+    '<div class="legacy-achievement-top"><span class="legacy-award-symbol" aria-hidden="true">'+(locked?"❔":a.icon)+'</span>'+
+    '<small class="legacy-award-rank">'+(level?esc(level.icon+" "+level.label):"🔒 Locked")+'</small></div>'+
+    '<strong>'+esc(heading)+'</strong><p>'+esc(reason)+'</p>'+
+    (locked?"":'<div class="legacy-progress" aria-label="Progress '+esc(counter)+'"><span style="width:'+percent.toFixed(1)+'%"></span></div>')+
+    '<small class="legacy-counter">'+esc(counter)+'</small>'+
+    (a.earned?'<button type="button" data-legacy-feature="'+esc(a.id)+'" aria-pressed="'+(featuredId===a.id)+'">'+
+     (featuredId===a.id?"★ Featured":"☆ Feature this trophy")+'</button>':'')+'</article>';
   }).join("");
-  const sports=shownFacts.map(f=>'<div class="legacy-sport-stat"><strong>'+ICONS[f.sport]+' '+TITLES[f.sport]+'</strong><span>'+
-    (f.available?f.correct+' correct · '+f.graded+' graded · '+f.perfect+' perfect week'+(f.perfect===1?"":"s"):"No verified league picks loaded — open "+TITLES[f.sport].toLowerCase()+" picks")+'</span></div>').join("");
-  const tiers=LEVELS.map((t,i)=>'<div class="legacy-tier"><strong>'+t.icon+" "+t.label+'</strong><span>'+visible.filter(a=>a.tier>=i+1).length+' / '+visible.length+'</span></div>').join("");
-  const achievements='<section class="legacy-panel">'+head("Upgradeable trophies","Earn Bronze, then keep playing toward Diamond.","💎")+
-   '<div class="legacy-tiers">'+tiers+'</div>'+
-   '<div class="legacy-sports-graded">'+sports+'</div>'+
-   '<p class="legacy-hint">Only saved picks and verified final scores count. In spread leagues, confirmed lines determine correct picks. Awards for unverified brackets, upsets, and seasons remain locked.</p>'+
-   '<div class="legacy-achievement-grid">'+trophyTiles+'</div></section>';
-  const specials='<section class="legacy-panel">'+head("Secret & season awards","Challenge trophies unlock only with trustworthy data.","🔐")+
-   '<div class="legacy-locked-list">'+[
-    ["⚡ Upset King","Waiting for archived pregame underdog odds"],
-    ["🏀 Bracket Buster","Waiting for verified tournament bracket results"],
-    ["⚾ Walk-Off Wizard","Waiting for verified walk-off game classifications"],
-    ["🌟 Season MVP","Awarded after a completed season, not from live standings"],
-    ["🧩 Triple Crown","Requires three independently finalized sport championships"]
-   ].map(([name,why])=>'<div><strong>'+esc(name)+'</strong><small>🔒 '+esc(why)+'</small></div>').join("")+'</div></section>';
-  const chosen='<section class="legacy-featured">'+
-   '<span aria-hidden="true">'+(featured?.icon||"🏅")+'</span><div><strong>Featured trophy</strong><p>'+
-   (featured?esc(featured.name+" · "+LEVELS[featured.tier-1].label):"Earn an achievement and choose one to display on this device.")+
-   '</p></div></section>';
-  return chosen+achievements+specials;
+  const overview=fs.filter(f=>filter==="all"||f.sport===filter).map(f=>
+   '<span class="legacy-sport-stat"><strong>'+ICONS[f.sport]+' '+TITLES[f.sport]+'</strong><small>'+
+   (f.available?f.correct+' correct / '+f.graded+' graded finals':'Open this sport to load your picks')+
+   '</small></span>').join("");
+  const featuredCard='<div class="legacy-featured"><span aria-hidden="true">'+(featured?.icon||"🏅")+'</span><div>'+
+   '<strong>'+(featured?'Your featured trophy':'Choose your featured trophy')+'</strong>'+
+   '<p>'+(featured?esc(featured.name+" · "+tierName(featured.tier).label):
+    'Choose any unlocked achievement to highlight here.')+'</p></div></div>';
+  const filters='<div class="legacy-award-controls" role="group" aria-label="Filter achievements">'+
+   [["all","All"],["earned","Unlocked"],["locked","Locked"]].map(([id,name])=>
+    '<button type="button" data-legacy-achievements="'+id+'" aria-pressed="'+(achievementView===id)+'">'+
+     name+'</button>').join("")+'</div>';
+  return '<section class="legacy-awards-panel" aria-label="Earnable personal awards">'+
+   featuredCard+
+   '<div class="legacy-awards-head"><div><h3>Achievement Collection</h3>'+
+   '<p>Earn one trophy per challenge. Its material upgrades as you improve.</p></div>'+
+   '<span class="legacy-count-chip">'+bySport.filter(a=>a.earned).length+' / '+bySport.length+' unlocked</span></div>'+
+   '<div class="legacy-sports-graded">'+overview+'</div>'+
+   filters+
+   '<div class="legacy-achievement-grid">'+(cards||'<p class="legacy-empty legacy-awards-empty">No achievements match this filter yet.</p>')+'</div>'+
+   '<p class="legacy-hint">Only confirmed final games count. Mystery awards remain hidden until earned. Different sports have their own challenges.</p>'+
+   '</section>';
  }
  function wrap(root,ctx,data){
   const existing=[...root.children].filter(n=>n.classList.contains("museum-section"));
   if(existing.length<3)return;
-  const [champ,week,achievement,rival,schools]=existing;
+  const [champ,week,_oldAchievements,rival,schools]=existing;
+  // The legacy badge row is duplicate UI; do not remove or alter any stored award records.
+  _oldAchievements?.remove?.();
   const champRows=champions(),rows=standings();
-  const sections=[
-   {id:"league",icon:"👑",title:"League Championships",subtitle:"Rings, banners, Hall of Fame and the traveling trophy",nodes:[champ,week],extra:ringRows(champRows,rows)+banners(champRows,rows)+hall(champRows,rows,ctx)+compare(champRows,rows)},
-   {id:"player",icon:"🏅",title:"My Achievements",subtitle:"Upgradeable awards, sport challenges and secret trophies",nodes:[achievement],extra:perks(data,ctx)},
-   {id:"school",icon:"🏛️",title:"SEC School & Rivalry Trophies",subtitle:"Named rivalry prizes, school shelves and history",nodes:[rival,schools].filter(Boolean),extra:(!rival&&!schools?'<p class="legacy-empty">Switch to Football to explore the named school rivalry trophy collection.</p>':"")}
+  const ownTitleCount=champRows.filter(c=>String(c.champion_user_id)===String(user()?.id)).length;
+  const nAwards=data.awards.filter(a=>a.earned).length;
+  const top=document.createElement("section");
+  top.className="legacy-overview";
+  top.setAttribute("aria-label","Collection totals");
+  const signedIn=Boolean(ctx.signedIn&&user()?.id);
+  top.innerHTML='<div class="legacy-overview-intro"><div><span class="legacy-kicker">YOUR TROPHY ROOM</span>'+
+   '<strong>One win. One trophy.</strong><p>'+
+   (signedIn?esc(league()?.name||"Your collection across sports"):
+    'Sign in and join a league to start collecting trophies.')+
+   '</p></div><span class="legacy-overview-art" aria-hidden="true">🏆</span></div>'+
+   '<div class="legacy-summary-stats">'+[
+     ["👑",ownTitleCount,"Season titles"],
+     ["⭐",nAwards,"Achievements"],
+     ["⚔️",data.ownedRivalries+" / "+ctx.trophies.length,"Rivalries"]
+   ].map(([icon,value,title])=>'<div class="legacy-summary-stat"><span aria-hidden="true">'+icon+'</span>'+
+    '<strong>'+esc(value)+'</strong><small>'+title+'</small></div>').join("")+'</div>';
+  const weekly=document.createElement("details");
+  weekly.className="legacy-week-drawer";
+  weekly.innerHTML='<summary><span>🏅 Weekly medals</span><small>View earned football weekly awards</small><span aria-hidden="true">⌄</span></summary>';
+  weekly.append(week);
+  // The old five achievement cards duplicated the upgraded collection. They are
+  // intentionally not appended: only the new cards should appear in the DOM.
+  const compareBox=compare(champRows,rows);
+  const extras=hall(champRows,rows,ctx)+
+   (compareBox?'<details class="legacy-optional"><summary>Compare players <span aria-hidden="true">⌄</span></summary>'+compareBox+'</details>':'');
+  const parts=[
+   {id:"league",icon:"👑",title:"Championships",subtitle:"One trophy per sport · season records",nodes:[champ,weekly],extra:extras},
+   {id:"player",icon:"⭐",title:"My Achievements",subtitle:nAwards+" unlocked · earn, upgrade and feature awards",nodes:[],extra:perks(data,ctx)},
+   {id:"school",icon:"⚔️",title:"Rivalry Collection",subtitle:data.ownedRivalries+" / "+ctx.trophies.length+" named trophies earned",nodes:[rival,schools].filter(Boolean),
+    extra:(!rival&&!schools?'<p class="legacy-empty">Rivalry trophies are currently a football collection. Select Football to explore.</p>':"")}
   ];
   const content=document.createElement("div");content.className="legacy-cases";
-  for(const part of sections){
+  for(const part of parts){
    const details=document.createElement("details");details.className="legacy-case";
    details.dataset.legacyCase=part.id;
    details.open=activeCase===part.id;
    const summary=document.createElement("summary");
-   summary.innerHTML='<span class="legacy-case-icon" aria-hidden="true">'+part.icon+'</span><span><strong>'+part.title+'</strong><small>'+part.subtitle+'</small></span><span class="legacy-case-arrow" aria-hidden="true">⌄</span>';
+   summary.innerHTML='<span class="legacy-case-icon" aria-hidden="true">'+part.icon+'</span><span><strong>'+part.title+'</strong>'+
+    '<small>'+part.subtitle+'</small></span><span class="legacy-case-arrow" aria-hidden="true">⌄</span>';
    details.append(summary);
    const inside=document.createElement("div");inside.className="legacy-case-content";
    for(const node of part.nodes)inside.append(node);
@@ -229,7 +256,8 @@
    content.append(details);
   }
   const sportsNav=root.querySelector(".museum-sports");
-  if(sportsNav)sportsNav.insertAdjacentElement("afterend",content);else root.append(content);
+  if(sportsNav){sportsNav.insertAdjacentElement("afterend",top);top.insertAdjacentElement("afterend",content);}
+  else{root.append(top,content);}
  }
  function maybeCelebrate(data,ctx){
   if(!ctx.signedIn||!ctx.leagueId)return;
@@ -264,6 +292,13 @@
     const current=read(prefKey("featured"));
     write(prefKey("featured"),current===id?"":id);
     window.SEC_TROPHY_MUSEUM?.refresh?.();
+   });
+   document.addEventListener("click",e=>{
+    const filter=e.target.closest?.("[data-legacy-achievements]");
+    if(!filter||!filter.closest("#sds-trophy-case"))return;
+    const next=filter.dataset.legacyAchievements;
+    if(!["all","earned","locked"].includes(next))return;
+    achievementView=next;window.SEC_TROPHY_MUSEUM?.refresh?.();
    });
    document.addEventListener("change",e=>{
     if(e.target?.matches?.("[data-legacy-compare]")){

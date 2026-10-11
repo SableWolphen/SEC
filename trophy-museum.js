@@ -129,14 +129,14 @@ function render(ctx){
  root.classList.add("sds-museum");
  const current=selectedSport;
  root.innerHTML='<div class="museum-head"><div class="museum-brand"><div class="museum-seal" aria-hidden="true">SEC</div>'+
-  '<div><h2>🏆 Trophy Case</h2><p>Your championships, rivalries, and achievements</p></div></div>'+
+  '<div><h2>Trophy Room</h2><p>One trophy for every accomplishment</p></div></div>'+
   '<select class="museum-filter" data-museum-select aria-label="Filter trophy case by sport">'+
   [["all","All Sports"],["football","Football"],["basketball","Basketball"],["baseball","Baseball"]].map(([id,title])=>'<option value="'+id+'"'+(current===id?" selected":"")+'>'+title+'</option>').join("")+
   '</select></div>'+
-  '<nav class="museum-sports" aria-label="Trophy Case sports">'+
-  [["all","🏆 Trophy Case"],["football","🏈 Football"],["basketball","🏀 Basketball"],["baseball","⚾ Baseball"]].map(([id,label])=>'<button type="button" data-museum-sport="'+id+'" aria-pressed="'+(current===id)+'" class="'+(current===id?"active":"")+'">'+label+'</button>').join("")+'</nav>'+
+  '<nav class="museum-sports" aria-label="Filter trophy room by sport">'+
+  [["all","🏆 All Sports"],["football","🏈 Football"],["basketball","🏀 Basketball"],["baseball","⚾ Baseball"]].map(([id,label])=>'<button type="button" data-museum-sport="'+id+'" aria-pressed="'+(current===id)+'" class="'+(current===id?"active":"")+'">'+label+'</button>').join("")+'</nav>'+
   '<section class="museum-section" aria-label="Pickem championships">'+
-  sectionHead("👑","PICK’EM CHAMPIONSHIPS","Win your league to earn a championship trophy",
+  sectionHead("👑","SEASON CHAMPIONS","One league trophy per sport, earned after the season ends",
    '<button type="button" class="museum-section-cta" data-museum-history aria-expanded="'+historyOpen+'">View History ›</button>')+
   '<div class="museum-champ-grid">'+sports.map(x=>champCard(x,me?.id,lg)).join("")+'</div>'+
   (historyOpen?'<div class="museum-history">'+(lg?
@@ -152,13 +152,13 @@ function render(ctx){
    '<small class="achieve-meta '+(x.earned?"earned-text":"")+'">'+(x.earned?"✓ ":"")+esc(x.meta)+'</small></div>').join("")+'</div></section>'+
   ((selectedSport==="all"||selectedSport==="football")?
    '<section class="museum-section"><div id="museum-rivalry-head">'+
-   sectionHead("⚔️","RIVALRY TROPHIES","Classic SEC rivalries and named trophy contests",
+   sectionHead("⚔️","FEATURED RIVALRIES","A few classics from the larger school collection",
     '<button type="button" class="museum-section-cta" data-museum-all-rivalries aria-expanded="'+showAllRivals+'">'+ctx.owned().length+' / '+ctx.trophies.length+' ›</button>')+
    '</div><div class="museum-rivalries" id="museum-rivalries"></div></section>'+
-   '<section class="museum-section">'+sectionHead("🏅","SCHOOLS & THEIR TROPHIES","Expand a school to view its trophy collection",
+   '<section class="museum-section">'+sectionHead("🏛️","BROWSE BY SCHOOL","Open a school to explore its named rivalry trophies",
      '<button type="button" class="museum-section-cta" data-museum-schools>'+ (expandedAllSchools?"Collapse All":"Expand All")+' ›</button>')+
    '<div class="museum-school-list" id="museum-school-list"></div></section>':'')+
-  '<p class="museum-muted">Only verified results from your selected league unlock awards. Unfinished games and unearned trophies stay locked. Rivalry trophies are digital pick’em collectibles, not physical ownership.</p>';
+  '<p class="museum-muted">League titles and weekly medals reflect verified league standings. Personal achievements follow your saved picks and confirmed finals. Rivalries show recorded trophy history across seasons. All awards are digital fan collectibles.</p>';
  if(selectedSport==="all"||selectedSport==="football"){
   const featured=["tennessee-vanderbilt","iron-bowl","golden-boot","golden-egg"];
   const rival=showAllRivals?ctx.trophies:featured.map(id=>ctx.trophies.find(t=>t.id===id)).filter(Boolean);

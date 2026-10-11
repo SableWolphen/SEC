@@ -20,20 +20,6 @@
 .sds-museum .legacy-heading>span{font-size:23px}
 .sds-museum .legacy-heading h3{font-size:15px;color:#ffda89;line-height:1.3;margin:0}
 .sds-museum .legacy-heading p{font-size:11px;line-height:1.4;color:#b3c3d2;margin:3px 0 0}
-.sds-museum .legacy-rings{display:grid;gap:8px}
-.sds-museum .legacy-ring{display:flex;align-items:center;gap:10px;background:#172b3c;border:1px solid #415b6b;border-radius:10px;padding:9px;min-width:0}
-.sds-museum .legacy-ring.earned{border-color:#ab8e58;background:#332a29}
-.sds-museum .legacy-ring.locked{opacity:.68}
-.sds-museum .legacy-ring-icon{font-size:32px;flex:none}
-.sds-museum .legacy-ring strong,.sds-museum .legacy-ring small{display:block;line-height:1.4}
-.sds-museum .legacy-ring strong{font-size:12px;color:#f6e0aa}
-.sds-museum .legacy-ring small{font-size:10px;color:#a9bbc6}
-.sds-museum .legacy-banners{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px}
-.sds-museum .legacy-banner{position:relative;text-align:center;padding:14px 9px 21px;background:linear-gradient(140deg,#673d24,#b3864c 49%,#402d2c);border:2px solid #efcd88;border-radius:7px 7px 3px 3px;clip-path:polygon(0 0,100% 0,100% 91%,50% 100%,0 91%)}
-.sds-museum .legacy-banner span,.sds-museum .legacy-banner strong,.sds-museum .legacy-banner small{display:block;color:#fff8e7;text-shadow:0 1px 3px #16171e}
-.sds-museum .legacy-banner span{font-size:11px;font-weight:900}
-.sds-museum .legacy-banner strong{font-size:13px;margin:9px 0 4px}
-.sds-museum .legacy-banner small{font-size:10px}
 .sds-museum .legacy-leader{border:1px solid #867848;background:#2a302a;border-radius:12px;padding:12px;margin-bottom:11px;display:grid;gap:6px}
 .sds-museum .legacy-leader strong{color:#fae19d;font-size:13px}
 .sds-museum .legacy-leader span{font-size:13px;color:#fff}
@@ -54,10 +40,6 @@
 .sds-museum .legacy-featured>span{font-size:34px}
 .sds-museum .legacy-featured strong{font-size:14px;color:#ffe7a5}
 .sds-museum .legacy-featured p{margin:4px 0 0;color:#cbd4dd;font-size:11px}
-.sds-museum .legacy-tiers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.sds-museum .legacy-tier{text-align:center;background:#1a2b39;border:1px solid #536479;border-radius:10px;padding:10px 4px;display:grid;gap:5px}
-.sds-museum .legacy-tier strong{font-size:11px;color:#fff0c6}
-.sds-museum .legacy-tier span{font-size:10px;color:#bdd0df}
 .sds-museum .legacy-sports-graded{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:11px 0}
 .sds-museum .legacy-sport-stat{border:1px solid #3c5665;background:#102335;padding:9px;border-radius:10px;display:grid;gap:5px}
 .sds-museum .legacy-sport-stat strong{font-size:11px;color:#ffe0a0}
@@ -92,3 +74,103 @@
  .sds-museum .legacy-tiers{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(prefers-reduced-motion:reduce){.sds-museum.legacy-celebrate .legacy-featured{animation:none}}
+
+/* Trophy Room 2.0 — simple navigation, no duplicate awards. */
+.sds-museum .museum-filter{display:none!important}
+.sds-museum .museum-head{padding:4px 4px 10px}
+.sds-museum .museum-brand h2{font-size:clamp(24px,4vw,32px);letter-spacing:-.5px;text-transform:none}
+.sds-museum .museum-sports{border-color:#344c5e;background:#0b1824;margin-bottom:12px}
+.sds-museum .museum-sports button{font-weight:800;transition:background .15s ease}
+.sds-museum .legacy-overview{border:1px solid #836b3e;border-radius:15px;overflow:hidden;background:radial-gradient(ellipse at 80% 0,#534a3280,transparent 65%),linear-gradient(140deg,#1b2f3a,#111f2b 78%);margin-bottom:13px}
+.sds-museum .legacy-overview-intro{display:flex;align-items:center;justify-content:space-between;padding:15px 16px 12px}
+.sds-museum .legacy-kicker{display:block;color:#d6b87d;font-size:10px;font-weight:900;letter-spacing:1.5px}
+.sds-museum .legacy-overview-intro strong{display:block;color:#fff1cb;font-size:clamp(19px,3.4vw,25px);letter-spacing:-.5px;margin-top:4px}
+.sds-museum .legacy-overview-intro p{color:#c5d2db;font-size:11px;margin:5px 0 0;overflow-wrap:anywhere}
+.sds-museum .legacy-overview-art{font-size:39px;filter:drop-shadow(0 6px 14px #e4a33b44)}
+.sds-museum .legacy-summary-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #52606a;background:#0b1823a8}
+.sds-museum .legacy-summary-stat{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 5px;border-right:1px solid #344552;text-align:center}
+.sds-museum .legacy-summary-stat:last-child{border-right:0}
+.sds-museum .legacy-summary-stat>span{font-size:19px}
+.sds-museum .legacy-summary-stat>strong{font-size:19px;line-height:1.1;color:#ffe2a4;font-variant-numeric:tabular-nums}
+.sds-museum .legacy-summary-stat>small{font-size:10px;color:#b1c3d0}
+.sds-museum .legacy-cases{gap:9px}
+.sds-museum .legacy-case{background:#132434;border-color:#3b5767;border-radius:14px;box-shadow:0 6px 14px #0003}
+.sds-museum .legacy-case[open]{border-color:#a88d57;background:#0a1a27}
+.sds-museum .legacy-case>summary{min-height:78px;padding:14px 15px;gap:12px}
+.sds-museum .legacy-case>summary strong{font-size:17px;letter-spacing:-.25px}
+.sds-museum .legacy-case>summary small{margin-top:3px;font-size:11px}
+.sds-museum .legacy-case-icon{width:39px;height:39px;border-radius:11px;background:#6f5a3529;display:grid;place-items:center;font-size:23px;flex:none}
+.sds-museum .legacy-case-content{padding:0 13px 13px}
+.sds-museum .legacy-case-content>.museum-section{background:transparent;border:0;border-radius:0;box-shadow:none;padding:11px 0 13px;margin-bottom:0;border-bottom:1px solid #324655}
+.sds-museum .legacy-case-content>.museum-section:last-child{border-bottom:0}
+.sds-museum .legacy-case-content>.museum-section .museum-section-head{margin-bottom:12px}
+.sds-museum .legacy-extras{display:grid;grid-template-columns:1fr;gap:10px;margin-top:11px}
+.sds-museum .legacy-panel{border-color:#384f61;box-shadow:none;padding:12px 13px}
+.sds-museum .legacy-panel:has(.legacy-achievement-grid){grid-column:auto}
+.sds-museum .legacy-week-drawer,.sds-museum .legacy-optional{border:1px solid #41596b;border-radius:11px;background:#102131;margin:12px 0}
+.sds-museum .legacy-week-drawer>summary,.sds-museum .legacy-optional>summary{cursor:pointer;display:flex;align-items:center;gap:8px;min-height:46px;padding:10px 12px;color:#f5d392;font-size:12px;font-weight:850;list-style:none}
+.sds-museum .legacy-week-drawer>summary::-webkit-details-marker,.sds-museum .legacy-optional>summary::-webkit-details-marker{display:none}
+.sds-museum .legacy-week-drawer>summary>small{font-size:10px;font-weight:500;color:#aebfcd;flex:1}
+.sds-museum .legacy-week-drawer>summary>span:last-child,.sds-museum .legacy-optional>summary span{margin-left:auto}
+.sds-museum .legacy-week-drawer[open]>summary>span:last-child,.sds-museum .legacy-optional[open]>summary span{transform:rotate(180deg)}
+.sds-museum .legacy-week-drawer>.museum-section{background:transparent;border:0;padding:8px 10px 13px;margin:0;box-shadow:none}
+.sds-museum .legacy-week-drawer>.museum-section .museum-section-head{display:none}
+.sds-museum .legacy-optional>.legacy-panel{border:0;background:transparent;margin:0;box-shadow:none}
+.sds-museum .legacy-awards-panel{padding:5px 0 1px}
+.sds-museum .legacy-awards-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:17px 0 9px}
+.sds-museum .legacy-awards-head h3{font-size:19px;margin:0;color:#fff1c6;font-weight:900}
+.sds-museum .legacy-awards-head p{font-size:11px;color:#b1c5d1;margin:5px 0 0;line-height:1.45}
+.sds-museum .legacy-count-chip{border:1px solid #82754f;border-radius:22px;background:#292c2b;color:#f9e0aa;font-size:10px;font-weight:900;white-space:nowrap;padding:8px}
+.sds-museum .legacy-featured{padding:12px;border-color:#796c49;background:linear-gradient(115deg,#232c35,#292c2b);box-shadow:none}
+.sds-museum .legacy-sports-graded{margin:0 0 14px;gap:7px}
+.sds-museum .legacy-sport-stat{display:grid;gap:4px}
+.sds-museum .legacy-sport-stat small{font-size:10px;color:#bcd0dc;line-height:1.4}
+.sds-museum .legacy-award-controls{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid #304656;padding:0 0 10px}
+.sds-museum .legacy-award-controls button{min-height:36px;background:#182e3c;border:1px solid #506276;color:#c6d4e2;border-radius:9px;padding:7px 13px;font-size:11px;font-weight:850}
+.sds-museum .legacy-award-controls button[aria-pressed="true"]{border-color:#efd081;color:#1b2530;background:#f5cb73}
+.sds-museum .legacy-achievement-grid{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:10px;gap:9px}
+.sds-museum .legacy-achievement{background:#112334;min-height:182px;border-color:#3c5a70;padding:12px;gap:6px}
+.sds-museum .legacy-achievement.earned{background:linear-gradient(150deg,#31342d,#192b35);border-color:#998459}
+.sds-museum .legacy-achievement>strong{font-size:13px}
+.sds-museum .legacy-achievement p{min-height:0;font-size:11px}
+.sds-museum .legacy-achievement-top{gap:10px}
+.sds-museum .legacy-award-symbol{font-size:30px}
+.sds-museum .legacy-award-rank{color:#e9ce91;background:#17232c;border:1px solid #47576b;padding:4px 7px;border-radius:12px;white-space:nowrap}
+.sds-museum .legacy-achievement .legacy-counter{color:#d4e2ed}
+.sds-museum .legacy-achievement button{min-height:37px;margin-top:auto;padding:8px;cursor:pointer}
+.sds-museum .legacy-achievement button[aria-pressed="true"]{background:#504326;color:#fff2c6;border-color:#efca72}
+.sds-museum .legacy-awards-empty{grid-column:1/-1}
+.sds-museum .legacy-hall{gap:6px}
+.sds-museum .legacy-hall-row{min-height:40px}
+.sds-museum .legacy-compare-grid{margin-top:8px}
+.sds-museum .museum-champ-grid{gap:10px}
+.sds-museum .museum-champ{border-color:#446376}
+.sds-museum .museum-champ.earned{border-color:#cca969;background:linear-gradient(145deg,#3b3226,#132a39)}
+.sds-museum .museum-caption strong{color:#ffdf9c}
+.sds-museum .museum-champ .museum-lock{border-color:#7b7d82;color:#c4c4c8}
+.sds-museum button:focus-visible,.sds-museum summary:focus-visible{outline:2px solid #ffdc87;outline-offset:3px}
+@media(max-width:680px){
+ .sds-museum .legacy-achievement-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .sds-museum .legacy-sports-graded{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+ .sds-museum .museum-champ-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;scroll-snap-type:none;padding:0;gap:8px}
+ .sds-museum .museum-champ{flex:auto;scroll-snap-align:none}
+ .sds-museum .museum-champ:first-child:nth-last-child(3){grid-column:1/-1;display:grid;grid-template-columns:44% minmax(0,1fr);align-items:center}
+ .sds-museum .museum-champ:first-child:nth-last-child(3) .museum-art{height:145px}
+ .sds-museum .museum-champ:first-child:nth-last-child(3) .museum-caption{text-align:left;padding:12px}
+ .sds-museum .museum-champ:first-child:nth-last-child(3) .museum-status{text-align:center}
+ .sds-museum .museum-champ .museum-art{height:115px}
+ .sds-museum .museum-champ .museum-trophy-svg{width:min(90%,112px)}
+ .sds-museum .legacy-case>summary{min-height:70px;padding:12px}
+ .sds-museum .legacy-case>summary strong{font-size:15px}
+ .sds-museum .legacy-awards-head{align-items:flex-start;flex-wrap:wrap}
+ .sds-museum .legacy-achievement{padding:10px}
+ .sds-museum .legacy-award-rank{font-size:9px}
+}
+@media(max-width:375px){
+ .sds-museum .legacy-achievement-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .sds-museum .legacy-achievement{padding:8px}
+ .sds-museum .legacy-achievement-top{gap:4px;flex-wrap:wrap}
+ .sds-museum .legacy-summary-stat{padding:10px 2px}
+}

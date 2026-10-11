@@ -99,11 +99,25 @@ fs.mkdirSync(output,{recursive:true});
        locked:root?.querySelectorAll(".museum-champ .museum-lock").length||0,
        schools:root?.querySelectorAll("[data-museum-school]").length||0,
        medallist:!!root?.querySelector(".museum-medals"),
-       openByDefault:root?.querySelectorAll('.museum-school[aria-expanded="true"]').length||0};
+       openByDefault:root?.querySelectorAll('.museum-school[aria-expanded="true"]').length||0,
+       cases:root?.querySelectorAll("details.legacy-case").length||0,
+       summary:!!root?.querySelector(".legacy-overview"),
+       achievements:root?.querySelectorAll(".legacy-achievement").length||0,
+       duplicateBadges:root?.querySelectorAll(".museum-achieve").length||0,
+       rings:root?.querySelectorAll(".legacy-ring,.legacy-rings").length||0,
+       banners:root?.querySelectorAll(".legacy-banner,.legacy-banners").length||0};
      });
      if(!museum.rendered||museum.championships!==3||museum.locked!==3||
         museum.schools!==16||!museum.medallist||museum.openByDefault!==0)
       problems.push(viewport.width+"px trophy museum failed: "+JSON.stringify(museum));
+     if(museum.cases!==3||!museum.summary||museum.achievements<5||museum.duplicateBadges!==0||museum.rings!==0||museum.banners!==0)
+      problems.push(viewport.width+"px trophy room duplicate or missing UI: "+JSON.stringify(museum));
+     const playerCase=page.locator('details[data-legacy-case="player"]');
+     await playerCase.locator("summary").click();
+     await page.locator('[data-legacy-achievements="earned"]').click();
+     const lockedShowing=await page.locator('.legacy-case[open] .legacy-achievement.locked').count();
+     if(lockedShowing)problems.push(viewport.width+"px unlocked trophy filter shows locked awards");
+     await page.locator('[data-legacy-achievements="all"]').click();
      if(museum.schools===16){
       // The School case is intentionally collapsible in the new Trophy Room.
       const schoolCase=page.locator('details[data-legacy-case="school"]');
