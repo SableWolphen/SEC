@@ -37,7 +37,7 @@ assert.match(moduleText,/TubeGeometry/,"3D trophy details are modeled");
 assert.match(moduleText,/pointermove/,"people can turn a 3D trophy");
 assert.match(moduleText,/model\.traverse|modelRoot\.traverse/,"old scenes are disposed safely");
 assert.match(moduleText,/museum-trophy-svg|using SVG fallback|SVG fallback/,"SVG fallback is retained");
-assert.doesNotMatch(moduleText,/(?:\.insert\(|\.update\(|\.delete\(|\.upsert\()/,"visual layer must never write any data");
+assert.doesNotMatch(moduleText,/\.from\(|\.rpc\(|\.functions\.invoke\(/,"visual layer must never access the database");
 assert.match(museum,/data-champion-sport/,"championship cards need per-sport 3D mounts");
 assert.match(museum,/SEC_CHAMPION_3D\?\.enhance/,"museum must activate 3D renderer");
 for(const file of ["sec-champion-3d.js","sec-champion-3d.css"]){
