@@ -83,7 +83,12 @@
         '<p>Use an email and password to save your picks and compete with friends across devices.</p>'+
         (inviteCode?'<div class="help-note">🏈 You have a league invite: <strong>'+safe(inviteCode)+'</strong>. Sign in or create an account to join.</div>':'')+
         (registering?'<label class="input-label" for="online-signup-name">Display name</label>'+
-          '<input class="field" id="online-signup-name" type="text" autocomplete="nickname" maxlength="32" placeholder="Your pick’em name" required>':'')+
+          '<input class="field" id="online-signup-name" type="text" autocomplete="nickname" maxlength="32" placeholder="Your pick’em name" required>'+
+          '<div class="sec-signup-school"><label class="input-label" for="online-signup-school">Choose your favorite SEC school <span>(optional)</span></label>'+
+          '<p class="helper">Wear your school pride on your profile, leaderboard, and Game Day HQ. You can change it anytime.</p>'+
+          '<select class="field" id="online-signup-school"><option value="">I’ll choose later</option>'+
+          Object.entries(window.SEC_PRIDE?.names||{}).map(function(entry){return '<option value="'+safe(entry[0])+'">'+safe(entry[1])+'</option>';}).join('')+
+          '</select></div>':'')+
         '<label class="input-label" for="online-email">Email address</label>'+
         '<input class="field" id="online-email" type="email" autocomplete="email" maxlength="254" value="'+safe(draftEmail)+'" placeholder="you@example.com" required>'+
         '<label class="input-label" for="online-password">Password</label>'+
@@ -331,21 +336,26 @@
         if(action==="register"){
           var name=document.getElementById("online-signup-name")?.value.trim()||"";
           var confirmed=document.getElementById("online-password-confirm")?.value||"";
+          var schoolInput=document.getElementById("online-signup-school")?.value||"";
+          var favorite=Object.prototype.hasOwnProperty.call(window.SEC_PRIDE?.names||{},schoolInput)?schoolInput:null;
           if(name.length<2||name.length>32)throw Error("Your display name must be 2–32 characters.");
           if(password!==confirmed)throw Error("Passwords don't match.");
           var data=extract(await client.auth.signUp({
             email:email,password:password,options:{
               emailRedirectTo:location.origin+location.pathname+location.search+"#league",
-              data:{display_name:name}
+              data:{display_name:name,favorite_school_code:favorite}
             }
           }));
           if(data.session?.user){
             user=data.session.user;
-            extract(await client.from("sec_profiles").upsert({user_id:user.id,display_name:name},{onConflict:"user_id"}));
-            profile={user_id:user.id,display_name:name};
+            extract(await client.from("sec_profiles").upsert({
+              user_id:user.id,display_name:name,favorite_school_code:favorite
+            },{onConflict:"user_id"}));
+            profile={user_id:user.id,display_name:name,favorite_school_code:favorite};
+            window.SEC_PRIDE?.setProfile?.(profile);
             app.state().name=name;
             await refresh();
-            app.toast("Account created! Create a league to invite friends.");
+            app.toast(favorite?"Account created! Your school is on your profile.":"Account created! Choose a league to get started.");
           }else{
             // Supabase may require email confirmation. Never imply a session exists without one.
             authMode="login";
