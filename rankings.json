@@ -1,5 +1,136 @@
 {
+  "checked_at": "2026-10-11T20:24:45Z",
   "source": "ESPN",
-  "checked_at": null,
-  "sports": {}
+  "sports": {
+    "baseball": {
+      "poll": "D1Baseball.com Top 25",
+      "poll_size": 25,
+      "published_at": "2026-06-23",
+      "season": 2026,
+      "source": "NCAA",
+      "source_url": "https://www.ncaa.com/rankings/baseball/d1/d1baseballcom-top-25",
+      "teams": {
+        "ALA": {
+          "previous": 16,
+          "rank": 6
+        },
+        "ARK": {
+          "previous": 14,
+          "rank": 23
+        },
+        "AUB": {
+          "previous": 5,
+          "rank": 9
+        },
+        "FLA": {
+          "previous": 10,
+          "rank": 16
+        },
+        "MISS": {
+          "previous": 18,
+          "rank": 7
+        },
+        "MSST": {
+          "previous": 17,
+          "rank": 14
+        },
+        "OU": {
+          "previous": null,
+          "rank": 1
+        },
+        "TAMU": {
+          "previous": 11,
+          "rank": 17
+        },
+        "TEX": {
+          "previous": 6,
+          "rank": 5
+        },
+        "UGA": {
+          "previous": 3,
+          "rank": 3
+        }
+      }
+    },
+    "basketball": {
+      "poll": "AP Top 25",
+      "poll_size": 25,
+      "published_at": "2026-04-07",
+      "season": 2026,
+      "source": "ESPN",
+      "source_url": "https://www.espn.com/mens-college-basketball/rankings",
+      "teams": {
+        "ALA": {
+          "previous": 18,
+          "rank": 16
+        },
+        "ARK": {
+          "previous": 14,
+          "rank": 13
+        },
+        "FLA": {
+          "previous": 4,
+          "rank": 9
+        },
+        "TENN": {
+          "previous": 23,
+          "rank": 12
+        },
+        "TEX": {
+          "previous": null,
+          "rank": 22
+        },
+        "VAN": {
+          "previous": 16,
+          "rank": 19
+        }
+      }
+    },
+    "football": {
+      "poll": "AP Top 25",
+      "poll_size": 25,
+      "published_at": "2026-10-11",
+      "season": 2026,
+      "source": "ESPN",
+      "source_url": "https://www.espn.com/college-football/rankings",
+      "teams": {
+        "ALA": {
+          "previous": 6,
+          "rank": 6
+        },
+        "LSU": {
+          "previous": 10,
+          "rank": 22
+        },
+        "MISS": {
+          "previous": 9,
+          "rank": 9
+        },
+        "MIZ": {
+          "previous": 14,
+          "rank": 13
+        },
+        "MSST": {
+          "previous": 17,
+          "rank": 16
+        },
+        "TENN": {
+          "previous": 15,
+          "rank": 14
+        },
+        "TEX": {
+          "previous": 1,
+          "rank": 7
+        },
+        "UGA": {
+          "previous": 2,
+          "rank": 1
+        },
+        "UK": {
+          "previous": null,
+          "rank": 15
+        }
+      }
+    }
+  }
 }
