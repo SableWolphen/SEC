@@ -5,7 +5,7 @@
  */
 (()=>{
 "use strict";
-const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;":"&quot;","'":"&#39;"}[c]));
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const app=()=>window.SEC_BRIDGE;
 const user=()=>window.secOnline?.getUser?.();
 const codes=()=>window.SEC_PRIDE?.names||{};
