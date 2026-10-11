@@ -86,7 +86,7 @@ assert.match(src,/previousMarkup===markup/,"stable refresh keeps existing mobile
 assert.ok(css.includes('.hq-action:nth-child(4),'),"mobile shows League Race instead of the My Team shortcut");
 assert.ok(css.includes('.hq-action:nth-child(4){order:2}'),"mobile League Race appears second");
 assert.ok(css.includes('.hq-action:nth-child(3){order:3}'),"live scores remain third");
-assert.match(root.innerHTML,/LEAGUE RACE<\/strong><small>You're #2<\/small>/,
+assert.match(root.innerHTML,/LEAGUE RACE<\/strong><small>You&#39;re #2<\/small>/,
  "League Race uses actual authorized rank instead of a mock value");
 assert.ok(css.includes('.hq-headline:nth-child(n+2)'),"mobile news preview stays short");
 assert.ok(css.includes('.hq-matchup:nth-child(n+2)'),"mobile game preview stays short");
