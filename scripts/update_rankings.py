@@ -52,7 +52,7 @@ class RankingsTable(HTMLParser):
   if self.cell is not None:self.cell.append(data)
  def handle_endtag(self,tag):
   if tag in ("td","th") and self.cell is not None and self.row is not None:
-   self.row.append(re.sub(r"\\s+"," "," ".join(self.cell)).strip());self.cell=None
+   self.row.append(re.sub(r"\s+"," "," ".join(self.cell)).strip());self.cell=None
   elif tag=="tr" and self.row is not None:
    if self.row:self.table.append(self.row)
    self.row=None
