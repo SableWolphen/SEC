@@ -78,6 +78,16 @@ const settle=()=>new Promise(ok=>setImmediate(ok));
  assert.equal(rankings.getSnapshot()?.sports?.football?.source_url,LINKS.football,
   "last verified dated poll is preserved when subsequent data is invalid");
  assert.equal(rankings.getFailed(),true);
+ // Baseball rankings have a second, explicitly trusted publisher:
+ // NCAA's published D1Baseball Top 25, not an unverified ESPN 404 fallback.
+ payload={...payload,sports:{...payload.sports,baseball:{
+  ...payload.sports.baseball,source:"NCAA",
+  source_url:"https://www.ncaa.com/rankings/baseball/d1/d1baseballcom-top-25"
+ },football:{...payload.sports.football,source_url:LINKS.football}}};
+ await rankings.refresh(true);
+ assert.equal(rankings.rank("LSU","baseball"),2,"NCAA D1Baseball rank is valid for exact verified school");
+ assert.match(rankings.sourceLink("baseball"),/ncaa\.com\/rankings\/baseball\/d1/);
+
  const html=fs.readFileSync("index.html","utf8"),sportJS=fs.readFileSync("multi-sport.js","utf8"),
   football=fs.readFileSync("matchup-stats.js","utf8"),records=fs.readFileSync("team-records.js","utf8"),
   home=fs.readFileSync("sec-home.js","utf8"),sw=fs.readFileSync("sw.js","utf8");
