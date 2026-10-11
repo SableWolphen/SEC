@@ -31,6 +31,29 @@ manager.enhance(root);manager.enhance(root);
 assert.equal(observerCount,1,"one observer handles lazy-loaded models");
 assert.equal(observed.length,3,"the three SEC sports register only once");
 assert.equal(new Set(observed).size,3,"no duplicate lazy loading");
+assert.equal(typeof manager.beforeRender,"function","3D canvas preservation hook is available");
+for(const stage of [football,basketball,baseball]){
+ stage.remove=function(){this.isConnected=false;};
+ stage.querySelector=()=>null;
+ stage.append=()=>{};
+}
+manager.beforeRender(root);
+assert.ok([football,basketball,baseball].every(s=>!s.isConnected),
+ "old art is temporarily detached, not destroyed");
+const replacements=[football,basketball,baseball].map(old=>({
+ dataset:{championSport:old.dataset.championSport},isConnected:true,querySelector:()=>null,
+ replaceWith(stage){stages[stages.indexOf(this)]=stage;stage.isConnected=true;this.isConnected=false;}
+}));
+const stages=[...replacements];
+const freshRoot={querySelectorAll:()=>stages};
+manager.enhance(freshRoot);
+assert.equal(stages[0],football,"football 3D surface stays the exact same element");
+assert.equal(stages[1],basketball,"basketball 3D surface stays the exact same element");
+assert.equal(stages[2],baseball,"baseball 3D surface stays the exact same element");
+assert.equal(observed.length,3,"refresh must not start extra WebGL mounts");
+assert.match(moduleText,/staticMode:mobile\(\)\|\|reduced\(\)/,
+ "phones must avoid constant GPU redraws");
+
 assert.match(moduleText,/WebGLRenderer/,"real 3D rendering must be used");
 assert.match(moduleText,/SphereGeometry/,"sports balls are modeled geometrically");
 assert.match(moduleText,/TubeGeometry/,"3D trophy details are modeled");
