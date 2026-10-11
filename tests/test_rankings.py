@@ -68,12 +68,12 @@ class RankingTests(unittest.TestCase):
  def test_fetch_failure_preserves_only_labeled_recent_history(self):
   p=polls.parse_poll(payload(),"football",NOW)
   def down(_):raise OSError("No network")
-  d=polls.build(now=NOW,get=down,prior={"sports":{"football":p}})
+  d=polls.build(now=NOW,get=down,get_page=down,prior={"sports":{"football":p}})
   self.assertEqual(d["sports"]["football"],p)
   self.assertNotIn("basketball",d["sports"])
   self.assertNotIn("baseball",d["sports"])
   old=NOW.replace(year=2028)
-  self.assertNotIn("football",polls.build(now=old,get=down,prior={"sports":{"football":p}})["sports"])
+  self.assertNotIn("football",polls.build(now=old,get=down,get_page=down,prior={"sports":{"football":p}})["sports"])
  def test_do_not_use_team_names_for_identity(self):
   p=payload()
   p["rankings"][0]["ranks"][0]["team"]={"id":"123456","displayName":"Alabama Crimson Tide"}
