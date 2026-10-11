@@ -4,6 +4,36 @@ An **unofficial fan-made SEC football, basketball and baseball pick’em website
 
 **Website:** https://sablewolphen.github.io/SEC/ (GitHub Pages publishes from `main` branch root).
 
+## Live University Rankings (October 2026)
+
+University **national poll ranks** are now separate from pick'em league standings
+and historical matchup stats.
+
+- **Football:** AP Top 25 from ESPN's latest published national poll.
+- **Men's basketball:** AP Top 25, season-aware.
+- **Baseball:** D1Baseball Top 25 when a valid ESPN-published ranking is available,
+  otherwise another explicitly named verified baseball poll if supplied.
+- **Scope:** All 16 SEC schools are mapped by exact ESPN team ID, not a fuzzy
+  school name or conference points. Unranked schools show **NR** only after
+  receiving a complete, source-verified current poll.
+- **Freshness:** `rankings.json` is generated every three hours by
+  `.github/workflows/update-rankings.yml`; the app checks for a new version
+  on open and every 15 minutes while visible. GitHub scheduling and upstream
+  publication may delay updates; these are **not** second-by-second live polls.
+  Each rank has the national poll's name and actual published date. Polls older
+  than 35 days or from prior seasons are **not** displayed as current.
+- **Where:** Teams directory, the three-sport favorite-team rankings panel,
+  football picks and matchup stats, basketball/baseball game picks, and the
+  favorite-school Home card. A historical last-published poll can be seen only
+  with a clear **Last published** label in the team hub.
+- **Unavailable:** If ESPN lacks a valid national poll or a source fails,
+  show unavailable rather than reuse a prior game-specific rank, invent a
+  conference ranking, or assign a school the wrong team ID.
+- **Tests:** `tests/test_rankings.py` (exact IDs, source, date, season,
+  future/partial/reused polls), `scripts/smoke-rankings.cjs` (current rank,
+  source label, XSS, stale and unknown university behavior), existing full
+  browser and scoring suites.
+
 ## Favorite School & Featured SEC News (October 2026)
 
 The Home screen now features **Your School** and **Latest SEC News** near the top
