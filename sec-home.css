@@ -279,3 +279,100 @@
  #sec-home-root .hq-school-emblem{width:57px;min-width:57px;height:67px;font-size:19px}
 }
 @media(prefers-reduced-motion:reduce){.hq-action,.hq-extra-story{transition:none}}
+
+
+/* Mobile calmness pass: remove nested horizontal swiping and repeat summaries.
+   Keep the four most useful actions visible; all other sections remain reachable
+   through the main bottom nav or an explicit accessible More toggle. */
+.hq-mobile-expand{display:none}
+@media(max-width:790px){
+ #sec-home-root{gap:9px}
+ #sec-home-root>.hq-actions{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:6px;padding:0;overflow:visible;scroll-snap-type:none;
+ }
+ #sec-home-root .hq-action{display:none;min-width:0;min-height:78px;flex:auto;
+  padding:9px 2px;gap:4px;border-radius:10px}
+ #sec-home-root .hq-action:nth-child(-n+3),
+ #sec-home-root .hq-action:last-child{display:flex}
+ #sec-home-root .hq-action-icon{font-size:23px}
+ #sec-home-root .hq-action strong{font-size:9px;line-height:1.15}
+ #sec-home-root .hq-action small{font-size:9px;line-height:1.15}
+ #sec-home-root .hq-games-list .hq-matchup:nth-child(n+2),
+ #sec-home-root .hq-standings .hq-standings-row:nth-child(n+3){display:none}
+ #sec-home-root .hq-panel{padding:14px;min-height:0}
+ #sec-home-root .hq-panel-header{margin-bottom:8px}
+ #sec-home-root .hq-panel-sub{margin-bottom:8px}
+ #sec-home-root .hq-picks{min-height:0}
+ #sec-home-root .hq-pick-head p{margin-bottom:9px}
+ #sec-home-root .hq-games-list{gap:6px;margin-bottom:10px}
+ #sec-home-root .hq-matchup{padding:9px}
+ #sec-home-root .hq-standings-row{min-height:36px}
+ #sec-home-root .hq-rival-card,
+ #sec-home-root .hq-around-news,
+ #sec-home-root .hq-quick{display:none}
+ #sec-home-root.hq-expanded .hq-rival-card,
+ #sec-home-root.hq-expanded .hq-around-news,
+ #sec-home-root.hq-expanded .hq-quick{display:flex}
+ #sec-home-root .hq-mobile-expand{
+  display:flex;grid-column:1/-1;order:9;
+  justify-content:space-between;align-items:center;
+  border:1px solid #536d80;background:#142b40;color:#f3d28d;
+  border-radius:11px;padding:12px 14px;width:100%;
+  font-size:12px;font-weight:900;min-height:44px;cursor:pointer
+ }
+ #sec-home-root .hq-mobile-expand:focus-visible{outline:2px solid #f4d587;outline-offset:2px}
+ #sec-home-root .hq-rival-card{order:10}
+ #sec-home-root .hq-around-news{order:11}
+ #sec-home-root .hq-quick{order:12}
+ #sec-home-root .hq-disclaimer{order:13}
+ #sec-home-root .hq-stadium-hero{min-height:0}
+ #sec-home-root .hq-sport-tabs{gap:4px}
+ #sec-home-root .hq-sport-tabs button{min-height:38px;padding:7px 6px}
+ #sec-home-root .hq-feature-card{min-height:0}
+}
+@media(max-width:540px){
+ #sec-home-root{gap:8px}
+ #sec-home-root .hq-stadium-hero{padding:13px;gap:8px;border-radius:14px}
+ #sec-home-root .hq-hero-copy .hq-eyebrow{font-size:9px}
+ #sec-home-root .hq-hero-copy h2{font-size:34px;line-height:1.05;letter-spacing:-1.2px;margin:5px 0}
+ #sec-home-root .hq-hero-copy h2 em{letter-spacing:-1.2px}
+ #sec-home-root .hq-hero-copy>strong{font-size:10px;letter-spacing:.4px}
+ #sec-home-root .hq-hero-copy p{font-size:11px;margin:5px 0 9px}
+ #sec-home-root .hq-hero-buttons .hq-primary{min-height:38px;padding:8px 12px}
+ #sec-home-root .hq-hero-alt{display:none}
+ #sec-home-root .hq-next-kickoff{min-height:0;padding:8px 10px;gap:5px}
+ #sec-home-root .hq-hero-next-label{font-size:9px}
+ #sec-home-root .hq-next-kickoff>strong{font-size:16px}
+ #sec-home-root .hq-next-kickoff>small{font-size:10px}
+ #sec-home-root .hq-next-kickoff>p{font-size:10px;margin:0}
+ #sec-home-root .hq-next-kickoff button{display:none}
+ #sec-home-root .hq-feature-card{padding:11px 12px}
+ #sec-home-root .hq-feature-kicker{margin-bottom:6px}
+ #sec-home-root .hq-school-content{margin-bottom:8px;gap:9px}
+ #sec-home-root .hq-school-emblem{width:50px;min-width:50px;height:56px;font-size:16px}
+ #sec-home-root .hq-school-content h3{font-size:18px;margin-bottom:4px}
+ #sec-home-root .hq-school-content p{font-size:11px;line-height:1.35}
+ #sec-home-root .hq-team-next{padding:7px 9px;margin-bottom:8px}
+ #sec-home-root .hq-feature-actions .hq-primary{min-height:39px;padding:8px 10px}
+ #sec-home-root .hq-headline:nth-child(n+2){display:none}
+ #sec-home-root .hq-headline{min-height:53px;padding:9px 26px 9px 10px}
+ #sec-home-root .hq-headline strong{font-size:12px}
+ #sec-home-root .hq-headlines{margin-bottom:8px}
+ #sec-home-root .hq-news-all{min-height:38px}
+ #sec-home-root .hq-news-spotlight h3{font-size:18px;margin-bottom:8px}
+ #sec-home-root .hq-panel h3{font-size:19px}
+ #sec-home-root .hq-picks .hq-pick-count{font-size:25px}
+ #sec-home-root .hq-progress{height:9px}
+ #sec-home-root .hq-progress-caption{margin:6px 0 9px}
+ #sec-home-root .hq-primary,#sec-home-root .hq-secondary{min-height:40px;padding:9px}
+ #sec-home-root .hq-sport-tabs small{display:none}
+ #sec-home-root .hq-sport-tabs button{font-size:11px}
+ #sec-home-root .hq-disclaimer{font-size:10px;line-height:1.35}
+}
+@media(max-width:355px){
+ #sec-home-root .hq-hero-copy h2{font-size:30px}
+ #sec-home-root .hq-action strong{font-size:8px}
+ #sec-home-root .hq-action small{font-size:8px}
+ #sec-home-root .hq-next-teams span{font-size:12px}
+}
