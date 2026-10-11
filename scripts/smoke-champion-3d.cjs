@@ -65,13 +65,13 @@ assert.match(museum,/data-champion-sport/,"championship cards need per-sport 3D 
 assert.match(museum,/SEC_CHAMPION_3D\?\.enhance/,"museum must activate 3D renderer");
 for(const [file,version] of [
  ["sec-champion-3d.js","20261011-engraved-v1"],
- ["trophy-case.js","20261011-stable-v2"],
+ ["trophy-case.js","20261011-broadcast-v1"],
  ["sec-champion-3d.css","20261011-cinematic-v1"]
 ]){
  assert.ok(html.includes("./"+file+"?v="+version),"app loads "+file);
  assert.ok(worker.includes("./"+file+"?v="+version),"offline cache recognizes "+file);
 }
-assert.match(worker,/sec-pickem-v91/,"service worker cache must invalidate old 3D trophy assets");
+assert.match(worker,/sec-pickem-v92/,"service worker cache must invalidate old 3D trophy assets");
 assert.ok(html.includes("./trophy-museum.js?v=20261011-engraved-v1"),"new engraved SVG card script loaded");
 assert.ok(worker.includes("./trophy-museum.js?v=20261011-engraved-v1"),"offline cache includes engraved card script");
 assert.match(styles,/museum-champion-canvas/,"3D drawing surface styled");
