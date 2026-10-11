@@ -72,6 +72,10 @@ jobs:
           node scripts/smoke-football-scores.cjs
           node --check scripts/smoke-multi-source-scores.cjs
           node scripts/smoke-multi-source-scores.cjs
+          node --check sds-showcase-visuals.js
+          node --check sds-showcase-preferences.js
+          node --check scripts/smoke-showcase.cjs
+          node scripts/smoke-showcase.cjs
           node --check sec-premium.js
           node --check scripts/smoke-premium.cjs
           node scripts/smoke-premium.cjs
