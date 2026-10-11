@@ -4,6 +4,19 @@ An **unofficial fan-made SEC football, basketball and baseball pick’em website
 
 **Website:** https://sablewolphen.github.io/SEC/ (GitHub Pages publishes from `main` branch root).
 
+## Game Day HQ (October 2026)
+
+The app now opens on **Home** (unless someone follows a direct-view link).
+Game Day HQ combines real Week N football pick completion and lock status,
+verified live/upcoming/final games with freshness timestamps, and authenticated
+league standings. No demo scores or invented rankings are displayed.
+The latest started sport is highlighted and every sport remains accessible.
+
+Mobile navigation is **Home · Picks · League · Trophies · More**. The secondary
+news, team, and settings views live under More. Existing deep links still work.
+The homepage reads existing authorized scores and picks, without changing data
+or regrading results. `node scripts/smoke-home.cjs` checks these safeguards.
+
 ## SEC News — live TL;DR headlines
 
 News has its **own separate 🏈 Football / ⚾ Baseball / 🏀 Basketball filter**. Selecting a sport keeps you on the News page and displays only articles tagged for that sport; school, Breaking, and text-search filters work within it. News opens to the sport last viewed in Picks (or current season by default). Unlike the Picks selector, this news-only switcher never changes the active pick slate. The feed updater collects verified dated news from official [NCAA FBS](https://www.ncaa.com/news/football/fbs/rss.xml), [NCAA DI baseball](https://www.ncaa.com/news/baseball/d1/rss.xml), [NCAA DI men's basketball](https://www.ncaa.com/news/basketball-men/d1/rss.xml), and ESPN sport news APIs. Up to 50 verified stories per sport are retained; if a sport has no recent SEC articles, it displays a clear empty state instead of showing football stories under another sport or inventing articles.
@@ -24,7 +37,7 @@ Football, basketball and baseball all use the **same Supabase Auth session**. Re
 
 ## Persistent sport icons and automatic season landing
 
-The site opens directly to the **most recently started season**, without a mandatory choose-sport homepage: **football in August–October, men's basketball in November–January, and baseball in February–July**. The compact 🏈 Football / ⚾ Baseball / 🏀 Basketball switcher appears directly **below the headline and description on the football, baseball, and basketball Picks screens only**. It does not appear in League, News, Teams, Trophy Case, or Settings. You can jump between pick slates in one tap, while each sport keeps its own picks and leagues. The Picks item in desktop/mobile navigation returns to the sport you were viewing. The original football deep link stays `#picks`; basketball and baseball use `#basketball` and `#baseball`. Old `#sports` links redirect to the current season. Loading the root route starts at the latest season regardless of the sport visited in the previous browser session.
+The Home screen now links directly to the **most recently started season**, without a mandatory choose-sport homepage: **football in August–October, men's basketball in November–January, and baseball in February–July**. The compact 🏈 Football / ⚾ Baseball / 🏀 Basketball switcher appears directly **below the headline and description on the football, baseball, and basketball Picks screens only**. It does not appear in League, News, Teams, Trophy Case, or Settings. You can jump between pick slates in one tap, while each sport keeps its own picks and leagues. The Picks item in desktop/mobile navigation returns to the sport you were viewing. The original football deep link stays `#picks`; basketball and baseball use `#basketball` and `#baseball`. Old `#sports` links redirect to the current season. Loading the root route opens Game Day HQ; direct sport links still open their respective season.
 
 Schedules for basketball and baseball rely on verified imported games. If no officially confirmed game date/time is available, the app shows a schedule-pending message instead of creating fake fixtures or accepting invalid picks.
 

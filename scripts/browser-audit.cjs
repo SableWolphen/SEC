@@ -8,7 +8,7 @@ const assert=require("node:assert/strict");
 const base=process.env.SEC_BROWSER_URL||"http://127.0.0.1:8765/";
 const sizes=[{width:320,height:690},{width:360,height:780},{width:390,height:844},
  {width:768,height:1024},{width:1280,height:850}];
-const routes=["picks","basketball","baseball","league","trophies","news","teams","settings"];
+const routes=["home","picks","basketball","baseball","league","trophies","news","teams","settings","more"];
 const output=path.resolve("artifacts/sec-browser-audit");
 fs.mkdirSync(output,{recursive:true});
 (async()=>{
@@ -50,10 +50,38 @@ fs.mkdirSync(output,{recursive:true});
     if(!audit.active)problems.push(prefix+" selected section invisible");
     if(!audit.heading)problems.push(prefix+" missing heading");
     if(audit.pageWidth>audit.width+2)problems.push(prefix+" overflow: "+JSON.stringify(audit));
-    if(audit.navCount!==6)problems.push(prefix+" missing mobile nav tabs");
+    if(audit.navCount!==5)problems.push(prefix+" missing mobile nav tabs");
     if(audit.isMobile&&!audit.navVisible)problems.push(prefix+" mobile nav hidden");
     if(audit.isMobile&&(!audit.navFits||!audit.navWithin))problems.push(prefix+" clipped nav: "+JSON.stringify(audit.navRect));
     if(!audit.isMobile&&audit.navVisible)problems.push(prefix+" mobile nav on desktop");
+    if(route==="home"){
+     const hq=await page.evaluate(()=>{
+      const root=document.getElementById("sec-home-root");
+      const cards=root?.querySelectorAll(".hq-panel")||[];
+      const progress=root?.querySelector(".hq-progress[role=progressbar]");
+      const fake=!!root?.querySelector(".hq-demo,.hq-sample");
+      const missing=!!root?.querySelector('[data-hq-route="picks"][data-hq-focus="next"]');
+      return {cards:cards.length,hasProgress:!!progress,hasLeague:!!root?.querySelector(".hq-league"),
+       hasSports:root?.querySelectorAll("[data-hq-route=football],[data-hq-route=basketball],[data-hq-route=baseball],[data-hq-route=picks]").length,
+       fake,missing};
+     });
+     if(hq.cards!==4||!hq.hasProgress||!hq.hasLeague||hq.fake||hq.hasSports<3)
+      problems.push(viewport.width+"px Game Day HQ missing data-backed cards: "+JSON.stringify(hq));
+     const openPicks=await page.evaluate(()=>{
+      document.querySelector('#sec-home-root [data-hq-route="picks"]')?.click();
+      const visible=window.SEC_BRIDGE?.view?.()==="picks";
+      window.SEC_BRIDGE?.setView?.("home");
+      return visible;
+     });
+     if(!openPicks)problems.push(viewport.width+"px home pick button fails to navigate");
+    }
+    if(route==="more"){
+     const secondary=await page.evaluate(()=>[
+      ...document.querySelectorAll("#more-view [data-nav]")
+     ].map(e=>e.dataset.nav));
+     if(secondary.join(",")!=="news,teams,settings")
+      problems.push(viewport.width+"px More menu lost news, teams or settings");
+    }
     if(route==="league"){
      const simple=await page.evaluate(()=>({
       duplicate:!!document.querySelector("#sec-day-league,.sec-day-league"),

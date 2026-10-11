@@ -70,6 +70,9 @@ jobs:
           node scripts/smoke-football-scores.cjs
           node --check scripts/smoke-multi-source-scores.cjs
           node scripts/smoke-multi-source-scores.cjs
+          node --check sec-home.js
+          node --check scripts/smoke-home.cjs
+          node scripts/smoke-home.cjs
           node --check sec-live-scores.js
           node --check scripts/smoke-live-scores.cjs
           node scripts/smoke-live-scores.cjs

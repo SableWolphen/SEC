@@ -393,7 +393,7 @@ body{overflow-x:clip}
 .fan-power-card,.fan-league-select,.fan-table-wrap{max-width:100%}
 .fan-new-league summary,.fan-join-league summary,.fan-edit-league summary,.fan-single-panel details summary{min-height:44px;align-items:center}
 @media(max-width:790px){
-  .bottom-nav{grid-template-columns:repeat(6,minmax(0,1fr));min-height:68px;
+  .bottom-nav{grid-template-columns:repeat(5,minmax(0,1fr));min-height:68px;
     padding:7px max(6px,env(safe-area-inset-right))
       calc(7px + env(safe-area-inset-bottom))
       max(6px,env(safe-area-inset-left))}
