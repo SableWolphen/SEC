@@ -45,7 +45,7 @@ assert.equal(manifest.name,"Saturdays Down South — SEC Pick'em",
 assert.equal(manifest.theme_color,"#081321");
 assert.equal(manifest.background_color,"#081321");
 assert.match(html,/<meta name="theme-color" content="#081321"/);
-assert.match(sw,/sec-pickem-v96/,"new cache version reaches Android installs");
+assert.match(sw,/sec-pickem-v97/,"new cache version reaches Android installs");
 assert.match(sw,/sec-design-system\.css\?v=20261011-broadcast-v1/,
  "offline PWA pre-caches shared design system");
 for(const file of ["multi-sport.css","sec-final-cards.css","trophy-case.js"]){
