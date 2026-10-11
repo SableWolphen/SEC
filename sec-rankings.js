@@ -11,6 +11,7 @@ const SOURCE={
  basketball:"https://www.espn.com/mens-college-basketball/rankings",
  baseball:"https://www.espn.com/college-baseball/rankings"
 };
+const NCAA_BASEBALL="https://www.ncaa.com/rankings/baseball/d1/d1baseballcom-top-25";
 const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 let data=null,lastChecked=0,inFlight=null,failed=false;
 function season(sport,now=new Date()){
@@ -26,7 +27,9 @@ function parseDate(d){
 function pollFor(sport){
  if(!SPORTS.includes(sport)||data?.source!=="ESPN")return null;
  const p=data.sports?.[sport],d=parseDate(p?.published_at);
- if(!p||!d||p.source!=="ESPN"||p.source_url!==SOURCE[sport]||
+ const verified=p?.source==="ESPN"&&p?.source_url===SOURCE[sport]||
+   sport==="baseball"&&p?.source==="NCAA"&&p?.source_url===NCAA_BASEBALL;
+ if(!p||!d||!verified||
     !Number.isInteger(p.season)||p.season!==season(sport,d)||
     !Number.isInteger(p.poll_size)||p.poll_size<20||p.poll_size>25||
     typeof p.poll!=="string"||!p.poll||p.poll.length>65||
@@ -68,7 +71,7 @@ function note(sport){
 function sourceLink(sport){
  const p=pollFor(sport),text=note(sport);
  if(!p)return '<span class="sds-poll-source">'+safe(text)+'</span>';
- return '<a class="sds-poll-source" href="'+SOURCE[sport]+
+ return '<a class="sds-poll-source" href="'+(p.source==="NCAA"?NCAA_BASEBALL:SOURCE[sport])+
   '" target="_blank" rel="noopener noreferrer">'+safe(text)+' ↗</a>';
 }
 function teamRows(code){
