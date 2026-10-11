@@ -290,6 +290,8 @@ function renderStandings(s,league){
 const SEC_IDS={333:"ALA",8:"ARK",2:"AUB",57:"FLA",61:"UGA",96:"UK",99:"LSU",145:"MISS",344:"MSST",142:"MIZ",201:"OU",2579:"SC",2633:"TENN",251:"TEX",245:"TAMU",238:"VAN"};
 function sportTeamContext(s,g,code){
  const school=SEC_IDS[String(code)],record=school?window.SEC_TEAM_RECORDS?.entry?.(school,s):null,parts=[];
+ const badge=school?window.SEC_RANKINGS?.badge?.(school,s):"";
+ if(badge)parts.push(badge);
  if(record?.overall)parts.push("Record "+esc(record.overall));
  if(g.spread_home!=null&&Number.isFinite(Number(g.spread_home))){
   const spread=(String(code)===String(g.home_code)?1:-1)*Number(g.spread_home);
@@ -534,6 +536,6 @@ setInterval(()=>{
  if(moment-lastPoll<(fast?60000:300000))return;
  lastPoll=moment;void load(active,true);
 },30000);
-window.SEC_SPORTS=Object.freeze({mount,recommended,year,groups,renderHub,load,authChanged,selectLeague,renderLeaguePanel,getState:s=>cache[s]});
+window.SEC_SPORTS=Object.freeze({mount,recommended,year,groups,renderHub,renderSport,load,authChanged,selectLeague,renderLeaguePanel,getState:s=>cache[s]});
 if(["sports","basketball","baseball"].includes(window.SEC_BRIDGE?.view?.()))mount(window.SEC_BRIDGE.view());
 })();
