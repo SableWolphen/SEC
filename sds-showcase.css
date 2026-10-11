@@ -60,28 +60,28 @@ body:before{content:"";pointer-events:none;position:fixed;inset:0 0 auto;height:
  outline:2px solid #ffe3a1;outline-offset:2px
 }
 
-/* ═══════ 02. ORIGINAL NEUTRAL TEAM NUMBER BADGES ═══════
- * These numbered chips are directory labels, NOT school monograms,
+/* ═══════ 02. PLAIN UNIVERSITY ABBREVIATION BADGES ═══════
+ * These plain text codes are matchup labels, NOT school monograms,
  * rankings, team insignia, athletic logos or school-color reproductions.
  */
 .sds-team-brand{position:relative;display:inline-grid;place-items:center;
  flex:none;overflow:hidden;background:linear-gradient(145deg,#34516b,#132a3c 72%);
- color:#ffe4ac;border:1px solid #dec08b;border-radius:10px;line-height:1;
+ color:#ffe4ac;border:1px solid #dec08b;border-radius:8px;line-height:1;
  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
- font-weight:900;letter-spacing:.4px;font-variant-numeric:tabular-nums;
+ font-weight:850;letter-spacing:0;font-variant-numeric:normal;
  box-shadow:inset 0 1px #fff6dc33,0 5px 10px #0005}
 .sds-team-brand .sds-team-fallback{display:block;text-shadow:0 2px 3px #0007;
- font-weight:900;line-height:1}
-.mini-logo.sds-team-brand{width:33px;height:33px;min-width:33px;font-size:12px;border-radius:9px;padding:0}
-.team-card .mini-logo.sds-team-brand{width:58px;height:58px;font-size:21px;border-radius:12px;
+ font-weight:850;line-height:1}
+.mini-logo.sds-team-brand{width:33px;height:33px;min-width:33px;font-size:10px;border-radius:7px;padding:1px}
+.team-card .mini-logo.sds-team-brand{width:58px;height:58px;font-size:13px;border-radius:9px;
  border-color:#eed19b}
 .sdsx-crest.sds-team-brand{min-width:46px;min-height:48px;padding:0;
- border:2px solid #d8b87b;border-radius:12px;font-size:16px}
-.sdsx-hero-mark .sdsx-crest.sds-team-brand{width:132px;height:141px;
- border:3px solid #e4c286;border-radius:20px;font-size:40px}
-.sdsx-center-score .sdsx-crest.sds-team-brand{width:74px;height:74px;font-size:22px}
-.sdsx-mover .sdsx-crest.sds-team-brand{width:52px;height:54px;font-size:18px}
-.sdsx-crest.tiny.sds-team-brand{width:31px;height:29px;font-size:11px;border-width:1px}
+ border:1px solid #d8b87b;border-radius:8px;font-size:11px}
+.sdsx-hero-mark .sdsx-crest.sds-team-brand{width:132px;height:100px;
+ border:2px solid #e4c286;border-radius:12px;font-size:25px}
+.sdsx-center-score .sdsx-crest.sds-team-brand{width:74px;height:74px;font-size:16px}
+.sdsx-mover .sdsx-crest.sds-team-brand{width:52px;height:54px;font-size:12px}
+.sdsx-crest.tiny.sds-team-brand{width:31px;height:29px;font-size:8px;border-width:1px}
 .sdsx-team{gap:10px}
 #teams-view .team-card .team-card-top{align-items:center}
 #teams-view .team-card.favorite{background:linear-gradient(130deg,#343026,#172a3c 65%);border-color:#edc37c}
@@ -516,4 +516,18 @@ body:before{content:"";pointer-events:none;position:fixed;inset:0 0 auto;height:
 /* Keep the compact League masthead readable at 320–390px without overflow. */
 @media(max-width:790px){
  #league-view>.page-intro{min-height:65px;align-items:center}
+}
+
+/* Simple university text abbreviation, never a school lettermark or logo. */
+.sds-team-brand .sds-team-fallback{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-style:normal;letter-spacing:0;font-variant:normal}
+.sdsx-hero-mark .sdsx-crest.sds-team-brand{transform:none;background:linear-gradient(145deg,#34516b,#132a3c 72%)}
+@media(max-width:540px){
+ #teams-view .team-card .sds-team-fallback{font-size:11px}
+ #sec-home-root .sds-home-favorite-mini>.sdsx-crest.sds-team-brand{font-size:9px}
+ #sec-home-root .hq-next-teams .sdsx-crest.sds-team-brand{font-size:8px}
+ .sdsx-score-hero .sdsx-center-score .sdsx-crest.sds-team-brand{font-size:10px}
+}
+@media(max-width:360px){
+ #teams-view .team-card .sds-team-fallback{font-size:10px}
+ #picks-view .mini-logo.sds-team-brand{font-size:8px;letter-spacing:-.3px}
 }
