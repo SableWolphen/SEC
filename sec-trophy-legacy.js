@@ -160,11 +160,13 @@
  }
  function perks(data,ctx){
   const {awards,fs}=data;
-  const filter=(window.SEC_TROPHY_MUSEUM_FILTER?.()||"all");
+  const filter=ctx.root?.querySelector?.("[data-museum-select]")?.value||"all";
+  const visible=filter==="all"?awards:awards.filter(a=>a.sport===filter);
+  const shownFacts=filter==="all"?fs:fs.filter(f=>f.sport===filter);
   const own=awards.filter(a=>a.earned);
   const featuredId=read(prefKey("featured"))||"";
   const featured=own.find(a=>a.id===featuredId);
-  const trophyTiles=awards.map(a=>{
+  const trophyTiles=visible.map(a=>{
    const current=LEVELS[Math.max(0,a.tier-1)];
    const next=a.thresholds[a.tier]||null;
    const locked=a.secret&&!a.earned;
@@ -172,12 +174,12 @@
     '<div class="legacy-achievement-top"><span aria-hidden="true">'+(locked?"❔":a.icon)+'</span><small>'+(a.earned?esc(current.icon+" "+current.label):"🔒 Locked")+'</small></div>'+
     '<strong>'+esc(locked?"Secret achievement":a.name)+'</strong><p>'+esc(locked?"Hidden until you unlock it":a.desc)+'</p>'+
     '<div class="legacy-progress"><span style="width:'+Math.min(100,100*a.metric/(next||a.thresholds[3]||1))+'%"></span></div>'+
-    '<small>'+esc(a.metric)+" / "+esc(next||a.thresholds[3])+(a.tier===4?" · max tier":"")+'</small>'+
+    '<small>'+(locked?"Mystery":esc(a.metric)+" / "+esc(next||a.thresholds[3])+(a.tier===4?" · max tier":""))+'</small>'+
     (a.earned?'<button type="button" data-legacy-feature="'+esc(a.id)+'" aria-pressed="'+(featuredId===a.id)+'">'+(featuredId===a.id?"★ Featured":"☆ Feature")+'</button>':'')+'</article>';
   }).join("");
-  const sports=fs.map(f=>'<div class="legacy-sport-stat"><strong>'+ICONS[f.sport]+' '+TITLES[f.sport]+'</strong><span>'+
+  const sports=shownFacts.map(f=>'<div class="legacy-sport-stat"><strong>'+ICONS[f.sport]+' '+TITLES[f.sport]+'</strong><span>'+
     (f.available?f.correct+' correct · '+f.graded+' graded · '+f.perfect+' perfect week'+(f.perfect===1?"":"s"):"No verified league picks loaded — open "+TITLES[f.sport].toLowerCase()+" picks")+'</span></div>').join("");
-  const tiers=LEVELS.map((t,i)=>'<div class="legacy-tier"><strong>'+t.icon+" "+t.label+'</strong><span>'+awards.filter(a=>a.tier>=i+1).length+' / '+awards.length+'</span></div>').join("");
+  const tiers=LEVELS.map((t,i)=>'<div class="legacy-tier"><strong>'+t.icon+" "+t.label+'</strong><span>'+visible.filter(a=>a.tier>=i+1).length+' / '+visible.length+'</span></div>').join("");
   const achievements='<section class="legacy-panel">'+head("Upgradeable trophies","Earn Bronze, then keep playing toward Diamond.","💎")+
    '<div class="legacy-tiers">'+tiers+'</div>'+
    '<div class="legacy-sports-graded">'+sports+'</div>'+
