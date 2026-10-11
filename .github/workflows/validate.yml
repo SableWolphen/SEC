@@ -114,6 +114,11 @@ jobs:
           node scripts/smoke-ai-commentary.cjs
           node --check scripts/smoke-fan-experience.cjs
           node scripts/smoke-fan-experience.cjs
+          node --check sec-rankings.js
+          node --check scripts/smoke-rankings.cjs
+          node scripts/smoke-rankings.cjs
+          python3 -m unittest discover -s tests -p test_rankings.py -v
+          python3 -m py_compile scripts/update_rankings.py
           node --check team-records.js
           node --check scripts/smoke-team-records.cjs
           node scripts/smoke-team-records.cjs
