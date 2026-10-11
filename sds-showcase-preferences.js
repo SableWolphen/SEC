@@ -48,4 +48,5 @@ document.addEventListener("change",e=>{
  if(e.target?.matches?.("[data-day-alert]")){Promise.resolve().then(mount);}
 });
 window.SDS_PREFERENCES=Object.freeze({mount});
+if(window.SEC_BRIDGE?.view?.()==="settings")mount();
 })();
