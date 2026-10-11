@@ -160,7 +160,7 @@ function render(ctx){
   '<nav class="museum-sports" aria-label="Filter trophy room by sport">'+
   [["all","🏆 All Sports"],["football","🏈 Football"],["basketball","🏀 Basketball"],["baseball","⚾ Baseball"]].map(([id,label])=>'<button type="button" data-museum-sport="'+id+'" aria-pressed="'+(current===id)+'" class="'+(current===id?"active":"")+'">'+label+'</button>').join("")+'</nav>'+
   '<section class="museum-section" aria-label="Pickem championships">'+
-  sectionHead("👑","SEASON CHAMPIONS","One league trophy per sport, earned after the season ends",
+  sectionHead("👑","SEASON CHAMPIONS","Every archived championship year gets its own engraved trophy",
    '<button type="button" class="museum-section-cta" data-museum-history aria-expanded="'+historyOpen+'">View History ›</button>')+
   '<div class="museum-champ-grid">'+championshipCards(sports,me?.id,lg).join("")+'</div>'+
   (historyOpen?'<div class="museum-history">'+(lg?
