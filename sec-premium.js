@@ -138,7 +138,7 @@ function teamSchedule(code){
  '</section>';
 }
 function teamTabs(){
- const tabs=[["overview","Overview"],["schedule","Schedule"],["roster","Roster"],["stats","Stats"]];
+ const tabs=[["overview","Overview"],["schedule","Schedule"],["stats","Stats"],["news","News"]];
  return '<nav class="sdsx-team-tabs" role="tablist" aria-label="Team Hub sections">'+tabs.map(([id,label])=>
   '<button type="button" role="tab" data-sdsx-team-tab="'+id+'" aria-selected="'+(teamTab===id)+
   '" class="'+(teamTab===id?"active":"")+'">'+label+'</button>').join("")+'</nav>';
@@ -167,13 +167,13 @@ function teamHub(){
   '<div><span>'+i+' '+esc(t)+'</span><strong>'+esc(v||"—")+'</strong></div>').join("")+'</div></section>'+
   '</div><div data-sdsx-team-panel="schedule"'+(teamTab==="schedule"?"":' hidden')+'>'+
   teamSchedule(code)+'</div>'+
-  '<div data-sdsx-team-panel="overview"'+(teamTab==="overview"?"":' hidden')+'>'+
+  '<div data-sdsx-team-panel="news"'+(teamTab==="news"?"":' hidden')+'>'+
   '<section class="sdsx-section"><div class="sdsx-section-head"><h3>LATEST '+esc(teamName(code).toUpperCase())+
   ' NEWS</h3><button type="button" data-sdsx-view="team-news">See all ›</button></div>'+stories(news)+'</section></div>'+
-  '<div data-sdsx-team-panel="roster"'+(teamTab==="roster"?"":' hidden')+'>'+
-  '<section class="sdsx-section sdsx-roster-info"><div class="sdsx-section-head"><h3>ROSTER &amp; PLAYER STATS</h3></div>'+
+  '<div data-sdsx-team-panel="stats"'+(teamTab==="stats"?"":' hidden')+'>'+
+  '<details class="sdsx-section sdsx-roster-info"><summary>Roster &amp; player resources</summary>'+
   '<p>Verified roster photography and player data are not yet available in the app\'s feed. Use the official college football source for current player details.</p>'+
-  link("View college football team coverage","https://www.espn.com/college-football/teams")+'</section></div>';
+  link("View college football team coverage","https://www.espn.com/college-football/teams")+'</details></div>';
 }
 function chooseGame(){
  const games=recent(),all=gameList();
@@ -385,7 +385,7 @@ document.addEventListener("click",ev=>{
   return;
  }
  const teamTabButton=ev.target.closest?.("[data-sdsx-team-tab]");
- if(teamTabButton&&["overview","schedule","roster","stats"].includes(teamTabButton.dataset.sdsxTeamTab)){
+ if(teamTabButton&&["overview","schedule","stats","news"].includes(teamTabButton.dataset.sdsxTeamTab)){
   teamTab=teamTabButton.dataset.sdsxTeamTab;
   if(app()?.view?.()==="team-hub")teamHub();
   return;

@@ -255,7 +255,12 @@ function match(g){
  return '<article class="hq-matchup"><div class="hq-matchup-head"><span class="hq-status '+(live?"live":"")+'">'+
   (live?"● LIVE":finished?"✓ FINAL":"UPCOMING")+'</span><span class="hq-time">'+
   (live?esc(g.phase||"In progress"):finished?"Game complete":esc(niceTime(g.clock)))+'</span></div>'+
-  '<div class="hq-matchup-body"><strong>'+esc(g.away)+'</strong>'+score+'<strong>'+esc(g.home)+'</strong></div>'+
+  '<div class="hq-matchup-body"><span class="hq-matchup-team" data-sds-school="'+esc(g.away)+'">'+
+  (window.SDS_VISUALS?.mark?.(g.away,{className:"mini-logo"})||'<strong>'+esc(g.away)+'</strong>')+
+  '<strong>'+esc(g.away)+'</strong></span>'+score+
+  '<span class="hq-matchup-team" data-sds-school="'+esc(g.home)+'">'+
+  (window.SDS_VISUALS?.mark?.(g.home,{className:"mini-logo"})||'<strong>'+esc(g.home)+'</strong>')+
+  '<strong>'+esc(g.home)+'</strong></span></div>'+
   field+(live?'<small class="hq-freshness">'+esc(shortAge(g.updated))+
    ((!g.updated||Date.now()-g.updated>180000)?" · Score may be delayed":"")+'</small>':"")+
   '</article>';
@@ -305,7 +310,7 @@ function render(model){
   '<button type="button" data-hq-route="results" class="sdsx-home-results">View results 🏆</button></section>'+
    '<section class="hq-panel hq-games" aria-label="Current football scores"><div class="hq-panel-header">'+
     '<span>02 · GAME CENTER</span><span class="hq-feed-pill">'+(model.liveCount?model.liveCount+" LIVE":"Verified score feed")+'</span></div>'+
-    '<h3>On the field</h3><p class="hq-panel-sub">Only confirmed results and scheduled SEC matchups.</p>'+
+    '<h3>This week’s matchups</h3><p class="hq-panel-sub">Verified SEC scores and upcoming games.</p>'+
     '<div class="hq-games-list">'+(model.visible.length?model.visible.map(match).join(""):
       '<p class="hq-empty">No current football matchups available for Week '+(model.week||"—")+'. Switch sports or check back for updated fixtures.</p>')+'</div>'+
     '<button type="button" data-hq-route="game-center" class="hq-secondary">Open Live Game Center →</button></section>'+

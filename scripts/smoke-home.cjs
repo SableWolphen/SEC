@@ -81,6 +81,8 @@ assert.match(root.innerHTML,/SATURDAYS DOWN SOUTH/,"original brand is retained")
 assert.match(root.innerHTML,/Game Day <em>HQ<\/em>/,"cinematic hero is present");
 assert.match(root.innerHTML,/NEXT VERIFIED KICKOFF/,"countdown uses a scheduled kickoff");
 assert.match(root.innerHTML,/UGA/,"actual scheduled teams appear");
+assert.match(root.innerHTML,/hq-matchup-team/,"home scoreboard includes team abbreviation identities");
+assert.match(src,/This week’s matchups/,"matchups replace oversized decorative copy");
 assert.equal((root.innerHTML.match(/class="hq-action"/g)||[]).length,7,"seven quick actions");
 assert.match(root.innerHTML,/hq-rival-score/,"verified rival standings preview");
 assert.match(root.innerHTML,/class="hq-mobile-expand"/,"secondary mobile information has a show-more control");
