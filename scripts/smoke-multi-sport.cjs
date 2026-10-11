@@ -119,7 +119,8 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
  for(const id of ["sports-view","picks-view","basketball-view","baseball-view"])
   assert.ok(html.includes('id="'+id+'"'),"Sport route exists: "+id);
  assert.ok(html.includes("SEC_SPORTS?.mount"),"route calls multi-sport manager");
- assert.ok(html.includes(":seasonLanding());"),"first website visit opens the most recently started season");
+ assert.ok(html.includes(":\'home\');"),"first website visit opens Game Day HQ");
+ assert.ok(html.includes('id="home-view"'),"Game Day HQ has a dedicated route");
  assert.ok(html.includes("if(v==='sports')v=seasonLanding()"),"old sport-hub links redirect to current season");
  assert.ok(html.includes('id="global-sport-switch"'),"persistent sport switcher exists");
  assert.ok(html.indexOf('id="picks-heading"')<html.indexOf('id="global-sport-switch"'),"football headline and description precede sport switcher");
