@@ -49,6 +49,11 @@ jobs:
           node scripts/smoke-championship-years.cjs
           node --check config.js
           node --check sw.js
+          node --check mobile/mobile-bridge.js
+          node --check scripts/prepare-mobile.cjs
+          node --check scripts/check-mobile.cjs
+          npm run mobile:prepare
+          npm run mobile:check
           node --check matchup-stats.js
           node --check sec-brackets.js
           node --check scripts/smoke-brackets.cjs
