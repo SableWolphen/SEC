@@ -60,31 +60,29 @@ body:before{content:"";pointer-events:none;position:fixed;inset:0 0 auto;height:
  outline:2px solid #ffe3a1;outline-offset:2px
 }
 
-/* ═══════ 02. SCHOOL LOGOS — ORIGINAL COLOR FALLBACK ═══════ */
-.sds-team-brand{position:relative;isolation:isolate;display:inline-grid;place-items:center;
- flex:none;overflow:hidden;background:radial-gradient(circle at 30% 18%,#ffffff3b,transparent 66%),
- linear-gradient(145deg,var(--school-accent,#26455d),#091c31);
- color:#ffebce;border:1px solid #f3d79b70;border-radius:12px;line-height:1;
- font-family:Georgia,"Times New Roman",serif;font-weight:950;vertical-align:middle;
- box-shadow:inset 0 1px #fff6dc55,0 6px 13px #0005}
-.sds-team-brand .sds-team-fallback{z-index:0;text-shadow:0 2px 4px #000c;
- line-height:1.1;font-weight:1000}
-.sds-team-brand .sds-team-logo{position:absolute;inset:7%;width:86%;height:86%;
- object-fit:contain;z-index:1;filter:drop-shadow(0 2px 3px #0008)}
-.sds-team-brand .sds-team-logo[hidden]{display:none}
-.mini-logo.sds-team-brand{width:33px;height:33px;min-width:33px;font-size:11px;
- border-radius:9px;padding:0}
-.team-card .mini-logo.sds-team-brand{width:63px;height:63px;font-size:19px;border-radius:13px;
- border-color:#f7dba8}
+/* ═══════ 02. ORIGINAL NEUTRAL TEAM NUMBER BADGES ═══════
+ * These numbered chips are directory labels, NOT school monograms,
+ * rankings, team insignia, athletic logos or school-color reproductions.
+ */
+.sds-team-brand{position:relative;display:inline-grid;place-items:center;
+ flex:none;overflow:hidden;background:linear-gradient(145deg,#34516b,#132a3c 72%);
+ color:#ffe4ac;border:1px solid #dec08b;border-radius:10px;line-height:1;
+ font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+ font-weight:900;letter-spacing:.4px;font-variant-numeric:tabular-nums;
+ box-shadow:inset 0 1px #fff6dc33,0 5px 10px #0005}
+.sds-team-brand .sds-team-fallback{display:block;text-shadow:0 2px 3px #0007;
+ font-weight:900;line-height:1}
+.mini-logo.sds-team-brand{width:33px;height:33px;min-width:33px;font-size:12px;border-radius:9px;padding:0}
+.team-card .mini-logo.sds-team-brand{width:58px;height:58px;font-size:21px;border-radius:12px;
+ border-color:#eed19b}
 .sdsx-crest.sds-team-brand{min-width:46px;min-height:48px;padding:0;
- border:2px solid #e6be7d;border-radius:13px 13px 17px 17px;font-size:13px}
-.sdsx-hero-mark .sdsx-crest.sds-team-brand{width:134px;height:147px;
- border:3px solid #ebc37e;border-radius:22px 22px 36px 36px;font-size:40px}
-.sdsx-center-score .sdsx-crest.sds-team-brand{width:74px;height:74px;font-size:20px}
-.sdsx-mover .sdsx-crest.sds-team-brand{width:52px;height:54px}
-.sdsx-crest.tiny.sds-team-brand{width:31px;height:29px;font-size:9px;border-width:1px}
+ border:2px solid #d8b87b;border-radius:12px;font-size:16px}
+.sdsx-hero-mark .sdsx-crest.sds-team-brand{width:132px;height:141px;
+ border:3px solid #e4c286;border-radius:20px;font-size:40px}
+.sdsx-center-score .sdsx-crest.sds-team-brand{width:74px;height:74px;font-size:22px}
+.sdsx-mover .sdsx-crest.sds-team-brand{width:52px;height:54px;font-size:18px}
+.sdsx-crest.tiny.sds-team-brand{width:31px;height:29px;font-size:11px;border-width:1px}
 .sdsx-team{gap:10px}
-.sdsx-hero-mark .sds-team-brand .sds-team-logo{inset:4%;width:92%;height:92%}
 #teams-view .team-card .team-card-top{align-items:center}
 #teams-view .team-card.favorite{background:linear-gradient(130deg,#343026,#172a3c 65%);border-color:#edc37c}
 #teams-view .team-card h3{color:#fff4dd}
@@ -145,27 +143,11 @@ body:before{content:"";pointer-events:none;position:fixed;inset:0 0 auto;height:
 #team-hub-view .sdsx-team-hero:before,#team-news-view .sdsx-team-hero:before{
  background:linear-gradient(90deg,#0a182add,#101a2a99 45%,#061524dc),
  url("./home-stadium.svg") center/cover}
-.sdsx-team-hero[data-sds-school="TENN"]{--sds-school:#ef8b35}
-.sdsx-team-hero[data-sds-school="ALA"]{--sds-school:#a12c49}
-.sdsx-team-hero[data-sds-school="ARK"]{--sds-school:#b43348}
-.sdsx-team-hero[data-sds-school="AUB"]{--sds-school:#dc7d32}
-.sdsx-team-hero[data-sds-school="FLA"]{--sds-school:#eb743a}
-.sdsx-team-hero[data-sds-school="UGA"]{--sds-school:#d52e47}
-.sdsx-team-hero[data-sds-school="UK"]{--sds-school:#2b79b9}
-.sdsx-team-hero[data-sds-school="LSU"]{--sds-school:#a76ccd}
-.sdsx-team-hero[data-sds-school="MISS"]{--sds-school:#cb3949}
-.sdsx-team-hero[data-sds-school="MSST"]{--sds-school:#97415a}
-.sdsx-team-hero[data-sds-school="MIZ"]{--sds-school:#d3a93e}
-.sdsx-team-hero[data-sds-school="OU"]{--sds-school:#b63a4f}
-.sdsx-team-hero[data-sds-school="SC"]{--sds-school:#942e4b}
-.sdsx-team-hero[data-sds-school="TEX"]{--sds-school:#c78043}
-.sdsx-team-hero[data-sds-school="TAMU"]{--sds-school:#a2455d}
-.sdsx-team-hero[data-sds-school="VAN"]{--sds-school:#c5b078}
 .sdsx-team-hero[data-sds-school]:after{
- background:linear-gradient(90deg,var(--sds-school,#bf9348),#ffe0a1,var(--sds-school,#bf9348));
+ background:linear-gradient(90deg,#b68b50,#ffe0a1,#b68b50);
  height:4px}
 .sdsx-team-hero .sdsx-hero-body h2{font-family:Georgia,serif;color:#fff2d5;letter-spacing:-1px}
-.sdsx-team-hero .sdsx-hero-body>strong{color:var(--sds-school,#f4ce86);
+.sdsx-team-hero .sdsx-hero-body>strong{color:#f4ce86;
  font-size:clamp(13px,1.6vw,20px)}
 .sdsx-team-hero .sdsx-hero-caption{color:#f5ead6}
 .sdsx-team-hero .sdsx-hero-mark{background:radial-gradient(circle,#ffcb7b44,transparent 70%)}

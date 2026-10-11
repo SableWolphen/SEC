@@ -78,10 +78,10 @@ fs.mkdirSync(output,{recursive:true});
       const schedule=!!document.querySelector('#sdsx-team-root [data-sdsx-team-tab="schedule"][aria-selected="true"]');
       const visible=!!document.querySelector('#sdsx-team-root [data-sdsx-team-panel="schedule"]:not([hidden])');
       document.querySelector('#sdsx-team-root [data-sdsx-team-tab="overview"]')?.click();
-      const logo=!!document.querySelector('#sdsx-team-root .sds-team-logo[src*="2633.png"]');
-      return {count:tabs.length,schedule,visible,logo,overflow:document.documentElement.scrollWidth>innerWidth+2};
+      const badge=!!document.querySelector('#sdsx-team-root .sds-team-brand[data-sds-school="TENN"] .sds-team-fallback');
+      return {count:tabs.length,schedule,visible,badge,overflow:document.documentElement.scrollWidth>innerWidth+2};
      });
-     if(styled.count!==4||!styled.schedule||!styled.visible||!styled.logo||styled.overflow)
+     if(styled.count!==4||!styled.schedule||!styled.visible||!styled.badge||styled.overflow)
       problems.push(viewport.width+"px Team Hub approved four-tab layout issue: "+JSON.stringify(styled));
     }
     if(route==="settings"){
@@ -97,11 +97,12 @@ fs.mkdirSync(output,{recursive:true});
     if(route==="teams"){
      const branding=await page.evaluate(()=>({
       cards:document.querySelectorAll('#teams-view .team-card').length,
-      logo:document.querySelectorAll('#teams-view .team-card img.sds-team-logo').length,
+      badge:document.querySelectorAll('#teams-view .team-card .sds-team-brand .sds-team-fallback').length,
+      externalImages:document.querySelectorAll('img[src*="espncdn.com/i/teamlogos"]').length,
       overflow:document.documentElement.scrollWidth>innerWidth+2
      }));
-     if(branding.cards!==16||branding.logo!==16||branding.overflow)
-      problems.push(viewport.width+"px 16-team university logo directory issue: "+JSON.stringify(branding));
+     if(branding.cards!==16||branding.badge!==16||branding.externalImages||branding.overflow)
+      problems.push(viewport.width+"px 16-team neutral badge directory issue: "+JSON.stringify(branding));
     }
     if(["team-hub","game-center","results","team-news"].includes(route)){
      const premium=await page.evaluate(id=>{

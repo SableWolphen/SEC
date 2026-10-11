@@ -38,7 +38,7 @@ function newsPreview(code){
 function discovery(model){
  const school=model.favoriteSchool;
  const name=model.favoriteName;
- const schoolLabel=school?'★ '+esc(school):'☆';
+ const schoolLabel=school?(window.SDS_VISUALS?.mark?.(school,{className:"sds-team-mark"})||'★'):'☆';
  const game=model.favoriteUpcoming;
  const schoolCard='<section class="hq-feature-card hq-school-spotlight" aria-label="Your favorite SEC school">'+
  '<div class="hq-feature-kicker"><span>⭐ YOUR TEAM</span><span>Follow your school</span></div>'+

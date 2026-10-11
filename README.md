@@ -288,7 +288,11 @@ Always confirm official times and results before corrections. Provisional game k
 
 ## License and affiliation
 
-Fan-made project. Not affiliated with, endorsed by, or sponsored by the Southeastern Conference, its universities, or the similarly named sports publication *Saturday Down South*. Original stylized team initials are used instead of official logos.
+Fan-made project. Not affiliated with, endorsed by, or sponsored by the Southeastern Conference, its universities, or the similarly named sports publication *Saturday Down South*.
+
+**School imagery policy:** Do not embed, hotlink, download, or generate lookalikes of university athletic logos, mascots, official wordmarks, or conference branding without written permission or qualified legal review. University names may appear in factual score/schedule/news descriptions, but the app's **decorative team symbols are original uniform numbered directory badges**, not school insignia, logos, rankings or school-color crests. No ESPN university-logo images are loaded.
+
+**Separate product-name issue:** `Saturdays Down South` is very close to the established `Saturday Down South` sports publisher name. A fan-made disclaimer alone does not eliminate potential trademark/confusion concerns. Before publicly marketing, monetizing or submitting the app stores, seek a trademark clearance review with a qualified lawyer and consider choosing a more distinctive name. Do not infer any right to use third-party sports brands from public score feeds.
 
 ### Reliability release — verified schedules, isolated accounts and real browser QA
 

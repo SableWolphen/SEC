@@ -206,7 +206,7 @@ function render(ctx){
    const previews=ctx.schoolTrophies(entry.code).slice(0,4);
    const btn=document.createElement("button");btn.type="button";btn.className="museum-school-button";
    btn.dataset.museumSchool=entry.code;btn.setAttribute("aria-expanded",String(opened));btn.setAttribute("aria-label",(opened?"Collapse ":"Expand ")+entry.name+" trophy collection");
-   btn.innerHTML='<span class="school-mark">'+esc(entry.monogram)+'</span>'+
+   btn.innerHTML='<span class="school-mark">'+esc(window.SDS_VISUALS?.shortLabel?.(entry.code)||"•")+'</span>'+
     '<span class="school-name"><strong>'+esc(entry.name)+'</strong><small>'+entry.earned+' / '+entry.count+' earned</small></span>'+
     '<span class="school-preview" aria-hidden="true">'+previews.map(t=>'<span class="'+(ctx.lastWin(t.id)?"":"locked")+'">'+esc(t.symbol)+'</span>').join("")+'</span>'+
     '<span class="school-chevron" aria-hidden="true">⌄</span>';
