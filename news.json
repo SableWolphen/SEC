@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-11T07:15:39.587981Z",
-  "checked_at": "2026-10-11T07:15:39.587981Z",
+  "updated_at": "2026-10-11T14:05:57.486946Z",
+  "checked_at": "2026-10-11T14:05:57.486946Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -12,7 +12,7 @@
       "summary": "Alabama coach Kalen DeBoer questioned sophomore cornerback Dijon Lee Jr.'s \"emotional maturity\" after his personal foul penalty extended a Georgia drive and secured the Bulldogs' 20-17 victory Saturday night.",
       "url": "https://www.espn.com/college-football/story/_/id/50154518/lee-late-personal-foul-ends-alabama-hopes-loss-georgia",
       "source": "ESPN",
-      "published_at": "2026-10-11T06:53:01Z",
+      "published_at": "2026-10-11T13:46:20Z",
       "sport": "football",
       "teams": [
         "Alabama",
@@ -21,12 +21,54 @@
       "breaking": false
     },
     {
+      "id": "96a94ffd2cdde27b",
+      "title": "Kentucky converts 2-point play in OT to upset No. 10 LSU",
+      "summary": "Quarterback Kenneth Minchey ran for a 2-point conversion in overtime to lift Kentucky to a 35-34 victory over No. 10 LSU.",
+      "url": "https://www.espn.com/college-football/story/_/id/50154081/kentucky-converts-2-point-play-ot-upset-no-10-lsu",
+      "source": "ESPN",
+      "published_at": "2026-10-11T13:45:29Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
       "id": "4ceb37030c9029c0",
       "title": "Georgia rallies, posts first victory at Alabama since 2007",
-      "summary": "Trailing at the half against an SEC rival on the road, Georgia coach Kirby Smart watched the Bulldogs rally to post a 20-17 victory over Alabama on Saturday night, his team's sixth win of the season in a game…",
+      "summary": "Trailing at the half against an SEC rival on the road, Georgia coach Kirby Smart watched the Bulldogs rally to post a 20-17 victory over Alabama, his team's sixth win of the season in a game he described as…",
       "url": "https://www.espn.com/college-football/story/_/id/50154761/no-2-georgia-rallies-posts-first-win-alabama-2007",
       "source": "ESPN",
-      "published_at": "2026-10-11T06:32:11Z",
+      "published_at": "2026-10-11T13:38:13Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "32b19c3c5cd775b7",
+      "title": "Why Dinich and Finebaum aren't counting out Alabama after loss to Georgia",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50156119/why-dinich-finebaum-counting-alabama-loss-georgia",
+      "source": "ESPN",
+      "published_at": "2026-10-11T12:42:40Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "61d8e24093c9b6b1",
+      "title": "Georgia goes on the road and picks up big win over Alabama",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50154088/georgia-goes-road-picks-big-win-alabama",
+      "source": "ESPN",
+      "published_at": "2026-10-11T12:10:30Z",
       "sport": "football",
       "teams": [
         "Alabama",
@@ -44,20 +86,6 @@
       "sport": "football",
       "teams": [
         "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "96a94ffd2cdde27b",
-      "title": "Kentucky converts 2-point play in OT to upset No. 10 LSU",
-      "summary": "Quarterback Kenneth Minchey ran for a 2-point conversion in overtime to lift Kentucky to a 35-34 victory over No. 10 LSU on Saturday night.",
-      "url": "https://www.espn.com/college-football/story/_/id/50154081/kentucky-converts-2-point-play-ot-upset-no-10-lsu",
-      "source": "ESPN",
-      "published_at": "2026-10-11T05:04:53Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "LSU"
       ],
       "breaking": false
     },
@@ -82,20 +110,6 @@
       "url": "https://www.espn.com/college-football/story/_/id/50154016/georgia-beats-no-6-alabama-stake-claim-no-1-ranking",
       "source": "ESPN",
       "published_at": "2026-10-11T04:33:45Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "61d8e24093c9b6b1",
-      "title": "Georgia goes on the road and picks up big win over Alabama",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50154088/georgia-goes-road-picks-big-win-alabama",
-      "source": "ESPN",
-      "published_at": "2026-10-11T04:26:44Z",
       "sport": "football",
       "teams": [
         "Alabama",
@@ -346,19 +360,6 @@
       "teams": [
         "Georgia",
         "Mississippi State"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0fa04a6864eb35e6",
-      "title": "College basketball eligibility: What to know about latest rulings",
-      "summary": "With a month to go until the 2026-27 season begins, we check in on the NCAA's player eligibility cases -- and LSU.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/49692764/college-basketball-eligibility-know-latest-rulings-ncaa",
-      "source": "ESPN",
-      "published_at": "2026-10-02T11:13:23Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
       ],
       "breaking": false
     }
