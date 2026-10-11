@@ -106,7 +106,7 @@ function hero(m){
  (m.favoriteSchool?'<div class="sds-home-favorite-mini" data-sds-school="'+esc(m.favoriteSchool)+'">'+
   (window.SDS_VISUALS?.mark?.(m.favoriteSchool,{className:"sdsx-crest"})||'<span>'+esc(m.favoriteSchool)+'</span>')+
   '<div><span>★ FOLLOWING YOUR SCHOOL</span><strong>'+esc(m.favoriteName||m.favoriteSchool)+'</strong>'+
-  '<small>'+(window.SEC_RANKINGS?.rank?.(m.favoriteSchool,"football")?
+  '<small>'+(window.SEC_RANKINGS?.hasCurrent?.("football")&&window.SEC_RANKINGS?.rank?.(m.favoriteSchool,"football")?
    '#'+window.SEC_RANKINGS.rank(m.favoriteSchool,"football")+' AP Top 25 · ':"")+
   esc(m.favoriteRecord?m.favoriteRecord+" overall":"Your university, all season")+'</small>'+
   '<div class="sds-home-favorite-actions" role="group" aria-label="Favorite school shortcuts">'+
