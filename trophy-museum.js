@@ -197,6 +197,7 @@ function render(ctx){
   }
  }
  loadWeekly(ctx);
+ try{window.SEC_TROPHY_LEGACY?.render?.(ctx,root);}catch(error){console.warn("Trophy legacy display unavailable:",error);}
  if(!root.dataset.museumWired){
   root.dataset.museumWired="true";
   root.addEventListener("click",e=>{
