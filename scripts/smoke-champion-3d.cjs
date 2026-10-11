@@ -1,0 +1,49 @@
+/* Lightweight safety checks for cinematic 3D championship enhancement. */
+"use strict";
+const assert=require("node:assert/strict");
+const fs=require("node:fs");
+const vm=require("node:vm");
+const moduleText=fs.readFileSync("sec-champion-3d.js","utf8");
+const museum=fs.readFileSync("trophy-museum.js","utf8");
+const html=fs.readFileSync("index.html","utf8");
+const styles=fs.readFileSync("sec-champion-3d.css","utf8");
+const worker=fs.readFileSync("sw.js","utf8");
+new vm.Script(moduleText,{filename:"sec-champion-3d.js"});
+const observed=[];
+let observerCount=0;
+class Observer{
+ constructor(fn){this.callback=fn;observerCount++;}
+ observe(el){observed.push(el);}
+}
+const context={
+ window:{IntersectionObserver:Observer},
+ document:{},console
+};
+vm.runInNewContext(moduleText,context);
+const manager=context.window.SEC_CHAMPION_3D;
+assert.equal(typeof manager?.enhance,"function","3D card enhancer exported");
+const football={dataset:{championSport:"football"},isConnected:true};
+const basketball={dataset:{championSport:"basketball"},isConnected:true};
+const baseball={dataset:{championSport:"baseball"},isConnected:true};
+const other={dataset:{championSport:"soccer"},isConnected:true};
+const root={querySelectorAll:()=>[football,basketball,baseball,other]};
+manager.enhance(root);manager.enhance(root);
+assert.equal(observerCount,1,"one observer handles lazy-loaded models");
+assert.equal(observed.length,3,"the three SEC sports register only once");
+assert.equal(new Set(observed).size,3,"no duplicate lazy loading");
+assert.match(moduleText,/WebGLRenderer/,"real 3D rendering must be used");
+assert.match(moduleText,/SphereGeometry/,"sports balls are modeled geometrically");
+assert.match(moduleText,/TubeGeometry/,"3D trophy details are modeled");
+assert.match(moduleText,/pointermove/,"people can turn a 3D trophy");
+assert.match(moduleText,/model\.traverse|modelRoot\.traverse/,"old scenes are disposed safely");
+assert.match(moduleText,/museum-trophy-svg|using SVG fallback|SVG fallback/,"SVG fallback is retained");
+assert.doesNotMatch(moduleText,/(?:\.insert\(|\.update\(|\.delete\(|\.upsert\()/,"visual layer must never write any data");
+assert.match(museum,/data-champion-sport/,"championship cards need per-sport 3D mounts");
+assert.match(museum,/SEC_CHAMPION_3D\?\.enhance/,"museum must activate 3D renderer");
+for(const file of ["sec-champion-3d.js","sec-champion-3d.css"]){
+ assert.ok(html.includes("./"+file+"?v=20261011-cinematic-v1"),"app loads "+file);
+ assert.ok(worker.includes("./"+file+"?v=20261011-cinematic-v1"),"offline cache recognizes "+file);
+}
+assert.match(styles,/museum-champion-canvas/,"3D drawing surface styled");
+assert.match(styles,/@media\(max-width:375px\)/,"small phones remain supported");
+console.log("Cinematic 3D champion trophy smoke checks passed.");
