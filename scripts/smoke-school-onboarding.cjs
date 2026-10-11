@@ -2,7 +2,7 @@
 "use strict";
 const assert=require("node:assert/strict"),fs=require("node:fs"),vm=require("node:vm");
 const userA={id:"account-a",user_metadata:{display_name:"A Player",favorite_school_code:"TENN"}};
-const userB={id:"account-b",user_metadata:{display_name:"B Player",favorite_school_code:null}};
+const userB={id:"account-b",user_metadata:{display_name:"B Player",favorite_school_code:"TEX"}};
 let current=userA,schoolWrites=[],metaWrites=[],state={favorite:null,name:"Player Name"};
 const cache=new Map();
 const db={
