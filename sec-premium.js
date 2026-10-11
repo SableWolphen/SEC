@@ -76,7 +76,7 @@ function scoreLine(g){
 }
 const ranking=(code,sport)=>window.SEC_RANKINGS?.rank?.(code,sport)||null;
 const records=(code,sport)=>window.SEC_TEAM_RECORDS?.entry?.(code,sport)||null;
-let pickedGame=null,pickedTeam=null,selectedWeek=null,gameTab="game",newsTab="news",lastRendered="",timer=null;
+let pickedGame=null,pickedTeam=null,selectedWeek=null,gameTab="game";
 let accountScope=null;
 function selectTeam(code){
  const owner=window.secOnline?.configured===true?(user()?.id||"guest"):"offline";
@@ -348,14 +348,9 @@ function mount(v){
  if(v==="game-center")gameCenter();
  if(v==="results")results();
  if(v==="team-news")teamNews();
- if(!timer){
-  timer=setInterval(()=>{const v=app()?.view?.();if(["team-hub","game-center","results","team-news"].includes(v)&&
-   document.visibilityState==="visible"){
-   // Don't interrupt keyboard focus or a user reading a different Game Center tab.
-   if(document.activeElement?.matches?.("input,textarea,select"))return;
-   mount(v);
-  }},45000);
- }
+ // Update only when verified source data changes or the page becomes visible.
+ // Never rebuild a screen periodically while a player scrolls or reads a tab.
+
  if(v==="game-center")void window.SEC_LIVE_SCORES?.refresh?.();
  if(v==="team-hub"||v==="team-news"){
   void window.SEC_TEAM_RECORDS?.refresh?.();
