@@ -1,18 +1,115 @@
 {
-  "updated_at": "2026-10-11T01:01:44.755187Z",
-  "checked_at": "2026-10-11T01:01:44.755187Z",
+  "updated_at": "2026-10-11T07:15:39.587981Z",
+  "checked_at": "2026-10-11T07:15:39.587981Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "29ef6b05966f32a7",
+      "title": "Lee's late personal foul ends Alabama's hopes in loss to Georgia",
+      "summary": "Alabama coach Kalen DeBoer questioned sophomore cornerback Dijon Lee Jr.'s \"emotional maturity\" after his personal foul penalty extended a Georgia drive and secured the Bulldogs' 20-17 victory Saturday night.",
+      "url": "https://www.espn.com/college-football/story/_/id/50154518/lee-late-personal-foul-ends-alabama-hopes-loss-georgia",
+      "source": "ESPN",
+      "published_at": "2026-10-11T06:53:01Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4ceb37030c9029c0",
+      "title": "Georgia rallies, posts first victory at Alabama since 2007",
+      "summary": "Trailing at the half against an SEC rival on the road, Georgia coach Kirby Smart watched the Bulldogs rally to post a 20-17 victory over Alabama on Saturday night, his team's sixth win of the season in a game…",
+      "url": "https://www.espn.com/college-football/story/_/id/50154761/no-2-georgia-rallies-posts-first-win-alabama-2007",
+      "source": "ESPN",
+      "published_at": "2026-10-11T06:32:11Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5571ef8432255bba",
+      "title": "Best of Week 6: A Red River game winner and upsets galore in the SEC",
+      "summary": "With three top-10-ranked teams in the SEC losing, Week 6 had all the theatrics, starting with Oklahoma's win.",
+      "url": "https://www.espn.com/college-football/story/_/page/gamedayfinal101026/2026-college-football-week-6-highlights-top-plays-games-takeaways",
+      "source": "ESPN",
+      "published_at": "2026-10-11T05:54:59Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "96a94ffd2cdde27b",
+      "title": "Kentucky converts 2-point play in OT to upset No. 10 LSU",
+      "summary": "Quarterback Kenneth Minchey ran for a 2-point conversion in overtime to lift Kentucky to a 35-34 victory over No. 10 LSU on Saturday night.",
+      "url": "https://www.espn.com/college-football/story/_/id/50154081/kentucky-converts-2-point-play-ot-upset-no-10-lsu",
+      "source": "ESPN",
+      "published_at": "2026-10-11T05:04:53Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0e771c79d4feed7b",
+      "title": "West Georgia Wolves vs. Eastern Kentucky Colonels: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50154579/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-11T05:00:15Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "fafedba10dd0b345",
+      "title": "Georgia beats No. 6 Alabama to stake claim to No. 1 ranking",
+      "summary": "Dwight Phillips Jr. ran for 120 yards to help Georgia stake its claim to the No. 1 ranking with a 20-17 victory over No. 6 Alabama on Saturday night.",
+      "url": "https://www.espn.com/college-football/story/_/id/50154016/georgia-beats-no-6-alabama-stake-claim-no-1-ranking",
+      "source": "ESPN",
+      "published_at": "2026-10-11T04:33:45Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "61d8e24093c9b6b1",
+      "title": "Georgia goes on the road and picks up big win over Alabama",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50154088/georgia-goes-road-picks-big-win-alabama",
+      "source": "ESPN",
+      "published_at": "2026-10-11T04:26:44Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
       "id": "8d01a4b5c7eb0d23",
       "title": "Oklahoma's jab at Texas tops trolls from Week 6 in college football",
       "summary": "Oklahoma made sure to troll its rivals after Tate Sandell's winning kick sailed through the uprights.",
       "url": "https://www.espn.com/college-football/story/_/id/50149322/college-football-trolls-week-6",
       "source": "ESPN",
-      "published_at": "2026-10-11T00:45:55Z",
+      "published_at": "2026-10-11T04:16:32Z",
       "sport": "football",
       "teams": [
         "Oklahoma",
@@ -21,54 +118,108 @@
       "breaking": false
     },
     {
-      "id": "d867aa158007de28",
-      "title": "Oklahoma stuns No. 1 Texas in last second in Red River Rivalry",
-      "summary": "Oklahoma kicks a late field goal to hand No. 1 Texas its first loss of the season, 27-24 in the Red River rivalry.",
-      "url": "https://www.espn.com/college-football/story/_/id/50151802/oklahoma-stuns-no-1-texas-last-second-fg-red-river",
+      "id": "feb16d7b87512f30",
+      "title": "LSU Tigers vs. Kentucky Wildcats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50154030/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-11T00:18:33Z",
+      "published_at": "2026-10-11T03:54:15Z",
       "sport": "football",
       "teams": [
-        "Oklahoma",
-        "Texas"
+        "Kentucky",
+        "LSU"
       ],
       "breaking": false
     },
     {
-      "id": "05f32d28b35e33be",
-      "title": "Heupel is pleased with Vols' resilience, MacIntyre's game control",
-      "summary": "Josh Heupel evaluates the Vols' toughness against the Razorbacks as he commends their full-game fight and George MacIntyre's impressive QB performance.",
-      "url": "https://www.espn.com/video/clip/_/id/50152178/heupel-pleased-vols-resilience-macintyre-game-control",
+      "id": "650f7998e8a6ce49",
+      "title": "UGA's Gunner Stockton soaks in the moment after gritty win vs Bama",
+      "summary": "With a smile, Stockton calls No. 2 Georgia's triumph over No. 6 Alabama \"the kind of game you dream of playing in as a kid\" and lauds the Bulldogs perseverance through adversity.",
+      "url": "https://www.espn.com/video/clip/_/id/50154140/uga-gunner-stockton-soaks-moment-gritty-win-vs-bama",
       "source": "ESPN",
-      "published_at": "2026-10-11T00:15:48Z",
+      "published_at": "2026-10-11T03:51:39Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e4cc6c3a5aeac082",
+      "title": "Kirby Smart: 'I don't care who wins... I just want them to feel us'",
+      "summary": "Instead of the scoreboard, Smart delights in the physicality and execution that No. 2 Georgia displayed in the win over No. 6 Alabama.",
+      "url": "https://www.espn.com/video/clip/_/id/50154132/care-wins-just-want-feel-us",
+      "source": "ESPN",
+      "published_at": "2026-10-11T03:51:04Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "bfd8a26e530eae3f",
+      "title": "Kentucky stuns LSU in overtime",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50154033/kentucky-stuns-lsu-over",
+      "source": "ESPN",
+      "published_at": "2026-10-11T03:38:45Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "cbc361d6893f0027",
+      "title": "Central Arkansas Bears vs. Abilene Christian Wildcats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50153986/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-11T03:26:12Z",
       "sport": "football",
       "teams": [
         "Arkansas",
-        "Tennessee"
+        "Kentucky"
       ],
       "breaking": false
     },
     {
-      "id": "56f9f0e6af4d019a",
-      "title": "Ole Miss Rebels vs. Vanderbilt Commodores: Full Highlights",
+      "id": "153b9c1be2964450",
+      "title": "Louisiana Ragin' Cajuns vs. Louisiana Tech Bulldogs: Full Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50151764/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50153929/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-11T00:06:49Z",
+      "published_at": "2026-10-11T03:20:19Z",
       "sport": "football",
       "teams": [
-        "Ole Miss",
-        "Vanderbilt"
+        "Georgia"
       ],
       "breaking": false
     },
     {
-      "id": "146239a690435d9b",
-      "title": "Texas Longhorns vs. Oklahoma Sooners: Full Highlights",
+      "id": "53ebfd5566a2a7a2",
+      "title": "Eastern Illinois Panthers vs. Gardner-Webb Bulldogs: Full Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50151907/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50153411/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-11T00:00:36Z",
+      "published_at": "2026-10-11T02:31:37Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b4c0ba87f08652c7",
+      "title": "Analyzing how OU was able to win the Red River Rivalry",
+      "summary": "As the Sooners complete the upset win over No. 1 Texas, the SEC Now crew breaks down how the defense and winning the turnover battle led to the victory.",
+      "url": "https://www.espn.com/video/clip/_/id/50152834/analyzing-how-ou-was-able-win-red-river-rivalry",
+      "source": "ESPN",
+      "published_at": "2026-10-11T01:29:33Z",
       "sport": "football",
       "teams": [
         "Oklahoma",
@@ -91,55 +242,16 @@
       "breaking": false
     },
     {
-      "id": "c3457b17c9401f14",
-      "title": "Tennessee Volunteers vs. Arkansas Razorbacks: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50151890/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-10T23:43:47Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "04babaedb15cecf8",
-      "title": "Houston Cougars vs. Kansas State Wildcats: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50151710/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-10T23:28:47Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "988fcb51a78e67b8",
-      "title": "Furman Paladins vs. Tennessee Tech Golden Eagles: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50151529/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-10T23:01:59Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "262a13d06e2efff4",
-      "title": "UCLA, South Carolina and North Carolina pull off top-25 upsets on the road",
+      "id": "f892a38128b18486",
+      "title": "South Carolina, North Carolina, UCLA and Kentucky pull off top-25 upsets in Week 6",
       "summary": "There’s a lot of benefits that come with being a Top 25 team, but immunity isn’t one of them.",
-      "url": "https://www.ncaa.com/news/football/article/2026-10-10/ucla-south-carolina-and-north-carolina-pull-top-25-upsets-road",
+      "url": "https://www.ncaa.com/news/football/article/2026-10-10/south-carolina-north-carolina-ucla-and-kentucky-pull-top-25-upsets-week-6",
       "source": "NCAA",
       "published_at": "2026-10-10T20:38:35Z",
       "sport": "football",
       "teams": [
         "Florida",
+        "Kentucky",
         "South Carolina"
       ],
       "breaking": false
@@ -155,7 +267,7 @@
       "teams": [
         "Ole Miss"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "b22b2a3947d028f6",
