@@ -16,7 +16,7 @@ const games=[
  {id:"a",home:"TENN",away:"ALA",date:"2026-10-11",kickoff:"2026-10-11T16:00:00Z",
   liveStatus:"live",homeScore:21,awayScore:24,statusDetail:"4th · 02:36",
   scoreUpdatedAt:"2026-10-11T17:59:10Z",liveFieldPercent:60,livePossessionCode:"ALA"},
- {id:"b",home:"UGA",away:"FLA",date:"2026-10-11",kickoff:"2026-10-11T21:00:00Z",liveStatus:"scheduled",homeScore:0,awayScore:0},
+ {id:"b",home:"UGA",away:"FLA",date:"2026-10-11",kickoff:new Date(Date.now()+86400000).toISOString(),liveStatus:"scheduled",homeScore:0,awayScore:0},
  {id:"c",home:"LSU",away:"ARK",date:"2026-10-11",kickoff:"2026-10-11T14:00:00Z",liveStatus:"final",homeScore:17,awayScore:10}
 ];
 const state={picks:{a:"ALA",c:"LSU"}};
