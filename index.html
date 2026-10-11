@@ -194,6 +194,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <link rel="stylesheet" href="./sec-trophy-legacy.css?v=20261011-trophy-room-v2">
 <link rel="stylesheet" href="./sec-champion-3d.css?v=20261011-cinematic-v1">
 <link rel="stylesheet" href="./sec-home.css?v=20261011-league-race-v5">
+<link rel="stylesheet" href="./sec-rankings.css?v=20261011-national-polls-v1">
 <link rel="stylesheet" href="./sec-design-system.css?v=20261011-broadcast-v1">
 </head>
 <body>
@@ -721,13 +722,13 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
            aria-pressed="${favorite===id}" aria-label="${favorite===id?'Remove favorite':'Set '+esc(t.name)+' as favorite'}"
            title="${favorite===id?'Favorite team':'Mark as favorite'}">${favorite===id?'★':'☆'}</button>
         </div>
-        <h3>${esc(t.name)}</h3><p>${esc(t.nick)}</p>
+        <h3>${esc(t.name)} ${window.SEC_RANKINGS?.badge?.(id,"football",true)||""}</h3><p>${esc(t.nick)}</p>
         <div class="city">${esc(t.city)}</div>
         ${records?.compact?.(id)||''}
       </article>`).join('');
     document.getElementById('teams-content').innerHTML=
       spotlight+
-      '<div class="filter-row team-record-directory"><p>Tap ☆ to follow a school. Football, men’s basketball and baseball records are sourced from ESPN and refreshed automatically.</p><span class="info-chip">16 SEC TEAMS</span></div>'+
+      '<div class="filter-row team-record-directory"><p>Tap ☆ to follow a school. National Top 25 poll ranks update automatically; the football AP rank is shown beside each university. NR means not ranked in the latest verified poll. The team hub includes basketball and baseball rankings.</p><span class="info-chip">16 SEC TEAMS</span></div>'+
       '<div class="teams-grid">'+cards+'</div>';
     window.SEC_FAN?.enhanceTeam?.();
   }
@@ -808,9 +809,10 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./league-social.js?v=20261010-museum-v1"></script>
 <script src="./sec-pride.js?v=20261011-school-v2"></script>
 <script src="./multiplayer.js?v=20261011-school-v2"></script>
-<script src="./matchup-stats.js?v=20261010-community-v1"></script>
-<script src="./team-records.js?v=20261009-officialsources-v8"></script>
-<script src="./multi-sport.js?v=20261010-compact-score-v1"></script>
+<script src="./sec-rankings.js?v=20261011-national-polls-v1"></script>
+<script src="./matchup-stats.js?v=20261011-national-polls-v1"></script>
+<script src="./team-records.js?v=20261011-national-polls-v1"></script>
+<script src="./multi-sport.js?v=20261011-national-polls-v1"></script>
 <script src="./sec-recaps.js?v=20261010-recaps-v1"></script>
 <script src="./sec-news.js?v=20261011-school-v2"></script>
 <script src="./sec-league-insights.js?v=20261010-showcase-v1"></script>
@@ -827,6 +829,6 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./league-tabs.js?v=20261010-standings-only-v1"></script>
 <script src="./sec-competitive-tools.js?v=20261010-path-fixed-v4"></script>
 <script src="./sec-final-cards.js?v=20261010-pick-result-v4"></script>
-<script src="./sec-home.js?v=20261011-mobile-calm-v4"></script>
+<script src="./sec-home.js?v=20261011-national-polls-v1"></script>
 </body>
 </html>

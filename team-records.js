@@ -49,7 +49,8 @@
    /^https:\/\/www\.espn\.com\/[a-z/-]+\/team\/_\/id\/\d+$/.test(item.source_url)?
    item.source_url:null;
   return '<article class="team-record-sport"><div class="record-sport-head"><span aria-hidden="true">'+meta.emoji+'</span>'+
-   '<strong>'+meta.label+'</strong><span class="record-season">'+escape(seasonLabel(sport,season))+'</span></div>'+
+   '<strong>'+meta.label+'</strong><span class="record-season">'+escape(seasonLabel(sport,season))+'</span>'+
+   (window.SEC_RANKINGS?.badge?.(id,sport)||"")+'</div>'+
    '<div class="record-big'+(item?"":" missing")+'">'+escape(overall)+'</div>'+
    '<div class="record-sport-desc">'+label+'</div>'+
    '<div class="record-conference">'+(conf?"SEC: "+escape(conf):"Conference record: —")+'</div>'+
@@ -71,6 +72,7 @@
    '<p>Follow all three teams in one place.</p></div></div>'+
    '<button type="button" class="record-refresh-btn" data-record-refresh '+(loading?'disabled':'')+'>'+
    (loading?"Updating…":"↻ Update records")+'</button></div>'+
+   (window.SEC_RANKINGS?.teamPanel?.(id)||"")+
    '<div class="team-record-grid">'+ORDER.map(s=>sportCard(id,s)).join("")+'</div>'+
    '<div class="team-record-resources" aria-label="Official college baseball data sources">'+
      '<strong>⚾ More baseball stats</strong>'+
@@ -87,7 +89,8 @@
     const meta=META[s],e=entry(id,s),year=e?.season||snapshot?.seasons?.[s];
     return '<span class="team-mini-record" title="'+escape(meta.label)+' '+escape(seasonLabel(s,year))+
      ' overall record"><span aria-hidden="true">'+meta.emoji+'</span> <strong>'+
-     escape(e?.overall||"—")+'</strong></span>';
+     escape(e?.overall||"—")+'</strong>'+
+     (window.SEC_RANKINGS?.badge?.(id,s)||"")+'</span>';
    }).join("")+'</div>';
  }
  async function refresh(force=false){

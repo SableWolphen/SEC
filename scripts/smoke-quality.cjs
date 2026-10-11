@@ -52,7 +52,7 @@ assert.match(html,/renderWeeklyScoreStrip\(w\)/,"weekly score updates with reren
 assert.match(css,/#picks-view #hero-slot\{display:none\}/,"mobile layout removes duplicated featured matchup");
 assert.match(fs.readFileSync("multi-sport.js","utf8"),/sportStrip\+leagues\+games/,"other sports show the weekly score before leagues and games");
 assert.match(worker,/20261010-showcase-v1/);
-assert.match(html,/20261010-community-v1/);
+assert.match(html,/20261011-national-polls-v1/,"current national poll and matchup stats assets are cache-busted");
 const league=fs.readFileSync("league-settings.js","utf8");
 assert.match(league,/lastRenderedSelection===selection/,"draft edit states only restore into same selected league");
 assert.match(league,/standingsVersion/,"late asynchronous results cannot bleed between leagues");
