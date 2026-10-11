@@ -483,7 +483,10 @@
  function render(next=tab){
   const root=document.getElementById(rootId);if(!root)return;
   tab=["all","mine","history","rivalries"].includes(next)?next:"all";
-  const version=++renderId;root.replaceChildren();
+  const version=++renderId;
+  // Keep existing 3D canvases alive when scores, login state or leagues refresh.
+  window.SEC_CHAMPION_3D?.beforeRender?.(root);
+  root.replaceChildren();
   if(window.SEC_TROPHY_MUSEUM?.render?.({root,version,signedIn,leagueId,leagueName,verified,myPicks,schedule,records,trophies:TROPHIES,owned,lastWin,schoolOverviewData,schoolTrophies,trophyCard,expandedSchool,toggleSchool,rerender:()=>render()}))return;
   const h=document.createElement("h2");h.className="sds-trophy-heading";h.innerHTML="Trophy <span>Case</span>";
   const subtitle=document.createElement("p");subtitle.className="sds-trophy-subtitle";
