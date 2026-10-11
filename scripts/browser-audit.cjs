@@ -90,9 +90,11 @@ fs.mkdirSync(output,{recursive:true});
      if(route==="game-center"){
       const tabs=await page.evaluate(()=>{
        const tabs=[...document.querySelectorAll("#sdsx-game-root [data-sdsx-tab]")];
-       const stats=tabs.find(x=>x.dataset.sdsxTab==="stats"),plays=tabs.find(x=>x.dataset.sdsxTab==="plays");
+       const stats=tabs.find(x=>x.dataset.sdsxTab==="stats");
        stats?.click();const statsActive=!!document.querySelector('#sdsx-game-root [data-sdsx-tab="stats"][aria-selected="true"]');
-       plays?.click();const playsActive=!!document.querySelector('#sdsx-game-root [data-sdsx-tab="plays"][aria-selected="true"]');
+       // Re-query after Game Center's intentional tab-content rerender.
+       document.querySelector('#sdsx-game-root [data-sdsx-tab="plays"]')?.click();
+       const playsActive=!!document.querySelector('#sdsx-game-root [data-sdsx-tab="plays"][aria-selected="true"]');
        return {count:tabs.length,statsActive,playsActive};
       });
       if(tabs.count!==4||!tabs.statsActive||!tabs.playsActive)
