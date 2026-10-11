@@ -105,6 +105,9 @@ fs.mkdirSync(output,{recursive:true});
         museum.schools!==16||!museum.medallist||museum.openByDefault!==0)
       problems.push(viewport.width+"px trophy museum failed: "+JSON.stringify(museum));
      if(museum.schools===16){
+      // The School case is intentionally collapsible in the new Trophy Room.
+      const schoolCase=page.locator('details[data-legacy-case="school"]');
+      if(await schoolCase.count())await schoolCase.locator("summary").click();
       await page.locator('[data-museum-school="ALA"]').click();
       const opened=await page.locator('#sds-trophy-case .museum-school-expanded .sds-trophy-card').count();
       if(opened<1)problems.push(viewport.width+"px Alabama trophies cannot expand");
