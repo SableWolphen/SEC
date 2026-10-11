@@ -232,6 +232,7 @@ async function mount(stage){
      if(instance?.stage.isConnected){const r=instance.stage.getBoundingClientRect();
       instance.renderer.setSize(Math.max(70,r.width),Math.max(90,r.height),false);
       instance.camera.aspect=Math.max(70,r.width)/Math.max(90,r.height);instance.camera.updateProjectionMatrix();
+      if(instance.staticMode)instance.renderer.render(instance.scene,instance.camera);
      }}
    });
    resizeObserver.observe(stage);
@@ -317,5 +318,16 @@ function enhance(root){
   if(observer)observer.observe(stage);else void mount(stage);
  }
 }
-window.SEC_CHAMPION_3D=Object.freeze({beforeRender,enhance});
+// Android may clear GPU drawing buffers when switching apps or restoring a tab.
+ // Repaint on return instead of leaving a temporarily empty model.
+ const refreshStatic=()=>{
+  if(document.visibilityState==="hidden")return;
+  for(const entry of instances){
+   if(entry.staticMode&&entry.stage.isConnected&&entry.visible)
+    entry.renderer.render(entry.scene,entry.camera);
+  }
+ };
+ document.addEventListener?.("visibilitychange",refreshStatic);
+ window.addEventListener?.("pageshow",refreshStatic);
+ window.SEC_CHAMPION_3D=Object.freeze({beforeRender,enhance});
 })();
