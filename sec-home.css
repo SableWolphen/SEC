@@ -293,8 +293,16 @@
  }
  #sec-home-root .hq-action{display:none;min-width:0;min-height:78px;flex:auto;
   padding:9px 2px;gap:4px;border-radius:10px}
- #sec-home-root .hq-action:nth-child(-n+3),
+ /* Home shortcuts on compact screens: Picks, League Race, Scores, News.
+    Keep all seven shortcuts available on desktop and My Team in its own Home panel. */
+ #sec-home-root .hq-action:nth-child(1),
+ #sec-home-root .hq-action:nth-child(3),
+ #sec-home-root .hq-action:nth-child(4),
  #sec-home-root .hq-action:last-child{display:flex}
+ #sec-home-root .hq-action:nth-child(1){order:1}
+ #sec-home-root .hq-action:nth-child(4){order:2}
+ #sec-home-root .hq-action:nth-child(3){order:3}
+ #sec-home-root .hq-action:last-child{order:4}
  #sec-home-root .hq-action-icon{font-size:23px}
  #sec-home-root .hq-action strong{font-size:9px;line-height:1.15}
  #sec-home-root .hq-action small{font-size:9px;line-height:1.15}
