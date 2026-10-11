@@ -61,6 +61,47 @@ function discovery(model){
   '</section>';
  return '<div class="hq-discover">'+schoolCard+newsCard+'</div>';
 }
+
+function nextKickoff(games,now=Date.now()){
+ return games.filter(g=>g.status==="scheduled"&&!g.provisional&&g.clock&&g.clock>now)
+  .sort((a,b)=>a.clock-b.clock)[0]||null;
+}
+function countdown(kickoff,now=Date.now()){
+ if(!kickoff||kickoff<=now)return null;
+ const total=Math.max(1,Math.ceil((kickoff-now)/60000));
+ const days=Math.floor(total/1440),hours=Math.floor(total%1440/60),mins=total%60;
+ return (days?days+"d ":"")+hours+"h "+String(mins).padStart(2,"0")+"m";
+}
+function teamRecord(code){
+ const entry=code&&window.SEC_TEAM_RECORDS?.entry?.(code,"football");
+ return entry&&/^\d{1,3}-\d{1,3}(?:-\d{1,3})?$/.test(entry.overall||"")?entry.overall:null;
+}
+function favoriteGame(code,games,now=Date.now()){
+ return code?games.filter(g=>g.status==="scheduled"&&!g.provisional&&g.clock>now&&
+  (g.away===code||g.home===code)).sort((a,b)=>a.clock-b.clock)[0]||null:null;
+}
+function moreNews(primary){
+ const used=new Set(primary.map(x=>x.url));
+ return (window.SEC_NEWS?.getArticles?.()||[])
+  .filter(x=>x?.title&&validDate(x.published_at)&&window.SEC_NEWS?.safeUrl?.(x.url))
+  .sort((a,b)=>Date.parse(b.published_at)-Date.parse(a.published_at))
+  .filter(x=>!used.has(x.url)&&used.add(x.url)).slice(0,3)
+  .map(x=>({title:String(x.title).slice(0,200),
+   source:String(x.source||"Publisher").slice(0,50),
+   url:window.SEC_NEWS.safeUrl(x.url),published:x.published_at}));
+}
+function closestRival(model){
+ if(!model.loggedIn)return null;
+ const rows=model.leaderboard||[],mine=rows.find(r=>r.user_id===user()?.id);
+ if(!mine)return null;
+ const value=r=>number(model.leagueKind==="club"?r.total:r.season_points);
+ const others=rows.filter(r=>r.user_id!==user()?.id);
+ if(!others.length)return null;
+ const rival=others.sort((a,b)=>Math.abs(value(a)-value(mine))-Math.abs(value(b)-value(mine)))[0];
+ return {name:String(rival.display_name||"League rival").slice(0,40),
+  yourPoints:value(mine),theirPoints:value(rival),gap:Math.abs(value(mine)-value(rival))};
+}
+
 function gameState(g){
  const status=["live","final","scheduled","canceled","postponed"].includes(g?.liveStatus)?g.liveStatus:"scheduled";
  const updated=validDate(g?.scoreUpdatedAt)?Date.parse(g.scoreUpdatedAt):null;
@@ -71,7 +112,9 @@ function gameState(g){
   possession:status==="live"?g.livePossessionCode||null:null,
   fieldPercent:status==="live"&&Number.isFinite(Number(g.liveFieldPercent))?
    Math.min(100,Math.max(0,Number(g.liveFieldPercent))):null,
-  clock:validDate(g.kickoff)?Date.parse(g.kickoff):validDate(g.date)?Date.parse(g.date+"T17:00:00Z"):null};
+  clock:validDate(g.kickoff)?Date.parse(g.kickoff):null,
+  provisional:Boolean(g.onlineProvisional)||!validDate(g.kickoff),
+  down:g.liveDown??null,distance:g.liveDistance??null,position:g.livePositionText||null};
 }
 function pickProgress(games,picks,locked,unavailable){
  const total=games.length;let chosen=0,unpickedOpen=0,lockedMissing=0,open=0;
