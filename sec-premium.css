@@ -380,3 +380,11 @@
  }
  .sdsx-team-launch>button{margin-left:0}
 }
+
+.sdsx-hero-caption{font-size:12px;color:#d2e0e9;margin:8px 0 0;line-height:1.45}
+.sdsx-team-directory-link{display:block;width:100%;text-align:center;
+ color:#f7d69a;font-size:11px;font-weight:950;background:#152d41;
+ border:1px solid #9f8154;border-radius:9px;padding:10px 8px;
+ cursor:pointer;min-height:40px;margin-top:10px}
+.sdsx-team-directory-link:hover{background:#29475e}
+@media(max-width:540px){.sdsx-hero-caption{font-size:10px;line-height:1.35;margin:5px 0}}
