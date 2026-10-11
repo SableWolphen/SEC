@@ -112,23 +112,34 @@ function closestRival(model){
 
 
 function hero(m){
- const game=m.nextKickoff,action=m.progress.unpickedOpen?"picks":m.liveCount?"picks":"league";
+ const game=m.favoriteUpcoming||m.nextKickoff,action=m.progress.unpickedOpen?"picks":m.liveCount?"game-center":"results";
  const line=m.liveCount?m.liveCount+" live football game"+(m.liveCount===1?"":"s"):
   m.progress.unpickedOpen?m.progress.unpickedOpen+" unpicked games still open":
   "Your school. Your league. Your season.";
  return '<section class="hq-stadium-hero" aria-label="Game Day HQ">'+
  '<div class="hq-hero-copy"><span class="hq-eyebrow">SATURDAYS DOWN SOUTH</span>'+
  '<h2>Game Day <em>HQ</em></h2>'+
+ (m.favoriteSchool?'<div class="sds-home-favorite-mini">'+
+ (window.SDS_VISUALS?.mark?.(m.favoriteSchool,{className:"sdsx-crest"})||'<span>'+esc(m.favoriteSchool)+'</span>')+
+ '<div><span>★ FOLLOWING YOUR SCHOOL</span><strong>'+esc(m.favoriteName||m.favoriteSchool)+'</strong>'+
+ '<small>'+(window.SEC_RANKINGS?.rank?.(m.favoriteSchool,"football")?
+ '#'+window.SEC_RANKINGS.rank(m.favoriteSchool,"football")+' AP Top 25 · ':"")+
+ esc(m.favoriteRecord?m.favoriteRecord+" overall":"Your university, all season")+
+ '</small></div></div>':"")+
  '<strong>'+(m.favoriteName?esc(m.favoriteName)+' · your SEC school':"Same schools. Bigger rivalries.")+'</strong><p>'+esc(line)+'</p>'+
  '<div class="hq-hero-buttons"><button type="button" data-hq-route="'+action+'" class="hq-primary">'+
- (m.progress.unpickedOpen?"Make my picks →":m.liveCount?"Open live games →":"View my league →")+
+ (m.progress.unpickedOpen?"Make my picks →":m.liveCount?"Open live games →":"See my results →")+
  '</button><button type="button" data-hq-route="'+(m.favoriteSchool?"team-hub":"teams")+
  '" class="hq-hero-alt">'+(m.favoriteSchool?"★ My Team Hub →":"☆ Choose Team →")+'</button>'+
  '</div></div><div class="hq-next-kickoff"><span class="hq-hero-next-label">'+
  (game?"NEXT VERIFIED KICKOFF":"COMING UP")+'</span>'+
- (game?'<div class="hq-next-teams"><span>'+esc(game.away)+'</span><small>VS</small><span>'+esc(game.home)+'</span></div>'+
+ (game?'<div class="hq-next-teams"><span>'+
+ (window.SDS_VISUALS?.mark?.(game.away,{className:"sdsx-crest"})||"")+
+ '<b>'+esc(game.away)+'</b></span><small>VS</small><span>'+
+ (window.SDS_VISUALS?.mark?.(game.home,{className:"sdsx-crest"})||"")+
+ '<b>'+esc(game.home)+'</b></span></div>'+
  '<strong>'+esc(countdown(game.clock)||"Starting soon")+'</strong><small>'+
- esc(niceTime(game.clock))+' CT</small><button type="button" data-hq-route="picks">Game details →</button>':
+ esc(niceTime(game.clock))+' CT</small><button type="button" data-hq-route="game-center">Open Game Center →</button>':
  '<p>No confirmed upcoming football kickoff in the selected week.</p>'+
  '<button type="button" data-hq-route="'+routeFor(m.recommended)+'">Open '+esc(sportText[m.recommended]||"football")+' →</button>')+
  '</div></section>';

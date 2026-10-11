@@ -64,12 +64,45 @@ fs.mkdirSync(output,{recursive:true});
     if(!audit.isMobile&&audit.navVisible)problems.push(prefix+" mobile nav on desktop");
     if(audit.designToken!=="#f0c775")
      problems.push(prefix+" wrong shared broadcast color token: "+audit.designToken);
-    if(audit.brandColor!=="rgb(255, 227, 164)")
+    if(audit.brandColor!=="rgb(246, 203, 121)")
      problems.push(prefix+" mismatched Saturdays Down South header accent: "+audit.brandColor);
     if(!["home","trophies","team-hub","game-center","results","team-news"].includes(route)&&
        (!audit.sectionHeader?.visible||audit.sectionHeader.height<60))
      problems.push(prefix+" missing redesigned section masthead: "+JSON.stringify(audit.sectionHeader));
 
+    if(route==="team-hub"){
+     const styled=await page.evaluate(()=>{
+      window.SEC_PREMIUM?.openTeam?.("TENN");
+      const tabs=[...document.querySelectorAll("#sdsx-team-root [data-sdsx-team-tab]")];
+      document.querySelector('#sdsx-team-root [data-sdsx-team-tab="schedule"]')?.click();
+      const schedule=!!document.querySelector('#sdsx-team-root [data-sdsx-team-tab="schedule"][aria-selected="true"]');
+      const visible=!!document.querySelector('#sdsx-team-root [data-sdsx-team-panel="schedule"]:not([hidden])');
+      document.querySelector('#sdsx-team-root [data-sdsx-team-tab="overview"]')?.click();
+      const logo=!!document.querySelector('#sdsx-team-root .sds-team-logo[src*="2633.png"]');
+      return {count:tabs.length,schedule,visible,logo,overflow:document.documentElement.scrollWidth>innerWidth+2};
+     });
+     if(styled.count!==4||!styled.schedule||!styled.visible||!styled.logo||styled.overflow)
+      problems.push(viewport.width+"px Team Hub approved four-tab layout issue: "+JSON.stringify(styled));
+    }
+    if(route==="settings"){
+     const settings=await page.evaluate(()=>({
+      exists:!!document.querySelector("#sds-settings-notifications .sds-notice-card"),
+      optIn:!!document.querySelector("#sds-settings-notifications [data-sds-alert-master]"),
+      toggles:document.querySelectorAll("#sds-settings-notifications [data-day-alert]").length,
+      overflow:document.documentElement.scrollWidth>innerWidth+2
+     }));
+     if(!settings.exists||!settings.optIn||settings.toggles!==4||settings.overflow)
+      problems.push(viewport.width+"px notification Settings issue: "+JSON.stringify(settings));
+    }
+    if(route==="teams"){
+     const branding=await page.evaluate(()=>({
+      cards:document.querySelectorAll('#teams-view .team-card').length,
+      logo:document.querySelectorAll('#teams-view .team-card img.sds-team-logo').length,
+      overflow:document.documentElement.scrollWidth>innerWidth+2
+     }));
+     if(branding.cards!==16||branding.logo!==16||branding.overflow)
+      problems.push(viewport.width+"px 16-team university logo directory issue: "+JSON.stringify(branding));
+    }
     if(["team-hub","game-center","results","team-news"].includes(route)){
      const premium=await page.evaluate(id=>{
       const root=document.getElementById("sdsx-"+(id==="team-hub"?"team":id==="game-center"?"game":id==="team-news"?"news":"results")+"-root");
