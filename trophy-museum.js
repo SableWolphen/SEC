@@ -7,7 +7,7 @@ const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 const winList=()=>window.SEC_SOCIAL?.getChampions?.()||[];
 const currentLeague=()=>window.secOnline?.getLeague?.()||null;
 const currentUser=()=>window.secOnline?.getUser?.()||null;
-function trophySvg(sport){
+function trophySvg(sport,season=null){
  const ball=sport==="football"
   ?'<path d="M86 51Q116 12 153 42Q169 71 128 106Q91 89 86 51Z" fill="url(#ball)" stroke="#ffe9ab" stroke-width="2"/><path d="M96 45Q125 51 145 85M102 83Q129 62 143 54" fill="none" stroke="#b57b38" stroke-width="2"/><path d="M115 48L131 77M119 54L111 60M124 61L116 67M129 69L121 75" stroke="#fff1d0" stroke-width="2" fill="none"/>'
   :sport==="basketball"
@@ -26,7 +26,8 @@ function trophySvg(sport){
  '<rect x="70" y="187" width="104" height="13" rx="3" fill="url(#metal)"/>'+
  '<path d="M58 202H185L193 224H50Z" fill="url(#metal)" stroke="#e7b45d" stroke-width="2"/>'+
  '<rect x="71" y="207" width="102" height="15" rx="2" fill="#162335" stroke="#fff0b1" stroke-width="1.5"/>'+
- '<text x="122" y="217.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" fill="#f4c46b">CHAMPION</text>'+
+ (season?'<text x="122" y="218" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="15" fill="#ffe0a2">'+esc(season)+'</text>':
+ '<text x="122" y="217.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" fill="#f4c46b">CHAMPION</text>')+
  '<rect x="37" y="224" width="170" height="14" rx="2" fill="#8e581f" stroke="#ffe098" stroke-width="2"/>'+
  '</svg>';
 }
@@ -34,19 +35,42 @@ function sectionHead(icon,title,subtitle,right=""){
  return '<div class="museum-section-head"><div class="museum-section-title"><span class="museum-section-icon" aria-hidden="true">'+icon+'</span><div><h3>'+esc(title)+'</h3><p>'+esc(subtitle)+'</p></div></div>'+right+'</div>';
 }
 const sportNames={football:"Football",basketball:"Basketball",baseball:"Baseball"};
-function champions(sport,userId){
- if(sport!=="football")return []; // No finalized archive for these sports yet.
- return winList().filter(c=>String(c.champion_user_id)===String(userId)&&userId);
+// The server archive is the authority: never award or engrave the current year by default.
+// The football archive is scoped to the user's selected league by SEC_SOCIAL.load().
+function champions(sport,userId,league){
+ if(sport!=="football"||!userId||!league?.id)return []; // Other sports have no official archive yet.
+ const unique=new Map();
+ for(const c of winList()){
+  if(String(c.champion_user_id)!==String(userId)||String(c.league_id)!==String(league.id))continue;
+  const year=Number(c.season);
+  if(!Number.isInteger(year)||year<2000||year>2100)continue;
+  if(!unique.has(year))unique.set(year,{...c,season:year});
+ }
+ return [...unique.values()].sort((a,b)=>b.season-a.season);
 }
-function champCard(sport,userId,league){
- const owned=champions(sport,userId).length>0,c=champions(sport,userId)[0];
+function champCard(sport,league,champion=null){
+ const owned=Boolean(champion);
+ const season=owned?champion.season:null;
+ const key=sport+":"+(owned?season:"locked");
  const future=sport!=="football";
- const note=owned?c.season+" · "+esc(league?.name||"Your league"):future?"Awaiting verified season titles":league?"Season underway":"Join a league to compete";
- return '<article class="museum-champ '+(owned?"earned":"locked")+'" data-champion-card="'+esc(sport)+'"><div class="museum-art" data-champion-sport="'+esc(sport)+'">'+trophySvg(sport)+
-  (!owned?'<span class="museum-lock" aria-label="Not earned">🔒</span>':'')+'</div>'+
-  '<div class="museum-caption"><strong>'+sportNames[sport]+' Champion</strong>'+
-  '<small>Win your league at the end of the season</small>'+
-  '<span class="museum-status '+(owned?"earned":"")+'">'+(owned?"✓ EARNED · "+esc(String(c.season)):"◷ "+esc(note))+'</span></div></article>';
+ const note=owned?String(season)+" · "+(league?.name||"Your league"):
+  future?"Awaiting verified season titles":league?"Season underway":"Join a league to compete";
+ return '<article class="museum-champ '+(owned?"earned":"locked")+'" data-champion-card="'+esc(sport)+
+  '" data-champion-year="'+(owned?esc(season):"")+'"><div class="museum-art" data-champion-sport="'+esc(sport)+
+  '" data-champion-key="'+esc(key)+'"'+(owned?' data-champion-season="'+esc(season)+'"':"")+'>'+
+  trophySvg(sport,season)+(!owned?'<span class="museum-lock" aria-label="Not earned">🔒</span>':'')+'</div>'+
+  '<div class="museum-caption"><strong>'+sportNames[sport]+' Champion'+(owned?' · '+esc(season):"")+'</strong>'+
+  '<small>'+(owned?'Official '+esc(season)+' '+esc(league?.name||"league")+' season title':
+    'Win your league at the end of the season')+'</small>'+
+  '<span class="museum-status '+(owned?"earned":"")+'">'+(owned?"✓ EARNED · "+esc(season):"◷ "+esc(note))+'</span></div></article>';
+}
+function championshipCards(sports,userId,league){
+ // Repeat wins each get their own year-engraved trophy. No duplicate generic
+ // champion card when a player already owns one or more for the sport.
+ return sports.flatMap(sport=>{
+  const titles=champions(sport,userId,league);
+  return titles.length?titles.map(c=>champCard(sport,league,c)):[champCard(sport,league)];
+ });
 }
 function confirmedWeek(w,results){
  return w.games.length>0&&w.games.every(g=>{
@@ -95,7 +119,7 @@ function weeklyAwards(ctx){
 }
 function achievementData(ctx){
  const me=currentUser(),lg=currentLeague(),userId=me?.id;
- const ownedChamps=champions("football",userId);
+ const ownedChamps=champions("football",userId,lg);
  const results=new Map(ctx.verified.map(x=>[x.id,x]));
  const state=window.SEC_BRIDGE?.state?.()||{};
  const allWeeks=window.SEC_BRIDGE?.weeks||[];
@@ -136,9 +160,9 @@ function render(ctx){
   '<nav class="museum-sports" aria-label="Filter trophy room by sport">'+
   [["all","🏆 All Sports"],["football","🏈 Football"],["basketball","🏀 Basketball"],["baseball","⚾ Baseball"]].map(([id,label])=>'<button type="button" data-museum-sport="'+id+'" aria-pressed="'+(current===id)+'" class="'+(current===id?"active":"")+'">'+label+'</button>').join("")+'</nav>'+
   '<section class="museum-section" aria-label="Pickem championships">'+
-  sectionHead("👑","SEASON CHAMPIONS","One league trophy per sport, earned after the season ends",
+  sectionHead("👑","SEASON CHAMPIONS","Every archived championship year gets its own engraved trophy",
    '<button type="button" class="museum-section-cta" data-museum-history aria-expanded="'+historyOpen+'">View History ›</button>')+
-  '<div class="museum-champ-grid">'+sports.map(x=>champCard(x,me?.id,lg)).join("")+'</div>'+
+  '<div class="museum-champ-grid">'+championshipCards(sports,me?.id,lg).join("")+'</div>'+
   (historyOpen?'<div class="museum-history">'+(lg?
     (window.SEC_SOCIAL?.renderChampionship?.()||'<p class="museum-muted">Loading verified league championships…</p>'):
     '<p class="museum-muted">Join a football league to view its official championship history.</p>')+
@@ -216,5 +240,5 @@ function render(ctx){
  return true;
 }
 function refresh(){if(lastContext?.rerender&&lastRoot?.isConnected)lastContext.rerender();}
-window.SEC_TROPHY_MUSEUM=Object.freeze({render,refresh});
+window.SEC_TROPHY_MUSEUM=Object.freeze({render,refresh,champions,championshipCards});
 })();

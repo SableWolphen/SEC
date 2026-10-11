@@ -129,6 +129,33 @@ fs.mkdirSync(output,{recursive:true});
       problems.push(viewport.width+"px trophy 3D canvas recreation on refresh: "+JSON.stringify(stability));
      if(museum.cases!==3||!museum.summary||museum.achievements<5||museum.duplicateBadges!==0||museum.rings!==0||museum.banners!==0)
       problems.push(viewport.width+"px trophy room duplicate or missing UI: "+JSON.stringify(museum));
+     const archivedYears=await page.evaluate(()=>{
+      const social=window.SEC_SOCIAL;
+      const view=window.SEC_TROPHY_MUSEUM;
+      if(!social||!view?.championshipCards)return {missing:true};
+      const real=social.getChampions;
+      social.getChampions=()=>[
+       {league_id:"archive-test",champion_user_id:"owner-test",season:2026},
+       {league_id:"archive-test",champion_user_id:"owner-test",season:2024},
+       {league_id:"archive-test",champion_user_id:"owner-test",season:2026},
+       {league_id:"other",champion_user_id:"owner-test",season:2025}
+      ];
+      try{
+       const host=document.createElement("div");
+       host.innerHTML=view.championshipCards(["football","basketball","baseball"],
+        "owner-test",{id:"archive-test",name:"Champions Test"});
+       const earned=[...host.querySelectorAll(".museum-champ.earned")];
+       const locked=[...host.querySelectorAll(".museum-champ.locked")];
+       return {years:earned.map(el=>el.dataset.championYear).join(","),
+        keys:earned.map(el=>el.querySelector("[data-champion-key]")?.dataset.championKey).join(","),
+        plaque:earned.every(el=>el.querySelector(".museum-trophy-svg")?.textContent.includes(el.dataset.championYear)),
+        lockedWithoutYears:locked.every(el=>!el.querySelector("[data-champion-season]")),
+        total:host.querySelectorAll(".museum-champ").length};
+      }finally{social.getChampions=real;}
+     });
+     if(archivedYears.years!=="2026,2024"||archivedYears.keys!=="football:2026,football:2024"||
+        archivedYears.plaque!==true||archivedYears.lockedWithoutYears!==true||archivedYears.total!==4)
+      problems.push(viewport.width+"px engraved championship archive regression: "+JSON.stringify(archivedYears));
      const playerCase=page.locator('details[data-legacy-case="player"]');
      await playerCase.locator("summary").click();
      await page.locator('[data-legacy-achievements="earned"]').click();
