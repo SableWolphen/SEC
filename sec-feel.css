@@ -1,0 +1,124 @@
+/* SEC Feel Better — calm information hierarchy & dependable touch affordances.
+   Additive presentation only: scoring, privacy, source data, and routes unchanged. */
+:root{--sec-feel-soft:#b8cbda;--sec-feel-warm:#f4d49c;--sec-feel-focus:#f9d78e}
+body{ -webkit-tap-highlight-color:transparent }
+:where(button,[role="button"],summary){touch-action:manipulation}
+:where(button,a,summary,[role="tab"]){-webkit-tap-highlight-color:transparent}
+:where(button,a,summary,[role="tab"]):focus-visible{
+ outline:2px solid var(--sec-feel-focus);outline-offset:3px
+}
+:where(.game-card,.sport-game-card,.hq-panel,.secnext-fold,.sdsx-section,.sec-final-card){
+ min-width:0;overflow-wrap:break-word
+}
+:where(.game-card,.sport-game-card,.secnext-fold,.hq-panel):focus-within{
+ border-color:#c2a779
+}
+:where(.hq-primary,.hq-secondary,.secnext-choice,.slate-filter,.sport-game-filter,
+ .mobile-nav-btn,.sec-access-link,.sec-pbp-controls button):not(:disabled):active{
+ transform:scale(.985)
+}
+:where(.hq-primary,.hq-secondary,.secnext-choice,.slate-filter,.sport-game-filter,
+ .mobile-nav-btn,.sec-access-link,.sec-pbp-controls button){
+ transition:background-color .14s ease,border-color .14s ease,transform .13s ease
+}
+:where(.view .helper,.view .source-note,.view .sec-pbp-source){line-height:1.48}
+/* Home: actions first. Secondary panels available by choice instead of
+   competing with the current week's picks, live games and league table. */
+#sec-home-root>.hq-actions{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+#sec-home-root .hq-action:nth-child(n+5){display:none}
+#sec-home-root .hq-action{min-height:84px;padding:9px 7px;gap:4px}
+#sec-home-root .hq-action-icon{font-size:23px}
+#sec-home-root .hq-stadium-hero{min-height:220px;padding:19px 21px;border-radius:15px;
+ box-shadow:0 8px 22px #0004}
+#sec-home-root .hq-picks,#sec-home-root .hq-games,#sec-home-root .hq-league,
+#sec-home-root .hq-news-spotlight{box-shadow:none}
+#sec-home-root .hq-quick,
+#sec-home-root .hq-rival-card,
+#sec-home-root .hq-around-news{display:none}
+#sec-home-root.hq-expanded .hq-quick,
+#sec-home-root.hq-expanded .hq-rival-card,
+#sec-home-root.hq-expanded .hq-around-news{display:flex}
+#sec-home-root .hq-mobile-expand{
+ display:flex;grid-column:1/-1;order:7;align-items:center;
+ justify-content:space-between;gap:12px;min-height:44px;width:100%;
+ border:1px solid #456379;background:#11293e;color:#edce91;
+ border-radius:11px;padding:10px 13px;cursor:pointer;font-weight:850;font-size:12px;
+}
+#sec-home-root .hq-mobile-expand:hover{border-color:#cca96c;background:#1b3449}
+#sec-home-root .hq-mobile-expand span{font-size:18px}
+#sec-home-root .hq-rival-card{order:8}
+#sec-home-root .hq-quick{order:9}
+#sec-home-root .hq-around-news{order:10}
+#sec-home-root .hq-disclaimer{order:11}
+#sec-home-root .hq-news-spotlight{border-color:#3e586e;box-shadow:none}
+#sec-home-root .hq-news-spotlight .hq-feature-kicker{opacity:.9}
+#sec-home-root .hq-headline{min-height:0}
+/* Games: avoid three simultaneous pick-progress readouts.
+   The result strip and Quick Pick button remain clearly visible. */
+#picks-view .slate-progress{display:none}
+#picks-view .page-intro{margin-bottom:9px}
+#picks-view .section-title-row{margin:8px 0}
+#picks-view .slate-pick-tools{margin-bottom:9px}
+#picks-view .slate-filter-row{gap:5px}
+#picks-view .slate-filter{font-variant-numeric:tabular-nums}
+#picks-view .slate-filter[aria-pressed="true"]{box-shadow:inset 0 -2px #8a5c2a3d}
+#picks-view .game-card{scroll-margin-top:90px}
+#picks-view .secnext-intelligence>summary{font-size:12px}
+#picks-view .rules-card{display:block;padding:0;overflow:hidden;border-radius:11px}
+#picks-view .rules-card>summary{
+ cursor:pointer;display:flex;align-items:center;justify-content:space-between;
+ padding:13px 15px;min-height:44px;font-size:12px;font-weight:850;color:#f0d293;
+ list-style:none;
+}
+#picks-view .rules-card>summary::-webkit-details-marker{display:none}
+#picks-view .rules-card>summary>span{font-size:17px}
+#picks-view .rules-card[open]>summary{border-bottom:1px solid #40566c}
+#picks-view .rules-card[open]>summary>span{transform:rotate(180deg)}
+#picks-view .rules-card-inner{padding:13px}
+/* Quick Pick: progress, previous/skip and unambiguous save feedback. */
+.secnext-quick-top{display:flex;align-items:center;justify-content:space-between;
+ gap:10px;flex-wrap:wrap}
+.secnext-quick-top .secnext-quick-progress{margin:0}
+.secnext-quick-top>span{font-size:10px;color:var(--sec-feel-soft)}
+.secnext-quick-track{height:6px;background:#385268;overflow:hidden;border-radius:10px;margin:10px 0 13px}
+.secnext-quick-track span{display:block;height:100%;background:linear-gradient(90deg,#b99255,#f2d595);
+ border-radius:10px;min-width:0}
+.secnext-quick-controls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.secnext-quick-controls button{
+ background:#18364b;border:1px solid #52758e;border-radius:9px;color:#f4e0b8;
+ padding:9px 10px;min-height:44px;font-size:11px;font-weight:850;cursor:pointer
+}
+.secnext-quick-controls button:disabled,.secnext-choice:disabled{opacity:.5;cursor:wait}
+.secnext-quick-message{color:#b5e4c6;font-size:11px;line-height:1.4;margin:12px 1px 0}
+.secnext-dialog footer>button{min-height:44px}
+.secnext-dialog .secnext-choice:focus-visible{outline:2px solid #f6d796;outline-offset:2px}
+/* A consistent sense of touch at smaller sizes. */
+@media(max-width:1050px) and (min-width:791px){
+ #sec-home-root>.hq-actions{grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible}
+ #sec-home-root .hq-action{min-height:78px;flex:auto}
+}
+@media(max-width:790px){
+ #sec-home-root>.hq-actions{grid-template-columns:repeat(4,minmax(0,1fr))}
+ #sec-home-root .hq-action:nth-child(n+5){display:none}
+ #sec-home-root .hq-action:last-child{display:flex}
+ #sec-home-root .hq-stadium-hero{padding:14px;border-radius:13px}
+ #sec-home-root .hq-mobile-expand{order:9}
+ #sec-home-root .hq-rival-card{order:10}
+ #sec-home-root .hq-around-news{order:11}
+ #sec-home-root .hq-quick{order:12}
+ #sec-home-root .hq-disclaimer{order:13}
+ #picks-view .game-card{scroll-margin-top:24px}
+}
+@media(max-width:390px){
+ #sec-home-root .hq-action{min-height:72px}
+ #sec-home-root .hq-action strong{font-size:9px}
+ #picks-view .page-intro>div:first-child p{font-size:11px}
+ .secnext-quick-controls{gap:6px}
+ .secnext-quick-controls button{padding:8px 6px;font-size:10px}
+}
+/* Honor accessibility setting: feedback still works without animation. */
+@media(prefers-reduced-motion:reduce){
+ :where(.hq-primary,.hq-secondary,.secnext-choice,.slate-filter,.sport-game-filter,
+  .mobile-nav-btn,.sec-access-link,.sec-pbp-controls button){transition:none!important;transform:none!important}
+ .secnext-quick-track span{transition:none}
+}
