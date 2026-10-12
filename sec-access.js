@@ -5,7 +5,7 @@
 "use strict";
 const app=()=>window.SEC_BRIDGE;
 const $=id=>document.getElementById(id);
-const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;":"&#39;"}[c]));
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const entries=Object.freeze([
  {id:"quick",title:"Quick Pick",sub:"Finish remaining football picks",icon:"✓",group:"Play",terms:"one tap fast swipe picks remaining",view:"picks"},
  {id:"football",title:"Football Picks",sub:"Current SEC football week",icon:"🏈",group:"Play",terms:"matchups games schedule",view:"picks"},
