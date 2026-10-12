@@ -106,8 +106,8 @@ function render(g,index,ctx){
  link("Game Recap",url?"Final stats, scoring summary and key plays":"Recap not yet available",
  "game","▤","sec-final-recap-link")+
  link("View Box Score",url?"Official game statistics":"Stats not yet available",
- "boxscore","▥","sec-final-box-link")+'</div></div></details>'+
- (window.SEC_PLAYS?.placeholder?.(g,"games")||"")+'</article>';
+ "boxscore","▥","sec-final-box-link")+'</div>'+
+ (window.SEC_PLAYS?.placeholder?.(g,"games")||"")+'</div></details></article>';
 }
 window.SEC_FINAL_CARDS=Object.freeze({render,outcome});
 if(window.SEC_BRIDGE?.view?.()==="picks")window.SEC_BRIDGE.renderPicks?.();
