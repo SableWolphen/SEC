@@ -16,6 +16,7 @@ const loading={basketball:false,baseball:false};
 const pendingReload={basketball:false,baseball:false};
 let lastAccountId=undefined;
 const selectedWeeks={basketball:0,baseball:0};
+const statusFilters={basketball:"all",baseball:"all"};
 const notices={basketball:"",baseball:""};
 const updating={basketball:0,baseball:0};
 let refreshTimer=0;
@@ -204,6 +205,9 @@ function renderSport(s){
  const stale=data.error?banner(data.error,"sport-warning"):"";
  const loadingText=loading[s]?banner("Checking verified games and league results…"):"";
  const leagues=renderLeagues(s,signed,active);
+ const statusOf=g=>g.game_status==="live"?"live":
+   g.game_status==="final"?"final":"upcoming";
+ const selectedStatus=statusFilters[s]||"all";
  let games="";
  if(!weeks.length){
   games='<div class="sport-empty"><span>'+conf.emoji+'</span><h3>Waiting for the official schedule</h3>'+
@@ -216,7 +220,15 @@ function renderSport(s){
    '" aria-pressed="'+(group.num===w?.num)+'">Week '+group.num+'<small>'+group.games.length+' games</small></button>').join("")+'</div>'+
    '<div class="sport-slate-heading"><div><div class="card-kicker">THE SLATE</div><h3>Week '+w.num+' matchups <span>('+w.games.length+')</span></h3></div>'+
    '<div class="sport-mode-label">'+esc(active?MODES[active.mode]:"Straight Picks")+'</div></div>'+
-   '<div class="sport-games-grid">'+w.games.map(g=>gameCard(s,g,active,picks)).join("")+'</div>'+
+   '<div class="sport-game-filters" role="group" aria-label="Filter '+conf.short+' games by status">'+
+   [["all","All"],["upcoming","Upcoming"],["live","Live"],["final","Final"]].map(([key,label])=>
+    '<button type="button" class="sport-game-filter '+(selectedStatus===key?"active":"")+
+    '" data-sport-filter="'+key+'" data-sport="'+s+'" aria-pressed="'+(selectedStatus===key)+'">'+
+    label+' <small>'+w.games.filter(g=>key==="all"||statusOf(g)===key).length+'</small></button>').join("")+'</div>'+
+   '<div class="sport-games-grid">'+(w.games.filter(g=>selectedStatus==="all"||statusOf(g)===selectedStatus)
+    .map(g=>gameCard(s,g,active,picks)).join("")||
+    '<p class="sport-games-no-status">No '+selectedStatus+' '+conf.short.toLowerCase()+' games in this week. Choose All to see the full slate.</p>')+
+   '</div>'+
    renderTiebreak(s,w,active,saved);
  }
  root.innerHTML=header+note+status+stale+loadingText+sportStrip+leagues+games+renderSeries(s)+
@@ -489,6 +501,13 @@ document.addEventListener("click",ev=>{
  if(to){ev.preventDefault();window.SEC_BRIDGE?.setView(to.dataset.goSport==="football"?"picks":to.dataset.goSport);return;}
  const button=ev.target.closest?.("[data-sport-action]");
  if(button){ev.preventDefault();void action(button);return;}
+ const statusButton=ev.target.closest?.("[data-sport-filter]");
+ if(statusButton&&SPORT[statusButton.dataset.sport]&&
+   ["all","upcoming","live","final"].includes(statusButton.dataset.sportFilter)){
+  ev.preventDefault();
+  statusFilters[statusButton.dataset.sport]=statusButton.dataset.sportFilter;
+  renderSport(statusButton.dataset.sport);return;
+ }
  const series=ev.target.closest?.("[data-series-week]");
  if(series){cache.baseball.seriesWeek=Number(series.dataset.seriesWeek);renderSport("baseball");return;}
   const week=ev.target.closest?.("[data-sport-week]");
