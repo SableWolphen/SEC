@@ -198,6 +198,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <link rel="stylesheet" href="./sec-premium.css?v=20261011-mockups-v1">
 <link rel="stylesheet" href="./sec-design-system.css?v=20261011-broadcast-v1">
 <link rel="stylesheet" href="./sds-showcase.css?v=20261011-unified-v2">
+<link rel="stylesheet" href="./sec-next.css?v=20261012-advanced-v1">
 </head>
 <body>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
@@ -281,7 +282,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
         <span class="global-sport-hint" id="sport-season-hint">Switch sports anytime</span>
       </nav>
       <div class="week-picker" id="week-picker" aria-label="Choose football week"></div>
-      <div id="weekly-score-strip" aria-live="polite"></div><div id="sec-live-score-strip" class="sec-live-score-strip" aria-live="polite" hidden></div>
+      <div id="weekly-score-strip" aria-live="polite"></div><div id="sec-next-picks"></div><div id="sec-next-rivalries"></div><div id="sec-live-score-strip" class="sec-live-score-strip" aria-live="polite" hidden></div>
       <div class="picks-layout">
         <div class="primary-column">
           <div class="sdsx-picks-cta"><div><span>YOUR SEASON STORY</span><strong>Every pick. Every win.</strong><small>Review confirmed game results and your league position.</small></div><button type="button" data-sdsx-view="results">🏆 My Results →</button></div>
@@ -304,7 +305,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     <section id="league-view" class="view hidden" aria-labelledby="league-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> FRIENDLY COMPETITION</div>
       <div class="page-intro"><div><h1 id="league-heading">Your <em>league.</em></h1></div></div>
-      <div id="fan-league-choice" aria-live="polite"></div>
+      <div id="fan-league-choice" aria-live="polite"></div><div id="sec-next-league"></div>
       <div id="fan-league-tabs" class="fan-league-tabs" role="tablist" aria-label="League sections" hidden>
         <button type="button" id="fan-tab-scores" role="tab" aria-selected="true" aria-controls="fan-pane-scores" data-league-pane="scores">🏆 Standings</button>
         <button type="button" id="fan-tab-chat" role="tab" aria-selected="false" aria-controls="fan-pane-chat" data-league-pane="chat" hidden>💬 Chat</button>
@@ -377,7 +378,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     <section id="settings-view" class="view hidden" aria-labelledby="settings-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> MAKE IT YOURS</div>
       <div class="page-intro"><div><h1 id="settings-heading">Your <em>playbook.</em></h1><p>Manage your account, reminders, and how you play.</p></div></div>
-      <div id="sds-settings-notifications"></div>
+      <div id="sds-settings-notifications"></div><div id="sec-next-push"></div>
       <div id="settings-content"></div>
     </section>
   </main>
@@ -632,6 +633,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     if(v==='settings'){renderSettings();window.SDS_PREFERENCES?.mount?.();}
     if(['team-hub','game-center','results','team-news'].includes(v))window.SEC_PREMIUM?.mount?.(v);
     void window.SEC_FAN?.onView?.(v);
+    window.SEC_NEXT?.onView?.(v);
     if(location.hash!=='#'+v)history.replaceState(null,'','#'+v);
     window.scrollTo({top:0,behavior:'instant'});
   }
@@ -744,6 +746,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
    '</strong><p>Switch to All games to review every matchup.</p><button type="button" class="ghost-btn" data-slate-filter="all">Show all games</button></div>';
   renderSummary(w);
   renderWeeklyScoreStrip(w);
+  window.SEC_NEXT?.onPicks?.();
 }
   function scoreFor(picks,requestedWeek){const w=WEEKS.find(w=>w.num===requestedWeek);return correctCount(w,picks||{});}
   function peopleForWeek(w){const rows=[{id:'me',name:getName(),picks:state.picks,local:true}];for(const m of state.members){const weekPicks=m.weeks?.[w.num]?.picks||{};rows.push({id:m.id,name:m.name,picks:weekPicks,local:false,hasSlip:!!m.weeks?.[w.num]});}rows.forEach(r=>{r.score=scoreFor(r.picks,w.num);r.total=w.games.filter(g=>r.picks[g.id]).length;r.fullScore=points(r.local?state.picks:Object.assign({},...Object.values(state.members.find(m=>m.id===r.id)?.weeks||{}).map(v=>v.picks||{})));});rows.sort((a,b)=>b.score-a.score||b.total-a.total||a.name.localeCompare(b.name));return rows;}
@@ -873,5 +876,6 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./sec-home.js?v=20261011-unified-v2"></script>
 <script src="./sds-showcase-preferences.js?v=20261011-ten-screens-v1"></script>
 <script src="./sec-premium.js?v=20261011-unified-v2"></script>
+<script src="./sec-next.js?v=20261012-advanced-v1"></script>
 </body>
 </html>

@@ -299,6 +299,7 @@ function results(){
   '<div class="sdsx-results-filters"><label for="sdsx-week">REVIEW WEEK</label><select id="sdsx-week" aria-label="Choose week for pick results">'+
   (app()?.weeks||[]).map(w=>'<option value="'+w.num+'"'+(w.num===info.wk?.num?" selected":"")+'>Week '+w.num+'</option>').join("")+
   '</select><span>'+info.chosen+'/'+info.total+' picks selected</span></div>'+
+  '<div id="sec-next-results"></div>'+ 
   '<section class="sdsx-section"><div class="sdsx-section-head"><h3>WEEK '+esc(info.wk?.num||"—")+' RESULTS</h3>'+
   '<span>✓ correct &nbsp; ✕ incorrect</span></div>'+
   (info.all.length?'<div class="sdsx-results-list">'+info.all.map(g=>{
@@ -360,7 +361,7 @@ function mount(v){
  if(!["team-hub","game-center","results","team-news"].includes(v))return;
  if(v==="team-hub")teamHub();
  if(v==="game-center")gameCenter();
- if(v==="results")results();
+ if(v==="results"){results();window.SEC_NEXT?.onResults?.();}
  if(v==="team-news")teamNews();
  // Update only when verified source data changes or the page becomes visible.
  // Never rebuild a screen periodically while a player scrolls or reads a tab.
