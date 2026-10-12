@@ -236,7 +236,8 @@ function onLeague(){
  const root=$("sec-next-league");if(!root)return;
  const l=league();
  const signed=!!user();
- root.innerHTML='<details class="secnext-fold"><summary>📊 League Pick Trends <small>after kickoff</small></summary>'+
+ root.innerHTML='<details class="secnext-fold"><summary>🏟 League extras <small>Trends · Race · Challenges</small></summary>'+
+ '<div class="secnext-fold-body"><details class="secnext-fold"><summary>📊 League Pick Trends <small>after kickoff</small></summary>'+
  '<div class="secnext-fold-body"><div id="sec-next-trends"><p>Open to check revealed picks.</p></div>'+
  '<button type="button" data-next-trends '+(!l||!signed?'disabled':'')+'>Refresh trends</button></div></details>'+
  '<details class="secnext-fold"><summary>🏁 Live Championship Race <small>verified standings + what-if</small></summary>'+
@@ -246,7 +247,7 @@ function onLeague(){
  '<p class="secnext-footnote">Invite a member to a weekly pick challenge, separate from league points.</p>'+
  (l?.kind==="football"&&signed?'<button type="button" data-next-load-challenges>Open challenges</button>':
  '<p class="secnext-footnote">Select a football league and sign in to participate.</p>')+
- '</div></details>';
+ '</div></details></div></details>';
 }
 function challengeMarkup(){
  const area=$("sec-next-challenge-area"),l=league(),u=user();

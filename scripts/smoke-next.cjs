@@ -40,7 +40,9 @@ assert.match(roots.get("sec-next-league").innerHTML,/Friend Challenges/);
 advanced.onSettings();
 assert.match(roots.get("sec-next-push").innerHTML,/not yet configured/);
 assert.equal(forbiddenCalls,0);
-for(const id of ["sec-next-picks","sec-next-rivalries","sec-next-league","sec-next-results","sec-next-push"])assert.ok(html.includes('id="'+id+'"'),id+" missing");
+for(const id of ["sec-next-picks","sec-next-rivalries","sec-next-league","sec-next-push"])
+ assert.ok(html.includes('id="'+id+'"'),id+" missing");
+assert.match(read("sec-premium.js"),/id="sec-next-results"/,"results screen renders optional career section");
 assert.match(css,/@media\(max-width:390px\)/);
 assert.match(css,/secnext-dialog::backdrop/);
 assert.match(sw,/self\.addEventListener\("push"/);
