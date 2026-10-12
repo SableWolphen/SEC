@@ -21,6 +21,35 @@ fs.mkdirSync(output,{recursive:true});
     hasTouch:viewport.width<=390});
    const page=await context.newPage(),errors=[];
    page.on("pageerror",err=>errors.push(err.message));
+   // Browser-only interception: the production play service is never populated
+   // with fake data; fixtures verify accessible interactions at each viewport.
+   await page.route(url=>url.hostname==="vzjrlvkwuswkryxxrvtp.supabase.co"&&
+     url.pathname==="/functions/v1/sec-plays",async route=>{
+     const origin="http://127.0.0.1:8765";
+     if(route.request().method()==="OPTIONS"){
+      await route.fulfill({status:204,headers:{"access-control-allow-origin":origin,
+       "access-control-allow-methods":"GET,OPTIONS","access-control-allow-headers":"apikey,content-type"}});
+      return;
+     }
+     const id=new URL(route.request().url()).searchParams.get("game");
+     const fixture={
+      game_id:id,event_id:"401856714",status:"live",source:"ESPN game summary",
+      updated_at:new Date().toISOString(),
+      plays:[
+       {id:"p1",period:3,clock:"08:42",text:"Verified 12-yard pass",
+        team:"UGA",type:"Pass",scoring:false,firstDown:true,driveId:"d1"},
+       {id:"p2",period:3,clock:"07:59",text:"Verified 7-yard touchdown",
+        team:"UGA",type:"Pass",scoring:true,driveId:"d1"},
+       {id:"p3",period:2,clock:"02:33",text:"<img src=x onerror=alert(1)>",
+        team:"ALA",type:"Rush",scoring:false,driveId:"d2"}],
+      drives:[{id:"d1",description:"Seven-play scoring drive",result:"Touchdown",
+       team:"UGA",yards:65,plays:7,scoring:true}]
+     };
+     await route.fulfill({status:200,contentType:"application/json",
+      headers:{"access-control-allow-origin":origin,
+       "access-control-allow-headers":"apikey","access-control-allow-methods":"GET,OPTIONS"},
+      body:JSON.stringify(fixture)});
+   });
    await page.goto(base,{waitUntil:"domcontentloaded",timeout:45000});
    await page.waitForFunction(()=>Boolean(window.SEC_BRIDGE&&window.SEC_BRIDGE.setView),{timeout:15000});
    for(const route of routes){
@@ -478,6 +507,41 @@ fs.mkdirSync(output,{recursive:true});
       !oneLive.compactFieldVisible||!oneLive.compactMarker||
       !oneLive.hasLiveDrive||!oneLive.hasBall||!oneLive.liveText)
      problems.push(viewport.width+"px duplicate live game status: "+JSON.stringify(oneLive));
+   // Full in-card play timeline, filters and sourced drives must work without
+   // navigating away from Games or injecting unsanitized source HTML.
+   const livePbp=page.locator('#games-list .sec-games-active-card .sec-pbp-panel').first();
+   if(await livePbp.count()){
+    await livePbp.locator('summary').click();
+    try{
+     await page.waitForFunction(()=>document.querySelector(
+      '#games-list .sec-games-active-card .sec-pbp-play-body'
+     )?.textContent.includes("Verified 12-yard pass"),{timeout:8000});
+    }catch(e){problems.push(viewport.width+"px in-card play timeline did not load");}
+    const pbp=await page.evaluate(()=>{
+     const root=document.querySelector('#games-list .sec-games-active-card .sec-pbp-panel');
+     const all=root?.querySelectorAll('.sec-pbp-play').length||0;
+     const escaped=root?.textContent.includes('<img src=x onerror=alert(1)>')||false;
+     const injected=!!root?.querySelector('img');
+     root?.querySelector('[data-sec-pbp-filter="scoring"]')?.click();
+     const scoring=root?.querySelectorAll('.sec-pbp-play').length||0;
+     root?.querySelector('[data-sec-pbp-filter="drives"]')?.click();
+     const drives=root?.querySelectorAll('.sec-pbp-drive').length||0;
+     return {all,escaped,injected,scoring,drives};
+    });
+    if(pbp.all!==3||!pbp.escaped||pbp.injected||pbp.scoring!==1||pbp.drives!==1)
+     problems.push(viewport.width+"px play timeline filters/XSS issue: "+JSON.stringify(pbp));
+    await page.evaluate(()=>{
+     const id=window.SEC_BRIDGE.week().games[0].id;
+     window.SEC_PREMIUM.openGame(id);
+     document.querySelector('#sdsx-game-root [data-sdsx-tab="plays"]')?.click();
+    });
+    try{
+     await page.waitForFunction(()=>document.querySelector(
+      '#game-center-view .sec-pbp-play-body'
+     )?.textContent.includes("Verified 12-yard pass"),{timeout:8000});
+    }catch(e){problems.push(viewport.width+"px Game Center timeline not rendered");}
+    await page.evaluate(()=>window.SEC_BRIDGE.setView("picks"));
+   }else problems.push(viewport.width+"px live Games card missing play-by-play disclosure");
    await page.screenshot({path:path.join(output,viewport.width+"-gameday.png")});
 
    // Independently audit final-game layout (offline fixture; no private data

@@ -23,7 +23,8 @@ assert.match(edge,/espn_event_id/);
 assert.match(edge,/source:"ESPN game summary"/);
 assert.match(edge,/game\.game_status==="live"\?20:600/);
 assert.match(edge,/drives\?\.previous/);
-assert.doesNotMatch(edge,/from\("sec_picks"|from\("sec_members"|scoringPlays/);
+assert.doesNotMatch(edge,/\.from\("sec_(?:picks|members)"/,"play service never queries private player tables");
+assert.doesNotMatch(edge,/Array\.isArray\(source\?\.scoringPlays\)/,"partial scoring data cannot pose as all plays");
 const document={readyState:"loading",visibilityState:"visible",querySelector:()=>null,
  querySelectorAll:()=>[],addEventListener:()=>{}};
 const game={id:"2026-7-UGA-ALA",liveStatus:"live",espnEventId:"401856714"};
