@@ -291,7 +291,7 @@ function render(model){
   p.unpickedOpen?"Make your remaining selections before kickoff.":
   "Review your saved choices or explore the league.";
  const sportNames=["football","basketball","baseball"];
- const markup=hero(model)+actionCards(model)+discovery(model)+
+ const markup=hero(model)+actionCards(model)+
  '<div class="hq-sport-tabs" role="group" aria-label="Pick a sport">'+sportNames.map(s=>
  '<button type="button" data-hq-route="'+routeFor(s)+'"'+(model.recommended===s?' class="suggested"':'')+'>'+
  sportIcon[s]+' '+sportText[s]+(model.recommended===s?'<small>Latest season</small>':"")+'</button>').join("")+'</div>'+
@@ -324,7 +324,8 @@ function render(model){
     '<div class="hq-quick-links"><button type="button" data-hq-route="trophies">🏆 Trophy Room <span>→</span></button>'+
     '<button type="button" data-hq-route="news">📰 SEC News <span>→</span></button>'+
     '<button type="button" data-hq-route="teams">⭐ Favorite Teams <span>→</span></button></div></section>'+
-  '</div><button class="hq-mobile-expand" type="button" data-hq-expand aria-expanded="false" aria-controls="sec-home-extras">More league &amp; SEC coverage <span aria-hidden="true">⌄</span></button>'+
+  '</div>'+discovery(model)+
+  '<button class="hq-mobile-expand" type="button" data-hq-expand aria-expanded="false" aria-controls="sec-home-extras">More from your league &amp; SEC <span aria-hidden="true">⌄</span></button>'+
   '<div class="hq-bottom-grid" id="sec-home-extras">'+rivalCard(model)+extraNews(model)+'</div>'+
   '<p class="hq-disclaimer">Independent SEC fan game · No live score is shown until confirmed by the score feed. '+
    '3D trophies and player information load only when you open their sections.</p>';

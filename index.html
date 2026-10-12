@@ -741,6 +741,16 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   }
   function renderSummary(w){const scoring=window.SEC_FEATURES?.summaryPoints?.(w);const made=activePicks(w),total=w.games.length,allFinal=resultsCount(w),open=pendingLocks(w).length;document.getElementById('summary-slot').innerHTML=`<div class="summary-card"><div class="card-kicker">YOUR WEEKLY CARD</div><h3>Week ${w.num} <span>recap.</span></h3><p class="summary-sub">${made===total?'Your slip is full. Bring on Saturday.':`${total-made} picks left on the board.`}</p><div class="progress-top"><span class="progress-big">${made}<small>/${total}</small></span><span class="progress-label">${Math.round(made/total*100)}% COMPLETE</span></div><div class="progress-track" aria-label="${made} of ${total} picks made"><span style="width:${made/total*100}%"></span></div><div class="summary-stats"><div><strong>${scoring?scoring.score:correctCount(w)}</strong><small>${esc(scoring?scoring.label:"Correct picks")}</small></div><div><strong>${allFinal}<small> / ${total}</small></strong><small>Games scored</small></div></div><button class="primary-btn" type="button" data-action="share-picks" ${made===0?'disabled':''}>${made===total?'Share your picks ↗':'Copy pick slip ↗'}</button><p class="helper" style="margin:10px 0 0">${open?'Unpicked games can be selected until their lock time.':'This week’s picks are locked.'}</p></div>`;}
   function renderPicks(){
+  const list=document.getElementById('games-list');
+  const previousFocus=document.activeElement;
+  const priorCard=previousFocus?.closest?.('#games-list .game-card');
+  const focusGameId=priorCard?.dataset.gameId||null;
+  const focusTeam=focusGameId&&previousFocus?.dataset?.team||null;
+  const priorTop=priorCard?.getBoundingClientRect?.().top;
+  const beforeOpen=new Set([...list.querySelectorAll('.game-card[data-game-id]')].filter(
+    card=>card.querySelector('.secnext-intelligence[open]')).map(card=>card.dataset.gameId));
+  const focusedFilter=previousFocus?.matches?.('[data-slate-filter]')?
+    previousFocus.dataset.slateFilter:null;
   const w=week();renderHeader();renderWeekPicker();
   document.getElementById('matchup-count').textContent=`(${w.games.length})`;
   const nearest=pendingLocks(w)[0];
@@ -787,6 +797,33 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   renderWeeklyScoreStrip(w);
   window.SEC_NEXT?.onPicks?.();
   window.SEC_PLAYS?.hydrate?.(document.getElementById("games-list"));
+  for(const card of list.querySelectorAll('.game-card[data-game-id]')){
+    if(beforeOpen.has(card.dataset.gameId)){
+      const details=card.querySelector('.secnext-intelligence');
+      if(details)details.open=true;
+    }
+  }
+  // A saved pick changes the list, but must not throw the player back to
+  // the top or strand keyboard users on a removed button.
+  if(focusGameId||focusedFilter){
+    requestAnimationFrame(()=>{
+      if(currentView!=='picks')return;
+      if(focusedFilter){
+        document.querySelector('[data-slate-filter="'+focusedFilter+'"]')?.focus?.({preventScroll:true});
+        return;
+      }
+      const nextCard=[...list.querySelectorAll('.game-card[data-game-id]')]
+        .find(el=>el.dataset.gameId===focusGameId);
+      const target=(focusTeam?nextCard?.querySelector('[data-pick][data-team="'+focusTeam+'"]'):null)||
+        nextCard||list.querySelector('.game-card')||
+        document.querySelector('[data-slate-filter="unpicked"]');
+      target?.focus?.({preventScroll:true});
+      if(nextCard&&Number.isFinite(priorTop)){
+        const shift=nextCard.getBoundingClientRect().top-priorTop;
+        if(Math.abs(shift)>1)window.scrollBy({top:shift,behavior:'instant'});
+      }
+    });
+  }
 }
   function scoreFor(picks,requestedWeek){const w=WEEKS.find(w=>w.num===requestedWeek);return correctCount(w,picks||{});}
   function peopleForWeek(w){const rows=[{id:'me',name:getName(),picks:state.picks,local:true}];for(const m of state.members){const weekPicks=m.weeks?.[w.num]?.picks||{};rows.push({id:m.id,name:m.name,picks:weekPicks,local:false,hasSlip:!!m.weeks?.[w.num]});}rows.forEach(r=>{r.score=scoreFor(r.picks,w.num);r.total=w.games.filter(g=>r.picks[g.id]).length;r.fullScore=points(r.local?state.picks:Object.assign({},...Object.values(state.members.find(m=>m.id===r.id)?.weeks||{}).map(v=>v.picks||{})));});rows.sort((a,b)=>b.score-a.score||b.total-a.total||a.name.localeCompare(b.name));return rows;}
