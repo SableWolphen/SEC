@@ -480,6 +480,9 @@ fs.mkdirSync(output,{recursive:true});
    // submitted or modified in the production database.
    await page.evaluate(()=>{
      window.SEC_BRIDGE.setView("picks");
+     // Audit every fixture on the complete slate: the real app now defaults
+     // to a context-aware tab, but this test intentionally exercises all games.
+     document.querySelector('#picks-view [data-slate-filter="all"]')?.click();
      const a=window.SEC_BRIDGE,w=a.week();
      if(w.games[1]){w.games[1].kickoff=new Date(Date.now()+3600000).toISOString();delete a.state().picks[w.games[1].id];}
      // A published confirmed final cannot become a live match merely because
