@@ -361,7 +361,7 @@ function render(model){
  if(previousMarkup===markup&&root.querySelector?.(".hq-stadium-hero"))return;
  previousMarkup=markup;
  const keepExpanded=root.classList?.contains("hq-expanded")||false;
- root.dataset.moment=model.moment;
+ if(root.dataset)root.dataset.moment=model.moment;
  root.innerHTML=markup;
  const toggle=root.querySelector?.("[data-hq-expand]");
  toggle?.setAttribute?.("aria-expanded",String(keepExpanded));
