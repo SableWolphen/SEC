@@ -101,7 +101,8 @@ function render(g,index,ctx){
  '<span class="sec-final-more-arrow" aria-hidden="true">⌄</span></span></summary>'+
  '<div class="sec-final-detail-body">'+
  grade(g,d,ctx)+friends(g,d)+
- '<div class="sec-final-actions">'+
+ '<div class="sec-final-actions"><button type="button" data-sdsx-game="'+e(g.id)+
+ '" class="sec-final-action sec-games-final-detail">Game Center details →</button>'+
  link("Game Recap",url?"Final stats, scoring summary and key plays":"Recap not yet available",
  "game","▤","sec-final-recap-link")+
  link("View Box Score",url?"Official game statistics":"Stats not yet available",

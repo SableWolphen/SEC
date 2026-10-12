@@ -200,6 +200,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <link rel="stylesheet" href="./sds-showcase.css?v=20261011-unified-v2">
 <link rel="stylesheet" href="./sec-next.css?v=20261012-advanced-v1">
 <link rel="stylesheet" href="./sec-access.css?v=20261012-access-v1">
+<link rel="stylesheet" href="./sec-games.css?v=20261012-unified-v1">
 </head>
 <body>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
@@ -211,7 +212,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     </a>
     <nav class="desktop-nav" aria-label="Main navigation">
       <button type="button" data-nav="home" class="nav-link active">Home</button>
-      <button type="button" data-nav="current-sport" class="nav-link">Picks</button>
+      <button type="button" data-nav="current-sport" class="nav-link">Games</button>
       <button type="button" data-nav="league" class="nav-link">My league</button>
       <button type="button" data-nav="trophies" class="nav-link">Trophy Room</button>
       <button type="button" data-nav="more" class="nav-link">More</button>
@@ -261,19 +262,19 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     </section>
     <section id="basketball-view" class="view hidden" aria-labelledby="basketball-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> THE COURT <span class="eyebrow-slash">/</span> SEC MEN’S BASKETBALL</div>
-      <div class="page-intro"><div><h1 id="basketball-heading">Court <em>vision.</em></h1><p>Make your picks, then watch the scoreboard.</p></div></div>
+      <div class="page-intro"><div><h1 id="basketball-heading">Basketball <em>games.</em></h1><p>Your picks, live scores and verified finals in one place.</p></div></div>
       <div id="sec-day-basketball"></div>
       <div id="sport-basketball-content"></div>
     </section>
     <section id="baseball-view" class="view hidden" aria-labelledby="baseball-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> THE DIAMOND <span class="eyebrow-slash">/</span> SEC BASEBALL</div>
-      <div class="page-intro"><div><h1 id="baseball-heading">Call the <em>diamond.</em></h1><p>Pick the winner of each SEC baseball game.</p></div></div>
+      <div class="page-intro"><div><h1 id="baseball-heading">Baseball <em>games.</em></h1><p>Choose a winner, follow the score and see your result.</p></div></div>
       <div id="sec-day-baseball"></div>
       <div id="sport-baseball-content"></div>
     </section>
     <section id="picks-view" class="view hidden" aria-labelledby="picks-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> 2026 SEC FOOTBALL SEASON <span class="eyebrow-slash">/</span> UNOFFICIAL FAN GAME</div>
-      <div class="page-intro"><div><h1 id="picks-heading">Make your <em>picks.</em></h1><p>Every SEC game counts. Make your picks and challenge your friends.</p></div><div class="intro-side" id="countdown-badge"></div></div>
+      <div class="page-intro"><div><h1 id="picks-heading">Your <em>games.</em></h1><p>One matchup, from your pick to the live score and final result.</p></div><div class="intro-side" id="countdown-badge"></div></div>
       <nav class="global-sport-switch" id="global-sport-switch" aria-label="Choose SEC sport">
         <span class="global-sport-label">YOUR GAME</span>
         <div class="global-sport-options" role="group" aria-label="Sports pick'em">
@@ -288,8 +289,8 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       <div class="picks-layout">
         <div class="primary-column">
           <div class="sdsx-picks-cta"><div><span>YOUR SEASON STORY</span><strong>Every pick. Every win.</strong><small>Review confirmed game results and your league position.</small></div><button type="button" data-sdsx-view="results">🏆 My Results →</button></div>
-          <div id="hero-slot"></div>
-          <div class="section-title-row"><div><div class="overline">THE SLATE</div><h2>Game day matchups <span id="matchup-count"></span></h2></div><div class="section-caption" id="slate-mode-caption">Straight Picks · 1 point per correct pick</div></div>
+          <div id="hero-slot" hidden></div>
+          <div class="section-title-row"><div><div class="overline">THE SLATE</div><h2>Week’s games <span id="matchup-count"></span></h2></div><div class="section-caption" id="slate-mode-caption">Straight Picks · 1 point per correct pick</div></div>
           <div id="slate-pick-tools" class="slate-pick-tools" role="group" aria-label="Filter matchups"></div>
           
            <div id="games-list" class="games-list"></div><div id="weekly-tiebreaker-slot" class="weekly-tiebreaker-slot" aria-label="Weekly tiebreaker prediction"></div>
@@ -389,7 +390,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 
 <nav class="bottom-nav" aria-label="Mobile navigation">
  <button type="button" data-nav="home" class="mobile-nav-btn active"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8v9H3v-9zM9 20v-7h6v7"/></svg><span>Home</span></button>
- <button type="button" data-nav="current-sport" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM8 10l2.5 2.5L16 7"/></svg><span>Picks</span></button>
+ <button type="button" data-nav="current-sport" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM8 10l2.5 2.5L16 7"/></svg><span>Games</span></button>
  <button type="button" data-nav="league" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19v-2a5.5 5.5 0 0 1 11 0v2M17 6a3 3 0 0 1 0 6M17 14a5 5 0 0 1 3.5 5"/></svg><span>League</span></button>
  <button type="button" data-nav="trophies" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10v6a5 5 0 0 1-10 0V3ZM7 5H4v4a4 4 0 0 0 4 4m9-8h3v4a4 4 0 0 0 4-4M12 14v5m-5 2h10M9 19h6"/></svg><span>Trophies</span></button>
  <button type="button" data-nav="more" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span>More</span></button>
@@ -689,6 +690,26 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   function renderGame(g,index){
     const post=window.SEC_FINAL_CARDS?.render?.(g,index,{team,logo,displayDate,gameTime,weekDate:week().date});
     if(post)return post;
+    const phase=String(g.liveStatus||"scheduled"),live=phase==="live",waiting=!live&&isLocked(g);
+    if(live||waiting){
+      const pick=state.picks[g.id],chosen=pick===g.away||pick===g.home;
+      const card=window.SEC_FAN?.gameCenter?.(g,window.SEC_STATS?.render?.(g)||"")||"";
+      const title=live?"🔴 LIVE":phase==="final"?"Final confirmation pending":"Awaiting score update";
+      const stateText=chosen?"Your locked pick: "+team(pick).name:"No pick · Picks locked";
+      const fallback=card||'<div class="sec-games-score-pending">'+
+        esc(team(g.away).name)+' vs '+esc(team(g.home).name)+
+        '<small>Verified scores are not yet available.</small></div>';
+      return '<article class="game-card sec-games-active-card'+(live?' is-live':' is-waiting')+
+        '" data-game-id="'+esc(g.id)+'" tabindex="-1">'+
+        '<div class="sec-games-active-top"><strong>'+title+'</strong><span>'+esc(displayDate(g.date,g.date!==week().date))+
+        ' · '+esc(g.network||"SEC game")+'</span></div>'+
+        fallback+
+        '<div class="sec-games-active-foot"><span>'+esc(stateText)+'</span>'+
+        '<button type="button" data-sdsx-game="'+esc(g.id)+'">Open game details →</button></div>'+
+        (window.SEC_FEATURES?.extras?.(g)?'<details class="sec-games-extras"><summary>More matchup information</summary>'+
+          window.SEC_FEATURES.extras(g)+'</details>':"")+
+        '</article>';
+    }
     const pick=state.picks[g.id],winner=state.results[g.id];const fallbackNote=winner ? !pick ? 'Final result entered · no pick made' : pick===winner ? '<span class="earned">✓ Correct pick · +1 point</span>' : '<span class="missed">✕ Incorrect pick · 0 points</span>' : pick ? `Your pick: <span class="text-strong">${esc(team(pick).name)}</span>`:'Choose a team to make your pick';const note=window.SEC_FEATURES?.pickResult?.(g)??fallbackNote;return `<article class="game-card" data-game-id="${esc(g.id)}" tabindex="-1"><div class="game-header"><div class="game-index"><strong>${String(index+1).padStart(2,'0')}</strong> / MATCHUP</div><div class="game-meta"><span>${displayDate(g.date,g.date!==week().date)}</span><span class="meta-separator">·</span><span>${esc(gameTime(g))}</span><span class="meta-separator">·</span><span>${esc(g.network)}</span></div></div><div class="team-choices">${makeTeamButton(g,g.away)}<span class="versus">VS</span>${makeTeamButton(g,g.home)}</div><div class="game-note"><span>${note}</span><span class="lock-tag ${isLocked(g)?'locked':''}">${esc(timeNote(g))}</span></div>${g.neutral?`<div class="helper" style="margin-top:7px">${esc(g.neutral)}</div>`:''}${window.SEC_FAN?.gameCenter?.(g,window.SEC_STATS?.render?.(g)||'')||(window.SEC_STATS?window.SEC_STATS.render(g):'')}${window.SEC_FEATURES?.extras?.(g)||''}</article>`;}
   
   function renderWeeklyScoreStrip(w){
@@ -727,13 +748,16 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
    '<strong>ALL PICKS LOCKED</strong>';
   const caption=document.getElementById('slate-mode-caption');
   if(caption)caption.textContent=window.SEC_FEATURES?.modeDescription?.()||'Straight Picks · 1 point per correct pick';
-  renderHero(w);
+  // One authoritative card per game: never repeat the featured matchup above the slate.
+  document.getElementById("hero-slot")?.replaceChildren();
   const made=w.games.filter(g=>state.picks[g.id]===g.away||state.picks[g.id]===g.home);
   const openUnpicked=w.games.filter(g=>!state.picks[g.id]&&!isLocked(g)&&!window.SEC_FEATURES?.isUnavailable?.(g));
   const views=[
-   ['all','All games',w.games.length],
+   ['all','All',w.games.length],
    ['unpicked','Need picks',openUnpicked.length],
-   ['picked','My picks',made.length]
+   ['upcoming','Upcoming',w.games.filter(g=>g.liveStatus!=="live"&&!window.SEC_FEATURES?.finalData?.(g)).length],
+   ['live','Live',w.games.filter(g=>g.liveStatus==="live").length],
+   ['final','Final',w.games.filter(g=>Boolean(window.SEC_FEATURES?.finalData?.(g))).length]
   ];
   document.getElementById('slate-pick-tools').innerHTML=
    '<div class="slate-progress"><strong>'+made.length+' of '+w.games.length+' picked</strong><span>'+openUnpicked.length+' still open and unpicked</span></div>'+
@@ -745,12 +769,18 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   if(tieSlot)tieSlot.innerHTML=window.SEC_FEATURES?.tiebreakerCard?.()||"";
   const filtered=w.games.filter(g=>
     slateFilter==='picked' ? Boolean(state.picks[g.id]) :
-    slateFilter==='unpicked' ? openUnpicked.includes(g) : true
+    slateFilter==='unpicked' ? openUnpicked.includes(g) :
+    slateFilter==='live' ? g.liveStatus==="live" :
+    slateFilter==='final' ? Boolean(window.SEC_FEATURES?.finalData?.(g)) :
+    slateFilter==='upcoming' ? g.liveStatus!=="live"&&!window.SEC_FEATURES?.finalData?.(g) : true
   );
   window.SEC_COMPETITIVE?.onPicks?.();
   document.getElementById('games-list').innerHTML=filtered.length?
    filtered.map((g)=>renderGame(g,w.games.indexOf(g))).join(''):
-   '<div class="slate-empty"><strong>'+(slateFilter==='unpicked'?'All available games are picked!':'No matches in this view.')+
+   '<div class="slate-empty"><strong>'+(slateFilter==='unpicked'?'All available games are picked!':
+    slateFilter==='live'?'No live games in this week':
+    slateFilter==='final'?'No verified final games yet':
+    slateFilter==='upcoming'?'No upcoming games in this week':'No matches in this view.')+
    '</strong><p>Switch to All games to review every matchup.</p><button type="button" class="ghost-btn" data-slate-filter="all">Show all games</button></div>';
   renderSummary(w);
   renderWeeklyScoreStrip(w);
@@ -805,7 +835,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     if(next){
       const candidate=week().games.find(g=>!state.picks[g.id]&&!isLocked(g)&&!window.SEC_FEATURES?.isUnavailable?.(g));
       if(!candidate){toast('No available unpicked games.');return;}
-      if(slateFilter==='picked'){slateFilter='all';renderPicks();}
+      if(slateFilter!=='all'&&slateFilter!=='unpicked'){slateFilter='unpicked';renderPicks();}
       const card=[...document.querySelectorAll('[data-game-id]')].find(el=>el.dataset.gameId===candidate.id);
       if(card){card.scrollIntoView({behavior:'smooth',block:'start'});card.focus({preventScroll:true});}
       return;

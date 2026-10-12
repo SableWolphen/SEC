@@ -8,10 +8,11 @@ const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const entries=Object.freeze([
  {id:"quick",title:"Quick Pick",sub:"Finish remaining football picks",icon:"✓",group:"Play",terms:"one tap fast swipe picks remaining",view:"picks"},
- {id:"football",title:"Football Picks",sub:"Current SEC football week",icon:"🏈",group:"Play",terms:"matchups games schedule",view:"picks"},
+ {id:"football",title:"Football Games",sub:"Pick winners and follow scores together",icon:"🏈",group:"Play",terms:"matchups schedule picks",view:"picks"},
  {id:"basketball",title:"Basketball Picks",sub:"Tipoffs and basketball games",icon:"🏀",group:"Play",terms:"hoops courts",view:"basketball"},
  {id:"baseball",title:"Baseball Picks",sub:"Daily games and series",icon:"⚾",group:"Play",terms:"diamond series",view:"baseball"},
- {id:"scores",title:"Live Scores",sub:"Game Center and verified finals",icon:"◉",group:"Game Day",terms:"football match score field gamecast",view:"game-center"},
+ {id:"scores",title:"Scores & Games",sub:"Live scores on the same cards as your picks",icon:"◉",group:"Game Day",terms:"football match score live final",view:"picks",filter:"live"},
+ {id:"game-detail",title:"Detailed Game Center",sub:"Full stats, drives and game discussion",icon:"▣",group:"Game Day",terms:"football match play field gamecast",view:"game-center"},
  {id:"results",title:"My Results & Career",sub:"Wins, accuracy and victory cards",icon:"▥",group:"Game Day",terms:"career statistics history wins losses share recap",view:"results"},
  {id:"league",title:"League Standings",sub:"See your position in the race",icon:"▤",group:"Leagues",terms:"leaderboard rankings points",view:"league",pane:"scores"},
  {id:"league-chat",title:"League Chat",sub:"Talk with league members",icon:"💬",group:"Leagues",terms:"messages conversation",view:"league",pane:"chat"},
@@ -141,6 +142,7 @@ function navigate(id){
  if(recent.includes(id))recent.splice(recent.indexOf(id),1);
  recent.unshift(id);if(recent.length>6)recent.length=6;
  if(x.pane)window.SEC_LEAGUE_TABS?.switchPane?.(x.pane);
+ if(x.filter)document.querySelector('[data-slate-filter="'+x.filter+'"]')?.click();
  if(x.teamTab){
   const tab=document.querySelector('#team-hub-view [data-sdsx-team-tab="'+x.teamTab+'"]');
   tab?.click?.();

@@ -133,14 +133,15 @@ function actionCards(m){
  const tiles=[
  ["picks","✓","MAKE PICKS",p.unpickedOpen?p.unpickedOpen+" remaining":p.chosen+"/"+p.total+" selected"],
  ["team-hub","★","MY TEAM",m.favoriteName||"Choose a school"],
- ["game-center","◉","LIVE SCORES",m.liveCount?m.liveCount+" live now":"Game Center"],
+ ["picks","◉","LIVE SCORES",m.liveCount?m.liveCount+" live now":"See all scores"],
  ["league","▥","LEAGUE RACE",idx>=0?"You're #"+(idx+1):"View standings"],
  ["league","⚔","RIVALS",m.rival?m.rival.gap+"-point gap":"Meet your league"],
  ["trophies","🏆","TROPHY ROOM","Your collection"],
  ["team-news","▤","SEC NEWS","Latest headlines"]
  ];
  return '<nav class="hq-actions" aria-label="Game Day shortcuts">'+tiles.map(t=>
- '<button type="button" data-hq-route="'+t[0]+'" class="hq-action"><span class="hq-action-icon" aria-hidden="true">'+
+ '<button type="button" data-hq-route="'+t[0]+'"'+(t[2]==="LIVE SCORES"?' data-hq-focus="live"':'')+
+ ' class="hq-action"><span class="hq-action-icon" aria-hidden="true">'+
  t[1]+'</span><strong>'+t[2]+'</strong><small>'+esc(t[3])+'</small></button>').join("")+'</nav>';
 }
 function rivalCard(m){
@@ -383,6 +384,9 @@ document.addEventListener("click",e=>{
  app()?.setView?.(target);
  if(target==="picks"&&b.dataset.hqFocus==="next"){
   document.querySelector('[data-slate-next]')?.click();
+ }
+ if(target==="picks"&&b.dataset.hqFocus==="live"){
+  document.querySelector('[data-slate-filter="live"]')?.click();
  }
 });
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refresh();});
