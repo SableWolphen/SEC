@@ -547,6 +547,10 @@ fs.mkdirSync(output,{recursive:true});
    // Independently audit final-game layout (offline fixture; no private data
    // is requested from the actual database or any user's picks modified).
    await page.evaluate(()=>{
+     // A user-opened live timeline stays open by design. To test the default
+     // compact finished game, close it before the score becomes final.
+     const liveDisclosure=document.querySelector("#games-list .sec-games-active-card .sec-pbp-panel");
+     if(liveDisclosure)liveDisclosure.open=false;
      const w=window.SEC_BRIDGE.week(),g=w.games[0];
      g.liveStatus="final";g.awayScore=6;g.homeScore=27;
      const second=w.games[1];
@@ -582,6 +586,7 @@ fs.mkdirSync(output,{recursive:true});
       leagueImpact:card?.textContent.includes("4 missed their pick"),
       friendsClosed:!!friends&&!friends.open,
       detailsClosed:!!details&&!details.open,
+      playTimelineClosed:!card?.querySelector(".sec-pbp-panel")?.open,
       detailsPrompt:details?.querySelector("summary")?.textContent.includes("Game details")||false,
       visibleLost:!!card?.querySelector(".sec-final-details > summary .sec-final-pick-badge.lost"),
       visibleWon:!!document.querySelector("#games-list .sec-final-details > summary .sec-final-pick-badge.won"),
@@ -593,7 +598,7 @@ fs.mkdirSync(output,{recursive:true});
    });
    if(!post.hasCard||!post.winner||!post.result||!post.recap||!post.box||
       !post.leagueImpact||!post.friendsClosed||!post.detailsClosed||
-      !post.detailsPrompt||!post.visibleLost||!post.visibleWon||
+      !post.detailsPrompt||!post.visibleLost||!post.visibleWon||!post.playTimelineClosed||
       !post.resultHidden||!post.linksHidden||!post.noDuplicateScore||
       post.compactHeight>210||post.width>post.viewport+2)
      problems.push(viewport.width+"px final game not compact/collapsed: "+JSON.stringify(post));
