@@ -28,8 +28,8 @@ function parse(source:any,game:Fixture,sourceId:string){
  }
  const rawPlays: {raw:any;drive:string;index:number}[]=[];
  let idx=0;
- for(const drive of rawDrives){
-  const did=String(drive?.id||"drive-"+idx).slice(0,55);
+ for(const [driveIndex,drive] of rawDrives.entries()){
+  const did=String(drive?.id||"drive-"+driveIndex).slice(0,55);
   for(const p of Array.isArray(drive?.plays)?drive.plays:[]){
    rawPlays.push({raw:p,drive:did,index:idx++});
   }

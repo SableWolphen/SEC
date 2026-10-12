@@ -85,6 +85,9 @@ jobs:
           node scripts/smoke-access.cjs
           node --check multi-sport.js
           node scripts/smoke-games.cjs
+          node --check sec-play-by-play.js
+          node --check scripts/smoke-plays.cjs
+          node scripts/smoke-plays.cjs
           node --check sec-premium.js
           node --check scripts/smoke-premium.cjs
           node scripts/smoke-premium.cjs

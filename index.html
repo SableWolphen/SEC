@@ -704,7 +704,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
         '" data-game-id="'+esc(g.id)+'" tabindex="-1">'+
         '<div class="sec-games-active-top"><strong>'+title+'</strong><span>'+esc(displayDate(g.date,g.date!==week().date))+
         ' · '+esc(g.network||"SEC game")+'</span></div>'+
-        fallback+(live?(window.SEC_PLAYS?.placeholder?.(g,"games")||""):"")+
+        fallback+((live||phase==="final")?(window.SEC_PLAYS?.placeholder?.(g,"games")||""):"")+
         '<div class="sec-games-active-foot"><span>'+esc(stateText)+'</span>'+
         '<button type="button" data-sdsx-game="'+esc(g.id)+'">Open game details →</button></div>'+
         (window.SEC_FEATURES?.extras?.(g)?'<details class="sec-games-extras"><summary>More matchup information</summary>'+
