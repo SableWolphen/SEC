@@ -12,7 +12,7 @@ assert.match(html,/requestAnimationFrame\(\(\)=>/);
 assert.match(html,/focusGameId/);
 assert.match(html,/focusedFilter/);
 assert.match(html,/focus\?\.\(\{preventScroll:true\}\)/);
-assert.match(html,/\\.secnext-intelligence\\[open\\]/);
+assert.ok(html.includes(".secnext-intelligence[open]"),"compared team panels are kept open through updates");
 assert.match(adv,/data-next-skip/);
 assert.match(adv,/data-next-previous/);
 assert.match(adv,/quickSaving/);
