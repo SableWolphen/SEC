@@ -232,14 +232,15 @@ function gameCenter(){
   empty("Live yardage stats unavailable","The app has verified scores, but does not yet receive a complete live box-score feed. No stats are fabricated.")+
   (window.SEC_STATS?.render?.(g)||"")+
   link("Official game box score",boxUrl(g))+'</section>':
- gameTab==="plays"?'<section class="sdsx-section"><div class="sdsx-section-head"><h3>PLAY-BY-PLAY</h3></div>'+
-  (lastPlay?'<p class="sdsx-play-call">'+esc(lastPlay)+'</p>':
-   empty("Detailed plays unavailable","For full scoring plays and player updates, open the original game summary."))+
-  link("Open official game plays",eventUrl(g))+'</section>':
+ gameTab==="plays"?'<section class="sdsx-section"><div class="sdsx-section-head"><h3>PLAY-BY-PLAY</h3>'+
+  '<span>Published game records</span></div>'+
+  (window.SEC_PLAYS?.placeholder?.(g,"center",true)||empty("Play timeline loading","Recorded plays will appear when the verified feed is available."))+
+  link("Original game summary",eventUrl(g))+'</section>':
  '<section class="sdsx-section"><div class="sdsx-section-head"><h3>LEAGUE DISCUSSION</h3></div>'+
   '<p>Chat with your league about this game. Existing league conversations remain private.</p>'+
   '<button type="button" class="sdsx-gold-button" data-sdsx-view="league">Go to my league →</button></section>')+
  '</div>';
+ window.SEC_PLAYS?.hydrate?.(host);
 }
 function leagueRows(){
  const selected=window.SEC_LEAGUE_SETTINGS?.getSelected?.();

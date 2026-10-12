@@ -201,6 +201,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <link rel="stylesheet" href="./sec-next.css?v=20261012-advanced-v1">
 <link rel="stylesheet" href="./sec-access.css?v=20261012-access-v1">
 <link rel="stylesheet" href="./sec-games.css?v=20261012-unified-v1">
+<link rel="stylesheet" href="./sec-play-by-play.css?v=20261012-plays-v1">
 </head>
 <body>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
@@ -703,7 +704,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
         '" data-game-id="'+esc(g.id)+'" tabindex="-1">'+
         '<div class="sec-games-active-top"><strong>'+title+'</strong><span>'+esc(displayDate(g.date,g.date!==week().date))+
         ' · '+esc(g.network||"SEC game")+'</span></div>'+
-        fallback+
+        fallback+(live?(window.SEC_PLAYS?.placeholder?.(g,"games")||""):"")+
         '<div class="sec-games-active-foot"><span>'+esc(stateText)+'</span>'+
         '<button type="button" data-sdsx-game="'+esc(g.id)+'">Open game details →</button></div>'+
         (window.SEC_FEATURES?.extras?.(g)?'<details class="sec-games-extras"><summary>More matchup information</summary>'+
@@ -785,6 +786,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   renderSummary(w);
   renderWeeklyScoreStrip(w);
   window.SEC_NEXT?.onPicks?.();
+  window.SEC_PLAYS?.hydrate?.(document.getElementById("games-list"));
 }
   function scoreFor(picks,requestedWeek){const w=WEEKS.find(w=>w.num===requestedWeek);return correctCount(w,picks||{});}
   function peopleForWeek(w){const rows=[{id:'me',name:getName(),picks:state.picks,local:true}];for(const m of state.members){const weekPicks=m.weeks?.[w.num]?.picks||{};rows.push({id:m.id,name:m.name,picks:weekPicks,local:false,hasSlip:!!m.weeks?.[w.num]});}rows.forEach(r=>{r.score=scoreFor(r.picks,w.num);r.total=w.games.filter(g=>r.picks[g.id]).length;r.fullScore=points(r.local?state.picks:Object.assign({},...Object.values(state.members.find(m=>m.id===r.id)?.weeks||{}).map(v=>v.picks||{})));});rows.sort((a,b)=>b.score-a.score||b.total-a.total||a.name.localeCompare(b.name));return rows;}
@@ -916,5 +918,6 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./sec-premium.js?v=20261011-unified-v2"></script>
 <script src="./sec-next.js?v=20261012-advanced-v1"></script>
 <script src="./sec-access.js?v=20261012-access-v1"></script>
+<script src="./sec-play-by-play.js?v=20261012-plays-v1"></script>
 </body>
 </html>

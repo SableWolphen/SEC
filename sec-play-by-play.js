@@ -17,13 +17,13 @@ const preference=el=>{
  if(!prefs.has(key))prefs.set(key,{mode:"plays",count:45});
  return prefs.get(key);
 };
-function placeholder(g,context="games"){
+function placeholder(g,context="games",expand=false){
  if(!g||!isGame(g.id))return "";
  const st=g.liveStatus||"scheduled";
  const active=st==="live"||st==="final";
  const id=esc(g.id),old=document.querySelector(
   '[data-sec-pbp-game="'+id+'"][data-sec-pbp-context="'+context+'"]');
- const wasOpen=old?.open===true;
+ const wasOpen=expand||old?.open===true;
  const label=st==="final"?"Review the full play timeline":"Live play-by-play";
  return '<details class="sec-pbp-panel" data-sec-pbp-game="'+id+
   '" data-sec-pbp-context="'+esc(context)+'"'+(wasOpen?" open":"")+ '>'+
