@@ -17,7 +17,7 @@ const isOpen=g=>!app()?.isLocked?.(g)&&!window.SEC_FEATURES?.isUnavailable?.(g);
 const scope=()=>String(user()?.id||"guest")+"|"+String(selected()?.kind||"none")+"|"+String(selected()?.id||"none");
 const notice=x=>app()?.toast?.(x);
 const number=n=>Number.isFinite(Number(n))?Number(n):0;
-let quickIndex=0,quickOpen=false,trendScope="",challengeScope="",trends=[],challenges=[],challengeError="",loadingTrends=false,loadingChallenges=false,challengeStats=null;
+let quickIndex=0,quickOpen=false,quickSaving=false,quickMessage="",trendScope="",challengeScope="",trends=[],challenges=[],challengeError="",loadingTrends=false,loadingChallenges=false,challengeStats=null;
 const brand=()=>window.SEC_PRIDE?.getCode?.()||app()?.state?.()?.favorite||"SEC";
 const league=()=>selected();
 function rankedName(code){return window.SEC_PRIDE?.names?.[code]||code;}
@@ -45,7 +45,7 @@ const pending=()=>games().filter(g=>!isPicked(g)&&isOpen(g));
 function openQuick(){
  const dialog=$("sec-next-dialog");
  if(!dialog)return;
- quickIndex=0;quickOpen=true;updateQuick();
+ quickIndex=0;quickMessage="";quickOpen=true;updateQuick();
  if(typeof dialog.showModal==="function"&&!dialog.open)dialog.showModal();
  else dialog.setAttribute("open","");
 }
@@ -57,19 +57,39 @@ function updateQuick(){
  const d=$("sec-next-dialog"),content=$("sec-next-quick-content");if(!d||!content)return;
  const available=pending();
  if(quickIndex>=available.length)quickIndex=0;
- content.innerHTML=available.length?'<div class="secnext-quick-progress">'+(games().length-available.length)+
- ' / '+games().length+' selected</div>'+matchup(available[quickIndex]):
+ const completed=games().length-available.length;
+ content.innerHTML=available.length?
+  '<div class="secnext-quick-top"><div class="secnext-quick-progress">'+completed+
+  ' of '+games().length+' selected</div><span>Matchup '+(quickIndex+1)+' of '+available.length+' remaining</span></div>'+
+  '<div class="secnext-quick-track" aria-label="'+completed+' of '+games().length+
+  ' games selected"><span style="width:'+(games().length?Math.round(100*completed/games().length):0)+'%"></span></div>'+
+  matchup(available[quickIndex])+
+  '<div class="secnext-quick-controls">'+
+  '<button type="button" data-next-previous '+(available.length<2||quickSaving?'disabled':'')+' aria-label="Previous unpicked game">← Previous</button>'+
+  '<button type="button" data-next-skip '+(available.length<2||quickSaving?'disabled':'')+'>Skip this game →</button></div>'+
+  (quickMessage?'<p role="status" class="secnext-quick-message">'+esc(quickMessage)+'</p>':""):
  '<div class="secnext-done"><strong>All available matchups are picked.</strong>'+
  '<p>Locked games cannot be changed. You can still review the full slate.</p>'+
  '<button type="button" data-next-close>Back to my picks</button></div>';
 }
 async function chooseQuick(gid,code){
+ if(quickSaving)return;
  const g=games().find(x=>x.id===gid);
  if(!g||![g.away,g.home].includes(code)||!isOpen(g)){notice("This matchup is locked or unavailable.");updateQuick();return;}
+ quickSaving=true;quickMessage="Saving your pick…";
+ const choices=$("sec-next-quick-content")?.querySelectorAll("[data-next-choice]");
+ choices?.forEach(b=>{b.disabled=true;});
  try{
   if(window.secOnline?.configured===true){
-   if(!user()||!window.secOnline?.getLeague?.()){notice("Join a football league and sign in to save this pick.");return;}
-   await window.secOnline.pick(g,code);
+   if(!user()||!window.secOnline?.getLeague?.()){
+    quickMessage="Sign in and join a football league to save your pick.";
+    notice(quickMessage);return;
+   }
+   const saved=await window.secOnline.pick(g,code);
+   if(saved!==true){
+    quickMessage="This pick was not saved. Please try again.";
+    return;
+   }
   }else{
    // Delegate to the original persisted-pick handler; never change state without saving.
    const locate=()=>[...document.querySelectorAll("#games-list [data-pick],#hero-slot [data-pick]")]
@@ -83,8 +103,14 @@ async function chooseQuick(gid,code){
    if(!original){notice("Open All games to make this selection.");closeQuick();return;}
    original.click();
   }
+  quickMessage=rankedName(code)+" saved ✓";
+ }catch(e){
+  quickMessage=e?.message||"Couldn't save your pick.";
+  notice(quickMessage);
+ }finally{
+  quickSaving=false;
   updateQuick();
- }catch(e){notice(e?.message||"Couldn't save your pick.");}
+ }
 }
 function intelligence(g){
  const rec=code=>window.SEC_TEAM_RECORDS?.entry?.(code,"football")?.overall||"Not available";
@@ -395,9 +421,16 @@ function bootstrap(){
  onView(app()?.view?.());
 }
 document.addEventListener("click",event=>{
- const el=event.target.closest?.("[data-next-quick],[data-next-close],[data-next-choice],[data-next-trends],[data-next-load-challenges],[data-next-send-challenge],[data-next-respond],[data-next-rival-game],[data-next-victory],[data-next-push-enable],[data-next-push-disable]");
+ const el=event.target.closest?.("[data-next-quick],[data-next-close],[data-next-choice],[data-next-trends],[data-next-load-challenges],[data-next-send-challenge],[data-next-respond],[data-next-rival-game],[data-next-victory],[data-next-push-enable],[data-next-push-disable],[data-next-skip],[data-next-previous]");
  if(!el)return;
  if(el.hasAttribute("data-next-quick"))openQuick();
+ if(el.hasAttribute("data-next-skip")||el.hasAttribute("data-next-previous")){
+  const n=pending().length;
+  if(n>1&&!quickSaving){
+   quickIndex=(quickIndex+(el.hasAttribute("data-next-skip")?1:-1)+n)%n;
+   quickMessage="";updateQuick();
+  }
+ }
  if(el.hasAttribute("data-next-close"))closeQuick();
  if(el.hasAttribute("data-next-choice"))void chooseQuick(el.dataset.nextGame,el.dataset.nextChoice);
  if(el.hasAttribute("data-next-trends"))void loadTrends();

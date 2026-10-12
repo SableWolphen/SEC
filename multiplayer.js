@@ -288,9 +288,9 @@
       '<button type="button" class="online-signin-cta" data-online="go-league">👤 Create account or log in · Make a league with friends ↗</button>';
   }
   async function choose(g,id){
-    if(!client){app.toast("Online play is not configured yet.");app.setView("league");return;}
-    if(!user){app.toast("Sign in to save league picks.");app.setView("league");return;}
-    if(working)return;
+    if(!client){app.toast("Online play is not configured yet.");app.setView("league");return false;}
+    if(!user){app.toast("Sign in to save league picks.");app.setView("league");return false;}
+    if(working)return false;
     working=true;
     try{
       if(window.SEC_FEATURES?.save){
@@ -300,7 +300,9 @@
         app.state().picks[g.id]=id;app.renderPicks();
       }
       app.toast("Pick saved online!");
-    }catch(err){busy(err);return;}working=false;
+      return true;
+    }catch(err){busy(err);return false;}
+    finally{working=false;}
   }
   async function act(action){
     if(working)return;

@@ -94,7 +94,7 @@ function closestRival(model){
 function hero(m){
  const game=m.favoriteUpcoming||m.nextKickoff;
  const p=m.progress;
- const action=p.unpickedOpen?"picks":m.liveCount?"game-center":"results";
+ const action=p.unpickedOpen?"picks":m.liveCount?"picks":"results";
  const line=m.liveCount?m.liveCount+" live football game"+(m.liveCount===1?"":"s"):
   p.unpickedOpen?p.unpickedOpen+" football pick"+(p.unpickedOpen===1?"":"s")+" still open":
   p.total?p.chosen+" of "+p.total+" football picks selected · Week "+(m.week||"—"):
@@ -114,7 +114,7 @@ function hero(m){
   '<button type="button" data-hq-route="teams">Edit school</button></div></div></div>':
   '<strong>Same schools. Bigger rivalries.</strong>')+
  '<p>'+esc(line)+'</p>'+
- '<div class="hq-hero-buttons"><button type="button" data-hq-route="'+action+'" class="hq-primary">'+
+ '<div class="hq-hero-buttons"><button type="button" data-hq-route="'+action+'"'+(m.liveCount&&!p.unpickedOpen?' data-hq-focus="live"':'')+' class="hq-primary">'+
  (p.unpickedOpen?"Make my picks →":m.liveCount?"Open live games →":"See my results →")+
  '</button>'+(m.favoriteSchool?"":'<button type="button" data-hq-route="teams" class="hq-hero-alt school-picker">☆ Choose Team →</button>')+
  '</div></div>'+
@@ -125,7 +125,7 @@ function hero(m){
   (window.SDS_VISUALS?.mark?.(game.home,{className:"sdsx-crest"})||"")+
   '<b>'+esc(game.home)+'</b></span></div>'+
   '<strong>'+esc(countdown(game.clock)||"Starting soon")+'</strong><small>'+
-  esc(niceTime(game.clock))+' CT</small><button type="button" data-hq-route="game-center">Open Game Center →</button></div>':"")+
+  esc(niceTime(game.clock))+' CT</small><button type="button" data-hq-route="picks" data-hq-focus="upcoming">View matchup →</button></div>':"")+
  '</section>';
 }
 function actionCards(m){
@@ -385,8 +385,8 @@ document.addEventListener("click",e=>{
  if(target==="picks"&&b.dataset.hqFocus==="next"){
   document.querySelector('[data-slate-next]')?.click();
  }
- if(target==="picks"&&b.dataset.hqFocus==="live"){
-  document.querySelector('[data-slate-filter="live"]')?.click();
+ if(target==="picks"&&["live","upcoming"].includes(b.dataset.hqFocus)){
+  document.querySelector('[data-slate-filter="'+b.dataset.hqFocus+'"]')?.click();
  }
 });
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refresh();});
