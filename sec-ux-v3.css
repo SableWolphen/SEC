@@ -1,0 +1,116 @@
+/* SEC UX v3 — context-first Game Day, status-first Games, cleaner competition.
+ * Loaded last. Changes only the presentation of existing, verified data.
+ */
+:root{--sec-ux-edge:#344c61;--sec-ux-raised:#142c42}
+#sec-home-root[data-moment] .hq-hero-copy h2{
+ letter-spacing:-.85px;overflow-wrap:normal;text-wrap:balance
+}
+#sec-home-root .hq-hero-copy .hq-eyebrow{letter-spacing:1.05px}
+#sec-home-root .hq-app-metrics{align-items:stretch}
+#sec-home-root .hq-app-metric{box-shadow:none}
+#sec-home-root .hq-app-metric strong{font-variant-numeric:tabular-nums}
+#sec-home-root .hq-games-list{margin-bottom:10px;gap:7px}
+#sec-home-root .hq-matchup{box-shadow:none;min-width:0}
+#sec-home-root .hq-matchup-head{gap:8px}
+#sec-home-root .hq-matchup-body{margin-top:9px;gap:8px}
+#sec-home-root .hq-game-score{font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+#sec-home-root .hq-panel .hq-secondary{min-height:43px;border-radius:10px}
+#sec-home-root .hq-league .hq-standings{gap:0;margin-bottom:8px}
+#sec-home-root .hq-standings-row{
+ min-height:39px;border-bottom:1px solid #344c61;padding:5px 3px
+}
+#sec-home-root .hq-standings-row:last-child{border-bottom:0}
+#sec-home-root .hq-standings-row.mine{
+ border:1px solid #a58652;border-radius:9px;padding:5px 8px;
+ background:#ab813021;color:#ffdf9f
+}
+#sec-home-root .hq-standings-row strong{font-size:12px}
+#sec-home-root .hq-standings-row .hq-standing-name{font-size:12px}
+#sec-home-root .hq-note{line-height:1.35}
+/* A live game is the primary story; don't show an oversized countdown above it. */
+#sec-home-root[data-moment="live"] .hq-stadium-hero{border-color:#69827f}
+#sec-home-root[data-moment="live"] .hq-games{
+ border-color:#52796d;background:linear-gradient(145deg,#153342,#0f2535)
+}
+#sec-home-root[data-moment="finals"] .hq-games{border-color:#6b6653}
+#sec-home-root[data-moment="picks"] .hq-stadium-hero{border-color:#a4885d}
+/* Games: filters and current action come before decorative context. */
+#picks-view #slate-pick-tools{padding:6px}
+#picks-view .slate-filter{
+ font-variant-numeric:tabular-nums;border:1px solid #40586e;
+ background:#152d42;box-shadow:none
+}
+#picks-view .slate-filter.active,#picks-view .slate-filter[aria-pressed="true"]{
+ background:#f0c775;border-color:#f0c775;color:#13263a;
+}
+#picks-view .slate-next{border-radius:9px}
+#picks-view .game-card .game-meta{line-height:1.45}
+#picks-view .game-card .game-note{font-size:11px}
+#picks-view .game-card .team-choice.selected{
+ border-color:#e6be77;background:#393322b3
+}
+#picks-view .game-card .team-choice:focus-visible{
+ outline:2px solid #f0cf88;outline-offset:2px
+}
+#picks-view .game-card .sec-games-extras[open]{
+ border-top-color:#4f687b
+}
+/* Lean league rows: the scoreboard leads, social controls stay in tabs. */
+#league-view .fan-league-pane{min-width:0}
+#league-view .fan-standings-row,#league-view .fan-row,
+#league-view .fan-leader-row{min-height:42px}
+#league-view #fan-league-tabs [role="tab"]{
+ touch-action:manipulation;white-space:nowrap
+}
+#league-view #fan-league-tabs [role="tab"]:focus-visible{
+ outline:2px solid #f7d591;outline-offset:2px
+}
+#league-view :is(.fan-panel,.fan-fold,.fan-single-panel,.fan-league-card){
+ box-shadow:none;overflow-wrap:anywhere
+}
+#league-view .secnext-fold{margin-block:9px}
+#game-center-view .sdsx-section{box-shadow:none}
+#more-view .sec-access-group{margin-block:12px 17px}
+/* Thumb-sized tap targets without motion-heavy or jumpy feedback. */
+:is(#league-view,#picks-view,#home-view) button:not(:disabled){touch-action:manipulation}
+@media(max-width:790px){
+ #sec-home-root>.hq-stadium-hero{padding:12px 13px}
+ #sec-home-root .hq-hero-copy h2{font-size:24px;line-height:1.1}
+ #sec-home-root .hq-hero-buttons .hq-primary{
+  min-height:44px;width:100%;text-align:center
+ }
+ #sec-home-root[data-moment="live"] .hq-next-kickoff{display:none}
+ #sec-home-root[data-moment="upcoming"] .hq-app-metric:nth-child(3),
+ #sec-home-root[data-moment="idle"] .hq-app-metric:nth-child(3){display:none}
+ #sec-home-root[data-moment="upcoming"]>.hq-app-metrics,
+ #sec-home-root[data-moment="idle"]>.hq-app-metrics{
+  grid-template-columns:repeat(2,minmax(0,1fr))
+ }
+ #sec-home-root[data-moment="upcoming"] .hq-games,
+ #sec-home-root[data-moment="picks"] .hq-games{display:none}
+ #sec-home-root .hq-league{order:3}
+ #sec-home-root .hq-games{order:4}
+ #sec-home-root .hq-mobile-expand{order:5}
+ #sec-home-root .hq-sport-tabs{order:2}
+ #sec-home-root .hq-standings-row{min-height:38px}
+ #sec-home-root .hq-panel{padding:12px}
+ #picks-view .week-score-primary strong{font-size:22px}
+ #picks-view .weekly-score-strip{gap:7px}
+ #picks-view .slate-filter-row{gap:5px}
+ #picks-view .slate-filter{min-height:44px}
+ #picks-view .game-card{padding:11px;border-radius:13px}
+ #league-view #fan-league-tabs{top:61px}
+ #league-view .fan-standings-row{padding-block:8px}
+ #game-center-view .sdsx-score-hero{padding:13px}
+}
+@media(max-width:390px){
+ #sec-home-root .hq-hero-copy h2{font-size:22px}
+ #sec-home-root .hq-app-metric strong{font-size:20px}
+ #picks-view .weekly-score-strip .week-score-metric strong{font-size:16px}
+ #league-view #fan-league-tabs [role=tab]{min-height:44px}
+}
+@media(prefers-reduced-motion:reduce){
+ :is(#picks-view,#league-view,#home-view) button{
+  transition:none!important;transform:none!important
+ }
+}
