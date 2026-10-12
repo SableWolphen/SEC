@@ -2,7 +2,13 @@
 /* Bragging Arena regression: scoped RPC, post-kickoff only, all 3 sports,
    safe HTML, rival wins, championship truth and click-to-share. */
 const assert=require("node:assert/strict"),fs=require("node:fs"),vm=require("node:vm");
-const now=Date.now(),past=new Date(now-3*86400000).toISOString(),future=new Date(now+86400000).toISOString();
+// Freeze the simulated game-week clock; Monday CT changes featured rivals.
+const FIXED_NOW=Date.parse("2026-10-11T18:00:00Z");
+class FixtureDate extends Date{
+ constructor(...args){super(...(args.length?args:[FIXED_NOW]));}
+ static now(){return FIXED_NOW;}
+}
+const now=FIXED_NOW,past=new Date(now-3*86400000).toISOString(),future=new Date(now+86400000).toISOString();
 let selected={kind:"club",id:"club-1",name:"Saturday Crew",sports:["football","basketball","baseball"]};
 let viewer={id:"alice"},fetches=0,notice=[],copied=[],listeners={};
 const html={innerHTML:"",replaceChildren(){this.innerHTML="";}};
@@ -53,7 +59,7 @@ const document={
 };
 const navigator={clipboard:{async writeText(s){copied.push(s);}}};
 vm.runInNewContext(fs.readFileSync("sec-bragging-arena.js","utf8"),
- {window,document,navigator,Date,Math,Number,String,Object,Map,Set,Promise,console},
+ {window,document,navigator,Date:FixtureDate,Math,Number,String,Object,Map,Set,Promise,console},
  {filename:"sec-bragging-arena.js"});
 const arena=window.SEC_BRAG_ARENA;
 (async()=>{
