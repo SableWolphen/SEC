@@ -1,0 +1,134 @@
+/* ONE GAMES EXPERIENCE — picking, verified live scores and finals in one slate.
+   Older Picks (#picks-view) remains the stable internal route for saved links. */
+#picks-view #hero-slot{display:none!important}
+#picks-view .picks-layout{margin-top:2px}
+#picks-view .section-title-row{margin:12px 0 7px}
+#picks-view .section-title-row h2{font-size:19px}
+#picks-view .slate-pick-tools{padding:9px 11px;border:1px solid #3b5870;border-radius:11px;background:#0e2538}
+#picks-view .slate-progress{gap:5px}
+#picks-view .slate-filter-row{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+#picks-view .slate-filter{
+ min-height:41px;display:inline-flex;align-items:center;justify-content:center;gap:5px;
+ border-radius:9px;padding:8px 10px;flex:1 1 auto;white-space:nowrap;
+ font-size:11px;font-weight:850;color:#d3e1ec;border:1px solid #405d75;
+ background:#122d42;
+}
+#picks-view .slate-filter.active{background:#edc986;color:#112537;border-color:#f2d99f;box-shadow:none}
+#picks-view .slate-filter small{font-size:10px;opacity:.85}
+#picks-view .slate-next{min-height:42px;padding:9px 12px;border-radius:9px;margin-left:auto}
+#picks-view .sec-live-mini-scores{display:none!important} /* Scores are on the game cards */
+#picks-view #sec-live-score-strip{margin-top:7px}
+#picks-view .sec-live-strip-title{margin-bottom:0}
+#picks-view .sec-live-strip-title>strong{font-size:12px}
+#picks-view .sec-live-strip-title>span{font-size:10px}
+#picks-view .sec-games-active-card{
+ padding:11px 12px 10px;border:1px solid #3c5b73;border-radius:11px;
+ background:#102539;box-shadow:none;min-width:0;
+}
+#picks-view .sec-games-active-card.is-live{
+ border-color:#558376;background:linear-gradient(125deg,#0e3037,#102539 45%);
+}
+#picks-view .sec-games-active-top{
+ display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;
+ gap:6px;padding:0 0 8px;border-bottom:1px solid #354c62;margin-bottom:8px;
+}
+#picks-view .sec-games-active-top strong{font-size:11px;color:#efbd8a;letter-spacing:.3px}
+#picks-view .sec-games-active-card.is-live .sec-games-active-top strong{color:#f4a6a4}
+#picks-view .sec-games-active-top>span{font-size:10px;color:#b5ccdc}
+#picks-view .sec-games-active-card .fan-center{
+ margin:0;padding:0;background:transparent;border:0;box-shadow:none;
+}
+#picks-view .sec-games-active-card .fan-center>summary{
+ min-height:65px;padding:10px 12px;border:1px solid #415d73;
+ border-radius:9px;background:#102a3d;box-shadow:none;
+ display:flex;align-items:center;gap:8px;
+}
+#picks-view .sec-games-active-card.is-live .fan-center>summary{
+ background:#0b303b;border-color:#447c81;
+}
+#picks-view .sec-games-active-card .fan-center>summary>span:nth-child(2){
+ font-size:13px;font-weight:850;color:#f4f8fb;
+}
+#picks-view .sec-games-active-card .fan-center-detail{
+ border:1px solid #405973;border-top:0;border-radius:0 0 9px 9px;
+ background:#0b2032;padding:10px;max-width:100%;overflow-wrap:anywhere;
+}
+#picks-view .sec-games-active-foot{
+ display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+ gap:8px;margin-top:9px;color:#c6d5e1;font-size:11px;
+}
+#picks-view .sec-games-active-foot button,
+#picks-view .sec-games-final-detail{
+ min-height:39px;padding:8px 11px;border-radius:8px;
+ background:#203b50;color:#f6d292;border:1px solid #517089;
+ font-size:11px;font-weight:850;cursor:pointer;
+}
+#picks-view .sec-games-active-foot button:hover,
+#picks-view .sec-games-final-detail:hover{border-color:#f3cd8d;background:#2a465e}
+#picks-view .sec-games-score-pending{
+ padding:14px 10px;border:1px solid #38566d;border-radius:9px;
+ color:#e4ecf3;font-size:13px;font-weight:850;
+}
+#picks-view .sec-games-score-pending small{
+ display:block;margin-top:5px;font-size:11px;color:#adbfce;font-weight:500;
+}
+#picks-view .sec-games-extras{margin-top:9px;border-top:1px solid #365269}
+#picks-view .sec-games-extras>summary{min-height:37px;cursor:pointer;padding:9px 4px;font-size:11px;color:#e9c88b;font-weight:800}
+#picks-view .sec-games-extras :is(button,select,input){max-width:100%}
+#picks-view .sec-final-card{min-width:0}
+#picks-view .sec-final-card .sec-games-final-detail{
+ display:flex;align-items:center;justify-content:center;text-align:center;width:100%;
+}
+#picks-view .game-card .team-choices{align-items:stretch}
+#picks-view .game-card:not(.sec-games-active-card):not(.sec-final-card) .game-note{
+ margin-top:9px;
+}
+#picks-view .sdsx-picks-cta{display:none!important} /* My Results remains one tap from the unified game summary */
+#picks-view .sec-games-active-card .sec-games-extras>summary:focus-visible,
+#picks-view .sec-games-active-foot button:focus-visible,
+#picks-view .slate-filter:focus-visible{
+ outline:2px solid #ffdfa3;outline-offset:2px;
+}
+/* Basketball and baseball join Games using the same All/Upcoming/Live/Final filtering. */
+:is(#basketball-view,#baseball-view) .sport-game-filters{
+ display:flex;gap:5px;flex-wrap:wrap;margin:9px 0;
+ padding:7px;background:#102639;border:1px solid #3d576d;border-radius:11px;
+}
+:is(#basketball-view,#baseball-view) .sport-game-filter{
+ min-height:41px;flex:1 1 auto;padding:8px 9px;
+ border:1px solid #415d75;border-radius:8px;color:#d2e0eb;
+ background:#102a3f;font-size:11px;font-weight:850;
+}
+:is(#basketball-view,#baseball-view) .sport-game-filter.active{
+ background:#e8c480;color:#15293b;border-color:#e8c480;
+}
+:is(#basketball-view,#baseball-view) .sport-game-filter small{opacity:.8;font-size:10px}
+:is(#basketball-view,#baseball-view) .sport-game-card{
+ border-radius:11px;border-color:#38566c;box-shadow:none;
+}
+:is(#basketball-view,#baseball-view) .sport-games-no-status{
+ margin:12px 0;padding:23px 12px;border-radius:10px;
+ color:#b8ccdc;background:#12293e;border:1px solid #3c586f;text-align:center;
+ font-size:12px;
+}
+@media(max-width:790px){
+ #picks-view .slate-filter-row{gap:4px}
+ #picks-view .slate-filter{padding:7px 8px;font-size:11px}
+ #picks-view .slate-next{width:100%}
+ #picks-view .sec-games-active-card .fan-center>summary{padding:8px}
+ #picks-view .sec-games-active-foot button{min-height:42px}
+}
+@media(max-width:390px){
+ #picks-view .slate-filter{padding:7px 5px;font-size:10px;min-height:39px}
+ #picks-view .slate-filter small{font-size:9px}
+ #picks-view .sec-games-active-card{padding:9px}
+ #picks-view .sec-games-active-card .fan-center>summary{min-height:55px}
+ #picks-view .sec-games-active-card .fan-center>summary>span:nth-child(2){font-size:11px;overflow-wrap:anywhere}
+ #picks-view .sec-games-active-foot{gap:5px}
+ #picks-view .sec-games-active-foot button{flex:1 1 100%}
+ :is(#basketball-view,#baseball-view) .sport-game-filters{gap:4px;padding:5px}
+ :is(#basketball-view,#baseball-view) .sport-game-filter{padding:7px 5px;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+ #picks-view .sec-games-active-card{transition:none}
+}
