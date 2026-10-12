@@ -48,8 +48,9 @@ const fetch=async(url,init)=>{
 const root={innerHTML:""};
 const el={isConnected:true,open:true,dataset:{secPbpGame:game.id,secPbpContext:"games"},
  querySelector:()=>root};
+const failedRoot={innerHTML:""};
 const failed={isConnected:true,open:true,dataset:{secPbpGame:bad.id,secPbpContext:"center"},
- querySelector:()=>({set innerHTML(v){this.text=v;},get innerHTML(){return this.text;}})};
+ querySelector:()=>failedRoot};
 const context={document,window,fetch,console,Date,Promise,AbortSignal,Intl,setInterval:()=>1};
 vm.runInNewContext(src,context,{filename:"sec-play-by-play.js"});
 const mod=window.SEC_PLAYS;assert.ok(mod);
@@ -72,7 +73,7 @@ assert.equal(mod.quarter(3),"Q3");assert.equal(mod.quarter(5),"OT");
  await mod.load(el);
  assert.equal(calls,1,"cache stops repeated live requests before TTL");
  await mod.load(failed);
- assert.match(failed.querySelector().innerHTML,/could not be loaded/);
+ assert.match(failedRoot.innerHTML,/could not be loaded/);
  assert.equal(calls,2);
  console.log("Play-by-play: scoped ESPN plays, scoring, drives, XSS escapes, live caching and honest failure PASS");
 })().catch(e=>{console.error(e);process.exitCode=1;});
