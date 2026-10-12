@@ -407,7 +407,7 @@ document.addEventListener("click",event=>{
  if(el.hasAttribute("data-next-push-enable"))void pushToggle(true);
  if(el.hasAttribute("data-next-push-disable"))void pushToggle(false);
 });
-window.SEC_NEXT=Object.freeze({bootstrap,onView,onPicks,onResults,onLeague,onSettings,career,weekStats,pending,rivalry,loadTrends});
+window.SEC_NEXT=Object.freeze({bootstrap,openQuick,onView,onPicks,onResults,onLeague,onSettings,career,weekStats,pending,rivalry,loadTrends});
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",bootstrap,{once:true});
 else bootstrap();
 })();

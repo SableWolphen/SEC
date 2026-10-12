@@ -47,9 +47,11 @@ function savePins(){
  try{localStorage.setItem(pinKey(),JSON.stringify(pins));}catch(_){}
 }
 function isPinned(id){return pins.includes(id);}
-function makeRow(x,withPin=true){
+function makeRow(x,withPin=true,inMore=false){
  const pin=isPinned(x.id);
- const destination=x.id==="news"?" data-nav=\"news\"":x.id==="teams"?" data-nav=\"teams\"":x.id==="settings"?" data-nav=\"settings\"":
+ const destination=inMore&&x.id==="news"?" data-nav=\"news\"":
+  inMore&&x.id==="teams"?" data-nav=\"teams\"":
+  inMore&&x.id==="settings"?" data-nav=\"settings\"":
   ' data-sec-jump="'+esc(x.id)+'"';
  const btn='<button type="button" class="sec-access-link"'+destination+' aria-label="Open '+esc(x.title)+'">'+
  '<span class="sec-access-icon" aria-hidden="true">'+esc(x.icon)+'</span>'+
@@ -82,7 +84,7 @@ function renderFind(){
   ...pins.map(item).filter(Boolean),...recent.filter(id=>!isPinned(id)).map(item).filter(Boolean),
   ...entries.filter(x=>!isPinned(x.id)&&!recent.includes(x.id))
  ];
- if(!chosen.length){holder.innerHTML='<p class="sec-access-empty">No matches. Try “scores”, “team”, “chat”, or “picks”.</p>';return;}
+ if(!chosen.length){holder.innerHTML='<p class="sec-access-empty">No matches. Try “scores”, “team”, “chat”, or “picks”.</p>';const count=$("sec-access-count");if(count)count.textContent="0 destinations";return;}
  let last="";
  holder.innerHTML=chosen.map(x=>{
   const section=query.trim()?"Results":isPinned(x.id)?"Pinned":recent.includes(x.id)?"Recently used":x.group;
@@ -136,7 +138,7 @@ function navigate(id){
  const x=item(id);if(!x)return;
  loadPins();closeFind();
  app()?.setView?.(x.view);
- recent.splice(recent.indexOf(id),recent.includes(id)?1:0);
+ if(recent.includes(id))recent.splice(recent.indexOf(id),1);
  recent.unshift(id);if(recent.length>6)recent.length=6;
  if(x.pane)window.SEC_LEAGUE_TABS?.switchPane?.(x.pane);
  if(x.teamTab){
@@ -166,7 +168,7 @@ function renderMore(){
   '</span><strong>'+esc(x.title)+'</strong></button>').join("")+'</div></section>'+
   groups.map(group=>'<section class="sec-access-group" aria-label="'+esc(group)+'">'+
   '<h2>'+esc(group)+'</h2><div class="sec-access-more-grid">'+entries.filter(x=>x.group===group).map(x=>
-  makeRow(x)).join("")+'</div></section>').join("");
+  makeRow(x,true,true)).join("")+'</div></section>').join("");
 }
 function togglePin(id){
  if(!item(id))return;loadPins();

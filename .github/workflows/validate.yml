@@ -81,6 +81,8 @@ jobs:
           node --check sec-next.js
           node --check scripts/smoke-next.cjs
           node scripts/smoke-next.cjs
+          node --check sec-access.js
+          node scripts/smoke-access.cjs
           node --check sec-premium.js
           node --check scripts/smoke-premium.cjs
           node scripts/smoke-premium.cjs
