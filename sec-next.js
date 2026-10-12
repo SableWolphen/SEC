@@ -17,7 +17,7 @@ const isOpen=g=>!app()?.isLocked?.(g)&&!window.SEC_FEATURES?.isUnavailable?.(g);
 const scope=()=>String(user()?.id||"guest")+"|"+String(selected()?.kind||"none")+"|"+String(selected()?.id||"none");
 const notice=x=>app()?.toast?.(x);
 const number=n=>Number.isFinite(Number(n))?Number(n):0;
-let quickIndex=0,quickOpen=false,trendScope="",challengeScope="",trends=[],challenges=[],challengeError="",loadingTrends=false,loadingChallenges=false;
+let quickIndex=0,quickOpen=false,trendScope="",challengeScope="",trends=[],challenges=[],challengeError="",loadingTrends=false,loadingChallenges=false,challengeStats=null;
 const brand=()=>window.SEC_PRIDE?.getCode?.()||app()?.state?.()?.favorite||"SEC";
 const league=()=>selected();
 function rankedName(code){return window.SEC_PRIDE?.names?.[code]||code;}
@@ -253,14 +253,23 @@ function challengeMarkup(){
  const area=$("sec-next-challenge-area"),l=league(),u=user();
  if(!area||!l||l.kind!=="football"||!u)return;
  const members=(window.secOnline?.getStandings?.()||[]).filter(p=>p?.user_id&&p.user_id!==u.id);
- const current=challenges.map(r=>'<div class="secnext-challenge">'+
+ const current=challenges.map(r=>{
+  const arena=window.SEC_BRAG_ARENA;
+  const round=r.status==="accepted"&&challengeStats&&arena?.rivalry?
+   arena.rivalry(challengeStats,r.challenger_id,r.recipient_id).rounds.find(x=>
+    x.sport==="football"&&Number(x.week)===Number(r.week)):null;
+  const score=round?.games?' · Verified week: '+round.my+'–'+round.their+
+   ' ('+round.games+' shared finals, challenger first)':
+   r.status==="accepted"?' · Awaiting verified shared finals':"";
+  return '<div class="secnext-challenge">'+
  '<span>'+esc((r.challenger_id===u.id?"Sent to ":"From ")+
  (members.find(x=>x.user_id===(r.challenger_id===u.id?r.recipient_id:r.challenger_id))?.display_name||"League member"))+
- ' · Week '+r.week+' · '+esc(r.status)+'</span>'+
+ ' · Week '+r.week+' · '+esc(r.status)+esc(score)+'</span>'+
  (r.recipient_id===u.id&&r.status==="pending"?
  '<button data-next-respond="accepted" data-next-challenge-id="'+esc(r.id)+'">Accept</button>'+
  '<button data-next-respond="declined" data-next-challenge-id="'+esc(r.id)+'">Decline</button>':"")+
- '</div>').join("");
+ '</div>';
+ }).join("");
  area.innerHTML='<p class="secnext-footnote">Both players must belong to this league. Challenge results are compared only after kickoff and verified finals. No bonus league points.</p>'+
  (members.length?'<div class="secnext-invite"><label for="sec-next-rival">Challenge a friend</label><select id="sec-next-rival">'+
  members.map(r=>'<option value="'+esc(r.user_id)+'">'+esc(r.display_name||"League member")+'</option>').join("")+
@@ -282,6 +291,13 @@ async function loadChallenges(){
   if(r.error)throw r.error;
   if(scope()!==identity)return;
   challenges=(r.data||[]).filter(x=>x.challenger_id===u.id||x.recipient_id===u.id);
+  challengeStats=null;
+  if(challenges.some(x=>x.status==="accepted")&&window.SEC_BRAG_ARENA?.model){
+   const results=await c.rpc("sec_brags_locker_room",{p_kind:"football",p_league:l.id});
+   if(scope()!==identity)return;
+   if(!results.error&&results.data)
+    challengeStats=window.SEC_BRAG_ARENA.model(results.data);
+  }
   challengeScope=identity;
  }catch(e){if(scope()===identity)challengeError="Private challenges need the server migration enabled or are temporarily unavailable.";}
  finally{loadingChallenges=false;if(scope()===identity)challengeMarkup();}
