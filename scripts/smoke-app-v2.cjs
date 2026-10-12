@@ -1,0 +1,30 @@
+"use strict";
+/* App 2.0: Figma screen system translated to actual authenticated/verified UI.
+ * Verifies consistency, accessibility, route preservation and no fabricated stats. */
+const assert=require("node:assert/strict"),fs=require("node:fs"),vm=require("node:vm");
+const read=p=>fs.readFileSync(p,"utf8");
+const html=read("index.html"),home=read("sec-home.js"),css=read("sec-app-v2.css"),sw=read("sw.js");
+new vm.Script(home,{filename:"sec-home.js"});
+const sections=["home","picks","game-center","league","trophies","more"];
+for(const s of sections)assert.match(css,new RegExp(s==="home"?"#sec-home-root":s==="game-center"?"#game-center-view":s==="picks"?"#picks-view":s==="trophies"?"#sds-trophy-case":"#"+s+"-view"));
+assert.match(html,/sec-app-v2\.css\?v=20261012-app-v2/);
+assert.match(sw,/sec-app-v2\.css\?v=20261012-app-v2/);
+assert.match(sw,/sec-pickem-v108/);
+assert.match(home,/const appMetrics=/);
+assert.match(home,/model\.leaderboard\.findIndex/);
+assert.match(home,/const currentUser=window\.secOnline\?\.getUser/);
+assert.match(home,/p\.unpickedOpen/);
+assert.match(home,/hq-app-metrics/);
+assert.doesNotMatch(home,/leaguePosition.*Math\.random|leaguePosition.*fakeRank/);
+assert.match(css,/--app-gold:#f3c974/);
+assert.match(css,/\.bottom-nav \.mobile-nav-btn\.active/);
+assert.match(css,/safe-area-inset-bottom/);
+assert.match(css,/#picks-view \.game-card/);
+assert.match(css,/#league-view #fan-league-tabs/);
+assert.match(css,/#sds-trophy-case \.museum-art/);
+assert.match(css,/#more-view \.sec-access-more-top/);
+assert.match(css,/#game-center-view \.sdsx-score-hero/);
+assert.match(css,/@media\(max-width:390px\)/);
+assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
+assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length,"CSS syntax structure must balance");
+console.log("SEC App 2.0 design: Home/Games/Details/League/Trophies/More, verified metrics, 5-tab mobile, PWA PASS");

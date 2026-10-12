@@ -175,13 +175,14 @@ fs.mkdirSync(output,{recursive:true});
       const root=document.getElementById("sec-home-root");
       const cards=root?.querySelectorAll(".hq-panel")||[];
       const progress=root?.querySelector(".hq-progress[role=progressbar]");
+      const metrics=root?.querySelectorAll(".hq-app-metric")||[];
       const fake=!!root?.querySelector(".hq-demo,.hq-sample");
       const missing=!!root?.querySelector('[data-hq-route="picks"][data-hq-focus="next"]');
-      return {cards:cards.length,hasProgress:!!progress,hasLeague:!!root?.querySelector(".hq-league"),
+      return {cards:cards.length,metrics:metrics.length,hasProgress:!!progress,hasLeague:!!root?.querySelector(".hq-league"),
        hasSports:root?.querySelectorAll("[data-hq-route=football],[data-hq-route=basketball],[data-hq-route=baseball],[data-hq-route=picks]").length,
        fake,missing};
      });
-     if(hq.cards!==4||!hq.hasProgress||!hq.hasLeague||hq.fake||hq.hasSports<3)
+     if(hq.cards!==4||hq.metrics!==3||!hq.hasProgress||!hq.hasLeague||hq.fake||hq.hasSports<3)
       problems.push(viewport.width+"px Game Day HQ missing data-backed cards: "+JSON.stringify(hq));
      const openPicks=await page.evaluate(()=>{
       document.querySelector('#sec-home-root [data-hq-route="picks"]')?.click();

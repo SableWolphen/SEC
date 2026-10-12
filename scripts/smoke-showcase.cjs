@@ -16,7 +16,7 @@ for(const route of views){
  route==="results"?"#results-view":"#"+route+"-view"),"no mockup skin for "+route);
 }
 const links=[...html.matchAll(/<link rel="stylesheet" href="([^"]+)"/g)].map(x=>x[1]);
-assert.equal(links.at(-6),"./sds-showcase.css?v=20261011-unified-v2",
+assert.equal(links.at(-7),"./sds-showcase.css?v=20261011-unified-v2",
  "approved stadium skin loads after original design tokens");
 assert.match(css,/@media\(max-width:360px\)/);
 assert.match(css,/safe-area-inset-bottom/);
@@ -31,12 +31,13 @@ assert.match(premium,/\["overview","Overview"\],\["schedule","Schedule"\],\["sta
  "Team Hub uses four useful tabs including News");
 assert.match(html,/data-sds-school="\$\{esc\(id\)\}"/,
  "football pick buttons retain university color identities");
-assert.match(worker,/sec-pickem-v107/);
-assert.equal(links.at(-5),"./sec-next.css?v=20261012-advanced-v1");
-assert.equal(links.at(-4),"./sec-access.css?v=20261012-access-v1");
-assert.equal(links.at(-3),"./sec-games.css?v=20261012-unified-v1");
-assert.equal(links.at(-2),"./sec-play-by-play.css?v=20261012-plays-v1");
-assert.equal(links.at(-1),"./sec-feel.css?v=20261012-feel-v1");
+assert.match(worker,/sec-pickem-v108/);
+assert.equal(links.at(-6),"./sec-next.css?v=20261012-advanced-v1");
+assert.equal(links.at(-5),"./sec-access.css?v=20261012-access-v1");
+assert.equal(links.at(-4),"./sec-games.css?v=20261012-unified-v1");
+assert.equal(links.at(-3),"./sec-play-by-play.css?v=20261012-plays-v1");
+assert.equal(links.at(-2),"./sec-feel.css?v=20261012-feel-v1");
+assert.equal(links.at(-1),"./sec-app-v2.css?v=20261012-app-v2");
 for(const f of ["sds-showcase.css","sds-showcase-visuals.js","sds-showcase-preferences.js"]){
  assert.ok(worker.includes(f+"?v="+(f==="sds-showcase-preferences.js"?"20261011-ten-screens-v1":f==="sds-showcase-visuals.js"?"20261011-team-colors-v2":"20261011-unified-v2")),"PWA core must include "+f);
 }

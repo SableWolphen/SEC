@@ -14,7 +14,7 @@ assert.match(html,/SEC_PLAYS\?\.hydrate\?\.\(document\.getElementById\("games-li
 assert.match(cards,/SEC_PLAYS\?\.placeholder\?\.\(g,"games"\)/);
 assert.match(center,/SEC_PLAYS\?\.placeholder\?\.\(g,"center",true\)/);
 assert.match(center,/SEC_PLAYS\?\.hydrate\?\.\(host\)/);
-assert.match(sw,/sec-pickem-v107/);
+assert.match(sw,/sec-pickem-v108/);
 assert.match(sw,/sec-play-by-play\.js\?v=20261012-plays-v1/);
 assert.match(css,/@media\(max-width:390px\)/);
 assert.match(edge,/req\.headers\.get\("apikey"\)!==PUBLISHABLE/);
