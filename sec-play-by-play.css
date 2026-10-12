@@ -1,0 +1,53 @@
+/* One expandable, verified play-by-play timeline shared by Games and Game Center. */
+.sec-pbp-panel{margin-top:8px;border:1px solid #3d5a72;border-radius:10px;
+ background:#0d2437;max-width:100%;overflow:hidden}
+.sec-pbp-panel>summary{display:flex;justify-content:space-between;align-items:center;
+ gap:10px;min-height:43px;cursor:pointer;color:#f0d399;padding:10px 12px;font-size:12px;font-weight:900}
+.sec-pbp-panel>summary::-webkit-details-marker{display:none}
+.sec-pbp-chevron{font-size:18px;line-height:1;color:#e8ca92}
+.sec-pbp-panel[open]>.sec-pbp-chevron,.sec-pbp-panel[open]>summary .sec-pbp-chevron{transform:rotate(180deg)}
+.sec-pbp-panel>summary:focus-visible,.sec-pbp-panel button:focus-visible{outline:2px solid #f0d399;outline-offset:2px}
+.sec-pbp-body{padding:10px 12px 12px;border-top:1px solid #385369;min-width:0}
+.sec-pbp-hint,.sec-pbp-loading,.sec-pbp-unavailable,.sec-pbp-source{
+ font-size:11px;line-height:1.5;color:#bdd0df;margin:4px 0 12px;
+}
+.sec-pbp-source{color:#a3bbcc}
+.sec-pbp-controls{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 11px}
+.sec-pbp-controls button,.sec-pbp-footer button,.sec-pbp-body [data-sec-pbp-more]{
+ border:1px solid #557088;color:#ecf3f9;background:#173449;
+ border-radius:7px;min-height:40px;padding:7px 10px;font-size:11px;font-weight:850;cursor:pointer;
+}
+.sec-pbp-controls button.is-active{color:#152838;background:#eac786;border-color:#eac786}
+.sec-pbp-plays,.sec-pbp-drives{list-style:none;padding:0;margin:0;display:grid;gap:2px}
+.sec-pbp-play{display:grid;grid-template-columns:70px minmax(0,1fr);gap:8px;
+ padding:10px 5px;border-bottom:1px solid #29465d;min-width:0}
+.sec-pbp-play.is-scoring{background:linear-gradient(90deg,#d1a35c12,transparent)}
+.sec-pbp-time{font-size:10px;font-weight:850;color:#dbbd86;white-space:nowrap;padding-top:3px}
+.sec-pbp-play-body{min-width:0}
+.sec-pbp-play-head{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin:0 0 5px}
+.sec-pbp-play-head b{font-size:10px;color:#f4e3c4}
+.sec-pbp-play-head small{font-size:10px;color:#a7bdce}
+.sec-pbp-play-body p{font-size:12px;line-height:1.47;color:#e2eaf1;margin:0;overflow-wrap:anywhere}
+.sec-pbp-tag{padding:3px 6px;border-radius:6px;border:1px solid #55728a;color:#bfd6e8;font-size:9px;font-weight:900}
+.sec-pbp-tag.score{color:#f6d491;border-color:#bb9457;background:#bb94571c}
+.sec-pbp-tag.turnover{color:#f0aeb2;border-color:#a65f6d}
+.sec-pbp-tag.first{color:#ade2c0;border-color:#4b8d67}
+.sec-pbp-drives{gap:7px}
+.sec-pbp-drive{display:grid;gap:4px;padding:11px;border:1px solid #36516a;border-radius:8px;background:#102c40}
+.sec-pbp-drive strong{font-size:11px;color:#e9f0f6}
+.sec-pbp-drive span,.sec-pbp-drive small{font-size:10px;color:#b9cddd}
+.sec-pbp-body [data-sec-pbp-more]{display:block;width:100%;margin-top:10px}
+.sec-pbp-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:12px}
+.sec-pbp-footer a{font-size:11px;color:#f0d28c;text-decoration:underline;text-underline-offset:3px}
+#picks-view .sec-final-card .sec-pbp-panel{margin-top:9px}
+#picks-view .sec-games-active-card .sec-pbp-panel{margin-top:10px}
+#game-center-view .sec-pbp-panel{margin:10px 0 14px}
+@media(max-width:390px){
+ .sec-pbp-body{padding:9px}
+ .sec-pbp-play{grid-template-columns:57px minmax(0,1fr);gap:5px}
+ .sec-pbp-time{font-size:9px}
+ .sec-pbp-play-body p{font-size:11px}
+ .sec-pbp-controls button{flex:1 1 auto;font-size:10px;padding:6px}
+ .sec-pbp-footer button{flex:1 1 100%}
+}
+@media(prefers-reduced-motion:reduce){.sec-pbp-chevron{transition:none}}
