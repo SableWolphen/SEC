@@ -71,7 +71,7 @@ for(const [file,version] of [
  assert.ok(html.includes("./"+file+"?v="+version),"app loads "+file);
  assert.ok(worker.includes("./"+file+"?v="+version),"offline cache recognizes "+file);
 }
-assert.match(worker,/sec-pickem-v106/,"service worker cache must invalidate old 3D trophy assets");
+assert.match(worker,/sec-pickem-v107/,"service worker cache must invalidate old 3D trophy assets");
 assert.ok(html.includes("./trophy-museum.js?v=20261011-neutral-v1"),"new engraved SVG card script loaded");
 assert.ok(worker.includes("./trophy-museum.js?v=20261011-neutral-v1"),"offline cache includes engraved card script");
 assert.match(styles,/museum-champion-canvas/,"3D drawing surface styled");

@@ -28,7 +28,7 @@ assert.match(access,/\{id:"scores",title:"Scores & Games"/);
 assert.match(css,/#picks-view \.sec-games-active-card\.is-live/);
 assert.match(css,/#picks-view \.sec-live-mini-scores\{display:none!important\}/);
 assert.match(css,/#picks-view #hero-slot\{display:none!important\}/);
-assert.match(sw,/sec-pickem-v106/);
+assert.match(sw,/sec-pickem-v107/);
 assert.match(sw,/sec-games\.css\?v=20261012-unified-v1/);
 assert.match(html,/sec-games\.css\?v=20261012-unified-v1/);
 console.log("Unified Games: one game/card across picks, verified live, final; sport tabs, Games nav & PWA PASS");

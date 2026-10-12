@@ -47,7 +47,7 @@ assert.match(css,/@media\(max-width:390px\)/);
 assert.match(css,/secnext-dialog::backdrop/);
 assert.match(sw,/self\.addEventListener\("push"/);
 assert.match(sw,/self\.addEventListener\("notificationclick"/);
-assert.match(sw,/sec-pickem-v106/);
+assert.match(sw,/sec-pickem-v107/);
 const migration=read("supabase/migrations/20261012_advanced_challenges_push.sql");
 assert.match(migration,/public\.sec_is_member\(league_id\)/);
 assert.match(migration,/recipient_id/);

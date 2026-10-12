@@ -88,6 +88,8 @@ jobs:
           node --check sec-play-by-play.js
           node --check scripts/smoke-plays.cjs
           node scripts/smoke-plays.cjs
+          node --check scripts/smoke-feel.cjs
+          node scripts/smoke-feel.cjs
           node --check sec-premium.js
           node --check scripts/smoke-premium.cjs
           node scripts/smoke-premium.cjs
