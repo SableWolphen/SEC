@@ -1,0 +1,448 @@
+/*
+ SEC App 2.0 — mobile-first design system.
+ Source: editable SEC App 2.0 Figma screens.
+ Presentation only: no duplicated picks, test fixtures, API calls, or synthetic scores.
+*/
+:root{
+ color-scheme:dark;
+ --app-bg:#07121f;--app-surface:#102337;--app-raised:#152c42;
+ --app-line:#314a62;--app-line-soft:#293e51;
+ --app-gold:#f3c974;--app-gold-bright:#ffe2a3;
+ --app-ink:#f8f8f9;--app-muted:#b4c5d5;--app-green:#91d9aa;
+ --app-red:#ff898e;--app-radius:16px;--app-shadow:0 12px 30px #02091262;
+ --bg:#07121f;--bg2:#0a1928;--panel:#102337;--panel2:#152c42;--card:#102337;
+ --border:#314a62;--text:#f8f8f9;--muted:#b4c5d5;--soft:#93abbf;
+ --lime:#f3c974;--lime-dark:#bf9355;--sds-gold:#f3c974;
+ --sds-gold-light:#ffe2a3;--sds-navy:#07121f;--sds-panel:#102337;
+ --sds-panel-raised:#152c42;--sds-stroke:#314a62;
+ --sds-radius:16px;--sds-radius-lg:20px;
+ font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+html{scroll-behavior:smooth}
+body{
+ background:radial-gradient(ellipse 850px 440px at 50% -150px,#183a5966,transparent 70%),
+ linear-gradient(180deg,#07121f,#091827 52%,#07121f);
+ color:var(--app-ink);
+}
+.app-shell{max-width:1260px}
+.site-header{
+ position:sticky;top:0;z-index:70;
+ padding:9px 3px;min-height:70px;gap:12px;
+ border-bottom:1px solid #32475c80;
+ background:#07121fe8;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.site-header:after{display:none}
+.brand{gap:9px;min-width:0}
+.brand-mark{
+ width:42px;height:42px;display:grid;place-items:center;
+ border-radius:50%;background:linear-gradient(140deg,#ffdfa1,#c99545);
+ border:2px solid #f9d694;transform:none;
+ box-shadow:0 0 0 3px #d8b16c22;
+}
+.brand-mark svg{transform:none;width:26px;height:26px}
+.brand-title{font-size:13px;letter-spacing:-.38px;line-height:1.06}
+.brand-title>span{display:block;color:#ffdf9d}
+.brand-title small{display:block;font-size:8px;letter-spacing:1.22px;margin-top:4px}
+.desktop-nav{border-radius:14px;gap:3px;background:#0f2235;border:1px solid #334d64}
+.nav-link{font-size:12px;min-height:44px;border-radius:10px}
+.nav-link.active{background:#f3c974;color:#102238;box-shadow:0 3px 12px #0004}
+.profile-chip{border:1px solid #456077;background:#152d43;min-height:42px}
+#sec-access-trigger{border-radius:11px;min-height:42px;background:#122c42}
+#sec-access-trigger:hover{border-color:#f3c974}
+main{padding-top:20px}
+.view{min-width:0}
+.view .eyebrow{letter-spacing:1.2px;font-size:10px;color:#b9ccda}
+.view .page-intro{margin:9px 0 16px}
+.view .page-intro h1{
+ font-size:clamp(29px,4.3vw,43px);line-height:1.08;letter-spacing:-1.55px;
+ color:var(--app-ink);font-weight:900;
+}
+.view .page-intro h1 em{color:var(--app-gold);font-style:normal}
+.view .page-intro p{font-size:13px;color:var(--app-muted);line-height:1.48}
+:is(.hq-panel,.hq-stadium-hero,.game-card,.sport-game-card,
+ .sec-final-card,.fan-panel,.fan-fold,.sdsx-section,.secnext-fold,
+ .museum-section,.legacy-case,.sec-access-row){
+ transition:border-color .15s ease,background-color .15s ease,box-shadow .15s ease;
+}
+:is(.view,.hq-panel,.game-card,.sport-game-card,.fan-panel,.sdsx-section,
+ #sec-home-root,#sec-access-more,#sds-trophy-case){min-width:0}
+:is(.view, .sec-access-dialog) button:focus-visible,
+.bottom-nav button:focus-visible{
+ outline:2px solid #f8d993;outline-offset:3px;
+}
+:where(button,summary,[role="button"]){touch-action:manipulation}
+/* HOME — a single hero and a short, data-backed week snapshot. */
+#home-view{padding-top:0}
+#sec-home-root{
+ display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);
+ gap:13px;align-items:start;
+}
+#sec-home-root>.hq-stadium-hero{
+ order:0;grid-column:1/-1;min-height:228px;
+ border-radius:18px;border:1px solid #8d7148;
+ background:#0a1c31;box-shadow:var(--app-shadow);
+}
+#sec-home-root .hq-stadium-hero:before{
+ background:linear-gradient(100deg,#071420ed,#102945b0 55%,#071826d9),
+ url("./home-stadium.svg") center/cover;
+}
+#sec-home-root .hq-hero-copy h2{font-family:inherit!important;
+ font-size:clamp(28px,4vw,39px);font-weight:950;letter-spacing:-1.5px;
+ text-shadow:0 4px 16px #0007}
+#sec-home-root .hq-hero-copy h2 em{font-weight:950;color:var(--app-gold-bright)}
+#sec-home-root .hq-hero-copy>p{color:#ebf0f5;font-size:13px}
+#sec-home-root .hq-hero-buttons .hq-primary{
+ background:linear-gradient(125deg,#ffe09c,#ebbb63);color:#102238;
+ border:1px solid #ffe5a9;box-shadow:none;min-height:44px;
+ border-radius:11px;font-weight:900;
+}
+#sec-home-root .hq-next-kickoff{
+ border:1px solid #526980;border-radius:14px;
+ background:linear-gradient(135deg,#18384ecb,#09192de8);box-shadow:none;
+}
+#sec-home-root .hq-next-kickoff button{min-height:40px}
+#sec-home-root>.hq-app-metrics{
+ order:1;grid-column:1/-1;display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;
+}
+#sec-home-root .hq-app-metric{
+ border:1px solid #344e66;border-radius:14px;
+ background:linear-gradient(160deg,#19334b,#102439);
+ padding:13px 12px;display:flex;flex-direction:column;gap:6px;min-width:0;
+ box-shadow:inset 0 1px #ffffff0b;
+}
+#sec-home-root .hq-app-metric>span{
+ font-size:10px;letter-spacing:.7px;font-weight:800;color:#a8becf;
+}
+#sec-home-root .hq-app-metric strong{
+ font-size:clamp(22px,3.5vw,31px);line-height:1.12;
+ letter-spacing:-1px;color:var(--app-gold);font-weight:950;
+ font-variant-numeric:tabular-nums;
+}
+#sec-home-root .hq-app-metric strong small{font-size:14px;color:#cad9e4}
+#sec-home-root>.hq-actions{
+ order:2;grid-column:1/-1;grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:8px;overflow:visible;
+}
+#sec-home-root .hq-action{min-height:78px;padding:9px 5px;gap:4px;
+ border-radius:12px;background:#11273b;box-shadow:none;
+ border:1px solid #335069;
+}
+#sec-home-root .hq-action:hover{background:#1b3650;border-color:#d0b074}
+#sec-home-root .hq-action strong{font-size:10px}
+#sec-home-root .hq-action small{font-size:10px;color:#b6cbd9}
+#sec-home-root>.hq-sport-tabs{order:3;grid-column:1/-1;margin:1px 0 0}
+#sec-home-root .hq-sport-tabs{background:#0f2438;
+ border:1px solid #314b61;border-radius:12px;padding:5px}
+#sec-home-root .hq-sport-tabs button{min-height:43px;border-radius:9px;border:0;background:transparent;color:#c8d7e3}
+#sec-home-root .hq-sport-tabs button.suggested{
+ background:#253e51;border:1px solid #d0aa6d;
+ color:#ffe3a3;
+}
+#sec-home-root .hq-picks{order:4;grid-column:1}
+#sec-home-root .hq-games{order:5;grid-column:2}
+#sec-home-root .hq-league{order:6;grid-column:1}
+#sec-home-root .hq-news-spotlight{order:7;grid-column:2}
+#sec-home-root .hq-mobile-expand{
+ order:8;display:flex;grid-column:1/-1;
+ align-items:center;justify-content:space-between;
+ min-height:44px;border:1px solid #405c73;
+ border-radius:12px;background:#0e2135;color:#f0ca81;
+ padding:10px 14px;font-weight:850;cursor:pointer;
+}
+#sec-home-root .hq-rival-card{order:9;grid-column:1}
+#sec-home-root .hq-quick{order:10;grid-column:2}
+#sec-home-root .hq-around-news{order:11;grid-column:1/-1}
+#sec-home-root .hq-disclaimer{order:12;grid-column:1/-1}
+#sec-home-root .hq-panel,#sec-home-root .hq-rival-card,
+#sec-home-root .hq-feature-card{
+ border:1px solid #344f67;background:linear-gradient(135deg,#12283e,#0d2135);
+ border-radius:15px;box-shadow:none;padding:17px;
+}
+#sec-home-root .hq-picks{border-color:#7e704f}
+#sec-home-root .hq-pick-count,#sec-home-root .hq-game-score{color:#f8d28d}
+#sec-home-root .hq-panel-header{border-bottom-color:#314a60}
+#sec-home-root .hq-panel-header>span:first-child{color:#f0c878;font-size:10px}
+#sec-home-root .hq-games .hq-matchup{
+ border-radius:11px;background:#102a40;border:1px solid #37546d;
+}
+#sec-home-root .hq-league .hq-standings-row.mine{
+ background:#a9803427;border-color:#b38a4b;
+}
+#sec-home-root .hq-news-spotlight{border-color:#344f67}
+#sec-home-root .hq-news-spotlight h3{font-family:inherit;color:#fff;font-size:21px}
+#sec-home-root .hq-quick,#sec-home-root .hq-rival-card,
+#sec-home-root .hq-around-news{display:none}
+#sec-home-root.hq-expanded .hq-quick,
+#sec-home-root.hq-expanded .hq-rival-card,
+#sec-home-root.hq-expanded .hq-around-news{display:flex}
+/* GAMES — scoreboard and picks are the same card, never duplicated. */
+#picks-view .page-intro{margin-bottom:11px}
+#picks-view .global-sport-switch{border-radius:13px;background:#112438;border-color:#334b63}
+#picks-view .global-sport-button{border-radius:10px;min-height:43px}
+#picks-view .global-sport-button.active{background:#f2c974!important;color:#10233b!important}
+#picks-view .week-picker{gap:6px;padding:5px 0 10px;scrollbar-width:thin}
+#picks-view .week-pill{min-height:51px;min-width:82px;border-radius:11px;
+ background:#142b40;border-color:#385267;color:#cadbe8}
+#picks-view .week-pill.active{background:#f3c974;border-color:#f3c974;color:#122438}
+#picks-view .weekly-score-strip{border:1px solid #395269;border-radius:13px;
+ background:#12283f;box-shadow:none}
+#picks-view .week-score-primary strong{font-size:26px}
+#picks-view .week-score-metric strong{font-size:20px}
+#picks-view .secnext-picks-bar{
+ background:linear-gradient(110deg,#19344a,#0e2436);
+ border:1px solid #8b7149;border-radius:13px;box-shadow:none;
+}
+#picks-view .secnext-picks-bar button{border-radius:10px}
+#picks-view .picks-layout{gap:14px}
+#picks-view .games-list{display:grid;gap:10px}
+#picks-view .game-card{
+ border-radius:15px;border:1px solid #35536c;
+ background:linear-gradient(150deg,#132a40,#0c2032);
+ padding:13px;box-shadow:none;scroll-margin-top:96px;
+}
+#picks-view .game-card:hover{border-color:#7893a6}
+#picks-view .game-card .team-choice{
+ min-height:64px;border-radius:11px;border:1px solid #486077;background:#182f47;
+}
+#picks-view .game-card .team-choice.selected{
+ background:linear-gradient(155deg,#3f3629,#273748);
+ border-color:#f3c974;box-shadow:inset 0 0 0 1px #ffdfa130;
+}
+#picks-view .game-card .team-choice.selected .select-mark{background:#f3c974;color:#11263a}
+#picks-view .slate-pick-tools{padding:7px;background:#102438;border-color:#314e65;border-radius:12px}
+#picks-view .slate-filter-row{display:flex;flex-wrap:nowrap;gap:5px;
+ overflow-x:auto;scrollbar-width:thin;overscroll-behavior-x:contain}
+#picks-view .slate-filter{
+ flex:0 0 auto;min-height:42px;padding:9px 12px;
+ border:1px solid transparent;border-radius:10px;background:#193249;
+ color:#c8d6e3;white-space:nowrap;font-size:11px;
+}
+#picks-view .slate-filter.active{background:#f3c974;color:#0c2335;border-color:#f3c974}
+#picks-view .slate-next{min-height:43px}
+#picks-view .sec-games-active-card.is-live{
+ border-color:#7c5e6c;
+ background:linear-gradient(145deg,#172e46,#0f2032);
+}
+#picks-view .sec-games-active-card .fan-center>summary{
+ border-radius:11px;background:#142b40;border-color:#43627b;
+}
+#picks-view .sec-pbp-panel{border-radius:11px;background:#0f293e}
+#picks-view .sec-final-card{
+ background:linear-gradient(150deg,#132b3b,#0e2230);
+ border-color:#466075;
+}
+#picks-view .sec-games-final-detail{background:#1d374d;border-color:#56738c}
+#picks-view .summary-card,#picks-view .side-card{border-radius:13px;box-shadow:none}
+#picks-view .side-column>.source-note{font-size:11px;line-height:1.55}
+#basketball-view .sport-game-card,#baseball-view .sport-game-card{
+ border-radius:15px;background:linear-gradient(145deg,#13283e,#0e2133);
+ border-color:#35526b;box-shadow:none
+}
+:is(#basketball-view,#baseball-view) .sport-game-filter.active{
+ background:#f3c974;color:#102438;border-color:#f3c974
+}
+/* GAME DETAILS — prominent score, football field, play-by-play tabs. */
+#game-center-view .sdsx-shell,#team-hub-view .sdsx-shell,#results-view .sdsx-shell{gap:12px}
+#game-center-view .sdsx-score-hero{border-radius:17px;
+ background:linear-gradient(155deg,#173a59,#0c2035);
+ border-color:#688099;box-shadow:none}
+#game-center-view .sdsx-tabs{gap:5px;background:#102438;padding:5px;
+ border-radius:12px;border:1px solid #314d66}
+#game-center-view .sdsx-tabs button{min-height:43px;border-radius:9px}
+#game-center-view .sdsx-tabs button.active{color:#11253b;background:#f3c974}
+#game-center-view .sdsx-section{background:#122a40;border-color:#37546d;border-radius:14px}
+#game-center-view .sec-pbp-panel{border-radius:12px}
+/* LEAGUE — dense scoreboard, accessible competition tabs, restrained accents. */
+#league-view .page-intro{margin-bottom:12px}
+#league-view #fan-league-tabs{
+ display:flex;gap:5px;overflow-x:auto;scrollbar-width:thin;
+ border:1px solid #35536c;border-radius:13px;padding:5px;
+ background:#0f2237;margin:12px 0;
+}
+#league-view #fan-league-tabs[hidden]{display:none!important}
+#league-view #fan-league-tabs [role=tab]{flex:1 0 auto;min-height:43px;
+ border-radius:9px;padding:8px 11px;font-size:12px;
+ border:1px solid transparent;background:transparent;color:#c5d4e1
+}
+#league-view #fan-league-tabs [role=tab][aria-selected=true]{
+ background:#f3c974!important;color:#0c2438!important;border-color:#f3c974;
+ font-weight:900;box-shadow:none;
+}
+#league-view .fan-league-pane,#league-view .fan-league-pane>*{min-width:0}
+#league-view :is(.fan-panel,.fan-fold,.secnext-fold,.fan-single-panel,.fan-club-card,
+ .fan-league-card,.fan-league-picker,.fan-league-rankings,.fan-standings,
+ .brag-showcase-section){border-radius:14px;
+ border-color:#344d65;background-color:#102337;box-shadow:none}
+#league-view :is(.fan-row,.fan-standings-row,.fan-league-row,
+ .fan-power-row,.fan-leader-row){border-color:#314d63}
+#league-view :is(.fan-row.mine,.fan-standings-row.mine,
+ .fan-league-row.mine,.fan-power-row.mine){background:#b2873826;border-color:#b99557}
+#league-view .secnext-fold>summary{min-height:44px}
+#league-view .secnext-fold{overflow:hidden}
+#league-view .fan-league-pane>div{max-width:100%}
+#league-view .fan-game-community{max-width:100%}
+/* TROPHIES — collectible display, improved spacing and trophy art prominence. */
+#sds-trophy-case.sds-museum{
+ border:1px solid #2f465d;border-radius:18px;
+ padding:19px 15px 26px;
+ background:radial-gradient(ellipse at 50% -15%,#31507445,transparent 46%),
+ linear-gradient(180deg,#0c1c2c,#0a1827);
+}
+#sds-trophy-case .museum-head{padding:4px 2px 13px}
+#sds-trophy-case .museum-brand h2{
+ font-family:inherit;text-transform:none;letter-spacing:-.8px;
+ font-size:clamp(25px,4vw,36px);color:#ffe0a1;
+}
+#sds-trophy-case .museum-seal{width:49px;height:49px;
+ border-color:#e0b565;background:#182d43}
+#sds-trophy-case .museum-sports{background:#102439;
+ border-radius:12px;padding:5px;border-color:#314b64;gap:3px}
+#sds-trophy-case .museum-sports button{border:0;border-radius:9px;min-height:43px}
+#sds-trophy-case .museum-sports button.active{background:#f3c974;color:#10243b}
+#sds-trophy-case .museum-section{border:1px solid #41536a;
+ border-radius:15px;background:linear-gradient(155deg,#13283b,#0a1a2c);
+ box-shadow:none;padding:14px}
+#sds-trophy-case .museum-section-head h3{color:#f5d28e}
+#sds-trophy-case .museum-champ-grid{gap:11px}
+#sds-trophy-case .museum-champ{border-radius:14px;border-color:#39566b;box-shadow:none}
+#sds-trophy-case .museum-art{
+ height:181px;background:radial-gradient(circle at 50% 48%,#b4833852,transparent 68%),
+ linear-gradient(180deg,#152a40,#0a1929);
+}
+#sds-trophy-case .museum-art .museum-trophy-svg{filter:drop-shadow(0 7px 15px #c7935d66)}
+#sds-trophy-case .museum-caption{padding:12px}
+#sds-trophy-case .museum-caption strong{font-size:13px}
+#sds-trophy-case .legacy-case{border-radius:13px;border-color:#3b546e}
+/* MORE — searchable, pinned navigation, never a wall of buttons. */
+#more-view .page-intro{margin-bottom:16px}
+#more-view .sec-access-more-top{
+ border:1px solid #506b81;background:linear-gradient(115deg,#17334c,#0d2236);
+ border-radius:15px;padding:18px;gap:12px;
+}
+#more-view .sec-access-more-top strong{font-size:20px}
+#more-view .sec-access-more-search{border-radius:11px;
+ background:#f3c974;color:#102339;border-color:#f3c974}
+#more-view .sec-access-group h2{font-size:14px;color:#e5c185;margin-bottom:10px}
+#more-view .sec-access-more-grid{gap:9px}
+#more-view .sec-access-row{border-radius:12px;border-color:#304e67;background:#11273c}
+#more-view .sec-access-link{min-height:65px}
+#more-view .sec-access-icon{background:#213e56;border-radius:11px}
+#more-view .sec-access-pin-grid button{
+ border-radius:11px;border-color:#46657e;background:#172f44
+}
+#more-view .sec-access-shortcuts{border-bottom-color:#324d61}
+.sec-access-dialog{background:#0d2134;border-color:#58728a;border-radius:16px}
+.sec-access-dialog #sec-access-search{background:#081b2d;border-radius:11px}
+/* Navigation sits above Android gesture area without covering interactive content. */
+@media(max-width:1050px){
+ .site-header{z-index:70}
+}
+@media(max-width:790px){
+ .app-shell{padding:0 14px}
+ .site-header{
+  position:sticky;top:0;min-height:62px;height:auto;
+  padding:8px 1px;gap:8px;background:#07121ff4;
+ }
+ .brand-mark{width:37px;height:37px}
+ .brand-mark svg{width:23px;height:23px}
+ .brand-title{font-size:11px}
+ .brand-title small{font-size:7px;letter-spacing:.6px}
+ .profile-chip{min-height:39px;min-width:39px;max-width:48px;padding:4px}
+ .profile-chip #header-name{display:none}
+ #sec-access-trigger{width:41px;min-width:41px;height:41px}
+ main{padding-top:15px;padding-bottom:calc(123px + env(safe-area-inset-bottom))}
+ #sec-home-root{grid-template-columns:1fr;gap:9px}
+ #sec-home-root>.hq-stadium-hero{
+  grid-column:1;min-height:0;padding:17px 15px;
+  grid-template-columns:minmax(0,1fr);
+ }
+ #sec-home-root .hq-hero-copy h2{font-size:30px}
+ #sec-home-root .hq-next-kickoff{margin-top:11px;padding:12px}
+ #sec-home-root>.hq-app-metrics{grid-column:1;gap:7px}
+ #sec-home-root .hq-app-metric{padding:11px 8px;border-radius:12px}
+ #sec-home-root .hq-app-metric>span{font-size:9px;letter-spacing:.25px}
+ #sec-home-root .hq-app-metric strong{font-size:25px}
+ #sec-home-root>.hq-actions{grid-column:1;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+ #sec-home-root .hq-action{min-height:71px;padding:8px 2px}
+ #sec-home-root>.hq-sport-tabs{grid-column:1}
+ #sec-home-root .hq-picks,#sec-home-root .hq-games,
+ #sec-home-root .hq-league,#sec-home-root .hq-news-spotlight{grid-column:1}
+ #sec-home-root .hq-rival-card,#sec-home-root .hq-quick,#sec-home-root .hq-around-news{grid-column:1}
+ #sec-home-root .hq-mobile-expand{grid-column:1}
+ #sec-home-root .hq-picks{order:4}
+ #sec-home-root .hq-games{order:5}
+ #sec-home-root .hq-league{order:6}
+ #sec-home-root .hq-news-spotlight{order:7}
+ #sec-home-root .hq-mobile-expand{order:8}
+ #sec-home-root .hq-rival-card{order:9}
+ #sec-home-root .hq-quick{order:10}
+ #sec-home-root .hq-around-news{order:11}
+ #sec-home-root .hq-disclaimer{order:12}
+ #sec-home-root .hq-panel{padding:13px}
+ .bottom-nav{
+  position:fixed;left:50%;right:auto;
+  bottom:max(9px,env(safe-area-inset-bottom));
+  transform:translateX(-50%);
+  width:min(448px,calc(100% - 20px));
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  border:1px solid #39546a;background:#0a192de9;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-radius:19px;padding:7px 5px;gap:2px;
+  box-shadow:0 12px 35px #000b,0 0 0 1px #d1bd8320;
+  z-index:95;
+ }
+ .bottom-nav .mobile-nav-btn{
+  position:relative;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:5px;border-radius:12px;
+  min-height:54px;padding:7px 3px 6px;
+  border:1px solid transparent;background:transparent;color:#b4c5d6;
+  font-size:10px;font-weight:750;
+ }
+ .bottom-nav .mobile-nav-btn svg{width:21px;height:21px;
+  stroke:currentColor;fill:none;stroke-width:1.65;flex:none}
+ .bottom-nav .mobile-nav-btn.active{
+  border:1px solid #a9884f66;background:linear-gradient(180deg,#4c422c55,#172b3d);
+  color:#f3c974;
+ }
+ .bottom-nav .mobile-nav-btn.active::before{
+  content:"";position:absolute;top:2px;left:25%;right:25%;height:2px;
+  border-radius:4px;background:#f3c974;
+ }
+ .bottom-nav .mobile-nav-btn:hover{background:#223b52}
+ #picks-view .picks-layout{grid-template-columns:1fr;gap:13px}
+ #picks-view .week-picker{margin:2px 0}
+ #picks-view .slate-filter{min-height:43px;padding:9px 11px}
+ #picks-view .games-list{gap:9px}
+ #picks-view .side-column{display:grid;gap:11px}
+ #league-view #fan-league-tabs{position:sticky;top:64px;z-index:18}
+ #league-view #fan-league-tabs [role=tab]{font-size:11px}
+ #sds-trophy-case .museum-champ-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ #sds-trophy-case .museum-art{height:145px}
+ #sds-trophy-case .museum-head{align-items:center}
+ #sds-trophy-case .museum-brand h2{font-size:25px}
+ #more-view .sec-access-more-grid{grid-template-columns:1fr}
+ .footer{padding-bottom:calc(118px + env(safe-area-inset-bottom))}
+}
+@media(max-width:390px){
+ .app-shell{padding:0 11px}
+ .site-header{gap:6px}
+ .brand-title{font-size:10px}
+ .brand-title small{font-size:6px}
+ #sec-home-root .hq-app-metric>span{font-size:8px}
+ #sec-home-root .hq-app-metric strong{font-size:22px}
+ #sec-home-root .hq-hero-copy h2{font-size:27px}
+ #sec-home-root .hq-sport-tabs button{font-size:11px}
+ #sds-trophy-case .museum-art{height:123px}
+ #sds-trophy-case .museum-caption{padding:9px}
+ .bottom-nav .mobile-nav-btn{font-size:9px;padding:6px 2px}
+ .bottom-nav .mobile-nav-btn svg{width:20px;height:20px}
+ #league-view #fan-league-tabs [role=tab]{font-size:10px;padding:8px}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ :is(.hq-panel,.game-card,.sport-game-card,.sec-final-card,.fan-panel,
+ .fan-fold,.sdsx-section,.secnext-fold,.museum-section,.legacy-case,.sec-access-row){
+  transition:none!important;
+ }
+}

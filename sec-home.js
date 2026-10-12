@@ -291,7 +291,14 @@ function render(model){
   p.unpickedOpen?"Make your remaining selections before kickoff.":
   "Review your saved choices or explore the league.";
  const sportNames=["football","basketball","baseball"];
- const markup=hero(model)+actionCards(model)+
+ const currentUser=window.secOnline?.getUser?.()?.id||null;
+ const leaguePosition=currentUser?model.leaderboard.findIndex(row=>row.user_id===currentUser):-1;
+ // Derived solely from current authorized picks and standings, never sample data.
+ const appMetrics='<div class="hq-app-metrics" aria-label="Your game day snapshot">'+
+  '<div class="hq-app-metric"><span>YOUR PICKS</span><strong>'+p.chosen+'<small>/'+p.total+'</small></strong></div>'+
+  '<div class="hq-app-metric"><span>LEAGUE RANK</span><strong>'+(leaguePosition>=0?'#'+(leaguePosition+1):'—')+'</strong></div>'+
+  '<div class="hq-app-metric"><span>STILL TO PICK</span><strong>'+p.unpickedOpen+'</strong></div></div>';
+ const markup=hero(model)+appMetrics+actionCards(model)+
  '<div class="hq-sport-tabs" role="group" aria-label="Pick a sport">'+sportNames.map(s=>
  '<button type="button" data-hq-route="'+routeFor(s)+'"'+(model.recommended===s?' class="suggested"':'')+'>'+
  sportIcon[s]+' '+sportText[s]+(model.recommended===s?'<small>Latest season</small>':"")+'</button>').join("")+'</div>'+
