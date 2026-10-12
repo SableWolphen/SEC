@@ -250,7 +250,7 @@ async function loadNow(force=false){
   lastLoad=Date.now();
  }catch(e){if(me()?.id===id)message="Could not load league settings: "+(e.message||"Try refreshing.");}
  finally{
-  loading=false;if(me()?.id===id){render();win.SEC_BRACKETS?.mount?.();}
+  loading=false;if(me()?.id===id){render();win.SEC_BRACKETS?.mount?.();win.SEC_NEXT?.onLeague?.();}
  }
 }
 async function choose(value){

@@ -201,12 +201,12 @@ async function loadTrends(){
  for(const g of started){
   try{
    const r=await c.rpc("sec_league_game_pulse",{p_kind:l.kind,p_league:l.id,p_sport:"football",p_game:g.id});
-   if(scope()!==identity)return;
+   if(scope()!==identity){loadingTrends=false;return;}
    const p=Array.isArray(r.data)?r.data[0]:null;
    if(!r.error&&p?.locked===true)list.push({g,p});
   }catch(_){}
  }
- if(scope()!==identity)return;
+ if(scope()!==identity){loadingTrends=false;return;}
  trends=list;trendScope=identity;loadingTrends=false;
  el.innerHTML=list.length?list.map(({g,p})=>{
   const a=number(p.away_picks),h=number(p.home_picks),n=a+h,pct=n?Math.round(100*a/n):0;
@@ -341,7 +341,8 @@ async function pushToggle(enable){
    }
    const sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:decodeKey(key)});
    const data=sub.toJSON(),r=await c.from("sec_push_subscriptions").upsert({
-    user_id:userId,endpoint:sub.endpoint,p256dh:data.keys.p256dh,auth_secret:data.keys.auth
+    user_id:userId,endpoint:sub.endpoint,p256dh:data.keys.p256dh,auth_secret:data.keys.auth,
+    favorite_school:["ALA","ARK","AUB","FLA","UGA","UK","LSU","MISS","MSST","MIZ","OU","SC","TENN","TEX","TAMU","VAN"].includes(brand())?brand():null
    },{onConflict:"endpoint"});
    if(r.error){await sub.unsubscribe();throw r.error;}
    notice("This device is subscribed. Delivery depends on the configured push service.");
