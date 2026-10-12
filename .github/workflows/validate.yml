@@ -78,6 +78,9 @@ jobs:
           node scripts/smoke-showcase.cjs
           node --check scripts/smoke-ux-polish.cjs
           node scripts/smoke-ux-polish.cjs
+          node --check sec-next.js
+          node --check scripts/smoke-next.cjs
+          node scripts/smoke-next.cjs
           node --check sec-premium.js
           node --check scripts/smoke-premium.cjs
           node scripts/smoke-premium.cjs
