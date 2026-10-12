@@ -150,9 +150,10 @@ function teamHub(){
  '<button type="button" class="sdsx-gold-button" data-sdsx-view="teams">Choose favorite university →</button>';return;}
  const next=nextFor(code),news=storiesFor(code,3),rec=records(code,"football");
  host.innerHTML=header(code,"Your university. All season long.","YOUR TEAM HUB")+
-  '<div class="sdsx-button-row"><button type="button" data-sdsx-game="'+esc(next?.id||"")+'" class="sdsx-gold-button" '+(!next?'disabled':'')+'>▶ Open Game Day</button>'+
-  '<button type="button" class="sdsx-outline-button" data-sdsx-view="teams">★ Change team</button>'+
-  '<button type="button" class="sdsx-outline-button" data-sdsx-view="team-news">▤ Team news</button></div>'+
+  '<div class="sdsx-button-row">'+
+  (next?'<button type="button" data-sdsx-game="'+esc(next.id)+'" class="sdsx-gold-button">Open next game →</button>':
+  '<button type="button" data-sdsx-team-tab="schedule" class="sdsx-gold-button">View schedule →</button>')+
+  '<button type="button" class="sdsx-outline-button" data-sdsx-view="teams">Change team</button></div>'+
   teamTabs()+'<div data-sdsx-team-panel="overview"'+(teamTab==="overview"?"":' hidden')+'>'+
   (next?'<section class="sdsx-next"><span>YOUR NEXT VERIFIED MATCHUP</span><div>'+named(next.away)+
    '<strong>VS</strong>'+named(next.home)+'</div><p>'+esc(fmt(time(next)))+

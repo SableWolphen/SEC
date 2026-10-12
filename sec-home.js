@@ -116,9 +116,7 @@ function hero(m){
  '<p>'+esc(line)+'</p>'+
  '<div class="hq-hero-buttons"><button type="button" data-hq-route="'+action+'" class="hq-primary">'+
  (p.unpickedOpen?"Make my picks →":m.liveCount?"Open live games →":"See my results →")+
- '</button><button type="button" data-hq-route="'+(m.favoriteSchool?"team-hub":"teams")+
- '" class="hq-hero-alt'+(m.favoriteSchool?"":" school-picker")+'">'+
- (m.favoriteSchool?"★ My Team Hub →":"☆ Choose Team →")+'</button>'+
+ '</button>'+(m.favoriteSchool?"":'<button type="button" data-hq-route="teams" class="hq-hero-alt school-picker">☆ Choose Team →</button>')+
  '</div></div>'+
  (game?'<div class="hq-next-kickoff"><span class="hq-hero-next-label">NEXT VERIFIED KICKOFF</span>'+
   '<div class="hq-next-teams"><span>'+

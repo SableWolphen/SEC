@@ -72,6 +72,7 @@ assert.match(root.innerHTML,/4th · 02:36/);
 assert.match(root.innerHTML,/1 open and unpicked/);
 assert.match(root.innerHTML,/Friend &amp; Rival/,"league names are escaped");
 assert.match(root.innerHTML,/FOLLOWING YOUR SCHOOL/,"favorite is shown once in Game Day HQ");
+assert.doesNotMatch(root.innerHTML,/class="hq-hero-alt"/,"favorite Team Hub navigation is not duplicated");
 assert.doesNotMatch(root.innerHTML,/hq-school-spotlight/,"no duplicate favorite-school Home card");
 assert.match(root.innerHTML,/data-hq-route="team-hub">Team Hub →/,"Team Hub available inside hero");
 assert.match(root.innerHTML,/data-hq-route="teams">Edit school/,"Edit School accessible without duplicate card");
