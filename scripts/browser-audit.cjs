@@ -226,7 +226,7 @@ fs.mkdirSync(output,{recursive:true});
        const shown=selector=>!!document.querySelector(selector)&&
         getComputedStyle(document.querySelector(selector)).display!=="none";
        const shortcuts=[...root.querySelectorAll(".hq-action")]
-        .filter(el=>getComputedStyle(el).display!=="none");
+        .filter(el=>el.getClientRects().length>0);
        const header=document.querySelector(".site-header");
        const hero=document.querySelector("#sec-home-root .hq-stadium-hero");
        const dock=document.querySelector(".bottom-nav");
