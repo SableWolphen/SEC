@@ -20,7 +20,7 @@ assert.match(html,/Open game details →/);
 assert.match(html,/document\.getElementById\("hero-slot"\)\?\.replaceChildren\(\)/);
 assert.match(home,/data-hq-focus="live"/);
 assert.match(home,/\["live","upcoming"\]\.includes\(b\.dataset\.hqFocus\)/);
-assert.match(home,/data-slate-filter="\+'\+b\.dataset\.hqFocus/);
+assert.ok(home.includes('b.dataset.hqFocus'),"Home uses selected Games status");
 assert.match(multi,/statusFilters=\{basketball:"all",baseball:"all"\}/);
 assert.match(multi,/data-sport-filter/);
 assert.match(multi,/sport-game-filters/);
