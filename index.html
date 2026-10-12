@@ -368,7 +368,13 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     <section id="more-view" class="view hidden" aria-labelledby="more-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR SEC CLUBHOUSE</div>
       <div class="page-intro"><div><h1 id="more-heading">The rest of the <em>clubhouse.</em></h1><p>All your news, teams and account controls, without cluttering game day.</p></div></div>
-      <div id="sec-access-more" class="sec-access-more" aria-label="Complete app directory"></div>
+      <div id="sec-access-more" class="sec-access-more" aria-label="Complete app directory">
+        <div class="sec-access-fallback" aria-label="Basic navigation">
+          <button type="button" data-nav="news">SEC News</button>
+          <button type="button" data-nav="teams">All 16 Teams</button>
+          <button type="button" data-nav="settings">Settings</button>
+        </div>
+      </div>
     </section>
     <section id="settings-view" class="view hidden" aria-labelledby="settings-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> MAKE IT YOURS</div>

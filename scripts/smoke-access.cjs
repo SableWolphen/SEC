@@ -5,7 +5,7 @@ const src=fs.readFileSync("sec-access.js","utf8"),html=fs.readFileSync("index.ht
  css=fs.readFileSync("sec-access.css","utf8"),sw=fs.readFileSync("sw.js","utf8");
 new vm.Script(src,{filename:"sec-access.js"});
 const handlers={},elements={};let current="home",calls=[],quickOpen=0;
-const mk=id=>elements[id]={innerHTML:"",value:"",setAttribute(){},querySelector(){return null},querySelectorAll(){return []}};
+const mk=id=>elements[id]={innerHTML:"",value:"",setAttribute(){},removeAttribute(){},querySelector(){return null},querySelectorAll(){return []}};
 ["sec-access-more","sec-access-results","sec-access-count","sec-access-search","sec-access-trigger","sec-access-dialog","sec-next-league","sec-next-push"].forEach(mk);
 const doc={
  readyState:"loading",addEventListener:(name,cb)=>handlers[name]=cb,getElementById:id=>elements[id]||null,
