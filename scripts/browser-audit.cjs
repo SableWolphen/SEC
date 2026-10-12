@@ -227,6 +227,19 @@ fs.mkdirSync(output,{recursive:true});
         getComputedStyle(document.querySelector(selector)).display!=="none";
        const shortcuts=[...root.querySelectorAll(".hq-action")]
         .filter(el=>getComputedStyle(el).display!=="none");
+       const header=document.querySelector(".site-header");
+       const hero=document.querySelector("#sec-home-root .hq-stadium-hero");
+       const dock=document.querySelector(".bottom-nav");
+       const metrics=document.querySelector("#sec-home-root .hq-app-metrics");
+       const headerRect=header?.getBoundingClientRect(),heroRect=hero?.getBoundingClientRect();
+       const dockRect=dock?.getBoundingClientRect();
+       const mobile={headerHeight:Math.round(headerRect?.height||0),
+        heroHeight:Math.round(heroRect?.height||0),
+        dockWidth:Math.round(dockRect?.width||0),
+        dockBottom:Math.round(dockRect?.bottom||0),
+        bottomNavSolid:getComputedStyle(dock).backgroundColor,
+        metricsVisible:!!metrics&&getComputedStyle(metrics).display!=="none",
+        menuDuplicate:shortcuts.length};
        const first=document.querySelector(".hq-stadium-hero");
        const oldScroll=scrollY;
        window.SEC_HOME.refresh();
@@ -241,18 +254,21 @@ fs.mkdirSync(output,{recursive:true});
        const closed=!shown(".hq-rival-card")&&toggle?.getAttribute("aria-expanded")==="false";
        const ordered=shortcuts.slice().sort((x,y)=>Number(getComputedStyle(x).order)-Number(getComputedStyle(y).order));
        const shortcutTitles=ordered.map(x=>x.querySelector("strong")?.textContent.trim()||"");
-       const leagueTile=ordered[1];
-       leagueTile?.click();
+       document.querySelector('.bottom-nav [data-nav="league"]')?.click();
        const leagueLinkWorks=window.SEC_BRIDGE?.view?.()==="league";
        window.SEC_BRIDGE?.setView?.("home");
-       return {shortcuts:shortcutTitles,leagueLinkWorks,
+       return {shortcuts:shortcutTitles,leagueLinkWorks,mobile,
         stable,hidden,expanded,closed,toggle:!!toggle,
         horizontal:root.querySelector(".hq-actions")?.scrollWidth>
          root.querySelector(".hq-actions")?.clientWidth+3};
       });
-      if(compact.shortcuts.join("|")!=="MAKE PICKS|LEAGUE RACE|LIVE SCORES|SEC NEWS"||
-         !compact.leagueLinkWorks||!compact.stable||!compact.hidden||
-         !compact.expanded||!compact.closed||compact.horizontal)
+      if(compact.shortcuts.length!==0||!compact.leagueLinkWorks||
+         !compact.stable||!compact.hidden||!compact.expanded||
+         !compact.closed||compact.horizontal||
+         compact.mobile.headerHeight>67||compact.mobile.heroHeight>340||
+         compact.mobile.dockWidth<viewport.width-2||
+         compact.mobile.dockBottom>viewport.height+2||
+         !compact.mobile.metricsVisible)
        problems.push(viewport.width+"px compact mobile homepage regression: "+JSON.stringify(compact));
      }
 
