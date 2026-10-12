@@ -245,6 +245,31 @@ fs.mkdirSync(output,{recursive:true});
      ].map(e=>e.dataset.nav));
      if(secondary.join(",")!=="news,teams,settings")
       problems.push(viewport.width+"px More menu lost news, teams or settings");
+     // Search, pins, accessibility and deep navigation must work on real phones,
+     // not just in a Node DOM fixture. Leave account data and saved picks alone.
+     const access=await page.evaluate(()=>{
+      const main=window.SEC_BRIDGE,btn=document.getElementById("sec-access-trigger");
+      const initial=main.view();
+      btn?.click();
+      const dialog=document.getElementById("sec-access-dialog"),input=document.getElementById("sec-access-search");
+      const opened=Boolean(dialog?.open)&&document.activeElement===input;
+      const within=dialog?.getBoundingClientRect().width<=innerWidth;
+      input.value="friend challenges";
+      input.dispatchEvent(new Event("input",{bubbles:true}));
+      const found=Boolean(dialog.querySelector('[data-sec-jump="friend"]'));
+      dialog.querySelector('[data-sec-pin="friend"]')?.click();
+      const pinned=dialog.querySelector('[data-sec-pin="friend"]')?.getAttribute("aria-pressed")==="true";
+      input.value="SEC news";input.dispatchEvent(new Event("input",{bubbles:true}));
+      dialog.querySelector('[data-sec-jump="news"]')?.click();
+      const toNews=main.view()==="news"&&!dialog.open;
+      main.setView("more");
+      return {initial,opened,within,found,pinned,toNews,
+       directory:document.querySelectorAll("#sec-access-more .sec-access-row").length,
+       mainNav:document.querySelectorAll(".bottom-nav .mobile-nav-btn").length};
+     });
+     if(!access.opened||!access.within||!access.found||!access.pinned||
+        !access.toNews||access.directory<20||access.mainNav!==5)
+      problems.push(viewport.width+"px global finder navigation issue: "+JSON.stringify(access));
     }
     if(route==="league"){
      const simple=await page.evaluate(()=>({
