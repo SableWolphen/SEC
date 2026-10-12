@@ -94,7 +94,16 @@ function closestRival(model){
 function hero(m){
  const game=m.favoriteUpcoming||m.nextKickoff;
  const p=m.progress;
- const action=p.unpickedOpen?"picks":m.liveCount?"picks":"results";
+ const action=m.moment==="finals"?"results":"picks";
+ const actionLabel={
+  live:"Watch live scores →",picks:"Finish my picks →",
+  finals:"See my results →",upcoming:"View upcoming games →",idle:"Browse games →"
+ }[m.moment]||"Browse games →";
+ const title={
+  live:"Games are <em>live.</em>",picks:"Make your <em>picks.</em>",
+  finals:"Final <em>scores.</em>",upcoming:"Game Day <em>HQ</em>",
+  idle:"Game Day <em>HQ</em>"
+ }[m.moment]||"Game Day <em>HQ</em>";
  const line=m.liveCount?m.liveCount+" live football game"+(m.liveCount===1?"":"s"):
   p.unpickedOpen?p.unpickedOpen+" football pick"+(p.unpickedOpen===1?"":"s")+" still open":
   p.total?p.chosen+" of "+p.total+" football picks selected · Week "+(m.week||"—"):
@@ -102,7 +111,7 @@ function hero(m){
  return '<section class="hq-stadium-hero'+(game?"":" hq-no-upcoming")+
   '" aria-label="Game Day HQ"'+(m.favoriteSchool?' data-sds-school="'+esc(m.favoriteSchool)+'"':'')+'>'+
  '<div class="hq-hero-copy"><span class="hq-eyebrow">SATURDAYS DOWN SOUTH</span>'+
- '<h2>Game Day <em>HQ</em></h2>'+
+ '<h2>'+title+'</h2>'+
  (m.favoriteSchool?'<div class="sds-home-favorite-mini" data-sds-school="'+esc(m.favoriteSchool)+'">'+
   (window.SDS_VISUALS?.mark?.(m.favoriteSchool,{className:"sdsx-crest"})||'<span>'+esc(m.favoriteSchool)+'</span>')+
   '<div><span>★ FOLLOWING YOUR SCHOOL</span><strong>'+esc(m.favoriteName||m.favoriteSchool)+'</strong>'+
@@ -114,8 +123,10 @@ function hero(m){
   '<button type="button" data-hq-route="teams">Edit school</button></div></div></div>':
   '<strong>Same schools. Bigger rivalries.</strong>')+
  '<p class="hq-hero-summary">'+esc(line)+'</p>'+
- '<div class="hq-hero-buttons"><button type="button" data-hq-route="'+action+'"'+(m.liveCount&&!p.unpickedOpen?' data-hq-focus="live"':'')+' class="hq-primary">'+
- (p.unpickedOpen?"Make my picks →":m.liveCount?"Open live games →":"See my results →")+
+ '<div class="hq-hero-buttons"><button type="button" data-hq-route="'+action+'"'+
+ (m.moment==="live"?' data-hq-focus="live"':m.moment==="picks"?' data-hq-focus="unpicked"':
+  m.moment==="upcoming"?' data-hq-focus="upcoming"':'')+' class="hq-primary">'+
+ actionLabel+
  '</button>'+(m.favoriteSchool?"":'<button type="button" data-hq-route="teams" class="hq-hero-alt school-picker">☆ Choose Team →</button>')+
  '</div></div>'+
  (game?'<div class="hq-next-kickoff"><span class="hq-hero-next-label">NEXT VERIFIED KICKOFF</span>'+
@@ -203,7 +214,11 @@ function snapshot(a=app(),today=Date.now()){
   .sort((x,y)=>(x.clock??Infinity)-(y.clock??Infinity));
  const finals=gameList.filter(g=>g.status==="final")
   .sort((x,y)=>(y.clock??0)-(x.clock??0));
- const visible=[...live,...upcoming,...finals].slice(0,3);
+ // A single timely primary story keeps Home calm. Never infer game results.
+ const moment=live.length?"live":progress.unpickedOpen?"picks":
+  finals.length?"finals":upcoming.length?"upcoming":"idle";
+ const visible=(moment==="live"?live:
+  moment==="finals"?finals:[...upcoming,...finals]).slice(0,2);
  const next=nextKickoff(gameList,today);
  const selected=window.SEC_LEAGUE_SETTINGS?.getSelected?.()||null;
  let leagueName=selected?.name||null,rows=[];
@@ -224,6 +239,7 @@ function snapshot(a=app(),today=Date.now()){
  }).slice(0,5);
  const favorite=favoriteFor(a),headlines=newsPreview(favorite);
  const model={week:Number(w?.num)||null,season:"football",progress,visible,liveCount:live.length,
+  finalCount:finals.length,moment,
   leagueName,leaderboard:hasIdentity?ordered:[],leagueKind:selected?.kind||"football",
   loggedIn:hasIdentity,authConfigured:authenticated,
   scoreFreshness:Math.max(0,...live.map(g=>g.updated||0)),
@@ -294,10 +310,14 @@ function render(model){
  const currentUser=window.secOnline?.getUser?.()?.id||null;
  const leaguePosition=currentUser?model.leaderboard.findIndex(row=>row.user_id===currentUser):-1;
  // Derived solely from current authorized picks and standings, never sample data.
+ const thirdLabel=model.moment==="live"?"LIVE NOW":model.moment==="finals"?
+  "FINAL GAMES":p.unpickedOpen?"TO PICK":"PICK STATUS";
+ const thirdValue=model.moment==="live"?model.liveCount:model.moment==="finals"?
+  model.finalCount:p.unpickedOpen||"✓";
  const appMetrics='<div class="hq-app-metrics" aria-label="Your game day snapshot">'+
   '<div class="hq-app-metric"><span>YOUR PICKS</span><strong>'+p.chosen+'<small>/'+p.total+'</small></strong></div>'+
   '<div class="hq-app-metric"><span>LEAGUE RANK</span><strong>'+(leaguePosition>=0?'#'+(leaguePosition+1):'—')+'</strong></div>'+
-  '<div class="hq-app-metric"><span>STILL TO PICK</span><strong>'+p.unpickedOpen+'</strong></div></div>';
+  '<div class="hq-app-metric"><span>'+thirdLabel+'</span><strong>'+thirdValue+'</strong></div></div>';
  const markup=hero(model)+appMetrics+actionCards(model)+
  '<div class="hq-sport-tabs" role="group" aria-label="Pick a sport">'+sportNames.map(s=>
  '<button type="button" data-hq-route="'+routeFor(s)+'"'+(model.recommended===s?' class="suggested"':'')+'>'+
@@ -341,6 +361,7 @@ function render(model){
  if(previousMarkup===markup&&root.querySelector?.(".hq-stadium-hero"))return;
  previousMarkup=markup;
  const keepExpanded=root.classList?.contains("hq-expanded")||false;
+ root.dataset.moment=model.moment;
  root.innerHTML=markup;
  const toggle=root.querySelector?.("[data-hq-expand]");
  toggle?.setAttribute?.("aria-expanded",String(keepExpanded));
@@ -393,7 +414,7 @@ document.addEventListener("click",e=>{
  if(target==="picks"&&b.dataset.hqFocus==="next"){
   document.querySelector('[data-slate-next]')?.click();
  }
- if(target==="picks"&&["live","upcoming"].includes(b.dataset.hqFocus)){
+ if(target==="picks"&&["live","upcoming","unpicked"].includes(b.dataset.hqFocus)){
   document.querySelector('[data-slate-filter="'+b.dataset.hqFocus+'"]')?.click();
  }
 });

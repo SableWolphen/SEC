@@ -548,7 +548,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   let currentWeek = initialWeek();
   // Only an explicit user selection can override the calendar's current week.
   let manualWeekOverride = false;
-   let slateFilter = "all";
+   let slateFilter = "all",slateFilterTouched = false;
   let currentView = 'home';
   let lastSportView = 'picks';
   let installPrompt = null;
@@ -602,12 +602,21 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     if(month>=7)return 'picks';                 // Aug–Oct: football
     return 'baseball';                         // Feb–Jul
   }
+  function suggestedGamesFilter(){
+    const games=week().games;
+    if(games.some(g=>g.liveStatus==="live"))return "live";
+    if(games.some(g=>!state.picks[g.id]&&!isLocked(g)&&
+      !window.SEC_FEATURES?.isUnavailable?.(g)))return "unpicked";
+    if(games.some(g=>window.SEC_FEATURES?.finalData?.(g)))return "final";
+    return "all";
+  }
   function setView(v){
     if(v==='sports')v=seasonLanding(); // Old #sports links skip the selection homepage.
     const views=['home','team-hub','game-center','results','team-news','sports','picks','basketball','baseball','league','trophies','news','teams','settings','more'];
     const sportViews=['picks','basketball','baseball'];
     if(!views.includes(v))return;
     if(sportViews.includes(v))lastSportView=v;
+    if(v==="picks"&&!slateFilterTouched)slateFilter=suggestedGamesFilter();
     currentView=v;
     for(const id of views)document.getElementById(id+'-view').classList.toggle('hidden',id!==v);
     // Reuse the same three sport controls directly beneath the current page title/description.
@@ -870,9 +879,9 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 
   document.addEventListener('click', e=>{
     const nav=e.target.closest('[data-nav]');if(nav){e.preventDefault();setView(nav.dataset.nav==='current-sport'?lastSportView:nav.dataset.nav);return;}
-    const weekEl=e.target.closest('[data-week]');if(weekEl){currentWeek=Number(weekEl.dataset.week);manualWeekOverride=currentWeek!==initialWeek();if(currentView==='picks')renderPicks();else if(currentView==='league')renderLeague();else if(currentView==='settings')renderSettings();return;}
+    const weekEl=e.target.closest('[data-week]');if(weekEl){currentWeek=Number(weekEl.dataset.week);slateFilterTouched=false;slateFilter="all";manualWeekOverride=currentWeek!==initialWeek();if(currentView==='picks')renderPicks();else if(currentView==='league')renderLeague();else if(currentView==='settings')renderSettings();return;}
     const filter=e.target.closest('[data-slate-filter]');
-    if(filter){slateFilter=filter.dataset.slateFilter;renderPicks();return;}
+    if(filter){slateFilter=filter.dataset.slateFilter;slateFilterTouched=true;renderPicks();return;}
     const next=e.target.closest('[data-slate-next]');
     if(next){
       const candidate=week().games.find(g=>!state.picks[g.id]&&!isLocked(g)&&!window.SEC_FEATURES?.isUnavailable?.(g));

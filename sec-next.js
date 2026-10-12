@@ -135,9 +135,9 @@ function onPicks(){
  const root=$("sec-next-picks");
  if(root){
   const n=pending().length;
-  root.innerHTML='<div class="secnext-picks-bar"><div><strong>Quick Pick</strong><small>'+n+
+  root.innerHTML=n?'<div class="secnext-picks-bar"><div><strong>Quick Pick</strong><small>'+n+
    ' matchups still need a pick</small></div><button type="button" data-next-quick '+(!n?'disabled':'')+
-   '>Start Quick Pick →</button></div>';
+   '>Start Quick Pick →</button></div>':"";
  }
  for(const card of document.querySelectorAll("#games-list .game-card[data-game-id]")){
   const g=games().find(x=>x.id===card.dataset.gameId);
