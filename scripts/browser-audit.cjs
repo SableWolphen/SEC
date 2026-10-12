@@ -294,6 +294,23 @@ fs.mkdirSync(output,{recursive:true});
       problems.push(viewport.width+"px signup favorite-school picker: "+JSON.stringify(favoriteSignup));
     }
     if(route==="picks"){
+     const unified=await page.evaluate(()=>{
+      const a=window.SEC_BRIDGE,heading=document.getElementById("picks-heading");
+      const nav=document.querySelector('.bottom-nav [data-nav="current-sport"] span');
+      const filters=[...document.querySelectorAll("#picks-view [data-slate-filter]")].map(x=>x.dataset.slateFilter);
+      const dup=document.getElementById("hero-slot"),gameCards=document.querySelectorAll("#games-list .game-card");
+      document.querySelector('[data-slate-filter="upcoming"]')?.click();
+      const upcoming=[...document.querySelectorAll("#games-list .game-card")];
+      document.querySelector('[data-slate-filter="all"]')?.click();
+      return {title:heading?.textContent||"",nav:nav?.textContent||"",filters,
+       hiddenHero:!dup?.children?.length,gameCards:gameCards.length,upcoming:upcoming.length,
+       noDouble:document.getElementById("hero-slot")?.getBoundingClientRect().height===0,
+       unchangedRoute:a.view()==="picks"};
+     });
+     if(!unified.title.includes("games.")||unified.nav!=="Games"||
+       !["all","unpicked","upcoming","live","final"].every(k=>unified.filters.includes(k))||
+       !unified.hiddenHero||!unified.noDouble||!unified.unchangedRoute)
+      problems.push(viewport.width+"px Games unified navigation/filter issue: "+JSON.stringify(unified));
      const tidy=await page.evaluate(()=>{
       const top=document.querySelector("#weekly-score-strip .weekly-score-strip");
       const repeated=["summary-slot","fan-recap","sec-gameday-picks","sec-day-recap","fan-rivalries"]

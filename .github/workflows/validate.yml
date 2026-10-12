@@ -83,6 +83,8 @@ jobs:
           node scripts/smoke-next.cjs
           node --check sec-access.js
           node scripts/smoke-access.cjs
+          node --check multi-sport.js
+          node scripts/smoke-games.cjs
           node --check sec-premium.js
           node --check scripts/smoke-premium.cjs
           node scripts/smoke-premium.cjs
