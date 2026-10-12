@@ -19,16 +19,16 @@ assert.match(adv,/quickSaving/);
 assert.match(adv,/Matchup.*remaining/);
 assert.match(adv,/saved!==true/);
 assert.match(online,/finally\{working=false;\}/);
-assert.match(online,/return true;\\s*\\}catch\\(err\\)\\{busy\\(err\\);return false;\\}/);
-assert.match(home,/data-hq-focus="upcoming"/);
-assert.match(home,/m\\.liveCount&&!p\\.unpickedOpen/);
-assert.match(css,/#sec-home-root \\.hq-mobile-expand/);
-assert.match(css,/#sec-home-root \\.hq-action:nth-child\\(n\\+5\\)/);
-assert.match(css,/\\.secnext-quick-controls/);
-assert.match(css,/@media\\(prefers-reduced-motion:reduce\\)/);
-assert.match(sw,/sec-pickem-v107/);
-assert.match(sw,/sec-feel\\.css\\?v=20261012-feel-v1/);
-assert.match(html,/sec-feel\\.css\\?v=20261012-feel-v1/);
+assert.ok(online.includes("}catch(err){busy(err);return false;}"),"failed online saves must report failure");
+assert.ok(home.includes('data-hq-focus="upcoming"'),"Home gives a direct path to upcoming games");
+assert.ok(home.includes("m.liveCount&&!p.unpickedOpen"),"live status chooses Games");
+assert.ok(css.includes("#sec-home-root .hq-mobile-expand"),"secondary Home panels can expand");
+assert.ok(css.includes("#sec-home-root .hq-action:nth-child(n+5)"),"less Home clutter");
+assert.ok(css.includes(".secnext-quick-controls"),"Quick Pick navigation is styled");
+assert.ok(css.includes("@media(prefers-reduced-motion:reduce)"),"reduced motion is respected");
+assert.ok(sw.includes("sec-pickem-v107"),"Android cache is fresh");
+assert.ok(sw.includes("sec-feel.css?v=20261012-feel-v1"),"PWA caches polish assets");
+assert.ok(html.includes("sec-feel.css?v=20261012-feel-v1"),"the app loads polish assets");
 // Dynamic Quick Pick navigation needs no authentication or writes.
 const ids=["2026-7-UGA-ALA","2026-7-TENN-ARK","2026-7-LSU-UK"];
 const games=ids.map((id,i)=>({id,away:["UGA","TENN","LSU"][i],home:["ALA","ARK","UK"][i],
