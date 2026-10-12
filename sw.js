@@ -24,3 +24,29 @@ self.addEventListener("fetch",event=>{
   catch(e){return (await cache.match(req))||Response.error();}
  })());
 });
+/* Real Web Push: displays only source-verified, generic data supplied by the
+   authenticated push service. No other member's picks or scores are inferred. */
+self.addEventListener("push",event=>{
+ event.waitUntil((async()=>{
+  let p={};try{p=event.data?.json()||{}}catch(_){p={};}
+  const title=typeof p.title==="string"?p.title.slice(0,70):"SEC Pick’em update";
+  const body=typeof p.body==="string"?p.body.slice(0,160):"Open Saturdays Down South for the latest verified update.";
+  const valid=new Set(["home","picks","league","results","game-center","team-hub"]);
+  const route=valid.has(p.route)?p.route:"home";
+  await self.registration.showNotification(title,{
+   body,icon:"./icon.svg",badge:"./icon.svg",tag:typeof p.tag==="string"?p.tag.slice(0,70):"sec-event",
+   data:{route},renotify:false
+  });
+ })());
+});
+self.addEventListener("notificationclick",event=>{
+ event.notification.close();
+ const route=event.notification.data?.route||"home";
+ event.waitUntil((async()=>{
+  const path=new URL("./index.html#"+route,self.registration.scope).href;
+  const windows=await self.clients.matchAll({type:"window",includeUncontrolled:true});
+  const page=windows.find(w=>w.url.startsWith(self.registration.scope));
+  if(page){await page.navigate(path);return page.focus();}
+  return self.clients.openWindow(path);
+ })());
+});
