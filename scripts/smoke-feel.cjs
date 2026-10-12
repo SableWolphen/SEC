@@ -21,7 +21,7 @@ assert.match(adv,/saved!==true/);
 assert.match(online,/finally\{working=false;\}/);
 assert.ok(online.includes("}catch(err){busy(err);return false;}"),"failed online saves must report failure");
 assert.ok(home.includes('data-hq-focus="upcoming"'),"Home gives a direct path to upcoming games");
-assert.ok(home.includes("m.liveCount&&!p.unpickedOpen"),"live status chooses Games");
+assert.ok(home.includes('m.moment==="live"'),"live status chooses Games");
 assert.ok(css.includes("#sec-home-root .hq-mobile-expand"),"secondary Home panels can expand");
 assert.ok(css.includes("#sec-home-root .hq-action:nth-child(n+5)"),"less Home clutter");
 assert.ok(css.includes(".secnext-quick-controls"),"Quick Pick navigation is styled");
