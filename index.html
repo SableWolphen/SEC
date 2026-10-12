@@ -199,6 +199,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <link rel="stylesheet" href="./sec-design-system.css?v=20261011-broadcast-v1">
 <link rel="stylesheet" href="./sds-showcase.css?v=20261011-unified-v2">
 <link rel="stylesheet" href="./sec-next.css?v=20261012-advanced-v1">
+<link rel="stylesheet" href="./sec-access.css?v=20261012-access-v1">
 </head>
 <body>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
@@ -215,6 +216,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       <button type="button" data-nav="trophies" class="nav-link">Trophy Room</button>
       <button type="button" data-nav="more" class="nav-link">More</button>
     </nav>
+    <button type="button" id="sec-access-trigger" class="sec-access-trigger" data-sec-find aria-haspopup="dialog" aria-controls="sec-access-dialog" aria-label="Find any SEC page or feature"><span aria-hidden="true">⌕</span><strong>Find</strong></button>
     <button type="button" class="profile-chip" data-nav="settings" aria-label="Edit your profile"><span id="header-avatar">Y</span><span id="header-name">You</span><span id="header-school-pride" aria-live="polite"></span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m7 8 3 3 3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </header>
 
@@ -366,14 +368,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     <section id="more-view" class="view hidden" aria-labelledby="more-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR SEC CLUBHOUSE</div>
       <div class="page-intro"><div><h1 id="more-heading">The rest of the <em>clubhouse.</em></h1><p>All your news, teams and account controls, without cluttering game day.</p></div></div>
-      <div class="hq-more-grid">
-        <button type="button" data-sdsx-view="team-news" class="hq-more-card"><span aria-hidden="true">📰</span><strong>Team News</strong><small>Favorite school, rankings and alerts</small></button>
-        <button type="button" data-nav="news" class="hq-more-card"><span aria-hidden="true">▤</span><strong>SEC News</strong><small>All sports headlines and sources</small></button>
-        <button type="button" data-sdsx-view="team-hub" class="hq-more-card"><span aria-hidden="true">⭐</span><strong>My Team Hub</strong><small>Your school's schedule and standings</small></button>
-        <button type="button" data-nav="teams" class="hq-more-card"><span aria-hidden="true">🏟</span><strong>All Teams</strong><small>All 16 schools and their records</small></button>
-        <button type="button" data-sdsx-view="results" class="hq-more-card"><span aria-hidden="true">🏆</span><strong>Pick'em Results</strong><small>Graded picks and verified rankings</small></button>
-        <button type="button" data-nav="settings" class="hq-more-card"><span aria-hidden="true">⚙️</span><strong>Settings</strong><small>Account, privacy and preferences</small></button>
-      </div>
+      <div id="sec-access-more" class="sec-access-more" aria-label="Complete app directory"></div>
     </section>
     <section id="settings-view" class="view hidden" aria-labelledby="settings-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> MAKE IT YOURS</div>
@@ -394,6 +389,12 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
  <button type="button" data-nav="more" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span>More</span></button>
 </nav>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
+<dialog id="sec-access-dialog" class="sec-access-dialog" aria-labelledby="sec-access-title" aria-modal="true">
+ <header class="sec-access-dialog-head"><div><h2 id="sec-access-title">Find anything</h2><p>Jump to picks, scores, leagues, or your favorite team.</p></div><button type="button" data-sec-close aria-label="Close find menu">✕</button></header>
+ <div class="sec-access-search-wrap"><label for="sec-access-search" class="sec-access-label">Search the app</label><input id="sec-access-search" type="search" autocomplete="off" spellcheck="false" placeholder="Try 'Quick Pick' or 'League Chat'" aria-controls="sec-access-results"/><small id="sec-access-count" aria-live="polite"></small></div>
+ <nav id="sec-access-results" aria-label="Matching destinations"></nav>
+ <footer><span>Tip: press / or Ctrl+K anywhere</span><button type="button" data-sec-close>Close</button></footer>
+</dialog>
 <script src="./sds-showcase-visuals.js?v=20261011-team-colors-v2"></script>
 <script>
 (() => {
@@ -634,6 +635,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     if(['team-hub','game-center','results','team-news'].includes(v))window.SEC_PREMIUM?.mount?.(v);
     void window.SEC_FAN?.onView?.(v);
     window.SEC_NEXT?.onView?.(v);
+    window.SEC_ACCESS?.sync?.(v);
     if(location.hash!=='#'+v)history.replaceState(null,'','#'+v);
     window.scrollTo({top:0,behavior:'instant'});
   }
@@ -877,5 +879,6 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./sds-showcase-preferences.js?v=20261011-ten-screens-v1"></script>
 <script src="./sec-premium.js?v=20261011-unified-v2"></script>
 <script src="./sec-next.js?v=20261012-advanced-v1"></script>
+<script src="./sec-access.js?v=20261012-access-v1"></script>
 </body>
 </html>

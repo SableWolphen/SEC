@@ -1,0 +1,128 @@
+/* Find Anything — one-tap access without a sixth main tab. */
+.sec-access-trigger{
+ flex:none;display:flex;align-items:center;justify-content:center;gap:7px;
+ min-width:76px;min-height:40px;padding:7px 11px;border:1px solid #455f77;
+ border-radius:11px;background:#10273a;color:#f0d39d;font-weight:850;font-size:12px;
+}
+.sec-access-trigger span{font-size:23px;font-weight:600;line-height:1}
+.sec-access-trigger:hover,.sec-access-more-search:hover{border-color:#f1cb84;background:#203c51}
+.sec-access-trigger:focus-visible,.sec-access-dialog :focus-visible,
+.sec-access-more :focus-visible{outline:2px solid #f5d492;outline-offset:3px}
+.sec-access-more{min-width:0}
+.sec-access-more-top{
+ display:flex;align-items:center;justify-content:space-between;gap:16px;
+ padding:15px 17px;background:linear-gradient(145deg,#143249,#10263a);
+ border:1px solid #405e76;border-radius:12px;margin:0 0 15px;
+}
+.sec-access-more-top strong{font-size:17px;color:#f8f9fb}
+.sec-access-more-top p{font-size:12px;color:#bfd0dc;margin:5px 0 0}
+.sec-access-more-search{
+ min-height:44px;border-radius:9px;border:1px solid #d9bb83;background:#e9c47f;
+ color:#122739;font-weight:900;font-size:12px;padding:10px 14px;
+}
+.sec-access-shortcuts{padding:0 0 15px;margin:0 0 14px;border-bottom:1px solid #344e65}
+.sec-access-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}
+.sec-access-heading h2,.sec-access-group h2{
+ font-size:15px;letter-spacing:-.3px;margin:0;color:#f4f7f9;
+}
+.sec-access-heading small{font-size:10px;color:#afc3d2}
+.sec-access-pin-grid{display:flex;gap:7px;flex-wrap:wrap}
+.sec-access-pin-grid button{
+ display:flex;align-items:center;gap:7px;min-height:43px;border-radius:9px;
+ border:1px solid #425e75;background:#122c40;color:#f1f5f8;
+ padding:8px 11px;font-size:11px;font-weight:850;
+}
+.sec-access-pin-grid button span{font-size:16px;color:#efc783}
+.sec-access-group{margin:13px 0 19px;min-width:0}
+.sec-access-group h2{margin:0 0 8px;font-size:14px;color:#f1d39a}
+.sec-access-more-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.sec-access-row{
+ display:flex;align-items:stretch;min-width:0;border-radius:10px;
+ background:#102639;border:1px solid #355169;overflow:hidden;
+}
+.sec-access-row:focus-within{border-color:#d9b97f}
+.sec-access-link{
+ display:flex;align-items:center;text-align:left;gap:9px;min-width:0;
+ flex:1;border:0;background:transparent;color:#f3f7fa;padding:10px;
+ min-height:63px;
+}
+.sec-access-link:hover{background:#1a3449}
+.sec-access-icon{
+ width:37px;height:37px;min-width:37px;display:grid;place-items:center;
+ border-radius:9px;background:#1c3a50;color:#efc98d;font-size:18px;
+}
+.sec-access-copy{display:grid;gap:3px;min-width:0;flex:1}
+.sec-access-copy strong{font-size:12px;line-height:1.2;overflow-wrap:anywhere}
+.sec-access-copy small{font-size:10px;color:#bbcfdd;line-height:1.35}
+.sec-access-chevron{font-size:23px;color:#a9bfce}
+.sec-access-pin{
+ display:grid;place-items:center;flex:none;min-width:39px;
+ border:0;border-left:1px solid #354f64;color:#afbdcb;background:#10283b;font-size:20px;
+}
+.sec-access-pin.is-pinned{color:#f4d48e}
+.sec-access-pin:hover{background:#203f52;color:#ffdfa2}
+.sec-access-dialog{
+ width:min(94vw,640px);max-width:640px;max-height:min(84vh,780px);
+ padding:0;border:1px solid #54738b;border-radius:15px;
+ background:#0a2033;color:#f2f7f9;box-shadow:0 24px 78px #000b;
+}
+.sec-access-dialog::backdrop{background:#020b12bd;backdrop-filter:blur(3px)}
+.sec-access-dialog-head{
+ display:flex;align-items:start;justify-content:space-between;gap:12px;
+ padding:16px 18px;border-bottom:1px solid #385269;
+}
+.sec-access-dialog h2{font-size:21px;line-height:1.2;margin:0;color:#fff}
+.sec-access-dialog-head p{font-size:11px;color:#bfceda;margin:5px 0 0}
+.sec-access-dialog-head button,.sec-access-dialog>footer button{
+ border:1px solid #466178;border-radius:8px;background:#17334a;color:#dbe9f3;
+ min-height:39px;min-width:39px;padding:7px 10px;
+}
+.sec-access-search-wrap{padding:13px 18px 11px;display:grid;gap:7px}
+.sec-access-label{font-size:11px;font-weight:800;color:#bcd0de}
+#sec-access-search{
+ width:100%;min-height:49px;padding:12px 14px;border-radius:9px;
+ border:1px solid #5b7b93;color:#f5f7fa;background:#0c1b2e;
+ font-size:16px;outline-offset:2px;
+}
+#sec-access-count{font-size:10px;color:#9ab1c2}
+#sec-access-results{padding:4px 18px 18px;overflow-y:auto;max-height:46vh;scrollbar-width:thin}
+#sec-access-results .sec-access-row{margin-bottom:6px}
+.sec-access-section-title{
+ margin:14px 0 7px;color:#eecb8a;font-size:10px;
+ text-transform:uppercase;letter-spacing:1px;
+}
+.sec-access-empty{font-size:13px;color:#bcd0de;padding:18px 3px}
+.sec-access-dialog>footer{
+ display:flex;justify-content:space-between;align-items:center;gap:8px;
+ border-top:1px solid #385269;padding:9px 18px;
+}
+.sec-access-dialog>footer span{font-size:10px;color:#97adbf}
+@media(max-width:1050px){
+ .sec-access-more-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:790px){
+ .sec-access-trigger{min-width:42px;width:42px;height:42px;padding:5px;gap:0}
+ .sec-access-trigger strong{display:none}
+ .sec-access-trigger span{font-size:25px}
+ .sec-access-more-top{padding:12px}
+}
+@media(max-width:540px){
+ .sec-access-more-grid{grid-template-columns:1fr;gap:6px}
+ .sec-access-more-top{flex-direction:column;align-items:stretch;gap:10px}
+ .sec-access-more-search{width:100%}
+ .sec-access-link{min-height:55px;padding:8px 10px}
+ .sec-access-dialog{width:calc(100vw - 16px);max-height:calc(100dvh - 75px);border-radius:12px}
+ #sec-access-results{max-height:calc(100dvh - 295px);padding:3px 11px 13px}
+ .sec-access-dialog-head{padding:13px}
+ .sec-access-search-wrap{padding:11px}
+ .sec-access-dialog>footer{padding:9px 12px}
+ .site-header{gap:8px}
+}
+@media(max-width:350px){
+ .brand-title{font-size:13px}
+ .sec-access-trigger{width:38px;min-width:38px}
+ .profile-chip{padding:3px}
+}
+@media(prefers-reduced-motion:reduce){
+ .sec-access-dialog::backdrop{backdrop-filter:none}
+}
