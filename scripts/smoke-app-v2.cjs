@@ -9,7 +9,7 @@ const sections=["home","picks","game-center","league","trophies","more"];
 for(const s of sections)assert.match(css,new RegExp(s==="home"?"#sec-home-root":s==="game-center"?"#game-center-view":s==="picks"?"#picks-view":s==="trophies"?"#sds-trophy-case":"#"+s+"-view"));
 assert.match(html,/sec-app-v2\.css\?v=20261012-app-v2/);
 assert.match(sw,/sec-app-v2\.css\?v=20261012-app-v2/);
-assert.match(sw,/sec-pickem-v109/);
+assert.match(sw,/sec-pickem-v110/);
 assert.match(home,/const appMetrics=/);
 assert.match(home,/model\.leaderboard\.findIndex/);
 assert.match(home,/const currentUser=window\.secOnline\?\.getUser/);

@@ -1,0 +1,31 @@
+"use strict";
+/* Context-first design checks must be safe for real saved picks. */
+const assert=require("node:assert/strict"),fs=require("node:fs"),vm=require("node:vm");
+const read=p=>fs.readFileSync(p,"utf8");
+const html=read("index.html"),home=read("sec-home.js"),next=read("sec-next.js"),
+ css=read("sec-ux-v3.css"),sw=read("sw.js");
+for(const p of ["sec-home.js","sec-next.js"])new vm.Script(read(p),{filename:p});
+assert.match(home,/const moment=live\.length\?"live"/);
+assert.match(home,/progress\.unpickedOpen\?"picks"/);
+assert.match(home,/finals\.length\?"finals"/);
+assert.match(home,/return \{\.\.\.model,rival:closestRival\(model\)\}/);
+assert.match(home,/root\.dataset\)root\.dataset\.moment=model\.moment/);
+assert.match(home,/m\.moment==="finals"\?"results":"picks"/);
+assert.match(home,/m\.moment==="live".*data-hq-focus/);
+assert.match(home,/thirdLabel=model\.moment==="live"/);
+assert.match(html,/function suggestedGamesFilter\(\)/);
+assert.match(html,/if\(v==="picks"&&!slateFilterTouched\)slateFilter=suggestedGamesFilter\(\)/);
+assert.match(html,/slateFilterTouched=true;renderPicks\(\)/);
+assert.match(html,/slateFilterTouched=false;slateFilter="all"/);
+assert.match(next,/root\.innerHTML=n\?'<div class="secnext-picks-bar"/);
+assert.match(css,/#sec-home-root\[data-moment="live"\]/);
+assert.match(css,/#sec-home-root\[data-moment="upcoming"\] \.hq-games/);
+assert.match(css,/#league-view #fan-league-tabs/);
+assert.match(css,/#picks-view \.slate-filter\[aria-pressed="true"\]/);
+assert.match(css,/@media\(max-width:390px\)/);
+assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
+assert.match(html,/sec-ux-v3\.css\?v=20261012-context-v1/);
+assert.match(sw,/sec-ux-v3\.css\?v=20261012-context-v1/);
+assert.match(sw,/sec-pickem-v110/);
+assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length);
+console.log("Context-first Home, Games, League, reduced-motion and PWA checks PASS");

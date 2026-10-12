@@ -176,13 +176,16 @@ fs.mkdirSync(output,{recursive:true});
       const cards=root?.querySelectorAll(".hq-panel")||[];
       const progress=root?.querySelector(".hq-progress[role=progressbar]");
       const metrics=root?.querySelectorAll(".hq-app-metric")||[];
+      const moment=root?.dataset?.moment;
+      const smartTitle=root?.querySelector(".hq-hero-copy h2")?.textContent||"";
       const fake=!!root?.querySelector(".hq-demo,.hq-sample");
       const missing=!!root?.querySelector('[data-hq-route="picks"][data-hq-focus="next"]');
-      return {cards:cards.length,metrics:metrics.length,hasProgress:!!progress,hasLeague:!!root?.querySelector(".hq-league"),
+      return {cards:cards.length,metrics:metrics.length,moment,smartTitle,hasProgress:!!progress,hasLeague:!!root?.querySelector(".hq-league"),
        hasSports:root?.querySelectorAll("[data-hq-route=football],[data-hq-route=basketball],[data-hq-route=baseball],[data-hq-route=picks]").length,
        fake,missing};
      });
-     if(hq.cards!==4||hq.metrics!==3||!hq.hasProgress||!hq.hasLeague||hq.fake||hq.hasSports<3)
+     if(hq.cards!==4||hq.metrics!==3||!["live","picks","finals","upcoming","idle"].includes(hq.moment)||
+      !hq.smartTitle||!hq.hasProgress||!hq.hasLeague||hq.fake||hq.hasSports<3)
       problems.push(viewport.width+"px Game Day HQ missing data-backed cards: "+JSON.stringify(hq));
      const openPicks=await page.evaluate(()=>{
       document.querySelector('#sec-home-root [data-hq-route="picks"]')?.click();
@@ -233,7 +236,7 @@ fs.mkdirSync(output,{recursive:true});
        const metrics=document.querySelector("#sec-home-root .hq-app-metrics");
        const headerRect=header?.getBoundingClientRect(),heroRect=hero?.getBoundingClientRect();
        const dockRect=dock?.getBoundingClientRect();
-       const mobile={headerHeight:Math.round(headerRect?.height||0),
+       const mobile={moment:root?.dataset?.moment,headerHeight:Math.round(headerRect?.height||0),
         heroHeight:Math.round(heroRect?.height||0),
         dockWidth:Math.round(dockRect?.width||0),
         dockBottom:Math.round(dockRect?.bottom||0),
@@ -268,7 +271,9 @@ fs.mkdirSync(output,{recursive:true});
          compact.mobile.headerHeight>67||compact.mobile.heroHeight>340||
          compact.mobile.dockWidth<viewport.width-2||
          compact.mobile.dockBottom>viewport.height+2||
-         !compact.mobile.metricsVisible)
+         !compact.mobile.metricsVisible||
+         (compact.mobile.moment==="live"&&
+          await page.evaluate(()=>!!document.querySelector('#sec-home-root .hq-next-kickoff')?.getClientRects().length)))
        problems.push(viewport.width+"px compact mobile homepage regression: "+JSON.stringify(compact));
      }
 
