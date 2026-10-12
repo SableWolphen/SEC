@@ -72,8 +72,14 @@ async function chooseQuick(gid,code){
    await window.secOnline.pick(g,code);
   }else{
    // Delegate to the original persisted-pick handler; never change state without saving.
-   const original=[...document.querySelectorAll("#games-list [data-pick],#hero-slot [data-pick]")]
+   const locate=()=>[...document.querySelectorAll("#games-list [data-pick],#hero-slot [data-pick]")]
     .find(el=>el.dataset.pick===gid&&el.dataset.team===code);
+   let original=locate();
+   if(!original){
+    // Keep Quick Pick working even when the user opened it from the Live/Final filter.
+    document.querySelector('[data-slate-filter="all"]')?.click();
+    original=locate();
+   }
    if(!original){notice("Open All games to make this selection.");closeQuick();return;}
    original.click();
   }

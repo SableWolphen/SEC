@@ -343,8 +343,7 @@ function gameCard(s,g,league,picks){
   '<p class="sport-kickoff">'+esc(String(g.source||"").includes("provisional")?
    "Tipoff TBA · provisional pick lock "+prettyTime(g.kickoff_at):
    prettyTime(g.kickoff_at))+
-  (scored?
-    ' · '+Number(g.away_score)+'–'+Number(g.home_score):'')+'</p>'+
+  '</p>'+
   '<div class="sport-team-options">'+opt(g.away_code)+'<span class="sport-vs">VS</span>'+opt(g.home_code)+'</div>'+
   (mode==="confidence"&&canPick?'<div class="sport-confidence"><label>Confidence value</label>'+
     '<select data-confidence="'+esc(g.id)+'" aria-label="Confidence points for '+esc(g.away_name)+' vs '+esc(g.home_name)+'">'+

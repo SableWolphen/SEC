@@ -312,7 +312,7 @@ function render(model){
     '<h3>This week’s matchups</h3><p class="hq-panel-sub">Verified SEC scores and upcoming games.</p>'+
     '<div class="hq-games-list">'+(model.visible.length?model.visible.map(match).join(""):
       '<p class="hq-empty">No current football matchups available for Week '+(model.week||"—")+'. Switch sports or check back for updated fixtures.</p>')+'</div>'+
-    '<button type="button" data-hq-route="game-center" class="hq-secondary">Open Live Game Center →</button></section>'+
+    '<button type="button" data-hq-route="picks" class="hq-secondary">See all games and scores →</button></section>'+
    '<section class="hq-panel hq-league" aria-label="League race"><div class="hq-panel-header">'+
     '<span>03 · LEAGUE RACE</span><span class="hq-feed-pill">Verified points</span></div>'+
     '<h3>'+esc(model.leagueName||"Your league")+'</h3>'+
