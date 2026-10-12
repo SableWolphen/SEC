@@ -174,6 +174,14 @@ setInterval(()=>{
  }
 },20000);
 window.SEC_PLAYS=Object.freeze({placeholder,hydrate,invalidate,load,escapePlay,quarter});
-if(document.readyState!=="loading")hydrate();
-else document.addEventListener("DOMContentLoaded",()=>hydrate(),{once:true});
+function restoreInitialView(){
+ // Deep links can render before this last-loaded module exists. Rehydrate
+ // the current route once, so the play disclosure is not missing on first load.
+ const view=app()?.view?.();
+ if(view==="picks")app()?.renderPicks?.();
+ else if(view==="game-center")window.SEC_PREMIUM?.mount?.("game-center");
+ else hydrate();
+}
+if(document.readyState!=="loading")restoreInitialView();
+else document.addEventListener("DOMContentLoaded",restoreInitialView,{once:true});
 })();
