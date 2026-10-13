@@ -283,6 +283,23 @@ main{max-width:1240px;margin-inline:auto}
 }
 #picks-view .sec-final-team-end>b{font-size:clamp(23px,3.2vw,32px);font-weight:950}
 #picks-view .sec-final-team.is-winner .sec-final-team-end>b{color:#a8e5c0}
+/* Results remain a one-glance scoreboard, including extra-long university names. */
+#picks-view .game-card.sec-final-card{
+ padding:9px 10px 10px
+}
+#picks-view .game-card.sec-final-card .game-header{
+ margin-bottom:5px;padding-bottom:4px
+}
+#picks-view .game-card.sec-final-card .sec-final-team{
+ min-height:59px;padding:5px 6px;gap:4px
+}
+#picks-view .sec-final-team-copy>strong{
+ max-width:100%;min-width:0;
+ white-space:normal;overflow-wrap:anywhere;word-break:normal
+}
+#picks-view .game-card.sec-final-card .sec-final-details>summary{
+ min-height:44px;padding:7px 8px
+}
 #picks-view .sec-final-details>summary{
  min-height:44px;border-radius:10px
 }
@@ -481,6 +498,14 @@ main{max-width:1240px;margin-inline:auto}
  #league-view .fan-standings-row{min-height:44px}
 }
 @media(max-width:390px){
+ #picks-view .game-card.sec-final-card{padding:7px 8px}
+ #picks-view .game-card.sec-final-card .sec-final-teams{gap:5px}
+ #picks-view .game-card.sec-final-card .sec-final-team{
+  min-height:57px;padding:4px;gap:3px
+ }
+ #picks-view .sec-final-team .mini-logo{width:25px;height:25px}
+ #picks-view .sec-final-team-copy>strong{font-size:10px;line-height:1.1}
+ #picks-view .sec-final-team-end>b{font-size:22px}
  #sec-home-root .hq-hero-copy h2{font-size:23px}
  #picks-view .game-card .team-choices{grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr);gap:5px}
  #picks-view .game-card .team-choice{min-height:68px;padding:6px 4px}
