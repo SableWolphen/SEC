@@ -1,18 +1,32 @@
 {
-  "updated_at": "2026-10-13T02:06:10.437005Z",
-  "checked_at": "2026-10-13T02:06:10.437005Z",
+  "updated_at": "2026-10-13T09:28:46.279580Z",
+  "checked_at": "2026-10-13T09:28:46.279580Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "e009835f3c7dd6ff",
+      "title": "Texas A&M coach Elko says he regrets 'cesspool' comments",
+      "summary": "Mike Elko said his viral remark after the Aggies' loss to Missouri was made in the heat of the moment.",
+      "url": "https://www.espn.com/college-football/story/_/id/50168753/texas-coach-mike-elko-regrets-cesspool-comments",
+      "source": "ESPN",
+      "published_at": "2026-10-13T04:21:45Z",
+      "sport": "football",
+      "teams": [
+        "Missouri",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
       "id": "978cd3457c970aca",
       "title": "Sources: Mississippi State star QB Kamario Taylor's status vs. LSU uncertain",
       "summary": "No. 16 Mississippi State star quarterback Kamario Taylor's status for Saturday's game at No. 22 LSU is in flux as he deals with a foot injury.",
       "url": "https://www.espn.com/college-football/story/_/id/50170516/sources-miss-state-star-qb-taylor-status-vs-lsu-uncertain",
       "source": "ESPN",
-      "published_at": "2026-10-13T01:56:56Z",
+      "published_at": "2026-10-13T02:15:34Z",
       "sport": "football",
       "teams": [
         "LSU",
@@ -100,20 +114,6 @@
       "teams": [
         "Florida",
         "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e009835f3c7dd6ff",
-      "title": "Texas A&M coach Elko says he regrets 'cesspool' comments",
-      "summary": "Mike Elko said his viral remark after the Aggies' loss to Missouri was made in the heat of the moment.",
-      "url": "https://www.espn.com/college-football/story/_/id/50168753/texas-coach-mike-elko-regrets-cesspool-comments",
-      "source": "ESPN",
-      "published_at": "2026-10-12T22:16:38Z",
-      "sport": "football",
-      "teams": [
-        "Missouri",
-        "Texas A&M"
       ],
       "breaking": false
     },
