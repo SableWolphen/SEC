@@ -14,7 +14,7 @@ const now=()=>Date.now();
 const cache=new Map();
 const waiting=new Map();
 const escape=s=>String(s??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
-const n=v=>Number.isInteger(Number(v))&&Number(v)>=0?Number(v):null;
+const n=v=>v!==null&&v!==undefined&&v!==""&&Number.isInteger(Number(v))&&Number(v)>=0?Number(v):null;
 const name=code=>W.SEC_PRIDE?.names?.[code]||String(code||"Unknown");
 function football(item){
  return item?.kind==="football" || item?.kind==="club"&&item.sports?.includes("football");
@@ -215,4 +215,6 @@ D.addEventListener("click",event=>{
  }
 });
 W.SEC_GAME_IMPACT=Object.freeze({decorate,onLeague,eligible});
+if(app()?.view?.()==="picks")decorate();
+if(app()?.view?.()==="league")onLeague();
 })();
