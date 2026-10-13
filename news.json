@@ -1,11 +1,149 @@
 {
-  "updated_at": "2026-10-12T20:18:53.120619Z",
-  "checked_at": "2026-10-12T20:18:53.120619Z",
+  "updated_at": "2026-10-13T02:06:10.437005Z",
+  "checked_at": "2026-10-13T02:06:10.437005Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "978cd3457c970aca",
+      "title": "Sources: Mississippi State star QB Kamario Taylor's status vs. LSU uncertain",
+      "summary": "No. 16 Mississippi State star quarterback Kamario Taylor's status for Saturday's game at No. 22 LSU is in flux as he deals with a foot injury.",
+      "url": "https://www.espn.com/college-football/story/_/id/50170516/sources-miss-state-star-qb-taylor-status-vs-lsu-uncertain",
+      "source": "ESPN",
+      "published_at": "2026-10-13T01:56:56Z",
+      "sport": "football",
+      "teams": [
+        "LSU",
+        "Mississippi State"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "fc2ac057a5d15be9",
+      "title": "Will Stein details how Kentucky countered LSU's defense",
+      "summary": "Coming off an upset win over the Tigers in overtime, Stein joins Read & React and explains the mindset in beating LSU's defensive strategies and the excitement after.",
+      "url": "https://www.espn.com/video/clip/_/id/50169874/will-stein-details-how-kentucky-countered-lsu-defense",
+      "source": "ESPN",
+      "published_at": "2026-10-13T00:10:26Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6ffcffa4bdb9a438",
+      "title": "Read & React crew analyzes Oklahoma's offense, Texas performance",
+      "summary": "Roman Harper and Cole Cubelic dive into some offensive actions that lifted the Sooners to a win over Texas, and acknowledge plays that hindered the Longhorns.",
+      "url": "https://www.espn.com/video/clip/_/id/50169811/read-react-crew-analyzes-oklahoma-offense-texas-performance",
+      "source": "ESPN",
+      "published_at": "2026-10-13T00:06:19Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1a37c6c9f232e25a",
+      "title": "Analyzing how key plays shaped Georgia's win vs. Alabama",
+      "summary": "Read & React's Cole Cubelic and Roman Harper examine how the creativity of the Crimson Tide's pass protections and the Bulldogs' timely defensive calls shaped the outcome of the game.",
+      "url": "https://www.espn.com/video/clip/_/id/50169794/analyzing-how-key-plays-shaped-georgia-win-vs-alabama",
+      "source": "ESPN",
+      "published_at": "2026-10-12T23:57:27Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "85fc0ee80ac0c1ee",
+      "title": "Harper, Cubelic breakdown impressive Mizzou film clips",
+      "summary": "Read & React's Roman Harper and Cole Cubelic takes us into the film room, analyzing how No. 13 Missouri uses the pass to set up the run game.",
+      "url": "https://www.espn.com/video/clip/_/id/50169570/harper-cubelic-breakdown-impressive-mizzou-film-clips",
+      "source": "ESPN",
+      "published_at": "2026-10-12T23:33:08Z",
+      "sport": "football",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e7a9b8327fee9559",
+      "title": "Roman Harper on South Carolina vs. UF: 'Everybody was on the same page'",
+      "summary": "Read & React's Harper dissects how communication and connected play were key aspects in the Gamecocks going to The Swamp and upsetting the Gators.",
+      "url": "https://www.espn.com/video/clip/_/id/50169622/everybody-was-same-page",
+      "source": "ESPN",
+      "published_at": "2026-10-12T23:30:30Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "84b2727be3b1b3d5",
+      "title": "Cole Cubelic analyzes South Carolina improvements, advises Florida",
+      "summary": "Cubelic dives into one of the biggest upsets of Week 6 in South Carolina's win over Florida on The Paul Finebaum Show.",
+      "url": "https://www.espn.com/video/clip/_/id/50169334/cole-cubelic-analyzes-south-carolina-improvements-advises-florida",
+      "source": "ESPN",
+      "published_at": "2026-10-12T22:36:53Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e009835f3c7dd6ff",
+      "title": "Texas A&M coach Elko says he regrets 'cesspool' comments",
+      "summary": "Mike Elko said his viral remark after the Aggies' loss to Missouri was made in the heat of the moment.",
+      "url": "https://www.espn.com/college-football/story/_/id/50168753/texas-coach-mike-elko-regrets-cesspool-comments",
+      "source": "ESPN",
+      "published_at": "2026-10-12T22:16:38Z",
+      "sport": "football",
+      "teams": [
+        "Missouri",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c8a609e6c15ff610",
+      "title": "Sumrall focuses on Gators' balance, Texas QB Manning misconception",
+      "summary": "Jon Sumrall speaks on his part in keeping Florida level-headed through the season's ebbs and flows, and shares his thoughts on an overlooked trait in Arch Manning.",
+      "url": "https://www.espn.com/video/clip/_/id/50168872/sumrall-focuses-gators-balance-texas-qb-manning-misconception",
+      "source": "ESPN",
+      "published_at": "2026-10-12T21:39:25Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4a7ba3688b9e55e0",
+      "title": "RB CJ Baxter reveals what makes No. 15 Kentucky, Stein special",
+      "summary": "Baxter emphatically talks about the Wildcats preparation process, and the \"swagger\" of Will Stein as UK looks to build on winning back-to-back OT thillers.",
+      "url": "https://www.espn.com/video/clip/_/id/50168699/rb-cj-baxter-reveals-makes-no-15-kentucky-stein-special",
+      "source": "ESPN",
+      "published_at": "2026-10-12T21:06:11Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
     {
       "id": "77f974153d3ea0a8",
       "title": "QB Gunner Stockton attributes his accuracy to O-Line, skills group",
