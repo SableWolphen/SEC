@@ -764,6 +764,8 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   const priorTop=priorCard?.getBoundingClientRect?.().top;
   const beforeOpen=new Set([...list.querySelectorAll('.game-card[data-game-id]')].filter(
     card=>card.querySelector('.secnext-intelligence[open]')).map(card=>card.dataset.gameId));
+  const priorImpactOpen=new Set([...list.querySelectorAll('.game-card[data-game-id]')].filter(
+    card=>card.querySelector('.sec-impact[open]')).map(card=>card.dataset.gameId));
   const focusedFilter=previousFocus?.matches?.('[data-slate-filter]')?
     previousFocus.dataset.slateFilter:null;
   const w=week();renderHeader();renderWeekPicker();
@@ -812,6 +814,11 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   renderWeeklyScoreStrip(w);
   window.SEC_NEXT?.onPicks?.();
   window.SEC_GAME_IMPACT?.decorate?.();
+  for(const card of list.querySelectorAll('.game-card[data-game-id]')){
+    if(priorImpactOpen.has(card.dataset.gameId)){
+      const details=card.querySelector('.sec-impact');if(details)details.open=true;
+    }
+  }
   window.SEC_PLAYS?.hydrate?.(document.getElementById("games-list"));
   for(const card of list.querySelectorAll('.game-card[data-game-id]')){
     if(beforeOpen.has(card.dataset.gameId)){
