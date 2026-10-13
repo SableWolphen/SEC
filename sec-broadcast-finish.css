@@ -1,0 +1,490 @@
+/*
+ SATURDAYS DOWN SOUTH — BROADCAST FINISH
+ Final presentation layer for Home, Games, Game Center, League, Trophies, More.
+ This is a controlled visual pass only: no changes to winning, locking or scoring.
+*/
+:root{
+ --broadcast-night:#081624;
+ --broadcast-surface:#10253a;
+ --broadcast-surface-up:#172f46;
+ --broadcast-stroke:#344c62;
+ --broadcast-text:#f7f8fa;
+ --broadcast-muted:#b2c6d5;
+ --broadcast-accent:#efc77f;
+ --broadcast-red:#ff9a9e;
+ --broadcast-green:#9fdfbe;
+ --broadcast-radius:14px;
+}
+html{scrollbar-color:#456077 #0b1b2a}
+body{background:#081624;color:var(--broadcast-text)}
+main{max-width:1240px;margin-inline:auto}
+.view{min-width:0}
+.view .page-intro h1{font-weight:850;letter-spacing:-1.2px}
+.view .page-intro em{color:#f1cb83}
+:where(.view) :is(button,a,summary):focus-visible{
+ outline:2px solid #ffdfa0;outline-offset:3px
+}
+/* An app should have one visual scale: radius 14, hairline dividers, subtle depth. */
+:where(.game-card,.sport-game-card,.hq-panel,.sdsx-section,.fan-panel,
+ .fan-fold,.secnext-fold,.museum-section,.sec-access-row){
+ box-shadow:none;border-radius:var(--broadcast-radius);
+}
+:where(.game-card,.sport-game-card,.hq-panel,.sdsx-section,.fan-panel,
+ .fan-fold,.secnext-fold,.museum-section){
+ border-color:var(--broadcast-stroke);
+}
+:where(.hq-panel,.game-card,.sport-game-card,.sec-access-row,
+ .museum-champ,.sdsx-section,.fan-panel){
+ box-shadow:inset 0 1px 0 #ffffff08;
+}
+/* Screen header, input and bottom dock */
+.site-header{box-shadow:none;border-color:#334a6080}
+.brand-mark{background:#f0c775;color:#122337;border-color:#edc77f;box-shadow:none}
+.brand-title{letter-spacing:-.25px}
+#sec-access-trigger{background:#142b40;color:#f1c985;border-color:#3a566f}
+.profile-chip{border-color:#405a70;background:#183249}
+.bottom-nav .mobile-nav-btn svg{
+ width:21px;height:21px;stroke-width:1.85;
+ stroke-linecap:round;stroke-linejoin:round
+}
+.bottom-nav .mobile-nav-btn.active{color:#f5d597}
+.bottom-nav .mobile-nav-btn.active svg{stroke-width:2}
+.bottom-nav .mobile-nav-btn:active{transform:scale(.96)}
+/* HOME — remove duplicate page intro: the real data-backed title is below. */
+#home-view>.eyebrow{display:none}
+#home-view>.page-intro{
+ position:absolute!important;width:1px!important;height:1px!important;
+ padding:0!important;margin:-1px!important;overflow:hidden!important;
+ clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;
+}
+#sec-home-root{row-gap:11px}
+#sec-home-root>.hq-stadium-hero{
+ border:1px solid #3b5670;border-radius:17px;
+ background:#112941;box-shadow:none;
+}
+#sec-home-root .hq-stadium-hero:before{
+ background:linear-gradient(110deg,#0a1e31f0,#17364bdd 55%,#0d2135f4),
+ url("./home-stadium.svg") center/cover;
+ opacity:1
+}
+#sec-home-root .hq-hero-copy .hq-eyebrow{
+ color:#b5cada;font-weight:850;letter-spacing:.85px
+}
+#sec-home-root .hq-hero-copy h2{
+ font-family:Inter,ui-sans-serif,system-ui,sans-serif!important;
+ color:#fff;font-weight:900;letter-spacing:-1.2px;text-shadow:none;
+}
+#sec-home-root .hq-hero-copy h2 em{color:#f4d18e;font-style:normal}
+#sec-home-root .hq-hero-buttons .hq-primary,
+#sec-home-root .hq-panel .hq-primary{
+ display:flex;align-items:center;justify-content:center;
+ min-height:46px;border-radius:11px;
+ border:1px solid #f3d594;background:#f2cd89;color:#102538;
+ box-shadow:none;font-weight:900;
+}
+#sec-home-root .hq-hero-buttons .hq-primary:hover,
+#sec-home-root .hq-panel .hq-primary:hover{
+ background:#ffe0a0;border-color:#ffe0a0
+}
+#sec-home-root .sds-home-favorite-mini{
+ border:1px solid #456178;background:#112c43eb;
+ border-radius:12px;box-shadow:none
+}
+#sec-home-root .sds-home-favorite-mini .sdsx-crest{
+ border-radius:10px;box-shadow:none
+}
+#sec-home-root .hq-app-metric{
+ border-radius:13px;border:1px solid #34536a;
+ background:#10263b;box-shadow:none
+}
+#sec-home-root .hq-app-metric span{color:#aabfd1}
+#sec-home-root .hq-app-metric strong{
+ color:#f6f7f9;font-weight:900;letter-spacing:-.6px
+}
+#sec-home-root .hq-app-metric:first-child strong{color:#f4d18e}
+#sec-home-root .hq-games,#sec-home-root .hq-league{
+ border:1px solid #39566d;background:#10273b;
+ border-radius:15px;box-shadow:none
+}
+#sec-home-root .hq-panel-header{
+ border-bottom:1px solid #385269;padding-bottom:9px
+}
+#sec-home-root .hq-panel-header span:first-child{
+ color:#c4d4e0;letter-spacing:.8px;font-weight:900
+}
+#sec-home-root .hq-panel h3{font-weight:875;letter-spacing:-.35px}
+#sec-home-root .hq-panel-sub{color:#aabdc9;font-size:11px;line-height:1.45}
+#sec-home-root .hq-games-list{display:grid;gap:8px}
+#sec-home-root .hq-matchup{
+ border:1px solid #3a576d;border-radius:12px;
+ background:#152b40;padding:12px;min-width:0;box-shadow:none
+}
+#sec-home-root .hq-matchup[data-game-state="live"]{
+ background:#152f3b;border-color:#508074
+}
+#sec-home-root .hq-matchup[data-game-state="final"]{background:#122c38}
+#sec-home-root .hq-matchup-head{
+ display:flex;align-items:center;justify-content:space-between;gap:8px;
+ margin-bottom:9px
+}
+#sec-home-root .hq-matchup .hq-status{
+ display:inline-flex;align-items:center;gap:5px;
+ border-radius:999px;padding:5px 8px;border:1px solid #547085;
+ background:#18364a;font-size:10px;letter-spacing:.35px
+}
+#sec-home-root .hq-matchup .hq-status.live{
+ color:#ffb5b6;background:#432a37;border-color:#895668
+}
+#sec-home-root .hq-matchup .hq-time{font-size:10px;color:#c1d0dc}
+#sec-home-root .hq-matchup-body{gap:7px;align-items:center}
+#sec-home-root .hq-matchup-team{min-width:0;gap:5px}
+#sec-home-root .hq-matchup-team>.mini-logo{
+ width:40px;height:40px;min-width:40px;
+ border-radius:12px;background:#0d2031
+}
+#sec-home-root .hq-matchup-team strong{font-size:12px;line-height:1.2}
+#sec-home-root .hq-game-score{
+ font-size:clamp(18px,2.2vw,28px);
+ font-weight:900;letter-spacing:-.65px;
+ font-variant-numeric:tabular-nums;color:#fbfcfd
+}
+#sec-home-root .hq-game-score.muted{font-size:18px;color:#90aabd}
+#sec-home-root .hq-games .hq-secondary,
+#sec-home-root .hq-league .hq-secondary{
+ display:flex;align-items:center;justify-content:center;
+ background:#1a364b;border:1px solid #45667e;
+ color:#f4d498;border-radius:10px;
+ min-height:44px;font-size:12px;box-shadow:none
+}
+#sec-home-root .hq-games .hq-secondary:hover,
+#sec-home-root .hq-league .hq-secondary:hover{
+ background:#234357;border-color:#e5c484
+}
+#sec-home-root .hq-league .hq-standings-row{
+ color:#ecf2f6;background:transparent;border-radius:8px
+}
+#sec-home-root .hq-league .hq-standings-row.mine{
+ color:#ffe0a0;background:#dbb36218;border:1px solid #ab895052
+}
+#sec-home-root .hq-league .hq-standing-name{font-weight:650}
+#sec-home-root .hq-league .hq-rank{
+ font-weight:950;font-variant-numeric:tabular-nums;color:#a9c0cf
+}
+#sec-home-root .hq-league .hq-standings-row.mine .hq-rank{color:#eecb87}
+/* GAMES — teams and action first; status and source second. */
+#picks-view .page-intro h1{font-size:clamp(30px,3.9vw,39px)}
+#picks-view .page-intro p{color:#a8c0cf;font-size:12px}
+#picks-view .global-sport-switch,
+#picks-view .week-picker{box-shadow:none}
+#picks-view .global-sport-button{border-radius:10px}
+#picks-view .global-sport-button.active{
+ background:#efc982!important;color:#132739!important
+}
+#picks-view .weekly-score-strip{
+ background:#12283d;border-color:#3b5369;
+ border-radius:13px;box-shadow:none
+}
+#picks-view .week-score-primary strong{
+ color:#f8d99a;font-weight:900;font-variant-numeric:tabular-nums
+}
+#picks-view .slate-pick-tools{
+ padding:6px;border-radius:12px;
+ background:#0c2135;border:1px solid #334d65
+}
+#picks-view .slate-filter{
+ border:1px solid transparent;background:#163046;
+ color:#b6cbd9;border-radius:9px;font-weight:800
+}
+#picks-view .slate-filter.active{
+ background:#f2cc88;color:#102439;border-color:#f2cc88
+}
+#picks-view .secnext-picks-bar{
+ border:1px solid #54768a;border-radius:12px;
+ background:#142d42;box-shadow:none
+}
+#picks-view .secnext-picks-bar>div>strong{color:#fff}
+#picks-view .secnext-picks-bar>div>small{color:#bfceda}
+#picks-view .secnext-picks-bar button{
+ background:#f1ce89;color:#122537;border-radius:9px;
+ border-color:#f1ce89;min-height:44px;font-weight:900
+}
+#picks-view .section-title-row h2{font-size:19px;font-weight:900}
+#picks-view .game-card{
+ border:1px solid #3a5469;border-radius:14px;
+ background:#10273c;box-shadow:inset 0 1px 0 #ffffff09;
+ padding:13px;min-width:0;overflow:hidden
+}
+#picks-view .game-card .game-header{
+ display:flex;align-items:center;justify-content:space-between;gap:9px;
+ padding-bottom:9px;border-bottom:1px solid #2c4357;margin-bottom:12px
+}
+#picks-view .game-card .game-index{
+ color:#c1ced9;font-size:10px;letter-spacing:.85px;font-weight:900
+}
+#picks-view .game-card .game-meta{font-size:10px;color:#aabecb}
+#picks-view .game-card .team-choices{
+ display:grid;grid-template-columns:minmax(0,1fr) 25px minmax(0,1fr);
+ gap:8px;align-items:stretch
+}
+#picks-view .game-card .team-choice{
+ min-height:78px;display:flex;align-items:center;justify-content:center;
+ border-radius:12px;background:#172f45;
+ border:1px solid #425c73;padding:10px 7px
+}
+#picks-view .game-card .team-choice.selected{
+ background:#403a2d;border-color:#e7c180;
+ box-shadow:inset 0 0 0 1px #f1ca7d40
+}
+#picks-view .game-card .team-choice:disabled{
+ opacity:.72;cursor:not-allowed
+}
+#picks-view .game-card .team-choice .mini-logo{
+ width:39px;height:39px;min-width:39px;object-fit:contain
+}
+#picks-view .game-card .versus{
+ color:#849cae;letter-spacing:.3px;font-size:10px
+}
+#picks-view .game-card .game-note{
+ display:flex;align-items:center;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;margin-top:11px;
+ color:#cad9e3;font-size:11px;line-height:1.35
+}
+#picks-view .sec-games-active-card.is-live{
+ background:#122b3c;border-color:#527e78
+}
+#picks-view .sec-games-active-top{
+ margin-bottom:10px;border-bottom:1px solid #395465
+}
+#picks-view .sec-games-active-card .fan-center>summary{
+ background:#152e42;border-color:#496b7c;
+ border-radius:12px;box-shadow:none
+}
+#picks-view .sec-games-active-foot{font-size:11px}
+#picks-view .sec-games-active-foot button{
+ border-radius:9px;background:#1f3b52;border-color:#4d7084
+}
+#picks-view .sec-final-card{border-color:#426172;background:#0f2939}
+#picks-view .sec-final-teams{gap:7px}
+#picks-view .sec-final-team{
+ background:#162c40;border-radius:12px;
+ border:1px solid #3d596f;min-width:0
+}
+#picks-view .sec-final-team.is-winner{
+ border-color:#608f76;background:#173c36;box-shadow:none
+}
+#picks-view .sec-final-team-end>b{font-size:clamp(23px,3.2vw,32px);font-weight:950}
+#picks-view .sec-final-team.is-winner .sec-final-team-end>b{color:#a8e5c0}
+#picks-view .sec-final-details>summary{
+ min-height:44px;border-radius:10px
+}
+#picks-view .sec-final-card .sec-final-winner-label{background:#92d9b0;color:#113524}
+#picks-view .sec-final-card .sec-pbp-panel{background:#132c40}
+#picks-view .game-card .lock-tag{font-size:10px}
+/* Game Center: broadcast scoreboard and football field remain the hero. */
+#game-center-view .sdsx-score-hero{
+ background:#112c42;border:1px solid #4a677b;border-radius:16px;
+ box-shadow:none;padding:17px
+}
+#game-center-view .sdsx-center-score strong{
+ font-size:clamp(29px,5vw,48px);font-variant-numeric:tabular-nums;
+ letter-spacing:-1.5px;font-weight:950
+}
+#game-center-view .sdsx-score-top{letter-spacing:.2px}
+#game-center-view .sdsx-score-fresh{font-size:10px;color:#b7cad8}
+#game-center-view .sdsx-tabs{
+ position:sticky;top:69px;z-index:10;background:#0c2134;
+ border:1px solid #3d576c;border-radius:12px;
+ padding:5px;box-shadow:0 6px 20px #07111e99
+}
+#game-center-view .sdsx-tabs button{
+ min-height:44px;border-radius:9px;font-weight:900
+}
+#game-center-view .sdsx-tabs button.active{
+ background:#f1cd87;color:#102539
+}
+#game-center-view .sdsx-section{
+ border:1px solid #3d596e;border-radius:14px;
+ background:#11283c;padding:14px;box-shadow:none
+}
+#game-center-view .sdsx-section-head h3{
+ color:#f3d391;font-size:12px;letter-spacing:.7px
+}
+#game-center-view .sdsx-field{
+ border:1px solid #4f866f;border-radius:11px;
+ background:linear-gradient(90deg,#12482e,#1b5b38)
+}
+#game-center-view .sdsx-play-call{
+ border-left:3px solid #e9c889;background:#122f41;border-radius:7px
+}
+#game-center-view .sec-pbp-panel{
+ border:1px solid #45677a;background:#102c40;border-radius:12px
+}
+/* League: compact scoreboard, highlight person, let rivalry tools recede. */
+#league-view #fan-league-tabs{
+ background:#0e2438;border:1px solid #3b5369;
+ padding:5px;border-radius:12px
+}
+#league-view #fan-league-tabs [role=tab]{
+ min-height:44px;border-radius:9px;
+ color:#becfdd;font-size:12px;font-weight:800
+}
+#league-view #fan-league-tabs [role=tab][aria-selected=true]{
+ background:#f0c77f!important;border-color:#f0c77f;color:#102339!important
+}
+#league-view :is(.fan-panel,.fan-fold,.fan-league-card,.fan-league-picker,
+ .fan-league-rankings,.fan-standings,.brag-showcase-section){
+ background:#10273b;border:1px solid #3b546b;
+ border-radius:14px;box-shadow:none
+}
+#league-view :is(.fan-standings-row,.fan-row,.fan-leader-row,
+ .fan-league-row,.fan-power-row){
+ min-height:44px;padding-block:9px;
+ border-bottom:1px solid #30495c;background:transparent;
+ font-variant-numeric:tabular-nums
+}
+#league-view :is(.fan-standings-row.mine,.fan-row.mine,
+ .fan-league-row.mine,.fan-power-row.mine){
+ background:#dbb36e1c;border-color:#9b7f50;
+ border-radius:9px
+}
+#league-view .secnext-fold{margin-block:9px}
+#league-view .secnext-fold>summary{
+ min-height:46px;color:#e8d4ae;
+ font-size:12px;font-weight:850
+}
+/* Trophy Room: quiet glass cabinet with actual detailed trophy art. */
+#sds-trophy-case.sds-museum{
+ background:#0c1c2d;border:1px solid #344f65;
+ border-radius:17px;box-shadow:none
+}
+#sds-trophy-case .museum-brand h2{
+ color:#f6d894;font-size:clamp(24px,3.6vw,32px);
+ font-weight:920
+}
+#sds-trophy-case .museum-section{
+ background:#112739;border:1px solid #3b536b;
+ border-radius:15px;box-shadow:none
+}
+#sds-trophy-case .museum-champ{
+ border:1px solid #3d586f;border-radius:14px;
+ background:#12283d;overflow:hidden;box-shadow:none
+}
+#sds-trophy-case .museum-art{
+ height:187px;background:
+ radial-gradient(circle at 50% 40%,#b38b5559,transparent 52%),
+ linear-gradient(180deg,#24384d,#112338 76%);
+ border-bottom:1px solid #3b566f
+}
+#sds-trophy-case .museum-art:before{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(115deg,#ffffff0d,transparent 34%,#ffffff08 62%,transparent);
+ opacity:.7
+}
+#sds-trophy-case .museum-trophy-svg{
+ max-width:175px;filter:drop-shadow(0 9px 12px #0009)
+}
+#sds-trophy-case .museum-champ.locked .museum-trophy-svg{
+ opacity:.65;filter:grayscale(.72) brightness(.85)
+}
+#sds-trophy-case .museum-caption{
+ background:#13293e;padding:11px 9px 12px;text-align:center
+}
+#sds-trophy-case .museum-caption strong{font-size:13px}
+#sds-trophy-case .museum-status{
+ border:1px solid #4a6170;border-radius:9px;
+ background:#213347;min-height:35px
+}
+#sds-trophy-case .museum-status.earned{
+ background:#17392b;color:#b7ebc3;border-color:#42765b
+}
+#sds-trophy-case .museum-lock{background:#16283b;border-color:#657584}
+#sds-trophy-case .museum-medal{
+ background:#1a3044;border-color:#435d73
+}
+/* More/Search: local SVG icons, no platform-dependent mixed emoji. */
+#more-view .sec-access-more-top{
+ background:#142e45;border:1px solid #44627a;
+ border-radius:15px
+}
+#more-view .sec-access-more-top strong{font-size:19px;letter-spacing:-.5px}
+#more-view .sec-access-more-search{
+ background:#eec781;color:#12263a;border-radius:10px
+}
+#more-view .sec-access-shortcuts{border-color:#364e61}
+#more-view .sec-access-pin-grid{gap:8px}
+#more-view .sec-access-pin-grid button{
+ display:flex;align-items:center;gap:8px;
+ min-height:46px;border-radius:11px;
+ border:1px solid #446077;background:#152e44;color:#eaf1f6
+}
+#more-view .sec-access-pin-grid button svg{width:19px;height:19px;color:#f0c87e}
+#more-view .sec-access-group h2{
+ font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#bdccda
+}
+#more-view .sec-access-row{
+ border:1px solid #365369;background:#10283c;
+ border-radius:12px
+}
+#more-view .sec-access-link{
+ display:flex;min-height:66px;align-items:center;padding:10px;
+}
+#more-view .sec-access-icon,.sec-access-dialog .sec-access-icon{
+ display:grid;place-items:center;width:40px;height:40px;
+ border-radius:11px;background:#19394f;color:#f0cf92
+}
+#more-view .sec-access-icon svg,.sec-access-dialog .sec-access-icon svg{
+ width:20px;height:20px;stroke-width:1.8;flex:none
+}
+#more-view .sec-access-copy strong{font-size:12px;font-weight:900}
+#more-view .sec-access-copy small{font-size:10px;color:#aec2d2}
+#more-view .sec-access-pin{min-width:42px;color:#b6c4d1}
+#more-view .sec-access-pin.is-pinned{color:#f1d28f}
+.sec-access-dialog{background:#0d2235;border:1px solid #567187}
+.sec-access-dialog #sec-access-search{border-color:#46667c}
+.sec-access-dialog .sec-access-row{background:#122b40}
+/* These properties are intentionally universal across desktop + Android. */
+@media(max-width:790px){
+ body{background:#081624}
+ main{padding-top:11px}
+ #sec-home-root{gap:10px}
+ #sec-home-root>.hq-stadium-hero{
+  min-height:0;padding:13px;border-radius:15px
+ }
+ #sec-home-root .hq-hero-copy h2{font-size:25px}
+ #sec-home-root .hq-hero-buttons{margin-top:8px}
+ #sec-home-root .hq-app-metric{padding:10px 8px;border-radius:11px}
+ #sec-home-root .hq-app-metric>span{font-size:9px}
+ #sec-home-root .hq-app-metric strong{font-size:24px}
+ #sec-home-root .hq-league .hq-standings-row{min-height:40px}
+ #sec-home-root .hq-games .hq-matchup{padding:11px}
+ #sec-home-root .hq-matchup-team>.mini-logo{width:34px;height:34px;min-width:34px}
+ #sec-home-root .hq-game-score{font-size:20px}
+ #picks-view .game-card{padding:11px}
+ #picks-view .game-card .team-choice{min-height:71px;padding:8px 5px}
+ #picks-view .game-card .team-choice .mini-logo{width:33px;height:33px;min-width:33px}
+ #picks-view .slate-filter{min-height:43px}
+ #picks-view .game-card .game-header{margin-bottom:9px}
+ #game-center-view .sdsx-tabs{top:62px}
+ #game-center-view .sdsx-score-hero{padding:13px}
+ #game-center-view .sdsx-section{padding:12px}
+ #sds-trophy-case .museum-art{height:154px}
+ #sds-trophy-case .museum-caption{padding:10px 8px}
+ #league-view .fan-standings-row{min-height:44px}
+}
+@media(max-width:390px){
+ #sec-home-root .hq-hero-copy h2{font-size:23px}
+ #picks-view .game-card .team-choices{grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr);gap:5px}
+ #picks-view .game-card .team-choice{min-height:68px;padding:6px 4px}
+ #picks-view .sec-final-team{padding:6px;gap:5px}
+ #picks-view .game-meta{font-size:9px}
+ #sds-trophy-case .museum-art{height:132px}
+ #sds-trophy-case .museum-trophy-svg{max-width:130px}
+ #game-center-view .sdsx-center-score strong{font-size:26px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important}
+ :is(.bottom-nav .mobile-nav-btn,.game-card,.sport-game-card,
+ .sec-access-link,.hq-panel,.museum-champ,.sdsx-section){
+  transition:none!important;animation:none!important;transform:none!important
+ }
+}
