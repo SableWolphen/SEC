@@ -1,11 +1,24 @@
 {
-  "updated_at": "2026-10-13T09:28:46.279580Z",
-  "checked_at": "2026-10-13T09:28:46.279580Z",
+  "updated_at": "2026-10-13T17:37:10.327407Z",
+  "checked_at": "2026-10-13T17:37:10.327407Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "7059b27fec62d4d3",
+      "title": "Looking at the Heisman and CFP odds: The case for Iowa, Kentucky, UCLA and USC",
+      "summary": "Let's break down the odds boards for the CFP and Heisman races after Week 6.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50169256/college-football-playoff-heisman-odds-favorites-week-6-2026",
+      "source": "ESPN",
+      "published_at": "2026-10-13T10:38:54Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
     {
       "id": "e009835f3c7dd6ff",
       "title": "Texas A&M coach Elko says he regrets 'cesspool' comments",
