@@ -19,6 +19,7 @@ function el(){
   dataset:{},className:"",innerHTML:"",isConnected:true,
   children:[],style:{},open:false,
   querySelector(selector){return selector===".sec-impact-body"?this.impactBody:null;},
+  matches(selector){return selector===".sec-impact"&&this.className==="sec-impact";},
   setAttribute(){},append(...x){this.children.push(...x);},
   appendChild(x){this.children.push(x);if(x.className==="sec-impact"){fold=x;fold.impactBody=el();}},
   replaceChildren(...x){this.children=x;}
