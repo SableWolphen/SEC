@@ -27,3 +27,8 @@
 .sec-games-active-foot .sec-impact{flex-basis:100%;width:100%}
 @media(max-width:410px){.sec-impact-stats{gap:.45rem}.sec-impact-stats strong{font-size:1.16rem}.sec-impact-league{padding:.82rem}.sec-impact-actions button{flex:1}}
 @media(prefers-reduced-motion:reduce){.sec-impact *{scroll-behavior:auto}}
+
+.sec-impact-reminder{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin:.45rem 0 .8rem;padding:.65rem .82rem;background:#122a40;border:1px solid rgba(241,191,104,.22);border-radius:11px;color:#cbdce9}
+.sec-impact-reminder button{background:#263e54;border:1px solid #f1bf6880;border-radius:9px;min-height:44px;padding:.55rem .75rem;color:#f2d6a4;font:inherit;font-size:.84rem;font-weight:750;cursor:pointer}
+.sec-impact-reminder button:focus-visible{outline:3px solid #f1bf68;outline-offset:2px}
+.sec-impact-reminder small{color:#bbcad9;font-size:.74rem;line-height:1.35;flex:1;min-width:170px}
