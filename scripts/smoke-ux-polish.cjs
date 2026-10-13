@@ -17,7 +17,7 @@ assert.match(home,/data-hq-route="team-hub">Team Hub/);
 assert.match(home,/data-hq-route="teams" class="hq-hero-alt school-picker"/);
 assert.match(premium,/data-sdsx-team-tab="schedule" class="sdsx-gold-button"/);
 assert.match(premium,/\["overview","Overview"\],\["schedule","Schedule"\],\["stats","Stats"\],\["news","News"\]/);
-assert.match(sw,/sec-pickem-v110/);
+assert.match(sw,/sec-pickem-v111/);
 assert.match(html,/sds-showcase\.css\?v=20261011-unified-v2/);
 assert.match(sw,/sds-showcase\.css\?v=20261011-unified-v2/);
 console.log("SDS unified UI: 15 screens, real data preserved, school colors, mobile, keyboard, PWA PASS");

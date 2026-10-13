@@ -44,6 +44,6 @@ assert.match(html,/sec-access\.js\?v=20261012-access-v1/);
 assert.match(html,/sec-access\.css\?v=20261012-access-v1/);
 assert.match(css,/@media\(max-width:540px\)/);
 assert.match(css,/:focus-visible/);
-assert.match(sw,/sec-pickem-v110/);
+assert.match(sw,/sec-pickem-v111/);
 assert.match(sw,/sec-access\.js\?v=20261012-access-v1/);
 console.log("Find Anything: 21 destinations, deep-link routing, mobile access, discoverability and PWA PASS");

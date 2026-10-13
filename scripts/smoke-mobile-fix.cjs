@@ -18,7 +18,7 @@ assert.match(css,/backdrop-filter:none/,"tab bar is opaque, not see-through");
 assert.match(css,/padding:12px 0 calc\(92px \+ env\(safe-area-inset-bottom\)\)/);
 assert.match(html,/sec-mobile-fix.css\?v=20261012-mobile-v1/);
 assert.match(sw,/sec-mobile-fix.css\?v=20261012-mobile-v1/);
-assert.match(sw,/sec-pickem-v110/);
+assert.match(sw,/sec-pickem-v111/);
 assert.match(home,/hq-hero-summary/);
 assert.match(app,/#sec-home-root>.hq-app-metrics/);
 assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length);

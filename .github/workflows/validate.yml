@@ -101,6 +101,8 @@ jobs:
           node scripts/smoke-mobile-fix.cjs
           node --check scripts/smoke-context-ux.cjs
           node scripts/smoke-context-ux.cjs
+          node --check sec-access.js
+          node scripts/smoke-broadcast.cjs
           node --check sec-premium.js
           node --check scripts/smoke-premium.cjs
           node scripts/smoke-premium.cjs

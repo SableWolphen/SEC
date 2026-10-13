@@ -26,7 +26,7 @@ assert.ok(css.includes("#sec-home-root .hq-mobile-expand"),"secondary Home panel
 assert.ok(css.includes("#sec-home-root .hq-action:nth-child(n+5)"),"less Home clutter");
 assert.ok(css.includes(".secnext-quick-controls"),"Quick Pick navigation is styled");
 assert.ok(css.includes("@media(prefers-reduced-motion:reduce)"),"reduced motion is respected");
-assert.ok(sw.includes("sec-pickem-v110"),"Android cache is fresh");
+assert.ok(sw.includes("sec-pickem-v111"),"Android cache is fresh");
 assert.ok(sw.includes("sec-feel.css?v=20261012-feel-v1"),"PWA caches polish assets");
 assert.ok(html.includes("sec-feel.css?v=20261012-feel-v1"),"the app loads polish assets");
 // Dynamic Quick Pick navigation needs no authentication or writes.
