@@ -56,6 +56,48 @@ function decorate(){
    '<div class="sec-impact-body" role="status" aria-live="polite">Open for verified post-kickoff league picks.</div>';
   target.appendChild(el);
  }
+
+ addReminder();
+}
+function nextDeadline(){
+ const a=app(),p=a?.state?.()?.picks||{};
+ return (week()?.games||[]).filter(g=>{
+  const time=Date.parse(g.kickoff||"");
+  return Number.isFinite(time)&&time>now()+60000&&
+   a?.isLocked?.(g)===false&&p[g.id]!==g.away&&p[g.id]!==g.home&&
+   g.onlineProvisional!==true&&!W.SEC_FEATURES?.isUnavailable?.(g);
+ }).sort((a,b)=>Date.parse(a.kickoff)-Date.parse(b.kickoff))[0]||null;
+}
+function addReminder(){
+ const root=$("sec-next-picks"),game=nextDeadline();
+ if(!root||!game||root.querySelector("[data-impact-reminder]"))return;
+ const wrap=D.createElement("div");wrap.className="sec-impact-reminder";
+ const button=D.createElement("button");button.type="button";
+ button.dataset.impactReminder="1";button.textContent="Add pick-deadline calendar reminder";
+ const text=D.createElement("small");
+ text.textContent="Saves a calendar event before the next open football pick locks.";
+ wrap.append(button,text);root.appendChild(wrap);
+}
+function saveReminder(){
+ const g=nextDeadline();if(!g){app()?.toast?.("No upcoming unpicked football games.");return;}
+ const kick=Date.parse(g.kickoff);
+ const start=Math.max(now()+60000,kick-45*60000);
+ const stamp=ms=>new Date(ms).toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"");
+ const uid="sec-picks-"+String(week()?.num||"week")+"-"+String(g.id).replace(/[^A-Za-z0-9_-]/g,"")+"@sds.app";
+ const lines=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Saturdays Down South//SEC Picks//EN",
+  "CALSCALE:GREGORIAN","METHOD:PUBLISH","BEGIN:VEVENT","UID:"+uid,
+  "DTSTAMP:"+stamp(now()),"DTSTART:"+stamp(start),"DTEND:"+stamp(start+600000),
+  "SUMMARY:Submit SEC Pick'em picks before kickoff",
+  "DESCRIPTION:Your open football picks lock at verified kickoff. Open https://sablewolphen.github.io/SEC/#picks",
+  "BEGIN:VALARM","TRIGGER:-PT5M","ACTION:DISPLAY",
+  "DESCRIPTION:SEC Pick'em picks lock soon","END:VALARM",
+  "END:VEVENT","END:VCALENDAR",""];
+ const blob=new Blob([lines.join("\r\n")],{type:"text/calendar;charset=utf-8"});
+ const url=URL.createObjectURL(blob),link=D.createElement("a");
+ link.href=url;link.download="sec-picks-week-"+String(week()?.num||"x")+".ics";
+ D.body.appendChild(link);link.click();link.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+ app()?.toast?.("Open the saved calendar file to add your reminder.");
 }
 async function pulse(g,item){
  const key=identity(g,item),old=cache.get(key);
@@ -197,6 +239,7 @@ D.addEventListener("toggle",event=>{
  if(target?.matches?.(".sec-impact")&&target.open)void hydrate(target);
 },true);
 D.addEventListener("click",event=>{
+ if(event.target.closest?.("[data-impact-reminder]")){saveReminder();return;}
  const refresh=event.target.closest?.("[data-impact-refresh]");
  if(refresh){const el=refresh.closest(".sec-impact");if(el)void hydrate(el,true);return;}
  const shareButton=event.target.closest?.("[data-impact-share]");
