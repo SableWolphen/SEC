@@ -24,6 +24,6 @@ assert.match(src,/iconPaths\.?\[/);
 assert.match(read("sec-home.js"),/data-game-state/);
 assert.match(index,/sec-broadcast-finish\.css\?v=20261012-studio-v1/);
 assert.match(sw,/sec-broadcast-finish\.css\?v=20261012-studio-v1/);
-assert.match(sw,/sec-pickem-v111/);
+assert.match(sw,/sec-pickem-v112/);
 assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length,"balanced CSS");
 console.log("Broadcast finish: all six screens, consistent symbols, game-status branding, safe area, focus, motion and PWA PASS");
