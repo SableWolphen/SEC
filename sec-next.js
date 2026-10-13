@@ -209,6 +209,18 @@ function cardCanvas(){
  x.fillStyle="#163249";x.fillRect(75,923,930,185);
  x.fillStyle="#ffffff";x.font="bold 55px system-ui";x.fillText("2026: "+(c.graded?Math.round(100*c.wins/c.graded)+"%":"—"),105,1005);
  x.font="32px system-ui";x.fillStyle="#c6d8e6";x.fillText("Verified pick accuracy • "+c.graded+" graded",105,1060);
+ const group=window.SEC_LEAGUE_SETTINGS?.getSelected?.(),uid=user()?.id;
+ const scores=group?.kind==="club"?window.SEC_LEAGUE_SETTINGS?.getStandings?.()||[]:
+  group?.kind==="football"?window.secOnline?.getStandings?.()||[]:[];
+ if(uid&&group&&scores.length){
+  const points=r=>Number(group.kind==="club"?r.total:r.season_points);
+  const order=scores.filter(r=>r.user_id&&Number.isFinite(points(r))).sort((a,b)=>points(b)-points(a));
+  const rank=order.findIndex(r=>r.user_id===uid);
+  if(rank>=0){
+   x.font="bold 34px system-ui";x.fillStyle="#f1d39b";
+   x.fillText("LEAGUE RANK: #"+(rank+1)+" OF "+order.length,75,1180);
+  }
+ }
  x.fillStyle="#98afc0";x.font="28px system-ui";x.fillText("Confirmed results only • Unofficial fan app",75,1238);
  canvas.toBlob(async blob=>{
   if(!blob){notice("Could not generate the image.");return;}
