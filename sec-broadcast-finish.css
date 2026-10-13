@@ -295,7 +295,7 @@ main{max-width:1240px;margin-inline:auto}
 }
 #picks-view .sec-final-team-copy>strong{
  max-width:100%;min-width:0;
- white-space:normal;overflow-wrap:anywhere;word-break:normal
+ white-space:normal;overflow-wrap:normal;word-break:normal
 }
 #picks-view .game-card.sec-final-card .sec-final-details>summary{
  min-height:44px;padding:7px 8px
