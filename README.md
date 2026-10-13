@@ -4,6 +4,18 @@ An **unofficial fan-made SEC football, basketball and baseball pick’em website
 
 **Website:** https://sablewolphen.github.io/SEC/ (GitHub Pages publishes from `main` branch root).
 
+## Game-day league impact and practical reminders (October 13, 2026)
+
+- On the **League** page, signed-in members of a football-enabled league see a compact **League game-day race** linking directly to the relevant live/recent matchup, with a verified current standing and a quick way to share existing weekly results.
+- On started/live or confirmed-final **Football Picks** cards, optional **What this game means for your league** disclosures show the *locked league totals* returned by `sec_league_game_pulse`. The backend enforces membership and kickoff privacy; the client does not request another member's unstarted picks. These are real pick splits, **not a promise of a particular league-rank outcome**.
+- Impact details remain open across score refreshes. The data is read on demand and briefly cached to avoid hammering the server.
+- When a verified future football game still needs your pick, **Add pick-deadline calendar reminder** downloads an .ics appointment approximately 45 minutes before the next kickoff; open/import the calendar file to activate the device's own reminder. It never grants notification permission or uploads calendar details.
+- The existing **Victory Card** includes your currently selected verified football/all-sports league place when a matching authorized standings record is present. No other league members' private information is shared.
+- Deployment tests: `node scripts/smoke-game-impact.cjs` plus the existing complete SEC CI and real-browser mobile audit.
+
+**Not yet included:** official unimported postseason brackets; guaranteed closed-app notifications unless push credentials and scheduler are configured; retrospective across-season personal pick statistics beyond available verified records. Do not generate artificial games, records, or trophy awards to fill those gaps.
+
+
 ## Live University Rankings (October 2026)
 
 University **national poll ranks** are now separate from pick'em league standings

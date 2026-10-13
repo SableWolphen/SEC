@@ -16,8 +16,8 @@ for(const route of views){
  route==="results"?"#results-view":"#"+route+"-view"),"no mockup skin for "+route);
 }
 const links=[...html.matchAll(/<link rel="stylesheet" href="([^"]+)"/g)].map(x=>x[1]);
-assert.equal(links.at(-10),"./sds-showcase.css?v=20261011-unified-v2",
- "approved stadium skin loads after original design tokens");
+assert.ok(links.includes("./sds-showcase.css?v=20261011-unified-v2"),
+ "approved stadium skin remains installed");
 assert.match(css,/@media\(max-width:360px\)/);
 assert.match(css,/safe-area-inset-bottom/);
 assert.match(css,/sds-team-brand/);
@@ -31,16 +31,24 @@ assert.match(premium,/\["overview","Overview"\],\["schedule","Schedule"\],\["sta
  "Team Hub uses four useful tabs including News");
 assert.match(html,/data-sds-school="\$\{esc\(id\)\}"/,
  "football pick buttons retain university color identities");
-assert.match(worker,/sec-pickem-v111/);
-assert.equal(links.at(-9),"./sec-next.css?v=20261012-advanced-v1");
-assert.equal(links.at(-8),"./sec-access.css?v=20261012-access-v1");
-assert.equal(links.at(-7),"./sec-games.css?v=20261012-unified-v1");
-assert.equal(links.at(-6),"./sec-play-by-play.css?v=20261012-plays-v1");
-assert.equal(links.at(-5),"./sec-feel.css?v=20261012-feel-v1");
-assert.equal(links.at(-4),"./sec-app-v2.css?v=20261012-app-v2");
-assert.equal(links.at(-3),"./sec-mobile-fix.css?v=20261012-mobile-v1");
-assert.equal(links.at(-2),"./sec-ux-v3.css?v=20261012-context-v1");
-assert.equal(links.at(-1),"./sec-broadcast-finish.css?v=20261012-studio-v1");
+assert.match(worker,/sec-pickem-v112/);
+const skinOrder=[
+ "./sds-showcase.css?v=20261011-unified-v2",
+ "./sec-next.css?v=20261012-advanced-v1",
+ "./sec-access.css?v=20261012-access-v1",
+ "./sec-games.css?v=20261012-unified-v1",
+ "./sec-play-by-play.css?v=20261012-plays-v1",
+ "./sec-feel.css?v=20261012-feel-v1",
+ "./sec-app-v2.css?v=20261012-app-v2",
+ "./sec-mobile-fix.css?v=20261012-mobile-v1",
+ "./sec-ux-v3.css?v=20261012-context-v1",
+ "./sec-broadcast-finish.css?v=20261012-studio-v1",
+ "./sec-game-impact.css?v=20261013-impact-v1"
+];
+const positions=skinOrder.map(x=>links.indexOf(x));
+assert.ok(positions.every((p,i)=>p>=0&&(i===0||p>positions[i-1])),
+ "stadium skin and game-day enhancements must keep their cascade order");
+
 for(const f of ["sds-showcase.css","sds-showcase-visuals.js","sds-showcase-preferences.js"]){
  assert.ok(worker.includes(f+"?v="+(f==="sds-showcase-preferences.js"?"20261011-ten-screens-v1":f==="sds-showcase-visuals.js"?"20261011-team-colors-v2":"20261011-unified-v2")),"PWA core must include "+f);
 }

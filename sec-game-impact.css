@@ -1,0 +1,34 @@
+/* Compact verified league impacts: never expand a final score unless asked. */
+.sec-impact{margin-top:.65rem;border:1px solid rgba(241,191,104,.3);border-radius:12px;background:#0b2236;min-width:0;color:#f4f7fb}
+.sec-impact>summary{display:flex;gap:.5rem;align-items:center;justify-content:space-between;list-style:none;cursor:pointer;padding:.76rem .85rem;font-size:.88rem;font-weight:750;min-height:44px}
+.sec-impact>summary::-webkit-details-marker{display:none}
+.sec-impact>summary>span{opacity:.65}
+.sec-impact[open]>summary{border-bottom:1px solid rgba(241,191,104,.2)}
+.sec-impact-body{padding:.86rem;min-width:0;font-size:.85rem}
+.sec-impact-body p{margin:.65rem 0;line-height:1.5}
+.sec-impact-body small{display:block;color:#b2c9db;line-height:1.45}
+.sec-impact-stats{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.8rem}
+.sec-impact-stats>div{display:flex;align-items:center;justify-content:space-between;gap:.5rem;min-width:0}
+.sec-impact-stats span{overflow-wrap:anywhere;color:#e2edf5}
+.sec-impact-stats strong{font-size:1.45rem;color:#f1bf68;font-variant-numeric:tabular-nums}
+.sec-impact-track{background:#29465c;border-radius:30px;height:8px;overflow:hidden;margin:.6rem 0}
+.sec-impact-track span{display:block;height:100%;background:#f1bf68;border-radius:30px}
+.sec-impact-actions{display:flex;flex-wrap:wrap;gap:.5rem}
+.sec-impact-actions button,.sec-impact-league button{border:1px solid rgba(241,191,104,.38);border-radius:9px;background:#182f45;color:#f7dba7;font:inherit;font-weight:700;min-height:42px;padding:.56rem .82rem;cursor:pointer}
+.sec-impact-actions button:disabled{opacity:.45;cursor:not-allowed}
+.sec-impact-actions button:focus-visible,.sec-impact-league button:focus-visible,.sec-impact>summary:focus-visible{outline:3px solid #f1bf68;outline-offset:2px}
+.sec-impact-league{background:linear-gradient(130deg,#0d2840,#0c1c2c);color:#f3f7fc;border:1px solid rgba(241,191,104,.28);border-radius:16px;padding:1rem;margin:.6rem 0 1rem}
+.sec-impact-league-title{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem}
+.sec-impact-league-title strong{font-size:1.06rem}
+.sec-impact-league-title small{color:#a6c6d8}
+.sec-impact-league p{margin:.5rem 0;line-height:1.45;font-size:.9rem}
+.sec-impact-league button{margin:.35rem .45rem .2rem 0}
+.sec-final-detail-body .sec-impact{width:100%}
+.sec-games-active-foot .sec-impact{flex-basis:100%;width:100%}
+@media(max-width:410px){.sec-impact-stats{gap:.45rem}.sec-impact-stats strong{font-size:1.16rem}.sec-impact-league{padding:.82rem}.sec-impact-actions button{flex:1}}
+@media(prefers-reduced-motion:reduce){.sec-impact *{scroll-behavior:auto}}
+
+.sec-impact-reminder{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin:.45rem 0 .8rem;padding:.65rem .82rem;background:#122a40;border:1px solid rgba(241,191,104,.22);border-radius:11px;color:#cbdce9}
+.sec-impact-reminder button{background:#263e54;border:1px solid #f1bf6880;border-radius:9px;min-height:44px;padding:.55rem .75rem;color:#f2d6a4;font:inherit;font-size:.84rem;font-weight:750;cursor:pointer}
+.sec-impact-reminder button:focus-visible{outline:3px solid #f1bf68;outline-offset:2px}
+.sec-impact-reminder small{color:#bbcad9;font-size:.74rem;line-height:1.35;flex:1;min-width:170px}

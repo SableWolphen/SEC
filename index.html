@@ -207,6 +207,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <link rel="stylesheet" href="./sec-mobile-fix.css?v=20261012-mobile-v1">
 <link rel="stylesheet" href="./sec-ux-v3.css?v=20261012-context-v1">
 <link rel="stylesheet" href="./sec-broadcast-finish.css?v=20261012-studio-v1">
+<link rel="stylesheet" href="./sec-game-impact.css?v=20261013-impact-v1">
 </head>
 <body>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
@@ -763,6 +764,8 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   const priorTop=priorCard?.getBoundingClientRect?.().top;
   const beforeOpen=new Set([...list.querySelectorAll('.game-card[data-game-id]')].filter(
     card=>card.querySelector('.secnext-intelligence[open]')).map(card=>card.dataset.gameId));
+  const priorImpactOpen=new Set([...list.querySelectorAll('.game-card[data-game-id]')].filter(
+    card=>card.querySelector('.sec-impact[open]')).map(card=>card.dataset.gameId));
   const focusedFilter=previousFocus?.matches?.('[data-slate-filter]')?
     previousFocus.dataset.slateFilter:null;
   const w=week();renderHeader();renderWeekPicker();
@@ -810,6 +813,12 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   renderSummary(w);
   renderWeeklyScoreStrip(w);
   window.SEC_NEXT?.onPicks?.();
+  window.SEC_GAME_IMPACT?.decorate?.();
+  for(const card of list.querySelectorAll('.game-card[data-game-id]')){
+    if(priorImpactOpen.has(card.dataset.gameId)){
+      const details=card.querySelector('.sec-impact');if(details)details.open=true;
+    }
+  }
   window.SEC_PLAYS?.hydrate?.(document.getElementById("games-list"));
   for(const card of list.querySelectorAll('.game-card[data-game-id]')){
     if(beforeOpen.has(card.dataset.gameId)){
@@ -970,5 +979,6 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./sec-next.js?v=20261012-advanced-v1"></script>
 <script src="./sec-access.js?v=20261012-access-v1"></script>
 <script src="./sec-play-by-play.js?v=20261012-plays-v1"></script>
+<script src="./sec-game-impact.js?v=20261013-impact-v1"></script>
 </body>
 </html>

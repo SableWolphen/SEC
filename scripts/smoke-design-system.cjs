@@ -9,10 +9,12 @@ const html=read("index.html"),css=read("sec-design-system.css"),
  sw=read("sw.js"),icon=read("icon.svg");
 const paths=["home","team-hub","game-center","results","team-news","sports","picks","basketball","baseball","league","trophies","news","teams","more","settings"];
 const selected=html.match(/<link rel="stylesheet" href="[^"]+"/g)||[];
-assert.equal(selected.at(-11),'<link rel="stylesheet" href="./sec-design-system.css?v=20261011-broadcast-v1"',
+const tokens='<link rel="stylesheet" href="./sec-design-system.css?v=20261011-broadcast-v1"';
+const skin='<link rel="stylesheet" href="./sds-showcase.css?v=20261011-unified-v2"';
+assert.ok(selected.indexOf(tokens)>=0 && selected.indexOf(tokens)<selected.indexOf(skin),
  "broadcast design tokens must load before the approved stadium skin");
-assert.equal(selected.at(-10),'<link rel="stylesheet" href="./sds-showcase.css?v=20261011-unified-v2"',
- "approved ten-screen visual layer must load last");
+assert.ok(selected.includes('<link rel="stylesheet" href="./sec-game-impact.css?v=20261013-impact-v1"'),
+ "verified game-day enhancements are styled without removing the stadium skin");
 assert.match(css,/--sds-gold:#f0c775/);
 assert.match(css,/--sds-panel:#112538/);
 assert.match(css,/--sds-success:#8ed0ae/);
@@ -45,7 +47,7 @@ assert.equal(manifest.name,"Saturdays Down South — SEC Pick'em",
 assert.equal(manifest.theme_color,"#081321");
 assert.equal(manifest.background_color,"#081321");
 assert.match(html,/<meta name="theme-color" content="#081321"/);
-assert.match(sw,/sec-pickem-v111/,"new cache version reaches Android installs");
+assert.match(sw,/sec-pickem-v112/,"new cache version reaches Android installs");
 assert.match(sw,/sec-design-system\.css\?v=20261011-broadcast-v1/,
  "offline PWA pre-caches shared design system");
 for(const file of ["multi-sport.css","sec-final-cards.css","trophy-case.js"]){
