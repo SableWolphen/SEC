@@ -267,7 +267,7 @@ function match(g){
   '<div class="hq-field" aria-label="Live field position"><div class="hq-field-lines"></div>'+
   '<span class="hq-field-ball" style="left:'+g.fieldPercent+'%"></span>'+
   '<span class="hq-possession">'+esc(g.possession)+' possession</span></div>':"";
- return '<article class="hq-matchup"><div class="hq-matchup-head"><span class="hq-status '+(live?"live":"")+'">'+
+ return '<article class="hq-matchup" data-game-state="'+(live?"live":finished?"final":"upcoming")+'"><div class="hq-matchup-head"><span class="hq-status '+(live?"live":"")+'">'+
   (live?"● LIVE":finished?"✓ FINAL":"UPCOMING")+'</span><span class="hq-time">'+
   (live?esc(g.phase||"In progress"):finished?"Game complete":esc(niceTime(g.clock)))+'</span></div>'+
   '<div class="hq-matchup-body"><span class="hq-matchup-team" data-sds-school="'+esc(g.away)+'">'+

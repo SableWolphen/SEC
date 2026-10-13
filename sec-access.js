@@ -30,6 +30,41 @@ const entries=Object.freeze([
  {id:"settings",title:"Account & Settings",sub:"Privacy, alerts and profile",icon:"⚙",group:"Account",terms:"profile password sign in log in notifications",view:"settings"},
  {id:"notifications",title:"Notification Settings",sub:"Kickoff and final score alerts",icon:"🔔",group:"Account",terms:"push phone subscription reminder",view:"settings",extra:"notifications"}
 ]);
+// Small, consistent outline symbols, drawn locally without an icon font, remote
+// assets, or emoji that render differently across Android and desktop.
+const iconPaths={
+ check:'<path d="M20 6 9 17l-5-5"/><circle cx="12" cy="12" r="9"/>',
+ ball:'<path d="M5 19c-2-3-2-9 2-13s10-4 13-2c2 3 2 9-2 13s-10 4-13 2Z"/><path d="m8 16 8-8m-7 3 4 4m-1-7 4 4"/>',
+ basket:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18M5.5 5.5c5 3 8 10 13 13M18.5 5.5c-5 3-8 10-13 13"/>',
+ baseball:'<circle cx="12" cy="12" r="9"/><path d="M9 3c3 5 3 13 0 18m6-18c-3 5-3 13 0 18M7 8l3 2m4 4 3 2"/>',
+ radio:'<circle cx="12" cy="12" r="2"/><path d="M6.3 6.3a8 8 0 0 0 0 11.4m11.4-11.4a8 8 0 0 1 0 11.4M3.5 3.5a12 12 0 0 0 0 17m17-17a12 12 0 0 1 0 17"/>',
+ chart:'<path d="M4 19V5m0 14h16m-13-3 4-5 3 2 5-7"/>',
+ trophy:'<path d="M7 3h10v6a5 5 0 0 1-10 0V3ZM7 5H4v4a4 4 0 0 0 4 4m9-8h3v4a4 4 0 0 1-4 4M12 14v5m-5 2h10M9 19h6"/>',
+ users:'<circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M17 6a3 3 0 0 1 0 6m0 3a5 5 0 0 1 4 5"/>',
+ chat:'<path d="M4 4h16v13H9l-5 4V4Z"/><path d="M8 9h8m-8 4h5"/>',
+ swords:'<path d="m3 3 7 7m-2 1 3-3m-7 8 5-5m-6 8 4-4m7-12 7 7m-3 1-3-3m3 8-5-5m6 8-4-4"/>',
+ trend:'<path d="m3 17 6-6 4 4 8-8m-6 0h6v6"/>',
+ flag:'<path d="M5 21V4m0 0q5-3 9 0t6 0v11q-5 3-9 0t-6 0"/>',
+ gear:'<circle cx="12" cy="12" r="3"/><path d="m12 2 2 2 3-.5 1 3 3 1v3l2 2-2 2v3l-3 1-1 3-3-.5-2 2-2-2-3 .5-1-3-3-1v-3l-2-2 2-2v-3l3-1 1-3 3 .5Z"/>',
+ school:'<path d="m2 10 10-7 10 7-10 5-10-5Zm4 2v7h12v-7m-6 3v6"/>',
+ calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 2v6m10-6v6M3 10h18m-13 5h3"/>',
+ news:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h7v5H7zm10 0h1m-1 3h1M7 16h11"/>',
+ bell:'<path d="M18 8a6 6 0 0 0-12 0c0 8-3 8-3 10h18c0-2-3-2-3-10Zm-8 13h4"/>',
+ list:'<path d="M8 5h13M8 12h13M8 19h13M3 5h.01M3 12h.01M3 19h.01"/>',
+ swap:'<path d="M4 7h16m-4-4 4 4-4 4M20 17H4m4-4-4 4 4 4"/>'
+};
+const iconId={
+ quick:"check",football:"ball",basketball:"basket",baseball:"baseball",
+ scores:"radio","game-detail":"chart",results:"trophy",league:"users",
+ "league-chat":"chat","league-brags":"swords",friend:"swap",trends:"trend",
+ race:"flag","league-tools":"gear",team:"school",schedule:"calendar",
+ "team-news":"news",news:"news",teams:"school",trophies:"trophy",
+ settings:"gear",notifications:"bell"
+};
+function iconSvg(id){
+ const key=iconId[id]||"list";
+ return '<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">'+iconPaths[key]+'</svg>';
+}
 const item=id=>entries.find(x=>x.id===id);
 const groups=["Play","Game Day","Leagues","Schools & News","Collection","Account"];
 const defaults=["quick","scores","results","league"];
@@ -55,7 +90,7 @@ function makeRow(x,withPin=true,inMore=false){
   inMore&&x.id==="settings"?" data-nav=\"settings\"":
   ' data-sec-jump="'+esc(x.id)+'"';
  const btn='<button type="button" class="sec-access-link"'+destination+' aria-label="Open '+esc(x.title)+'">'+
- '<span class="sec-access-icon" aria-hidden="true">'+esc(x.icon)+'</span>'+
+ '<span class="sec-access-icon" aria-hidden="true">'+iconSvg(x.id)+'</span>'+
  '<span class="sec-access-copy"><strong>'+esc(x.title)+'</strong><small>'+esc(x.sub)+'</small></span>'+
  '<span class="sec-access-chevron" aria-hidden="true">›</span></button>';
  return '<div class="sec-access-row">'+btn+(withPin?
@@ -166,7 +201,7 @@ function renderMore(){
   '<section class="sec-access-shortcuts" aria-label="Pinned shortcuts"><div class="sec-access-heading"><h2>Your shortcuts</h2>'+
   '<small>Use ☆ to customize</small></div>'+
   '<div class="sec-access-pin-grid">'+pins.map(item).filter(Boolean).map(x=>
-  '<button type="button" data-sec-jump="'+esc(x.id)+'"><span aria-hidden="true">'+esc(x.icon)+
+  '<button type="button" data-sec-jump="'+esc(x.id)+'"><span aria-hidden="true">'+iconSvg(x.id)+
   '</span><strong>'+esc(x.title)+'</strong></button>').join("")+'</div></section>'+
   groups.map(group=>'<section class="sec-access-group" aria-label="'+esc(group)+'">'+
   '<h2>'+esc(group)+'</h2><div class="sec-access-more-grid">'+entries.filter(x=>x.group===group).map(x=>
