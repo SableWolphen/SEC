@@ -280,6 +280,7 @@ function onLeague(){
  (l?.kind==="football"&&signed?'<button type="button" data-next-load-challenges>Open challenges</button>':
  '<p class="secnext-footnote">Select a football league and sign in to participate.</p>')+
  '</div></details></div></details>';
+ window.SEC_GAME_IMPACT?.onLeague?.();
 }
 function challengeMarkup(){
  const area=$("sec-next-challenge-area"),l=league(),u=user();
