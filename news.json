@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-13T17:37:10.327407Z",
-  "checked_at": "2026-10-13T17:37:10.327407Z",
+  "updated_at": "2026-10-13T22:49:02.415759Z",
+  "checked_at": "2026-10-13T22:49:02.415759Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -12,10 +12,77 @@
       "summary": "Let's break down the odds boards for the CFP and Heisman races after Week 6.",
       "url": "https://www.espn.com/espn/betting/story/_/id/50169256/college-football-playoff-heisman-odds-favorites-week-6-2026",
       "source": "ESPN",
-      "published_at": "2026-10-13T10:38:54Z",
+      "published_at": "2026-10-13T22:01:01Z",
       "sport": "football",
       "teams": [
         "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4b9c9bd50fe5555b",
+      "title": "Top 25 betting lines: OSU favored at Indiana, Irish double-digit faves at BYU",
+      "summary": "This week's odds and FPI predictions for Indiana-Ohio State, Tennessee-Alabama, BYU-Notre Dame and every top 25 matchup.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50166976/2026-college-football-week-7-top-25-betting-lines-odds",
+      "source": "ESPN",
+      "published_at": "2026-10-13T21:57:55Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a881d6d026e605da",
+      "title": "RJ Luis Jr. one of several not on LSU's roster amid eligibility concerns",
+      "summary": "Amid eligibility concerns, RJ Luis Jr. -- who had previously signed two contracts with NBA teams -- was not listed as a member of LSU's 2026-27 basketball team.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50176024/rj-luis-jr-not-lsu-roster-amid-eligibility-concerns",
+      "source": "ESPN",
+      "published_at": "2026-10-13T20:15:10Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4b7da62d95157cb3",
+      "title": "Rece Davis to McAfee: 'Will Stein has made his presence felt at Kentucky'",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50175218/stein-made-presence-felt-kentucky",
+      "source": "ESPN",
+      "published_at": "2026-10-13T18:22:05Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1d51a6ae744adf10",
+      "title": "Zxavian Harris eligible to sign with NFL teams despite bid to play for LSU",
+      "summary": "The NFL has reversed course and now says that former Ole Miss DL Zxavian Harris is free to sign with teams this season after a failed attempt to return to college football at LSU.",
+      "url": "https://www.espn.com/nfl/story/_/id/50174944/zxavian-harris-eligible-sign-nfl-teams-lsu-bid",
+      "source": "ESPN",
+      "published_at": "2026-10-13T17:47:06Z",
+      "sport": "football",
+      "teams": [
+        "LSU",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "2531d4c3d4220fa4",
+      "title": "Missouri coach to attend Mark Mitchell eligibility ruling",
+      "summary": "Missouri basketball coach Dennis Gates will support Mark Mitchell in court Wednesday as the two-time All-SEC selection seeks a fifth season of eligibility.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50175116/missouri-coach-attend-mark-mitchell-eligibility-ruling",
+      "source": "ESPN",
+      "published_at": "2026-10-13T17:45:46Z",
+      "sport": "basketball",
+      "teams": [
+        "Missouri"
       ],
       "breaking": false
     },
@@ -237,20 +304,6 @@
       "breaking": false
     },
     {
-      "id": "4b9c9bd50fe5555b",
-      "title": "Top 25 betting lines: OSU favored at Indiana, Irish double-digit faves at BYU",
-      "summary": "This week's odds and FPI predictions for Indiana-Ohio State, Tennessee-Alabama, BYU-Notre Dame and every top 25 matchup.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50166976/2026-college-football-week-7-top-25-betting-lines-odds",
-      "source": "ESPN",
-      "published_at": "2026-10-12T17:47:12Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
       "id": "ddce8243579b637f",
       "title": "Auburn's top LB Atkins 'won't be available' vs. Georgia, says Golesh",
       "summary": "Auburn LB Xavier Atkins, a popular preseason All-America pick, \"won't be available\" for Saturday's game vs. No. 1 Georgia, according to coach Alex Golesh.",
@@ -412,19 +465,6 @@
       "teams": [
         "Arkansas",
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1e245eaf82b3da2b",
-      "title": "Top five holds, Alabama rises in latest AP Top 25 college football rankings",
-      "summary": "Here’s what you need to know about the latest AP Top 25 Poll.",
-      "url": "https://www.ncaa.com/news/football/article/2026-10-04/top-five-holds-alabama-rises-latest-ap-top-25-college-football-rankings",
-      "source": "NCAA",
-      "published_at": "2026-10-04T18:32:17Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
       ],
       "breaking": false
     }
