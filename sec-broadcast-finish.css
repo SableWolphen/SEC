@@ -264,6 +264,15 @@ main{max-width:1240px;margin-inline:auto}
  border-radius:9px;background:#1f3b52;border-color:#4d7084
 }
 #picks-view .sec-final-card{border-color:#426172;background:#0f2939}
+#picks-view .sec-final-card .game-header{
+ margin-bottom:6px;padding-bottom:6px
+}
+#picks-view .sec-final-card .sec-final-team{
+ min-height:65px;padding:6px 7px
+}
+#picks-view .sec-final-card .sec-final-details>summary{
+ min-height:40px;padding-block:8px
+}
 #picks-view .sec-final-teams{gap:7px}
 #picks-view .sec-final-team{
  background:#162c40;border-radius:12px;
