@@ -5,12 +5,13 @@
 const W=window,D=document,app=()=>W.SEC_BRIDGE,$=id=>D.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const scope=()=>[W.secOnline?.getUser?.()?.id||"device",W.SEC_LEAGUE_SETTINGS?.getSelected?.()?.id||"local",app()?.week?.()?.num||"none"].join("|");
-const cardKey=()=> "sec-roast-card-v1:"+scope();
+const cardKey=()=> "sec-roast-card-v2:"+scope().split("|").slice(0,2).join("|");
 const highlightKey=()=> "sec-fun-highlight-v1:"+scope();
 const storage=(key)=>{try{return localStorage.getItem(key)}catch(_){return null}};
 const put=(key,value)=>{try{localStorage.setItem(key,value)}catch(_){}};
 const safeUrl=url=>{try{const x=new URL(url);return x.protocol==="https:"&&x.hostname==="www.secsports.com"}catch(_){return false}};
 let awards=[],lastAwardLoad=0,loading=null,awardSport="football",awardPeriod="week",modal=null,openedScope="",awardsExpanded=false;
+let displayedFingerprint=null;
 const terms={football:"Football",basketball:"Basketball",baseball:"Baseball"};
 
 /* Each tier gets its own shuffled deck. A message cannot repeat until every
@@ -139,22 +140,31 @@ function grade(wins,losses,pushes=0){
  return {...text,ready:true,wins:w,losses:l,pushes:p,judged,percent};
 }
 function current(){
- const s=W.SEC_NEXT?.weekStats?.()||{wins:0,losses:0,pushes:0};
- return grade(s.wins,s.losses,s.pushes);
+ // Prefer a rolling window of REAL graded past picks, even in a newly started
+ // week with no finals yet. Fall back only for older clients/test fixtures.
+ const recent=W.SEC_NEXT?.recentStats?.();
+ const s=recent||W.SEC_NEXT?.weekStats?.()||{wins:0,losses:0,pushes:0};
+ return {...grade(s.wins,s.losses,s.pushes),
+  source:s.source==="recent"?"recent":"week",
+  fingerprint:s.fingerprint||[
+   app()?.week?.()?.num||"none",s.wins||0,s.losses||0,s.pushes||0
+  ].join("|"),limit:s.limit||10};
 }
 const disabled=()=>storage("sec-fun-disabled")==="true";
-/* The Results card keeps the same quote all week, including across reloads.
-   Asking for Another roast consumes the next unseen saying for this tier. */
+/* Keep the same roast through idle days and week changes. A newly verified
+   final changes the pick fingerprint and selects the next unseen roast. */
 function cardVerdict(force=false){
  const result=current();
  if(!result.ready)return result;
  const key=cardKey();
  let saved=null;
  try{saved=JSON.parse(storage(key)||"null")}catch(_){}
- const valid=saved?.kind===result.kind&&ROASTS[result.kind]?.some(([title,body])=>
-  title===saved.title&&body===saved.body);
+ const valid=saved?.kind===result.kind&&saved.fingerprint===result.fingerprint&&
+  ROASTS[result.kind]?.some(([title,body])=>
+   title===saved.title&&body===saved.body);
  const saying=valid&&!force?saved:rotateRoast(result.kind)||result;
- if(!valid||force)put(key,JSON.stringify({kind:result.kind,title:saying.title,body:saying.body}));
+ if(!valid||force)put(key,JSON.stringify({kind:result.kind,
+  fingerprint:result.fingerprint,title:saying.title,body:saying.body}));
  latestVerdict={...result,title:saying.title,body:saying.body,account:roastKey(),
   week:app()?.week?.()?.num};
  return latestVerdict;
@@ -162,12 +172,14 @@ function cardVerdict(force=false){
 function resultUI(){
  const root=$("sec-fun-results");if(!root)return;
  const m=cardVerdict();
+ displayedFingerprint=m.fingerprint;
  const week=app()?.week?.()?.num;
  root.innerHTML='<section class="sec-fun-report sec-fun-report--'+esc(m.kind)+
-  '" aria-label="Your weekly SEC pick roast recap">'+
+  '" aria-label="Your recent SEC pick roast recap">'+
   '<div class="sec-fun-topline"><span class="sec-fun-kicker">🎙️ '+
-  (week?'WEEK '+esc(week)+' · ':'')+'THE VERDICT</span>'+
-  '<small>'+(m.ready?m.judged+' graded picks':'Awaiting verified finals')+'</small></div>'+
+  (m.source==='recent'?'RECENT PICKS · ':(week?'WEEK '+esc(week)+' · ':''))+
+  'THE VERDICT</span>'+
+  '<small>'+(m.ready?m.judged+' verified graded picks':'Awaiting three verified picks')+'</small></div>'+
   '<div class="sec-fun-story"><span class="sec-fun-card-emoji" aria-hidden="true">'+
   esc(m.icon)+'</span><div class="sec-fun-report-copy"><strong>'+esc(m.title)+
   '</strong><p>'+esc(m.body)+'</p></div></div>'+
@@ -181,7 +193,8 @@ function resultUI(){
   '<button type="button" data-fun-share '+(!m.ready?'disabled':'')+'>↗ Share</button></div>'+
   '<label class="sec-fun-pref"><input type="checkbox" data-fun-opt-out '+
   (disabled()?'checked':'')+'> No surprise highlight pop-ups</label></div>'+
-  (m.ready?'<p class="sec-fun-note">Just for fun · Only your verified, graded football picks count.</p>':'')+
+  (m.ready?'<p class="sec-fun-note">Your most recent '+esc(m.limit)+
+  ' graded football picks are used when available. Results stay here between games and update after the next verified final. Only your own picks count.</p>':'')+
   '</section>';
 }
 function anotherRoast(){
@@ -208,9 +221,11 @@ function close(){
  if(typeof modal.close==="function"&&modal.open)modal.close();
  else modal.removeAttribute("open");
 }
-function milestone(report=current()){
- if(!report.ready)return null;
+function milestone(){
+ // Highlights judge THIS completed week, never the carried-forward history.
  const stats=W.SEC_NEXT?.weekStats?.();
+ const report=grade(stats?.wins||0,stats?.losses||0,stats?.pushes||0);
+ if(!report.ready)return null;
  const games=app()?.week?.()?.games||[];
  const finished=games.length>=3&&!!W.SEC_FEATURES?.finalData&&
   games.every(g=>Boolean(W.SEC_FEATURES.finalData(g)));
@@ -230,7 +245,9 @@ function milestone(report=current()){
 }
 function showMilestone(moment){
  if(!moment)return;
- const d=ensureModal(),m=current();
+ const stats=W.SEC_NEXT?.weekStats?.()||{};
+ const m=grade(stats.wins,stats.losses,stats.pushes);
+ const d=ensureModal();
  d.classList.remove("fire","great","okay","rough","roast");
  d.classList.add(m.kind);
  d.querySelector(".sec-fun-emoji").textContent=moment.icon;
@@ -242,7 +259,8 @@ function showMilestone(moment){
 }
 async function share(){
  const m=cardVerdict();if(!m.ready)return;
- const content="SEC Pick’em · Week "+(app()?.week?.()?.num||"?")+
+ const content="SEC Pick’em · "+(m.source==="recent"?"Last "+m.judged+" graded football picks":
+ "Week "+(app()?.week?.()?.num||"?"))+
  "\n"+m.title+"\n"+m.body+"\n"+m.wins+" right / "+m.losses+" wrong ("+m.percent+"%)"+
  "\nhttps://sablewolphen.github.io/SEC/#results";
  try{
@@ -424,6 +442,19 @@ D.addEventListener("change",e=>{
  if(!e.target.matches?.("[data-fun-opt-out]"))return;
  put("sec-fun-disabled",String(e.target.checked));
 });
+// Refresh the visible card if a new final is loaded while the user stays on
+// Results. Account score fetching still happens through the existing flow.
+function refreshIfChanged(){
+ if(app()?.view?.()!=="results"||D.visibilityState!=="visible")return;
+ const now=current();
+ if(now.fingerprint!==displayedFingerprint){
+  resultUI();
+  W.SEC_NEXT?.onResults?.();
+  maybePopup("results");
+ }
+}
+D.addEventListener("visibilitychange",refreshIfChanged);
+if(typeof W.setInterval==="function")W.setInterval(refreshIfChanged,60000);
 W.SEC_FAN_MOMENTS=Object.freeze({onView,grade,current,cardVerdict,anotherRoast,milestone,leagueUI,renderAwards,loadAwards,safeUrl,rotateRoast,roastCounts:()=>Object.fromEntries(Object.entries(ROASTS).map(([k,v])=>[k,v.length]))});
 if(app()?.view?.())onView(app().view());
 })();

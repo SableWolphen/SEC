@@ -40,6 +40,46 @@ assert.match(roots.get("sec-next-league").innerHTML,/Friend Challenges/);
 advanced.onSettings();
 assert.match(roots.get("sec-next-push").innerHTML,/not yet configured/);
 assert.equal(forbiddenCalls,0);
+
+// The roast can use previously verified picks when the new slate has not
+// produced a final yet; it never counts future or unpicked matchups.
+const now=Date.now();
+const iso=hours=>new Date(now+hours*3600000).toISOString();
+const oldSlate={num:4,games:[
+ {id:"past-won-a",kickoff:iso(-180),liveStatus:"final",kind:"won"},
+ {id:"past-won-b",kickoff:iso(-140),liveStatus:"final",kind:"won"},
+ {id:"past-missed",kickoff:iso(-100),liveStatus:"final",kind:"lost"},
+ {id:"not-my-pick",kickoff:iso(-90),liveStatus:"final",kind:"won"}
+]};
+const incoming={num:5,games:[
+ {id:"next-game",kickoff:iso(2),kind:"won"},
+ {id:"future-final-bad",kickoff:iso(48),liveStatus:"final",kind:"won"}
+]};
+window.SEC_BRIDGE.weeks=[oldSlate,incoming];
+for(const g of oldSlate.games.slice(0,3))state.picks[g.id]="picked";
+state.picks["next-game"]="picked";
+state.picks["future-final-bad"]="picked";
+window.SEC_FEATURES.finalData=g=>
+ g.liveStatus==="final"&&state.picks[g.id]?{kind:g.kind}:null;
+window.SEC_FINAL_CARDS.outcome=d=>({kind:d.kind});
+let history=advanced.recentStats();
+assert.equal(history.wins,2);
+assert.equal(history.losses,1);
+assert.equal(history.items.length,3);
+assert.ok(history.items.every(x=>x.g.id.startsWith("past-")));
+assert.ok(!history.fingerprint.includes("future-final-bad"),"future data is excluded");
+const unchanged=history.fingerprint;
+incoming.games[0].liveStatus="live";
+assert.equal(advanced.recentStats().fingerprint,unchanged,
+ "new kickoff without a confirmed result preserves old stats");
+incoming.games[0].kickoff=iso(-1); // Simulate the next game actually starting and finishing.
+incoming.games[0].liveStatus="final";
+history=advanced.recentStats();
+assert.equal(history.items.length,4);
+assert.equal(history.wins,3);
+assert.notEqual(history.fingerprint,unchanged,"new verified final changes rolling pick form");
+assert.equal(history.items[0].g.id,"next-game","newest graded picks rank first");
+
 for(const id of ["sec-next-picks","sec-next-rivalries","sec-next-league","sec-next-push"])
  assert.ok(html.includes('id="'+id+'"'),id+" missing");
 assert.match(read("sec-premium.js"),/id="sec-next-results"/,"results screen renders optional career section");

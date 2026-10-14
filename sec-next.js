@@ -31,6 +31,33 @@ function weekStats(){
  const items=games().map(verified).filter(Boolean);
  return {items,wins:items.filter(x=>x.kind==="won").length,losses:items.filter(x=>x.kind==="lost").length,pushes:items.filter(x=>x.kind==="push").length};
 }
+
+/* Pick form survives between game days and across calendar week boundaries.
+   Uses the player's ten MOST RECENT source-verified graded football picks,
+   never future fixtures, simulated finals, unpicked games or other members.
+   Once a new confirmed final arrives, that pick enters the rolling window. */
+function recentStats(limit=10){
+ const count=Math.max(3,Math.min(20,Number.isInteger(limit)?limit:10));
+ const seen=new Set(),now=Date.now();
+ const rows=(app()?.weeks||[]).flatMap(w=>(w.games||[]).map(g=>({g,week:w.num})));
+ const found=rows.map(({g,week})=>{
+  const date=Date.parse(g.kickoff||g.date&&g.date+"T12:00:00Z"||"");
+  if(!Number.isFinite(date)||date>now)return null;
+  const match=verified(g);if(!match)return null;
+  return {...match,week,at:date};
+ }).filter(Boolean).sort((a,b)=>b.at-a.at||String(b.g.id).localeCompare(String(a.g.id)));
+ const items=[];
+ for(const x of found){
+  if(seen.has(x.g.id))continue;
+  seen.add(x.g.id);items.push(x);
+  if(items.length>=count)break;
+ }
+ const wins=items.filter(x=>x.kind==="won").length;
+ const losses=items.filter(x=>x.kind==="lost").length;
+ const pushes=items.filter(x=>x.kind==="push").length;
+ const fingerprint=items.map(x=>x.g.id+":"+x.kind).join("|");
+ return {items,wins,losses,pushes,fingerprint,source:"recent",limit:count};
+}
 function nameCode(code){return '<span class="secnext-school" data-sds-school="'+esc(code)+'">'+
  (window.SDS_VISUALS?.mark?.(code,{className:"mini-logo"})||esc(code))+
  '<strong>'+esc(rankedName(code))+'</strong></span>';}
@@ -459,7 +486,7 @@ document.addEventListener("click",event=>{
  if(el.hasAttribute("data-next-push-enable"))void pushToggle(true);
  if(el.hasAttribute("data-next-push-disable"))void pushToggle(false);
 });
-window.SEC_NEXT=Object.freeze({bootstrap,openQuick,closeQuick,onView,onPicks,onResults,onLeague,onSettings,career,weekStats,pending,rivalry,loadTrends});
+window.SEC_NEXT=Object.freeze({bootstrap,openQuick,closeQuick,onView,onPicks,onResults,onLeague,onSettings,career,weekStats,recentStats,pending,rivalry,loadTrends});
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",bootstrap,{once:true});
 else bootstrap();
 })();
