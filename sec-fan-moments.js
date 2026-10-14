@@ -11,7 +11,7 @@ const storage=(key)=>{try{return localStorage.getItem(key)}catch(_){return null}
 const put=(key,value)=>{try{localStorage.setItem(key,value)}catch(_){}};
 const safeUrl=url=>{try{const x=new URL(url);return x.protocol==="https:"&&x.hostname==="www.secsports.com"}catch(_){return false}};
 let awards=[],lastAwardLoad=0,loading=null,awardSport="football",awardPeriod="week",modal=null,openedScope="",awardsExpanded=false;
-let displayedFingerprint=null,lastRenderedView=null;
+let displayedFingerprint=null,displayedAccountKey=null,lastRenderedView=null;
 const terms={football:"Football",basketball:"Basketball",baseball:"Baseball"};
 
 /* Each tier gets its own shuffled deck. A message cannot repeat until every
@@ -196,7 +196,7 @@ function globalUI(view=app()?.view?.()){
  root.hidden=!visible;
  if(!visible){root.removeAttribute("data-signature");return;}
  const signature=[roastKey(),m.fingerprint,m.title,m.judged,view].join("|");
- displayedFingerprint=m.fingerprint;
+ displayedFingerprint=m.fingerprint;displayedAccountKey=cardKey();
  if(root.dataset.signature===signature)return;
  root.dataset.signature=signature;
  root.innerHTML='<aside class="sec-fun-ribbon" aria-label="Your persistent Pick’em verdict">'+
@@ -213,7 +213,7 @@ function globalUI(view=app()?.view?.()){
 function resultUI(){
  const root=$("sec-fun-results");if(!root)return;
  const m=cardVerdict();
- displayedFingerprint=m.fingerprint;
+ displayedFingerprint=m.fingerprint;displayedAccountKey=cardKey();
  const week=app()?.week?.()?.num;
  root.innerHTML='<section class="sec-fun-report sec-fun-report--'+esc(m.kind)+
   '" aria-label="Your recent SEC pick roast recap">'+
@@ -498,7 +498,7 @@ function refreshIfChanged(){
  if(D.visibilityState!=="visible")return;
  const view=app()?.view?.();if(!view)return;
  const m=current(),key=cardKey();
- const changed=m.fingerprint!==displayedFingerprint||view!==lastRenderedView;
+ const changed=m.fingerprint!==displayedFingerprint||cardKey()!==displayedAccountKey||view!==lastRenderedView;
  if(changed){
   lastRenderedView=view;
   globalUI(view);
