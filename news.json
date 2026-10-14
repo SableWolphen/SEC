@@ -1,11 +1,37 @@
 {
-  "updated_at": "2026-10-14T18:39:44.264987Z",
-  "checked_at": "2026-10-14T18:39:44.264987Z",
+  "updated_at": "2026-10-14T22:19:20.512113Z",
+  "checked_at": "2026-10-14T22:19:20.512113Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "363c2d5e699f22c9",
+      "title": "Chris Jans details confidence in MS State, transfer portal pandemonium",
+      "summary": "Jans explains the challenges coaches are experiencing from the rules, or lack thereof, in college sports while saying the Bulldogs learned a lot to get better from last season.",
+      "url": "https://www.espn.com/video/clip/_/id/50184327/chris-jans-details-confidence-ms-state-transfer-portal-pandemonium",
+      "source": "ESPN",
+      "published_at": "2026-10-14T20:45:17Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "7ead245e738b58bf",
+      "title": "Mark Pope embracing championship expectations at Kentucky",
+      "summary": "Kentucky men's basketball coach Mark Pope said he is embracing championship expectations entering Year 3 with the Wildcats.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50183414/mark-pope-embracing-championship-expectations-kentucky",
+      "source": "ESPN",
+      "published_at": "2026-10-14T19:22:19Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
     {
       "id": "935784523320fb8b",
       "title": "Sources: Florida QB Philo questionable, WR Brown could return",
