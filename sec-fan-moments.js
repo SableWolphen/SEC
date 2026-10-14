@@ -5,7 +5,24 @@
 const W=window,D=document,app=()=>W.SEC_BRIDGE,$=id=>D.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const scope=()=>[W.secOnline?.getUser?.()?.id||"device",W.SEC_LEAGUE_SETTINGS?.getSelected?.()?.id||"local",app()?.week?.()?.num||"none"].join("|");
-const cardKey=()=> "sec-roast-card-v2:"+scope().split("|").slice(0,2).join("|");
+// Roasts are based on a person's VERIFIED picks, not their selected league.
+// Keep one stable card per user across league selection and route changes.
+const owner=()=>W.secOnline?.getUser?.()?.id||"device";
+const cardKey=()=> "sec-roast-card-v3:"+owner();
+function savedCard(key){
+ let raw=storage(key);
+ if(!raw){
+  // Migrate existing pinned sayings without mixing different accounts.
+  const id=owner(),league=W.SEC_LEAGUE_SETTINGS?.getSelected?.()?.id;
+  const candidates=[league,"local"].filter(Boolean).map(suffix=>
+   "sec-roast-card-v2:"+id+"|"+suffix);
+  for(const oldKey of new Set(candidates)){
+   const original=storage(oldKey);
+   if(original){raw=original;put(key,original);break;}
+  }
+ }
+ try{return JSON.parse(raw||"null")}catch(_){return null}
+}
 const highlightKey=()=> "sec-fun-highlight-v1:"+scope();
 const storage=(key)=>{try{return localStorage.getItem(key)}catch(_){return null}};
 const put=(key,value)=>{try{localStorage.setItem(key,value)}catch(_){}};
@@ -167,35 +184,38 @@ const disabled=()=>storage("sec-fun-disabled")==="true";
 /* Keep the same roast through idle days and week changes. A newly verified
    final changes the pick fingerprint and selects the next unseen roast. */
 function cardVerdict(force=false){
- const fresh=current(),key=cardKey();
- let saved=null;
- try{saved=JSON.parse(storage(key)||"null")}catch(_){}
- const validQuote=ROASTS[saved?.kind]?.some(([title,body])=>title===saved.title&&body===saved.body);
- // A previously verified recap remains visible while account/game data is
- // reloading. Never manufacture scores, reuse another account, or announce
- // a special weekly milestone from an old recap.
+ const fresh=current(),key=cardKey(),saved=savedCard(key);
+ const validQuote=ROASTS[saved?.kind]?.some(([title,body])=>
+  title===saved.title&&body===saved.body);
  const cached=saved?.stats;
  const hasCached=validQuote&&cached&&
   [cached.wins,cached.losses,cached.pushes].every(x=>Number.isInteger(x)&&x>=0)&&
-  cached.wins+cached.losses>=3&&
-  cached.wins+cached.losses<=20;
+  cached.wins+cached.losses>=3&&cached.wins+cached.losses<=20;
+ // An incomplete data refresh must never wipe 7 verified picks down to 0
+ // or 2, nor rotate the user's saying while the League tab initializes.
+ const incomplete=hasCached&&(!fresh.ready||
+  fresh.judged<cached.wins+cached.losses);
  if(!fresh.ready&&!hasCached)return fresh;
- const report=fresh.ready?fresh:{
+ const report=incomplete?{
   ...grade(cached.wins,cached.losses,cached.pushes),
-  fingerprint:saved.fingerprint,
-  source:"saved",limit:Number(cached.limit)||10,carried:true
- };
- const valid=validQuote&&
-  (!fresh.ready||saved.fingerprint===report.fingerprint)&&saved.kind===report.kind;
+  fingerprint:saved.fingerprint,source:"saved",
+  limit:Number(cached.limit)||10,carried:true
+ }:fresh;
+ const sameScores=hasCached&&
+  cached.wins===report.wins&&cached.losses===report.losses&&
+  cached.pushes===report.pushes;
+ // The feed may re-order, replay or re-key the same completed games while
+ // navigating. Only an actual change in verified score totals should
+ // automatically select a different roast.
+ const valid=validQuote&&saved.kind===report.kind&&
+  (incomplete||saved.fingerprint===report.fingerprint||sameScores);
  const saying=valid&&!force?saved:rotateRoast(report.kind,saved?.title)||report;
- if(!valid||force){
-  const stats={wins:report.wins,losses:report.losses,pushes:report.pushes,limit:report.limit};
+ const stats={wins:report.wins,losses:report.losses,
+  pushes:report.pushes,limit:report.limit};
+ if(!valid||force||(!incomplete&&saved?.fingerprint!==report.fingerprint)||
+    !hasCached){
   put(key,JSON.stringify({kind:report.kind,fingerprint:report.fingerprint,
    title:saying.title,body:saying.body,stats}));
- }else if(!saved.stats&&fresh.ready){
-  // Upgrade existing pinned messages without consuming another roast.
-  put(key,JSON.stringify({...saved,stats:{wins:report.wins,losses:report.losses,
-   pushes:report.pushes,limit:report.limit}}));
  }
  latestVerdict={...report,title:saying.title,body:saying.body,account:roastKey(),
   week:app()?.week?.()?.num};
@@ -510,7 +530,7 @@ D.addEventListener("change",e=>{
 function refreshIfChanged(){
  if(D.visibilityState!=="visible")return;
  const view=app()?.view?.();if(!view)return;
- const m=current(),key=cardKey();
+ const m=cardVerdict();
  const changed=m.fingerprint!==displayedFingerprint||cardKey()!==displayedAccountKey||view!==lastRenderedView;
  if(changed){
   lastRenderedView=view;
