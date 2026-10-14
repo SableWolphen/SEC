@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "updated_at": "2026-10-14",
+  "note": "Official awards here are links to SEC announcements. Personal monthly fan picks are not official SEC awards.",
+  "official": [
+    {
+      "sport": "football",
+      "period": "week",
+      "date": "2026-10-12",
+      "year": 2026,
+      "title": "SEC Offensive Player of the Week (co-recipient)",
+      "athlete": "Jamal Roberts",
+      "school": "Missouri",
+      "detail": "Rushed for 222 yards and two touchdowns against Texas A&M.",
+      "url": "https://www.secsports.com/news/2026/10/sec-football-players-of-the-week-oct-12"
+    },
+    {
+      "sport": "football",
+      "period": "week",
+      "date": "2026-10-12",
+      "year": 2026,
+      "title": "SEC Offensive Player of the Week (co-recipient)",
+      "athlete": "LaNorris Sellers",
+      "school": "South Carolina",
+      "detail": "Co-recipient of the conference's offensive award.",
+      "url": "https://www.secsports.com/news/2026/10/sec-football-players-of-the-week-oct-12"
+    },
+    {
+      "sport": "football",
+      "period": "week",
+      "date": "2026-10-12",
+      "year": 2026,
+      "title": "SEC Defensive Player of the Week",
+      "athlete": "Peyton Bowen",
+      "school": "Oklahoma",
+      "detail": "Seven tackles and an interception returned for a touchdown against Texas.",
+      "url": "https://www.secsports.com/news/2026/10/sec-football-players-of-the-week-oct-12"
+    },
+    {
+      "sport": "football",
+      "period": "week",
+      "date": "2026-10-05",
+      "year": 2026,
+      "title": "SEC Offensive Player of the Week",
+      "athlete": "Austin Simmons",
+      "school": "Missouri",
+      "detail": "Threw for a season-best 340 yards against Florida.",
+      "url": "https://www.secsports.com/news/2026/10/sec-football-players-of-the-week-oct-5"
+    },
+    {
+      "sport": "football",
+      "period": "week",
+      "date": "2026-09-28",
+      "year": 2026,
+      "title": "SEC Offensive Player of the Week",
+      "athlete": "Jadan Baugh",
+      "school": "Florida",
+      "detail": "142 rushing yards and three rushing touchdowns against Ole Miss.",
+      "url": "https://www.secsports.com/news/2026/09/sec-football-players-of-the-week-sep-28"
+    },
+    {
+      "sport": "football",
+      "period": "week",
+      "date": "2026-09-21",
+      "year": 2026,
+      "title": "SEC Offensive Player of the Week",
+      "athlete": "Trinidad Chambliss",
+      "school": "Ole Miss",
+      "detail": "365 total yards and three touchdowns against LSU.",
+      "url": "https://www.secsports.com/news/2026/09/sec-football-players-of-the-week-sep-21"
+    },
+    {
+      "sport": "basketball",
+      "period": "week",
+      "date": "2026-03-02",
+      "year": 2026,
+      "title": "SEC Men's Basketball Players of the Week",
+      "athlete": null,
+      "school": null,
+      "detail": "Read the conference's official weekly award announcements.",
+      "url": "https://www.secsports.com/news/2026/03/sec-mens-basketball-players-of-the-week-march-2"
+    },
+    {
+      "sport": "baseball",
+      "period": "week",
+      "date": "2026-05-18",
+      "year": 2026,
+      "title": "SEC Baseball Players of the Week",
+      "athlete": null,
+      "school": null,
+      "detail": "Read the conference's official weekly award announcements.",
+      "url": "https://www.secsports.com/news/2026/05/sec-baseball-players-of-the-week-may-18-presented-by-allstate"
+    },
+    {
+      "sport": "baseball",
+      "period": "year",
+      "date": "2026-05-18",
+      "year": 2026,
+      "title": "Official 2026 SEC Baseball postseason awards",
+      "athlete": null,
+      "school": null,
+      "detail": "The conference's official season-end awards list.",
+      "url": "https://www.secsports.com/news/2026/05/sec-announces-2026-baseball-awards-presented-by-allstate"
+    },
+    {
+      "sport": "basketball",
+      "period": "year",
+      "date": "2026-03-09",
+      "year": 2026,
+      "title": "Official 2026 SEC Men's Basketball postseason awards",
+      "athlete": null,
+      "school": null,
+      "detail": "The conference's official season-end awards list.",
+      "url": "https://www.secsports.com/news/2026/03/2026-sec-mens-basketball-awards-announced"
+    },
+    {
+      "sport": "football",
+      "period": "year",
+      "date": "2025-12-10",
+      "year": 2025,
+      "title": "Official 2025 SEC Football postseason awards",
+      "athlete": null,
+      "school": null,
+      "detail": "Last completed season; 2026 season awards are not announced yet.",
+      "url": "https://www.secsports.com/news/2025/12/2025-sec-football-awards-presented-by-allstate-announced"
+    }
+  ]
+}
