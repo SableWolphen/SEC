@@ -473,10 +473,10 @@
         if(event==="SIGNED_OUT"){
           // Explicit logout is different from a temporary null auth refresh.
           // Never carry a previous account's roast to the signed-out screen.
-          window.SEC_FAN_MOMENTS?.onAuthSignOut?.();
           ++refreshVersion;++standingsVersion;
           user=null;leagues=[];active=null;profile=null;standings=[];
           app.state().picks={};app.state().results={};
+          window.SEC_FAN_MOMENTS?.onAuthSignOut?.();
           publishAccount();show();
         }
         setTimeout(function(){void refresh();},0);
