@@ -11,6 +11,117 @@ const put=(key,value)=>{try{localStorage.setItem(key,value)}catch(_){}};
 const safeUrl=url=>{try{const x=new URL(url);return x.protocol==="https:"&&x.hostname==="www.secsports.com"}catch(_){return false}};
 let awards=[],lastAwardLoad=0,loading=null,awardSport="football",awardPeriod="week",modal=null,openedScope="",manualOpened=false,awardsExpanded=false;
 const terms={football:"Football",basketball:"Basketball",baseball:"Baseball"};
+
+/* Each tier gets its own shuffled deck. A message cannot repeat until every
+   message in that tier has appeared; crossing a deck boundary also never
+   repeats the previous message. Selection history persists per signed-in
+   account (or on this device when signed out). No private picks are read. */
+const ROASTS=Object.freeze({
+ fire:[
+  ["THE SEC HAS BEEN WARNED","You are turning the pick sheet into a highlight reel. The group chat may need a timeout."],
+  ["SOMEBODY CHECK THE CRYSTAL BALL","These picks are suspiciously good. Your friends are going to demand an investigation."],
+  ["THE PICK'EM PROPHECY","Every time you choose a winner, a rival fan sheds a single tear."],
+  ["WEEKEND MASTERCLASS","You picked winners like it was a multiple-choice test with the answer key."],
+  ["HOTTER THAN A SEPTEMBER KICKOFF","Even the scoreboard is sweating. That's a dangerous percentage."],
+  ["YOU OWN THE GROUP CHAT","Bring the receipts. Your league will pretend it never doubted you."],
+  ["THE UPSET WHISPERER","Some people watch film. Apparently you just stare into the future."],
+  ["UNREASONABLY LOCKED IN","Your pick sheet deserves its own postgame press conference."],
+  ["THE SPORTSBOOK IS NOT INVITED","This is friendly pick'em, but that accuracy would scare a spreadsheet."],
+  ["THE COMMISSIONER IS NERVOUS","Winning this much should come with an apology to the rest of the league."],
+  ["STRAIGHT-UP SATURDAY LEGEND","You might have to start charging admission to see these selections."],
+  ["THE TROPHY IS TAKING NOTES","Nobody has handed you a crown, but the picks are making a very strong argument."]
+ ],
+ great:[
+  ["THE PICKS ARE PICKING","You're on a roll. The league is quietly checking your score again."],
+  ["SATURDAY LOOKS GOOD ON YOU","These are confident picks, not random button presses. Mostly."],
+  ["THE GROUP CHAT GOT QUIET","That's what happens when somebody starts getting the games right."],
+  ["SCOUTING DEPARTMENT APPROVED","You saw things coming that everyone else called a bad idea."],
+  ["A VERY RESPECTABLE FLEX","Your picks have earned exactly one dramatic victory lap."],
+  ["THE SEC SUN IS SHINING","Keep this up and somebody will accuse you of knowing ball."],
+  ["GOOD CALL UNIVERSITY","Your unofficial degree in picking winners is looking pretty legitimate."],
+  ["YOUR BRACKET HAS SWAGGER","Not perfect, but there are some very loud receipts on this page."],
+  ["SOMEONE GET A HIGHLIGHT CAMERA","Those picks deserve a little slow-motion replay."],
+  ["THE SELECTION COMMITTEE AGREES","An excellent week for acting like you knew it all along."],
+  ["YOUR RIVALS ARE SWEATING","Every correct pick makes that standings screen a little more awkward for them."],
+  ["THE COMEBACK ARC IS REAL","If you weren't already leading, you're making people look over their shoulders."]
+ ],
+ okay:[
+  ["RESPECTABLE CHAOS","Some genius picks, some mysterious decisions. That's college football."],
+  ["A TRUE COIN-FLIP CONNOISSEUR","You are somehow both the hero and the villain of your own pick sheet."],
+  ["STILL IN THE HUDDLE","Nothing to brag about too loudly. Nothing to delete the app over either."],
+  ["THE MIDDLE OF THE PACK HAS WIFI","Congratulations, you have excellent company and very average receipts."],
+  ["SATURDAY WAS A ROLLER COASTER","A few perfect calls and a couple where the TV deserved an apology."],
+  ["YOU KNOW SOME BALL","Whether you know all the ball remains under active investigation."],
+  ["A TALE OF TWO HALVES","Your good picks came ready. Your bad ones took the scenic route."],
+  ["NOT A DISASTER. NOT A PARADE.","A serviceable week for someone with strong opinions about football."],
+  ["THE STANDINGS ARE UNDECIDED","You have kept the competition interesting. Very generous of you."],
+  ["GOOD ENOUGH FOR OVERTIME","Your picks can't decide whether they're cooking or getting cooked."],
+  ["THE EXCITEMENT IS MANDATORY","Half of your calls aged beautifully. The rest have left the chat."],
+  ["STAYING IN FIELD GOAL RANGE","You're still close enough to make next week interesting."]
+ ],
+ rough:[
+  ["YOU'RE GETTING COOKED","The scoreboard has some notes. None of them are particularly encouraging."],
+  ["THE GROUP CHAT SAW THAT","Your friends are already typing. You can hear the keyboard from here."],
+  ["THAT PICK SHEET NEEDS A HUG","It looked great before kickoff. That was the high point."],
+  ["SATURDAY CALLED IN SICK","Several of your picks apparently missed the team bus."],
+  ["YOUR CRYSTAL BALL IS BUFFERING","Try unplugging it and plugging it back in before the next slate."],
+  ["THE OPPOSITE DAY STRATEGY","If you'd clicked the other team a little more often, we'd be having a different conversation."],
+  ["A LEARNING EXPERIENCE, APPARENTLY","The lessons were expensive. Luckily the points are imaginary."],
+  ["THE PICKS TOOK A DETOUR","Destination: absolutely nowhere near the top of the standings."],
+  ["THE FILM ROOM IS CLOSED","Nobody needs to watch those picks back in slow motion."],
+  ["YOU GOT SCOUTED","The SEC showed up prepared. Your predictions absolutely did not."],
+  ["THE COMEBACK BETTER BE CINEMATIC","Because this week's episode has been a rough watch."],
+  ["SUNDAY MORNING DAMAGE REPORT","One wounded pick sheet. Several very happy opponents."]
+ ],
+ roast:[
+  ["THE PICKS ARE IN SHAMBLES","Did you pick teams by throwing darts? The darts might deserve an apology."],
+  ["CALL THE PICK'EM PARAMEDICS","This slate needs a full rebuild and possibly a pep talk."],
+  ["THE SCOREBOARD HAS RECEIPTS","Unfortunately, every single receipt is against you."],
+  ["YOU PICKED THE WRONG TIMELINE","Somewhere in a parallel universe, you're absolutely dominating."],
+  ["YOUR CRYSTAL BALL IS A POTATO","It might be time to switch to an actual potato. Can't get much worse."],
+  ["THE MASCOT COULD HAVE PICKED BETTER","And the mascot was busy doing push-ups on the sideline."],
+  ["THE GROUP CHAT IS FEASTING","If laughter counted as points, your opponents would have set a record."],
+  ["HISTORICALLY CONFIDENT. HISTORICALLY WRONG.","Respect the confidence. Question absolutely everything else."],
+  ["THE SATURDAY DISASTER CLASS","This performance will be studied by future generations of rival fans."],
+  ["THE PLAYBOOK IS ON FIRE","Not the fun kind of fire. The kind that requires an emergency exit."],
+  ["YOU DECLARED WAR ON ACCURACY","Accuracy won by a fairly convincing margin."],
+  ["THE RESET BUTTON LOOKS DELICIOUS","Good news: next week's slate has never heard of this one."]
+ ]
+});
+const roastKey=()=> "sec-roast-deck-v1:"+(W.secOnline?.getUser?.()?.id||"device");
+let latestVerdict=null;
+function freshDeck(size,last){
+ const deck=Array.from({length:size},(_,i)=>i);
+ for(let i=deck.length-1;i>0;i--){
+  const j=Math.floor(Math.random()*(i+1));
+  [deck[i],deck[j]]=[deck[j],deck[i]];
+ }
+ // The last element is popped first. Ensure the new deck doesn't open with
+ // the message that closed the previous one.
+ if(deck.length>1&&deck[deck.length-1]===last){
+  [deck[deck.length-1],deck[0]]=[deck[0],deck[deck.length-1]];
+ }
+ return deck;
+}
+function rotateRoast(kind){
+ const options=ROASTS[kind];
+ if(!options?.length)return null;
+ const key=roastKey()+":"+kind;
+ let previous=null;
+ try{previous=JSON.parse(storage(key)||"null")}catch(_){}
+ const last=Number.isInteger(previous?.last)&&previous.last>=0&&previous.last<options.length?previous.last:null;
+ const remaining=Array.isArray(previous?.remaining)&&
+  previous.remaining.every(i=>Number.isInteger(i)&&i>=0&&i<options.length)&&
+  new Set(previous.remaining).size===previous.remaining.length&&
+  !previous.remaining.includes(last)?
+  previous.remaining.slice():[];
+ const deck=remaining.length?remaining:freshDeck(options.length,last);
+ const chosen=deck.pop();
+ put(key,JSON.stringify({last:chosen,remaining:deck}));
+ const [title,body]=options[chosen];
+ return {kind,title,body};
+}
+
 function grade(wins,losses,pushes=0){
  const w=Number(wins)||0,l=Number(losses)||0,p=Number(pushes)||0;
  const judged=w+l;
@@ -50,6 +161,7 @@ function ensureModal(){
  '<div class="sec-fun-emoji" aria-hidden="true"></div><div class="sec-fun-kicker">SEC PICK’EM SCOREBOARD</div>'+
  '<h2></h2><p></p><div class="sec-fun-stats"></div>'+
  '<div class="sec-fun-dialog-footer"><button type="button" data-fun-close>Back to the game</button>'+
+ '<button type="button" data-fun-again>Another one ↻</button>'+
  '<button type="button" data-fun-share>Share the receipts ↗</button></div></div>';
  D.body.appendChild(modal);
  modal.addEventListener("close",()=>{manualOpened=false});
@@ -59,11 +171,14 @@ function show(manual=false){
  const m=current();
  if(!m.ready)return;
  const d=ensureModal();
+ const saying=rotateRoast(m.kind)||m;
+ latestVerdict={...m,title:saying.title,body:saying.body,account:roastKey(),
+  week:app()?.week?.()?.num};
  d.classList.remove("fire","great","okay","rough","roast");
  d.classList.add(m.kind);
  d.querySelector(".sec-fun-emoji").textContent=m.icon;
- d.querySelector("h2").textContent=m.title;
- d.querySelector("p").textContent=m.body;
+ d.querySelector("h2").textContent=saying.title;
+ d.querySelector("p").textContent=saying.body;
  d.querySelector(".sec-fun-stats").textContent=m.wins+" correct · "+m.losses+" missed · "+m.percent+"% accuracy";
  manualOpened=manual;
  if(typeof d.showModal==="function"&&!d.open)d.showModal();
@@ -76,8 +191,10 @@ function close(){
 }
 async function share(){
  const m=current();if(!m.ready)return;
+ const shown=latestVerdict?.account===roastKey()&&latestVerdict.week===app()?.week?.()?.num&&
+  latestVerdict.wins===m.wins&&latestVerdict.losses===m.losses?latestVerdict:m;
  const content="SEC Pick’em · Week "+(app()?.week?.()?.num||"?")+
- "\n"+m.title+"\n"+m.wins+" right / "+m.losses+" wrong ("+m.percent+"%)"+
+ "\n"+shown.title+"\n"+m.wins+" right / "+m.losses+" wrong ("+m.percent+"%)"+
  "\nhttps://sablewolphen.github.io/SEC/#results";
  try{
   if(navigator.share)await navigator.share({title:"My SEC Pick’em verdict",text:content});
@@ -238,6 +355,7 @@ D.addEventListener("click",e=>{
  const b=e.target.closest?.("button");if(!b)return;
  if(b.hasAttribute("data-fun-show")){show(true);return;}
  if(b.hasAttribute("data-fun-close")){close();return;}
+ if(b.hasAttribute("data-fun-again")){show(true);return;}
  if(b.hasAttribute("data-fun-share")){void share();return;}
  if(b.dataset.awardSport){awardSport=b.dataset.awardSport;renderAwards();return;}
  if(b.dataset.awardPeriod){awardPeriod=b.dataset.awardPeriod;renderAwards();return;}
@@ -253,6 +371,6 @@ D.addEventListener("change",e=>{
  if(!e.target.matches?.("[data-fun-opt-out]"))return;
  put("sec-fun-disabled",String(e.target.checked));
 });
-W.SEC_FAN_MOMENTS=Object.freeze({onView,grade,current,leagueUI,renderAwards,loadAwards,safeUrl});
+W.SEC_FAN_MOMENTS=Object.freeze({onView,grade,current,leagueUI,renderAwards,loadAwards,safeUrl,rotateRoast,roastCounts:()=>Object.fromEntries(Object.entries(ROASTS).map(([k,v])=>[k,v.length]))});
 if(app()?.view?.())onView(app().view());
 })();
