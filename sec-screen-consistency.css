@@ -271,3 +271,78 @@ body .view :is(button,a,summary):focus-visible,
  #sec-home-root .hq-app-metric strong{font-size:22px}
  #sec-home-root>.hq-sport-tabs button{font-size:11px}
 }
+
+
+/* Consistent mobile League: modern sans-serif headings and less nested chrome.
+   Keep every league-management control and standings section accessible. */
+#league-view .fan-league-summary h2,
+#league-view .fan-league-title-row h2,
+#league-view .fan-format-wrap :is(h2,h3),
+#league-view .fan-league-summary p,
+#league-view .fan-format-wrap button{
+ font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+#league-view .fan-league-summary h2,
+#league-view .fan-league-title-row h2{
+ font-size:clamp(19px,3vw,25px);line-height:1.15;letter-spacing:-.6px;
+ color:var(--sec-unified-ink);font-weight:850;
+}
+#league-view .fan-league-summary{
+ border:1px solid var(--sec-unified-border);
+ border-radius:var(--sec-unified-radius);
+ background:linear-gradient(115deg,#152d41,#0d2235 84%);
+ box-shadow:none;
+}
+#league-view .fan-league-summary .fan-league-select{
+ background:#10283c;border-color:#527089;border-radius:10px;
+ color:#eff6fb;min-height:45px;max-width:100%;
+}
+#league-view .fan-league-summary .fan-league-home-actions :is(button,a){
+ border-radius:9px;min-height:42px;
+}
+@media(max-width:790px){
+ #league-view>.eyebrow{margin:0 0 6px}
+ #league-view>.page-intro{
+  min-height:0;padding:13px 15px;margin:0 0 12px;
+ }
+ #league-view>.page-intro h1{
+  font-size:clamp(24px,6vw,30px);margin:0;
+ }
+ #league-view .fan-league-summary{
+  padding:13px 14px;margin:0 0 10px;
+ }
+ #league-view .fan-league-title-row{gap:9px;align-items:flex-start}
+ #league-view .fan-league-title-row h2{
+  margin:3px 0 4px;font-size:21px;
+ }
+ #league-view .fan-league-title-row p{
+  font-size:12px;line-height:1.4;margin:0 0 8px;
+  color:var(--sec-unified-muted);
+ }
+ #league-view .fan-league-home-actions{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:7px;min-width:0;width:100%;margin:5px 0 10px;
+ }
+ #league-view .fan-league-home-actions button{
+  width:100%;min-height:42px;padding:8px 10px;
+  border-radius:9px;font-size:12px;white-space:normal;
+ }
+ #league-view .fan-league-select-label{font-size:11px;margin:5px 0}
+ #league-view .fan-current-league-meta{margin-top:8px}
+ #league-view .fan-sport-tags{gap:6px}
+ #league-view .fan-sport-tag{font-size:10px}
+ #league-view .sec-fun-league{
+  padding:12px 14px;border:1px solid var(--sec-unified-border);
+  border-radius:12px;background:#11283b;box-shadow:none;
+ }
+ #league-view .sec-fun-league h3{font-size:15px;margin:0 0 7px}
+ #league-view .sec-fun-league p{font-size:12px;line-height:1.45;margin:0}
+ #league-view .fan-league-summary+*{min-width:0}
+ #league-view :is(.fan-panel,.fan-fold,.fan-club-focus){
+  border-radius:12px;box-shadow:none;
+ }
+}
+@media(max-width:380px){
+ #league-view .fan-league-summary{padding:11px}
+ #league-view .fan-league-home-actions button{padding:8px 5px;font-size:11px}
+}
