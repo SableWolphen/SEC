@@ -60,3 +60,7 @@
 .sec-fun-awards-fold>summary span{font-size:.76rem;color:#b9cadb}
 .sec-fun-awards-fold>summary:focus-visible{outline:3px solid #f1bf68;outline-offset:-3px}
 .sec-fun-awards-fold .sec-fun-awards{margin:0;border:0;border-top:1px solid #e4b96a45;border-radius:0}
+
+/* A quick replay should be obvious without competing with the share action. */
+.sec-fun-dialog-footer [data-fun-again]{background:#f1bf68;color:#11283d;border-color:#f1bf68}
+@media(max-width:400px){.sec-fun-dialog-footer button{flex:1 1 125px}}
