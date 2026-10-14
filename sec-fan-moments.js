@@ -5,9 +5,19 @@
 const W=window,D=document,app=()=>W.SEC_BRIDGE,$=id=>D.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const scope=()=>[W.secOnline?.getUser?.()?.id||"device",W.SEC_LEAGUE_SETTINGS?.getSelected?.()?.id||"local",app()?.week?.()?.num||"none"].join("|");
-// Roasts are based on a person's VERIFIED picks, not their selected league.
-// Keep one stable card per user across league selection and route changes.
-const owner=()=>W.secOnline?.getUser?.()?.id||"device";
+// The connected account can temporarily read as null while Supabase refreshes
+// its session. Reuse ONLY the identity already confirmed in this app instance,
+// never a different user's data or a saved user ID from an old session.
+// An explicit sign-out clears it immediately (see onAuthSignOut below).
+let lastConfirmedUserId=null;
+function owner(){
+ const userId=W.secOnline?.getUser?.()?.id;
+ if(userId){
+  lastConfirmedUserId=String(userId);
+  return lastConfirmedUserId;
+ }
+ return lastConfirmedUserId||"device";
+}
 const cardKey=()=> "sec-roast-card-v3:"+owner();
 function savedCard(key){
  let raw=storage(key);
@@ -107,7 +117,7 @@ const ROASTS=Object.freeze({
   ["THE RESET BUTTON LOOKS DELICIOUS","Good news: next week's slate has never heard of this one."]
  ]
 });
-const roastKey=()=> "sec-roast-deck-v1:"+(W.secOnline?.getUser?.()?.id||"device");
+const roastKey=()=> "sec-roast-deck-v1:"+owner();
 let latestVerdict=null;
 function freshDeck(size,last){
  const deck=Array.from({length:size},(_,i)=>i);
@@ -225,13 +235,22 @@ function cardVerdict(force=false){
    scorecard stays on Results. This is not another interruption or modal. */
 function globalUI(view=app()?.view?.()){
  const root=$("sec-fun-global");if(!root)return;
- const m=cardVerdict(),visible=view!=="results"&&m.ready;
+ const m=cardVerdict(),visible=view!=="results";
  root.hidden=!visible;
  if(!visible){root.removeAttribute("data-signature");return;}
  const signature=[roastKey(),m.fingerprint,m.title,m.judged,view].join("|");
  displayedFingerprint=m.fingerprint;displayedAccountKey=cardKey();
  if(root.dataset.signature===signature)return;
  root.dataset.signature=signature;
+ if(!m.ready){
+  root.innerHTML='<aside class="sec-fun-ribbon sec-fun-ribbon--waiting" aria-label="Pick’em roast awaiting verified picks">'+
+   '<span class="sec-fun-ribbon-emoji" aria-hidden="true">🎙️</span>'+
+   '<div class="sec-fun-ribbon-copy"><small>YOUR PICK’EM ROAST</small>'+
+   '<strong>Roast warming up</strong><span>Waiting for three verified picks.</span></div>'+
+   '<div class="sec-fun-ribbon-actions"><button type="button" data-fun-open-results>Full recap ↗</button></div>'+
+   '</aside>';
+  return;
+ }
  root.innerHTML='<aside class="sec-fun-ribbon" aria-label="Your persistent Pick’em verdict">'+
   '<span class="sec-fun-ribbon-emoji" aria-hidden="true">'+esc(m.icon)+'</span>'+
   '<div class="sec-fun-ribbon-copy"><small>🎙️ YOUR PICK’EM ROAST · '+
@@ -497,6 +516,18 @@ function renderAwards(){
  fold.append(summary,section);root.append(fold);
  if(previous)root.querySelector('[data-award-period="'+previous+'"]')?.focus?.();
 }
+function onAuthSignOut(){
+ // Explicit logout must immediately stop showing any account-specific quote.
+ lastConfirmedUserId=null;
+ displayedFingerprint=null;
+ displayedAccountKey=null;
+ lastRenderedView=null;
+ const ribbon=$("sec-fun-global");
+ if(ribbon){ribbon.removeAttribute("data-signature");ribbon.innerHTML="";ribbon.hidden=true;}
+ const card=$("sec-fun-results");
+ if(card)card.innerHTML="";
+ onView(app()?.view?.()||"home");
+}
 function onView(view){
  lastRenderedView=view;
  globalUI(view);
@@ -545,6 +576,6 @@ function refreshIfChanged(){
 D.addEventListener("visibilitychange",refreshIfChanged);
 D.addEventListener("sec:results-updated",refreshIfChanged);
 if(typeof W.setInterval==="function")W.setInterval(refreshIfChanged,60000);
-W.SEC_FAN_MOMENTS=Object.freeze({onView,grade,current,cardVerdict,anotherRoast,globalUI,milestone,leagueUI,renderAwards,loadAwards,safeUrl,rotateRoast,roastCounts:()=>Object.fromEntries(Object.entries(ROASTS).map(([k,v])=>[k,v.length]))});
+W.SEC_FAN_MOMENTS=Object.freeze({onView,onAuthSignOut,grade,current,cardVerdict,anotherRoast,globalUI,milestone,leagueUI,renderAwards,loadAwards,safeUrl,rotateRoast,roastCounts:()=>Object.fromEntries(Object.entries(ROASTS).map(([k,v])=>[k,v.length]))});
 if(app()?.view?.())onView(app().view());
 })();
