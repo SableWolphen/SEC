@@ -24,6 +24,36 @@ assert.equal(m.grade(1,2).kind,"rough");
 assert.equal(m.grade(3,0,2).judged,3,"pushes excluded from accuracy denominator");
 assert.equal(m.grade(3,0,2).percent,100);
 assert.equal(m.grade(0,0).ready,false,"no fake results");
+
+const counts=m.roastCounts();
+assert.deepEqual({...counts},{fire:12,great:12,okay:12,rough:12,roast:12},
+ "every performance tier has twelve original roasts");
+const kinds=Object.keys(counts);
+for(const kind of kinds){
+ const firstCycle=Array.from({length:counts[kind]},()=>m.rotateRoast(kind));
+ assert.equal(new Set(firstCycle.map(x=>x.title)).size,counts[kind],
+  kind+" has no repeats before the deck is exhausted");
+ const end=firstCycle.at(-1).title,again=m.rotateRoast(kind);
+ assert.notEqual(again.title,end,kind+" does not repeat at deck boundaries");
+ assert.ok(firstCycle.every(x=>x.body&&x.title&&x.kind===kind));
+ // A new script instance with the same storage continues its previous rotation.
+ const another={SEC_BRIDGE:{view:()=>null},secOnline:{getUser:()=>null}};
+ vm.runInNewContext(src,{window:another,document,localStorage:storage,URL,Date,Number,Promise,console});
+ const continued=another.SEC_FAN_MOMENTS.rotateRoast(kind);
+ assert.notEqual(continued.title,again.title,kind+" persists across app restarts");
+}
+// Changing accounts must not mix the last-seen state with another user's deck.
+const isolated={SEC_BRIDGE:{view:()=>null},secOnline:{getUser:()=>({id:"test-user"})}};
+vm.runInNewContext(src,{window:isolated,document,localStorage:storage,URL,Date,Number,Promise,console});
+const chosen=isolated.SEC_FAN_MOMENTS.rotateRoast("rough");
+assert.equal(store.has("sec-roast-deck-v1:test-user:rough"),true,"signed-in rotation is account scoped");
+assert.ok(chosen.title);
+assert.equal(store.has("sec-roast-deck-v1:device:rough"),true);
+assert.match(src,/data-fun-again/,"users can request a fresh saying right away");
+assert.match(src,/latestVerdict/,"share matches the displayed roast");
+assert.match(html,/sec-fan-moments\.js\?v=20261014-fun-v2/);
+assert.match(read("sw.js"),/sec-fan-moments\.js\?v=20261014-fun-v2/);
+
 assert.equal(m.safeUrl("https://www.secsports.com/news/2026/10/fake"),true);
 assert.equal(m.safeUrl("javascript:alert(1)"),false);
 assert.equal(m.safeUrl("https://www.secsports.com.evil.invalid/"),false);
