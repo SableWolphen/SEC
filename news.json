@@ -1,11 +1,24 @@
 {
-  "updated_at": "2026-10-14T01:56:11.209008Z",
-  "checked_at": "2026-10-14T01:56:11.209008Z",
+  "updated_at": "2026-10-14T07:42:05.100934Z",
+  "checked_at": "2026-10-14T07:42:05.100934Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "4f0fbd53561c37aa",
+      "title": "Florida International Panthers vs. Jacksonville State Gamecocks: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50179128/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-14T03:37:13Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
     {
       "id": "2531d4c3d4220fa4",
       "title": "Missouri coach to attend Mark Mitchell eligibility ruling",
@@ -328,21 +341,6 @@
       "teams": [
         "Alabama",
         "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "df7e50f76f41658c",
-      "title": "Connelly: What's wrong with Texas and other Week 6 thoughts",
-      "summary": "Georgia is in great shape, but what about Alabama? And what's up with Texas and the ever-fluid hot seat?",
-      "url": "https://www.espn.com/college-football/story/_/id/50158869/connelly-wrong-texas-georgia-alabama-week-6-thoughts",
-      "source": "ESPN",
-      "published_at": "2026-10-12T15:45:18Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia",
-        "Texas"
       ],
       "breaking": false
     },
