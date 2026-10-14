@@ -208,6 +208,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <link rel="stylesheet" href="./sec-ux-v3.css?v=20261012-context-v1">
 <link rel="stylesheet" href="./sec-broadcast-finish.css?v=20261012-studio-v1">
 <link rel="stylesheet" href="./sec-game-impact.css?v=20261013-impact-v1">
+<link rel="stylesheet" href="./sec-fan-moments.css?v=20261014-fun-v1">
 </head>
 <body>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
@@ -252,6 +253,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       <h1 id="results-heading" class="sr-only">My Pick'em Results</h1>
       <div class="sdsx-shell">
         <div class="sdsx-brandline"><strong>Saturdays <em>Down South</em></strong><span>PICK'EM RESULTS</span></div>
+        <div id="sec-fun-results" aria-live="polite"></div>
         <div id="sdsx-results-root" class="sdsx-shell" aria-live="polite"></div>
       </div>
     </section>
@@ -363,6 +365,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       <div class="eyebrow"><span class="eyebrow-dot"></span> THE SEC NEWSROOM <span class="eyebrow-slash">/</span> SOURCE-LINKED STORIES</div>
       <div class="page-intro"><div><h1 id="news-heading">Stay in the <em>know.</em></h1><p>Breaking news, fast recaps, and the full story one tap away.</p></div></div>
       <div class="sdsx-news-launch"><div><span>★ YOUR UNIVERSITY</span><strong>Team News &amp; Ranking Movers</strong></div><button type="button" data-sdsx-view="team-news">Open Team News →</button></div>
+      <div id="sec-athlete-awards-root" aria-live="polite"></div>
       <div id="sec-news-root" aria-live="polite"></div>
     </section>
 
@@ -658,6 +661,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     if(['team-hub','game-center','results','team-news'].includes(v))window.SEC_PREMIUM?.mount?.(v);
     void window.SEC_FAN?.onView?.(v);
     window.SEC_NEXT?.onView?.(v);
+    window.SEC_FAN_MOMENTS?.onView?.(v);
     window.SEC_ACCESS?.sync?.(v);
     if(location.hash!=='#'+v)history.replaceState(null,'','#'+v);
     window.scrollTo({top:0,behavior:'instant'});
@@ -980,5 +984,6 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./sec-access.js?v=20261012-access-v1"></script>
 <script src="./sec-play-by-play.js?v=20261012-plays-v1"></script>
 <script src="./sec-game-impact.js?v=20261013-impact-v1"></script>
+<script src="./sec-fan-moments.js?v=20261014-fun-v1"></script>
 </body>
 </html>
