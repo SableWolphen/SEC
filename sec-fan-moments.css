@@ -52,3 +52,11 @@
 .sec-fun-dialog button:focus-visible,.sec-fun-awards button:focus-visible,.sec-fun-awards a:focus-visible,.sec-fun-report button:focus-visible{outline:3px solid #f1bf68;outline-offset:2px}
 @media(max-width:540px){.sec-fun-report{padding:.78rem}.sec-fun-actions{align-items:flex-start;width:100%}.sec-fun-awards{padding:.75rem}.sec-fun-dialog-inner{padding:1.25rem .9rem}.sec-fun-awards-list{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.sec-fun-dialog,.sec-fun-award{animation:none!important;transition:none!important}}
+
+.sec-fun-awards-fold{margin:1rem 0;border:1px solid #e4b96a55;border-radius:15px;background:#0e2436;color:#f4f6fa;overflow:hidden}
+.sec-fun-awards-fold>summary{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.86rem 1rem;min-height:48px;cursor:pointer;list-style:none}
+.sec-fun-awards-fold>summary::-webkit-details-marker{display:none}
+.sec-fun-awards-fold>summary strong{font-size:1rem;color:#f3cb91}
+.sec-fun-awards-fold>summary span{font-size:.76rem;color:#b9cadb}
+.sec-fun-awards-fold>summary:focus-visible{outline:3px solid #f1bf68;outline-offset:-3px}
+.sec-fun-awards-fold .sec-fun-awards{margin:0;border:0;border-top:1px solid #e4b96a45;border-radius:0}
