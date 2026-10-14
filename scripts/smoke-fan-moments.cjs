@@ -97,24 +97,34 @@ window.SEC_NEXT.recentStats=originalRecent;
 window.SEC_BRIDGE.week=originalWeek;
 
 // Special pop-ups require actual extraordinary results, never an average recap.
-assert.equal(m.milestone(m.grade(3,1)),null,"normal weeks do not trigger an interruption");
+assert.equal(m.milestone(),null,"normal weeks do not trigger an interruption");
 window.SEC_FEATURES={finalData:()=>({winner:"verified"})};
 window.SEC_BRIDGE.week=()=>({num:7,games:[{id:1},{id:2},{id:3},{id:4},{id:5}]});
 window.SEC_NEXT.weekStats=()=>({wins:5,losses:0,items:[]});
-assert.equal(m.milestone(m.grade(5,0)).id,"perfect-week",
+assert.equal(m.milestone().id,"perfect-week",
  "perfect-week highlight only uses final-verified schedule");
 window.SEC_FEATURES.finalData=()=>null;
-assert.equal(m.milestone(m.grade(5,0)),null,
+assert.equal(m.milestone(),null,
  "incomplete week is not falsely called a perfect week");
 window.SEC_FEATURES.finalData=()=>({winner:"verified"});
-assert.equal(m.milestone(m.grade(0,5)).id,"rough-week",
+window.SEC_NEXT.weekStats=()=>({wins:0,losses:5,items:[]});
+assert.equal(m.milestone().id,"rough-week",
  "exceptional poor completed weeks qualify for the optional roast popup");
 window.SEC_FEATURES.finalData=()=>null;
 window.SEC_NEXT.weekStats=()=>({wins:3,losses:2,items:[{kind:"won",g:{id:"verified-upset"}}]});
 window.SEC_LEAGUE_INSIGHTS={upset:()=>({label:"⚡ UNDERDOG WIN"})};
-assert.equal(m.milestone(m.grade(3,2)).id,"called-upset","sourced upset is a special moment");
+assert.equal(m.milestone().id,"called-upset","sourced upset is a special moment");
 window.SEC_LEAGUE_INSIGHTS={upset:()=>null};
-assert.equal(m.milestone(m.grade(3,2)),null,"no fake upset milestones");
+assert.equal(m.milestone(),null,"no fake upset milestones");
+// The recent-picks card can say "great" while a separate weekly highlight
+// must rely strictly on this week's scored slate, not previous winners.
+window.SEC_NEXT.recentStats=()=>historical;
+window.SEC_NEXT.weekStats=()=>({wins:0,losses:5,items:[]});
+window.SEC_FEATURES.finalData=()=>({winner:"verified"});
+assert.equal(m.current().kind,"great");
+assert.equal(m.milestone().id,"rough-week","special moments cannot misuse carried history");
+window.SEC_NEXT.recentStats=originalRecent;
+
 
 
 const counts=m.roastCounts();
