@@ -80,6 +80,9 @@ assert.deepEqual({...counts},{fire:12,great:12,okay:12,rough:12,roast:12},
  "every performance tier has twelve original roasts");
 const kinds=Object.keys(counts);
 for(const kind of kinds){
+ // Card persistence tests already consume quotes; start the independent deck
+ // exhaustion test from a clean, controlled fixture.
+ store.delete("sec-roast-deck-v1:device:"+kind);
  const firstCycle=Array.from({length:counts[kind]},()=>m.rotateRoast(kind));
  assert.equal(new Set(firstCycle.map(x=>x.title)).size,counts[kind],
   kind+" has no repeats before the deck is exhausted");
