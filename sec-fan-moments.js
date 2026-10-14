@@ -11,6 +11,7 @@ const storage=(key)=>{try{return localStorage.getItem(key)}catch(_){return null}
 const put=(key,value)=>{try{localStorage.setItem(key,value)}catch(_){}};
 const safeUrl=url=>{try{const x=new URL(url);return x.protocol==="https:"&&x.hostname==="www.secsports.com"}catch(_){return false}};
 let awards=[],lastAwardLoad=0,loading=null,awardSport="football",awardPeriod="week",modal=null,openedScope="",awardsExpanded=false;
+let displayedFingerprint=null;
 const terms={football:"Football",basketball:"Basketball",baseball:"Baseball"};
 
 /* Each tier gets its own shuffled deck. A message cannot repeat until every
@@ -171,6 +172,7 @@ function cardVerdict(force=false){
 function resultUI(){
  const root=$("sec-fun-results");if(!root)return;
  const m=cardVerdict();
+ displayedFingerprint=m.fingerprint;
  const week=app()?.week?.()?.num;
  root.innerHTML='<section class="sec-fun-report sec-fun-report--'+esc(m.kind)+
   '" aria-label="Your recent SEC pick roast recap">'+
@@ -436,6 +438,19 @@ D.addEventListener("change",e=>{
  if(!e.target.matches?.("[data-fun-opt-out]"))return;
  put("sec-fun-disabled",String(e.target.checked));
 });
+// Refresh the visible card if a new final is loaded while the user stays on
+// Results. Account score fetching still happens through the existing flow.
+function refreshIfChanged(){
+ if(app()?.view?.()!=="results"||D.visibilityState!=="visible")return;
+ const now=current();
+ if(now.fingerprint!==displayedFingerprint){
+  resultUI();
+  W.SEC_NEXT?.onResults?.();
+  maybePopup("results");
+ }
+}
+D.addEventListener("visibilitychange",refreshIfChanged);
+if(typeof W.setInterval==="function")W.setInterval(refreshIfChanged,60000);
 W.SEC_FAN_MOMENTS=Object.freeze({onView,grade,current,cardVerdict,anotherRoast,milestone,leagueUI,renderAwards,loadAwards,safeUrl,rotateRoast,roastCounts:()=>Object.fromEntries(Object.entries(ROASTS).map(([k,v])=>[k,v.length]))});
 if(app()?.view?.())onView(app().view());
 })();
