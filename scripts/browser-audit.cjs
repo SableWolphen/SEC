@@ -275,6 +275,35 @@ fs.mkdirSync(output,{recursive:true});
          (compact.mobile.moment==="live"&&
           await page.evaluate(()=>!!document.querySelector('#sec-home-root .hq-next-kickoff')?.getClientRects().length)))
        problems.push(viewport.width+"px compact mobile homepage regression: "+JSON.stringify(compact));
+      // Home should prioritize the upcoming matchup, not stack giant nested
+      // cards and duplicate the picks/league dashboards at phone widths.
+      const calm=await page.evaluate(()=>{
+       const root=document.getElementById("sec-home-root");
+       const find=selector=>root.querySelector(selector);
+       const rect=selector=>{
+        const el=find(selector);return el&&getComputedStyle(el).display!=="none"?
+         Math.round(el.getBoundingClientRect().height):0;
+       };
+       const sports=[...root.querySelectorAll(".hq-sport-tabs button")];
+       const metrics=[...root.querySelectorAll(".hq-app-metric")];
+       return {
+        cta:rect(".hq-stadium-hero .hq-hero-buttons .hq-primary"),
+        school:rect(".sds-home-favorite-mini"),
+        kickoff:rect(".hq-next-kickoff"),
+        metric:Math.max(0,...metrics.map(x=>getComputedStyle(x).display==="none"?0:Math.round(x.getBoundingClientRect().height))),
+        sports:Math.max(0,...sports.map(x=>Math.round(x.getBoundingClientRect().height))),
+        duplicatePicks:rect(".hq-picks")>0,
+        shortcuts:rect(".hq-actions")>0,
+        leagueStandings:rect(".hq-league .hq-standings")>0,
+        selectedSchool:!!find(".sds-home-favorite-mini [data-hq-route=team-hub]"),
+        screenOverflow:document.documentElement.scrollWidth>document.documentElement.clientWidth+2
+       };
+      });
+      if(calm.cta<40||calm.cta>65||calm.school>115||
+        calm.kickoff>110||calm.metric>95||calm.sports>68||
+        calm.duplicatePicks||calm.shortcuts||calm.leagueStandings||
+        calm.screenOverflow)
+       problems.push(viewport.width+"px mobile Home still overcrowded: "+JSON.stringify(calm));
      }
 
      const navSpotlights=await page.evaluate(()=>{

@@ -101,3 +101,173 @@ body .view :is(button,a,summary):focus-visible,
 @media(prefers-reduced-motion:reduce){
  .sec-fun-ribbon,.sec-fun-ribbon button{transition:none!important;animation:none!important}
 }
+
+
+/* Mobile Home v2: remove duplicate dashboards instead of shrinking legible
+   content. The complete Picks / League pages remain one tap away. */
+@media(max-width:790px){
+ #sec-home-root{
+  gap:12px;
+  padding-bottom:calc(24px + env(safe-area-inset-bottom));
+ }
+ #sec-home-root>.hq-stadium-hero{
+  display:grid;grid-template-columns:minmax(0,1fr);align-items:stretch;
+  gap:12px;min-height:0;padding:16px;
+  border-radius:17px;box-shadow:none;
+ }
+ #sec-home-root .hq-hero-copy{min-width:0}
+ #sec-home-root .hq-hero-copy .hq-eyebrow{
+  font-size:10px;letter-spacing:.11em;color:#c6d6e2
+ }
+ #sec-home-root .hq-hero-copy h2{
+  font-size:clamp(27px,6.2vw,33px);
+  line-height:1.12;letter-spacing:-.8px;
+  margin:5px 0 12px
+ }
+ #sec-home-root .hq-hero-summary{
+  display:none; /* Same pick count is already in the compact metrics. */
+ }
+ #sec-home-root .sds-home-favorite-mini{
+  display:flex;align-items:center;gap:12px;
+  min-height:0;margin:0;padding:10px;
+  border-radius:12px;
+ }
+ #sec-home-root .sds-home-favorite-mini>.sdsx-crest.sds-team-brand{
+  width:46px;min-width:46px;height:49px;
+  font-size:11px;border-radius:10px;
+ }
+ #sec-home-root .sds-home-favorite-mini>div{
+  display:grid;align-content:center;gap:2px;flex:1;min-width:0
+ }
+ #sec-home-root .sds-home-favorite-mini>div>span{
+  font-size:9px;letter-spacing:.08em;font-weight:800;
+ }
+ #sec-home-root .sds-home-favorite-mini>div>strong{
+  font-size:20px;line-height:1.2;overflow-wrap:anywhere;
+ }
+ #sec-home-root .sds-home-favorite-mini>div>small{
+  font-size:11px;line-height:1.3;
+ }
+ #sec-home-root .sds-home-favorite-actions{
+  display:flex;gap:2px 14px;flex-wrap:wrap;margin:4px 0 0;
+ }
+ #sec-home-root .sds-home-favorite-actions button{
+  min-height:25px;padding:1px 0;font-size:11px;
+ }
+ #sec-home-root .hq-hero-buttons{margin:0}
+ #sec-home-root .hq-hero-buttons .hq-primary{
+  display:flex;align-items:center;justify-content:center;
+  min-height:46px;height:auto;width:100%;padding:10px 14px;
+  border-radius:11px;font-size:14px;line-height:1.3;
+  font-weight:850;box-shadow:none;
+ }
+ #sec-home-root .hq-next-kickoff{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  grid-template-areas:"label date" "teams count";
+  align-items:center;justify-content:stretch;text-align:left;
+  gap:6px 10px;min-height:0;margin:0;padding:11px 12px;
+  border:1px solid #3b5870;border-radius:12px;
+  background:#0e2437;
+ }
+ #sec-home-root .hq-next-kickoff .hq-hero-next-label{
+  grid-area:label;font-size:10px;letter-spacing:.06em;
+ }
+ #sec-home-root .hq-next-kickoff>small{
+  grid-area:date;min-width:0;font-size:10px;
+  text-align:right;white-space:nowrap;flex-basis:auto;
+ }
+ #sec-home-root .hq-next-kickoff>.hq-next-teams{
+  grid-area:teams;display:flex;align-items:center;
+  gap:6px;width:100%;max-width:none;min-width:0;
+ }
+ #sec-home-root .hq-next-teams>span{
+  display:flex;align-items:center;gap:4px;
+  min-width:0;font-size:12px;
+ }
+ #sec-home-root .hq-next-teams>span>b{font-size:12px;white-space:nowrap}
+ #sec-home-root .hq-next-teams>small{font-size:10px;flex:none}
+ #sec-home-root .hq-next-teams .sdsx-crest.sds-team-brand{
+  width:30px;min-width:30px;height:33px;font-size:9px;border-radius:7px;
+ }
+ #sec-home-root .hq-next-kickoff>strong{
+  grid-area:count;font-size:16px;white-space:nowrap;
+  font-weight:850;text-align:right;
+ }
+ #sec-home-root .hq-next-kickoff>button{display:none}
+ #sec-home-root>.hq-app-metrics{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;min-width:0;margin:0;
+ }
+ #sec-home-root .hq-app-metric{
+  display:flex;flex-direction:row;align-items:center;
+  justify-content:space-between;gap:8px;
+  min-height:64px;padding:10px 12px;
+  background:#11293e;border:1px solid #375269;border-radius:12px;
+  text-align:left;
+ }
+ #sec-home-root .hq-app-metric:nth-child(3){display:none}
+ #sec-home-root .hq-app-metric>span{
+  font-size:10px;letter-spacing:.03em;line-height:1.25;
+ }
+ #sec-home-root .hq-app-metric strong{
+  font-size:25px;line-height:1.1;white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+ }
+ #sec-home-root .hq-app-metric strong small{font-size:12px}
+ /* The persistent bottom nav already has Games, League, Trophies, More.
+    Duplicating those as a second icon bar and a full Pick card is clutter. */
+ #sec-home-root>.hq-actions,#sec-home-root .hq-picks{display:none}
+ #sec-home-root>.hq-sport-tabs{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  align-items:stretch;gap:6px;margin:0;padding:5px;
+  border:1px solid #364f65;border-radius:13px;
+  background:#10253a;min-width:0;
+ }
+ #sec-home-root>.hq-sport-tabs button{
+  display:flex;align-items:center;justify-content:center;
+  min-width:0;min-height:44px;padding:8px 5px;
+  text-align:center;white-space:nowrap;flex-wrap:nowrap;
+  border-radius:9px;font-size:12px;line-height:1.2;
+ }
+ #sec-home-root>.hq-sport-tabs button.suggested{
+  background:#2a4050;border-color:#c1a272;color:#f7da9a;
+ }
+ #sec-home-root .hq-league{
+  gap:9px;min-height:0;padding:12px 14px;
+ }
+ #sec-home-root .hq-league .hq-panel-header{margin:0}
+ #sec-home-root .hq-league .hq-panel-header>span:first-child{
+  font-size:11px;letter-spacing:.08em;
+ }
+ #sec-home-root .hq-league h3{font-size:17px;margin:0}
+ #sec-home-root .hq-league .hq-panel-sub,
+ #sec-home-root .hq-league .hq-standings,
+ #sec-home-root .hq-league .hq-note{display:none}
+ #sec-home-root .hq-league .hq-secondary{
+  min-height:42px;margin:0;padding:10px 12px;
+ }
+ #sec-home-root .hq-games{padding:13px 14px}
+ #sec-home-root .hq-news-spotlight{padding:13px 14px}
+ /* A full league list is on League, not squeezed into the Home viewport. */
+ #sec-home-root .hq-picks{order:3}
+ #sec-home-root .hq-games{order:4}
+ #sec-home-root .hq-league{order:5}
+ #sec-home-root .hq-news-spotlight{order:6}
+ #sec-home-root .hq-mobile-expand{order:7}
+ #sec-home-root .hq-disclaimer{order:11}
+ /* Phone nav remains fixed, but content has enough room to scroll clear. */
+ #main-content{padding-bottom:calc(122px + env(safe-area-inset-bottom))}
+}
+@media(max-width:380px){
+ #sec-home-root>.hq-stadium-hero{padding:12px;gap:9px}
+ #sec-home-root .hq-hero-copy h2{font-size:27px}
+ #sec-home-root .hq-next-teams .sdsx-crest.sds-team-brand{
+  width:25px;min-width:25px;height:29px;
+ }
+ #sec-home-root .hq-next-teams>span>b{font-size:11px}
+ #sec-home-root .hq-next-kickoff{padding:10px;gap:5px}
+ #sec-home-root .hq-next-kickoff>strong{font-size:14px}
+ #sec-home-root .hq-app-metric{padding:9px;gap:5px}
+ #sec-home-root .hq-app-metric strong{font-size:22px}
+ #sec-home-root>.hq-sport-tabs button{font-size:11px}
+}

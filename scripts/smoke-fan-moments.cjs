@@ -190,8 +190,8 @@ assert.ok(chosen.title);
 assert.equal(store.has("sec-roast-deck-v1:device:rough"),true);
 assert.match(src,/data-fun-again/,"users can request a fresh saying right away");
 assert.match(src,/latestVerdict/,"share matches the displayed roast");
-assert.match(html,/sec-fan-moments\.js\?v=20261014-fun-v5/);
-assert.match(read("sw.js"),/sec-fan-moments\.js\?v=20261014-fun-v5/);
+assert.match(html,/sec-fan-moments\.js\?v=20261014-fun-v6/);
+assert.match(read("sw.js"),/sec-fan-moments\.js\?v=20261014-fun-v6/);
 
 assert.equal(m.safeUrl("https://www.secsports.com/news/2026/10/fake"),true);
 assert.equal(m.safeUrl("javascript:alert(1)"),false);
@@ -200,8 +200,8 @@ assert.match(html,/id="sec-fun-results"/,"feedback accessible within Results");
 assert.match(html,/id="sec-fun-global"/,"persistent roast has a site-wide mounting point");
 assert.ok(html.indexOf('id="sec-fun-global"')<html.indexOf('id="home-view"'),
  "global roast must live outside any hidden routed view");
-assert.match(html,/sec-screen-consistency\.css\?v=20261014-ui-continuity-v1/);
-assert.match(read("sw.js"),/sec-screen-consistency\.css\?v=20261014-ui-continuity-v1/);
+assert.match(html,/sec-screen-consistency\.css\?v=20261014-ui-continuity-v2/);
+assert.match(read("sw.js"),/sec-screen-consistency\.css\?v=20261014-ui-continuity-v2/);
 assert.match(read("sw.js"),/sec-pickem-v113/);
 assert.match(read("sec-screen-consistency.css"),/#sec-fun-global\[hidden\]/);
 assert.match(read("sec-screen-consistency.css"),/\.sdsx-brandline/);
