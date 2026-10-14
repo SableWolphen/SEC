@@ -53,7 +53,49 @@ vm.runInNewContext(src,{window:freshWindow,document,localStorage:storage,URL,Dat
 assert.equal(freshWindow.SEC_FAN_MOMENTS.cardVerdict().title,rotated.title,
  "the user does not consume a new joke by restarting the app");
 assert.match(resultRoot.innerHTML,/data-fun-next/);
-assert.equal(store.has("sec-roast-card-v1:device|local|7"),true);
+assert.equal(store.has("sec-roast-card-v2:device|local"),true);
+// Past verified picks carry the same roast across new calendar weeks with no
+// scored games, and the roast updates once a new final is actually confirmed.
+const originalWeek=window.SEC_BRIDGE.week;
+const originalRecent=window.SEC_NEXT.recentStats;
+const past=(games)=>({
+ source:"recent",limit:10,
+ wins:games.filter(x=>x==="won").length,
+ losses:games.filter(x=>x==="lost").length,
+ pushes:games.filter(x=>x==="push").length,
+ fingerprint:games.map((x,i)=>"verified-game-"+i+":"+x).join("|")
+});
+const historical=past(["won","won","lost","won","won"]);
+window.SEC_NEXT.recentStats=()=>historical;
+const baseline=m.cardVerdict();
+assert.equal(baseline.ready,true);
+assert.equal(baseline.source,"recent");
+assert.equal(baseline.judged,5);
+assert.equal(baseline.percent,80);
+m.onView("results");
+assert.match(resultRoot.innerHTML,/RECENT PICKS/);
+assert.match(resultRoot.innerHTML,/5 verified graded picks/);
+assert.match(resultRoot.innerHTML,/most recent 10 graded football picks/i);
+assert.match(resultRoot.innerHTML,/update after the next verified final/i);
+window.SEC_BRIDGE.week=()=>({num:8,games:[{id:"new",kickoff:"2026-10-15T20:00:00Z"}]});
+window.SEC_NEXT.weekStats=()=>({wins:0,losses:0,pushes:0,items:[]});
+m.onView("results");
+assert.equal(m.cardVerdict().title,baseline.title,
+ "roast is carried from past picks until newly graded games become available");
+assert.match(resultRoot.innerHTML,/80%<\/b><small>ACCURACY/);
+const updated=past(["won","won","lost","won","won","lost"]);
+window.SEC_NEXT.recentStats=()=>updated;
+const next=m.cardVerdict();
+assert.equal(next.judged,6);
+assert.equal(next.percent,67);
+assert.notEqual(next.title,baseline.title,
+ "new source-verified final refreshes the saying even within the same week");
+const stable=m.cardVerdict();
+assert.equal(stable.title,next.title,
+ "no fresh verified results means no unnecessary roast rotation");
+window.SEC_NEXT.recentStats=originalRecent;
+window.SEC_BRIDGE.week=originalWeek;
+
 // Special pop-ups require actual extraordinary results, never an average recap.
 assert.equal(m.milestone(m.grade(3,1)),null,"normal weeks do not trigger an interruption");
 window.SEC_FEATURES={finalData:()=>({winner:"verified"})};
@@ -104,8 +146,8 @@ assert.ok(chosen.title);
 assert.equal(store.has("sec-roast-deck-v1:device:rough"),true);
 assert.match(src,/data-fun-again/,"users can request a fresh saying right away");
 assert.match(src,/latestVerdict/,"share matches the displayed roast");
-assert.match(html,/sec-fan-moments\.js\?v=20261014-fun-v3/);
-assert.match(read("sw.js"),/sec-fan-moments\.js\?v=20261014-fun-v3/);
+assert.match(html,/sec-fan-moments\.js\?v=20261014-fun-v4/);
+assert.match(read("sw.js"),/sec-fan-moments\.js\?v=20261014-fun-v4/);
 
 assert.equal(m.safeUrl("https://www.secsports.com/news/2026/10/fake"),true);
 assert.equal(m.safeUrl("javascript:alert(1)"),false);
