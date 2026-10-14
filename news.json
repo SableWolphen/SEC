@@ -1,11 +1,24 @@
 {
-  "updated_at": "2026-10-13T22:49:02.415759Z",
-  "checked_at": "2026-10-13T22:49:02.415759Z",
+  "updated_at": "2026-10-14T01:56:11.209008Z",
+  "checked_at": "2026-10-14T01:56:11.209008Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "2531d4c3d4220fa4",
+      "title": "Missouri coach to attend Mark Mitchell eligibility ruling",
+      "summary": "Missouri basketball coach Dennis Gates will support Mark Mitchell in court Wednesday as the two-time All-SEC selection seeks a fifth season of eligibility.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50175116/missouri-coach-attend-mark-mitchell-eligibility-ruling",
+      "source": "ESPN",
+      "published_at": "2026-10-13T22:34:07Z",
+      "sport": "basketball",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
     {
       "id": "7059b27fec62d4d3",
       "title": "Looking at the Heisman and CFP odds: The case for Iowa, Kentucky, UCLA and USC",
@@ -70,19 +83,6 @@
       "teams": [
         "LSU",
         "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "2531d4c3d4220fa4",
-      "title": "Missouri coach to attend Mark Mitchell eligibility ruling",
-      "summary": "Missouri basketball coach Dennis Gates will support Mark Mitchell in court Wednesday as the two-time All-SEC selection seeks a fifth season of eligibility.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50175116/missouri-coach-attend-mark-mitchell-eligibility-ruling",
-      "source": "ESPN",
-      "published_at": "2026-10-13T17:45:46Z",
-      "sport": "basketball",
-      "teams": [
-        "Missouri"
       ],
       "breaking": false
     },
