@@ -96,10 +96,10 @@
       "period": "year",
       "date": "2026-05-18",
       "year": 2026,
-      "title": "Official 2026 SEC Baseball postseason awards",
-      "athlete": null,
-      "school": null,
-      "detail": "The conference's official season-end awards list.",
+      "title": "2026 SEC Baseball Player of the Year",
+      "athlete": "Daniel Jackson",
+      "school": "Georgia",
+      "detail": "Official league Player of the Year; also led SEC in average, home runs and RBIs.",
       "url": "https://www.secsports.com/news/2026/05/sec-announces-2026-baseball-awards-presented-by-allstate"
     },
     {
@@ -107,10 +107,10 @@
       "period": "year",
       "date": "2026-03-09",
       "year": 2026,
-      "title": "Official 2026 SEC Men's Basketball postseason awards",
-      "athlete": null,
-      "school": null,
-      "detail": "The conference's official season-end awards list.",
+      "title": "2026 SEC Men's Basketball Player of the Year",
+      "athlete": "Darius Acuff Jr.",
+      "school": "Arkansas",
+      "detail": "Conference Player of the Year for the 2025–26 season.",
       "url": "https://www.secsports.com/news/2026/03/2026-sec-mens-basketball-awards-announced"
     },
     {
@@ -118,10 +118,10 @@
       "period": "year",
       "date": "2025-12-10",
       "year": 2025,
-      "title": "Official 2025 SEC Football postseason awards",
-      "athlete": null,
-      "school": null,
-      "detail": "Last completed season; 2026 season awards are not announced yet.",
+      "title": "2025 SEC Football Offensive Player of the Year",
+      "athlete": "Diego Pavia",
+      "school": "Vanderbilt",
+      "detail": "Last completed football season; 2026 honors are not announced yet.",
       "url": "https://www.secsports.com/news/2025/12/2025-sec-football-awards-presented-by-allstate-announced"
     }
   ]
