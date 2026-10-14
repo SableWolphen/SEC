@@ -105,7 +105,7 @@ function freshDeck(size,last){
  }
  return deck;
 }
-function rotateRoast(kind){
+function rotateRoast(kind,excludeTitle=null){
  const options=ROASTS[kind];
  if(!options?.length)return null;
  const key=roastKey()+":"+kind;
@@ -117,7 +117,20 @@ function rotateRoast(kind){
   new Set(previous.remaining).size===previous.remaining.length&&
   !previous.remaining.includes(last)?
   previous.remaining.slice():[];
- const deck=remaining.length?remaining:freshDeck(options.length,last);
+ let deck=remaining.length?remaining:freshDeck(options.length,last);
+ // A pinned recap can come from an older release or a restored device.
+ // Never let tapping Another roast immediately return the visible quote.
+ if(excludeTitle&&options[deck[deck.length-1]]?.[0]===excludeTitle){
+  const alternate=deck.findIndex(index=>options[index][0]!==excludeTitle);
+  if(alternate!==-1){
+   [deck[alternate],deck[deck.length-1]]=[deck[deck.length-1],deck[alternate]];
+  }else{
+   // The final unshown entry equals an externally restored pinned quote:
+   // skip it rather than repeating, and begin the next shuffled deck.
+   const skipped=deck.pop();
+   deck=freshDeck(options.length,skipped);
+  }
+ }
  const chosen=deck.pop();
  put(key,JSON.stringify({last:chosen,remaining:deck}));
  const [title,body]=options[chosen];
@@ -174,7 +187,7 @@ function cardVerdict(force=false){
  };
  const valid=validQuote&&
   (!fresh.ready||saved.fingerprint===report.fingerprint)&&saved.kind===report.kind;
- const saying=valid&&!force?saved:rotateRoast(report.kind)||report;
+ const saying=valid&&!force?saved:rotateRoast(report.kind,saved?.title)||report;
  if(!valid||force){
   const stats={wins:report.wins,losses:report.losses,pushes:report.pushes,limit:report.limit};
   put(key,JSON.stringify({kind:report.kind,fingerprint:report.fingerprint,
