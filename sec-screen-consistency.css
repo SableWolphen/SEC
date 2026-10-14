@@ -303,7 +303,8 @@ body .view :is(button,a,summary):focus-visible,
 @media(max-width:790px){
  #league-view>.eyebrow{margin:0 0 6px}
  #league-view>.page-intro{
-  min-height:0;padding:13px 15px;margin:0 0 12px;
+  min-height:65px;padding:13px 15px;margin:0 0 12px;
+  display:flex;align-items:center;
  }
  #league-view>.page-intro h1{
   font-size:clamp(24px,6vw,30px);margin:0;
