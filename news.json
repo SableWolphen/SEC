@@ -1,22 +1,72 @@
 {
-  "updated_at": "2026-10-14T13:46:24.569920Z",
-  "checked_at": "2026-10-14T13:46:24.569920Z",
+  "updated_at": "2026-10-14T18:39:44.264987Z",
+  "checked_at": "2026-10-14T18:39:44.264987Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "935784523320fb8b",
+      "title": "Sources: Florida QB Philo questionable, WR Brown could return",
+      "summary": "Florida quarterback Aaron Philo will be listed as questionable in the initial SEC availability report on Wednesday, sources told ESPN's Pete Thamel.",
+      "url": "https://www.espn.com/college-football/story/_/id/50182575/sources-florida-qb-philo-questionable-wr-brown-shot-play",
+      "source": "ESPN",
+      "published_at": "2026-10-14T17:07:20Z",
+      "sport": "football",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
       "id": "8257f08b08b986f7",
       "title": "SEC in filing: LSU dispute remains 'live,' school lacks institutional control",
       "summary": "The SEC is opposing LSU's request to dismiss the conference's lawsuit against the university and its officials, saying a live controversy still exists between the parties.",
       "url": "https://www.espn.com/college-sports/story/_/id/50181308/sec-opposes-lsu-bid-end-lawsuit-dispute-remains-live",
       "source": "ESPN",
-      "published_at": "2026-10-14T13:42:14Z",
+      "published_at": "2026-10-14T16:23:07Z",
       "sport": "football",
       "teams": [
         "LSU"
       ],
+      "breaking": false
+    },
+    {
+      "id": "8257f08b08b986f7",
+      "title": "SEC in filing: LSU dispute remains 'live,' school lacks institutional control",
+      "summary": "The SEC is opposing LSU's request to dismiss the conference's lawsuit against the university and its officials, saying a live controversy still exists between the parties.",
+      "url": "https://www.espn.com/college-sports/story/_/id/50181308/sec-opposes-lsu-bid-end-lawsuit-dispute-remains-live",
+      "source": "ESPN",
+      "published_at": "2026-10-14T16:23:07Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3ad92720e1d6b20f",
+      "title": "Florida's Todd Golden: NCAA eligibility chaos self-inflicted",
+      "summary": "Florida coach Todd Golden says the chaos of college eligibility is caused by the NCAA.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50182031/florida-todd-golden-ncaa-eligibility-chaos-self-inflicted",
+      "source": "ESPN",
+      "published_at": "2026-10-14T16:05:20Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3d62c540a22ad3be",
+      "title": "CFB: Week 7 SEC on ABC Triple Header",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50182175/week-7-sec-abc-triple-header",
+      "source": "ESPN",
+      "published_at": "2026-10-14T15:56:30Z",
+      "sport": "football",
+      "teams": [],
       "breaking": false
     },
     {
@@ -329,20 +379,6 @@
       "breaking": false
     },
     {
-      "id": "c96f30a55c459aff",
-      "title": "Vols coach Heupel won't commit yet to starting QB vs. Crimson Tide",
-      "summary": "Tennessee coach Josh Heupel was noncommittal about his QB -- either freshman Faizon Brandon or sophomore George MacIntyre -- Saturday against Alabama.",
-      "url": "https://www.espn.com/college-football/story/_/id/50167427/vols-noncommittal-qb-ahead-game-alabama",
-      "source": "ESPN",
-      "published_at": "2026-10-12T17:47:58Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
       "id": "ddce8243579b637f",
       "title": "Auburn's top LB Atkins 'won't be available' vs. Georgia, says Golesh",
       "summary": "Auburn LB Xavier Atkins, a popular preseason All-America pick, \"won't be available\" for Saturday's game vs. No. 1 Georgia, according to coach Alex Golesh.",
@@ -353,20 +389,6 @@
       "teams": [
         "Auburn",
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0d5ec085a65d1a0e",
-      "title": "Alabama WR Coleman-Williams unlikely to play vs. Vols, says DeBoer",
-      "summary": "Alabama star receiver Ryan Coleman-Williams is unlikely to play at Tennessee on Saturday due to multiple injuries, according to coach Kalen DeBoer.",
-      "url": "https://www.espn.com/college-football/story/_/id/50167114/alabama-wr-coleman-williams-unlikely-play-vs-vols-says-deboer",
-      "source": "ESPN",
-      "published_at": "2026-10-12T17:17:32Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Tennessee"
       ],
       "breaking": false
     },
