@@ -72,6 +72,7 @@ const unchanged=history.fingerprint;
 incoming.games[0].liveStatus="live";
 assert.equal(advanced.recentStats().fingerprint,unchanged,
  "new kickoff without a confirmed result preserves old stats");
+incoming.games[0].kickoff=iso(-1); // Simulate the next game actually starting and finishing.
 incoming.games[0].liveStatus="final";
 history=advanced.recentStats();
 assert.equal(history.items.length,4);
