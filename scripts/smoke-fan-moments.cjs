@@ -173,6 +173,7 @@ persisted.set("sec-roast-card-v2:account-A|league-old",JSON.stringify({
 const persistedStorage={getItem:k=>persisted.get(k)||null,
  setItem:(k,v)=>persisted.set(k,v)};
 let selectedLeague="league-old",loggedUser="account-A";
+const authRibbon={innerHTML:"",hidden:true,dataset:{},removeAttribute(k){if(k==="data-signature")delete this.dataset.signature;}};
 let currentReport={source:"recent",limit:10,wins:4,losses:3,pushes:0,
  fingerprint:"verified-1:won|verified-2:won|verified-3:lost|verified-4:won|verified-5:lost|verified-6:won|verified-7:lost"};
 const stableWindow={
@@ -181,7 +182,7 @@ const stableWindow={
  SEC_LEAGUE_SETTINGS:{getSelected:()=>({id:selectedLeague})},
  secOnline:{getUser:()=>({id:loggedUser})}
 };
-const stableDoc={addEventListener:()=>{},getElementById:()=>null,visibilityState:"visible"};
+const stableDoc={addEventListener:()=>{},getElementById:id=>id==="sec-fun-global"?authRibbon:null,visibilityState:"visible"};
 vm.runInNewContext(src,{window:stableWindow,document:stableDoc,
  localStorage:persistedStorage,URL,Date,Number,Promise,console});
 const bound=stableWindow.SEC_FAN_MOMENTS;
@@ -190,11 +191,18 @@ assert.equal(before.title,"THE EXCITEMENT IS MANDATORY","migrate the already-see
 assert.equal(before.percent,57);
 assert.equal(persisted.has("sec-roast-card-v3:account-A"),true);
 selectedLeague="league-new";
+// A real Supabase token refresh can briefly return null between navigation,
+// even though the user has not signed out. This was reproduced in the video.
+loggedUser=null;
 for(const route of ["home","picks","league","home","news"]){
  activeRoute=route;bound.onView(route);
  assert.equal(bound.cardVerdict().title,before.title,
   "changing pages and selected leagues must not rotate a person's roast");
+ assert.equal(authRibbon.hidden,false,"roast remains visible while auth refresh returns null");
+ assert.ok(authRibbon.innerHTML.includes(before.title),
+  "quote remains available throughout a temporary null user state");
 }
+loggedUser="account-A";
 currentReport={...currentReport,fingerprint:"verified-7:lost|verified-6:won|verified-5:lost|verified-4:won|verified-3:lost|verified-2:won|verified-1:won"};
 assert.equal(bound.cardVerdict().title,before.title,
  "same verified accuracy in a different order is not a new result");
@@ -207,6 +215,16 @@ currentReport={...currentReport,wins:5,losses:3,fingerprint:"verified-8:won|veri
 const finished=bound.cardVerdict();
 assert.equal(finished.percent,63);
 assert.notEqual(finished.title,before.title,"new verified outcome advances the roast");
+// Explicit sign-out is not a refresh; never show the prior account's quote.
+loggedUser=null;
+currentReport={...currentReport,wins:0,losses:0,fingerprint:"signed-out-empty"};
+bound.onAuthSignOut();
+assert.equal(authRibbon.hidden,false,"signed-out Home has a neutral roast placeholder");
+assert.match(authRibbon.innerHTML,/Roast warming up/);
+assert.ok(!authRibbon.innerHTML.includes(finished.title),
+ "sign-out must not expose the previous player's saved roast");
+assert.equal(bound.cardVerdict().ready,false);
+currentReport={...currentReport,wins:5,losses:3,fingerprint:"new-user-verifications"};
 loggedUser="account-B";selectedLeague="league-new";
 assert.equal(persisted.has("sec-roast-card-v3:account-B"),false,
  "another signed-in account never inherits the previous user's recap");
