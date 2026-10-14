@@ -70,28 +70,6 @@
       "url": "https://www.secsports.com/news/2026/09/sec-football-players-of-the-week-sep-21"
     },
     {
-      "sport": "basketball",
-      "period": "week",
-      "date": "2026-03-02",
-      "year": 2026,
-      "title": "SEC Men's Basketball Players of the Week",
-      "athlete": null,
-      "school": null,
-      "detail": "Read the conference's official weekly award announcements.",
-      "url": "https://www.secsports.com/news/2026/03/sec-mens-basketball-players-of-the-week-march-2"
-    },
-    {
-      "sport": "baseball",
-      "period": "week",
-      "date": "2026-05-18",
-      "year": 2026,
-      "title": "SEC Baseball Players of the Week",
-      "athlete": null,
-      "school": null,
-      "detail": "Read the conference's official weekly award announcements.",
-      "url": "https://www.secsports.com/news/2026/05/sec-baseball-players-of-the-week-may-18-presented-by-allstate"
-    },
-    {
       "sport": "baseball",
       "period": "year",
       "date": "2026-05-18",
@@ -123,6 +101,61 @@
       "school": "Vanderbilt",
       "detail": "Last completed football season; 2026 honors are not announced yet.",
       "url": "https://www.secsports.com/news/2025/12/2025-sec-football-awards-presented-by-allstate-announced"
+    },
+    {
+      "sport": "basketball",
+      "period": "week",
+      "date": "2026-03-02",
+      "year": 2026,
+      "title": "SEC Men's Basketball Co-Player of the Week",
+      "athlete": "Latrell Wrightsell Jr.",
+      "school": "Alabama",
+      "detail": "Averaged 21.5 points in two Crimson Tide victories.",
+      "url": "https://www.secsports.com/news/2026/03/sec-mens-basketball-players-of-the-week-march-2"
+    },
+    {
+      "sport": "basketball",
+      "period": "week",
+      "date": "2026-03-02",
+      "year": 2026,
+      "title": "SEC Men's Basketball Co-Player of the Week",
+      "athlete": "Mark Mitchell",
+      "school": "Missouri",
+      "detail": "Shared the weekly SEC men's basketball player honor.",
+      "url": "https://www.secsports.com/news/2026/03/sec-mens-basketball-players-of-the-week-march-2"
+    },
+    {
+      "sport": "baseball",
+      "period": "week",
+      "date": "2026-05-18",
+      "year": 2026,
+      "title": "SEC Baseball Player of the Week",
+      "athlete": "Carson Tinney",
+      "school": "Texas",
+      "detail": "Three homers and 10 RBIs during a series sweep.",
+      "url": "https://www.secsports.com/news/2026/05/sec-baseball-players-of-the-week-may-18-presented-by-allstate"
+    },
+    {
+      "sport": "baseball",
+      "period": "week",
+      "date": "2026-05-18",
+      "year": 2026,
+      "title": "SEC Co-Pitcher of the Week",
+      "athlete": "Liam Peterson",
+      "school": "Florida",
+      "detail": "Complete game with 11 strikeouts against LSU.",
+      "url": "https://www.secsports.com/news/2026/05/sec-baseball-players-of-the-week-may-18-presented-by-allstate"
+    },
+    {
+      "sport": "baseball",
+      "period": "week",
+      "date": "2026-05-18",
+      "year": 2026,
+      "title": "SEC Co-Pitcher of the Week",
+      "athlete": "Dylan Volantis",
+      "school": "Texas",
+      "detail": "11 strikeouts in seven innings against Missouri.",
+      "url": "https://www.secsports.com/news/2026/05/sec-baseball-players-of-the-week-may-18-presented-by-allstate"
     }
   ]
 }
