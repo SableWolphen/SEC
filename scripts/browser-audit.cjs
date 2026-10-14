@@ -475,6 +475,59 @@ fs.mkdirSync(output,{recursive:true});
     await page.screenshot({path:path.join(output,viewport.width+"-"+route+".png")});
     total++;
    }
+   // Cross-screen roast and design regression. Seed only browser-local verified
+   // historical recap: no user login, production picks, or live scores touched.
+   await page.evaluate(()=>{
+    localStorage.setItem("sec-roast-card-v2:device|local",JSON.stringify({
+     kind:"great",fingerprint:"browser-test-past-verified-picks",
+     title:"THE PICKS ARE PICKING",
+     body:"You're on a roll. The league is quietly checking your score again.",
+     stats:{wins:4,losses:1,pushes:0,limit:10}
+    }));
+    window.SEC_BRIDGE.setView("results");
+   });
+   const original=await page.evaluate(()=>({
+    result:document.querySelector("#sec-fun-results .sec-fun-report-copy strong")?.textContent,
+    scores:document.querySelector("#sec-fun-results .sec-fun-scoreboard")?.textContent,
+    ribbonHidden:document.getElementById("sec-fun-global")?.hidden
+   }));
+   if(!original.result||!original.scores?.includes("80%")||!original.ribbonHidden)
+    problems.push(viewport.width+"px cannot restore verified roast on Results: "+JSON.stringify(original));
+   for(const next of ["home","picks","league","team-hub","team-news","news","settings"]){
+    await page.evaluate(id=>window.SEC_BRIDGE.setView(id),next);
+    const state=await page.evaluate(()=>({
+     hidden:document.getElementById("sec-fun-global")?.hidden,
+     quote:document.querySelector(".sec-fun-ribbon-copy strong")?.textContent,
+     actions:document.querySelectorAll("#sec-fun-global [data-fun-next],#sec-fun-global [data-fun-open-results]").length,
+     width:document.documentElement.scrollWidth,
+     viewport:document.documentElement.clientWidth,
+     headingFont:getComputedStyle(document.querySelector("#"+window.SEC_BRIDGE.view()+"-view .sdsx-brandline strong")||
+      document.querySelector("#"+window.SEC_BRIDGE.view()+"-view .page-intro h1")||
+      document.querySelector("#home-view .hq-hero-copy h2")||document.body).fontFamily
+    }));
+    if(state.hidden||state.quote!==original.result||state.actions!==2)
+     problems.push(viewport.width+"px "+next+" loses persistent roast: "+JSON.stringify(state));
+    if(state.width>state.viewport+2)
+     problems.push(viewport.width+"px "+next+" roast ribbon causes overflow");
+    if(["team-hub","team-news","picks"].includes(next)&&/Georgia|Times New Roman/i.test(state.headingFont))
+     problems.push(viewport.width+"px "+next+" fell back to old serif heading style");
+   }
+   await page.screenshot({path:path.join(output,viewport.width+"-persistent-roast-home-style.png")});
+   await page.evaluate(()=>window.SEC_BRIDGE.setView("home"));
+   await page.locator("#sec-fun-global [data-fun-next]").click();
+   const newQuote=await page.locator("#sec-fun-global .sec-fun-ribbon-copy strong").textContent();
+   if(newQuote===original.result)problems.push(viewport.width+"px Another roast did not rotate globally");
+   await page.locator("#sec-fun-global [data-fun-open-results]").click();
+   const returned=await page.evaluate(()=>({
+    route:window.SEC_BRIDGE.view(),
+    hidden:document.getElementById("sec-fun-global").hidden,
+    text:document.querySelector("#sec-fun-results .sec-fun-report-copy strong")?.textContent
+   }));
+   if(returned.route!=="results"||!returned.hidden||returned.text!==newQuote)
+    problems.push(viewport.width+"px global roast did not return to same full Results quote: "+JSON.stringify(returned));
+   await page.screenshot({path:path.join(output,viewport.width+"-results-roast-updated.png")});
+   // End of isolated browser-only fixture. The original CI still audits real
+   // source-driven content without this test modifying anyone's account.
    // Confirm the *real rendered* live strip and compressed matchup layout on
    // narrow phones. This is a local browser-only fixture; no real score is
    // submitted or modified in the production database.
