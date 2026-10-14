@@ -9,7 +9,7 @@ const sessionKey=()=> "sec-fun-v1:"+scope();
 const storage=(key)=>{try{return localStorage.getItem(key)}catch(_){return null}};
 const put=(key,value)=>{try{localStorage.setItem(key,value)}catch(_){}};
 const safeUrl=url=>{try{const x=new URL(url);return x.protocol==="https:"&&x.hostname==="www.secsports.com"}catch(_){return false}};
-let awards=[],lastAwardLoad=0,loading=null,awardSport="football",awardPeriod="week",modal=null,openedScope="",manualOpened=false;
+let awards=[],lastAwardLoad=0,loading=null,awardSport="football",awardPeriod="week",modal=null,openedScope="",manualOpened=false,awardsExpanded=false;
 const terms={football:"Football",basketball:"Basketball",baseball:"Baseball"};
 function grade(wins,losses,pushes=0){
  const w=Number(wins)||0,l=Number(losses)||0,p=Number(pushes)||0;
@@ -222,7 +222,11 @@ function renderAwards(){
  }else{const p=D.createElement("p");p.textContent="No verified announcement available for this category yet. No winners will be invented.";slot.append(p);}
  const foot=D.createElement("small");foot.className="sec-fun-awards-source";
  foot.textContent="Official weekly/season award names and links are attributed to the Southeastern Conference; fan choices are unofficial. More announcements appear as sourced records are added.";
- section.append(slot,foot);root.append(section);
+ section.append(slot,foot);
+ const fold=D.createElement("details");fold.id="sec-fun-awards-fold";fold.className="sec-fun-awards-fold";
+ fold.open=awardsExpanded;
+ const summary=D.createElement("summary");summary.innerHTML='<strong>🏅 SEC Player Awards</strong><span>Week · Month · Year ⌄</span>';
+ fold.append(summary,section);root.append(fold);
  if(previous)root.querySelector('[data-award-period="'+previous+'"]')?.focus?.();
 }
 function onView(view){
@@ -244,6 +248,7 @@ D.addEventListener("click",e=>{
   renderAwards();
  }
 });
+D.addEventListener("toggle",e=>{if(e.target?.id==="sec-fun-awards-fold")awardsExpanded=Boolean(e.target.open);},true);
 D.addEventListener("change",e=>{
  if(!e.target.matches?.("[data-fun-opt-out]"))return;
  put("sec-fun-disabled",String(e.target.checked));
