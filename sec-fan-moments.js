@@ -178,7 +178,7 @@ function renderAwards(){
  root.replaceChildren();
  const section=D.createElement("section");section.className="sec-fun-awards";
  const top=D.createElement("div");top.className="sec-fun-awards-heading";
- const heading=D.createElement("div");heading.innerHTML='<small>🏅 ATHLETE HONORS</small><h2>Who's making SEC history?</h2>'+
+ const heading=D.createElement("div");heading.innerHTML='<small>🏅 ATHLETE HONORS</small><h2>SEC stars making history</h2>'+
   '<p>Official award announcements and your own fan picks, clearly labeled.</p>';
  const sport=D.createElement("div");sport.className="sec-fun-awards-switch";
  for(const s of Object.keys(terms)){
