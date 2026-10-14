@@ -221,9 +221,11 @@ function close(){
  if(typeof modal.close==="function"&&modal.open)modal.close();
  else modal.removeAttribute("open");
 }
-function milestone(report=current()){
- if(!report.ready)return null;
+function milestone(){
+ // Highlights judge THIS completed week, never the carried-forward history.
  const stats=W.SEC_NEXT?.weekStats?.();
+ const report=grade(stats?.wins||0,stats?.losses||0,stats?.pushes||0);
+ if(!report.ready)return null;
  const games=app()?.week?.()?.games||[];
  const finished=games.length>=3&&!!W.SEC_FEATURES?.finalData&&
   games.every(g=>Boolean(W.SEC_FEATURES.finalData(g)));
@@ -243,7 +245,9 @@ function milestone(report=current()){
 }
 function showMilestone(moment){
  if(!moment)return;
- const d=ensureModal(),m=current();
+ const stats=W.SEC_NEXT?.weekStats?.()||{};
+ const m=grade(stats.wins,stats.losses,stats.pushes);
+ const d=ensureModal();
  d.classList.remove("fire","great","okay","rough","roast");
  d.classList.add(m.kind);
  d.querySelector(".sec-fun-emoji").textContent=moment.icon;
