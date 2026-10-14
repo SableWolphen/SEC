@@ -1,0 +1,161 @@
+{
+  "version": 1,
+  "updated_at": "2026-10-14",
+  "note": "Official awards here are links to SEC announcements. Personal monthly fan picks are not official SEC awards.",
+  "official": [
+    {
+      "sport": "football",
+      "period": "week",
+      "date": "2026-10-12",
+      "year": 2026,
+      "title": "SEC Offensive Player of the Week (co-recipient)",
+      "athlete": "Jamal Roberts",
+      "school": "Missouri",
+      "detail": "Rushed for 222 yards and two touchdowns against Texas A&M.",
+      "url": "https://www.secsports.com/news/2026/10/sec-football-players-of-the-week-oct-12"
+    },
+    {
+      "sport": "football",
+      "period": "week",
+      "date": "2026-10-12",
+      "year": 2026,
+      "title": "SEC Offensive Player of the Week (co-recipient)",
+      "athlete": "LaNorris Sellers",
+      "school": "South Carolina",
+      "detail": "Co-recipient of the conference's offensive award.",
+      "url": "https://www.secsports.com/news/2026/10/sec-football-players-of-the-week-oct-12"
+    },
+    {
+      "sport": "football",
+      "period": "week",
+      "date": "2026-10-12",
+      "year": 2026,
+      "title": "SEC Defensive Player of the Week",
+      "athlete": "Peyton Bowen",
+      "school": "Oklahoma",
+      "detail": "Seven tackles and an interception returned for a touchdown against Texas.",
+      "url": "https://www.secsports.com/news/2026/10/sec-football-players-of-the-week-oct-12"
+    },
+    {
+      "sport": "football",
+      "period": "week",
+      "date": "2026-10-05",
+      "year": 2026,
+      "title": "SEC Offensive Player of the Week",
+      "athlete": "Austin Simmons",
+      "school": "Missouri",
+      "detail": "Threw for a season-best 340 yards against Florida.",
+      "url": "https://www.secsports.com/news/2026/10/sec-football-players-of-the-week-oct-5"
+    },
+    {
+      "sport": "football",
+      "period": "week",
+      "date": "2026-09-28",
+      "year": 2026,
+      "title": "SEC Offensive Player of the Week",
+      "athlete": "Jadan Baugh",
+      "school": "Florida",
+      "detail": "142 rushing yards and three rushing touchdowns against Ole Miss.",
+      "url": "https://www.secsports.com/news/2026/09/sec-football-players-of-the-week-sep-28"
+    },
+    {
+      "sport": "football",
+      "period": "week",
+      "date": "2026-09-21",
+      "year": 2026,
+      "title": "SEC Offensive Player of the Week",
+      "athlete": "Trinidad Chambliss",
+      "school": "Ole Miss",
+      "detail": "365 total yards and three touchdowns against LSU.",
+      "url": "https://www.secsports.com/news/2026/09/sec-football-players-of-the-week-sep-21"
+    },
+    {
+      "sport": "baseball",
+      "period": "year",
+      "date": "2026-05-18",
+      "year": 2026,
+      "title": "2026 SEC Baseball Player of the Year",
+      "athlete": "Daniel Jackson",
+      "school": "Georgia",
+      "detail": "Official league Player of the Year; also led SEC in average, home runs and RBIs.",
+      "url": "https://www.secsports.com/news/2026/05/sec-announces-2026-baseball-awards-presented-by-allstate"
+    },
+    {
+      "sport": "basketball",
+      "period": "year",
+      "date": "2026-03-09",
+      "year": 2026,
+      "title": "2026 SEC Men's Basketball Player of the Year",
+      "athlete": "Darius Acuff Jr.",
+      "school": "Arkansas",
+      "detail": "Conference Player of the Year for the 2025–26 season.",
+      "url": "https://www.secsports.com/news/2026/03/2026-sec-mens-basketball-awards-announced"
+    },
+    {
+      "sport": "football",
+      "period": "year",
+      "date": "2025-12-10",
+      "year": 2025,
+      "title": "2025 SEC Football Offensive Player of the Year",
+      "athlete": "Diego Pavia",
+      "school": "Vanderbilt",
+      "detail": "Last completed football season; 2026 honors are not announced yet.",
+      "url": "https://www.secsports.com/news/2025/12/2025-sec-football-awards-presented-by-allstate-announced"
+    },
+    {
+      "sport": "basketball",
+      "period": "week",
+      "date": "2026-03-02",
+      "year": 2026,
+      "title": "SEC Men's Basketball Co-Player of the Week",
+      "athlete": "Latrell Wrightsell Jr.",
+      "school": "Alabama",
+      "detail": "Averaged 21.5 points in two Crimson Tide victories.",
+      "url": "https://www.secsports.com/news/2026/03/sec-mens-basketball-players-of-the-week-march-2"
+    },
+    {
+      "sport": "basketball",
+      "period": "week",
+      "date": "2026-03-02",
+      "year": 2026,
+      "title": "SEC Men's Basketball Co-Player of the Week",
+      "athlete": "Mark Mitchell",
+      "school": "Missouri",
+      "detail": "Shared the weekly SEC men's basketball player honor.",
+      "url": "https://www.secsports.com/news/2026/03/sec-mens-basketball-players-of-the-week-march-2"
+    },
+    {
+      "sport": "baseball",
+      "period": "week",
+      "date": "2026-05-18",
+      "year": 2026,
+      "title": "SEC Baseball Player of the Week",
+      "athlete": "Carson Tinney",
+      "school": "Texas",
+      "detail": "Three homers and 10 RBIs during a series sweep.",
+      "url": "https://www.secsports.com/news/2026/05/sec-baseball-players-of-the-week-may-18-presented-by-allstate"
+    },
+    {
+      "sport": "baseball",
+      "period": "week",
+      "date": "2026-05-18",
+      "year": 2026,
+      "title": "SEC Co-Pitcher of the Week",
+      "athlete": "Liam Peterson",
+      "school": "Florida",
+      "detail": "Complete game with 11 strikeouts against LSU.",
+      "url": "https://www.secsports.com/news/2026/05/sec-baseball-players-of-the-week-may-18-presented-by-allstate"
+    },
+    {
+      "sport": "baseball",
+      "period": "week",
+      "date": "2026-05-18",
+      "year": 2026,
+      "title": "SEC Co-Pitcher of the Week",
+      "athlete": "Dylan Volantis",
+      "school": "Texas",
+      "detail": "11 strikeouts in seven innings against Missouri.",
+      "url": "https://www.secsports.com/news/2026/05/sec-baseball-players-of-the-week-may-18-presented-by-allstate"
+    }
+  ]
+}
