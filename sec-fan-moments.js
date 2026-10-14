@@ -5,11 +5,12 @@
 const W=window,D=document,app=()=>W.SEC_BRIDGE,$=id=>D.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const scope=()=>[W.secOnline?.getUser?.()?.id||"device",W.SEC_LEAGUE_SETTINGS?.getSelected?.()?.id||"local",app()?.week?.()?.num||"none"].join("|");
-const sessionKey=()=> "sec-fun-v1:"+scope();
+const cardKey=()=> "sec-roast-card-v1:"+scope();
+const highlightKey=()=> "sec-fun-highlight-v1:"+scope();
 const storage=(key)=>{try{return localStorage.getItem(key)}catch(_){return null}};
 const put=(key,value)=>{try{localStorage.setItem(key,value)}catch(_){}};
 const safeUrl=url=>{try{const x=new URL(url);return x.protocol==="https:"&&x.hostname==="www.secsports.com"}catch(_){return false}};
-let awards=[],lastAwardLoad=0,loading=null,awardSport="football",awardPeriod="week",modal=null,openedScope="",manualOpened=false,awardsExpanded=false;
+let awards=[],lastAwardLoad=0,loading=null,awardSport="football",awardPeriod="week",modal=null,openedScope="",awardsExpanded=false;
 const terms={football:"Football",basketball:"Basketball",baseball:"Baseball"};
 
 /* Each tier gets its own shuffled deck. A message cannot repeat until every
@@ -142,59 +143,107 @@ function current(){
  return grade(s.wins,s.losses,s.pushes);
 }
 const disabled=()=>storage("sec-fun-disabled")==="true";
+/* The Results card keeps the same quote all week, including across reloads.
+   Asking for Another roast consumes the next unseen saying for this tier. */
+function cardVerdict(force=false){
+ const result=current();
+ if(!result.ready)return result;
+ const key=cardKey();
+ let saved=null;
+ try{saved=JSON.parse(storage(key)||"null")}catch(_){}
+ const valid=saved?.kind===result.kind&&ROASTS[result.kind]?.some(([title,body])=>
+  title===saved.title&&body===saved.body);
+ const saying=valid&&!force?saved:rotateRoast(result.kind)||result;
+ if(!valid||force)put(key,JSON.stringify({kind:result.kind,title:saying.title,body:saying.body}));
+ latestVerdict={...result,title:saying.title,body:saying.body,account:roastKey(),
+  week:app()?.week?.()?.num};
+ return latestVerdict;
+}
 function resultUI(){
  const root=$("sec-fun-results");if(!root)return;
- const m=current();
- root.innerHTML='<section class="sec-fun-report" aria-label="Your weekly SEC pick verdict">'+
-  '<div class="sec-fun-report-copy"><span class="sec-fun-kicker">🎙️ THE VERDICT</span>'+
-  '<strong>'+esc(m.label)+'</strong><small>'+(m.ready?
-  m.wins+' correct · '+m.losses+' missed · '+m.percent+'% of graded picks':
-  '3 verified final picks unlock your first verdict')+'</small></div>'+
-  '<div class="sec-fun-actions"><button type="button" data-fun-show '+(!m.ready?'disabled':'')+'>How am I doing? →</button>'+
-  '<label><input type="checkbox" data-fun-opt-out '+(disabled()?'checked':'')+'> No surprise pop-ups</label></div></section>';
+ const m=cardVerdict();
+ const week=app()?.week?.()?.num;
+ root.innerHTML='<section class="sec-fun-report sec-fun-report--'+esc(m.kind)+
+  '" aria-label="Your weekly SEC pick roast recap">'+
+  '<div class="sec-fun-topline"><span class="sec-fun-kicker">🎙️ '+
+  (week?'WEEK '+esc(week)+' · ':'')+'THE VERDICT</span>'+
+  '<small>'+(m.ready?m.judged+' graded picks':'Awaiting verified finals')+'</small></div>'+
+  '<div class="sec-fun-story"><span class="sec-fun-card-emoji" aria-hidden="true">'+
+  esc(m.icon)+'</span><div class="sec-fun-report-copy"><strong>'+esc(m.title)+
+  '</strong><p>'+esc(m.body)+'</p></div></div>'+
+  '<div class="sec-fun-scoreboard">'+[
+    [m.ready?m.wins:'—','RIGHT'],
+    [m.ready?m.losses:'—','WRONG'],
+    [m.ready?m.percent+'%':'—','ACCURACY']
+  ].map(([value,label])=>'<div><b>'+esc(value)+'</b><small>'+label+'</small></div>').join('')+'</div>'+
+  '<div class="sec-fun-bottom"><div class="sec-fun-actions">'+
+  '<button type="button" data-fun-next '+(!m.ready?'disabled':'')+'>↻ Another roast</button>'+
+  '<button type="button" data-fun-share '+(!m.ready?'disabled':'')+'>↗ Share</button></div>'+
+  '<label class="sec-fun-pref"><input type="checkbox" data-fun-opt-out '+
+  (disabled()?'checked':'')+'> No surprise highlight pop-ups</label></div>'+
+  (m.ready?'<p class="sec-fun-note">Just for fun · Only your verified, graded football picks count.</p>':'')+
+  '</section>';
+}
+function anotherRoast(){
+ if(!current().ready)return;
+ cardVerdict(true);
+ resultUI();
+ $("sec-fun-results")?.querySelector?.("[data-fun-next]")?.focus?.();
 }
 function ensureModal(){
  if(modal)return modal;
  modal=D.createElement("dialog");modal.className="sec-fun-dialog";modal.id="sec-fun-dialog";
- modal.setAttribute("aria-label","SEC weekly pick verdict");
- modal.innerHTML='<div class="sec-fun-dialog-inner"><button type="button" class="sec-fun-close" data-fun-close aria-label="Close verdict">✕</button>'+
- '<div class="sec-fun-emoji" aria-hidden="true"></div><div class="sec-fun-kicker">SEC PICK’EM SCOREBOARD</div>'+
+ modal.setAttribute("aria-label","Special SEC Pick’em moment");
+ modal.innerHTML='<div class="sec-fun-dialog-inner"><button type="button" class="sec-fun-close" data-fun-close aria-label="Close highlight">✕</button>'+
+ '<div class="sec-fun-emoji" aria-hidden="true"></div><div class="sec-fun-kicker">SPECIAL GAME-DAY MOMENT</div>'+
  '<h2></h2><p></p><div class="sec-fun-stats"></div>'+
- '<div class="sec-fun-dialog-footer"><button type="button" data-fun-close>Back to the game</button>'+
- '<button type="button" data-fun-again>Another one ↻</button>'+
- '<button type="button" data-fun-share>Share the receipts ↗</button></div></div>';
+ '<div class="sec-fun-dialog-footer"><button type="button" data-fun-close>Back to results</button>'+
+ '<button type="button" data-fun-again>↻ Another roast</button>'+
+ '<button type="button" data-fun-share>Share your recap ↗</button></div></div>';
  D.body.appendChild(modal);
- modal.addEventListener("close",()=>{manualOpened=false});
  return modal;
-}
-function show(manual=false){
- const m=current();
- if(!m.ready)return;
- const d=ensureModal();
- const saying=rotateRoast(m.kind)||m;
- latestVerdict={...m,title:saying.title,body:saying.body,account:roastKey(),
-  week:app()?.week?.()?.num};
- d.classList.remove("fire","great","okay","rough","roast");
- d.classList.add(m.kind);
- d.querySelector(".sec-fun-emoji").textContent=m.icon;
- d.querySelector("h2").textContent=saying.title;
- d.querySelector("p").textContent=saying.body;
- d.querySelector(".sec-fun-stats").textContent=m.wins+" correct · "+m.losses+" missed · "+m.percent+"% accuracy";
- manualOpened=manual;
- if(typeof d.showModal==="function"&&!d.open)d.showModal();
- else d.setAttribute("open","");
 }
 function close(){
  if(!modal)return;
  if(typeof modal.close==="function"&&modal.open)modal.close();
  else modal.removeAttribute("open");
 }
+function milestone(report=current()){
+ if(!report.ready)return null;
+ const stats=W.SEC_NEXT?.weekStats?.();
+ const games=app()?.week?.()?.games||[];
+ const finished=games.length>=3&&!!W.SEC_FEATURES?.finalData&&
+  games.every(g=>Boolean(W.SEC_FEATURES.finalData(g)));
+ // A perfect WEEK is announced only if every scheduled game has a source-
+ // verified final, not merely because a few early picks were correct.
+ if(finished&&report.judged>=3&&report.losses===0)
+  return {id:"perfect-week",icon:"🏆",title:"PERFECT PICK SHEET!",
+   body:"Every graded pick you made this week was right. The group chat is going to hear about this."};
+ if(finished&&report.judged>=5&&report.percent<=20)
+  return {id:"rough-week",icon:"💀",title:"THE PICK SHEET NEEDS A MEDIC",
+   body:"That's an absolutely brutal week of confirmed picks. The comeback story starts next slate."};
+ const upset=(stats?.items||[]).some(x=>x.kind==="won"&&
+  W.SEC_LEAGUE_INSIGHTS?.upset?.(x.g,"football")?.label==="⚡ UNDERDOG WIN");
+ if(upset)return {id:"called-upset",icon:"⚡",title:"YOU CALLED THE UPSET!",
+  body:"You saw that one coming before the final whistle. That's a prediction worth bragging about."};
+ return null;
+}
+function showMilestone(moment){
+ if(!moment)return;
+ const d=ensureModal(),m=current();
+ d.classList.remove("fire","great","okay","rough","roast");
+ d.classList.add(m.kind);
+ d.querySelector(".sec-fun-emoji").textContent=moment.icon;
+ d.querySelector("h2").textContent=moment.title;
+ d.querySelector("p").textContent=moment.body;
+ d.querySelector(".sec-fun-stats").textContent=m.wins+" right · "+m.losses+" wrong · "+m.percent+"% accuracy";
+ if(typeof d.showModal==="function"&&!d.open)d.showModal();
+ else d.setAttribute("open","");
+}
 async function share(){
- const m=current();if(!m.ready)return;
- const shown=latestVerdict?.account===roastKey()&&latestVerdict.week===app()?.week?.()?.num&&
-  latestVerdict.wins===m.wins&&latestVerdict.losses===m.losses?latestVerdict:m;
+ const m=cardVerdict();if(!m.ready)return;
  const content="SEC Pick’em · Week "+(app()?.week?.()?.num||"?")+
- "\n"+shown.title+"\n"+m.wins+" right / "+m.losses+" wrong ("+m.percent+"%)"+
+ "\n"+m.title+"\n"+m.body+"\n"+m.wins+" right / "+m.losses+" wrong ("+m.percent+"%)"+
  "\nhttps://sablewolphen.github.io/SEC/#results";
  try{
   if(navigator.share)await navigator.share({title:"My SEC Pick’em verdict",text:content});
@@ -204,12 +253,16 @@ async function share(){
 }
 function maybePopup(view){
  if(view!=="results"||disabled()||D.visibilityState==="hidden")return;
- const report=current();
- if(!report.ready)return;
- const key=sessionKey();
+ const moment=milestone();
+ if(!moment)return;
+ const key=highlightKey();
+ // Only one exceptional interruption per player, league and week.
  if(storage(key)==="shown"||openedScope===key)return;
- openedScope=key;put(key,"shown");show(false);
+ openedScope=key;
+ showMilestone(moment);
+ put(key,"shown");
 }
+
 function leagueUI(){
  const root=$("sec-next-league"),item=W.SEC_LEAGUE_SETTINGS?.getSelected?.();
  if(!root)return;
@@ -353,9 +406,9 @@ function onView(view){
 }
 D.addEventListener("click",e=>{
  const b=e.target.closest?.("button");if(!b)return;
- if(b.hasAttribute("data-fun-show")){show(true);return;}
  if(b.hasAttribute("data-fun-close")){close();return;}
- if(b.hasAttribute("data-fun-again")){show(true);return;}
+ if(b.hasAttribute("data-fun-again")){anotherRoast();close();return;}
+ if(b.hasAttribute("data-fun-next")){anotherRoast();return;}
  if(b.hasAttribute("data-fun-share")){void share();return;}
  if(b.dataset.awardSport){awardSport=b.dataset.awardSport;renderAwards();return;}
  if(b.dataset.awardPeriod){awardPeriod=b.dataset.awardPeriod;renderAwards();return;}
@@ -371,6 +424,6 @@ D.addEventListener("change",e=>{
  if(!e.target.matches?.("[data-fun-opt-out]"))return;
  put("sec-fun-disabled",String(e.target.checked));
 });
-W.SEC_FAN_MOMENTS=Object.freeze({onView,grade,current,leagueUI,renderAwards,loadAwards,safeUrl,rotateRoast,roastCounts:()=>Object.fromEntries(Object.entries(ROASTS).map(([k,v])=>[k,v.length]))});
+W.SEC_FAN_MOMENTS=Object.freeze({onView,grade,current,cardVerdict,anotherRoast,milestone,leagueUI,renderAwards,loadAwards,safeUrl,rotateRoast,roastCounts:()=>Object.fromEntries(Object.entries(ROASTS).map(([k,v])=>[k,v.length]))});
 if(app()?.view?.())onView(app().view());
 })();
