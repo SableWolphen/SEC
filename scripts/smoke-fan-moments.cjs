@@ -200,8 +200,8 @@ assert.match(html,/id="sec-fun-results"/,"feedback accessible within Results");
 assert.match(html,/id="sec-fun-global"/,"persistent roast has a site-wide mounting point");
 assert.ok(html.indexOf('id="sec-fun-global"')<html.indexOf('id="home-view"'),
  "global roast must live outside any hidden routed view");
-assert.match(html,/sec-screen-consistency\.css\?v=20261014-ui-continuity-v1/);
-assert.match(read("sw.js"),/sec-screen-consistency\.css\?v=20261014-ui-continuity-v1/);
+assert.match(html,/sec-screen-consistency\.css\?v=20261014-ui-continuity-v2/);
+assert.match(read("sw.js"),/sec-screen-consistency\.css\?v=20261014-ui-continuity-v2/);
 assert.match(read("sw.js"),/sec-pickem-v113/);
 assert.match(read("sec-screen-consistency.css"),/#sec-fun-global\[hidden\]/);
 assert.match(read("sec-screen-consistency.css"),/\.sdsx-brandline/);
