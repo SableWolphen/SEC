@@ -209,6 +209,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <link rel="stylesheet" href="./sec-broadcast-finish.css?v=20261012-studio-v1">
 <link rel="stylesheet" href="./sec-game-impact.css?v=20261013-impact-v1">
 <link rel="stylesheet" href="./sec-fan-moments.css?v=20261014-fun-v2">
+<link rel="stylesheet" href="./sec-screen-consistency.css?v=20261014-ui-continuity-v1">
 </head>
 <body>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
@@ -230,6 +231,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   </header>
 
 <main id="main-content">
+    <div id="sec-fun-global" hidden aria-live="polite"></div>
     <section id="home-view" class="view" aria-labelledby="home-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR SEC CLUBHOUSE <span class="eyebrow-slash">/</span> GAME DAY HQ</div>
       <div class="page-intro"><div><h1 id="home-heading">Your game day <em>starts here.</em></h1><p>Live results, picks, and friends in one place.</p></div></div>
@@ -238,21 +240,21 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     <section id="team-hub-view" class="view hidden" aria-labelledby="team-hub-heading">
       <h1 id="team-hub-heading" class="sr-only">Favorite University Team Hub</h1>
       <div class="sdsx-shell">
-        <div class="sdsx-brandline"><strong>Saturdays <em>Down South</em></strong><span>TEAM HUB</span></div>
+        <div class="sdsx-brandline"><strong>Your <em>team</em></strong><span>TEAM HUB</span></div>
         <div id="sdsx-team-root" class="sdsx-shell" aria-live="polite"></div>
       </div>
     </section>
     <section id="game-center-view" class="view hidden" aria-labelledby="game-center-heading">
       <h1 id="game-center-heading" class="sr-only">Live College Game Center</h1>
       <div class="sdsx-shell">
-        <div class="sdsx-brandline"><strong>Saturdays <em>Down South</em></strong><span>LIVE GAME CENTER</span></div>
+        <div class="sdsx-brandline"><strong>Live <em>Game Center</em></strong><span>SCORES &amp; PLAYS</span></div>
         <div id="sdsx-game-root" class="sdsx-shell" aria-live="polite"></div>
       </div>
     </section>
     <section id="results-view" class="view hidden" aria-labelledby="results-heading">
       <h1 id="results-heading" class="sr-only">My Pick'em Results</h1>
       <div class="sdsx-shell">
-        <div class="sdsx-brandline"><strong>Saturdays <em>Down South</em></strong><span>PICK'EM RESULTS</span></div>
+        <div class="sdsx-brandline"><strong>Your <em>Results</em></strong><span>PICK’EM RECAP</span></div>
         <div id="sec-fun-results" aria-live="polite"></div>
         <div id="sdsx-results-root" class="sdsx-shell" aria-live="polite"></div>
       </div>
@@ -260,7 +262,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     <section id="team-news-view" class="view hidden" aria-labelledby="team-news-heading">
       <h1 id="team-news-heading" class="sr-only">My University News and Rankings</h1>
       <div class="sdsx-shell">
-        <div class="sdsx-brandline"><strong>Saturdays <em>Down South</em></strong><span>TEAM NEWS</span></div>
+        <div class="sdsx-brandline"><strong>Team <em>News</em></strong><span>HEADLINES &amp; RANKINGS</span></div>
         <div id="sdsx-news-root" class="sdsx-shell" aria-live="polite"></div>
       </div>
     </section>
@@ -984,6 +986,6 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./sec-access.js?v=20261012-access-v1"></script>
 <script src="./sec-play-by-play.js?v=20261012-plays-v1"></script>
 <script src="./sec-game-impact.js?v=20261013-impact-v1"></script>
-<script src="./sec-fan-moments.js?v=20261014-fun-v4"></script>
+<script src="./sec-fan-moments.js?v=20261014-fun-v5"></script>
 </body>
 </html>

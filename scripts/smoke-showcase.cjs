@@ -31,7 +31,7 @@ assert.match(premium,/\["overview","Overview"\],\["schedule","Schedule"\],\["sta
  "Team Hub uses four useful tabs including News");
 assert.match(html,/data-sds-school="\$\{esc\(id\)\}"/,
  "football pick buttons retain university color identities");
-assert.match(worker,/sec-pickem-v112/);
+assert.match(worker,/sec-pickem-v113/);
 const skinOrder=[
  "./sds-showcase.css?v=20261011-unified-v2",
  "./sec-next.css?v=20261012-advanced-v1",

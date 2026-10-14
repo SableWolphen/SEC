@@ -4,12 +4,13 @@ const assert=require("node:assert/strict"),fs=require("node:fs"),vm=require("nod
 const read=p=>fs.readFileSync(p,"utf8"),src=read("sec-fan-moments.js"),html=read("index.html");
 new vm.Script(src,{filename:"sec-fan-moments.js"});
 const listeners={},store=new Map();
+let activeRoute="results";
 const document={
  addEventListener:(name,fn)=>listeners[name]=fn,
  getElementById:()=>null,
  visibilityState:"visible",
 };
-const window={SEC_BRIDGE:{view:()=>null},secOnline:{getUser:()=>null}};
+const window={SEC_BRIDGE:{view:()=>activeRoute},secOnline:{getUser:()=>null}};
 const storage={getItem:key=>store.get(key)||null,setItem:(key,value)=>store.set(key,value)};
 vm.runInNewContext(src,{window,document,localStorage:storage,URL,Date,Number,Promise,console});
 const m=window.SEC_FAN_MOMENTS;
@@ -27,7 +28,9 @@ assert.equal(m.grade(0,0).ready,false,"no fake results");
 
 // The Results screen is a persistent weekly card, never an ordinary popup.
 const resultRoot={innerHTML:""};
-document.getElementById=id=>id==="sec-fun-results"?resultRoot:null;
+const globalRoot={innerHTML:"",hidden:true,dataset:{},removeAttribute(name){if(name==="data-signature")delete this.dataset.signature;}};
+document.getElementById=id=>id==="sec-fun-results"?resultRoot:
+ id==="sec-fun-global"?globalRoot:null;
 window.SEC_NEXT={weekStats:()=>({wins:3,losses:1,pushes:0,items:[]})};
 window.SEC_BRIDGE.week=()=>({num:7,games:[{id:"a"},{id:"b"},{id:"c"},{id:"d"}]});
 m.onView("results");
@@ -54,6 +57,23 @@ assert.equal(freshWindow.SEC_FAN_MOMENTS.cardVerdict().title,rotated.title,
  "the user does not consume a new joke by restarting the app");
 assert.match(resultRoot.innerHTML,/data-fun-next/);
 assert.equal(store.has("sec-roast-card-v2:device|local"),true);
+// The same visible quote follows the person between routed screens.
+activeRoute="home";m.onView(activeRoute);
+assert.equal(globalRoot.hidden,false,"roast ribbon persists on Home");
+assert.match(globalRoot.innerHTML,/Full recap/);
+assert.match(globalRoot.innerHTML,/data-fun-next/,"another-roast works from any screen");
+const across=m.cardVerdict();
+assert.ok(globalRoot.innerHTML.includes(across.title.replace(/&/g,"&amp;")),
+ "persistent ribbon displays same saved quote as Results");
+activeRoute="picks";m.onView(activeRoute);
+assert.equal(globalRoot.hidden,false,"roast ribbon persists while picking games");
+assert.ok(globalRoot.innerHTML.includes(across.title.replace(/&/g,"&amp;")));
+activeRoute="league";m.onView(activeRoute);
+assert.equal(globalRoot.hidden,false,"roast ribbon persists in League");
+activeRoute="results";m.onView(activeRoute);
+assert.equal(globalRoot.hidden,true,"full Results card replaces global compact ribbon");
+assert.ok(resultRoot.innerHTML.includes(across.title.replace(/&/g,"&amp;")));
+
 // Past verified picks carry the same roast across new calendar weeks with no
 // scored games, and the roast updates once a new final is actually confirmed.
 const originalWeek=window.SEC_BRIDGE.week;
@@ -93,6 +113,20 @@ assert.notEqual(next.title,baseline.title,
 const stable=m.cardVerdict();
 assert.equal(stable.title,next.title,
  "no fresh verified results means no unnecessary roast rotation");
+// If the authoritative score feed briefly has no data after a page transition,
+// retain the last genuinely verified recap instead of blanking the banner.
+window.SEC_NEXT.recentStats=()=>past([]);
+activeRoute="home";m.onView(activeRoute);
+const carried=m.cardVerdict();
+assert.equal(carried.ready,true);
+assert.equal(carried.source,"saved","cached VERIFIED pick data survives transient loading");
+assert.equal(carried.percent,67);
+assert.equal(carried.title,next.title,"no new verified scores means the message stays");
+assert.equal(globalRoot.hidden,false);
+assert.match(globalRoot.innerHTML,/LAST VERIFIED/);
+activeRoute="results";m.onView(activeRoute);
+assert.match(resultRoot.innerHTML,/Showing your saved, verified recap/);
+
 window.SEC_NEXT.recentStats=originalRecent;
 window.SEC_BRIDGE.week=originalWeek;
 
@@ -156,13 +190,22 @@ assert.ok(chosen.title);
 assert.equal(store.has("sec-roast-deck-v1:device:rough"),true);
 assert.match(src,/data-fun-again/,"users can request a fresh saying right away");
 assert.match(src,/latestVerdict/,"share matches the displayed roast");
-assert.match(html,/sec-fan-moments\.js\?v=20261014-fun-v4/);
-assert.match(read("sw.js"),/sec-fan-moments\.js\?v=20261014-fun-v4/);
+assert.match(html,/sec-fan-moments\.js\?v=20261014-fun-v5/);
+assert.match(read("sw.js"),/sec-fan-moments\.js\?v=20261014-fun-v5/);
 
 assert.equal(m.safeUrl("https://www.secsports.com/news/2026/10/fake"),true);
 assert.equal(m.safeUrl("javascript:alert(1)"),false);
 assert.equal(m.safeUrl("https://www.secsports.com.evil.invalid/"),false);
 assert.match(html,/id="sec-fun-results"/,"feedback accessible within Results");
+assert.match(html,/id="sec-fun-global"/,"persistent roast has a site-wide mounting point");
+assert.ok(html.indexOf('id="sec-fun-global"')<html.indexOf('id="home-view"'),
+ "global roast must live outside any hidden routed view");
+assert.match(html,/sec-screen-consistency\.css\?v=20261014-ui-continuity-v1/);
+assert.match(read("sw.js"),/sec-screen-consistency\.css\?v=20261014-ui-continuity-v1/);
+assert.match(read("sw.js"),/sec-pickem-v113/);
+assert.match(read("sec-screen-consistency.css"),/#sec-fun-global\[hidden\]/);
+assert.match(read("sec-screen-consistency.css"),/\.sdsx-brandline/);
+
 assert.match(html,/id="sec-athlete-awards-root"/,"athlete honors accessible in News");
 assert.match(html,/SEC_FAN_MOMENTS\?\.onView\?\.\(v\)/,"visible route hook");
 assert.match(read("sec-power-rankings.js"),/SEC_FAN_MOMENTS\?\.leagueUI/,"weekly MVP refreshes after verified RPC");

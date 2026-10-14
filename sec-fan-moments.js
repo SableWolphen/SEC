@@ -11,7 +11,7 @@ const storage=(key)=>{try{return localStorage.getItem(key)}catch(_){return null}
 const put=(key,value)=>{try{localStorage.setItem(key,value)}catch(_){}};
 const safeUrl=url=>{try{const x=new URL(url);return x.protocol==="https:"&&x.hostname==="www.secsports.com"}catch(_){return false}};
 let awards=[],lastAwardLoad=0,loading=null,awardSport="football",awardPeriod="week",modal=null,openedScope="",awardsExpanded=false;
-let displayedFingerprint=null;
+let displayedFingerprint=null,displayedAccountKey=null,lastRenderedView=null;
 const terms={football:"Football",basketball:"Basketball",baseball:"Baseball"};
 
 /* Each tier gets its own shuffled deck. A message cannot repeat until every
@@ -154,30 +154,71 @@ const disabled=()=>storage("sec-fun-disabled")==="true";
 /* Keep the same roast through idle days and week changes. A newly verified
    final changes the pick fingerprint and selects the next unseen roast. */
 function cardVerdict(force=false){
- const result=current();
- if(!result.ready)return result;
- const key=cardKey();
+ const fresh=current(),key=cardKey();
  let saved=null;
  try{saved=JSON.parse(storage(key)||"null")}catch(_){}
- const valid=saved?.kind===result.kind&&saved.fingerprint===result.fingerprint&&
-  ROASTS[result.kind]?.some(([title,body])=>
-   title===saved.title&&body===saved.body);
- const saying=valid&&!force?saved:rotateRoast(result.kind)||result;
- if(!valid||force)put(key,JSON.stringify({kind:result.kind,
-  fingerprint:result.fingerprint,title:saying.title,body:saying.body}));
- latestVerdict={...result,title:saying.title,body:saying.body,account:roastKey(),
+ const validQuote=ROASTS[saved?.kind]?.some(([title,body])=>title===saved.title&&body===saved.body);
+ // A previously verified recap remains visible while account/game data is
+ // reloading. Never manufacture scores, reuse another account, or announce
+ // a special weekly milestone from an old recap.
+ const cached=saved?.stats;
+ const hasCached=validQuote&&cached&&
+  [cached.wins,cached.losses,cached.pushes].every(x=>Number.isInteger(x)&&x>=0)&&
+  cached.wins+cached.losses>=3&&
+  cached.wins+cached.losses<=20;
+ if(!fresh.ready&&!hasCached)return fresh;
+ const report=fresh.ready?fresh:{
+  ...grade(cached.wins,cached.losses,cached.pushes),
+  fingerprint:saved.fingerprint,
+  source:"saved",limit:Number(cached.limit)||10,carried:true
+ };
+ const valid=validQuote&&
+  (!fresh.ready||saved.fingerprint===report.fingerprint)&&saved.kind===report.kind;
+ const saying=valid&&!force?saved:rotateRoast(report.kind)||report;
+ if(!valid||force){
+  const stats={wins:report.wins,losses:report.losses,pushes:report.pushes,limit:report.limit};
+  put(key,JSON.stringify({kind:report.kind,fingerprint:report.fingerprint,
+   title:saying.title,body:saying.body,stats}));
+ }else if(!saved.stats&&fresh.ready){
+  // Upgrade existing pinned messages without consuming another roast.
+  put(key,JSON.stringify({...saved,stats:{wins:report.wins,losses:report.losses,
+   pushes:report.pushes,limit:report.limit}}));
+ }
+ latestVerdict={...report,title:saying.title,body:saying.body,account:roastKey(),
   week:app()?.week?.()?.num};
  return latestVerdict;
+}
+/* Compact persistent quote sits outside all routed .view elements; the full
+   scorecard stays on Results. This is not another interruption or modal. */
+function globalUI(view=app()?.view?.()){
+ const root=$("sec-fun-global");if(!root)return;
+ const m=cardVerdict(),visible=view!=="results"&&m.ready;
+ root.hidden=!visible;
+ if(!visible){root.removeAttribute("data-signature");return;}
+ const signature=[roastKey(),m.fingerprint,m.title,m.judged,view].join("|");
+ displayedFingerprint=m.fingerprint;displayedAccountKey=cardKey();
+ if(root.dataset.signature===signature)return;
+ root.dataset.signature=signature;
+ root.innerHTML='<aside class="sec-fun-ribbon" aria-label="Your persistent Pick’em verdict">'+
+  '<span class="sec-fun-ribbon-emoji" aria-hidden="true">'+esc(m.icon)+'</span>'+
+  '<div class="sec-fun-ribbon-copy"><small>🎙️ YOUR PICK’EM ROAST · '+
+  (m.source==="saved"?"LAST VERIFIED":"RECENT PICKS")+'</small>'+
+  '<strong>'+esc(m.title)+'</strong>'+
+  '<span>'+esc(m.judged)+' graded picks · '+esc(m.percent)+'% correct</span></div>'+
+  '<div class="sec-fun-ribbon-actions">'+
+  '<button type="button" data-fun-next>↻ Another roast</button>'+
+  '<button type="button" data-fun-open-results>Full recap ↗</button>'+
+  '</div></aside>';
 }
 function resultUI(){
  const root=$("sec-fun-results");if(!root)return;
  const m=cardVerdict();
- displayedFingerprint=m.fingerprint;
+ displayedFingerprint=m.fingerprint;displayedAccountKey=cardKey();
  const week=app()?.week?.()?.num;
  root.innerHTML='<section class="sec-fun-report sec-fun-report--'+esc(m.kind)+
   '" aria-label="Your recent SEC pick roast recap">'+
   '<div class="sec-fun-topline"><span class="sec-fun-kicker">🎙️ '+
-  (m.source==='recent'?'RECENT PICKS · ':(week?'WEEK '+esc(week)+' · ':''))+
+  (m.source==='recent'?'RECENT PICKS · ':m.source==='saved'?'LAST VERIFIED PICKS · ':(week?'WEEK '+esc(week)+' · ':''))+
   'THE VERDICT</span>'+
   '<small>'+(m.ready?m.judged+' verified graded picks':'Awaiting three verified picks')+'</small></div>'+
   '<div class="sec-fun-story"><span class="sec-fun-card-emoji" aria-hidden="true">'+
@@ -193,15 +234,21 @@ function resultUI(){
   '<button type="button" data-fun-share '+(!m.ready?'disabled':'')+'>↗ Share</button></div>'+
   '<label class="sec-fun-pref"><input type="checkbox" data-fun-opt-out '+
   (disabled()?'checked':'')+'> No surprise highlight pop-ups</label></div>'+
-  (m.ready?'<p class="sec-fun-note">Your most recent '+esc(m.limit)+
+  (m.ready?'<p class="sec-fun-note">'+(m.carried?'Showing your saved, verified recap while results load. ':'')+'Your most recent '+esc(m.limit)+
   ' graded football picks are used when available. Results stay here between games and update after the next verified final. Only your own picks count.</p>':'')+
   '</section>';
 }
 function anotherRoast(){
- if(!current().ready)return;
+ if(!cardVerdict().ready)return;
  cardVerdict(true);
- resultUI();
- $("sec-fun-results")?.querySelector?.("[data-fun-next]")?.focus?.();
+ const view=app()?.view?.();
+ if(view==="results"){
+  resultUI();
+  $("sec-fun-results")?.querySelector?.("[data-fun-next]")?.focus?.();
+ }else{
+  globalUI(view);
+  $("sec-fun-global")?.querySelector?.("[data-fun-next]")?.focus?.();
+ }
 }
 function ensureModal(){
  if(modal)return modal;
@@ -259,7 +306,7 @@ function showMilestone(moment){
 }
 async function share(){
  const m=cardVerdict();if(!m.ready)return;
- const content="SEC Pick’em · "+(m.source==="recent"?"Last "+m.judged+" graded football picks":
+ const content="SEC Pick’em · "+(["recent","saved"].includes(m.source)?"Last "+m.judged+" graded football picks":
  "Week "+(app()?.week?.()?.num||"?"))+
  "\n"+m.title+"\n"+m.body+"\n"+m.wins+" right / "+m.losses+" wrong ("+m.percent+"%)"+
  "\nhttps://sablewolphen.github.io/SEC/#results";
@@ -418,6 +465,8 @@ function renderAwards(){
  if(previous)root.querySelector('[data-award-period="'+previous+'"]')?.focus?.();
 }
 function onView(view){
+ lastRenderedView=view;
+ globalUI(view);
  if(view==="results"){resultUI();maybePopup(view);}
  if(view==="league")leagueUI();
  if(view==="news"){renderAwards();void loadAwards();}
@@ -427,6 +476,7 @@ D.addEventListener("click",e=>{
  if(b.hasAttribute("data-fun-close")){close();return;}
  if(b.hasAttribute("data-fun-again")){anotherRoast();close();return;}
  if(b.hasAttribute("data-fun-next")){anotherRoast();return;}
+ if(b.hasAttribute("data-fun-open-results")){app()?.setView?.("results");return;}
  if(b.hasAttribute("data-fun-share")){void share();return;}
  if(b.dataset.awardSport){awardSport=b.dataset.awardSport;renderAwards();return;}
  if(b.dataset.awardPeriod){awardPeriod=b.dataset.awardPeriod;renderAwards();return;}
@@ -445,16 +495,23 @@ D.addEventListener("change",e=>{
 // Refresh the visible card if a new final is loaded while the user stays on
 // Results. Account score fetching still happens through the existing flow.
 function refreshIfChanged(){
- if(app()?.view?.()!=="results"||D.visibilityState!=="visible")return;
- const now=current();
- if(now.fingerprint!==displayedFingerprint){
-  resultUI();
-  W.SEC_NEXT?.onResults?.();
-  maybePopup("results");
+ if(D.visibilityState!=="visible")return;
+ const view=app()?.view?.();if(!view)return;
+ const m=current(),key=cardKey();
+ const changed=m.fingerprint!==displayedFingerprint||cardKey()!==displayedAccountKey||view!==lastRenderedView;
+ if(changed){
+  lastRenderedView=view;
+  globalUI(view);
+  if(view==="results"){
+   resultUI();
+   W.SEC_NEXT?.onResults?.();
+   maybePopup("results");
+  }
  }
 }
 D.addEventListener("visibilitychange",refreshIfChanged);
+D.addEventListener("sec:results-updated",refreshIfChanged);
 if(typeof W.setInterval==="function")W.setInterval(refreshIfChanged,60000);
-W.SEC_FAN_MOMENTS=Object.freeze({onView,grade,current,cardVerdict,anotherRoast,milestone,leagueUI,renderAwards,loadAwards,safeUrl,rotateRoast,roastCounts:()=>Object.fromEntries(Object.entries(ROASTS).map(([k,v])=>[k,v.length]))});
+W.SEC_FAN_MOMENTS=Object.freeze({onView,grade,current,cardVerdict,anotherRoast,globalUI,milestone,leagueUI,renderAwards,loadAwards,safeUrl,rotateRoast,roastCounts:()=>Object.fromEntries(Object.entries(ROASTS).map(([k,v])=>[k,v.length]))});
 if(app()?.view?.())onView(app().view());
 })();
