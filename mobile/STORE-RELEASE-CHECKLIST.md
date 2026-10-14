@@ -72,3 +72,10 @@ requirements, native device testing, and review materials are complete.
 ## University and publisher trademark review before store submission
 
 No university logo thumbnails or branded school insignia are bundled or downloaded by the PWA; schools are denoted by neutral numbered UI badges with text school names used for factual matchups. Do not restore school/SEC/NCAA logos, wordmarks, mascot graphics, or lookalikes without permission or legal review. Separately, the product name **Saturdays Down South** is close to the established sports publisher **Saturday Down South**, so qualified trademark counsel should clear the name and app-store branding before submission. An "unofficial fan app" notice does not guarantee non-infringement.
+
+## Fun performance verdicts and athlete honors (October 14, 2026)
+
+- Results screen: opt-out-friendly, dismissible, grade-verified football pick reactions, shown at most once per member/league/week once at least three verified picks have final outcomes. Explicit action can replay it. No random, inferred or future results.
+- League: weekly Pick'em MVP is derived from the already authorized weekly power-rankings RPC, not from guessing other players' picks. It may change until finals are all graded; it is not an official SEC award.
+- News: source-linked SEC athlete Player of the Week and postseason awards. The Month tab is explicitly a local, personal FAN choice from verified weekly honorees and does not claim official SEC sponsorship, awards or a global fan vote.
+- This does not make the native builds or account-deletion flow ready for Apple or Google review.
