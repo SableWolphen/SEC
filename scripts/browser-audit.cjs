@@ -558,6 +558,48 @@ fs.mkdirSync(output,{recursive:true});
    if(returned.route!=="results"||!returned.hidden||returned.text!==newQuote)
     problems.push(viewport.width+"px global roast did not return to same full Results quote: "+JSON.stringify(returned));
    await page.screenshot({path:path.join(output,viewport.width+"-results-roast-updated.png")});
+   // Reproduce the Android video: Home -> Games -> League while Supabase's
+   // getUser() briefly returns null during a token refresh. A personal
+   // seven-pick, 57%-correct roast must remain visible on every screen.
+   const transient=await page.evaluate(()=>{
+    const online=window.secOnline;
+    if(!online)return {error:"No online module"};
+    const getUser=online.getUser;
+    const uniqueUser="ci-user-auth-refresh";
+    online.getUser=()=>({id:uniqueUser});
+    try{
+     localStorage.setItem("sec-roast-card-v3:"+uniqueUser,JSON.stringify({
+      kind:"okay",title:"THE EXCITEMENT IS MANDATORY",
+      body:"Half of your calls aged beautifully. The rest have left the chat.",
+      fingerprint:"ci-verified-seven",stats:{wins:4,losses:3,pushes:0,limit:10}
+     }));
+     const entries=[];
+     window.SEC_BRIDGE.setView("home");
+     online.getUser=()=>null; // Simulates only a transient refresh, not sign-out.
+     for(const route of ["picks","home","league","picks","home"]){
+      window.SEC_BRIDGE.setView(route);
+      entries.push({route,hidden:document.getElementById("sec-fun-global").hidden,
+       quote:document.querySelector(".sec-fun-ribbon-copy strong")?.textContent});
+     }
+     online.getUser=()=>({id:uniqueUser});
+     window.SEC_BRIDGE.setView("home");
+     entries.push({route:"auth-returned",hidden:document.getElementById("sec-fun-global").hidden,
+      quote:document.querySelector(".sec-fun-ribbon-copy strong")?.textContent});
+     // An actual sign-out removes the old personal quote immediately.
+     online.getUser=()=>null;
+     window.SEC_FAN_MOMENTS.onAuthSignOut();
+     entries.push({route:"explicit-sign-out",hidden:document.getElementById("sec-fun-global").hidden,
+      quote:document.querySelector(".sec-fun-ribbon-copy strong")?.textContent});
+     return {entries};
+    }finally{
+     online.getUser=getUser;
+     window.SEC_FAN_MOMENTS.onAuthSignOut();
+    }
+   });
+   if(transient.error||transient.entries?.slice(0,6).some(r=>r.hidden||r.quote!=="THE EXCITEMENT IS MANDATORY")||
+    transient.entries?.[6]?.quote==="THE EXCITEMENT IS MANDATORY")
+    problems.push(viewport.width+"px login refresh made roast vanish or leaked it after signout: "+JSON.stringify(transient));
+
    // End of isolated browser-only fixture. The original CI still audits real
    // source-driven content without this test modifying anyone's account.
    // Confirm the *real rendered* live strip and compressed matchup layout on

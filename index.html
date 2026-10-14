@@ -627,6 +627,9 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     if(v==="picks"&&!slateFilterTouched)slateFilter=suggestedGamesFilter();
     currentView=v;
     for(const id of views)document.getElementById(id+'-view').classList.toggle('hidden',id!==v);
+    // Draw persistent roast on every route transition BEFORE asynchronous
+    // modules mount; a failing data request must not make the ribbon vanish.
+    window.SEC_FAN_MOMENTS?.globalUI?.(v);
     // Reuse the same three sport controls directly beneath the current page title/description.
     // This also keeps the switcher available on Basketball, Baseball, League, News, etc.
     const pageIntro=sportViews.includes(v)?document.querySelector('#'+v+'-view > .page-intro'):null;
@@ -958,7 +961,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./league-features.js?v=20261010-final-v1"></script>
 <script src="./league-social.js?v=20261010-museum-v1"></script>
 <script src="./sec-pride.js?v=20261011-team-colors-v2"></script>
-<script src="./multiplayer.js?v=20261011-school-v2"></script>
+<script src="./multiplayer.js?v=20261014-auth-v3"></script>
 <script src="./sec-rankings.js?v=20261011-premium-v2"></script>
 <script src="./matchup-stats.js?v=20261011-national-polls-v1"></script>
 <script src="./team-records.js?v=20261011-premium-v2"></script>
@@ -986,6 +989,6 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./sec-access.js?v=20261012-access-v1"></script>
 <script src="./sec-play-by-play.js?v=20261012-plays-v1"></script>
 <script src="./sec-game-impact.js?v=20261013-impact-v1"></script>
-<script src="./sec-fan-moments.js?v=20261014-fun-v7"></script>
+<script src="./sec-fan-moments.js?v=20261014-fun-v8"></script>
 </body>
 </html>
