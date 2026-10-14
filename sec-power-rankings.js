@@ -106,6 +106,7 @@ function show(item=manager()?.getSelected?.(),force=false){
    pending.delete(input.key);
    if(activeKey===input.key&&userId===me()?.id){
     render(manager()?.getSelected?.());
+    window.SEC_FAN_MOMENTS?.leagueUI?.();
     // Update the belt after verified rankings resolve without reloading private picks.
     window.SEC_BRAG_ARENA?.render?.();
    }
