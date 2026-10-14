@@ -530,6 +530,7 @@ fs.mkdirSync(output,{recursive:true});
      actions:document.querySelectorAll("#sec-fun-global [data-fun-next],#sec-fun-global [data-fun-open-results]").length,
      width:document.documentElement.scrollWidth,
      viewport:document.documentElement.clientWidth,
+     leagueTitleFont:window.SEC_BRIDGE.view()==="league"&&document.querySelector("#fan-league-choice .fan-league-title-row h2")?getComputedStyle(document.querySelector("#fan-league-choice .fan-league-title-row h2")).fontFamily:null,
      headingFont:getComputedStyle(document.querySelector("#"+window.SEC_BRIDGE.view()+"-view .sdsx-brandline strong")||
       document.querySelector("#"+window.SEC_BRIDGE.view()+"-view .page-intro h1")||
       document.querySelector("#home-view .hq-hero-copy h2")||document.body).fontFamily
@@ -538,6 +539,8 @@ fs.mkdirSync(output,{recursive:true});
      problems.push(viewport.width+"px "+next+" loses persistent roast: "+JSON.stringify(state));
     if(state.width>state.viewport+2)
      problems.push(viewport.width+"px "+next+" roast ribbon causes overflow");
+    if(next==="league"&&state.leagueTitleFont&&/Georgia|Times New Roman/i.test(state.leagueTitleFont))
+     problems.push(viewport.width+"px League hub still has old serif typography");
     if(["team-hub","team-news","picks"].includes(next)&&/Georgia|Times New Roman/i.test(state.headingFont))
      problems.push(viewport.width+"px "+next+" fell back to old serif heading style");
    }
