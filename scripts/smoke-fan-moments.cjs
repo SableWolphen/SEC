@@ -56,7 +56,7 @@ vm.runInNewContext(src,{window:freshWindow,document,localStorage:storage,URL,Dat
 assert.equal(freshWindow.SEC_FAN_MOMENTS.cardVerdict().title,rotated.title,
  "the user does not consume a new joke by restarting the app");
 assert.match(resultRoot.innerHTML,/data-fun-next/);
-assert.equal(store.has("sec-roast-card-v2:device|local"),true);
+assert.equal(store.has("sec-roast-card-v3:device"),true);
 // The same visible quote follows the person between routed screens.
 activeRoute="home";m.onView(activeRoute);
 assert.equal(globalRoot.hidden,false,"roast ribbon persists on Home");
@@ -160,6 +160,63 @@ assert.equal(m.milestone().id,"rough-week","special moments cannot misuse carrie
 window.SEC_NEXT.recentStats=originalRecent;
 
 
+
+
+// Reproduce the recorded bug: a signed-in user's chosen league refreshes
+// between routes but the personal results (and 57% roast) do not change.
+const persisted=new Map();
+persisted.set("sec-roast-card-v2:account-A|league-old",JSON.stringify({
+ kind:"okay",fingerprint:"old-verified-picks",title:"THE EXCITEMENT IS MANDATORY",
+ body:"Half of your calls aged beautifully. The rest have left the chat.",
+ stats:{wins:4,losses:3,pushes:0,limit:10}
+}));
+const persistedStorage={getItem:k=>persisted.get(k)||null,
+ setItem:(k,v)=>persisted.set(k,v)};
+let selectedLeague="league-old",loggedUser="account-A";
+let currentReport={source:"recent",limit:10,wins:4,losses:3,pushes:0,
+ fingerprint:"verified-1:won|verified-2:won|verified-3:lost|verified-4:won|verified-5:lost|verified-6:won|verified-7:lost"};
+const stableWindow={
+ SEC_BRIDGE:{view:()=>activeRoute,week:()=>({num:7,games:[]})},
+ SEC_NEXT:{recentStats:()=>currentReport,weekStats:()=>({wins:4,losses:3,items:[]})},
+ SEC_LEAGUE_SETTINGS:{getSelected:()=>({id:selectedLeague})},
+ secOnline:{getUser:()=>({id:loggedUser})}
+};
+const stableDoc={addEventListener:()=>{},getElementById:()=>null,visibilityState:"visible"};
+vm.runInNewContext(src,{window:stableWindow,document:stableDoc,
+ localStorage:persistedStorage,URL,Date,Number,Promise,console});
+const bound=stableWindow.SEC_FAN_MOMENTS;
+const before=bound.cardVerdict();
+assert.equal(before.title,"THE EXCITEMENT IS MANDATORY","migrate the already-seen roast");
+assert.equal(before.percent,57);
+assert.equal(persisted.has("sec-roast-card-v3:account-A"),true);
+selectedLeague="league-new";
+for(const route of ["home","picks","league","home","news"]){
+ activeRoute=route;bound.onView(route);
+ assert.equal(bound.cardVerdict().title,before.title,
+  "changing pages and selected leagues must not rotate a person's roast");
+}
+currentReport={...currentReport,fingerprint:"verified-7:lost|verified-6:won|verified-5:lost|verified-4:won|verified-3:lost|verified-2:won|verified-1:won"};
+assert.equal(bound.cardVerdict().title,before.title,
+ "same verified accuracy in a different order is not a new result");
+currentReport={...currentReport,wins:1,losses:1,fingerprint:"partial-refresh"};
+const pending=bound.cardVerdict();
+assert.equal(pending.source,"saved","loading fewer picks retains the last verified report");
+assert.equal(pending.percent,57);
+assert.equal(pending.title,before.title);
+currentReport={...currentReport,wins:5,losses:3,fingerprint:"verified-8:won|verified-7:lost"};
+const finished=bound.cardVerdict();
+assert.equal(finished.percent,63);
+assert.notEqual(finished.title,before.title,"new verified outcome advances the roast");
+loggedUser="account-B";selectedLeague="league-new";
+assert.equal(persisted.has("sec-roast-card-v3:account-B"),false,
+ "another signed-in account never inherits the previous user's recap");
+bound.cardVerdict();
+assert.equal(persisted.has("sec-roast-card-v3:account-B"),true);
+assert.equal(persisted.get("sec-roast-card-v3:account-A")!==persisted.get("sec-roast-card-v3:account-B"),true,
+ "saved scores and sayings remain separate between users");
+loggedUser="account-A";
+assert.equal(bound.cardVerdict().title,finished.title,
+ "switching back to the original account restores its pinned roast");
 
 const counts=m.roastCounts();
 assert.deepEqual({...counts},{fire:12,great:12,okay:12,rough:12,roast:12},
