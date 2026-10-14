@@ -26,6 +26,9 @@
       previousAuthUserId=nextUserId;
       window.SEC_SPORTS?.authChanged?.();
       void window.SEC_FAN?.onView?.(app.view());
+      // The roast uses a confirmed account identity across transient session
+      // refreshes. Paint immediately after auth settles, not 60 seconds later.
+      window.SEC_FAN_MOMENTS?.onView?.(app.view());
     }
   }
   var inviteCode = new URLSearchParams(location.search).get("league");
@@ -468,6 +471,9 @@
         setTimeout(function(){app.setView("league");renderLeague();},0);
       }else if(event==="SIGNED_IN"||event==="SIGNED_OUT"){
         if(event==="SIGNED_OUT"){
+          // Explicit logout is different from a temporary null auth refresh.
+          // Never carry a previous account's roast to the signed-out screen.
+          window.SEC_FAN_MOMENTS?.onAuthSignOut?.();
           ++refreshVersion;++standingsVersion;
           user=null;leagues=[];active=null;profile=null;standings=[];
           app.state().picks={};app.state().results={};
