@@ -510,7 +510,7 @@ fs.mkdirSync(output,{recursive:true});
     localStorage.setItem("sec-roast-card-v2:device|local",JSON.stringify({
      kind:"great",fingerprint:"browser-test-past-verified-picks",
      title:"THE PICKS ARE PICKING",
-     body:"You're on a roll. The league is quietly checking your score again.",
+     body:"You keep getting games right and your opponents keep explaining how they would've picked differently. Nobody asked.",
      stats:{wins:4,losses:1,pushes:0,limit:10}
     }));
     window.SEC_BRIDGE.setView("results");
@@ -570,7 +570,7 @@ fs.mkdirSync(output,{recursive:true});
     try{
      localStorage.setItem("sec-roast-card-v3:"+uniqueUser,JSON.stringify({
       kind:"okay",title:"THE EXCITEMENT IS MANDATORY",
-      body:"Half of your calls aged beautifully. The rest have left the chat.",
+      body:"Your right picks are arguing with your wrong picks, and somehow neither side is winning the argument.",
       fingerprint:"ci-verified-seven",stats:{wins:4,losses:3,pushes:0,limit:10}
      }));
      const entries=[];
