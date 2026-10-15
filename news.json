@@ -1,11 +1,67 @@
 {
-  "updated_at": "2026-10-15T00:35:29.269007Z",
-  "checked_at": "2026-10-15T00:35:29.269007Z",
+  "updated_at": "2026-10-15T05:55:50.358006Z",
+  "checked_at": "2026-10-15T05:55:50.358006Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "9b6addf2b47389c4",
+      "title": "Western Kentucky Hilltoppers vs. Sam Houston Bearkats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50186841/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-15T03:36:18Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7fff5174a44e840c",
+      "title": "Tennessee assistant William Inge out of hospital, begins rehab from illness",
+      "summary": "Tennessee assistant coach William Inge, who was hospitalized three weeks ago with an undisclosed illness, has been released and started a rehab process.",
+      "url": "https://www.espn.com/college-football/story/_/id/50185887/tennessee-assistant-william-inge-hospital-illness",
+      "source": "ESPN",
+      "published_at": "2026-10-15T01:38:32Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e73363a067c73a2f",
+      "title": "Mississippi State QB Kamario Taylor, RB Fluff Bothwell questionable vs. LSU",
+      "summary": "Mississippi State quarterback Kamario Taylor is questionable to play against LSU because of a leg injury that forced him out of the Bulldogs' game against Alabama two weeks ago.",
+      "url": "https://www.espn.com/college-football/story/_/id/50185732/mississippi-state-kamario-taylor-fluff-bothwell-questionable-vs-lsu",
+      "source": "ESPN",
+      "published_at": "2026-10-15T01:11:18Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia",
+        "LSU",
+        "Mississippi State"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5a5e803647bfaa3b",
+      "title": "Alabama WR Ryan Coleman-Williams won't play at Tennessee",
+      "summary": "No. 6 Alabama star wide receiver Ryan Coleman-Williams has officially been ruled out of Saturday's game at No. 14 Tennessee.",
+      "url": "https://www.espn.com/college-football/story/_/id/50185713/alabama-wr-ryan-coleman-williams-knee-tennessee",
+      "source": "ESPN",
+      "published_at": "2026-10-15T00:47:14Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
     {
       "id": "91e33ad0486c746c",
       "title": "John Calipari takes questions on development of young Razorbacks",
@@ -43,7 +99,7 @@
       "teams": [
         "Georgia"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "7ead245e738b58bf",
@@ -228,20 +284,6 @@
       "breaking": false
     },
     {
-      "id": "e009835f3c7dd6ff",
-      "title": "Texas A&M coach Elko says he regrets 'cesspool' comments",
-      "summary": "Mike Elko said his viral remark after the Aggies' loss to Missouri was made in the heat of the moment.",
-      "url": "https://www.espn.com/college-football/story/_/id/50168753/texas-coach-mike-elko-regrets-cesspool-comments",
-      "source": "ESPN",
-      "published_at": "2026-10-13T04:21:45Z",
-      "sport": "football",
-      "teams": [
-        "Missouri",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
       "id": "978cd3457c970aca",
       "title": "Sources: Mississippi State star QB Kamario Taylor's status vs. LSU uncertain",
       "summary": "No. 16 Mississippi State star quarterback Kamario Taylor's status for Saturday's game at No. 22 LSU is in flux as he deals with a foot injury.",
@@ -350,84 +392,6 @@
         "Florida",
         "Texas"
       ],
-      "breaking": false
-    },
-    {
-      "id": "4a7ba3688b9e55e0",
-      "title": "RB CJ Baxter reveals what makes No. 15 Kentucky, Stein special",
-      "summary": "Baxter emphatically talks about the Wildcats preparation process, and the \"swagger\" of Will Stein as UK looks to build on winning back-to-back OT thillers.",
-      "url": "https://www.espn.com/video/clip/_/id/50168699/rb-cj-baxter-reveals-makes-no-15-kentucky-stein-special",
-      "source": "ESPN",
-      "published_at": "2026-10-12T21:06:11Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "77f974153d3ea0a8",
-      "title": "QB Gunner Stockton attributes his accuracy to O-Line, skills group",
-      "summary": "Stockton shares that because of the talent throughout No. 1 Georgia's offensive line and skills players, he is able to complete risky passes and maintain an 82% completion rate.",
-      "url": "https://www.espn.com/video/clip/_/id/50168501/qb-gunner-stockton-attributes-accuracy-o-line-skills-group",
-      "source": "ESPN",
-      "published_at": "2026-10-12T20:13:32Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4572091561c50514",
-      "title": "WR Cayden Lee loves Mizzou's defense, reflects on time with Rebels",
-      "summary": "Lee shares that he values competing against No, 13 Missouri's \"death-row defense\", and discusses the \"bittersweet feelings\" that comes with facing his former team No. 9 Ole Miss.",
-      "url": "https://www.espn.com/video/clip/_/id/50168423/wr-cayden-lee-loves-mizzou-defense-reflects-rebels",
-      "source": "ESPN",
-      "published_at": "2026-10-12T19:58:52Z",
-      "sport": "football",
-      "teams": [
-        "Missouri",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "384542db8f50570e",
-      "title": "Beamer expresses belief in Sellers, highlights Stewart's growth",
-      "summary": "Shane Beamer wants Gamecocks QB LaNorris Sellers to play freely, trusting the security of his place on the team and is proud of how EDGE Dylan Stewart has responded to adversity.",
-      "url": "https://www.espn.com/video/clip/_/id/50168155/beamer-expresses-belief-sellers-highlights-stewart-growth",
-      "source": "ESPN",
-      "published_at": "2026-10-12T19:45:33Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "11353f17321b2b84",
-      "title": "Sarkisian: 'Manning' name leading to outsized criticism of Arch",
-      "summary": "Texas coach Steve Sarkisian defended Arch Manning on Monday following the upset loss to Oklahoma, saying the \"Manning\" name is leading to greater scrutiny.",
-      "url": "https://www.espn.com/college-football/story/_/id/50168104/manning-name-leading-outsized-criticism-arch",
-      "source": "ESPN",
-      "published_at": "2026-10-12T19:29:14Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "69db6c28915f95a4",
-      "title": "Doering, Burns switch it up for Week 6 Power Rankings' ups and downs",
-      "summary": "SEC This Morning's Peter Burns and Chris Doering switch roles as they rank the five biggest positive and negative storylines from Week 6 play.",
-      "url": "https://www.espn.com/video/clip/_/id/50167893/doering-burns-switch-week-6-power-rankings-ups-downs",
-      "source": "ESPN",
-      "published_at": "2026-10-12T18:54:29Z",
-      "sport": "football",
-      "teams": [],
       "breaking": false
     },
     {
