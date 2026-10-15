@@ -4,6 +4,7 @@ const assert=require("node:assert/strict"),fs=require("node:fs"),vm=require("nod
 const read=p=>fs.readFileSync(p,"utf8"),src=read("sec-fan-moments.js"),html=read("index.html");
 new vm.Script(src,{filename:"sec-fan-moments.js"});
 const listeners={},store=new Map();
+const htmlEscape=x=>String(x).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
 let activeRoute="results";
 const document={
  addEventListener:(name,fn)=>listeners[name]=fn,
@@ -46,7 +47,7 @@ assert.equal(m.cardVerdict().title,pinned.title,"same saying when reopening Resu
 m.anotherRoast();
 const rotated=m.cardVerdict();
 assert.notEqual(rotated.title,pinned.title,"Another roast immediately gets a new one");
-assert.ok(resultRoot.innerHTML.includes(rotated.title.replace(/&/g,"&amp;").replace(/</g,"&lt;")),
+assert.ok(resultRoot.innerHTML.includes(htmlEscape(rotated.title)),
  "new quote is visible in the Results card");
 // Remains pinned after a simulated reload.
 const freshWindow={SEC_BRIDGE:{view:()=>null,week:()=>({num:7,games:[]})},
@@ -63,16 +64,16 @@ assert.equal(globalRoot.hidden,false,"roast ribbon persists on Home");
 assert.match(globalRoot.innerHTML,/Full recap/);
 assert.match(globalRoot.innerHTML,/data-fun-next/,"another-roast works from any screen");
 const across=m.cardVerdict();
-assert.ok(globalRoot.innerHTML.includes(across.title.replace(/&/g,"&amp;")),
+assert.ok(globalRoot.innerHTML.includes(htmlEscape(across.title)),
  "persistent ribbon displays same saved quote as Results");
 activeRoute="picks";m.onView(activeRoute);
 assert.equal(globalRoot.hidden,false,"roast ribbon persists while picking games");
-assert.ok(globalRoot.innerHTML.includes(across.title.replace(/&/g,"&amp;")));
+assert.ok(globalRoot.innerHTML.includes(htmlEscape(across.title)));
 activeRoute="league";m.onView(activeRoute);
 assert.equal(globalRoot.hidden,false,"roast ribbon persists in League");
 activeRoute="results";m.onView(activeRoute);
 assert.equal(globalRoot.hidden,true,"full Results card replaces global compact ribbon");
-assert.ok(resultRoot.innerHTML.includes(across.title.replace(/&/g,"&amp;")));
+assert.ok(resultRoot.innerHTML.includes(htmlEscape(across.title)));
 
 // Past verified picks carry the same roast across new calendar weeks with no
 // scored games, and the roast updates once a new final is actually confirmed.
@@ -167,7 +168,7 @@ window.SEC_NEXT.recentStats=originalRecent;
 const persisted=new Map();
 persisted.set("sec-roast-card-v2:account-A|league-old",JSON.stringify({
  kind:"okay",fingerprint:"old-verified-picks",title:"THE EXCITEMENT IS MANDATORY",
- body:"Half of your calls aged beautifully. The rest have left the chat.",
+ body:"Your right picks are arguing with your wrong picks, and somehow neither side is winning the argument.",
  stats:{wins:4,losses:3,pushes:0,limit:10}
 }));
 const persistedStorage={getItem:k=>persisted.get(k)||null,
@@ -236,6 +237,20 @@ loggedUser="account-A";
 assert.equal(bound.cardVerdict().title,finished.title,
  "switching back to the original account restores its pinned roast");
 
+// Assert every grade receives the new stronger SEC trash talk while still
+// preserving the correct thresholds and 12 no-repeat sayings per tier.
+assert.match(src,/YOUR FOOTBALL LICENSE HAS BEEN REVOKED/);
+assert.match(src,/YOU'RE THE DEFINITION OF MID/);
+assert.match(src,/THE LEAGUE HAS FOUND ITS CLOWN/);
+assert.match(src,/THE LEAGUE IS GETTING EMBARRASSED/);
+assert.match(src,/YOUR PICKS HAVE BEEN DECLARED A DISASTER AREA/);
+assert.match(src,/Your opponents showed up with opinions/);
+assert.ok(!src.includes("Half of your calls aged beautifully"),
+ "remove the old mild roast bank");
+assert.equal(m.grade(4,3).kind,"okay","57% gets an appropriately mid roast");
+assert.equal(m.grade(1,4).kind,"roast","20% gets the brutal roast tier");
+assert.equal(m.grade(5,0).kind,"fire","100% celebrates dominating opponents");
+
 const counts=m.roastCounts();
 assert.deepEqual({...counts},{fire:12,great:12,okay:12,rough:12,roast:12},
  "every performance tier has twelve original roasts");
@@ -265,8 +280,8 @@ assert.ok(chosen.title);
 assert.equal(store.has("sec-roast-deck-v1:device:rough"),true);
 assert.match(src,/data-fun-again/,"users can request a fresh saying right away");
 assert.match(src,/latestVerdict/,"share matches the displayed roast");
-assert.match(html,/sec-fan-moments\.js\?v=20261014-fun-v8/);
-assert.match(read("sw.js"),/sec-fan-moments\.js\?v=20261014-fun-v8/);
+assert.match(html,/sec-fan-moments\.js\?v=20261015-savage-v1/);
+assert.match(read("sw.js"),/sec-fan-moments\.js\?v=20261015-savage-v1/);
 
 assert.equal(m.safeUrl("https://www.secsports.com/news/2026/10/fake"),true);
 assert.equal(m.safeUrl("javascript:alert(1)"),false);

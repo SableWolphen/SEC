@@ -46,77 +46,257 @@ const terms={football:"Football",basketball:"Basketball",baseball:"Baseball"};
    repeats the previous message. Selection history persists per signed-in
    account (or on this device when signed out). No private picks are read. */
 const ROASTS=Object.freeze({
- fire:[
-  ["THE SEC HAS BEEN WARNED","You are turning the pick sheet into a highlight reel. The group chat may need a timeout."],
-  ["SOMEBODY CHECK THE CRYSTAL BALL","These picks are suspiciously good. Your friends are going to demand an investigation."],
-  ["THE PICK'EM PROPHECY","Every time you choose a winner, a rival fan sheds a single tear."],
-  ["WEEKEND MASTERCLASS","You picked winners like it was a multiple-choice test with the answer key."],
-  ["HOTTER THAN A SEPTEMBER KICKOFF","Even the scoreboard is sweating. That's a dangerous percentage."],
-  ["YOU OWN THE GROUP CHAT","Bring the receipts. Your league will pretend it never doubted you."],
-  ["THE UPSET WHISPERER","Some people watch film. Apparently you just stare into the future."],
-  ["UNREASONABLY LOCKED IN","Your pick sheet deserves its own postgame press conference."],
-  ["THE SPORTSBOOK IS NOT INVITED","This is friendly pick'em, but that accuracy would scare a spreadsheet."],
-  ["THE COMMISSIONER IS NERVOUS","Winning this much should come with an apology to the rest of the league."],
-  ["STRAIGHT-UP SATURDAY LEGEND","You might have to start charging admission to see these selections."],
-  ["THE TROPHY IS TAKING NOTES","Nobody has handed you a crown, but the picks are making a very strong argument."]
+ "fire": [
+  [
+   "THE LEAGUE IS GETTING EMBARRASSED",
+   "You didn't join Pick'em to compete. You joined to make your league question its basic understanding of football."
+  ],
+  [
+   "SOMEBODY CHECK THE OTHER PLAYERS",
+   "Your picks are so far ahead that everyone else's strategy looks like throwing a phone down the stairs."
+  ],
+  [
+   "THE GROUP CHAT NEEDS WITNESS PROTECTION",
+   "You have enough receipts to ruin Thanksgiving for half your league."
+  ],
+  [
+   "YOU JUST STOLE THEIR SATURDAY",
+   "Somebody spent all week studying matchups just to get publicly outpicked by you. Tragic."
+  ],
+  [
+   "THEY CALLED IT LUCK. THAT'S CUTE.",
+   "At this point the other players are inventing excuses faster than they're scoring points."
+  ],
+  [
+   "THE TROPHY SHOULD CHANGE ITS ADDRESS",
+   "Everyone else can keep fighting for second. You're already bullying the standings."
+  ],
+  [
+   "THE SEC HAS A NEW PROBLEM",
+   "Your opponents need a new hobby. They clearly weren't built for this one."
+  ],
+  [
+   "THEY BROUGHT PICKS TO A MASSACRE",
+   "Every correct call is another reason the league chat has gone suspiciously silent."
+  ],
+  [
+   "YOUR RIVALS OWE YOU AN APOLOGY",
+   "That wasn't a good week. That was an organized demolition of other people's confidence."
+  ],
+  [
+   "SOMEONE CALL THE COMMISSIONER",
+   "Your performance is making the rest of the league look like the preseason prediction department."
+  ],
+  [
+   "THIS ISN'T A COMPETITION ANYMORE",
+   "It's a weekly reminder that everyone else apparently picked with their eyes closed."
+  ],
+  [
+   "THE STANDINGS HAVE A VILLAIN",
+   "You are the reason the other players are suddenly claiming they don't care about Pick'em."
+  ]
  ],
- great:[
-  ["THE PICKS ARE PICKING","You're on a roll. The league is quietly checking your score again."],
-  ["SATURDAY LOOKS GOOD ON YOU","These are confident picks, not random button presses. Mostly."],
-  ["THE GROUP CHAT GOT QUIET","That's what happens when somebody starts getting the games right."],
-  ["SCOUTING DEPARTMENT APPROVED","You saw things coming that everyone else called a bad idea."],
-  ["A VERY RESPECTABLE FLEX","Your picks have earned exactly one dramatic victory lap."],
-  ["THE SEC SUN IS SHINING","Keep this up and somebody will accuse you of knowing ball."],
-  ["GOOD CALL UNIVERSITY","Your unofficial degree in picking winners is looking pretty legitimate."],
-  ["YOUR BRACKET HAS SWAGGER","Not perfect, but there are some very loud receipts on this page."],
-  ["SOMEONE GET A HIGHLIGHT CAMERA","Those picks deserve a little slow-motion replay."],
-  ["THE SELECTION COMMITTEE AGREES","An excellent week for acting like you knew it all along."],
-  ["YOUR RIVALS ARE SWEATING","Every correct pick makes that standings screen a little more awkward for them."],
-  ["THE COMEBACK ARC IS REAL","If you weren't already leading, you're making people look over their shoulders."]
+ "great": [
+  [
+   "THE PICKS ARE PICKING",
+   "You keep getting games right and your opponents keep explaining how they would've picked differently. Nobody asked."
+  ],
+  [
+   "YOU'RE RUINING THE GROUP CHAT",
+   "Every right pick is another message your league will wish it never sent."
+  ],
+  [
+   "A DANGEROUS AMOUNT OF FOOTBALL KNOWLEDGE",
+   "Your rivals spent all week talking. You spent Saturday collecting evidence against them."
+  ],
+  [
+   "THE REST OF THE LEAGUE LOOKS NERVOUS",
+   "You're winning enough that the loudest trash talkers suddenly have very important errands."
+  ],
+  [
+   "YOUR RECEIPTS HAVE RECEIPTS",
+   "Somebody's going to call this luck, and they're going to be wrong again next week."
+  ],
+  [
+   "YOU CAME FOR POINTS, NOT FRIENDS",
+   "Keep this up and your league will vote to stop inviting you to things."
+  ],
+  [
+   "THE UPSET PICKS HIT DIFFERENT",
+   "Every time you get one right, somebody else has to pretend they totally saw it coming."
+  ],
+  [
+   "THE OPPOSITION HAS ENTERED COPING MODE",
+   "They're not losing because of your picks, apparently. It's the weather. And the refs. And Mercury."
+  ],
+  [
+   "YOU'RE THE PROBLEM IN THIS LEAGUE",
+   "Not perfect, just good enough to make everybody else's confidence look ridiculous."
+  ],
+  [
+   "YOUR RIVALS ARE RUNNING OUT OF EXCUSES",
+   "They said you'd crash. Instead they're the ones reading the standings in silence."
+  ],
+  [
+   "THEY BET AGAINST YOUR BRAIN",
+   "You made the picks. They made speeches. Only one of those earned points."
+  ],
+  [
+   "THAT'S A LOT OF TALK FOR SECOND PLACE",
+   "Your league can keep the trash talk. You've got the correct answers."
+  ]
  ],
- okay:[
-  ["RESPECTABLE CHAOS","Some genius picks, some mysterious decisions. That's college football."],
-  ["A TRUE COIN-FLIP CONNOISSEUR","You are somehow both the hero and the villain of your own pick sheet."],
-  ["STILL IN THE HUDDLE","Nothing to brag about too loudly. Nothing to delete the app over either."],
-  ["THE MIDDLE OF THE PACK HAS WIFI","Congratulations, you have excellent company and very average receipts."],
-  ["SATURDAY WAS A ROLLER COASTER","A few perfect calls and a couple where the TV deserved an apology."],
-  ["YOU KNOW SOME BALL","Whether you know all the ball remains under active investigation."],
-  ["A TALE OF TWO HALVES","Your good picks came ready. Your bad ones took the scenic route."],
-  ["NOT A DISASTER. NOT A PARADE.","A serviceable week for someone with strong opinions about football."],
-  ["THE STANDINGS ARE UNDECIDED","You have kept the competition interesting. Very generous of you."],
-  ["GOOD ENOUGH FOR OVERTIME","Your picks can't decide whether they're cooking or getting cooked."],
-  ["THE EXCITEMENT IS MANDATORY","Half of your calls aged beautifully. The rest have left the chat."],
-  ["STAYING IN FIELD GOAL RANGE","You're still close enough to make next week interesting."]
+ "okay": [
+  [
+   "RESPECTABLE CHAOS",
+   "You know just enough football to be dangerous, and just little enough to keep your rivals entertained."
+  ],
+  [
+   "THE EXCITEMENT IS MANDATORY",
+   "Your right picks are arguing with your wrong picks, and somehow neither side is winning the argument."
+  ],
+  [
+   "YOU'RE THE DEFINITION OF MID",
+   "The good news: you're not last. The bad news: this is the part of your season you're bragging about."
+  ],
+  [
+   "YOUR PICKS NEED ADULT SUPERVISION",
+   "You hit a few impressive calls, then apparently let the stadium parking attendant finish the sheet."
+  ],
+  [
+   "CONFIDENCE: ELITE. ACCURACY: QUESTIONABLE.",
+   "You talk like an analyst and pick like somebody who learned football from the scoreboard."
+  ],
+  [
+   "THE STANDINGS CALLED YOU A PARTICIPANT",
+   "Not a contender. Not a disaster. Just a name somebody has to scroll past."
+  ],
+  [
+   "YOU'RE PLAYING .500 FOOTBALL WITH YOUR EGO",
+   "Every right pick boosts your confidence. Every wrong pick proves it was a clerical error."
+  ],
+  [
+   "YOUR HOT TAKES NEED A COLD SHOWER",
+   "Your best calls were excellent. Your worst calls should be kept away from children learning football."
+  ],
+  [
+   "DANGEROUSLY AVERAGE",
+   "The league isn't scared of you. It's not particularly impressed either."
+  ],
+  [
+   "THE PICK SHEET IS FIGHTING ITSELF",
+   "Half your choices belong in a highlight reel. The rest belong in a sealed evidence locker."
+  ],
+  [
+   "YOU BROUGHT VIBES TO A STATS FIGHT",
+   "The vibes are immaculate. Your accuracy is filing a formal complaint."
+  ],
+  [
+   "YOUR BRAGGING RIGHTS ARE ON PROBATION",
+   "Please submit three more correct picks before returning to the group chat with that confidence."
+  ]
  ],
- rough:[
-  ["YOUR PICKS NEED ADULT SUPERVISION","You watched all that football and still submitted a pick sheet that looks like a cry for help."],
-  ["THE GROUP CHAT HAS SCREENSHOTS","You can delete the messages. You cannot delete the evidence of those picks."],
-  ["STOP CALLING IT A STRATEGY","Picking the wrong team repeatedly is not a system. It's a hobby with terrible results."],
-  ["THE SCOREBOARD FILED A COMPLAINT","Your picks are making the concept of football knowledge look bad."],
-  ["THAT WAS A CONFIDENCE SCAM","You talked like a champion and picked like the Wi-Fi dropped during kickoff."],
-  ["YOUR UPSET PICKS ARE UPSETTING","Mostly to the people who have to listen to you explain them."],
-  ["SATURDAY TOOK YOUR LUNCH MONEY","And then your pick sheet thanked it for the opportunity."],
-  ["THE FILM ROOM REFUSES TO REVIEW THIS","There's game tape, and then there's whatever crime scene you submitted."],
-  ["A COIN FLIP WANTS CREDIT","Heads or tails could've done this job. Somehow you made it harder."],
-  ["THE COMEBACK HAS LEFT THE CHAT","You'd need a fourth-quarter miracle just to make these picks look intentional."],
-  ["YOUR LOCKS HAD NO DOORS","You called them guarantees. The teams treated them like suggestions."],
-  ["THE STANDINGS HAVE A BASEMENT","And your pick sheet just asked whether the lease comes with parking."]
+ "rough": [
+  [
+   "YOU'RE GETTING COOKED",
+   "That pick sheet isn't struggling. It's being dragged through the SEC schedule behind a pickup truck."
+  ],
+  [
+   "DELETE THE GROUP CHAT HISTORY",
+   "Not because your friends are being mean. Because they have screenshots, and those screenshots are devastating."
+  ],
+  [
+   "YOUR PICKS HAVE BEEN DECLARED A DISASTER AREA",
+   "The commissioner has asked everyone to stop pointing and laughing. Nobody listened."
+  ],
+  [
+   "SOMEONE TAKE AWAY YOUR PREVIEW SHOWS",
+   "Whatever you're watching before kickoff is actively making your picks worse."
+  ],
+  [
+   "YOU WERE BETTER OFF GUESSING MASCOTS",
+   "At least then you could blame the giant foam heads for this mess."
+  ],
+  [
+   "THE STANDINGS ARE ROASTING YOU FOR FREE",
+   "This app barely needs to add anything. Your score already did all the work."
+  ],
+  [
+   "THE LEAGUE THANKS YOU FOR YOUR SERVICE",
+   "Every bad pick is another charitable donation to somebody else's ranking."
+  ],
+  [
+   "YOU PICK LIKE IT'S OPPOSITE DAY",
+   "Your selections are so reliably bad that the group chat is using them as a scouting report."
+  ],
+  [
+   "THE FILM ROOM DOESN'T WANT YOU BACK",
+   "The analysts watched your picks and politely suggested you try a different sport."
+  ],
+  [
+   "THE COMEBACK NEEDS A MIRACLE",
+   "Not a rally speech. Not a motivational poster. An actual football miracle."
+  ],
+  [
+   "YOU'VE LOST CONTROL OF THE NARRATIVE",
+   "Your opponents are writing the recap, and you are absolutely not the hero."
+  ],
+  [
+   "THAT PICK SHEET HAS NEGATIVE AURA",
+   "Your best chance next week might be letting your phone pick teams from your pocket."
+  ]
  ],
- roast:[
-  ["PLEASE STOP ANALYZING FOOTBALL","Every minute you spent studying apparently made the picks worse. Incredible commitment to failure."],
-  ["YOUR PICKS ARE A PUBLIC SERVICE ANNOUNCEMENT","This is what happens when confidence shows up to the game without a single functioning prediction."],
-  ["THE COIN TOSS IS SUING YOU","For dragging random chance into whatever embarrassing nonsense this pick sheet is."],
-  ["YOU COULD MISS A BYE WEEK","You'd find a way to pick against a team that isn't even playing."],
-  ["YOUR FOOTBALL IQ IS IN WITNESS PROTECTION","Nobody's seen it, nobody can locate it, and the scoreboard denies it ever existed."],
-  ["THE LEAGUE NEEDS A MERCY RULE","Not for the games. For anyone forced to watch you submit another pick."],
-  ["YOUR PICKS BELONG IN A MUSEUM","Right next to other historic disasters people visit to learn what not to do."],
-  ["THE TRASH TALK HAS BEEN REVOKED","You don't get to say 'easy win' again until you can identify one correctly."],
-  ["THE MASCOT JUST OUTPICKED YOU","It selected teams by falling over. Your full research process somehow did worse."],
-  ["YOU'RE THE UPSET OF THE WEEK","Not because you called an upset. Because we're upset you thought these picks were good."],
-  ["DELETE THE WHITEBOARD","All those arrows, stats, and confident speeches just to finish behind a coin flip."],
-  ["THE SCOREBOARD IS LAUGHING AT YOU","It doesn't even have a mouth. That's how catastrophically bad your picks were."]
+ "roast": [
+  [
+   "THE PICKS ARE IN SHAMBLES",
+   "This wasn't a bad week. This was a public service announcement about what happens when confidence replaces knowledge."
+  ],
+  [
+   "THE LEAGUE HAS FOUND ITS CLOWN",
+   "Everybody needed a laugh this Saturday. Unfortunately, your picks volunteered."
+  ],
+  [
+   "YOUR FOOTBALL LICENSE HAS BEEN REVOKED",
+   "Please surrender your pick sheet to the nearest mascot. They can't do worse."
+  ],
+  [
+   "YOU COULDN'T PICK A WINNER IN A ONE-TEAM GAME",
+   "The scoreboard is asking if you're doing this on purpose, because that would honestly be less embarrassing."
+  ],
+  [
+   "THERE ARE NO WORDS. JUST SCREENSHOTS.",
+   "Your league is saving this performance like a historic rivalry blowout."
+  ],
+  [
+   "YOU'RE A FREE WIN FOR THE GROUP CHAT",
+   "Your opponents don't even need to make picks. They just need to wait for yours to come in."
+  ],
+  [
+   "THE DARTBOARD HAS REQUESTED A LAWYER",
+   "It refuses to be associated with decisions this consistently awful."
+  ],
+  [
+   "CONGRATULATIONS ON YOUR REBUILD YEAR",
+   "Unfortunately, this is a Pick'em app. You don't get draft picks for finishing this badly."
+  ],
+  [
+   "THE MASCOT WOULD LIKE TO SUB IN",
+   "It has a giant costume head and limited peripheral vision. Still an upgrade."
+  ],
+  [
+   "YOUR CRYSTAL BALL IS A BRICK",
+   "Not broken. Not cloudy. Just a literal brick with better football instincts than you."
+  ],
+  [
+   "THE COMMITTEE HAS REVIEWED YOUR PICKS",
+   "Their unanimous recommendation: let somebody who has watched a game try next week."
+  ],
+  [
+   "SOMEONE HIDE THIS FROM YOUR RIVALS",
+   "Too late. They've screenshotted it, framed it, and made it the league's new profile picture."
+  ]
  ]
-});
+} );
 const roastKey=()=> "sec-roast-deck-v1:"+owner();
 let latestVerdict=null;
 function freshDeck(size,last){
@@ -169,14 +349,14 @@ function grade(wins,losses,pushes=0){
  const judged=w+l;
  if(judged<3)return {ready:false,wins:w,losses:l,pushes:p,judged,percent:null,
   label:"Your roast report is still warming up",title:"Waiting for the scoreboard",
-  body:"Once three of your picks have verified final results, your game-day verdict unlocks.",icon:"📋",kind:"pending"};
+  body:"Give the scoreboard three real picks. Then we can decide whether you know ball or just own a phone.",icon:"📋",kind:"pending"};
  const ratio=w/judged,percent=Math.round(ratio*100);
  let text;
- if(ratio>=.85)text={kind:"fire",icon:"🔥",title:"ABSOLUTE SEC MENACE",label:"You're cooking",body:"You didn't come to play. You came to embarrass the group chat. Screenshot these receipts."};
- else if(ratio>=.7)text={kind:"great",icon:"🏆",title:"THE PICKS ARE PICKING",label:"You're doing great",body:"Your picks are looking sharp. Someone should probably check your crystal ball."};
- else if(ratio>=.5)text={kind:"okay",icon:"😎",title:"RESPECTABLE CHAOS",label:"You're holding your own",body:"A few beauties, a few questionable decisions. You're still in the game."};
- else if(ratio>=.3)text={kind:"rough",icon:"🍳",title:"YOU'RE GETTING COOKED",label:"It's a rough week",body:"The scoreboard is talking trash. Lucky for you, next week is a fresh slate."};
- else text={kind:"roast",icon:"💀",title:"THE PICKS ARE IN SHAMBLES",label:"Oof. That was brutal.",body:"Did you pick teams by throwing darts? At least your confidence is undefeated."};
+ if(ratio>=.85)text={kind:"fire",icon:"🔥",title:"ABSOLUTE SEC MENACE",label:"You're cooking",body:"Your opponents showed up with opinions. You showed up with a demolition permit."};
+ else if(ratio>=.7)text={kind:"great",icon:"🏆",title:"THE PICKS ARE PICKING",label:"You're doing great",body:"You're stacking wins and your rivals are stacking excuses. Pathetic showing from them."};
+ else if(ratio>=.5)text={kind:"okay",icon:"😎",title:"RESPECTABLE CHAOS",label:"You're holding your own",body:"Some of these picks are impressive. The rest look like you handed the phone to your rival."};
+ else if(ratio>=.3)text={kind:"rough",icon:"🍳",title:"YOU'RE GETTING COOKED",label:"It's a rough week",body:"Your pick sheet needs a transfer portal. Everybody on it is underperforming."};
+ else text={kind:"roast",icon:"💀",title:"THE PICKS ARE IN SHAMBLES",label:"Oof. That was brutal.",body:"If your picks were a football program, they'd be paying you to transfer."};
  return {...text,ready:true,wins:w,losses:l,pushes:p,judged,percent};
 }
 function current(){
@@ -335,7 +515,7 @@ function milestone(){
    body:"Every graded pick you made this week was right. The group chat is going to hear about this."};
  if(finished&&report.judged>=5&&report.percent<=20)
   return {id:"rough-week",icon:"💀",title:"THE PICK SHEET NEEDS A MEDIC",
-   body:"That's an absolutely brutal week of confirmed picks. The comeback story starts next slate."};
+   body:"The season has seen some ugly scoreboards. Your pick sheet just volunteered for the museum."};
  const upset=(stats?.items||[]).some(x=>x.kind==="won"&&
   W.SEC_LEAGUE_INSIGHTS?.upset?.(x.g,"football")?.label==="⚡ UNDERDOG WIN");
  if(upset)return {id:"called-upset",icon:"⚡",title:"YOU CALLED THE UPSET!",
