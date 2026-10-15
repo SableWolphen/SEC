@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "Saturdays Down South — SEC Pick'em",
-  "short_name": "SEC Pick'em",
+  "name": "Gamedays Down South — SEC Pick'em",
+  "short_name": "Gamedays South",
   "description": "Pick SEC football, basketball and baseball winners with friends in unified leagues.",
   "start_url": "./",
   "scope": "./",
