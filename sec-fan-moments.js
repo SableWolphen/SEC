@@ -89,32 +89,32 @@ const ROASTS=Object.freeze({
   ["STAYING IN FIELD GOAL RANGE","You're still close enough to make next week interesting."]
  ],
  rough:[
-  ["YOU'RE GETTING COOKED","The scoreboard has some notes. None of them are particularly encouraging."],
-  ["THE GROUP CHAT SAW THAT","Your friends are already typing. You can hear the keyboard from here."],
-  ["THAT PICK SHEET NEEDS A HUG","It looked great before kickoff. That was the high point."],
-  ["SATURDAY CALLED IN SICK","Several of your picks apparently missed the team bus."],
-  ["YOUR CRYSTAL BALL IS BUFFERING","Try unplugging it and plugging it back in before the next slate."],
-  ["THE OPPOSITE DAY STRATEGY","If you'd clicked the other team a little more often, we'd be having a different conversation."],
-  ["A LEARNING EXPERIENCE, APPARENTLY","The lessons were expensive. Luckily the points are imaginary."],
-  ["THE PICKS TOOK A DETOUR","Destination: absolutely nowhere near the top of the standings."],
-  ["THE FILM ROOM IS CLOSED","Nobody needs to watch those picks back in slow motion."],
-  ["YOU GOT SCOUTED","The SEC showed up prepared. Your predictions absolutely did not."],
-  ["THE COMEBACK BETTER BE CINEMATIC","Because this week's episode has been a rough watch."],
-  ["SUNDAY MORNING DAMAGE REPORT","One wounded pick sheet. Several very happy opponents."]
+  ["YOUR PICKS NEED ADULT SUPERVISION","You watched all that football and still submitted a pick sheet that looks like a cry for help."],
+  ["THE GROUP CHAT HAS SCREENSHOTS","You can delete the messages. You cannot delete the evidence of those picks."],
+  ["STOP CALLING IT A STRATEGY","Picking the wrong team repeatedly is not a system. It's a hobby with terrible results."],
+  ["THE SCOREBOARD FILED A COMPLAINT","Your picks are making the concept of football knowledge look bad."],
+  ["THAT WAS A CONFIDENCE SCAM","You talked like a champion and picked like the Wi-Fi dropped during kickoff."],
+  ["YOUR UPSET PICKS ARE UPSETTING","Mostly to the people who have to listen to you explain them."],
+  ["SATURDAY TOOK YOUR LUNCH MONEY","And then your pick sheet thanked it for the opportunity."],
+  ["THE FILM ROOM REFUSES TO REVIEW THIS","There's game tape, and then there's whatever crime scene you submitted."],
+  ["A COIN FLIP WANTS CREDIT","Heads or tails could've done this job. Somehow you made it harder."],
+  ["THE COMEBACK HAS LEFT THE CHAT","You'd need a fourth-quarter miracle just to make these picks look intentional."],
+  ["YOUR LOCKS HAD NO DOORS","You called them guarantees. The teams treated them like suggestions."],
+  ["THE STANDINGS HAVE A BASEMENT","And your pick sheet just asked whether the lease comes with parking."]
  ],
  roast:[
-  ["THE PICKS ARE IN SHAMBLES","Did you pick teams by throwing darts? The darts might deserve an apology."],
-  ["CALL THE PICK'EM PARAMEDICS","This slate needs a full rebuild and possibly a pep talk."],
-  ["THE SCOREBOARD HAS RECEIPTS","Unfortunately, every single receipt is against you."],
-  ["YOU PICKED THE WRONG TIMELINE","Somewhere in a parallel universe, you're absolutely dominating."],
-  ["YOUR CRYSTAL BALL IS A POTATO","It might be time to switch to an actual potato. Can't get much worse."],
-  ["THE MASCOT COULD HAVE PICKED BETTER","And the mascot was busy doing push-ups on the sideline."],
-  ["THE GROUP CHAT IS FEASTING","If laughter counted as points, your opponents would have set a record."],
-  ["HISTORICALLY CONFIDENT. HISTORICALLY WRONG.","Respect the confidence. Question absolutely everything else."],
-  ["THE SATURDAY DISASTER CLASS","This performance will be studied by future generations of rival fans."],
-  ["THE PLAYBOOK IS ON FIRE","Not the fun kind of fire. The kind that requires an emergency exit."],
-  ["YOU DECLARED WAR ON ACCURACY","Accuracy won by a fairly convincing margin."],
-  ["THE RESET BUTTON LOOKS DELICIOUS","Good news: next week's slate has never heard of this one."]
+  ["PLEASE STOP ANALYZING FOOTBALL","Every minute you spent studying apparently made the picks worse. Incredible commitment to failure."],
+  ["YOUR PICKS ARE A PUBLIC SERVICE ANNOUNCEMENT","This is what happens when confidence shows up to the game without a single functioning prediction."],
+  ["THE COIN TOSS IS SUING YOU","For dragging random chance into whatever embarrassing nonsense this pick sheet is."],
+  ["YOU COULD MISS A BYE WEEK","You'd find a way to pick against a team that isn't even playing."],
+  ["YOUR FOOTBALL IQ IS IN WITNESS PROTECTION","Nobody's seen it, nobody can locate it, and the scoreboard denies it ever existed."],
+  ["THE LEAGUE NEEDS A MERCY RULE","Not for the games. For anyone forced to watch you submit another pick."],
+  ["YOUR PICKS BELONG IN A MUSEUM","Right next to other historic disasters people visit to learn what not to do."],
+  ["THE TRASH TALK HAS BEEN REVOKED","You don't get to say 'easy win' again until you can identify one correctly."],
+  ["THE MASCOT JUST OUTPICKED YOU","It selected teams by falling over. Your full research process somehow did worse."],
+  ["YOU'RE THE UPSET OF THE WEEK","Not because you called an upset. Because we're upset you thought these picks were good."],
+  ["DELETE THE WHITEBOARD","All those arrows, stats, and confident speeches just to finish behind a coin flip."],
+  ["THE SCOREBOARD IS LAUGHING AT YOU","It doesn't even have a mouth. That's how catastrophically bad your picks were."]
  ]
 });
 const roastKey=()=> "sec-roast-deck-v1:"+owner();
