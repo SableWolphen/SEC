@@ -1,11 +1,40 @@
 {
-  "updated_at": "2026-10-15T20:21:53.212033Z",
-  "checked_at": "2026-10-15T20:21:53.212033Z",
+  "updated_at": "2026-10-15T23:42:01.659142Z",
+  "checked_at": "2026-10-15T23:42:01.659142Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "18ad2a0e3023dc5e",
+      "title": "UK's Will Stein turns the page to 'massive test' against Oklahoma",
+      "summary": "After Kentucky's huge overtime win over LSU, Stein shifts his focus to the various obstacles that the Sooners present for the Wildcats in Week 7.",
+      "url": "https://www.espn.com/video/clip/_/id/50192416/uk-stein-turns-page-massive-test-oklahoma",
+      "source": "ESPN",
+      "published_at": "2026-10-15T22:59:28Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "LSU",
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d126f088d2dc770c",
+      "title": "Eliah Drinkwitz previews Missouri's matchup against Ole Miss",
+      "summary": "Drinkwitz explains what to expect from No. 13 Mizzou's level of compete against a dynamic No. 9 Rebels' offense.",
+      "url": "https://www.espn.com/video/clip/_/id/50192409/eliah-drinkwitz-previews-missouri-matchup-ole-miss",
+      "source": "ESPN",
+      "published_at": "2026-10-15T22:59:21Z",
+      "sport": "football",
+      "teams": [
+        "Missouri",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
     {
       "id": "3ad92720e1d6b20f",
       "title": "Florida's Todd Golden: NCAA eligibility chaos self-inflicted",
@@ -255,19 +284,6 @@
       "sport": "basketball",
       "teams": [
         "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7059b27fec62d4d3",
-      "title": "Looking at the Heisman and CFP odds: The case for Iowa, Kentucky, UCLA and USC",
-      "summary": "Let's break down the odds boards for the CFP and Heisman races after Week 6.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50169256/college-football-playoff-heisman-odds-favorites-week-6-2026",
-      "source": "ESPN",
-      "published_at": "2026-10-13T22:01:01Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
       ],
       "breaking": false
     },
