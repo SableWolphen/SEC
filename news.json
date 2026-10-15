@@ -1,11 +1,65 @@
 {
-  "updated_at": "2026-10-15T11:35:36.476879Z",
-  "checked_at": "2026-10-15T11:35:36.476879Z",
+  "updated_at": "2026-10-15T17:05:28.944658Z",
+  "checked_at": "2026-10-15T17:05:28.944658Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "3ad92720e1d6b20f",
+      "title": "Florida's Todd Golden: NCAA eligibility chaos self-inflicted",
+      "summary": "Florida coach Todd Golden says the chaos of college eligibility is caused by the NCAA.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50182031/florida-todd-golden-ncaa-eligibility-chaos-self-inflicted",
+      "source": "ESPN",
+      "published_at": "2026-10-15T15:32:23Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7ead245e738b58bf",
+      "title": "Mark Pope embracing championship expectations at Kentucky",
+      "summary": "Kentucky men's basketball coach Mark Pope said he is embracing championship expectations entering Year 3 with the Wildcats.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50183414/mark-pope-embracing-championship-expectations-kentucky",
+      "source": "ESPN",
+      "published_at": "2026-10-15T13:13:05Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ccfd17f0c2c20692",
+      "title": "Sources: Tennessee QB George MacIntyre gets start against Alabama",
+      "summary": "Tennessee is set to turn to George MacIntyre as its starting quarterback for the second straight week when the No. 14 Volunteers host No. 6 Alabama, sources told ESPN.",
+      "url": "https://www.espn.com/college-football/story/_/id/50188522/sources-tennessee-qb-george-macintyre-start-vs-alabama",
+      "source": "ESPN",
+      "published_at": "2026-10-15T12:41:40Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5a5e803647bfaa3b",
+      "title": "Alabama WR Ryan Coleman-Williams won't play at Tennessee",
+      "summary": "No. 6 Alabama star wide receiver Ryan Coleman-Williams has officially been ruled out of Saturday's game at No. 14 Tennessee.",
+      "url": "https://www.espn.com/college-football/story/_/id/50185713/alabama-wr-ryan-coleman-williams-knee-tennessee",
+      "source": "ESPN",
+      "published_at": "2026-10-15T12:32:55Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
     {
       "id": "f969f248a43cf0e1",
       "title": "Why Week 7 has all the makings of an epic rivalry week",
@@ -74,20 +128,6 @@
       "breaking": false
     },
     {
-      "id": "5a5e803647bfaa3b",
-      "title": "Alabama WR Ryan Coleman-Williams won't play at Tennessee",
-      "summary": "No. 6 Alabama star wide receiver Ryan Coleman-Williams has officially been ruled out of Saturday's game at No. 14 Tennessee.",
-      "url": "https://www.espn.com/college-football/story/_/id/50185713/alabama-wr-ryan-coleman-williams-knee-tennessee",
-      "source": "ESPN",
-      "published_at": "2026-10-15T00:47:14Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
       "id": "91e33ad0486c746c",
       "title": "John Calipari takes questions on development of young Razorbacks",
       "summary": "Calipari takes the podium at SEC Tipoff '27 to break down how Arkansas has put in the work to improve over the offseason and what to expect from talented youngsters.",
@@ -123,19 +163,6 @@
       "sport": "basketball",
       "teams": [
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7ead245e738b58bf",
-      "title": "Mark Pope embracing championship expectations at Kentucky",
-      "summary": "Kentucky men's basketball coach Mark Pope said he is embracing championship expectations entering Year 3 with the Wildcats.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50183414/mark-pope-embracing-championship-expectations-kentucky",
-      "source": "ESPN",
-      "published_at": "2026-10-14T19:22:19Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
       ],
       "breaking": false
     },
@@ -176,30 +203,6 @@
       "teams": [
         "LSU"
       ],
-      "breaking": false
-    },
-    {
-      "id": "3ad92720e1d6b20f",
-      "title": "Florida's Todd Golden: NCAA eligibility chaos self-inflicted",
-      "summary": "Florida coach Todd Golden says the chaos of college eligibility is caused by the NCAA.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50182031/florida-todd-golden-ncaa-eligibility-chaos-self-inflicted",
-      "source": "ESPN",
-      "published_at": "2026-10-14T16:05:20Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3d62c540a22ad3be",
-      "title": "CFB: Week 7 SEC on ABC Triple Header",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50182175/week-7-sec-abc-triple-header",
-      "source": "ESPN",
-      "published_at": "2026-10-14T15:56:30Z",
-      "sport": "football",
-      "teams": [],
       "breaking": false
     },
     {
@@ -333,61 +336,6 @@
       "teams": [
         "Kentucky",
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6ffcffa4bdb9a438",
-      "title": "Read & React crew analyzes Oklahoma's offense, Texas performance",
-      "summary": "Roman Harper and Cole Cubelic dive into some offensive actions that lifted the Sooners to a win over Texas, and acknowledge plays that hindered the Longhorns.",
-      "url": "https://www.espn.com/video/clip/_/id/50169811/read-react-crew-analyzes-oklahoma-offense-texas-performance",
-      "source": "ESPN",
-      "published_at": "2026-10-13T00:06:19Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1a37c6c9f232e25a",
-      "title": "Analyzing how key plays shaped Georgia's win vs. Alabama",
-      "summary": "Read & React's Cole Cubelic and Roman Harper examine how the creativity of the Crimson Tide's pass protections and the Bulldogs' timely defensive calls shaped the outcome of the game.",
-      "url": "https://www.espn.com/video/clip/_/id/50169794/analyzing-how-key-plays-shaped-georgia-win-vs-alabama",
-      "source": "ESPN",
-      "published_at": "2026-10-12T23:57:27Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "85fc0ee80ac0c1ee",
-      "title": "Harper, Cubelic breakdown impressive Mizzou film clips",
-      "summary": "Read & React's Roman Harper and Cole Cubelic takes us into the film room, analyzing how No. 13 Missouri uses the pass to set up the run game.",
-      "url": "https://www.espn.com/video/clip/_/id/50169570/harper-cubelic-breakdown-impressive-mizzou-film-clips",
-      "source": "ESPN",
-      "published_at": "2026-10-12T23:33:08Z",
-      "sport": "football",
-      "teams": [
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e7a9b8327fee9559",
-      "title": "Roman Harper on South Carolina vs. UF: 'Everybody was on the same page'",
-      "summary": "Read & React's Harper dissects how communication and connected play were key aspects in the Gamecocks going to The Swamp and upsetting the Gators.",
-      "url": "https://www.espn.com/video/clip/_/id/50169622/everybody-was-same-page",
-      "source": "ESPN",
-      "published_at": "2026-10-12T23:30:30Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "South Carolina"
       ],
       "breaking": false
     },
