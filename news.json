@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-15T17:05:28.944658Z",
-  "checked_at": "2026-10-15T17:05:28.944658Z",
+  "updated_at": "2026-10-15T20:21:53.212033Z",
+  "checked_at": "2026-10-15T20:21:53.212033Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -312,34 +312,6 @@
       "breaking": false
     },
     {
-      "id": "978cd3457c970aca",
-      "title": "Sources: Mississippi State star QB Kamario Taylor's status vs. LSU uncertain",
-      "summary": "No. 16 Mississippi State star quarterback Kamario Taylor's status for Saturday's game at No. 22 LSU is in flux as he deals with a foot injury.",
-      "url": "https://www.espn.com/college-football/story/_/id/50170516/sources-miss-state-star-qb-taylor-status-vs-lsu-uncertain",
-      "source": "ESPN",
-      "published_at": "2026-10-13T02:15:34Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Mississippi State"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "fc2ac057a5d15be9",
-      "title": "Will Stein details how Kentucky countered LSU's defense",
-      "summary": "Coming off an upset win over the Tigers in overtime, Stein joins Read & React and explains the mindset in beating LSU's defensive strategies and the excitement after.",
-      "url": "https://www.espn.com/video/clip/_/id/50169874/will-stein-details-how-kentucky-countered-lsu-defense",
-      "source": "ESPN",
-      "published_at": "2026-10-13T00:10:26Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
       "id": "3943ae737a50ea28",
       "title": "Georgia rises to No. 1, LSU and Oregon fall in latest AP Top 25 college football rankings",
       "summary": "Here’s what you need to know about the latest college football AP Top 25 Poll.",
@@ -418,33 +390,6 @@
       "sport": "basketball",
       "teams": [
         "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "2bea6f10e6566889",
-      "title": "Georgia lands top-25 recruit in shooting guard Jarvis Hayes Jr.",
-      "summary": "Jarvis Hayes Jr., a 6-foot-5 shooting guard, has committed to play for the Georgia Bulldogs. The No. 4 shooting guard in the country is ranked No. 22 in the SC Next 100 for the Class of 2027.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50111056/georgia-lands-top-25-recruit-shooting-guard-jarvis-hayes-jr",
-      "source": "ESPN",
-      "published_at": "2026-10-06T18:06:40Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6e042e098bb85af8",
-      "title": "LSU's Will Wade lands first 2027 5-star in guard King Gibson",
-      "summary": "LSU landed five-star guard King Gibson after the No. 13-ranked prospect in 2027 chose the Tigers over Arkansas, Louisville and Providence.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50106762/lsu-wade-lands-first-2027-5-star-guard-king-gibson",
-      "source": "ESPN",
-      "published_at": "2026-10-06T17:55:55Z",
-      "sport": "basketball",
-      "teams": [
-        "Arkansas",
-        "LSU"
       ],
       "breaking": false
     }
