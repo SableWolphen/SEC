@@ -244,6 +244,30 @@ const ROASTS=Object.freeze({
   [
    "THAT PICK SHEET HAS NEGATIVE AURA",
    "Your best chance next week might be letting your phone pick teams from your pocket."
+  ],
+  [
+   "YOU'RE THE LEAGUE'S BYE WEEK",
+   "Everybody circles your name because the standings apparently give out free points."
+  ],
+  [
+   "A COIN FLIP HAS BETTER FILM STUDY",
+   "You spent all week researching just to lose an argument to pocket change."
+  ],
+  [
+   "THE PICK SHEET NEEDS A PARENTAL LOCK",
+   "The app should ask if a responsible adult approved these selections."
+  ],
+  [
+   "YOUR UPSET SPECIAL IS EVERYONE ELSE'S LOCK",
+   "When you call it a sleeper, the group chat knows to pick the other team."
+  ],
+  [
+   "YOUR STRATEGY IS A CRIME SCENE",
+   "There's yellow tape around your pick sheet and even the investigators refuse to explain it."
+  ],
+  [
+   "YOU ARE THE QUALITY LOSS",
+   "Your rivals are padding their resumes by sharing a league with you. That's how easy this has gotten."
   ]
  ],
  "roast": [
@@ -294,6 +318,46 @@ const ROASTS=Object.freeze({
   [
    "SOMEONE HIDE THIS FROM YOUR RIVALS",
    "Too late. They've screenshotted it, framed it, and made it the league's new profile picture."
+  ],
+  [
+   "LAST PLACE HAS A RESERVED PARKING SPACE",
+   "They didn't put your name on the trophy. They put it on the warning sign outside the league."
+  ],
+  [
+   "YOUR PICKS SHOULD COME WITH A LAUGH TRACK",
+   "Every time you submit a prediction, the group chat gets a new episode of its favorite comedy."
+  ],
+  [
+   "THE COIN FLIP IS DEMANDING AN APOLOGY",
+   "Fifty-fifty odds looked at your record and said, 'Don't drag me into this.'"
+  ],
+  [
+   "YOU ARE ACTIVELY HELPING THE OTHER TEAMS",
+   "Your picks aren't predictions anymore. They're complimentary scouting reports for everyone else."
+  ],
+  [
+   "THE LEAGUE SHOULD CHARGE ADMISSION",
+   "Watching you confidently destroy your own record is the only undefeated attraction left."
+  ],
+  [
+   "THIS IS PUBLIC PICK'EM HUMILIATION",
+   "Your record isn't rock bottom. It's drilling for oil beneath the stadium."
+  ],
+  [
+   "EVEN THE MASCOT IS DISAPPOINTED",
+   "A person dressed as a giant chicken just looked at your picks and asked whether you've ever seen a sport."
+  ],
+  [
+   "YOU'VE BEEN ELIMINATED BY COMMON SENSE",
+   "Your season highlight reel is just the submit button followed by immediate regret."
+  ],
+  [
+   "THE SCOREBOARD HAS STOPPED BEING POLITE",
+   "It isn't showing your record anymore. It's displaying a cautionary tale for first-time players."
+  ],
+  [
+   "YOU'RE A WALKING TIEBREAKER DISASTER",
+   "If the correct answer was written on the stadium, you'd still pick the parking lot."
   ]
  ]
 } );
