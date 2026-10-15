@@ -167,7 +167,7 @@ window.SEC_NEXT.recentStats=originalRecent;
 const persisted=new Map();
 persisted.set("sec-roast-card-v2:account-A|league-old",JSON.stringify({
  kind:"okay",fingerprint:"old-verified-picks",title:"THE EXCITEMENT IS MANDATORY",
- body:"Half of your calls aged beautifully. The rest have left the chat.",
+ body:"Your right picks are arguing with your wrong picks, and somehow neither side is winning the argument.",
  stats:{wins:4,losses:3,pushes:0,limit:10}
 }));
 const persistedStorage={getItem:k=>persisted.get(k)||null,
@@ -236,6 +236,20 @@ loggedUser="account-A";
 assert.equal(bound.cardVerdict().title,finished.title,
  "switching back to the original account restores its pinned roast");
 
+// Assert every grade receives the new stronger SEC trash talk while still
+// preserving the correct thresholds and 12 no-repeat sayings per tier.
+assert.match(src,/YOUR FOOTBALL LICENSE HAS BEEN REVOKED/);
+assert.match(src,/YOU'RE THE DEFINITION OF MID/);
+assert.match(src,/THE LEAGUE HAS FOUND ITS CLOWN/);
+assert.match(src,/THE LEAGUE IS GETTING EMBARRASSED/);
+assert.match(src,/YOUR PICKS HAVE BEEN DECLARED A DISASTER AREA/);
+assert.match(src,/Your opponents showed up with opinions/);
+assert.ok(!src.includes("Half of your calls aged beautifully"),
+ "remove the old mild roast bank");
+assert.equal(m.grade(4,3).kind,"okay","57% gets an appropriately mid roast");
+assert.equal(m.grade(1,4).kind,"roast","20% gets the brutal roast tier");
+assert.equal(m.grade(5,0).kind,"fire","100% celebrates dominating opponents");
+
 const counts=m.roastCounts();
 assert.deepEqual({...counts},{fire:12,great:12,okay:12,rough:12,roast:12},
  "every performance tier has twelve original roasts");
@@ -265,8 +279,8 @@ assert.ok(chosen.title);
 assert.equal(store.has("sec-roast-deck-v1:device:rough"),true);
 assert.match(src,/data-fun-again/,"users can request a fresh saying right away");
 assert.match(src,/latestVerdict/,"share matches the displayed roast");
-assert.match(html,/sec-fan-moments\.js\?v=20261014-fun-v8/);
-assert.match(read("sw.js"),/sec-fan-moments\.js\?v=20261014-fun-v8/);
+assert.match(html,/sec-fan-moments\.js\?v=20261015-savage-v1/);
+assert.match(read("sw.js"),/sec-fan-moments\.js\?v=20261015-savage-v1/);
 
 assert.equal(m.safeUrl("https://www.secsports.com/news/2026/10/fake"),true);
 assert.equal(m.safeUrl("javascript:alert(1)"),false);
