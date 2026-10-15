@@ -1,4 +1,4 @@
-# Saturdays Down South — SEC Pick’em
+# Gamedays Down South — SEC Pick’em
 
 An **unofficial fan-made SEC football, basketball and baseball pick’em website** in [SableWolphen/SEC](https://github.com/SableWolphen/SEC).
 
@@ -74,7 +74,7 @@ does not expose the previous account's preferred school.
 
 ## Compact mobile Home (October 2026)
 
-The **Saturdays Down South** homepage keeps its full desktop stadium dashboard,
+The **Gamedays Down South** homepage keeps its full desktop stadium dashboard,
 while phones use a shorter action-first view with four visible quick actions
 (Picks, Team, Scores, News), condensed kickoff, school, progress and headlines,
 and a single current football game and top two standings rows. Full results
@@ -276,7 +276,7 @@ Those are Auth service settings; **they cannot be configured using SQL or the co
 
 The database and browser code are connected, but **successful registration by two real people has not been verified** until this setting and an end-to-end invitation test are complete. After changing the setting:
 
-1. Open [Saturdays Down South — My league](https://sablewolphen.github.io/SEC/#league).
+1. Open [Gamedays Down South — My league](https://sablewolphen.github.io/SEC/#league).
 2. Select **Create account**, enter a display name, email and password, and register. Log in if asked to confirm your email first.
 3. Select **Create league**, give it a name, and use **Share invite link**.
 4. Have a friend visit that link, register under their own email, and verify they appear in the same weekly and season standings.
@@ -304,7 +304,7 @@ Fan-made project. Not affiliated with, endorsed by, or sponsored by the Southeas
 
 **School imagery policy:** Do not embed, hotlink, download, or generate lookalikes of university athletic logos, mascots, official wordmarks, or conference branding without written permission or qualified legal review. The interface uses plain textual university abbreviations (such as ALA, ARK, TENN and TEX), not the universities' athletic lettermark designs. These short text identifiers are not a guarantee of trademark clearance; review naming and visual identity with a qualified attorney before a public or commercial launch. University names may appear in factual score/schedule/news descriptions, but the app's **decorative team symbols are original uniform numbered directory badges**, not school insignia, logos, rankings or school-color crests. No ESPN university-logo images are loaded.
 
-**Separate product-name issue:** `Saturdays Down South` is very close to the established `Saturday Down South` sports publisher name. A fan-made disclaimer alone does not eliminate potential trademark/confusion concerns. Before publicly marketing, monetizing or submitting the app stores, seek a trademark clearance review with a qualified lawyer and consider choosing a more distinctive name. Do not infer any right to use third-party sports brands from public score feeds.
+**Brand clearance:** `Gamedays Down South` is a new working name. Similar SEC sports publishers exist, and trademark, domain, handle and app-store clearance is still required before public marketing. Before publicly marketing, monetizing or submitting the app stores, seek a trademark clearance review with a qualified lawyer and consider choosing a more distinctive name. Do not infer any right to use third-party sports brands from public score feeds.
 
 ### Reliability release — verified schedules, isolated accounts and real browser QA
 
