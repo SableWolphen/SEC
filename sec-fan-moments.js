@@ -153,7 +153,7 @@ const ROASTS=Object.freeze({
   ],
   [
    "THE EXCITEMENT IS MANDATORY",
-   "Four right, three wrong? Your picks are basically arguing with each other, and somehow both sides are losing."
+   "Your right picks are arguing with your wrong picks, and somehow neither side is winning the argument."
   ],
   [
    "YOU'RE THE DEFINITION OF MID",
