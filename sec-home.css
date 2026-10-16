@@ -411,3 +411,16 @@
 .hq-discover-links button:focus-visible{outline:3px solid #e4d78a;outline-offset:2px}
 .hq-discover-links button:hover{border-color:#c7d896}
 @media(max-width:600px){.hq-discover-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.hq-discover-links button{min-height:64px;padding:9px 11px}}
+
+/* Social-first homepage: visible, scannable league chats */
+.hq-home-chats{margin:12px 0 16px;min-width:0}
+.hq-home-chats .hq-panel-header{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.hq-chat-tabs{display:flex;gap:7px;overflow-x:auto;scrollbar-width:thin;padding:9px 0 11px;-webkit-overflow-scrolling:touch}
+.hq-chat-tabs button{flex:0 0 auto;min-height:38px;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:8px 12px;border-radius:9px;border:1px solid #496074;background:#1b3549;color:#f5f7fa;font-size:12px;font-weight:800;cursor:pointer}
+.hq-chat-tabs button.active{background:#f4ce83;border-color:#f4ce83;color:#091725}
+.hq-chat-tabs button:focus-visible{outline:3px solid #f4ce83;outline-offset:2px}
+.hq-chat-preview{padding:12px 14px;border-radius:11px;background:#172e41;overflow-wrap:anywhere}
+.hq-chat-preview strong{font-size:13px;color:#f4ce83}
+.hq-chat-preview p{font-size:13px;line-height:1.5;margin:7px 0;color:#d9e8f0}
+.hq-home-chats .hq-secondary{margin-top:10px;min-height:42px}
+@media(min-width:850px){.hq-home-chats{max-width:100%;padding:18px 22px}}
