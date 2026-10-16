@@ -79,11 +79,11 @@ def parse(data, sport, year):
 
 def windows(sport, year, now):
     begin = start(sport, year)
-    first = max(begin, now - dt.timedelta(days=21))
-    if now < begin:
-        first = begin
-    final = min(dt.datetime(year, 7, 1, tzinfo=UTC),
-                max(now, begin) + dt.timedelta(days=112))
+    # Sweep the whole published season on every run. A rolling 112-day
+    # horizon skips late fixtures and can permanently miss earlier additions.
+    first = begin
+    final = (dt.datetime(year, 4, 15, tzinfo=UTC) if sport == 'basketball'
+             else dt.datetime(year, 7, 1, tzinfo=UTC))
     at = first
     while at < final:
         right = min(at + dt.timedelta(days=13), final)
@@ -218,6 +218,22 @@ def build(now=None, get=download, existing=None, fallback=None):
                     except Exception:
                         pass
                 print(sport, 'ESPN source unavailable:', type(ex).__name__)
+
+        # A conference-filtered scoreboard can omit nonconference games.
+        # If every scoreboard window failed, try each SEC school's season
+        # schedule independently. These only supplement verified fixtures.
+        if sport == 'basketball' and not successes:
+            for team_id in sorted(SEC_IDS):
+                team_url = ('https://site.api.espn.com/apis/site/v2/sports/'
+                            + slug + '/teams/' + team_id
+                            + '/schedule?season=' + str(year))
+                try:
+                    for game in parse(get(team_url), sport, year):
+                        merge_game(saved, game)
+                    successes += 1
+                except Exception as ex:
+                    print(sport, 'team schedule unavailable:', team_id,
+                          type(ex).__name__)
 
         official = []
         database_ok = False
