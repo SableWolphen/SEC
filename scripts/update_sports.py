@@ -91,18 +91,10 @@ def windows(sport, year, now):
         for yr, month in months:
             yield f'{yr}{month:02d}'
     else:
-        # Individual first pitch is not reliably released far in advance.
-        begin = start(sport, year)
-        first = max(begin, now - dt.timedelta(days=21))
-        if now < begin:
-            first = begin
-        final = min(dt.datetime(year, 7, 1, tzinfo=UTC),
-                    max(now, begin) + dt.timedelta(days=112))
-        at = first
-        while at < final:
-            # Daily dates are accepted by ESPN; date RANGES are not.
-            yield at.strftime('%Y%m%d')
-            at += dt.timedelta(days=1)
+        # Future individual first pitches are published gradually. Ask for
+        # complete months, never an unsupported two-date range.
+        for month in (2, 3, 4, 5, 6):
+            yield f'{year}{month:02d}'
 
 
 def scoreboard_url(slug, date, limit=1800):
@@ -217,39 +209,25 @@ def build(now=None, get=download, existing=None, fallback=None):
         saved = {x['id']: x for x in old.get('games', []) if x.get('season') == year and x.get('id')}
         successes = 0
         for date in windows(sport, year, now):
-            try:
-                response = get(scoreboard_url(slug, date))
-                events = response.get('events', []) if isinstance(response, dict) else []
-                if not isinstance(events, list):
-                    raise ValueError('Invalid ESPN scoreboard response')
-                for game in parse(response, sport, year):
-                    merge_game(saved, game)
-                successes += 1
-                # If a month's SEC-only query is empty during an already
-                # published basketball month, try the full Division I board:
-                # it includes nonconference games that group 8 may omit.
-                if sport == 'basketball' and not events:
-                    full = get('https://site.api.espn.com/apis/site/v2/sports/' +
-                               slug + '/scoreboard?' +
-                               urlencode({'dates': date, 'groups': '50',
-                                          'limit': '3000'}))
-                    for game in parse(full, sport, year):
+            # SEC group 8 covers league games. The wider Division I board is
+            # essential for SEC-vs-nonconference games; merge both sources.
+            group_ids = ('8', '50') if sport == 'basketball' else ('8',)
+            for group in group_ids:
+                url = ('https://site.api.espn.com/apis/site/v2/sports/' +
+                       slug + '/scoreboard?' +
+                       urlencode({'dates': date, 'groups': group,
+                                  'limit': '3000' if group == '50' else '1800'}))
+                try:
+                    response = get(url)
+                    events = response.get('events', []) if isinstance(response, dict) else []
+                    if not isinstance(events, list):
+                        raise ValueError('Invalid ESPN scoreboard response')
+                    for game in parse(response, sport, year):
                         merge_game(saved, game)
-            except Exception as ex:
-                print(sport, date, 'ESPN source unavailable:', type(ex).__name__)
-                # Still try a broader Division I board on failures; never
-                # invent winners, start times or opponents.
-                if sport == 'basketball':
-                    try:
-                        full = get('https://site.api.espn.com/apis/site/v2/sports/' +
-                                   slug + '/scoreboard?' +
-                                   urlencode({'dates': date, 'groups': '50',
-                                              'limit': '3000'}))
-                        for game in parse(full, sport, year):
-                            merge_game(saved, game)
-                        successes += 1
-                    except Exception:
-                        pass
+                    successes += 1
+                except Exception as ex:
+                    print(sport, date, 'ESPN group', group,
+                          'source unavailable:', type(ex).__name__)
 
         official = []
         database_ok = False
