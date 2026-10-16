@@ -206,10 +206,17 @@ def build(now=None, get=download, existing=None, fallback=None):
                 # The SEC conference filter sometimes fails upstream or returns
                 # an empty response for nonconference November games. Retry
                 # without groups so ALL SEC-vs-nonconference fixtures can load.
-                if sport == 'basketball' and not payload.get('events'):
-                    payload = get(url.replace('&groups=8', ''))
-                for game in parse(payload, sport, year):
-                    merge_game(saved, game)
+                # A valid response may still contain only conference fixtures.
+                # Read BOTH filtered and unfiltered windows, including November.
+                all_payloads = [payload]
+                if sport == 'basketball':
+                    try:
+                        all_payloads.append(get(url.replace('&groups=8', '')))
+                    except Exception:
+                        pass
+                for candidate in all_payloads:
+                    for game in parse(candidate, sport, year):
+                        merge_game(saved, game)
                 successes += 1
             except Exception as ex:
                 if sport == 'basketball':
@@ -288,8 +295,13 @@ def build(now=None, get=download, existing=None, fallback=None):
                                   '. Check all 16 team feeds before trusting the calendar.')
                 issue = (issue + ' ' if issue else '') + coverage_issue
         # Distinguish a successful HTTP response from actual fixture coverage.
-        if not team_coverage and sport == 'basketball':
+        if sport == 'basketball' and not any(team_coverage.values()):
             issue = (issue + ' ' if issue else '') + 'All 16 school-level basketball feeds failed or returned no events.'
+        # Diagnostic state describes verified coverage, never a promise that a
+        # network request alone means the fixture list is complete.
+        if sport == 'basketball' and len(team_coverage) < len(SEC_IDS):
+            failed = len(SEC_IDS) - len(team_coverage)
+            issue = (issue + ' ' if issue else '') + f'{failed} SEC school schedule requests failed.'
         result['sports'][sport] = {
             'season': year, 'games': games,
             'source': 'Verified SEC/university fixtures + ESPN',
