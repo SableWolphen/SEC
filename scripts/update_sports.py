@@ -262,7 +262,7 @@ def build(now=None, get=download, existing=None, fallback=None):
         # the missing matchups do not exist. Nonconference games are additional.
         conference_count = (sum(
             1 for g in games if sport == 'basketball' and
-            g['away_code'] in SEC_IDS and g['home_code'] in SEC_IDS
+            g.get('away_code') in SEC_IDS and g.get('home_code') in SEC_IDS
         ) if sport == 'basketball' else None)
         issue = None
         if not games:
