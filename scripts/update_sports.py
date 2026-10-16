@@ -78,16 +78,39 @@ def parse(data, sport, year):
 
 
 def windows(sport, year, now):
-    begin = start(sport, year)
-    first = max(begin, now - dt.timedelta(days=21))
-    if now < begin:
-        first = begin
-    final = min(dt.datetime(year, 7, 1, tzinfo=UTC),
-                max(now, begin) + dt.timedelta(days=112))
-    at = first
-    while at < final:
-        right = min(at + dt.timedelta(days=13), final)
-        yield at, right
+    """ESPN's basketball scoreboard accepts YYYYMM months, NOT date ranges.
+
+    An old YYYYMMDD-YYYYMMDD query yielded HTTP 400 every day, so the
+    public feed never discovered games beyond the partial DB seed.
+    Include the entire published basketball season (Nov-Apr), not just
+    112 days from today. Newly announced postseason games can then appear.
+    """
+    if sport == 'basketball':
+        months = [(year - 1, 11), (year - 1, 12)] + [
+            (year, m) for m in (1, 2, 3, 4)]
+        for yr, month in months:
+            yield f'{yr}{month:02d}'
+    else:
+        # Individual first pitch is not reliably released far in advance.
+        begin = start(sport, year)
+        first = max(begin, now - dt.timedelta(days=21))
+        if now < begin:
+            first = begin
+        final = min(dt.datetime(year, 7, 1, tzinfo=UTC),
+                    max(now, begin) + dt.timedelta(days=112))
+        at = first
+        while at < final:
+            # Daily dates are accepted by ESPN; date RANGES are not.
+            yield at.strftime('%Y%m%d')
+            at += dt.timedelta(days=1)
+
+
+def scoreboard_url(slug, date, limit=1800):
+    """Source filter includes SEC games against nonconference opponents."""
+    return ('https://site.api.espn.com/apis/site/v2/sports/' + slug +
+            '/scoreboard?' + urlencode({
+                'dates': date, 'groups': '8', 'limit': str(limit)
+            }))
         at += dt.timedelta(days=14)
 
 
@@ -193,17 +216,40 @@ def build(now=None, get=download, existing=None, fallback=None):
         old = ((existing or {}).get('sports') or {}).get(sport) or {}
         saved = {x['id']: x for x in old.get('games', []) if x.get('season') == year and x.get('id')}
         successes = 0
-        for left, right in windows(sport, year, now):
-            fmt = lambda day: day.strftime('%Y%m%d')
-            url = ('https://site.api.espn.com/apis/site/v2/sports/' + slug +
-                   '/scoreboard?dates=' + fmt(left) + '-' + fmt(right) +
-                   '&groups=8&limit=500')
+        for date in windows(sport, year, now):
             try:
-                for game in parse(get(url), sport, year):
+                response = get(scoreboard_url(slug, date))
+                events = response.get('events', []) if isinstance(response, dict) else []
+                if not isinstance(events, list):
+                    raise ValueError('Invalid ESPN scoreboard response')
+                for game in parse(response, sport, year):
                     merge_game(saved, game)
                 successes += 1
+                # If a month's SEC-only query is empty during an already
+                # published basketball month, try the full Division I board:
+                # it includes nonconference games that group 8 may omit.
+                if sport == 'basketball' and not events:
+                    full = get('https://site.api.espn.com/apis/site/v2/sports/' +
+                               slug + '/scoreboard?' +
+                               urlencode({'dates': date, 'groups': '50',
+                                          'limit': '3000'}))
+                    for game in parse(full, sport, year):
+                        merge_game(saved, game)
             except Exception as ex:
-                print(sport, 'ESPN source unavailable:', type(ex).__name__)
+                print(sport, date, 'ESPN source unavailable:', type(ex).__name__)
+                # Still try a broader Division I board on failures; never
+                # invent winners, start times or opponents.
+                if sport == 'basketball':
+                    try:
+                        full = get('https://site.api.espn.com/apis/site/v2/sports/' +
+                                   slug + '/scoreboard?' +
+                                   urlencode({'dates': date, 'groups': '50',
+                                              'limit': '3000'}))
+                        for game in parse(full, sport, year):
+                            merge_game(saved, game)
+                        successes += 1
+                    except Exception:
+                        pass
 
         official = []
         database_ok = False
