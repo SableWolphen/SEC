@@ -20,6 +20,10 @@ for(const label of ["Trophies","My Team","All Teams","Standings"]){
 }
 assert.match(home,/homeChats\(\)\+extraNews\(model\)/);
 assert.match(home,/hq-calm-links/);
+assert.match(html,/class="sec-trophy-shortcut" data-nav="trophies"/);
+assert.match(html,/id="trophies-view"/);
+assert.match(html,/window\.SDSTrophyCase\?\.mount/);
+assert.match(html,/sec-settings-shortcuts/);
 assert.match(home,/Make my picks/);
 assert.match(home,/function homeChats\(/);
 assert.match(home,/data-hq-chat-league/);
