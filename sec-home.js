@@ -315,6 +315,12 @@ function render(model){
   '<div class="hq-app-metric"><span>LEAGUE RANK</span><strong>'+(leaguePosition>=0?'#'+(leaguePosition+1):'—')+'</strong></div>'+
   '<div class="hq-app-metric"><span>'+thirdLabel+'</span><strong>'+thirdValue+'</strong></div></div>';
  const markup=hero(model)+appMetrics+actionCards(model)+
+ '<nav class="hq-discover-links" aria-label="Explore SEC features">'+
+ '<button type="button" data-hq-route="news">📰 <strong>SEC News</strong><small>Latest headlines</small></button>'+
+ '<button type="button" data-hq-route="trophies">🏆 <strong>Trophies</strong><small>Awards &amp; history</small></button>'+
+ '<button type="button" data-hq-route="team-hub">⭐ <strong>My Team</strong><small>School hub</small></button>'+
+ '<button type="button" data-hq-route="teams">📋 <strong>All Teams</strong><small>SEC schools</small></button>'+
+ '</nav>'+
  '<div class="hq-sport-tabs" role="group" aria-label="Pick a sport">'+sportNames.map(s=>
  '<button type="button" data-hq-route="'+routeFor(s)+'"'+(model.recommended===s?' class="suggested"':'')+'>'+
  sportIcon[s]+' '+sportText[s]+(model.recommended===s?'<small>Latest season</small>':"")+'</button>').join("")+'</div>'+
@@ -347,9 +353,9 @@ function render(model){
     '<div class="hq-quick-links"><button type="button" data-hq-route="trophies">🏆 Trophy Room <span>→</span></button>'+
     '<button type="button" data-hq-route="news">📰 SEC News <span>→</span></button>'+
     '<button type="button" data-hq-route="teams">⭐ Favorite Teams <span>→</span></button></div></section>'+
-  '</div>'+discovery(model)+
+  '</div>'+extraNews(model)+discovery(model)+
   '<button class="hq-mobile-expand" type="button" data-hq-expand aria-expanded="false" aria-controls="sec-home-extras">More from your league &amp; SEC <span aria-hidden="true">⌄</span></button>'+
-  '<div class="hq-bottom-grid" id="sec-home-extras">'+rivalCard(model)+extraNews(model)+'</div>'+
+  '<div class="hq-bottom-grid" id="sec-home-extras">'+rivalCard(model)+'</div>'+
   '<p class="hq-disclaimer">Independent SEC fan game · No live score is shown until confirmed by the score feed. '+
    '3D trophies and player information load only when you open their sections.</p>';
  // Do not tear down Home's interactive DOM every 30 seconds if nothing changed:
