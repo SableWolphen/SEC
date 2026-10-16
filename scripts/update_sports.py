@@ -228,9 +228,11 @@ def build(now=None, get=download, existing=None, fallback=None):
                             + slug + '/teams/' + team_id
                             + '/schedule?season=' + str(year))
                 try:
-                    for game in parse(get(team_url), sport, year):
+                    team_games = parse(get(team_url), sport, year)
+                    for game in team_games:
                         merge_game(saved, game)
-                    successes += 1
+                    if team_games:
+                        successes += 1
                 except Exception as ex:
                     print(sport, 'team schedule unavailable:', team_id,
                           type(ex).__name__)
