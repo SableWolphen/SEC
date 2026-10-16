@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-16T20:19:46.192264Z",
+  "updated_at": "2026-10-16T20:21:30.073070Z",
   "sports": {
     "basketball": {
       "season": 2027,
@@ -1978,10 +1978,10 @@
         }
       ],
       "source": "Verified SEC/university fixtures + ESPN",
-      "source_windows": 0,
+      "source_windows": 16,
       "verified_database_games": 95,
       "database_connected": true,
-      "warning": "Live ESPN feed unavailable; displaying verified SEC/university fixtures."
+      "warning": null
     },
     "baseball": {
       "season": 2027,
