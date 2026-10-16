@@ -354,50 +354,28 @@ function render(model){
   '<div class="hq-app-metric"><span>YOUR PICKS</span><strong>'+p.chosen+'<small>/'+p.total+'</small></strong></div>'+
   '<div class="hq-app-metric"><span>LEAGUE RANK</span><strong>'+(leaguePosition>=0?'#'+(leaguePosition+1):'—')+'</strong></div>'+
   '<div class="hq-app-metric"><span>'+thirdLabel+'</span><strong>'+thirdValue+'</strong></div></div>';
- const markup=hero(model)+appMetrics+actionCards(model)+homeChats()+extraNews(model)+
- '<nav class="hq-discover-links" aria-label="Explore SEC features">'+
- '<button type="button" data-hq-route="news">📰 <strong>SEC News</strong><small>Latest headlines</small></button>'+
- '<button type="button" data-hq-route="trophies">🏆 <strong>Trophies</strong><small>Awards &amp; history</small></button>'+
- '<button type="button" data-hq-route="team-hub">⭐ <strong>My Team</strong><small>School hub</small></button>'+
- '<button type="button" data-hq-route="teams">📋 <strong>All Teams</strong><small>SEC schools</small></button>'+
- '</nav>'+
- '<div class="hq-sport-tabs" role="group" aria-label="Pick a sport">'+sportNames.map(s=>
+ const markup=hero(model)+
+ '<div class="hq-sport-tabs" role="group" aria-label="Choose sport">'+sportNames.map(s=>
  '<button type="button" data-hq-route="'+routeFor(s)+'"'+(model.recommended===s?' class="suggested"':'')+'>'+
- sportIcon[s]+' '+sportText[s]+(model.recommended===s?'<small>Latest season</small>':"")+'</button>').join("")+'</div>'+
-  '<div class="hq-grid">'+
-   '<section class="hq-panel hq-picks" aria-label="Your football picks"><div class="hq-panel-header">'+
-    '<span>01 · YOUR PICKS</span><strong>Week '+(model.week||"—")+'</strong></div>'+
-    '<div class="hq-pick-head"><div><h3>'+esc(heading)+'</h3><p>'+esc(detail)+'</p></div>'+
-    '<span class="hq-pick-count">'+p.chosen+'<small> / '+p.total+'</small></span></div>'+
-    '<div class="hq-progress" role="progressbar" aria-label="Picks completed" aria-valuemin="0" aria-valuemax="'+p.total+
-    '" aria-valuenow="'+p.chosen+'"><span style="width:'+p.percent+'%"></span></div>'+
-    '<div class="hq-progress-caption"><span>'+p.percent+'% selected</span><span>'+p.unpickedOpen+' open and unpicked</span></div>'+
-    (signedOut?'<p class="hq-note">Sign in to save picks to your account.</p>':"")+
-    '<button type="button" data-hq-route="picks" data-hq-focus="'+(p.unpickedOpen?"next":"all")+
-    '" class="hq-primary">'+(p.unpickedOpen?"Finish my picks →":"Review football picks →")+'</button>'+
-  '<button type="button" data-hq-route="results" class="sdsx-home-results">View results 🏆</button></section>'+
-   '<section class="hq-panel hq-games" aria-label="Current football scores"><div class="hq-panel-header">'+
-    '<span>02 · GAME CENTER</span><span class="hq-feed-pill">'+(model.liveCount?model.liveCount+" LIVE":"Verified score feed")+'</span></div>'+
-    '<h3>This week’s matchups</h3><p class="hq-panel-sub">Verified SEC scores and upcoming games.</p>'+
-    '<div class="hq-games-list">'+(model.visible.length?model.visible.map(match).join(""):
-      '<p class="hq-empty">No current football matchups available for Week '+(model.week||"—")+'. Switch sports or check back for updated fixtures.</p>')+'</div>'+
-    '<button type="button" data-hq-route="picks" class="hq-secondary">See all games and scores →</button></section>'+
-   '<section class="hq-panel hq-league" aria-label="League race"><div class="hq-panel-header">'+
-    '<span>03 · LEAGUE RACE</span><span class="hq-feed-pill">Verified points</span></div>'+
-    '<h3>'+esc(model.leagueName||"Your league")+'</h3>'+
-    '<p class="hq-panel-sub">See where you stand. Only finalized games affect the points.</p>'+
-    standings(model)+
-    '<button type="button" data-hq-route="league" class="hq-secondary">See full league standings →</button></section>'+
-   '<section class="hq-panel hq-quick" aria-label="Explore more"><div class="hq-panel-header"><span>04 · CLUBHOUSE</span></div>'+
-    '<h3>Your season, your story</h3><p class="hq-panel-sub">Your rivalries, trophies and headlines are one tap away.</p>'+
-    '<div class="hq-quick-links"><button type="button" data-hq-route="trophies">🏆 Trophy Room <span>→</span></button>'+
-    '<button type="button" data-hq-route="news">📰 SEC News <span>→</span></button>'+
-    '<button type="button" data-hq-route="teams">⭐ Favorite Teams <span>→</span></button></div></section>'+
-  '</div>'+discovery(model)+
-  '<button class="hq-mobile-expand" type="button" data-hq-expand aria-expanded="false" aria-controls="sec-home-extras">More from your league &amp; SEC <span aria-hidden="true">⌄</span></button>'+
-  '<div class="hq-bottom-grid" id="sec-home-extras">'+rivalCard(model)+'</div>'+
-  '<p class="hq-disclaimer">Independent SEC fan game · No live score is shown until confirmed by the score feed. '+
-   '3D trophies and player information load only when you open their sections.</p>';
+ sportIcon[s]+' '+sportText[s]+'</button>').join("")+'</div>'+
+ '<section class="hq-panel hq-picks hq-calm-picks" aria-label="Your next picks">'+
+ '<div class="hq-panel-header"><span>YOUR PICKS</span><strong>Week '+(model.week||"—")+'</strong></div>'+
+ '<div class="hq-pick-head"><div><h3>'+esc(heading)+'</h3><p>'+esc(detail)+'</p></div>'+
+ '<span class="hq-pick-count">'+p.chosen+'<small> / '+p.total+'</small></span></div>'+
+ '<div class="hq-progress" role="progressbar" aria-label="Picks completed" aria-valuemin="0" aria-valuemax="'+p.total+
+ '" aria-valuenow="'+p.chosen+'"><span style="width:'+p.percent+'%"></span></div>'+
+ (signedOut?'<p class="hq-note">Sign in to save picks to your account.</p>':"")+
+ '<button type="button" data-hq-route="picks" data-hq-focus="'+(p.unpickedOpen?"next":"all")+
+ '" class="hq-primary">'+(p.unpickedOpen?"Make my picks →":"Review my picks →")+'</button></section>'+
+ homeChats()+extraNews(model)+
+ '<nav class="hq-calm-links" aria-label="Explore Gamedays Down South">'+
+ '<button type="button" data-hq-route="game-center">Scores <span>→</span></button>'+
+ '<button type="button" data-hq-route="league">Standings <span>→</span></button>'+
+ '<button type="button" data-hq-route="trophies">Trophies <span>→</span></button>'+
+ '<button type="button" data-hq-route="team-hub">My Team <span>→</span></button>'+
+ '<button type="button" data-hq-route="teams">All Teams <span>→</span></button>'+
+ '</nav>'+
+ '<p class="hq-disclaimer">Independent SEC fan game · Scores and news are shown only from available sources.</p>';
  // Do not tear down Home's interactive DOM every 30 seconds if nothing changed:
  // refreshing while users swipe the page should not reset buttons or scroll.
  if(previousMarkup===markup&&root.querySelector?.(".hq-stadium-hero"))return;
