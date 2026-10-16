@@ -15,6 +15,12 @@ for(const bar of [desktop,mobile]){
 for(const route of ["game-center","settings","league"]){
  assert.match(html,new RegExp("'"+route+"'"));
 }
+for(const label of ["SEC News","Trophies","My Team","All Teams"]){
+ assert.ok(home.includes(label),"Missing visible home shortcut: "+label);
+}
+assert.match(home,/<\/nav>'\+/);
+assert.ok(home.indexOf("extraNews(model)+discovery(model)") >= 0,
+  "News preview must remain outside collapsed extras");
 assert.match(home,/MAKE PICKS/);
 assert.match(home,/LEAGUE RACE/);
 assert.match(home,/LIVE SCORES/);
