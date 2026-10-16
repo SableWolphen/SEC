@@ -1212,3 +1212,11 @@ color:#ecf8ee;font-size:13px;font-weight:900;background:#1c353b}
 .sport-schedule-health .sport-health-details{padding:10px 1px 2px;overflow-wrap:anywhere;font-size:12px;line-height:1.55}
 .sport-schedule-health .ghost-btn{min-height:38px;margin-top:7px}
 @media(max-width:600px){.sport-week-list{display:flex;overflow-x:auto;flex-wrap:nowrap;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;gap:7px;padding-bottom:9px}.sport-week-list .sport-week-button{flex:0 0 auto;scroll-snap-align:start;min-width:78px}.sport-games-grid{min-width:0}.sport-game-filters{display:flex;flex-wrap:wrap;gap:6px}}
+
+/* One primary action per sport, without crowding the week picker. */
+.sport-next-pick{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:12px 0;padding:13px 15px;border:1px solid rgba(205,225,166,.35);border-radius:14px;background:rgba(42,68,54,.64);color:#f2f5e9}
+.sport-next-pick div{display:flex;flex-direction:column;gap:5px;min-width:0}
+.sport-next-pick strong{font-size:14px;line-height:1.35}
+.sport-next-pick small{font-size:12px;color:#c5ddcd;line-height:1.4}
+.sport-next-pick button{flex:none;min-height:42px;padding:8px 12px;border:1px solid #e0d996;border-radius:10px;background:#e6dda1;color:#1c3028;font-weight:800;cursor:pointer}
+@media(max-width:460px){.sport-next-pick{align-items:stretch;flex-direction:column}.sport-next-pick button{width:100%}}
