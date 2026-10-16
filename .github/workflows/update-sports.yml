@@ -13,6 +13,7 @@ on:
       - '.github/workflows/update-sports.yml'
 permissions:
   contents: write
+  issues: write
 concurrency:
   group: sec-sports-feeds
   cancel-in-progress: false
@@ -73,6 +74,33 @@ jobs:
           path: sports-schedule-health.json
           if-no-files-found: warn
           retention-days: 30
+      - name: Track unresolved schedule gaps in GitHub
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ ! -f sports-schedule-health.json ]; then
+            echo "::warning::Schedule health report unavailable; check prior workflow steps."
+            exit 0
+          fi
+          TITLE="SEC schedule completeness alert"
+          ISSUE="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --limit 100 --json number,title --jq '.[] | select(.title == "SEC schedule completeness alert") | .number' | head -n 1)"
+          NEEDS_REVIEW="$(python3 -c 'import json; print(str(json.load(open("sports-schedule-health.json"))["needs_review"]).lower())')"
+          if [ "$NEEDS_REVIEW" = true ]; then
+            {
+              echo "The automated SEC schedule audit found incomplete or unverified coverage."
+              echo
+              echo "Workflow: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+              echo "Download the \`sec-schedule-coverage\` artifact for all 16 schools' counts."
+              echo
+              echo "Do not interpret missing matches as no games scheduled."
+            } > /tmp/sec-schedule-alert.md
+            if [ -z "$ISSUE" ]; then
+              gh issue create --repo "$GITHUB_REPOSITORY" --title "$TITLE" --body-file /tmp/sec-schedule-alert.md
+            fi
+          elif [ -n "$ISSUE" ]; then
+            gh issue close --repo "$GITHUB_REPOSITORY" "$ISSUE" --reason completed --comment "The latest schedule audit reports no active coverage gaps."
+          fi
       - name: Publish updated fixtures
         run: |
           git config user.name "github-actions[bot]"
