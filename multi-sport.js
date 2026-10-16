@@ -16,6 +16,12 @@ const loading={basketball:false,baseball:false};
 const pendingReload={basketball:false,baseball:false};
 let lastAccountId=undefined;
 const selectedWeeks={basketball:0,baseball:0};
+for(const sport of Object.keys(selectedWeeks)){
+ try{
+  const stored=Number(sessionStorage.getItem("sec-week-"+sport+"-"+currentSeason(sport)));
+  if(Number.isInteger(stored)&&stored>0&&stored<=70)selectedWeeks[sport]=stored;
+ }catch(_error){/* private browsing can disable browser storage */}
+}
 const statusFilters={basketball:"all",baseball:"all"};
 const notices={basketball:"",baseball:""};
 const updating={basketball:0,baseball:0};
@@ -530,7 +536,9 @@ document.addEventListener("click",ev=>{
  const series=ev.target.closest?.("[data-series-week]");
  if(series){cache.baseball.seriesWeek=Number(series.dataset.seriesWeek);renderSport("baseball");return;}
   const week=ev.target.closest?.("[data-sport-week]");
- if(week){selectedWeeks[week.dataset.sport]=Number(week.dataset.sportWeek);renderSport(week.dataset.sport);void load(week.dataset.sport); }
+ if(week){selectedWeeks[week.dataset.sport]=Number(week.dataset.sportWeek);
+  try{sessionStorage.setItem("sec-week-"+week.dataset.sport+"-"+year(week.dataset.sport),String(selectedWeeks[week.dataset.sport]));}catch(_error){}
+  renderSport(week.dataset.sport);void load(week.dataset.sport); }
 });
 document.addEventListener("change",ev=>{
  const s=ev.target.dataset?.changeSport;
