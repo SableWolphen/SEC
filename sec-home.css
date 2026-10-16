@@ -402,3 +402,12 @@
  #sec-home-root .sds-home-favorite-actions{gap:0 12px}
  #sec-home-root .sds-home-favorite-actions button{font-size:10px;min-height:25px}
 }
+
+/* Discoverable secondary features: visible, compact, and never gated behind More. */
+.hq-discover-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0 18px}
+.hq-discover-links button{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;min-height:75px;min-width:0;padding:11px 12px;border:1px solid #405665;border-radius:13px;background:#182b36;color:#edf5ed;text-align:left;cursor:pointer;font-size:17px}
+.hq-discover-links button strong{font-size:13px;line-height:1.25}
+.hq-discover-links button small{font-size:10px;line-height:1.3;color:#abc0bc}
+.hq-discover-links button:focus-visible{outline:3px solid #e4d78a;outline-offset:2px}
+.hq-discover-links button:hover{border-color:#c7d896}
+@media(max-width:600px){.hq-discover-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.hq-discover-links button{min-height:64px;padding:9px 11px}}
