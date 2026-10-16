@@ -1,11 +1,47 @@
 {
-  "updated_at": "2026-10-16T18:49:47.606359Z",
-  "checked_at": "2026-10-16T18:49:47.606359Z",
+  "updated_at": "2026-10-16T22:06:40.323558Z",
+  "checked_at": "2026-10-16T22:06:40.323558Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "428f2a09a7399dec",
+      "title": "Why Tennessee must count on its strong defense to beat Bama",
+      "summary": "SEC Network's Roman Harper joins The Paul Finebaum Show to discuss why it's imperative for the Volunteers to focus on their defense to defeat the Crimson Tide.",
+      "url": "https://www.espn.com/video/clip/_/id/50198215/why-tennessee-count-strong-defense-beat-bama",
+      "source": "ESPN",
+      "published_at": "2026-10-16T21:16:09Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "90e1003236f0b5b2",
+      "title": "Power ranking teams that need a win ahead of Week 7",
+      "summary": "SEC This Morning's Peter Burns puts his spin on the SEC Network Power Rankings as he ranks the five teams that are under pressure to bring home a victory.",
+      "url": "https://www.espn.com/video/clip/_/id/50198127/power-ranking-teams-need-win-ahead-week-7",
+      "source": "ESPN",
+      "published_at": "2026-10-16T20:55:08Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "3b77fd2d86905a77",
+      "title": "Heather Dinich gives insight on proposed 24-team CFP format",
+      "summary": "As sources are saying that the CFP is nearing a deal to expand the field, ESPN's Dinich describes on SEC This Morning how it could affect the college football landscape.",
+      "url": "https://www.espn.com/video/clip/_/id/50198009/heather-dinich-gives-insight-proposed-24-team-cfp-format",
+      "source": "ESPN",
+      "published_at": "2026-10-16T20:35:58Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
     {
       "id": "37da29fe914eb457",
       "title": "Revisiting the Georgia-Auburn 'Game Between the Hoses'",
@@ -31,7 +67,7 @@
       "teams": [
         "Oklahoma"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "8ea0e4b434089bbf",
@@ -204,19 +240,6 @@
       "url": "https://www.espn.com/video/clip/_/id/50185246/john-calipari-takes-questions-development-young-razorbacks",
       "source": "ESPN",
       "published_at": "2026-10-14T23:18:25Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "91e33ad0486c746c",
-      "title": "John Calipari takes questions on development of young Razorbacks",
-      "summary": "Calipari takes the podium at SEC Tipoff '27 to break down how Arkansas has put in the work to improve over the offseason and what to expect from talented youngsters.",
-      "url": "https://www.espn.com/video/clip/_/id/50185246/john-calipari-takes-questions-development-young-razorbacks",
-      "source": "ESPN",
-      "published_at": "2026-10-14T23:18:25Z",
       "sport": "basketball",
       "teams": [
         "Arkansas"
@@ -233,19 +256,6 @@
       "sport": "basketball",
       "teams": [
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "935784523320fb8b",
-      "title": "Sources: Florida QB Philo questionable, WR Brown could return",
-      "summary": "Florida quarterback Aaron Philo will be listed as questionable in the initial SEC availability report on Wednesday, sources told ESPN's Pete Thamel.",
-      "url": "https://www.espn.com/college-football/story/_/id/50182575/sources-florida-qb-philo-questionable-wr-brown-shot-play",
-      "source": "ESPN",
-      "published_at": "2026-10-14T17:07:20Z",
-      "sport": "football",
-      "teams": [
-        "Florida"
       ],
       "breaking": false
     },
