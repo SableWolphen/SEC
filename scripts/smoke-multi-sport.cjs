@@ -9,7 +9,7 @@ const events={},roots={
  "sport-baseball-content":{innerHTML:""}
 };
 const now=Date.now();
-const kickoff=new Date(now+4*86400000).toISOString();
+const kickoff="2026-11-03T23:00:00Z"; // 2026–27 regular season, not an October exhibition
 const game={id:"basketball-2027-sec-test",sport:"basketball",season:2027,week:1,
  kickoff_at:kickoff,home_code:"333",home_name:"Alabama",away_code:"2633",away_name:"Tennessee",
  game_status:"scheduled",source:"SEC official conference schedule · provisional tipoff",winner_code:null};
