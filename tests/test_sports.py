@@ -78,6 +78,22 @@ class SportFeedTests(unittest.TestCase):
   data=sport.build(now=NOW,get=mock)
   self.assertIn('Incomplete SEC basketball coverage',data['sports']['basketball']['warning'])
   self.assertEqual(len(data['sports']['basketball']['sec_team_game_counts']),16)
+ def test_unfiltered_scoreboard_is_always_checked(self):
+  requested=[]
+  def mock(url):
+   requested.append(url)
+   if '/teams/' in url:return {'events':[]}
+   if 'basketball/' in url and 'groups=8' in url:
+    return {'events':[event('sec',333,2,'2026-11-04T23:00:00Z')]}
+   if 'basketball/' in url:
+    return {'events':[event('nonconference',333,55,'2026-11-05T23:00:00Z')]}
+   return {'events':[]}
+  result=sport.build(now=NOW,get=mock)
+  ids={g['id'] for g in result['sports']['basketball']['games']}
+  self.assertIn('basketball-2027-sec',ids)
+  self.assertIn('basketball-2027-nonconference',ids)
+  self.assertTrue(any('basketball/' in u and 'scoreboard?' in u
+                      and 'groups=8' not in u for u in requested))
  def test_offline_reuses_only_verified_old_fixture(self):
   existing={'sports':{'basketball':{'games':[
    {'id':'basketball-2027-old','season':2027,'kickoff_at':'2026-11-06T17:00:00Z','game_status':'scheduled'},
