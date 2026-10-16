@@ -93,7 +93,7 @@ assert.equal(app.seasonLabel("basketball"),"2026–27",
 assert.equal(app.allGames("basketball").length,2,
  "SEC nonconference games included, duplicate ESPN IDs do not double count");
 assert.match(roots["sport-basketball-content"].innerHTML,/Full 2026–27 schedule/);
-assert.match(roots["sport-basketball-content"].innerHTML,/2 confirmed matchups/);
+assert.match(roots["sport-basketball-content"].innerHTML,/2 published matchups loaded/);
 assert.match(roots["sport-basketball-content"].innerHTML,/November 2026/);
 assert.match(roots["sport-basketball-content"].innerHTML,/December 2026/);
 assert.match(roots["sport-basketball-content"].innerHTML,/Kansas/);
