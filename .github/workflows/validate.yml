@@ -22,6 +22,9 @@ jobs:
       - name: JavaScript syntax
         run: |
           node --check multi-sport.js
+          node --check sec-home.js
+          node --check scripts/smoke-clean-navigation.cjs
+          node scripts/smoke-clean-navigation.cjs
           node --check scripts/smoke-multi-sport.cjs
           node scripts/smoke-multi-sport.cjs
           node --check scripts/smoke-team-scores.cjs
