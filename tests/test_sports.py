@@ -15,6 +15,15 @@ class SportFeedTests(unittest.TestCase):
   self.assertEqual(sport.season(NOW),2027)
   self.assertEqual(sport.start('basketball',2027).strftime('%Y-%m-%d'),'2026-11-01')
   self.assertEqual(sport.start('baseball',2027).strftime('%Y-%m-%d'),'2027-02-01')
+ def test_full_season_windows_and_annual_rollover(self):
+  basketball=list(sport.windows('basketball',2027,NOW))
+  baseball=list(sport.windows('baseball',2027,NOW))
+  self.assertEqual(basketball[0][0].date(),dt.date(2026,11,1))
+  self.assertEqual(basketball[-1][1].date(),dt.date(2027,4,15))
+  self.assertEqual(baseball[0][0].date(),dt.date(2027,2,1))
+  self.assertEqual(baseball[-1][1].date(),dt.date(2027,7,1))
+  self.assertEqual(sport.season(dt.datetime(2027,10,16,tzinfo=dt.timezone.utc)),2028)
+  self.assertEqual(sport.season(dt.datetime(2028,3,1,tzinfo=dt.timezone.utc)),2028)
  def test_only_sec_and_verified_final(self):
   example={'events':[
    event('1001',333,2,'2026-11-04T23:00:00Z',True,'65','73'),
