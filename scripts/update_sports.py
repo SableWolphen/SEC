@@ -47,7 +47,10 @@ def parse(data, sport, year):
             if a not in SEC_IDS and h not in SEC_IDS:
                 continue
             tip = dt.datetime.fromisoformat(event['date'].replace('Z', '+00:00')).astimezone(UTC)
-            if tip.year < year - 1 or tip.year > year:
+            # Reject out-of-season events returned by ambiguous ESPN team URLs.
+            season_end = (dt.datetime(year, 4, 15, tzinfo=UTC)
+                          if sport == 'basketball' else dt.datetime(year, 7, 1, tzinfo=UTC))
+            if not (begin <= tip < season_end):
                 continue
 
             def pts(player):
