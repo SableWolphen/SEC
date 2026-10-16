@@ -48,8 +48,12 @@ const document={
  activeElement:{matches(){return false;}}
 };
 const localStorage={getItem(){return null;},setItem(){}};
+const other={...game,id:"basketball-2027-december-nonconference",week:6,
+ away_code:"2305",away_name:"Kansas",home_code:"61",home_name:"Georgia",
+ kickoff_at:"2026-12-09T01:00:00Z",source:"Georgia Athletics · confirmed tipoff"};
+const mirror={...game,id:"basketball-2027-espn-same-game",source:"ESPN"};
 const fixture={updated_at:"2026-10-09T20:00:00Z",
- sports:{basketball:{season:2027,games:[game]},baseball:{season:2027,games:[]}}};
+ sports:{basketball:{season:2027,games:[game,other,mirror]},baseball:{season:2027,games:[]}}};
 const context={window,document,localStorage,URL,URLSearchParams,Date,console,
  navigator:{clipboard:{writeText:async()=>{}}},location:{hash:"#sports",href:"https://sablewolphen.github.io/SEC/#sports"},
  history:{replaceState(){}},setInterval(){},setTimeout,
@@ -84,6 +88,19 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
   assert.match(roots["sports-hub"].innerHTML,new RegExp('data-go-sport="'+sport+'"'));
  activeView="basketball";app.mount("basketball");await settle();
  assert.match(roots["sport-basketball-content"].innerHTML,/Alabama/,"real upcoming basketball fixture visible even to guests");
+assert.equal(app.seasonLabel("basketball"),"2026–27",
+ "basketball should display its complete season, not just the final calendar year");
+assert.equal(app.allGames("basketball").length,2,
+ "SEC nonconference games included, duplicate ESPN IDs do not double count");
+assert.match(roots["sport-basketball-content"].innerHTML,/Full 2026–27 schedule/);
+assert.match(roots["sport-basketball-content"].innerHTML,/2 confirmed matchups/);
+assert.match(roots["sport-basketball-content"].innerHTML,/November 2026/);
+assert.match(roots["sport-basketball-content"].innerHTML,/December 2026/);
+assert.match(roots["sport-basketball-content"].innerHTML,/Kansas/);
+assert.match(roots["sport-basketball-content"].innerHTML,/data-sport-week="6"/,
+ "each full-season matchup links back to its pick week");
+assert.match(roots["sport-basketball-content"].innerHTML,/secsports.com\/schedule\/basketball-m/);
+
  assert.match(roots["sport-basketball-content"].innerHTML,/provisional pick lock/,"provisional lock clearly distinguished from actual tipoff");
  assert.match(roots["sport-basketball-content"].innerHTML,/Log in to your account/,"signed-out user sees login rather than another account creation");
  // The saved session may still be restoring when the player switches sports.
