@@ -638,7 +638,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       pageIntro.insertAdjacentElement('afterend',sportSwitcher);
     }
     document.querySelectorAll('[data-nav]').forEach(el=>{
-      const on=el.dataset.nav===v||(el.dataset.nav==='home'&&['team-hub','game-center'].includes(v))||(el.dataset.nav==='current-sport'&&[...sportViews,'results'].includes(v))||(el.dataset.nav==='more'&&['news','teams','settings','team-news'].includes(v));
+      const on=el.dataset.nav===v||(el.dataset.nav==='home'&&v==='team-hub')||(el.dataset.nav==='current-sport'&&[...sportViews,'results'].includes(v))||(el.dataset.nav==='settings'&&['settings','more'].includes(v));
       el.classList.toggle('active',on);
       if(el.classList.contains('nav-link'))el.setAttribute('aria-current',on?'page':'false');
     });
