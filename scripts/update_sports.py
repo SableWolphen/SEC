@@ -199,10 +199,24 @@ def build(now=None, get=download, existing=None, fallback=None):
                    '/scoreboard?dates=' + fmt(left) + '-' + fmt(right) +
                    '&groups=8&limit=500')
             try:
-                for game in parse(get(url), sport, year):
+                payload = get(url)
+                # The SEC conference filter sometimes fails upstream or returns
+                # an empty response for nonconference November games. Retry
+                # without groups so ALL SEC-vs-nonconference fixtures can load.
+                if sport == 'basketball' and not payload.get('events'):
+                    payload = get(url.replace('&groups=8', ''))
+                for game in parse(payload, sport, year):
                     merge_game(saved, game)
                 successes += 1
             except Exception as ex:
+                if sport == 'basketball':
+                    try:
+                        for game in parse(get(url.replace('&groups=8', '')), sport, year):
+                            merge_game(saved, game)
+                        successes += 1
+                        continue
+                    except Exception:
+                        pass
                 print(sport, 'ESPN source unavailable:', type(ex).__name__)
 
         official = []
