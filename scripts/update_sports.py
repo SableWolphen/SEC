@@ -223,7 +223,7 @@ def build(now=None, get=download, existing=None, fallback=None):
         # when requests succeed. Always sweep all sixteen SEC team schedules.
         # The two sources complement each other rather than acting as failover.
         team_coverage = {}
-        if sport == 'basketball':
+        if sport in ('basketball', 'baseball'):
             for team_id in sorted(SEC_IDS):
                 team_url = ('https://site.api.espn.com/apis/site/v2/sports/'
                             + slug + '/teams/' + team_id
@@ -267,7 +267,7 @@ def build(now=None, get=download, existing=None, fallback=None):
 
         games = sorted(saved.values(), key=lambda g: (g['kickoff_at'], g['id']))
         sec_counts = {tid: sum(g['away_code'] == tid or g['home_code'] == tid for g in games)
-                      for tid in SEC_IDS} if sport == 'basketball' else {}
+                      for tid in SEC_IDS}
         issue = None
         if not games:
             issue = ('No verified individual first-pitch times yet; SEC baseball '
@@ -284,11 +284,14 @@ def build(now=None, get=download, existing=None, fallback=None):
                                   ', '.join(f'{tid} ({sec_counts[tid]} games)' for tid in sorted(low)) +
                                   '. Check all 16 team feeds before trusting the calendar.')
                 issue = (issue + ' ' if issue else '') + coverage_issue
+        # Distinguish a successful HTTP response from actual fixture coverage.
+        if not team_coverage and sport == 'basketball':
+            issue = (issue + ' ' if issue else '') + 'All 16 school-level basketball feeds failed or returned no events.'
         result['sports'][sport] = {
             'season': year, 'games': games,
             'source': 'Verified SEC/university fixtures + ESPN',
             'source_windows': successes, 'verified_database_games': len(official),
-            'database_connected': database_ok, 'team_coverage': team_coverage if sport == 'basketball' else {},
+            'database_connected': database_ok, 'team_coverage': team_coverage,
             'sec_team_game_counts': sec_counts, 'warning': issue
         }
         print(sport, year, len(games), 'games;', len(official),
