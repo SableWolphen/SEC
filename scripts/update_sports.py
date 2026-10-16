@@ -78,17 +78,31 @@ def parse(data, sport, year):
 
 
 def windows(sport, year, now):
-    begin = start(sport, year)
-    first = max(begin, now - dt.timedelta(days=21))
-    if now < begin:
-        first = begin
-    final = min(dt.datetime(year, 7, 1, tzinfo=UTC),
-                max(now, begin) + dt.timedelta(days=112))
-    at = first
-    while at < final:
-        right = min(at + dt.timedelta(days=13), final)
-        yield at, right
-        at += dt.timedelta(days=14)
+    """ESPN's basketball scoreboard accepts YYYYMM months, NOT date ranges.
+
+    An old YYYYMMDD-YYYYMMDD query yielded HTTP 400 every day, so the
+    public feed never discovered games beyond the partial DB seed.
+    Include the entire published basketball season (Nov-Apr), not just
+    112 days from today. Newly announced postseason games can then appear.
+    """
+    if sport == 'basketball':
+        months = [(year - 1, 11), (year - 1, 12)] + [
+            (year, m) for m in (1, 2, 3, 4)]
+        for yr, month in months:
+            yield f'{yr}{month:02d}'
+    else:
+        # Future individual first pitches are published gradually. Ask for
+        # complete months, never an unsupported two-date range.
+        for month in (2, 3, 4, 5, 6):
+            yield f'{year}{month:02d}'
+
+
+def scoreboard_url(slug, date, limit=1800):
+    """Source filter includes SEC games against nonconference opponents."""
+    return ('https://site.api.espn.com/apis/site/v2/sports/' + slug +
+            '/scoreboard?' + urlencode({
+                'dates': date, 'groups': '8', 'limit': str(limit)
+            }))
 
 
 def download(url):
@@ -193,17 +207,26 @@ def build(now=None, get=download, existing=None, fallback=None):
         old = ((existing or {}).get('sports') or {}).get(sport) or {}
         saved = {x['id']: x for x in old.get('games', []) if x.get('season') == year and x.get('id')}
         successes = 0
-        for left, right in windows(sport, year, now):
-            fmt = lambda day: day.strftime('%Y%m%d')
-            url = ('https://site.api.espn.com/apis/site/v2/sports/' + slug +
-                   '/scoreboard?dates=' + fmt(left) + '-' + fmt(right) +
-                   '&groups=8&limit=500')
-            try:
-                for game in parse(get(url), sport, year):
-                    merge_game(saved, game)
-                successes += 1
-            except Exception as ex:
-                print(sport, 'ESPN source unavailable:', type(ex).__name__)
+        for date in windows(sport, year, now):
+            # SEC group 8 covers league games. The wider Division I board is
+            # essential for SEC-vs-nonconference games; merge both sources.
+            group_ids = ('8', '50') if sport == 'basketball' else ('8',)
+            for group in group_ids:
+                url = ('https://site.api.espn.com/apis/site/v2/sports/' +
+                       slug + '/scoreboard?' +
+                       urlencode({'dates': date, 'groups': group,
+                                  'limit': '3000' if group == '50' else '1800'}))
+                try:
+                    response = get(url)
+                    events = response.get('events', []) if isinstance(response, dict) else []
+                    if not isinstance(events, list):
+                        raise ValueError('Invalid ESPN scoreboard response')
+                    for game in parse(response, sport, year):
+                        merge_game(saved, game)
+                    successes += 1
+                except Exception as ex:
+                    print(sport, date, 'ESPN group', group,
+                          'source unavailable:', type(ex).__name__)
 
         official = []
         database_ok = False
@@ -234,6 +257,13 @@ def build(now=None, get=download, existing=None, fallback=None):
                 del saved[game_id]
 
         games = sorted(saved.values(), key=lambda g: (g['kickoff_at'], g['id']))
+        # The SEC has already published 144 regular-season conference games.
+        # A lower number in this feed is an incomplete import, not proof that
+        # the missing matchups do not exist. Nonconference games are additional.
+        conference_count = (sum(
+            1 for g in games if sport == 'basketball' and
+            g.get('away_code') in SEC_IDS and g.get('home_code') in SEC_IDS
+        ) if sport == 'basketball' else None)
         issue = None
         if not games:
             issue = ('No verified individual first-pitch times yet; SEC baseball '
@@ -243,8 +273,15 @@ def build(now=None, get=download, existing=None, fallback=None):
             issue = 'Live schedule sources unavailable; retaining previously confirmed games.'
         elif not successes and database_ok:
             issue = 'Live ESPN feed unavailable; displaying verified SEC/university fixtures.'
+        if sport == 'basketball' and conference_count < 144:
+            missing = ('Only ' + str(conference_count) +
+                       ' of 144 published SEC conference games loaded so far. ' +
+                       'The full schedule is still being refreshed.')
+            issue = (issue + ' ' if issue else '') + missing
         result['sports'][sport] = {
             'season': year, 'games': games,
+            'conference_games_loaded': conference_count,
+            'published_conference_games': 144 if sport == 'basketball' else None,
             'source': 'Verified SEC/university fixtures + ESPN',
             'source_windows': successes, 'verified_database_games': len(official),
             'database_connected': database_ok, 'warning': issue
