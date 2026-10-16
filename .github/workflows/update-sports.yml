@@ -1,7 +1,7 @@
-name: Refresh SEC basketball and baseball schedules
+name: Refresh SEC multi-season basketball and baseball schedules
 on:
   schedule:
-    - cron: '37 8,20 * * *'
+    - cron: '37 2,8,14,20 * * *'
   workflow_dispatch: {}
   push:
     branches: [main]
@@ -25,7 +25,7 @@ jobs:
           python-version: '3.12'
       - name: Test real schedule parsing and team validation
         run: python3 -m unittest discover -s tests -p test_sports.py -v
-      - name: Pull verified matchups from ESPN
+      - name: Pull verified full-season matchups from ESPN
         run: python3 scripts/update_sports.py
       - name: Validate published schedules
         run: |
@@ -43,6 +43,10 @@ jobs:
                   assert g['winner_code'] is None or g['winner_code'] in (g['away_code'],g['home_code'])
                   assert dt.datetime.fromisoformat(g['kickoff_at'].replace('Z','+00:00')).tzinfo is not None
               print(sport, len(d['sports'][sport]['games']), 'public games,',d['sports'][sport].get('verified_database_games',0),'from verified database')
+              if d['sports'][sport].get('source_windows',0) == 0:
+                  print('::warning::All '+sport+' live schedule queries failed; historical verified fixtures retained.')
+              if sport == 'basketball' and len(d['sports'][sport]['games']) < 100:
+                  print('::warning::Basketball schedule coverage is low; investigate missing SEC team fixtures.')
               if not d['sports'][sport]['games']:
                   print('::warning::No verified individual '+sport+' matchups available; retain existing fixture records and show the empty state.')
           print('Validated published sports schedule with secure-game IDs preserved')
