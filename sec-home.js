@@ -143,12 +143,8 @@ function actionCards(m){
  const p=m.progress,idx=m.leaderboard.findIndex(r=>r.user_id===user()?.id);
  const tiles=[
  ["picks","✓","MAKE PICKS",p.unpickedOpen?p.unpickedOpen+" remaining":p.chosen+"/"+p.total+" selected"],
- ["team-hub","★","MY TEAM",m.favoriteName||"Choose a school"],
- ["picks","◉","LIVE SCORES",m.liveCount?m.liveCount+" live now":"See all scores"],
  ["league","▥","LEAGUE RACE",idx>=0?"You're #"+(idx+1):"View standings"],
- ["league","⚔","RIVALS",m.rival?m.rival.gap+"-point gap":"Meet your league"],
- ["trophies","🏆","TROPHY ROOM","Your collection"],
- ["team-news","▤","SEC NEWS","Latest headlines"]
+ ["picks","◉","LIVE SCORES",m.liveCount?m.liveCount+" live now":"See scores"]
  ];
  return '<nav class="hq-actions" aria-label="Game Day shortcuts">'+tiles.map(t=>
  '<button type="button" data-hq-route="'+t[0]+'"'+(t[2]==="LIVE SCORES"?' data-hq-focus="live"':'')+
