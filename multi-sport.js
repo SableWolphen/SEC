@@ -42,6 +42,10 @@ function recommended(now=new Date()){
  return seasons(now).sort((a,b)=>b.since-a.since)[0].sport;
 }
 function year(sport){return currentSeason(sport);}
+function seasonLabel(sport){
+ const y=year(sport);
+ return sport==="basketball"?(y-1)+"–"+String(y).slice(-2):String(y);
+}
 function nameOf(sport){return sport==="football"?"Football":SPORT[sport].name;}
 function target(sport){return sport==="football"?"picks":sport;}
 function prettyTime(input){
@@ -82,7 +86,7 @@ function renderHub(){
      '<h3>'+b.title+'</h3><p class="sport-season-pill">'+b.period+'</p>'+
      '<p>'+b.detail+'</p>'+
      '<div class="sport-selection-footer">'+(s==="football"?"2026 season":String(year(s))+" season")+
-     (typeof count==="number"&&s!=="football"?" · "+count+" verified games":"")+
+     (typeof count==="number"&&s!=="football"?" · "+count+" published games":"")+
      ' <span>Open picks →</span></div></button>';
    }).join("")+'</div>'+
    '<p class="sport-hub-footnote">Schedules come from verified sources. Seasons are chosen automatically by calendar date; switch sports anytime. '+
@@ -142,7 +146,21 @@ const allGames=(s)=>{
  const dbList=(Array.isArray(cache[s].games)?cache[s].games:[]).filter(g=>g.sport===s&&g.season===year(s));
  const merged=new Map(publicList.filter(g=>g.season===year(s)).map(g=>[g.id,{...g,imported:false}]));
  dbList.forEach(g=>merged.set(g.id,{...merged.get(g.id),...g,imported:true}));
- return [...merged.values()].sort((a,b)=>new Date(a.kickoff_at)-new Date(b.kickoff_at));
+ const dedup=new Map();
+ const ordered=[...merged.values()].sort((a,b)=>Number(b.imported)-Number(a.imported)||
+  (a.game_status==="final"?-1:0)-(b.game_status==="final"?-1:0));
+ for(const g of ordered){
+  // The secure DB may use a published university ID while ESPN uses its own
+  // event ID. Never show the same game twice or replace a pickable DB ID.
+  const date=new Date(g.kickoff_at);
+  const localDay=Number.isFinite(date.getTime())?
+   new Intl.DateTimeFormat("en-CA",{timeZone:"America/Chicago",year:"numeric",
+    month:"2-digit",day:"2-digit"}).format(date):String(g.kickoff_at).slice(0,10);
+  const key=s==="basketball"?
+   [g.away_code,g.home_code,localDay].join("|"):g.id;
+  if(!dedup.has(key))dedup.set(key,g);
+ }
+ return [...dedup.values()].sort((a,b)=>new Date(a.kickoff_at)-new Date(b.kickoff_at));
 };
 const groups=s=>{
  const map=new Map();
@@ -161,6 +179,48 @@ const curWeek=s=>{
  selectedWeeks[s]=(open||sets.at(-1)).num;
  return open||sets.at(-1);
 };
+function renderSeasonSchedule(s){
+ if(s!=="basketball")return "";
+ const all=allGames(s),total=all.length;
+ if(!total)return "";
+ const byMonth=new Map();
+ for(const g of all){
+  const d=new Date(g.kickoff_at);
+  if(!Number.isFinite(d.getTime()))continue;
+  const month=new Intl.DateTimeFormat("en-US",{timeZone:"America/Chicago",
+   year:"numeric",month:"long"}).format(d);
+  if(!byMonth.has(month))byMonth.set(month,[]);
+  byMonth.get(month).push(g);
+ }
+ const currentMonth=new Intl.DateTimeFormat("en-US",{timeZone:"America/Chicago",
+  year:"numeric",month:"long"}).format(new Date());
+ return '<details class="sport-season-schedule" open>'+
+  '<summary><strong>🏀 Full '+esc(seasonLabel(s))+' schedule</strong>'+
+  '<span>'+total+' confirmed matchups · all SEC teams</span></summary>'+
+  '<p class="sport-season-explain">Every currently published SEC matchup, including nonconference games. '+ 
+  'Select a game to jump to its pick week. More matchups appear as sources confirm them.</p>'+
+  [...byMonth].map(([month,games])=>
+   '<details class="sport-season-month" '+(month===currentMonth?'open':'')+'>'+
+   '<summary><strong>'+esc(month)+'</strong><span>'+games.length+' games</span></summary>'+
+   '<div class="sport-season-rows">'+games.map(g=>{
+    const provisional=/provisional|pending/i.test(g.source||"");
+    const label=provisional?
+     new Date(g.kickoff_at).toLocaleDateString("en-US",{timeZone:"America/Chicago",
+      weekday:"short",month:"short",day:"numeric"})+' · time pending':
+     prettyTime(g.kickoff_at);
+    const status=g.game_status==="final"?"Final":
+     g.game_status==="live"?"Live":
+     g.game_status==="canceled"?"Canceled":"Scheduled";
+    return '<button type="button" class="sport-season-game" data-sport-week="'+esc(g.week)+
+     '" data-sport="basketball" aria-label="Open Week '+esc(g.week)+': '+esc(g.away_name)+
+     ' at '+esc(g.home_name)+'">'+
+     '<time>'+esc(label)+'</time><strong>'+esc(g.away_name)+' <span>at</span> '+
+     esc(g.home_name)+'</strong><small>'+status+' · Week '+esc(g.week)+' ↗</small></button>';
+   }).join("")+'</div></details>').join("")+
+  '<p class="sport-season-source">Official game dates are updated automatically. '+
+  'Exhibitions and undetermined tournament opponents are not invented. '+
+  '<a href="https://www.secsports.com/schedule/basketball-m" target="_blank" rel="noopener noreferrer">SEC official schedule ↗</a></p></details>';
+}
 const ownLeague=s=>(cache[s].leagues||[]).find(l=>l.id===cache[s].active)||null;
 function modeDesc(mode){
  return {straight:"One point for every correctly picked winner.",
@@ -196,7 +256,7 @@ function renderSport(s){
    '<div class="week-score-metric"><strong>'+chosen+'<span>/'+w.games.length+'</span></strong><small>Picks made</small></div>'+
    '<div class="week-score-metric"><strong>'+weekFinal.length+'<span>/'+w.games.length+'</span></strong><small>Final games</small></div></section>':"";
  const header='<div class="sport-heading"><div class="sport-heading-icon">'+conf.emoji+'</div>'+
-  '<div><div class="card-kicker">SEC '+conf.name.toUpperCase()+' · '+year(s)+'</div>'+
+  '<div><div class="card-kicker">SEC '+conf.name.toUpperCase()+' · '+seasonLabel(s)+'</div>'+
   '<h2>'+esc(conf.tagline)+'</h2><p>Pick each winner. Score points together. Win your league.</p></div>'+
   '</div>';
  const note=feed.sports?.[s]?.warning&&allGames(s).length===0?
@@ -205,6 +265,7 @@ function renderSport(s){
  const stale=data.error?banner(data.error,"sport-warning"):"";
  const loadingText=loading[s]?banner("Checking verified games and league results…"):"";
  const leagues=renderLeagues(s,signed,active);
+ const fullSchedule=renderSeasonSchedule(s);
  const statusOf=g=>g.game_status==="live"?"live":
    g.game_status==="final"?"final":"upcoming";
  const selectedStatus=statusFilters[s]||"all";
@@ -231,7 +292,7 @@ function renderSport(s){
    '</div>'+
    renderTiebreak(s,w,active,saved);
  }
- root.innerHTML=header+note+status+stale+loadingText+sportStrip+leagues+games+renderSeries(s)+
+ root.innerHTML=header+note+status+stale+loadingText+sportStrip+leagues+fullSchedule+games+renderSeries(s)+
   '<p class="sport-data-note">Official SEC and university schedules, with ESPN updates where available · Central time. '+ 
   'When a tipoff is not announced, a conservative 10 AM Central provisional lock is shown. '+
   'Basketball and baseball leagues have their own memberships and standings, separate from football.</p>';
@@ -555,6 +616,6 @@ setInterval(()=>{
  if(moment-lastPoll<(fast?60000:300000))return;
  lastPoll=moment;void load(active,true);
 },30000);
-window.SEC_SPORTS=Object.freeze({mount,recommended,year,groups,renderHub,renderSport,load,authChanged,selectLeague,renderLeaguePanel,getState:s=>cache[s]});
+window.SEC_SPORTS=Object.freeze({mount,recommended,year,seasonLabel,allGames,groups,renderHub,renderSport,load,authChanged,selectLeague,renderLeaguePanel,getState:s=>cache[s]});
 if(["sports","basketball","baseball"].includes(window.SEC_BRIDGE?.view?.()))mount(window.SEC_BRIDGE.view());
 })();
