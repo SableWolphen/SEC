@@ -219,10 +219,11 @@ def build(now=None, get=download, existing=None, fallback=None):
                         pass
                 print(sport, 'ESPN source unavailable:', type(ex).__name__)
 
-        # A conference-filtered scoreboard can omit nonconference games.
-        # If every scoreboard window failed, try each SEC school's season
-        # schedule independently. These only supplement verified fixtures.
-        if sport == 'basketball' and not successes:
+        # Conference-filtered scoreboards omit many nonconference fixtures even
+        # when requests succeed. Always sweep all sixteen SEC team schedules.
+        # The two sources complement each other rather than acting as failover.
+        team_coverage = {}
+        if sport == 'basketball':
             for team_id in sorted(SEC_IDS):
                 team_url = ('https://site.api.espn.com/apis/site/v2/sports/'
                             + slug + '/teams/' + team_id
@@ -231,8 +232,7 @@ def build(now=None, get=download, existing=None, fallback=None):
                     team_games = parse(get(team_url), sport, year)
                     for game in team_games:
                         merge_game(saved, game)
-                    if team_games:
-                        successes += 1
+                    team_coverage[team_id] = len(team_games)
                 except Exception as ex:
                     print(sport, 'team schedule unavailable:', team_id,
                           type(ex).__name__)
@@ -266,6 +266,8 @@ def build(now=None, get=download, existing=None, fallback=None):
                 del saved[game_id]
 
         games = sorted(saved.values(), key=lambda g: (g['kickoff_at'], g['id']))
+        sec_counts = {tid: sum(g['away_code'] == tid or g['home_code'] == tid for g in games)
+                      for tid in SEC_IDS} if sport == 'basketball' else {}
         issue = None
         if not games:
             issue = ('No verified individual first-pitch times yet; SEC baseball '
@@ -275,11 +277,19 @@ def build(now=None, get=download, existing=None, fallback=None):
             issue = 'Live schedule sources unavailable; retaining previously confirmed games.'
         elif not successes and database_ok:
             issue = 'Live ESPN feed unavailable; displaying verified SEC/university fixtures.'
+        if sport == 'basketball' and now >= dt.datetime(year - 1, 10, 1, tzinfo=UTC):
+            low = [tid for tid, count in sec_counts.items() if count < 25]
+            if low:
+                coverage_issue = ('Incomplete SEC basketball coverage: ' +
+                                  ', '.join(f'{tid} ({sec_counts[tid]} games)' for tid in sorted(low)) +
+                                  '. Check all 16 team feeds before trusting the calendar.')
+                issue = (issue + ' ' if issue else '') + coverage_issue
         result['sports'][sport] = {
             'season': year, 'games': games,
             'source': 'Verified SEC/university fixtures + ESPN',
             'source_windows': successes, 'verified_database_games': len(official),
-            'database_connected': database_ok, 'warning': issue
+            'database_connected': database_ok, 'team_coverage': team_coverage if sport == 'basketball' else {},
+            'sec_team_game_counts': sec_counts, 'warning': issue
         }
         print(sport, year, len(games), 'games;', len(official),
               'verified database fixtures;', successes, 'ESPN windows')
