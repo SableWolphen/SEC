@@ -199,8 +199,20 @@ function renderSport(s){
   '<div><div class="card-kicker">SEC '+conf.name.toUpperCase()+' · '+year(s)+'</div>'+
   '<h2>'+esc(conf.tagline)+'</h2><p>Pick each winner. Score points together. Win your league.</p></div>'+
   '</div>';
- const note=feed.sports?.[s]?.warning&&allGames(s).length===0?
-   banner(feed.sports[s].warning,"sport-warning"):"";
+ const feedStatus=feed.sports?.[s]||{};
+ const totalGames=allGames(s).length;
+ const teamCounts=feedStatus.sec_team_game_counts||{};
+ const coverageCount=Object.keys(feedStatus.team_coverage||{}).length;
+ const health='<details class="sport-schedule-health"><summary>Schedule health · '+totalGames+
+   ' games · '+coverageCount+'/16 school feeds</summary><div class="sport-health-details">'+
+   '<p>Last synced: '+esc(feedUpdated?prettyTime(feedUpdated):"Not yet synced")+
+   '. Updates check official imports and ESPN school schedules. Missing games are flagged, not invented.</p>'+
+   (Object.keys(teamCounts).length?'<p>Games per SEC school: '+
+    Object.entries(teamCounts).sort((a,b)=>Number(a[1])-Number(b[1]))
+     .map(([id,n])=>esc(id)+': '+Number(n)).join(' · ')+'</p>':'')+
+   '<button type="button" class="ghost-btn" data-sport-action="refresh" data-sport="'+s+'">Recheck schedule</button>'+
+   '</div></details>';
+ const note=feedStatus.warning?banner(feedStatus.warning,"sport-warning"):"";
  const status=feedIssue?banner(feedIssue,"sport-warning"):"";
  const stale=data.error?banner(data.error,"sport-warning"):"";
  const loadingText=loading[s]?banner("Checking verified games and league results…"):"";
@@ -231,7 +243,7 @@ function renderSport(s){
    '</div>'+
    renderTiebreak(s,w,active,saved);
  }
- root.innerHTML=header+note+status+stale+loadingText+sportStrip+leagues+games+renderSeries(s)+
+ root.innerHTML=header+note+status+stale+loadingText+health+sportStrip+leagues+games+renderSeries(s)+
   '<p class="sport-data-note">Official SEC and university schedules, with ESPN updates where available · Central time. '+ 
   'When a tipoff is not announced, a conservative 10 AM Central provisional lock is shown. '+
   'Basketball and baseball leagues have their own memberships and standings, separate from football.</p>';
