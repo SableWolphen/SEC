@@ -192,8 +192,9 @@ function renderSeasonSchedule(s){
   if(!byMonth.has(month))byMonth.set(month,[]);
   byMonth.get(month).push(g);
  }
- const currentMonth=new Intl.DateTimeFormat("en-US",{timeZone:"America/Chicago",
-  year:"numeric",month:"long"}).format(new Date());
+ const nextGame=all.find(g=>new Date(g.kickoff_at).getTime()>=Date.now())||all.at(-1);
+ const currentMonth=nextGame?new Intl.DateTimeFormat("en-US",{timeZone:"America/Chicago",
+  year:"numeric",month:"long"}).format(new Date(nextGame.kickoff_at)):"";
  return '<details class="sport-season-schedule" open>'+
   '<summary><strong>🏀 Full '+esc(seasonLabel(s))+' schedule</strong>'+
   '<span>'+total+' confirmed matchups · all SEC teams</span></summary>'+
