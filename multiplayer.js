@@ -436,7 +436,7 @@
   window.secOnline={
     configured:!!client,renderLeague:renderLeague,renderSettings:renderSettings,
     pick:choose,copyInvite:copyInvite,useLeague:useLeague,refreshStandings:refreshStandings,refresh:refresh,
-    isSignedIn:function(){return !!user;},getClient:function(){return client;},getUser:function(){return user;},getLeague:function(){return currentLeague();},getStandings:function(){return standings.slice();},
+    isSignedIn:function(){return !!user;},getClient:function(){return client;},getUser:function(){return user;},getLeague:function(){return currentLeague();},getLeagues:function(){return user?leagues.slice():[];},getStandings:function(){return standings.slice();},
     whenAuthReady:function(){return authReady;},isAuthReady:function(){return authRestored;}
   };
   document.addEventListener("click",function(ev){
