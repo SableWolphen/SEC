@@ -197,7 +197,7 @@ function renderSeasonSchedule(s){
   year:"numeric",month:"long"}).format(new Date(nextGame.kickoff_at)):"";
  return '<details class="sport-season-schedule" open>'+
   '<summary><strong>🏀 Full '+esc(seasonLabel(s))+' schedule</strong>'+
-  '<span>'+total+' confirmed matchups · all SEC teams</span></summary>'+
+  '<span>'+total+' published matchups loaded</span></summary>'+
   '<p class="sport-season-explain">Every currently published SEC matchup, including nonconference games. '+ 
   'Select a game to jump to its pick week. More matchups appear as sources confirm them.</p>'+
   [...byMonth].map(([month,games])=>
@@ -260,7 +260,12 @@ function renderSport(s){
   '<div><div class="card-kicker">SEC '+conf.name.toUpperCase()+' · '+seasonLabel(s)+'</div>'+
   '<h2>'+esc(conf.tagline)+'</h2><p>Pick each winner. Score points together. Win your league.</p></div>'+
   '</div>';
- const note=feed.sports?.[s]?.warning&&allGames(s).length===0?
+ const basketballCoverage=feed.sports?.basketball?.conference_games_loaded;
+ const basketballIncomplete=s==="basketball"&&
+  (typeof basketballCoverage==="number"?basketballCoverage<144:
+   (feed.sports?.basketball?.source_windows||0)===0);
+ const note=feed.sports?.[s]?.warning&&
+  (allGames(s).length===0||basketballIncomplete)?
    banner(feed.sports[s].warning,"sport-warning"):"";
  const status=feedIssue?banner(feedIssue,"sport-warning"):"";
  const stale=data.error?banner(data.error,"sport-warning"):"";
