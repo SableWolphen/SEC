@@ -302,7 +302,10 @@ def build(now=None, get=download, existing=None, fallback=None):
         unique = {}
         official_ids = {g['id'] for g in official}
         for game in saved.values():
-            signature = fixture_signature(game)
+            # Baseball doubleheaders can legitimately share opponents and day.
+            # Match those by exact start time so neither game disappears.
+            signature = (fixture_signature(game) if sport == 'basketball'
+                         else (fixture_signature(game), game['kickoff_at']))
             prior = unique.get(signature)
             if prior is None:
                 unique[signature] = game
