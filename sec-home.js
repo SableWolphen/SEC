@@ -139,6 +139,46 @@ function hero(m){
   esc(niceTime(game.clock))+' CT</small><button type="button" data-hq-route="picks" data-hq-focus="upcoming">View matchup →</button></div>':"")+
  '</section>';
 }
+let chatState={account:null,rows:[],selected:null,previews:{},loadedAt:0,busy:false};
+async function loadHomeChats(force=false){
+ const me=user(),api=window.secOnline,client=api?.getClient?.();
+ const uid=me?.id||null,leagues=uid?(api.getLeagues?.()||[]):[];
+ if(chatState.account!==uid){chatState={account:uid,rows:[],selected:null,previews:{},loadedAt:0,busy:false};}
+ const ids=leagues.map(l=>l.id).filter(Boolean).sort().join(",");
+ if(!client||!uid||!leagues.length){chatState.rows=[];chatState.previews={};refresh();return;}
+ if(chatState.busy||(!force&&chatState.loadedAt&&Date.now()-chatState.loadedAt<45000&&
+  chatState.rows.map(l=>l.id).sort().join(",")===ids))return;
+ chatState.busy=true;
+ try{
+  const previews={};
+  await Promise.all(leagues.slice(0,20).map(async l=>{
+   const {data,error}=await client.from("sec_league_messages")
+    .select("body,created_at,user_id").eq("league_id",l.id)
+    .order("created_at",{ascending:false}).limit(1);
+   if(!error&&data?.[0])previews[l.id]=data[0];
+  }));
+  if(user()?.id!==uid)return;
+  chatState.rows=leagues.slice(0,20);
+  chatState.previews=previews;
+  if(!chatState.rows.some(l=>l.id===chatState.selected))
+   chatState.selected=api.getLeague?.()?.id||chatState.rows[0]?.id;
+  chatState.loadedAt=Date.now();refresh();
+ }catch(_error){chatState.loadedAt=Date.now();}finally{chatState.busy=false;}
+}
+function homeChats(){
+ const rows=chatState.rows;
+ if(!user())return '<section class="hq-panel hq-home-chats"><div class="hq-panel-header"><span>LEAGUE CHATS</span></div><p>Sign in and join a league to chat with friends.</p><button type="button" data-hq-route="league" class="hq-secondary">Find my leagues →</button></section>';
+ if(!rows.length)return '<section class="hq-panel hq-home-chats"><div class="hq-panel-header"><span>LEAGUE CHATS</span></div><p>Your private league conversations will appear here.</p><button type="button" data-hq-route="league" class="hq-secondary">Join a league →</button></section>';
+ const selected=rows.find(l=>l.id===chatState.selected)||rows[0];
+ const msg=chatState.previews[selected.id];
+ return '<section class="hq-panel hq-home-chats" aria-label="Switch between your league chats">'+
+ '<div class="hq-panel-header"><span>💬 LEAGUE CHATS</span><span class="hq-feed-pill">'+rows.length+' leagues</span></div>'+
+ '<div class="hq-chat-tabs" role="group" aria-label="Choose league conversation">'+rows.map(l=>
+ '<button type="button" data-hq-chat-league="'+esc(l.id)+'" aria-pressed="'+(l.id===selected.id)+'" class="'+(l.id===selected.id?'active':'')+'">'+esc(l.name||"My league")+'</button>').join("")+'</div>'+
+ '<div class="hq-chat-preview"><strong>'+esc(selected.name||"League chat")+'</strong>'+
+ (msg?'<p>'+esc(msg.body).slice(0,180)+'</p>':'<p>No messages yet. Start the conversation.</p>')+'</div>'+
+ '<button type="button" class="hq-secondary" data-hq-open-chat="'+esc(selected.id)+'">Open this league chat →</button></section>';
+}
 function actionCards(m){
  const p=m.progress,idx=m.leaderboard.findIndex(r=>r.user_id===user()?.id);
  const tiles=[
@@ -314,7 +354,7 @@ function render(model){
   '<div class="hq-app-metric"><span>YOUR PICKS</span><strong>'+p.chosen+'<small>/'+p.total+'</small></strong></div>'+
   '<div class="hq-app-metric"><span>LEAGUE RANK</span><strong>'+(leaguePosition>=0?'#'+(leaguePosition+1):'—')+'</strong></div>'+
   '<div class="hq-app-metric"><span>'+thirdLabel+'</span><strong>'+thirdValue+'</strong></div></div>';
- const markup=hero(model)+appMetrics+actionCards(model)+
+ const markup=hero(model)+appMetrics+actionCards(model)+homeChats()+
  '<nav class="hq-discover-links" aria-label="Explore SEC features">'+
  '<button type="button" data-hq-route="news">📰 <strong>SEC News</strong><small>Latest headlines</small></button>'+
  '<button type="button" data-hq-route="trophies">🏆 <strong>Trophies</strong><small>Awards &amp; history</small></button>'+
@@ -382,6 +422,7 @@ function mount(){
    if(app()?.view?.()==="home"&&(user()?.id||null)!==id)refresh();
   }).catch(()=>{});
  }
+ void loadHomeChats();
  if(!ticking){
   ticking=true;
   setInterval(()=>{if(document.visibilityState==="visible")refresh();},30000);
@@ -407,7 +448,16 @@ document.addEventListener("click",e=>{
   more.querySelector("span")?.replaceChildren(expanded?"⌃":"⌄");
   return;
  }
- const b=e.target.closest?.("[data-hq-route]");
+ const tab=e.target.closest?.("[data-hq-chat-league]");
+ if(tab&&chatState.rows.some(l=>l.id===tab.dataset.hqChatLeague)){
+  chatState.selected=tab.dataset.hqChatLeague;refresh();return;
+ }
+ const open=e.target.closest?.("[data-hq-open-chat]");
+ if(open&&chatState.rows.some(l=>l.id===open.dataset.hqOpenChat)){
+  window.secOnline?.useLeague?.(open.dataset.hqOpenChat);
+  app()?.setView?.("league");return;
+ }
+  const b=e.target.closest?.("[data-hq-route]");
  if(!b)return;
  const target=b.dataset.hqRoute;
  if(!["picks","basketball","baseball","league","trophies","news","teams","settings",
@@ -420,7 +470,7 @@ document.addEventListener("click",e=>{
   document.querySelector('[data-slate-filter="'+b.dataset.hqFocus+'"]')?.click();
  }
 });
-document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refresh();});
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"){refresh();void loadHomeChats();}});
 window.SEC_HOME=Object.freeze({mount,refresh,snapshot,pickProgress,gameState,nextKickoff,countdown});
 if(app()?.view?.()==="home")mount();
 })();
