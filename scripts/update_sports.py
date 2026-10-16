@@ -310,9 +310,21 @@ def build(now=None, get=download, existing=None, fallback=None):
             if prior is None:
                 unique[signature] = game
             elif game['id'] in official_ids and prior['id'] not in official_ids:
+                # Keep the server's original game ID, but retain a confirmed
+                # result already obtained from another trusted source.
+                if prior['game_status'] == 'final' and game['game_status'] != 'final':
+                    game = {**game, 'game_status': 'final',
+                            'home_score': prior['home_score'],
+                            'away_score': prior['away_score'],
+                            'winner_code': prior['winner_code']}
                 unique[signature] = game
-            elif prior['game_status'] != 'final' and game['game_status'] == 'final':
+            elif prior['id'] not in official_ids and game['game_status'] == 'final' and prior['game_status'] != 'final':
                 unique[signature] = game
+            elif prior['id'] in official_ids and game['game_status'] == 'final' and prior['game_status'] != 'final':
+                unique[signature] = {**prior, 'game_status': 'final',
+                                     'home_score': game['home_score'],
+                                     'away_score': game['away_score'],
+                                     'winner_code': game['winner_code']}
         games = sorted(unique.values(), key=lambda g: (g['kickoff_at'], g['id']))
         sec_counts = {tid: sum(g['away_code'] == tid or g['home_code'] == tid for g in games)
                       for tid in SEC_IDS}
