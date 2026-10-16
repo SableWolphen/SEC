@@ -101,6 +101,14 @@ class SportFeedTests(unittest.TestCase):
         'away_name':'James Madison','home_name':'Kentucky'}
   self.assertEqual(sport.fixture_signature(official),
                    sport.fixture_signature(espn))
+ def test_reschedule_preserves_existing_pick_lock_and_flags_conflict(self):
+  original={'id':'basketball-2027-unchanged','kickoff_at':'2026-11-05T22:00:00Z',
+            'game_status':'scheduled','source':'SEC confirmed'}
+  revised={**original,'kickoff_at':'2026-11-05T23:00:00Z','source':'ESPN'}
+  saved={original['id']:original}
+  sport.merge_game(saved,revised)
+  self.assertEqual(saved[original['id']]['kickoff_at'],original['kickoff_at'])
+  self.assertEqual(saved[original['id']]['reschedule_pending'],revised['kickoff_at'])
  def test_offline_reuses_only_verified_old_fixture(self):
   existing={'sports':{'basketball':{'games':[
    {'id':'basketball-2027-old','season':2027,'kickoff_at':'2026-11-06T17:00:00Z','game_status':'scheduled'},
