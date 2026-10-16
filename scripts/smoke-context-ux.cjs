@@ -26,6 +26,6 @@ assert.match(css,/@media\(max-width:390px\)/);
 assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
 assert.match(html,/sec-ux-v3\.css\?v=20261012-context-v1/);
 assert.match(sw,/sec-ux-v3\.css\?v=20261012-context-v1/);
-assert.match(sw,/sec-pickem-v113/);
+assert.match(sw,/sec-pickem-v115/);
 assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length);
 console.log("Context-first Home, Games, League, reduced-motion and PWA checks PASS");
