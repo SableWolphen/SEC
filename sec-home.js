@@ -368,13 +368,17 @@ function render(model){
  '<button type="button" data-hq-route="picks" data-hq-focus="'+(p.unpickedOpen?"next":"all")+
  '" class="hq-primary">'+(p.unpickedOpen?"Make my picks →":"Review my picks →")+'</button></section>'+
  homeChats()+extraNews(model)+
- '<nav class="hq-calm-links" aria-label="Explore Gamedays Down South">'+
- '<button type="button" data-hq-route="game-center">Scores <span>→</span></button>'+
- '<button type="button" data-hq-route="league">Standings <span>→</span></button>'+
- '<button type="button" data-hq-route="trophies">Trophies <span>→</span></button>'+
- '<button type="button" data-hq-route="team-hub">My Team <span>→</span></button>'+
- '<button type="button" data-hq-route="teams">All Teams <span>→</span></button>'+
- '</nav>'+
+ '<section class="hq-explore" aria-label="All the important SEC features">'+
+ '<div class="hq-panel-header"><span>EXPLORE</span><button type="button" data-sec-find class="hq-find-all">Find anything ⌕</button></div>'+
+ '<nav class="hq-calm-links" aria-label="Go directly to a feature">'+
+ '<button type="button" data-hq-route="news">📰 News <span>→</span></button>'+
+ '<button type="button" data-hq-route="trophies">🏆 Trophies <span>→</span></button>'+
+ '<button type="button" data-hq-route="game-center">◉ Scores <span>→</span></button>'+
+ '<button type="button" data-hq-route="league">▥ League & Chat <span>→</span></button>'+
+ '<button type="button" data-hq-route="results">✓ My Results <span>→</span></button>'+
+ '<button type="button" data-hq-route="team-hub">★ My Team <span>→</span></button>'+
+ '<button type="button" data-hq-route="teams">▦ All Teams <span>→</span></button>'+
+ '</nav></section>'+
  '<p class="hq-disclaimer">Independent SEC fan game · Scores and news are shown only from available sources.</p>';
  // Do not tear down Home's interactive DOM every 30 seconds if nothing changed:
  // refreshing while users swipe the page should not reset buttons or scroll.
