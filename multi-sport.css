@@ -1205,3 +1205,10 @@ color:#ecf8ee;font-size:13px;font-weight:900;background:#1c353b}
 @media(max-width:430px){.sec-live-race-score{font-size:9px}
  .sec-day-rankings .sec-live-race-row{gap:6px}
  .sec-day-rankings strong{font-size:12px}}
+
+/* Schedule transparency and compact mobile layout */
+.sport-schedule-health{margin:12px 0;border:1px solid rgba(160,195,177,.28);border-radius:12px;background:rgba(19,43,48,.65);padding:10px 13px;color:#d8ece4}
+.sport-schedule-health summary{cursor:pointer;font-weight:750;font-size:13px;line-height:1.5}
+.sport-schedule-health .sport-health-details{padding:10px 1px 2px;overflow-wrap:anywhere;font-size:12px;line-height:1.55}
+.sport-schedule-health .ghost-btn{min-height:38px;margin-top:7px}
+@media(max-width:600px){.sport-week-list{display:flex;overflow-x:auto;flex-wrap:nowrap;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;gap:7px;padding-bottom:9px}.sport-week-list .sport-week-button{flex:0 0 auto;scroll-snap-align:start;min-width:78px}.sport-games-grid{min-width:0}.sport-game-filters{display:flex;flex-wrap:wrap;gap:6px}}
