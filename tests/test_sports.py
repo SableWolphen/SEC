@@ -94,6 +94,13 @@ class SportFeedTests(unittest.TestCase):
   self.assertIn('basketball-2027-nonconference',ids)
   self.assertTrue(any('basketball/' in u and 'scoreboard?' in u
                       and 'groups=8' not in u for u in requested))
+ def test_matchup_signature_is_independent_of_espn_numeric_team_codes(self):
+  official={'kickoff_at':'2026-11-06T20:00:00Z',
+            'away_name':'James Madison','home_name':'Kentucky'}
+  espn={'kickoff_at':'2026-11-06T23:00:00Z',
+        'away_name':'James Madison','home_name':'Kentucky'}
+  self.assertEqual(sport.fixture_signature(official),
+                   sport.fixture_signature(espn))
  def test_offline_reuses_only_verified_old_fixture(self):
   existing={'sports':{'basketball':{'games':[
    {'id':'basketball-2027-old','season':2027,'kickoff_at':'2026-11-06T17:00:00Z','game_status':'scheduled'},
