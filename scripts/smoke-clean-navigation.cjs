@@ -22,6 +22,11 @@ assert.match(home,/<\/nav>'\+/);
 assert.ok(home.indexOf("extraNews(model)+discovery(model)") >= 0,
   "News preview must remain outside collapsed extras");
 assert.match(home,/MAKE PICKS/);
+assert.match(home,/function homeChats\(/);
+assert.match(home,/data-hq-chat-league/);
+assert.match(home,/data-hq-open-chat/);
+assert.match(home,/sec_league_messages/);
+assert.match(home,/getLeagues/);
 assert.match(home,/LEAGUE RACE/);
 assert.match(home,/LIVE SCORES/);
 assert.match(app,/Pick saved securely online/);
