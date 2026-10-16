@@ -47,6 +47,22 @@ class SportFeedTests(unittest.TestCase):
   self.assertIn('first-pitch',result['sports']['baseball']['warning'])
   self.assertNotIn('displaying verified',result['sports']['baseball']['warning'])
   self.assertEqual(result['sports']['basketball']['source_windows']>0,True)
+ def test_team_schedules_are_checked_even_when_scoreboard_succeeds(self):
+  called=[]
+  def mock(url):
+   called.append(url)
+   if '/teams/333/schedule' in url:
+    return {'events':[event('team-only',333,55,'2026-11-12T23:00:00Z')]}
+   if '/teams/' in url:return {'events':[]}
+   if 'basketball/' in url:
+    return {'events':[event('scoreboard',8,2,'2026-11-09T01:00:00Z')]}
+   return {'events':[]}
+  result=sport.build(now=NOW,get=mock)
+  ids={g['id'] for g in result['sports']['basketball']['games']}
+  self.assertIn('basketball-2027-team-only',ids)
+  self.assertIn('basketball-2027-scoreboard',ids)
+  self.assertEqual(len([u for u in called if '/teams/' in u]),16)
+  self.assertIn('Incomplete SEC basketball coverage',result['sports']['basketball']['warning'])
  def test_offline_reuses_only_verified_old_fixture(self):
   existing={'sports':{'basketball':{'games':[
    {'id':'basketball-2027-old','season':2027,'kickoff_at':'2026-11-06T17:00:00Z','game_status':'scheduled'},
