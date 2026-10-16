@@ -191,9 +191,11 @@ def merge_game(saved, game):
         if old.get('game_status') == 'final' and game['game_status'] != 'final':
             game = {**game, 'game_status': 'final', 'winner_code': old.get('winner_code'),
                     'home_score': old.get('home_score'), 'away_score': old.get('away_score')}
-        # A changed tipoff must never silently replace the original pick lock.
-        # The UI reads kickoff_at; retain its previously published value and
-        # expose the proposed reschedule for follow-up verification.
+        # Keep the initial lock when a fixture moves, and require an
+        # explicit review of the proposed time to prevent accidental unlocks.
+        # Repeated refreshes must not erase an unresolved conflict.
+        if old.get('reschedule_pending'):
+            game['reschedule_pending'] = old['reschedule_pending']
         if (old.get('kickoff_at') and game.get('kickoff_at')
                 and old['kickoff_at'] != game['kickoff_at']
                 and old.get('source') != 'ESPN'):
