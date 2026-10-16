@@ -424,3 +424,13 @@
 .hq-chat-preview p{font-size:13px;line-height:1.5;margin:7px 0;color:#d9e8f0}
 .hq-home-chats .hq-secondary{margin-top:10px;min-height:42px}
 @media(min-width:850px){.hq-home-chats{max-width:100%;padding:18px 22px}}
+
+/* Calm, uncluttered Home — main action, chat, news, then simple links. */
+#sec-home-root .hq-calm-picks{margin:12px 0 14px}
+#sec-home-root .hq-calm-links{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:14px 0}
+#sec-home-root .hq-calm-links button{border:1px solid #3b5668;border-radius:11px;background:#142a3b;color:#eef5f8;min-height:52px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:5px;text-align:left;font-size:12px;font-weight:750;cursor:pointer}
+#sec-home-root .hq-calm-links button span{color:#f4ce83}
+#sec-home-root .hq-calm-links button:focus-visible{outline:3px solid #f4ce83;outline-offset:2px}
+#sec-home-root .hq-home-chats{margin:0 0 14px}
+#sec-home-root .hq-around-news{margin:0 0 12px}
+@media(max-width:640px){#sec-home-root .hq-calm-links{grid-template-columns:repeat(2,minmax(0,1fr))}#sec-home-root .hq-calm-links button:last-child{grid-column:1 / -1}#sec-home-root .hq-calm-picks{padding:17px}#sec-home-root .hq-sport-tabs button{min-height:46px;padding:8px 10px;font-size:12px}}
