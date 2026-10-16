@@ -103,7 +103,6 @@ def scoreboard_url(slug, date, limit=1800):
             '/scoreboard?' + urlencode({
                 'dates': date, 'groups': '8', 'limit': str(limit)
             }))
-        at += dt.timedelta(days=14)
 
 
 def download(url):
