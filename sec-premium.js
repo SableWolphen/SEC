@@ -91,6 +91,7 @@ function openTeam(code){
 function openGame(id){
  if(typeof id==="string"&&gameList().some(g=>g.id===id))pickedGame=id;
  app()?.setView?.("game-center");
+ window.SEC_CLEAN?.showScoreDetail?.();
 }
 function openResults(weekNo){
  if(Number.isInteger(weekNo)&&app()?.weeks?.some(w=>w.num===weekNo))selectedWeek=weekNo;

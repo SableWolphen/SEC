@@ -10,26 +10,23 @@ const desktop=html.match(/<nav class="desktop-nav"[\s\S]*?<\/nav>/)?.[0]||"";
 const mobile=html.match(/<nav class="bottom-nav"[\s\S]*?<\/nav>/)?.[0]||"";
 for(const bar of [desktop,mobile]){
  const destinations=[...bar.matchAll(/data-nav="([^"]+)"/g)].map(m=>m[1]);
- assert.deepEqual(destinations,["home","current-sport","league","game-center","settings"]);
+ assert.deepEqual(destinations,["home","current-sport","league","game-center","more"]);
 }
 for(const route of ["game-center","settings","league"]){
  assert.match(html,new RegExp("'"+route+"'"));
 }
-for(const label of ["Trophies","My Team","All Teams","Standings"]){
+for(const label of ["Trophies","My Team","Scores","My Results"]){
  assert.ok(home.includes(label),"Missing visible home link: "+label);
 }
 assert.match(home,/homeChats\(\)\+extraNews\(model\)/);
 assert.match(home,/hq-calm-links/);
-for(const label of ["News","Trophies","Scores","League & Chat","My Results","My Team","All Teams"]){
- assert.ok(home.includes(label),"Missing visible feature: "+label);
-}
 assert.match(home,/data-sec-find/);
 assert.match(home,/hq-explore/);
 assert.match(html,/class="sec-trophy-shortcut" data-nav="trophies"/);
 assert.match(html,/id="trophies-view"/);
 assert.match(html,/window\.SDSTrophyCase\?\.mount/);
 assert.match(html,/sec-settings-shortcuts/);
-assert.match(home,/Make my picks/);
+assert.match(home,/FINISH MY PICKS/);
 assert.match(home,/function homeChats\(/);
 assert.match(home,/data-hq-chat-league/);
 assert.match(home,/data-hq-open-chat/);

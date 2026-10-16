@@ -9,7 +9,6 @@ const app=()=>window.SEC_BRIDGE;
 const user=()=>window.secOnline?.getUser?.()||null;
 const routeFor=s=>s==="football"?"picks":s;
 const sportText={football:"Football",basketball:"Basketball",baseball:"Baseball"};
-const sportIcon={football:"🏈",basketball:"🏀",baseball:"⚾"};
 const number=n=>Number.isFinite(Number(n))?Number(n):0;
 const validScore=n=>Number.isInteger(n)&&n>=0;
 const validDate=s=>typeof s==="string"&&Number.isFinite(Date.parse(s));
@@ -35,21 +34,6 @@ function newsPreview(code){
   schoolRelated:Boolean(school&&Array.isArray(x.teams)&&x.teams.includes(school))
  }));
 }
-function discovery(model){
- const stories=model.headlines.length?model.headlines.map(item=>
-  '<a class="hq-headline" target="_blank" rel="noopener noreferrer" href="'+esc(item.url)+'" aria-label="Read article from '+esc(item.source)+': '+esc(item.title)+'">'+
-  '<span class="hq-headline-meta">'+(item.schoolRelated?"★ YOUR SCHOOL · ":"")+esc(item.source)+
-  ' · '+esc(new Date(item.published).toLocaleDateString("en-US",{month:"short",day:"numeric"}))+'</span>'+
-  '<strong>'+esc(item.title)+'</strong><span class="hq-headline-arrow" aria-hidden="true">↗</span></a>').join(""):
-  '<p class="hq-empty">Checking recent, source-linked SEC headlines. Open News to browse all sports.</p>';
- const newsCard='<section class="hq-feature-card hq-news-spotlight" aria-label="Latest SEC news">'+
-  '<div class="hq-feature-kicker"><span>📰 SEC NEWS</span><span>Publisher-linked</span></div>'+
-  '<h3>Headlines that matter.</h3><div class="hq-headlines">'+stories+'</div>'+
-  '<button type="button" data-hq-route="news" class="hq-news-all">All SEC news &amp; breaking stories →</button>'+
-  '</section>';
- return '<div class="hq-discover">'+newsCard+'</div>';
-}
-
 function nextKickoff(games,now=Date.now()){
  return games.filter(g=>g.status==="scheduled"&&!g.provisional&&g.clock&&g.clock>now)
   .sort((a,b)=>a.clock-b.clock)[0]||null;
@@ -91,54 +75,6 @@ function closestRival(model){
 }
 
 
-function hero(m){
- const game=m.favoriteUpcoming||m.nextKickoff;
- const p=m.progress;
- const action=m.moment==="finals"?"results":"picks";
- const actionLabel={
-  live:"Watch live scores →",picks:"Finish my picks →",
-  finals:"See my results →",upcoming:"View upcoming games →",idle:"Browse games →"
- }[m.moment]||"Browse games →";
- const title={
-  live:"Games are <em>live.</em>",picks:"Make your <em>picks.</em>",
-  finals:"Final <em>scores.</em>",upcoming:"Game Day <em>HQ</em>",
-  idle:"Game Day <em>HQ</em>"
- }[m.moment]||"Game Day <em>HQ</em>";
- const line=m.liveCount?m.liveCount+" live football game"+(m.liveCount===1?"":"s"):
-  p.unpickedOpen?p.unpickedOpen+" football pick"+(p.unpickedOpen===1?"":"s")+" still open":
-  p.total?p.chosen+" of "+p.total+" football picks selected · Week "+(m.week||"—"):
-  "Pick your school and get ready for game day.";
- return '<section class="hq-stadium-hero'+(game?"":" hq-no-upcoming")+
-  '" aria-label="Game Day HQ"'+(m.favoriteSchool?' data-sds-school="'+esc(m.favoriteSchool)+'"':'')+'>'+
- '<div class="hq-hero-copy"><span class="hq-eyebrow">SATURDAYS DOWN SOUTH</span>'+
- '<h2>'+title+'</h2>'+
- (m.favoriteSchool?'<div class="sds-home-favorite-mini" data-sds-school="'+esc(m.favoriteSchool)+'">'+
-  (window.SDS_VISUALS?.mark?.(m.favoriteSchool,{className:"sdsx-crest"})||'<span>'+esc(m.favoriteSchool)+'</span>')+
-  '<div><span>★ FOLLOWING YOUR SCHOOL</span><strong>'+esc(m.favoriteName||m.favoriteSchool)+'</strong>'+
-  '<small>'+(window.SEC_RANKINGS?.hasCurrent?.("football")&&window.SEC_RANKINGS?.rank?.(m.favoriteSchool,"football")?
-   '#'+window.SEC_RANKINGS.rank(m.favoriteSchool,"football")+' AP Top 25 · ':"")+
-  esc(m.favoriteRecord?m.favoriteRecord+" overall":"Your university, all season")+'</small>'+
-  '<div class="sds-home-favorite-actions" role="group" aria-label="Favorite school shortcuts">'+
-  '<button type="button" data-hq-route="team-hub">Team Hub →</button>'+
-  '<button type="button" data-hq-route="teams">Edit school</button></div></div></div>':
-  '<strong>Same schools. Bigger rivalries.</strong>')+
- '<p class="hq-hero-summary">'+esc(line)+'</p>'+
- '<div class="hq-hero-buttons"><button type="button" data-hq-route="'+action+'"'+
- (m.moment==="live"?' data-hq-focus="live"':m.moment==="picks"?' data-hq-focus="unpicked"':
-  m.moment==="upcoming"?' data-hq-focus="upcoming"':'')+' class="hq-primary">'+
- actionLabel+
- '</button>'+(m.favoriteSchool?"":'<button type="button" data-hq-route="teams" class="hq-hero-alt school-picker">☆ Choose Team →</button>')+
- '</div></div>'+
- (game?'<div class="hq-next-kickoff"><span class="hq-hero-next-label">NEXT VERIFIED KICKOFF</span>'+
-  '<div class="hq-next-teams"><span>'+
-  (window.SDS_VISUALS?.mark?.(game.away,{className:"sdsx-crest"})||"")+
-  '<b>'+esc(game.away)+'</b></span><small>VS</small><span>'+
-  (window.SDS_VISUALS?.mark?.(game.home,{className:"sdsx-crest"})||"")+
-  '<b>'+esc(game.home)+'</b></span></div>'+
-  '<strong>'+esc(countdown(game.clock)||"Starting soon")+'</strong><small>'+
-  esc(niceTime(game.clock))+' CT</small><button type="button" data-hq-route="picks" data-hq-focus="upcoming">View matchup →</button></div>':"")+
- '</section>';
-}
 let chatState={account:null,rows:[],selected:null,previews:{},loadedAt:0,busy:false};
 async function loadHomeChats(force=false){
  const me=user(),api=window.secOnline,client=api?.getClient?.();
@@ -166,50 +102,27 @@ async function loadHomeChats(force=false){
  }catch(_error){chatState.loadedAt=Date.now();}finally{chatState.busy=false;}
 }
 function homeChats(){
- const rows=chatState.rows;
- if(!user())return '<section class="hq-panel hq-home-chats"><div class="hq-panel-header"><span>LEAGUE CHATS</span></div><p>Sign in and join a league to chat with friends.</p><button type="button" data-hq-route="league" class="hq-secondary">Find my leagues →</button></section>';
- if(!rows.length)return '<section class="hq-panel hq-home-chats"><div class="hq-panel-header"><span>LEAGUE CHATS</span></div><p>Your private league conversations will appear here.</p><button type="button" data-hq-route="league" class="hq-secondary">Join a league →</button></section>';
+ const member=user(),joined=window.secOnline?.getLeagues?.()||[];
+ const rows=chatState.account===member?.id?chatState.rows.filter(l=>joined.some(x=>x.id===l.id)):[];
+ if(!user())return '<section class="hq-panel hq-home-chats"><div class="hq-panel-header"><span>League chats</span></div><p>Sign in and join a league to chat with friends.</p><button type="button" data-hq-route="league" class="hq-secondary">Find my leagues →</button></section>';
+ if(!rows.length)return '<section class="hq-panel hq-home-chats"><div class="hq-panel-header"><span>League chats</span></div><p>Your private league conversations will appear here.</p><button type="button" data-hq-route="league" class="hq-secondary">Join a league →</button></section>';
  const selected=rows.find(l=>l.id===chatState.selected)||rows[0];
  const msg=chatState.previews[selected.id];
  return '<section class="hq-panel hq-home-chats" aria-label="Switch between your league chats">'+
- '<div class="hq-panel-header"><span>💬 LEAGUE CHATS</span><span class="hq-feed-pill">'+rows.length+' leagues</span></div>'+
+ '<div class="hq-panel-header"><span>League chats</span><span class="hq-feed-pill">'+rows.length+' leagues</span></div>'+
  '<div class="hq-chat-tabs" role="group" aria-label="Choose league conversation">'+rows.map(l=>
  '<button type="button" data-hq-chat-league="'+esc(l.id)+'" aria-pressed="'+(l.id===selected.id)+'" class="'+(l.id===selected.id?'active':'')+'">'+esc(l.name||"My league")+'</button>').join("")+'</div>'+
  '<div class="hq-chat-preview"><strong>'+esc(selected.name||"League chat")+'</strong>'+
- (msg?'<p>'+esc(msg.body).slice(0,180)+'</p>':'<p>No messages yet. Start the conversation.</p>')+'</div>'+
+ (msg?'<p>'+esc(String(msg.body).slice(0,180))+'</p>':'<p>No messages yet. Start the conversation.</p>')+'</div>'+
  '<button type="button" class="hq-secondary" data-hq-open-chat="'+esc(selected.id)+'">Open this league chat →</button></section>';
-}
-function actionCards(m){
- const p=m.progress,idx=m.leaderboard.findIndex(r=>r.user_id===user()?.id);
- const tiles=[
- ["picks","✓","MAKE PICKS",p.unpickedOpen?p.unpickedOpen+" remaining":p.chosen+"/"+p.total+" selected"],
- ["league","▥","LEAGUE RACE",idx>=0?"You're #"+(idx+1):"View standings"],
- ["picks","◉","LIVE SCORES",m.liveCount?m.liveCount+" live now":"See scores"]
- ];
- return '<nav class="hq-actions" aria-label="Game Day shortcuts">'+tiles.map(t=>
- '<button type="button" data-hq-route="'+t[0]+'"'+(t[2]==="LIVE SCORES"?' data-hq-focus="live"':'')+
- ' class="hq-action"><span class="hq-action-icon" aria-hidden="true">'+
- t[1]+'</span><strong>'+t[2]+'</strong><small>'+esc(t[3])+'</small></button>').join("")+'</nav>';
-}
-function rivalCard(m){
- const r=m.rival;
- return '<section class="hq-rival-card" aria-label="Closest league rival"><div class="hq-panel-header">'+
- '<span>⚔ YOUR LEAGUE RIVAL</span><button type="button" data-hq-route="league" class="hq-inline">League →</button></div>'+
- (r?'<p class="hq-panel-sub">Closest opponent by verified season points.</p>'+
- '<div class="hq-rival-score"><div><small>YOU</small><strong>'+r.yourPoints+'</strong><small>points</small></div>'+
- '<span>VS</span><div><small>'+esc(r.name)+'</small><strong>'+r.theirPoints+'</strong><small>points</small></div></div>'+
- '<div class="hq-rival-track"><span style="width:'+(r.yourPoints+r.theirPoints>0?
- Math.round(100*r.yourPoints/(r.yourPoints+r.theirPoints)):50)+'%"></span></div>'+
- '<small>'+r.gap+' point'+(r.gap===1?"":"s")+' apart · Season totals, not a separate challenge</small>':
- '<p class="hq-empty">Join a league with friends to unlock your closest-rival spotlight.</p>')+'</section>';
 }
 function extraNews(m){
  return '<section class="hq-feature-card hq-around-news" aria-label="Around the SEC">'+
- '<div class="hq-panel-header"><span>📰 AROUND THE SEC</span>'+
+ '<div class="hq-panel-header"><span>Around the SEC</span>'+
  '<button type="button" data-hq-route="news" class="hq-inline">All news →</button></div>'+
- (m.moreHeadlines.length?'<div class="hq-extra-news">'+m.moreHeadlines.map(x=>
+ (m.headlines.length?'<div class="hq-extra-news">'+m.headlines.slice(0,1).map(x=>
  '<a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer" class="hq-extra-story"><small>'+
- esc(x.source)+'</small><strong>'+esc(x.title)+'</strong><span aria-hidden="true">↗</span></a>').join("")+'</div>':
+ esc(x.source)+' · '+esc(new Date(x.published).toLocaleDateString("en-US",{month:"short",day:"numeric"}))+'</small><strong>'+esc(x.title)+'</strong><span aria-hidden="true">↗</span></a>').join("")+'</div>':
  '<p class="hq-empty">More verified headlines will appear as publishers update.</p>')+'</section>';
 }
 
@@ -285,104 +198,33 @@ function snapshot(a=app(),today=Date.now()){
   recommended:window.SEC_SPORTS?.recommended?.()||"football"};
  return {...model,rival:closestRival(model)};
 }
-function niceTime(ms){
- if(!Number.isFinite(ms)||ms<=0)return "Kickoff TBA";
- return new Date(ms).toLocaleString("en-US",{weekday:"short",hour:"numeric",minute:"2-digit",timeZone:"America/Chicago"});
-}
-function shortAge(ms){
- if(!ms)return "Update time unavailable";
- const mins=Math.max(0,Math.floor((Date.now()-ms)/60000));
- return mins<1?"Updated less than a minute ago":mins<60?"Updated "+mins+" min ago":
-  "Updated "+Math.floor(mins/60)+" hr ago";
-}
-function match(g){
- const live=g.status==="live",finished=g.status==="final";
- const score=g.scored?'<strong class="hq-game-score">'+g.awayScore+' – '+g.homeScore+'</strong>':
-  '<strong class="hq-game-score muted">— : —</strong>';
- const field=live&&g.fieldPercent!==null&&g.possession?
-  '<div class="hq-field" aria-label="Live field position"><div class="hq-field-lines"></div>'+
-  '<span class="hq-field-ball" style="left:'+g.fieldPercent+'%"></span>'+
-  '<span class="hq-possession">'+esc(g.possession)+' possession</span></div>':"";
- return '<article class="hq-matchup" data-game-state="'+(live?"live":finished?"final":"upcoming")+'"><div class="hq-matchup-head"><span class="hq-status '+(live?"live":"")+'">'+
-  (live?"● LIVE":finished?"✓ FINAL":"UPCOMING")+'</span><span class="hq-time">'+
-  (live?esc(g.phase||"In progress"):finished?"Game complete":esc(niceTime(g.clock)))+'</span></div>'+
-  '<div class="hq-matchup-body"><span class="hq-matchup-team" data-sds-school="'+esc(g.away)+'">'+
-  (window.SDS_VISUALS?.mark?.(g.away,{className:"mini-logo"})||'<strong>'+esc(g.away)+'</strong>')+
-  '<strong>'+esc(g.away)+'</strong></span>'+score+
-  '<span class="hq-matchup-team" data-sds-school="'+esc(g.home)+'">'+
-  (window.SDS_VISUALS?.mark?.(g.home,{className:"mini-logo"})||'<strong>'+esc(g.home)+'</strong>')+
-  '<strong>'+esc(g.home)+'</strong></span></div>'+
-  field+(live?'<small class="hq-freshness">'+esc(shortAge(g.updated))+
-   ((!g.updated||Date.now()-g.updated>180000)?" · Score may be delayed":"")+'</small>':"")+
-  '</article>';
-}
-function standings(model){
- if(!model.loggedIn)return '<p class="hq-empty">Sign in to see your private league and compete with friends.</p>';
- if(!model.leaderboard.length)return '<p class="hq-empty">Join a league or open its standings to see the verified race.</p>';
- const who=user()?.id;
- return '<div class="hq-standings">'+model.leaderboard.map((r,i)=>{
-  const value=number(model.leagueKind==="club"?r.total:r.season_points);
-  const name=esc(String(r.display_name||"League member").slice(0,40));
-  const mine=r.user_id===who;
-  return '<div class="hq-standings-row'+(mine?" mine":"")+'"><span class="hq-rank">'+(i+1)+'</span>'+
-   '<span class="hq-standing-name">'+name+(mine?' <small>YOU</small>':"")+'</span>'+
-   '<strong>'+value+' <small>pts</small></strong></div>';
- }).join("")+'</div>'+
- '<p class="hq-note">Verified league points only · No projected winners</p>';
-}
 let previousMarkup=null;
 function render(model){
  const root=document.getElementById("sec-home-root");
  if(!root)return;
- const {progress:p}=model;
- const signedOut=model.authConfigured&&!model.loggedIn;
- const heading=p.unpickedOpen?p.unpickedOpen+" picks left before lock":
-  !p.total?"Your next slate is coming":"You're caught up on available picks";
- const detail=p.lockedMissing?
-  p.lockedMissing+" unpicked game"+(p.lockedMissing===1?" is":"s are")+" already locked.":
-  p.unpickedOpen?"Make your remaining selections before kickoff.":
-  "Review your saved choices or explore the league.";
- const sportNames=["football","basketball","baseball"];
- const currentUser=window.secOnline?.getUser?.()?.id||null;
- const leaguePosition=currentUser?model.leaderboard.findIndex(row=>row.user_id===currentUser):-1;
- // Derived solely from current authorized picks and standings, never sample data.
- const thirdLabel=model.moment==="live"?"LIVE NOW":model.moment==="finals"?
-  "FINAL GAMES":p.unpickedOpen?"TO PICK":"PICK STATUS";
- const thirdValue=model.moment==="live"?model.liveCount:model.moment==="finals"?
-  model.finalCount:p.unpickedOpen||"✓";
- const appMetrics='<div class="hq-app-metrics" aria-label="Your game day snapshot">'+
-  '<div class="hq-app-metric"><span>YOUR PICKS</span><strong>'+p.chosen+'<small>/'+p.total+'</small></strong></div>'+
-  '<div class="hq-app-metric"><span>LEAGUE RANK</span><strong>'+(leaguePosition>=0?'#'+(leaguePosition+1):'—')+'</strong></div>'+
-  '<div class="hq-app-metric"><span>'+thirdLabel+'</span><strong>'+thirdValue+'</strong></div></div>';
- const markup=hero(model)+
- '<div class="hq-sport-tabs" role="group" aria-label="Choose sport">'+sportNames.map(s=>
- '<button type="button" data-hq-route="'+routeFor(s)+'"'+(model.recommended===s?' class="suggested"':'')+'>'+
- sportIcon[s]+' '+sportText[s]+'</button>').join("")+'</div>'+
- '<section class="hq-panel hq-picks hq-calm-picks" aria-label="Your next picks">'+
- '<div class="hq-panel-header"><span>YOUR PICKS</span><strong>Week '+(model.week||"—")+'</strong></div>'+
- '<div class="hq-pick-head"><div><h3>'+esc(heading)+'</h3><p>'+esc(detail)+'</p></div>'+
- '<span class="hq-pick-count">'+p.chosen+'<small> / '+p.total+'</small></span></div>'+
- '<div class="hq-progress" role="progressbar" aria-label="Picks completed" aria-valuemin="0" aria-valuemax="'+p.total+
- '" aria-valuenow="'+p.chosen+'"><span style="width:'+p.percent+'%"></span></div>'+
- (signedOut?'<p class="hq-note">Sign in to save picks to your account.</p>':"")+
- '<button type="button" data-hq-route="picks" data-hq-focus="'+(p.unpickedOpen?"next":"all")+
- '" class="hq-primary">'+(p.unpickedOpen?"Make my picks →":"Review my picks →")+'</button></section>'+
+ const p=model.progress;
+ const markup='<div class="v3-home-intro"><span class="hq-eyebrow">SATURDAY, YOUR WAY</span>'+
+ '<h2><span class="v3-mobile-title">Game day starts here.</span><span class="v3-desktop-title">Your SEC Saturday, all in one place.</span></h2>'+
+ '<p><span class="v3-mobile-title">The essentials, not an endless dashboard.</span><span class="v3-desktop-title">Finish your picks, follow league conversations and catch up on the conference.</span></p></div>'+
+ '<div class="hq-sport-tabs" role="group" aria-label="Choose sport">'+["football","basketball","baseball"].map(s=>
+ '<button type="button" data-hq-route="'+routeFor(s)+'" class="'+(model.recommended===s?'suggested':'')+'">'+sportText[s]+'</button>').join("")+'</div>'+
+ '<div class="v3-home-grid"><section class="hq-panel hq-picks" aria-label="Your next picks">'+
+ '<span class="hq-eyebrow">YOUR NEXT ACTION · FOOTBALL</span><h3><span class="v3-mobile-title">Picks before kickoff.</span><span class="v3-desktop-title">Get your picks in before kickoff.</span></h3>'+
+ '<div class="v3-progress-labels"><span>'+p.chosen+' of '+p.total+' selected</span><strong>'+p.unpickedOpen+' left</strong></div>'+
+ '<div class="hq-progress" role="progressbar" aria-label="Picks selected" aria-valuemin="0" aria-valuemax="'+Math.max(1,p.total)+'" aria-valuenow="'+p.chosen+'"><span style="width:'+p.percent+'%"></span></div>'+
+ (p.lockedMissing?'<p class="hq-note">'+p.lockedMissing+' unpicked games already locked.</p>':'')+
+ '<button type="button" data-hq-route="picks" data-hq-focus="'+(p.unpickedOpen?'next':'all')+'" class="hq-primary">'+(p.unpickedOpen?'FINISH MY PICKS':'REVIEW MY PICKS')+' →</button>'+
+ (model.authConfigured&&!model.loggedIn?'<p class="hq-note">Sign in to save picks to your account.</p>':'')+'</section>'+
  homeChats()+extraNews(model)+
- '<section class="hq-explore" aria-label="All the important SEC features">'+
- '<div class="hq-panel-header"><span>EXPLORE</span><button type="button" data-sec-find class="hq-find-all">Find anything ⌕</button></div>'+
- '<nav class="hq-calm-links" aria-label="Go directly to a feature">'+
- '<button type="button" data-hq-route="news">📰 News <span>→</span></button>'+
- '<button type="button" data-hq-route="trophies">🏆 Trophies <span>→</span></button>'+
- '<button type="button" data-hq-route="game-center">◉ Scores <span>→</span></button>'+
- '<button type="button" data-hq-route="league">▥ League & Chat <span>→</span></button>'+
- '<button type="button" data-hq-route="results">✓ My Results <span>→</span></button>'+
- '<button type="button" data-hq-route="team-hub">★ My Team <span>→</span></button>'+
- '<button type="button" data-hq-route="teams">▦ All Teams <span>→</span></button>'+
- '</nav></section>'+
- '<p class="hq-disclaimer">Independent SEC fan game · Scores and news are shown only from available sources.</p>';
+ '<section class="hq-explore" aria-label="Quick access"><nav class="hq-calm-links" aria-label="Go directly to a feature">'+
+ '<button type="button" data-hq-route="game-center"><strong>Scores →</strong><small>Live &amp; final</small></button>'+
+ '<button type="button" data-hq-route="trophies"><strong>🏆 Trophies →</strong><small>Rivalry collection</small></button>'+
+ '<button type="button" class="v3-desktop-shortcut" data-hq-route="results">✓ My Results →</button>'+
+ '<button type="button" class="v3-desktop-shortcut" data-hq-route="team-hub">★ My Team →</button>'+
+ '</nav></section></div><button type="button" data-sec-find class="hq-find-all">Everything else: ⌕ Find any feature</button>';
  // Do not tear down Home's interactive DOM every 30 seconds if nothing changed:
  // refreshing while users swipe the page should not reset buttons or scroll.
- if(previousMarkup===markup&&root.querySelector?.(".hq-stadium-hero"))return;
+ if(previousMarkup===markup&&root.querySelector?.(".v3-home-intro"))return;
  previousMarkup=markup;
  const keepExpanded=root.classList?.contains("hq-expanded")||false;
  if(root.dataset)root.dataset.moment=model.moment;
@@ -436,8 +278,7 @@ document.addEventListener("click",e=>{
  }
  const open=e.target.closest?.("[data-hq-open-chat]");
  if(open&&chatState.rows.some(l=>l.id===open.dataset.hqOpenChat)){
-  window.secOnline?.useLeague?.(open.dataset.hqOpenChat);
-  app()?.setView?.("league");return;
+  void window.SEC_LEAGUE_TABS?.openChat?.(open.dataset.hqOpenChat);return;
  }
   const b=e.target.closest?.("[data-hq-route]");
  if(!b)return;

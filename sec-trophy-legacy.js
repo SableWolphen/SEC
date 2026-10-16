@@ -210,7 +210,7 @@
   top.setAttribute("aria-label","Collection totals");
   const signedIn=Boolean(ctx.signedIn&&user()?.id);
   top.innerHTML='<div class="legacy-overview-intro"><div><span class="legacy-kicker">YOUR TROPHY ROOM</span>'+
-   '<strong>One win. One trophy.</strong><p>'+
+   '<strong>Earned history stays visible.</strong><p>'+
    (signedIn?esc(league()?.name||"Your collection across sports"):
     'Sign in and join a league to start collecting trophies.')+
    '</p></div><span class="legacy-overview-art" aria-hidden="true">🏆</span></div>'+
@@ -239,7 +239,7 @@
   for(const part of parts){
    const details=document.createElement("details");details.className="legacy-case";
    details.dataset.legacyCase=part.id;
-   details.open=activeCase===part.id;
+   details.open=part.id!=="player";
    const summary=document.createElement("summary");
    summary.innerHTML='<span class="legacy-case-icon" aria-hidden="true">'+part.icon+'</span><span><strong>'+part.title+'</strong>'+
     '<small>'+part.subtitle+'</small></span><span class="legacy-case-arrow" aria-hidden="true">⌄</span>';
@@ -251,13 +251,26 @@
    details.addEventListener("toggle",()=>{
     if(!details.open||!details.isConnected)return;
     activeCase=part.id;
-    for(const other of content.querySelectorAll("details.legacy-case"))if(other!==details)other.open=false;
    });
    content.append(details);
   }
+  const filters=document.createElement("nav");filters.className="v3-collection-filters";
+  filters.setAttribute("aria-label","Browse trophy collection");
+  for(const [key,label] of [["all","All"],["school","Rivalries"],["player","Badges"]]){
+   const button=document.createElement("button");button.type="button";button.textContent=label;
+   button.setAttribute("aria-pressed",String(key==="all"));
+   button.addEventListener("click",()=>{
+    for(const b of filters.children)b.setAttribute("aria-pressed",String(b===button));
+    for(const section of content.children){
+     section.hidden=key!=="all"&&section.dataset.legacyCase!==key;
+     if(key!=="all"&&!section.hidden)section.open=true;
+    }
+   });
+   filters.append(button);
+  }
   const sportsNav=root.querySelector(".museum-sports");
-  if(sportsNav){sportsNav.insertAdjacentElement("afterend",top);top.insertAdjacentElement("afterend",content);}
-  else{root.append(top,content);}
+  if(sportsNav){sportsNav.insertAdjacentElement("afterend",top);top.insertAdjacentElement("afterend",filters);filters.insertAdjacentElement("afterend",content);}
+  else{root.append(top,filters,content);}
  }
  function maybeCelebrate(data,ctx){
   if(!ctx.signedIn||!ctx.leagueId)return;

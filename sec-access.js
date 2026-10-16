@@ -11,7 +11,7 @@ const entries=Object.freeze([
  {id:"football",title:"Football Games",sub:"Pick winners and follow scores together",icon:"🏈",group:"Play",terms:"matchups schedule picks",view:"picks"},
  {id:"basketball",title:"Basketball Picks",sub:"Tipoffs and basketball games",icon:"🏀",group:"Play",terms:"hoops courts",view:"basketball"},
  {id:"baseball",title:"Baseball Picks",sub:"Daily games and series",icon:"⚾",group:"Play",terms:"diamond series",view:"baseball"},
- {id:"scores",title:"Scores & Games",sub:"Live scores on the same cards as your picks",icon:"◉",group:"Game Day",terms:"football match score live final",view:"picks",filter:"live"},
+ {id:"scores",title:"Scores & Games",sub:"Live scores on the same cards as your picks",icon:"◉",group:"Game Day",terms:"football match score live final",view:"game-center"},
  {id:"game-detail",title:"Detailed Game Center",sub:"Full stats, drives and game discussion",icon:"▣",group:"Game Day",terms:"football match play field gamecast",view:"game-center"},
  {id:"results",title:"My Results & Career",sub:"Wins, accuracy and victory cards",icon:"▥",group:"Game Day",terms:"career statistics history wins losses share recap",view:"results"},
  {id:"league",title:"League Standings",sub:"See your position in the race",icon:"▤",group:"Leagues",terms:"leaderboard rankings points",view:"league",pane:"scores"},
@@ -26,7 +26,7 @@ const entries=Object.freeze([
  {id:"team-news",title:"Team News",sub:"Your school's headlines",icon:"📰",group:"Schools & News",terms:"favorite latest articles",view:"team-news"},
  {id:"news",title:"SEC News",sub:"Breaking conference headlines",icon:"▤",group:"Schools & News",terms:"articles updates",view:"news"},
  {id:"teams",title:"All 16 Teams",sub:"School profiles and records",icon:"🏟",group:"Schools & News",terms:"directory schools",view:"teams"},
- {id:"trophies",title:"Trophy Case",sub:"Championships and rivalry collectibles",icon:"🏆",group:"Collection",terms:"museum rewards achievements",view:"trophies"},
+ {id:"trophies",title:"Trophy Room",sub:"Championships and rivalry collectibles",icon:"🏆",group:"Collection",terms:"museum rewards achievements",view:"trophies"},
  {id:"settings",title:"Account & Settings",sub:"Privacy, alerts and profile",icon:"⚙",group:"Account",terms:"profile password sign in log in notifications",view:"settings"},
  {id:"notifications",title:"Notification Settings",sub:"Kickoff and final score alerts",icon:"🔔",group:"Account",terms:"push phone subscription reminder",view:"settings",extra:"notifications"}
 ]);
@@ -158,6 +158,7 @@ function showExtra(type){
   return;
  }
  if(!league)return;
+ const container=league.closest?.("details.v3-league-extras");if(container)container.open=true;
  const outer=league.querySelector("details");if(!outer)return;
  outer.open=true;
  const child=outer.querySelectorAll("details");
@@ -195,17 +196,21 @@ function navigate(id){
 function renderMore(){
  const root=$("sec-access-more");if(!root)return;
  loadPins();
- root.innerHTML='<div class="sec-access-more-top">'+
-  '<div><strong>Find anything, faster.</strong><p>One-tap access to every part of the app.</p></div>'+
-  '<button class="sec-access-more-search" type="button" data-sec-find>⌕ Find a page or feature</button></div>'+
-  '<section class="sec-access-shortcuts" aria-label="Pinned shortcuts"><div class="sec-access-heading"><h2>Your shortcuts</h2>'+
-  '<small>Use ☆ to customize</small></div>'+
-  '<div class="sec-access-pin-grid">'+pins.map(item).filter(Boolean).map(x=>
-  '<button type="button" data-sec-jump="'+esc(x.id)+'"><span aria-hidden="true">'+iconSvg(x.id)+
-  '</span><strong>'+esc(x.title)+'</strong></button>').join("")+'</div></section>'+
-  groups.map(group=>'<section class="sec-access-group" aria-label="'+esc(group)+'">'+
-  '<h2>'+esc(group)+'</h2><div class="sec-access-more-grid">'+entries.filter(x=>x.group===group).map(x=>
-  makeRow(x,true,true)).join("")+'</div></section>').join("");
+ const shortcuts=[["trophies","🏆 Trophy Room","Championships & rivalries"],["news","📰 SEC News","All headlines"],
+  ["results","✓ Results","Weekly recaps & statistics"],["team","★ Team Hub","School schedule & news"],
+  ["league-chat","💬 My Leagues","Chat & standings"],["settings","⚙ Settings","Account & notifications"]];
+ root.innerHTML='<button type="button" class="v3-account-card" data-nav="settings"><span>YOUR ACCOUNT</span><strong>Profile &amp; favorite school</strong><small>Your settings and preferences →</small></button>'+
+ '<button class="sec-access-more-search" type="button" data-sec-find>⌕ Search trophies, news, teams…</button>'+
+ '<section class="sec-access-shortcuts" aria-label="Your shortcuts"><div class="sec-access-heading"><h2>Your shortcuts</h2>'+
+ '<button type="button" data-sec-find>View all →</button></div><div class="v3-shortcut-grid">'+shortcuts.map(([id,title,sub])=>
+ '<button type="button" data-sec-jump="'+id+'"><strong>'+title+' →</strong><small>'+sub+'</small></button>').join("")+'</div></section>'+
+ '<p class="v3-directory-note">Every route has a visible home.</p>'+
+ '<details class="v3-all-features"><summary>All features &amp; personalized shortcuts</summary>'+
+ '<section class="sec-access-shortcuts" aria-label="Pinned shortcuts"><h2>Your pinned shortcuts</h2><p>Use ☆ to customize</p><div class="sec-access-pin-grid">'+
+ pins.map(item).filter(Boolean).map(x=>'<button type="button" data-sec-jump="'+esc(x.id)+'">'+iconSvg(x.id)+'<strong>'+esc(x.title)+'</strong></button>').join("")+'</div></section>'+
+ groups.map(group=>'<section class="sec-access-group" aria-label="'+esc(group)+'"><h2>'+esc(group)+'</h2><div class="sec-access-more-grid">'+
+ entries.filter(x=>x.group===group).map(x=>makeRow(x,true,true)).join("")+'</div></section>').join("")+'</details>';
+
 }
 function togglePin(id){
  if(!item(id))return;loadPins();

@@ -3,15 +3,20 @@
 "use strict";
 const byId=id=>document.getElementById(id);
 const manager=()=>window.SEC_LEAGUE_SETTINGS;
-let pane="scores",selectedKey=null,pending=false;
+let pane="scores",selectedKey=null,pending=false,requestedChat=null,chatRequest=0;
 const paneNames=["scores","chat","brags","more"];
+function chatLeagueId(item){
+ if(item?.kind==="football")return item.id;
+ return item?.kind==="club"&&item.sports?.includes("football")?item.detail?.football_league:null;
+}
 function eligible(){
  const member=window.secOnline?.getUser?.(),item=manager()?.getSelected?.();
- return {member,item,chat:!!member&&item?.kind==="football"};
+ return {member,item,chat:!!member&&!!chatLeagueId(item)};
 }
 function switchPane(next,focus=false){
  const {member,item,chat}=eligible(),allowed=member?["scores",...(chat?["chat"]:[]),"brags","more"]:["scores"];
  pane=allowed.includes(next)?next:"scores";
+ const view=byId("league-view");if(view)view.dataset.v3Pane=pane;
  const tabs=byId("fan-league-tabs");if(tabs)tabs.hidden=!member;
  for(const name of paneNames){
   const button=byId("fan-tab-"+name),content=byId("fan-pane-"+name),active=name===pane;
@@ -21,7 +26,8 @@ function switchPane(next,focus=false){
    button.classList.toggle("active",active);
    button.setAttribute("aria-selected",String(active));
   }
-  if(content)content.hidden=!active;
+  const sideBySide=window.matchMedia?.("(min-width:1000px)")?.matches&&member&&chat&&["scores","chat"].includes(pane)&&["scores","chat"].includes(name);
+  if(content)content.hidden=!(active||sideBySide);
  }
  if(focus)byId("fan-tab-"+pane)?.focus();
 }
@@ -39,7 +45,7 @@ function synchronize(){
  const {member,item}=eligible();
  const key=member?item?item.kind+":"+item.id:"empty":"guest";
  if(selectedKey!==key){
-  selectedKey=key;pane=member&&!item?"more":"scores";
+  selectedKey=key;pane=member&&!item?"more":pane==="chat"&&chatLeagueId(item)?"chat":"scores";
   if(member&&item){void window.SEC_PRIDE?.load?.(item.kind,item.id);void window.SEC_BRAGS?.load?.(item);
    void window.SEC_POWER?.show?.(item);
    void window.SEC_BRAG_ARENA?.load?.(item);
@@ -47,6 +53,8 @@ function synchronize(){
   else window.SEC_BRAGS?.render?.();
   for(const id of ["fan-league-club-manager","fan-league-single-manager","fan-league-football-manager","fan-league-chat-content"])byId(id)?.replaceChildren();
  }
+ if(requestedChat&&chatLeagueId(item)===requestedChat&&
+   window.secOnline?.getLeague?.()?.id===requestedChat){pane="chat";requestedChat=null;}
  switchPane(pane);
  if(!member)return;
  if(pane==="brags"){window.SEC_BRAGS?.render?.();void window.SEC_BRAG_ARENA?.load?.(item);}
@@ -56,9 +64,10 @@ function synchronize(){
  }else if(item){
   relocate("fan-single-league",".fan-standalone-settings","fan-league-single-manager");
   relocate("fan-single-league",".fan-single-panel > details.fan-fold","fan-league-single-manager");
-  if(item.kind==="football"){
+ }
+ if(item&&chatLeagueId(item)){
    const actual=window.secOnline?.getLeague?.();
-   if(actual?.id===item.id){
+   if(actual?.id===chatLeagueId(item)){
     relocate("league-content",".sec-scoreboard-chat","fan-league-chat-content");
     relocate("league-content",".fan-football-management","fan-league-football-manager");
     relocate("league-content",".fan-football-advanced","fan-league-football-manager");
@@ -67,7 +76,6 @@ function synchronize(){
     // Never show the previous league's messages during a fast league switch.
     byId("fan-league-chat-content")?.replaceChildren();
    }
-  }
  }
 }
 function schedule(){
@@ -112,6 +120,24 @@ for(const id of ["fan-league-choice","fan-single-league","fan-club-hub","league-
  const node=byId(id);
  if(node)new MutationObserver(schedule).observe(node,{childList:true,subtree:true});
 }
+window.matchMedia?.("(min-width:1000px)")?.addEventListener?.("change",()=>switchPane(pane));
 synchronize();
-window.SEC_LEAGUE_TABS=Object.freeze({switchPane,synchronize});
+async function openChat(id){
+ const uid=window.secOnline?.getUser?.()?.id;
+ if(!uid||!window.secOnline?.getLeagues?.().some(l=>l.id===id))return;
+ const request=++chatRequest;requestedChat=id;
+ // Select through the unified league manager so standings, composer and chat
+ // all refer to the same league, including when opened from Home.
+ await manager()?.load?.();
+ if(request!==chatRequest)return;
+ if(window.secOnline?.getUser?.()?.id!==uid){requestedChat=null;return;}
+ const item=manager()?.getLeagues?.().find(l=>chatLeagueId(l)===id);
+ if(!item){requestedChat=null;return;}
+ await manager().choose(item.kind+":"+item.id);
+ if(request!==chatRequest)return;
+ if(window.secOnline?.getUser?.()?.id!==uid){requestedChat=null;return;}
+ window.SEC_BRIDGE?.setView?.("league");
+ synchronize();
+}
+window.SEC_LEAGUE_TABS=Object.freeze({switchPane,synchronize,openChat});
 })();

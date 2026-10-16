@@ -1,0 +1,286 @@
+/* Figma V3 · Clean & Connected, page 17:2. Loaded after legacy skins so
+   the shared app services can keep their existing markup and behavior. */
+#sec-app.clean-connected{
+ --bg:#071522!important;--panel:#11283a!important;--panel-strong:#19364a!important;--gold:#f5cb85!important;
+ --text:#f7f6f2!important;--muted:#b3c5d1!important;--lime:#f5cb85!important;--accent:#f5cb85!important;
+ background:var(--bg)!important;color:var(--text)!important;font-family:Inter,Arial,sans-serif!important;
+}
+#sec-app.clean-connected *, #sec-app.clean-connected *::before,#sec-app.clean-connected *::after{box-sizing:border-box!important}
+#sec-app.clean-connected .ambient{display:none!important}
+#sec-app.clean-connected .app-shell{width:100%!important;max-width:1280px!important;padding:0 48px!important;margin:auto!important}
+#sec-app.clean-connected .site-header{height:95px!important;gap:24px!important;border:0!important;background:var(--panel)!important;margin:0 -48px 28px!important;padding:22px 28px!important;box-shadow:none!important}
+#sec-app.clean-connected .brand{min-width:0!important;gap:14px!important;flex-shrink:0!important}
+#sec-app.clean-connected .brand-mark{width:55px!important;height:40px!important;min-width:55px!important;border:0!important;border-radius:11px!important;background:var(--gold)!important;color:#0a1a28!important;display:grid!important;place-items:center!important;font:700 16px Inter,Arial,sans-serif!important;box-shadow:none!important;transform:none!important}
+#sec-app.clean-connected .brand-title{font-size:17px!important;letter-spacing:0!important;line-height:1.25!important;color:var(--text)!important}
+#sec-app.clean-connected .brand-title>span{display:inline!important;font:inherit!important;color:inherit!important;letter-spacing:0!important;margin-left:4px!important}
+#sec-app.clean-connected .brand-title small{display:block!important;color:var(--gold)!important;font-size:9px!important;letter-spacing:0!important;margin-top:5px!important}
+#sec-app.clean-connected .desktop-nav{display:flex!important;flex:1!important;justify-content:space-evenly!important;gap:8px!important;background:none!important;border:0!important;padding:0!important}
+#sec-app.clean-connected .desktop-nav .nav-link{padding:10px 12px!important;color:var(--muted)!important;font-size:13px!important;font-weight:400!important;border:0!important;background:transparent!important;box-shadow:none!important}
+#sec-app.clean-connected .desktop-nav .nav-link.active{color:var(--gold)!important;font-weight:700!important;background:none!important}
+#sec-app.clean-connected .site-header .profile-chip,#sec-app.clean-connected .site-header .sec-trophy-shortcut{display:none!important}
+#sec-app.clean-connected .sec-access-trigger{display:flex!important;justify-content:center!important;gap:6px!important;min-width:110px!important;min-height:40px!important;border:0!important;border-radius:10px!important;background:var(--panel-strong)!important;color:var(--text)!important;font-size:12px!important;box-shadow:none!important}
+#sec-app.clean-connected #main-content{min-height:calc(100vh - 200px)!important}
+#sec-app.clean-connected .view{padding:0 0 24px!important;max-width:none!important}
+#sec-app.clean-connected .view.hidden,#sec-app.clean-connected [hidden]{display:none!important}
+#sec-app.clean-connected .eyebrow,#sec-app.clean-connected .hq-eyebrow{font-size:10px!important;line-height:1.4!important;font-weight:700!important;letter-spacing:0!important;color:var(--gold)!important;margin:0 0 14px!important}
+#sec-app.clean-connected .eyebrow-dot,#sec-app.clean-connected .eyebrow-slash{display:none!important}
+#sec-app.clean-connected .page-intro{margin:0 0 16px!important;padding:0!important;border:0!important;display:block!important}
+#sec-app.clean-connected h1,#sec-app.clean-connected .page-intro h1{font-size:32px!important;font-weight:700!important;line-height:1.2!important;letter-spacing:-.6px!important;margin:0 0 16px!important;color:var(--text)!important}
+#sec-app.clean-connected h1 em{color:inherit!important;font-style:normal!important}
+#sec-app.clean-connected .page-intro p,#sec-app.clean-connected .v3-score-heading>p{font-size:14px!important;color:var(--muted)!important;line-height:1.5!important;margin:0!important}
+#sec-app.clean-connected button,#sec-app.clean-connected input,#sec-app.clean-connected select,#sec-app.clean-connected textarea{font-family:inherit!important}
+#sec-app.clean-connected button{cursor:pointer!important}
+#sec-app.clean-connected button:disabled{cursor:default!important}
+#sec-app.clean-connected :focus-visible{outline:2px solid var(--gold)!important;outline-offset:4px!important}
+#sec-app.clean-connected .footer{border:0!important;color:var(--muted)!important;font-size:10px!important;margin-top:55px!important;opacity:.8!important}
+/* Home uses the same reading order at both sizes; CSS places the right rail. */
+#sec-app.clean-connected #home-view>.eyebrow,#sec-app.clean-connected #home-view>.page-intro{display:none!important}
+#sec-app.clean-connected #sec-home-root{display:block!important;margin:0!important;padding:0!important;max-width:none!important}
+#sec-app.clean-connected .v3-home-intro h2{font-size:32px!important;line-height:1.2!important;letter-spacing:-.6px!important;margin:14px 0 16px!important;font-weight:700!important}
+#sec-app.clean-connected .v3-home-intro p{font-size:14px!important;color:var(--muted)!important;margin:0 0 14px!important;line-height:1.5!important}
+#sec-app.clean-connected .v3-mobile-title{display:none!important}
+#sec-app.clean-connected .hq-sport-tabs{display:flex!important;gap:8px!important;padding:0!important;margin:0 0 16px!important;background:none!important;border:0!important;max-width:414px!important}
+#sec-app.clean-connected .hq-sport-tabs button,#sec-app.clean-connected .global-sport-button,#sec-app.clean-connected .v3-segments button,#sec-app.clean-connected .v3-collection-filters button{background:var(--panel-strong)!important;border:0!important;border-radius:10px!important;color:var(--text)!important;font-size:11px!important;font-weight:700!important;padding:9px!important;min-height:40px!important;flex:1!important;box-shadow:none!important}
+#sec-app.clean-connected .hq-sport-tabs button.suggested,#sec-app.clean-connected .global-sport-button.active,#sec-app.clean-connected .v3-segments button[aria-pressed=true],#sec-app.clean-connected .v3-collection-filters button[aria-pressed=true]{background:var(--gold)!important;color:#0a1a28!important}
+#sec-app.clean-connected .v3-home-grid{display:grid!important;grid-template-columns:minmax(0,1.73fr) minmax(0,1fr)!important;gap:18px 20px!important;align-items:start!important}
+#sec-app.clean-connected .v3-home-grid>*{min-width:0!important;margin:0!important}
+#sec-app.clean-connected .hq-panel,#sec-app.clean-connected .hq-feature-card,#sec-app.clean-connected .hq-explore{padding:20px!important;background:var(--panel)!important;border:0!important;border-radius:16px!important;box-shadow:none!important;background-image:none!important}
+#sec-app.clean-connected .hq-picks{grid-column:1!important;grid-row:1!important;background:var(--panel-strong)!important;border-radius:18px!important}
+#sec-app.clean-connected .hq-picks h3{font-size:27px!important;font-weight:700!important;line-height:1.2!important;margin:10px 0 14px!important;letter-spacing:-.4px!important}
+#sec-app.clean-connected .v3-progress-labels{display:flex!important;justify-content:space-between!important;gap:8px!important;color:var(--muted)!important;font-size:12px!important;margin-bottom:10px!important}
+#sec-app.clean-connected .v3-progress-labels strong{color:var(--gold)!important}
+#sec-app.clean-connected .hq-progress{height:6px!important;background:#395367!important;border:0!important;border-radius:3px!important;margin:0 0 12px!important;overflow:hidden!important}
+#sec-app.clean-connected .hq-progress>span{display:block!important;height:100%!important;background:var(--gold)!important;border-radius:3px!important}
+#sec-app.clean-connected .hq-primary,#sec-app.clean-connected .hq-secondary{width:100%!important;background:var(--gold)!important;color:#0a1a28!important;min-height:44px!important;font-size:13px!important;border:0!important;border-radius:10px!important;font-weight:700!important;box-shadow:none!important;padding:11px!important;margin:0!important}
+#sec-app.clean-connected .hq-home-chats{grid-column:2!important;grid-row:1 / span 2!important;padding:18px!important}
+#sec-app.clean-connected .hq-panel-header{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;margin:0 0 12px!important;font-size:17px!important;color:var(--text)!important;font-weight:700!important;letter-spacing:0!important}
+#sec-app.clean-connected .hq-panel-header>span{font-size:inherit!important;color:inherit!important}
+#sec-app.clean-connected .hq-panel-header .hq-feed-pill{font-size:10px!important;color:var(--gold)!important;background:none!important;border:0!important}
+#sec-app.clean-connected .hq-chat-tabs{display:flex!important;gap:7px!important;overflow-x:auto!important;margin:0 0 10px!important}
+#sec-app.clean-connected .hq-chat-tabs button{flex:1 0 auto!important;background:var(--panel-strong)!important;color:var(--text)!important;font-size:11px!important;font-weight:700!important;border:0!important;border-radius:10px!important;padding:9px!important;min-height:40px!important;max-width:100%!important;overflow-wrap:anywhere!important;white-space:normal!important}
+#sec-app.clean-connected .hq-chat-tabs button.active{background:var(--gold)!important;color:#0a1a28!important}
+#sec-app.clean-connected .hq-chat-preview{background:var(--panel-strong)!important;padding:12px!important;border:0!important;border-radius:11px!important;margin-bottom:12px!important}
+#sec-app.clean-connected .hq-chat-preview strong{font-size:10px!important;color:var(--gold)!important;text-transform:uppercase!important}
+#sec-app.clean-connected .hq-chat-preview p,#sec-app.clean-connected .hq-empty,#sec-app.clean-connected .hq-home-chats>p{font-size:12px!important;line-height:1.5!important;color:var(--muted)!important;overflow-wrap:anywhere!important;margin:6px 0!important}
+#sec-app.clean-connected .hq-chat-preview p{color:var(--text)!important}
+#sec-app.clean-connected .hq-around-news{grid-column:1!important;grid-row:2!important}
+#sec-app.clean-connected .hq-inline,#sec-app.clean-connected .hq-find-all{border:0!important;background:none!important;color:var(--gold)!important;font-size:11px!important;padding:0!important;min-height:32px!important;font-weight:700!important}
+#sec-app.clean-connected .hq-extra-news{display:block!important}
+#sec-app.clean-connected .hq-extra-story{display:flex!important;flex-direction:column!important;align-items:start!important;gap:8px!important;text-decoration:none!important;color:var(--text)!important;padding:14px!important;background:var(--panel-strong)!important;border:0!important;border-radius:12px!important}
+#sec-app.clean-connected .hq-extra-story strong{font-size:17px!important;line-height:1.35!important}
+#sec-app.clean-connected .hq-extra-story small{color:var(--gold)!important;font-size:10px!important}
+#sec-app.clean-connected .hq-explore{grid-column:2!important;grid-row:3!important;padding:16px!important}
+#sec-app.clean-connected .hq-calm-links,#sec-app.clean-connected .v3-shortcut-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+#sec-app.clean-connected .hq-calm-links button,#sec-app.clean-connected .v3-shortcut-grid button{display:flex!important;flex-direction:column!important;align-items:start!important;gap:6px!important;min-width:0!important;min-height:44px!important;border:0!important;border-radius:12px!important;background:var(--panel-strong)!important;padding:12px!important;color:var(--text)!important;font-size:13px!important;font-weight:700!important;text-align:left!important;box-shadow:none!important}
+#sec-app.clean-connected .hq-calm-links small,#sec-app.clean-connected .v3-shortcut-grid small{font-weight:400!important;color:var(--muted)!important;font-size:10px!important;line-height:1.4!important}
+#sec-app.clean-connected #sec-home-root>.hq-find-all{margin-top:10px!important;color:var(--muted)!important;font-weight:400!important}
+#sec-app.clean-connected .hq-note{font-size:10px!important;color:var(--muted)!important;margin:8px 0!important}
+/* Existing game cards and save controls keep their event handlers and state. */
+#sec-app.clean-connected .global-sport-switch{background:none!important;border:0!important;padding:0!important;margin:0 0 16px!important;max-width:440px!important;box-shadow:none!important}
+#sec-app.clean-connected .global-sport-buttons{display:flex!important;gap:6px!important}
+#sec-app.clean-connected .global-sport-emoji,#sec-app.clean-connected .global-season-dot,#sec-app.clean-connected #sport-season-hint{display:none!important}
+#sec-app.clean-connected .game-card,#sec-app.clean-connected .sport-game,#sec-app.clean-connected .summary-card,#sec-app.clean-connected .content-card,#sec-app.clean-connected .side-card,#sec-app.clean-connected .sport-panel{background:var(--panel)!important;background-image:none!important;border:0!important;border-radius:16px!important;box-shadow:none!important}
+#sec-app.clean-connected .team-choice,#sec-app.clean-connected .sport-team-choice{background:var(--panel-strong)!important;border:1px solid transparent!important;border-radius:10px!important;color:var(--text)!important;box-shadow:none!important}
+#sec-app.clean-connected .team-choice.selected,#sec-app.clean-connected .sport-team-choice.selected{background:var(--gold)!important;color:#0a1a28!important;border-color:var(--gold)!important}
+#sec-app.clean-connected .team-choice.selected .team-nick{color:#19364a!important}
+#sec-app.clean-connected .primary-btn{background:var(--gold)!important;color:#0a1a28!important;border:0!important;box-shadow:none!important}
+#sec-app.clean-connected .primary-btn:hover{background:#ffdb9e!important}
+/* League: the actual selector controls both standings and secure chat. */
+#sec-app.clean-connected #league-view .fan-league-summary{background:var(--panel-strong)!important;border:0!important;border-radius:12px!important;padding:16px!important;margin:0 0 16px!important;box-shadow:none!important}
+#sec-app.clean-connected .fan-league-title-row h2,#sec-app.clean-connected .fan-league-title-row p,#sec-app.clean-connected .fan-current-league-meta{display:none!important}
+#sec-app.clean-connected .fan-league-title-row{margin:0 0 8px!important}
+#sec-app.clean-connected .fan-league-select{background:var(--panel-strong)!important;border:1px solid #395367!important;color:var(--text)!important;font-size:16px!important;font-weight:700!important;width:100%!important;max-width:100%!important}
+#sec-app.clean-connected .fan-league-tabs{display:flex!important;gap:10px!important;background:none!important;border:0!important;padding:0!important;margin:0 0 16px!important;box-shadow:none!important}
+#sec-app.clean-connected .fan-league-tabs button{flex:1!important;min-width:0!important;white-space:normal!important;background:var(--panel-strong)!important;color:var(--text)!important;border:0!important;border-radius:10px!important;font-size:11px!important;min-height:40px!important;padding:9px!important}
+#sec-app.clean-connected .fan-league-tabs button.active{background:var(--gold)!important;color:#0a1a28!important}
+#sec-app.clean-connected .sec-chat-card,#sec-app.clean-connected .sec-scoreboard-chat .sec-chat-card,#sec-app.clean-connected .fan-panel,#sec-app.clean-connected .fan-format-wrap{background:var(--panel)!important;background-image:none!important;box-shadow:none!important;border:0!important;border-radius:16px!important}
+#sec-app.clean-connected .sec-chat-message,#sec-app.clean-connected .sec-chat-message.mine{background:var(--panel-strong)!important;border:0!important;border-radius:12px!important}
+#sec-app.clean-connected .sec-chat-message-title strong{color:var(--gold)!important}
+#sec-app.clean-connected .sec-chat-input{background:var(--panel-strong)!important;color:var(--text)!important;border:1px solid #395367!important;border-radius:12px!important}
+#sec-app.clean-connected .sec-chat-heading h3{font-size:20px!important}
+#sec-app.clean-connected #fan-league-chat-content .sec-scoreboard-chat{border:0!important;margin:0!important;padding:0!important}
+/* Secondary destinations retain full data and expose a consistent return path. */
+#sec-app.clean-connected .v3-back{display:block!important;background:none!important;border:0!important;color:var(--gold)!important;font-size:11px!important;padding:0!important;margin:0 0 18px!important;min-height:32px!important;font-weight:700!important}
+#sec-app.clean-connected #news-view>.eyebrow,#sec-app.clean-connected #trophies-view>.eyebrow{display:none!important}
+#sec-app.clean-connected #news-view .sec-news-head>h2,#sec-app.clean-connected #news-view .sec-news-head>p,#sec-app.clean-connected #news-view .sec-news-eyebrow{display:none!important}
+#sec-app.clean-connected #news-view .sdsx-news-launch{display:none!important}
+#sec-app.clean-connected .sec-news-head{margin:0!important;padding:0!important;border:0!important;background:none!important}
+#sec-app.clean-connected .sec-news-card{background:var(--panel)!important;border:0!important;border-radius:14px!important;box-shadow:none!important;padding:17px!important}
+#sec-app.clean-connected .sec-news-feature{background:var(--panel-strong)!important;border:0!important;grid-column:1/-1!important}
+#sec-app.clean-connected .sec-news-feature .sec-news-card-title{font-size:23px!important;line-height:1.25!important;color:var(--text)!important}
+#sec-app.clean-connected .sec-news-open{background:var(--gold)!important;color:#0a1a28!important;border:0!important;border-radius:10px!important;padding:11px!important;font-weight:700!important}
+#sec-app.clean-connected .legacy-overview,#sec-app.clean-connected .legacy-case,#sec-app.clean-connected .museum-section{background:var(--panel)!important;border:0!important;border-radius:16px!important;box-shadow:none!important}
+#sec-app.clean-connected .legacy-overview{background:var(--panel-strong)!important}
+#sec-app.clean-connected .legacy-overview-intro strong{font-size:20px!important}
+#sec-app.clean-connected .v3-collection-filters,#sec-app.clean-connected .v3-segments{display:flex!important;gap:8px!important;margin:0 0 14px!important}
+#sec-app.clean-connected .legacy-case{margin:14px 0!important}
+#sec-app.clean-connected .legacy-case>summary{min-height:64px!important;padding:14px!important}
+#sec-app.clean-connected .v3-account-card{width:100%!important;display:flex!important;flex-direction:column!important;gap:8px!important;align-items:start!important;border:0!important;background:var(--panel-strong)!important;padding:16px!important;border-radius:16px!important;text-align:left!important;color:var(--text)!important;margin-bottom:13px!important}
+#sec-app.clean-connected .v3-account-card>span{font-size:10px!important;color:var(--gold)!important;font-weight:700!important}
+#sec-app.clean-connected .v3-account-card>strong{font-size:20px!important}
+#sec-app.clean-connected .v3-account-card>small{font-size:12px!important;color:var(--muted)!important}
+#sec-app.clean-connected .sec-access-more-search{display:block!important;width:100%!important;padding:12px!important;text-align:left!important;background:var(--panel)!important;color:var(--muted)!important;border:0!important;border-radius:12px!important;min-height:44px!important;margin:0 0 14px!important}
+#sec-app.clean-connected .sec-access-heading{display:flex!important;align-items:center!important;justify-content:space-between!important;margin:0 0 13px!important}
+#sec-app.clean-connected .sec-access-heading h2{font-size:13px!important;margin:0!important;color:var(--text)!important}
+#sec-app.clean-connected .sec-access-heading button{background:none!important;border:0!important;color:var(--gold)!important;font-size:11px!important;font-weight:700!important;min-height:32px!important}
+#sec-app.clean-connected .v3-shortcut-grid button{background:var(--panel)!important;padding:12px!important;font-size:14px!important;min-height:65px!important}
+#sec-app.clean-connected .v3-directory-note{font-size:11px!important;color:var(--muted)!important;margin:16px 0!important}
+#sec-app.clean-connected .v3-all-features{margin-top:26px!important;color:var(--muted)!important}
+#sec-app.clean-connected .v3-all-features>summary{cursor:pointer!important;padding:12px 0!important;font-size:13px!important}
+#sec-app.clean-connected #more-view{max-width:800px!important}
+#sec-app.clean-connected .sec-access-dialog{background:var(--bg)!important;color:var(--text)!important;border:1px solid #395367!important}
+#sec-app.clean-connected .sec-access-row{background:var(--panel)!important;border:0!important}
+/* Scores browse all three existing public feeds; detail view stays intact. */
+#sec-app.clean-connected #game-center-view>.sdsx-shell>.sdsx-brandline{display:none!important}
+#sec-app.clean-connected .v3-score-heading{margin-bottom:16px!important}
+#sec-app.clean-connected .v3-score-heading h1{margin-top:14px!important}
+#sec-app.clean-connected #v3-scores .v3-segments{max-width:440px!important}
+#sec-app.clean-connected .v3-score-notice{padding:17px!important;background:var(--panel-strong)!important;border-radius:18px!important;margin-bottom:14px!important}
+#sec-app.clean-connected .v3-score-notice>span,#sec-app.clean-connected .v3-score-card>span{font-size:10px!important;font-weight:700!important;color:var(--gold)!important}
+#sec-app.clean-connected .v3-score-notice h2{font-size:20px!important;margin:12px 0 8px!important}
+#sec-app.clean-connected .v3-score-notice p,#sec-app.clean-connected .v3-score-card p,#sec-app.clean-connected .v3-empty{font-size:12px!important;color:var(--muted)!important;line-height:1.5!important;margin:0!important}
+#sec-app.clean-connected .v3-score-list{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px!important}
+#sec-app.clean-connected .v3-score-card{padding:14px!important;background:var(--panel)!important;border-radius:14px!important;min-width:0!important}
+#sec-app.clean-connected .v3-score-card h3{font-size:17px!important;line-height:1.4!important;margin:8px 0!important;overflow-wrap:anywhere!important}
+#sec-app.clean-connected .v3-score-card h3 small{font-weight:400!important;color:var(--muted)!important}
+#sec-app.clean-connected .v3-score-card button{background:none!important;border:0!important;color:var(--gold)!important;font-size:12px!important;min-height:36px!important;padding:8px 0!important;text-align:left!important}
+#sec-app.clean-connected #v3-score-detail{margin-top:24px!important;background:var(--panel)!important;border-radius:16px!important;padding:16px!important;scroll-margin-top:20px!important}
+#sec-app.clean-connected #v3-score-detail>summary{cursor:pointer!important;font-size:13px!important;color:var(--gold)!important;min-height:32px!important}
+@media(min-width:1000px){
+ #sec-app.clean-connected #league-view{display:grid!important;grid-template-columns:minmax(0,420px) minmax(0,1fr)!important;gap:16px 20px!important;align-items:start!important}
+ #sec-app.clean-connected #league-view>.eyebrow,#sec-app.clean-connected #league-view>.page-intro{grid-column:1/-1!important;margin-bottom:0!important}
+ #sec-app.clean-connected #fan-league-choice{grid-column:1!important;grid-row:3!important}
+ #sec-app.clean-connected #fan-league-tabs{grid-column:2!important;grid-row:3!important}
+ #sec-app.clean-connected #fan-pane-scores{grid-column:1!important;grid-row:4!important}
+ #sec-app.clean-connected #fan-pane-chat{grid-column:2!important;grid-row:4!important}
+ #sec-app.clean-connected #fan-pane-brags,#sec-app.clean-connected #fan-pane-more,#sec-app.clean-connected #sec-next-league{grid-column:1/-1!important}
+}
+@media(max-width:999px){
+ #sec-app.clean-connected .app-shell{padding:0 24px!important}
+ #sec-app.clean-connected .site-header{margin:0 -24px 28px!important;padding:20px 24px!important;gap:14px!important}
+ #sec-app.clean-connected .brand-title{font-size:14px!important}
+ #sec-app.clean-connected .desktop-nav .nav-link{padding:10px 5px!important;font-size:12px!important}
+ #sec-app.clean-connected .sec-access-trigger{min-width:80px!important}
+ #sec-app.clean-connected .v3-score-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:790px){
+ #sec-app.clean-connected .app-shell{padding:0 18px!important}
+ #sec-app.clean-connected .site-header{height:76px!important;padding:23px 18px 12px!important;margin:0 -18px 23px!important;background:var(--bg)!important;gap:10px!important}
+ #sec-app.clean-connected .brand{gap:10px!important;flex:1!important}
+ #sec-app.clean-connected .brand-mark{width:47px!important;min-width:47px!important;height:32px!important;font-size:13px!important;border-radius:12px!important}
+ #sec-app.clean-connected .brand-title{font-size:17px!important;line-height:1.2!important}
+ #sec-app.clean-connected .brand-title>span{display:block!important;margin:3px 0 0!important;color:var(--gold)!important;font-size:11px!important}
+ #sec-app.clean-connected .brand-title small{display:none!important}
+ #sec-app.clean-connected .site-header .desktop-nav{display:none!important}
+ #sec-app.clean-connected .sec-access-trigger{min-width:88px!important;min-height:32px!important;font-size:11px!important;padding:9px!important}
+ #sec-app.clean-connected #main-content{min-height:calc(100dvh - 175px)!important}
+ #sec-app.clean-connected .view{padding-bottom:20px!important}
+ #sec-app.clean-connected h1,#sec-app.clean-connected .page-intro h1,#sec-app.clean-connected .v3-home-intro h2{font-size:29px!important;letter-spacing:-.5px!important;line-height:1.2!important;margin-bottom:14px!important}
+ #sec-app.clean-connected .page-intro p,#sec-app.clean-connected .v3-home-intro p,#sec-app.clean-connected .v3-score-heading>p{font-size:12px!important}
+ #sec-app.clean-connected .v3-mobile-title{display:inline!important}
+ #sec-app.clean-connected .v3-desktop-title{display:none!important}
+ #sec-app.clean-connected .v3-home-intro h2{margin-top:13px!important}
+ #sec-app.clean-connected .hq-sport-tabs{max-width:none!important;margin:0 0 13px!important;gap:6px!important}
+ #sec-app.clean-connected .hq-sport-tabs button,#sec-app.clean-connected .v3-segments button,#sec-app.clean-connected .global-sport-button,#sec-app.clean-connected .v3-collection-filters button{min-height:32px!important;padding:9px 5px!important}
+ #sec-app.clean-connected .v3-home-grid{display:flex!important;flex-direction:column!important;gap:13px!important}
+ #sec-app.clean-connected .v3-home-grid>*{width:100%!important}
+ #sec-app.clean-connected .hq-picks{padding:16px!important}
+ #sec-app.clean-connected .hq-picks h3{font-size:23px!important;margin:10px 0!important}
+ #sec-app.clean-connected .hq-primary,#sec-app.clean-connected .hq-secondary{min-height:38px!important}
+ #sec-app.clean-connected .hq-home-chats,#sec-app.clean-connected .hq-around-news{padding:14px!important}
+ #sec-app.clean-connected .hq-panel-header{font-size:17px!important;margin-bottom:9px!important}
+ #sec-app.clean-connected .hq-chat-tabs button{min-height:32px!important}
+ #sec-app.clean-connected .hq-chat-preview{padding:10px!important}
+ #sec-app.clean-connected .hq-home-chats .hq-secondary{background:none!important;color:var(--gold)!important;padding:0!important;text-align:left!important;font-size:11px!important;min-height:28px!important}
+ #sec-app.clean-connected .hq-explore{background:none!important;padding:0!important}
+ #sec-app.clean-connected .hq-calm-links{gap:12px!important}
+ #sec-app.clean-connected .hq-calm-links button{background:var(--panel)!important;padding:11px!important;font-size:14px!important;min-height:57px!important}
+ #sec-app.clean-connected .hq-calm-links .v3-desktop-shortcut{display:none!important}
+ #sec-app.clean-connected .hq-extra-story{padding:0!important;background:none!important}
+ #sec-app.clean-connected .hq-extra-story strong{font-size:17px!important}
+ #sec-app.clean-connected .v3-score-list{grid-template-columns:1fr!important}
+ #sec-app.clean-connected .bottom-nav{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;background:var(--panel)!important;border:0!important;backdrop-filter:none!important;box-shadow:none!important;min-height:68px!important;padding:12px 12px calc(12px + env(safe-area-inset-bottom))!important;z-index:50!important}
+ #sec-app.clean-connected .mobile-nav-btn{color:var(--muted)!important;font-size:11px!important;font-weight:400!important;min-height:40px!important;gap:0!important;padding:5px!important}
+ #sec-app.clean-connected .mobile-nav-btn svg{display:none!important}
+ #sec-app.clean-connected .mobile-nav-btn.active{color:var(--gold)!important;font-weight:700!important}
+ #sec-app.clean-connected .footer{margin-top:30px!important;padding-bottom:110px!important;font-size:9px!important}
+ #sec-app.clean-connected .picks-layout{display:flex!important;flex-direction:column!important}
+ #sec-app.clean-connected .side-column{width:100%!important}
+ #sec-app.clean-connected .game-card{border-radius:15px!important}
+ #sec-app.clean-connected .sec-news-controls{flex-wrap:wrap!important}
+ #sec-app.clean-connected .sec-news-head{padding:0!important}
+ #sec-app.clean-connected .sec-news-grid{grid-template-columns:1fr!important}
+ #sec-app.clean-connected .legacy-overview-intro strong{font-size:19px!important}
+}
+@media(prefers-reduced-motion:reduce){#sec-app.clean-connected *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+#sec-app.clean-connected #sec-home-root .hq-picks,#sec-app.clean-connected #sec-home-root .hq-around-news{display:block!important}
+#sec-app.clean-connected #sec-home-root .hq-calm-links{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+#sec-app.clean-connected #sec-home-root .hq-calm-links button{grid-column:auto!important;order:initial!important;width:auto!important;text-align:left!important;align-items:start!important}
+#sec-app.clean-connected .site-header .brand-title{display:block!important;font-family:Inter,Arial,sans-serif!important}
+#sec-app.clean-connected .site-header .brand-title>span{display:inline!important;font-family:inherit!important;font-size:inherit!important;letter-spacing:0!important;color:inherit!important}
+#sec-app.clean-connected .sec-access-trigger strong{display:inline!important}
+#sec-app.clean-connected #sec-fun-global{display:none!important}
+#sec-app.clean-connected .mobile-nav-btn{background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+@media(max-width:790px){
+ #sec-app.clean-connected .site-header .brand-title>span{display:block!important;font-size:11px!important;color:var(--gold)!important}
+ #sec-app.clean-connected #sec-home-root .hq-calm-links .v3-desktop-shortcut{display:none!important}
+}
+
+/* Resolve old ID-scoped Home layout and decorative pseudo-elements. */
+#sec-app.clean-connected #main-content>.view.hidden{display:none!important}
+#sec-app.clean-connected #main-content{padding-top:0!important}
+#sec-app.clean-connected .page-intro{background:none!important;border-radius:0!important}
+#sec-app.clean-connected::before,#sec-app.clean-connected::after,
+#sec-app.clean-connected .app-shell::before,#sec-app.clean-connected .app-shell::after,
+#sec-app.clean-connected .site-header::before,#sec-app.clean-connected .site-header::after,
+#sec-app.clean-connected #sec-home-root::before,#sec-app.clean-connected #sec-home-root::after{display:none!important}
+#sec-app.clean-connected .brand-title,#sec-app.clean-connected .brand-title span,
+#sec-app.clean-connected h1,#sec-app.clean-connected h2,#sec-app.clean-connected h3,
+#sec-app.clean-connected .hq-panel-header,#sec-app.clean-connected .hq-extra-story strong{font-family:Inter,Arial,sans-serif!important;text-transform:none!important;text-shadow:none!important}
+#sec-app.clean-connected #sec-home-root .hq-panel-header{border:0!important;padding:0!important;letter-spacing:0!important}
+#sec-app.clean-connected #sec-home-root .v3-home-grid>*{order:initial!important}
+#sec-app.clean-connected #sec-home-root .hq-home-chats{grid-row:1!important}
+#sec-app.clean-connected #sec-home-root .hq-explore{grid-row:2!important}
+#sec-app.clean-connected #sec-home-root .hq-extra-story>span{display:none!important}
+#sec-app.clean-connected #sec-home-root>.hq-find-all{display:block!important}
+#sec-app.clean-connected #sec-home-root .hq-secondary{background:var(--gold)!important;opacity:1!important}
+#sec-app.clean-connected .bottom-nav .mobile-nav-btn::before,#sec-app.clean-connected .bottom-nav .mobile-nav-btn::after{display:none!important}
+@media(max-width:790px){
+ #sec-app.clean-connected #sec-home-root .hq-home-chats .hq-secondary{background:none!important}
+}
+
+#sec-app.clean-connected .site-header .brand-title{font-weight:700!important}
+#sec-app.clean-connected #sec-home-root .hq-panel-header>span{font-size:17px!important;font-weight:700!important;text-transform:none!important;letter-spacing:0!important;font-family:Inter,Arial,sans-serif!important}
+#sec-app.clean-connected .global-sport-label{display:none!important}
+#sec-app.clean-connected .v3-pick-tools,#sec-app.clean-connected .v3-news-extras{background:var(--panel)!important;border:0!important;border-radius:12px!important;margin:14px 0!important;padding:12px!important;color:var(--muted)!important;font-size:12px!important}
+#sec-app.clean-connected .v3-pick-tools>summary,#sec-app.clean-connected .v3-news-extras>summary{cursor:pointer!important;min-height:24px!important;color:var(--gold)!important}
+#sec-app.clean-connected #picks-view .primary-column{width:100%!important;min-width:0!important}
+#sec-app.clean-connected #slate-pick-tools{width:100%!important;max-width:100%!important}
+#sec-app.clean-connected .slate-filter-row{display:flex!important;flex-wrap:wrap!important;gap:6px!important;min-width:0!important}
+#sec-app.clean-connected .slate-filter{white-space:normal!important;min-width:0!important}
+#sec-app.clean-connected .global-sport-options{display:flex!important;gap:6px!important}
+#sec-app.clean-connected #sec-home-root .v3-home-intro .hq-eyebrow{display:block!important;margin-bottom:0!important}
+#sec-app.clean-connected #sec-home-root .v3-home-intro h2{font-weight:700!important;text-shadow:none!important}
+#sec-app.clean-connected #sec-home-root .v3-home-grid .hq-picks{min-height:0!important}
+#sec-app.clean-connected #sec-home-root .hq-picks h3{font-weight:700!important}
+#sec-app.clean-connected .legacy-case[hidden]{display:none!important}
+@media(max-width:790px){
+ #sec-app.clean-connected .picks-layout{width:100%!important;min-width:0!important;align-items:stretch!important}
+ #sec-app.clean-connected .section-title-row{flex-wrap:wrap!important;gap:8px!important}
+ #sec-app.clean-connected .side-column{display:block!important}
+}
+#sec-app.clean-connected .v3-league-extras,#sec-app.clean-connected .v3-news-options{border:0!important;background:var(--panel)!important;border-radius:12px!important;padding:12px!important;margin:14px 0!important;color:var(--muted)!important;font-size:12px!important}
+#sec-app.clean-connected .v3-league-extras>summary,#sec-app.clean-connected .v3-news-options>summary{cursor:pointer!important;color:var(--gold)!important;min-height:24px!important}
+#sec-app.clean-connected .v3-league-extras{grid-column:1/-1!important}
+#sec-app.clean-connected .sec-news-byline{font-size:10px!important;margin:10px 0!important;line-height:1.5!important}
+#sec-app.clean-connected .sec-news-sports{background:none!important;border:0!important;padding:0!important;gap:6px!important}
+#sec-app.clean-connected .sec-news-sport-choice{background:var(--panel-strong)!important;border:0!important;border-radius:10px!important;min-height:32px!important;color:var(--text)!important;font-size:11px!important}
+#sec-app.clean-connected .sec-news-sport-choice.active{background:var(--gold)!important;color:#0a1a28!important}
+#sec-app.clean-connected .sec-news-feature .sec-news-card-title{font-family:Inter,Arial,sans-serif!important;font-weight:700!important}
+#sec-app.clean-connected .museum-head .museum-brand{display:none!important}
+#sec-app.clean-connected .museum-head{padding:0!important;border:0!important;background:none!important}
+#sec-app.clean-connected .legacy-overview-art{font-size:28px!important}
+#sec-app.clean-connected .v3-shortcut-grid button strong{font-weight:700!important}
+@media(max-width:790px){#sec-app.clean-connected:has(input:focus,textarea:focus,select:focus) .bottom-nav{display:none!important}}
+

@@ -217,13 +217,14 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <link rel="stylesheet" href="./sec-game-impact.css?v=20261013-impact-v1">
 <link rel="stylesheet" href="./sec-fan-moments.css?v=20261014-fun-v2">
 <link rel="stylesheet" href="./sec-screen-consistency.css?v=20261014-ui-continuity-v3">
+<link rel="stylesheet" href="./sec-clean-connected.css?v=20261016-v3">
 </head>
-<body>
+<body id="sec-app" class="clean-connected">
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
 <div class="app-shell">
   <header class="site-header">
     <a class="brand" href="#home" aria-label="Gamedays Down South home" id="home-link">
-      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M6 18c6-10 14-10 20-4M6 24c6-10 14-10 20-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="23" cy="7" r="3" fill="currentColor"/></svg></span>
+      <span class="brand-mark" aria-hidden="true">GDS</span>
       <span class="brand-title">GAMEDAYS<span>DOWN SOUTH</span><small>THE SEC PICK'EM CLUB</small></span>
     </a>
     <nav class="desktop-nav" aria-label="Main navigation">
@@ -231,10 +232,10 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       <button type="button" data-nav="current-sport" class="nav-link">Picks</button>
       <button type="button" data-nav="league" class="nav-link">League</button>
       <button type="button" data-nav="game-center" class="nav-link">Scores</button>
-      <button type="button" data-nav="settings" class="nav-link">You</button>
+      <button type="button" data-nav="more" class="nav-link">You</button>
     </nav>
     <button type="button" class="sec-trophy-shortcut" data-nav="trophies" aria-label="Open Trophy Room">🏆 <span>Trophies</span></button>
-    <button type="button" id="sec-access-trigger" class="sec-access-trigger" data-sec-find aria-haspopup="dialog" aria-controls="sec-access-dialog" aria-label="Explore or search any SEC page or feature"><span aria-hidden="true">⌕</span><strong>Explore</strong></button>
+    <button type="button" id="sec-access-trigger" class="sec-access-trigger" data-sec-find aria-haspopup="dialog" aria-controls="sec-access-dialog" aria-label="Explore or search any SEC page or feature"><span aria-hidden="true">⌕</span><strong>Find</strong></button>
     <button type="button" class="profile-chip" data-nav="settings" aria-label="Edit your profile"><span id="header-avatar">Y</span><span id="header-name">You</span><span id="header-school-pride" aria-live="polite"></span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m7 8 3 3 3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </header>
 
@@ -281,30 +282,30 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     </section>
     <section id="basketball-view" class="view hidden" aria-labelledby="basketball-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> THE COURT <span class="eyebrow-slash">/</span> SEC MEN’S BASKETBALL</div>
-      <div class="page-intro"><div><h1 id="basketball-heading">Basketball <em>games.</em></h1><p>Your picks, live scores and verified finals in one place.</p></div></div>
+      <div class="page-intro"><div><h1 id="basketball-heading">Choose your winners.</h1><p>Basketball picks, live scores and verified finals.</p></div></div>
       <div id="sec-day-basketball"></div>
       <div id="sport-basketball-content"></div>
     </section>
     <section id="baseball-view" class="view hidden" aria-labelledby="baseball-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> THE DIAMOND <span class="eyebrow-slash">/</span> SEC BASEBALL</div>
-      <div class="page-intro"><div><h1 id="baseball-heading">Baseball <em>games.</em></h1><p>Choose a winner, follow the score and see your result.</p></div></div>
+      <div class="page-intro"><div><h1 id="baseball-heading">Choose your winners.</h1><p>Baseball picks, live scores and verified finals.</p></div></div>
       <div id="sec-day-baseball"></div>
       <div id="sport-baseball-content"></div>
     </section>
     <section id="picks-view" class="view hidden" aria-labelledby="picks-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> 2026 SEC FOOTBALL SEASON <span class="eyebrow-slash">/</span> UNOFFICIAL FAN GAME</div>
-      <div class="page-intro"><div><h1 id="picks-heading">Your <em>games.</em></h1><p>One matchup, from your pick to the live score and final result.</p></div><div class="intro-side" id="countdown-badge"></div></div>
+      <div class="page-intro"><div><h1 id="picks-heading">Choose your winners.</h1><p>Three sports. One familiar picking flow.</p></div><div class="intro-side" id="countdown-badge"></div></div>
       <nav class="global-sport-switch" id="global-sport-switch" aria-label="Choose SEC sport">
         <span class="global-sport-label">YOUR GAME</span>
         <div class="global-sport-options" role="group" aria-label="Sports pick'em">
           <button type="button" class="global-sport-button" data-nav="picks" data-sport-tab="football" aria-label="Football picks" aria-pressed="false"><span class="global-sport-emoji" aria-hidden="true">🏈</span><span class="global-sport-name">Football</span><span class="global-season-dot" data-season-marker="football" hidden>Latest</span></button>
-          <button type="button" class="global-sport-button" data-nav="baseball" data-sport-tab="baseball" aria-label="Baseball picks" aria-pressed="false"><span class="global-sport-emoji" aria-hidden="true">⚾</span><span class="global-sport-name">Baseball</span><span class="global-season-dot" data-season-marker="baseball" hidden>Latest</span></button>
           <button type="button" class="global-sport-button" data-nav="basketball" data-sport-tab="basketball" aria-label="Basketball picks" aria-pressed="false"><span class="global-sport-emoji" aria-hidden="true">🏀</span><span class="global-sport-name">Basketball</span><span class="global-season-dot" data-season-marker="basketball" hidden>Latest</span></button>
+          <button type="button" class="global-sport-button" data-nav="baseball" data-sport-tab="baseball" aria-label="Baseball picks" aria-pressed="false"><span class="global-sport-emoji" aria-hidden="true">⚾</span><span class="global-sport-name">Baseball</span><span class="global-season-dot" data-season-marker="baseball" hidden>Latest</span></button>
         </div>
         <span class="global-sport-hint" id="sport-season-hint">Switch sports anytime</span>
       </nav>
       <div class="week-picker" id="week-picker" aria-label="Choose football week"></div>
-      <div id="weekly-score-strip" aria-live="polite"></div><div id="sec-next-picks"></div><div id="sec-next-rivalries"></div><div id="sec-live-score-strip" class="sec-live-score-strip" aria-live="polite" hidden></div>
+      <div id="weekly-score-strip" aria-live="polite"></div><div id="sec-live-score-strip" class="sec-live-score-strip" aria-live="polite" hidden></div>
       <div class="picks-layout">
         <div class="primary-column">
           <div class="sdsx-picks-cta"><div><span>YOUR SEASON STORY</span><strong>Every pick. Every win.</strong><small>Review confirmed game results and your league position.</small></div><button type="button" data-sdsx-view="results">🏆 My Results →</button></div>
@@ -312,7 +313,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
           <div class="section-title-row"><div><div class="overline">THE SLATE</div><h2>Week’s games <span id="matchup-count"></span></h2></div><div class="section-caption" id="slate-mode-caption">Straight Picks · 1 point per correct pick</div></div>
           <div id="slate-pick-tools" class="slate-pick-tools" role="group" aria-label="Filter matchups"></div>
           
-           <div id="games-list" class="games-list"></div><div id="weekly-tiebreaker-slot" class="weekly-tiebreaker-slot" aria-label="Weekly tiebreaker prediction"></div>
+           <div id="games-list" class="games-list"></div><details class="v3-pick-tools"><summary>Quick Pick, reminders &amp; rivalry challenges</summary><div id="sec-next-picks"></div><div id="sec-next-rivalries"></div></details><div id="weekly-tiebreaker-slot" class="weekly-tiebreaker-slot" aria-label="Weekly tiebreaker prediction"></div>
         </div>
         <aside class="side-column" aria-label="Your weekly summary">
           <div id="summary-slot"></div>
@@ -326,13 +327,13 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 
     <section id="league-view" class="view hidden" aria-labelledby="league-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> FRIENDLY COMPETITION</div>
-      <div class="page-intro"><div><h1 id="league-heading">Your <em>league.</em></h1></div></div>
-      <div id="fan-league-choice" aria-live="polite"></div><div id="sec-next-league"></div>
+      <div class="page-intro"><div><h1 id="league-heading"><span class="v3-mobile-title">Play with your people.</span><span class="v3-desktop-title">The competition is better together.</span></h1><p>Chat, standings and rivalries together.</p></div></div>
+      <div id="fan-league-choice" aria-live="polite"></div>
       <div id="fan-league-tabs" class="fan-league-tabs" role="tablist" aria-label="League sections" hidden>
-        <button type="button" id="fan-tab-scores" role="tab" aria-selected="true" aria-controls="fan-pane-scores" data-league-pane="scores">🏆 Standings</button>
-        <button type="button" id="fan-tab-chat" role="tab" aria-selected="false" aria-controls="fan-pane-chat" data-league-pane="chat" hidden>💬 Chat</button>
-        <button type="button" id="fan-tab-brags" role="tab" aria-selected="false" aria-controls="fan-pane-brags" data-league-pane="brags">🔥 Brags</button>
-        <button type="button" id="fan-tab-more" role="tab" aria-selected="false" aria-controls="fan-pane-more" data-league-pane="more">⚙ More</button>
+        <button type="button" id="fan-tab-scores" role="tab" aria-selected="true" aria-controls="fan-pane-scores" data-league-pane="scores">Standings</button>
+        <button type="button" id="fan-tab-chat" role="tab" aria-selected="false" aria-controls="fan-pane-chat" data-league-pane="chat" hidden>Chat</button>
+        <button type="button" id="fan-tab-brags" role="tab" aria-selected="false" aria-controls="fan-pane-brags" data-league-pane="brags">Rivalries</button>
+        <button type="button" id="fan-tab-more" role="tab" aria-selected="false" aria-controls="fan-pane-more" data-league-pane="more">Manage &amp; Invite</button>
       </div>
       <div id="fan-pane-scores" class="fan-league-pane" role="tabpanel" aria-labelledby="fan-tab-scores">
         <div id="fan-single-league"></div>
@@ -362,21 +363,22 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
           <div id="fan-series"></div>
         </details>
       </div>
+      <details class="v3-league-extras"><summary>League awards, trends &amp; challenges</summary><div id="sec-next-league"></div></details>
     </section>
 
     <section id="trophies-view" class="view hidden" aria-labelledby="trophies-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> THE RIVALRY COLLECTION</div>
-      <div class="page-intro"><div><h1 id="trophies-heading">Earn your <em>hardware.</em></h1><p>Pick the rivalry winner, then collect bragging rights.</p></div></div>
+      <div class="page-intro"><div><h1 id="trophies-heading">Your collection.</h1><p>Every title, rivalry trophy and achievement.</p></div></div>
       <div id="sds-trophy-case" aria-live="polite"></div>
       <div id="fan-achievements"></div>
     </section>
 
     <section id="news-view" class="view hidden" aria-labelledby="news-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> THE SEC NEWSROOM <span class="eyebrow-slash">/</span> SOURCE-LINKED STORIES</div>
-      <div class="page-intro"><div><h1 id="news-heading">Stay in the <em>know.</em></h1><p>Breaking news, fast recaps, and the full story one tap away.</p></div></div>
+      <div class="page-intro"><div><h1 id="news-heading">Around the conference.</h1><p>One featured story. The rest when you want it.</p></div></div>
       <div class="sdsx-news-launch"><div><span>★ YOUR UNIVERSITY</span><strong>Team News &amp; Ranking Movers</strong></div><button type="button" data-sdsx-view="team-news">Open Team News →</button></div>
-      <div id="sec-athlete-awards-root" aria-live="polite"></div>
       <div id="sec-news-root" aria-live="polite"></div>
+      <details class="v3-news-extras"><summary>SEC Player Awards</summary><div id="sec-athlete-awards-root" aria-live="polite"></div></details>
     </section>
 
     <section id="teams-view" class="view hidden" aria-labelledby="teams-heading">
@@ -388,7 +390,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 
     <section id="more-view" class="view hidden" aria-labelledby="more-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR SEC CLUBHOUSE</div>
-      <div class="page-intro"><div><h1 id="more-heading">The rest of the <em>clubhouse.</em></h1><p>All your news, teams and account controls, without cluttering game day.</p></div></div>
+      <div class="page-intro"><div><h1 id="more-heading">It’s all here.</h1><p>One obvious place for every feature.</p></div></div>
       <div id="sec-access-more" class="sec-access-more" aria-label="Complete app directory">
         <div class="sec-access-fallback" aria-label="Basic navigation">
           <button type="button" data-nav="trophies">🏆 Trophy Room</button>
@@ -414,7 +416,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
  <button type="button" data-nav="current-sport" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM8 10l2.5 2.5L16 7"/></svg><span>Picks</span></button>
  <button type="button" data-nav="league" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19v-2a5.5 5.5 0 0 1 11 0v2M17 6a3 3 0 0 1 0 6M17 14a5 5 0 0 1 3.5 5"/></svg><span>League</span></button>
  <button type="button" data-nav="game-center" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10v6a5 5 0 0 1-10 0V3ZM7 5H4v4a4 4 0 0 0 4 4m9-8h3v4a4 4 0 0 0 4-4M12 14v5m-5 2h10M9 19h6"/></svg><span>Scores</span></button>
- <button type="button" data-nav="settings" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span>You</span></button>
+ <button type="button" data-nav="more" class="mobile-nav-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span>You</span></button>
 </nav>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <dialog id="sec-access-dialog" class="sec-access-dialog" aria-labelledby="sec-access-title" aria-modal="true">
@@ -647,9 +649,9 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       pageIntro.insertAdjacentElement('afterend',sportSwitcher);
     }
     document.querySelectorAll('[data-nav]').forEach(el=>{
-      const on=el.dataset.nav===v||(el.dataset.nav==='home'&&v==='team-hub')||(el.dataset.nav==='current-sport'&&[...sportViews,'results'].includes(v))||(el.dataset.nav==='settings'&&['settings','more'].includes(v));
+      const on=el.dataset.nav===v||(el.dataset.nav==='current-sport'&&[...sportViews,'results'].includes(v))||(el.dataset.nav==='more'&&['settings','more','news','trophies','teams','team-news','team-hub'].includes(v));
       el.classList.toggle('active',on);
-      if(el.classList.contains('nav-link'))el.setAttribute('aria-current',on?'page':'false');
+      if(el.matches('.nav-link,.mobile-nav-btn'))el.setAttribute('aria-current',on?'page':'false');
     });
     const sportTarget={football:'picks',baseball:'baseball',basketball:'basketball'};
     document.querySelectorAll('[data-sport-tab]').forEach(el=>{
@@ -683,6 +685,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     window.SEC_NEXT?.onView?.(v);
     window.SEC_FAN_MOMENTS?.onView?.(v);
     window.SEC_ACCESS?.sync?.(v);
+    window.SEC_CLEAN?.onView?.(v);
     if(location.hash!=='#'+v)history.replaceState(null,'','#'+v);
     window.scrollTo({top:0,behavior:'instant'});
   }
@@ -1005,5 +1008,6 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./sec-play-by-play.js?v=20261012-plays-v1"></script>
 <script src="./sec-game-impact.js?v=20261013-impact-v1"></script>
 <script src="./sec-fan-moments.js?v=20261015-savage-v2"></script>
+<script src="./sec-clean-connected.js?v=20261016-v3"></script>
 </body>
 </html>

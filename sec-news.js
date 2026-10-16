@@ -11,8 +11,8 @@
  let team="all",breakingOnly=false,search="",sourceNames=[],sport=null,headlineLimit=8;
  const SPORTS={
   football:{label:"Football",emoji:"🏈"},
-  baseball:{label:"Baseball",emoji:"⚾"},
-  basketball:{label:"Basketball",emoji:"🏀"}
+  basketball:{label:"Basketball",emoji:"🏀"},
+  baseball:{label:"Baseball",emoji:"⚾"}
  };
  function selectedSport(){
   if(sport&&SPORTS[sport])return sport;
@@ -165,8 +165,8 @@
   root.replaceChildren();
   const heading=make("section","sec-news-head");
   const top=make("div","sec-news-eyebrow","THE LATEST · SEC "+SPORTS[selectedSport()].label.toUpperCase());
-  const title=make("h2","","Big games. Bigger headlines.");
-  const intro=make("p","","Final scores, quick recaps, and everything happening around the SEC.");
+  const title=make("h2","","Around the conference.");
+  const intro=make("p","","One featured story. The rest when you want it.");
   const status=make("div","sec-news-status");
   status.append(make("span","",updated?"Updated "+elapsed(updated):"Waiting for first automatic update"));
   const refresh=make("button","sec-news-refresh",loading?"Refreshing…":"↻ Refresh");
@@ -179,16 +179,15 @@
   const details=make("p","sec-news-byline","Source excerpts, not independent reporting. Published times are from the original outlets. Feed checks run approximately hourly; alerts aren't instantaneous.");
   root.append(details);
   sportFilters(root);
-  const recap=make("section","");recap.id="sec-recap-root";root.append(recap);
+  const recap=make("section","");recap.id="sec-recap-root";
+  const recaps=make("details","v3-news-extras");recaps.append(make("summary","","Game recaps & verified finals"),recap);root.append(recaps);
   window.SEC_RECAPS?.mount?.(selectedSport(),team);
-  const storyHeading=make("div","sec-news-stories-heading");
-  storyHeading.append(make("span","sec-news-eyebrow","THE LATEST"),
-   make("h3","","Around the conference"));
-  root.append(storyHeading);
-  filters(root);
+  const options=make("details","v3-news-options");options.append(make("summary","","Filter headlines by school or keyword"));
+  filters(options);root.append(options);
   const count=make("p","sec-news-result-count");count.id="sec-news-count";root.append(count);
   const feed=make("div","");feed.id="sec-news-results";root.append(feed);
   drawResults();
+  root.append(recaps);
  }
  async function reload(force=false){
   if(loading)return;

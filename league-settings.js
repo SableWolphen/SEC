@@ -242,6 +242,10 @@ async function loadNow(force=false){
   const item=selectedItem();
   if(item?.kind==="football"&&win.secOnline?.getLeague?.()?.id!==item.id)
    win.secOnline?.useLeague?.(item.id);
+  if(item?.kind==="club"&&item.sports.includes("football")&&
+   win.secOnline?.getLeagues?.().some(l=>l.id===item.detail.football_league)&&
+   win.secOnline?.getLeague?.()?.id!==item.detail.football_league)
+   win.secOnline.useLeague(item.detail.football_league);
   if(item&&["basketball","baseball"].includes(item.kind)&&!olderSeason(item)&&
     win.SEC_SPORTS?.getState?.(item.kind)?.active!==item.id)
    win.SEC_SPORTS?.selectLeague?.(item.kind,item.id);
@@ -261,6 +265,9 @@ async function choose(value){
  render();
  try{
   if(x.kind==="football")win.secOnline?.useLeague?.(x.id);
+  else if(x.kind==="club"&&x.sports.includes("football")&&
+    win.secOnline?.getLeagues?.().some(l=>l.id===x.detail.football_league))
+   win.secOnline.useLeague(x.detail.football_league);
   else if(x.kind!=="club"&&!olderSeason(x))win.SEC_SPORTS?.selectLeague?.(x.kind,x.id);
   await standings();
  }catch(e){message="Could not refresh this league’s standings: "+(e.message||"Please retry.");}

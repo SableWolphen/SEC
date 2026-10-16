@@ -8,7 +8,9 @@
     "mobile:check": "node scripts/check-mobile.cjs",
     "mobile:add:android": "npm run mobile:prepare && npx cap add android",
     "mobile:add:ios": "npm run mobile:prepare && npx cap add ios",
-    "mobile:sync": "npm run mobile:prepare && npx cap sync"
+    "mobile:sync": "npm run mobile:prepare && npx cap sync",
+    "test:design": "node scripts/smoke-home.cjs && node scripts/smoke-clean-navigation.cjs && node scripts/smoke-access.cjs && node scripts/smoke-chat-navigation.cjs && node scripts/smoke-league-tabs.cjs",
+    "audit:design": "node scripts/audit-clean-connected.cjs"
   },
   "dependencies": {
     "@capacitor/core": "^8.0.0",

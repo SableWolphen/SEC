@@ -13,3 +13,8 @@ ios/
 .env
 .env.*
 .DS_Store
+
+# Local validation outputs
+artifacts/
+__pycache__/
+football-health-status.json
