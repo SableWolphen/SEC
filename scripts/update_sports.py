@@ -176,6 +176,14 @@ def validated_public_games(rows, sport, year):
     return good
 
 
+def fixture_signature(game):
+    """Match same-day opponents across ESPN and original server IDs."""
+    def normalize(name):
+        return re.sub(r'[^a-z0-9]', '', str(name or '').lower())
+    return (str(game.get('kickoff_at', ''))[:10],
+            normalize(game.get('away_name')), normalize(game.get('home_name')))
+
+
 def merge_game(saved, game):
     """Do not undo a verified final when upstream schedules temporarily regress."""
     old = saved.get(game['id'])
@@ -261,17 +269,19 @@ def build(now=None, get=download, existing=None, fallback=None):
                              for g in official if g.get('espn_event_id')}
         official_signatures = {
             (g['away_code'], g['home_code'], g['kickoff_at'][:10])
-            for g in official if sport == 'basketball'
+            for g in official
         }
+        named_signatures = {fixture_signature(g) for g in official}
         for game in official:
             merge_game(saved, game)
         for game_id, game in list(saved.items()):
             if game.get('source') != 'ESPN' or game_id in {g['id'] for g in official}:
                 continue
             espn_id = game_id.split('-')[-1]
-            same_match = (sport == 'basketball' and
-                          (game['away_code'], game['home_code'], game['kickoff_at'][:10])
-                          in official_signatures)
+            same_match = (
+                (game['away_code'], game['home_code'], game['kickoff_at'][:10])
+                in official_signatures or fixture_signature(game) in named_signatures
+            )
             if espn_id in official_espn_ids or same_match:
                 del saved[game_id]
 
