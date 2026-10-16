@@ -354,7 +354,7 @@ function render(model){
   '<div class="hq-app-metric"><span>YOUR PICKS</span><strong>'+p.chosen+'<small>/'+p.total+'</small></strong></div>'+
   '<div class="hq-app-metric"><span>LEAGUE RANK</span><strong>'+(leaguePosition>=0?'#'+(leaguePosition+1):'—')+'</strong></div>'+
   '<div class="hq-app-metric"><span>'+thirdLabel+'</span><strong>'+thirdValue+'</strong></div></div>';
- const markup=hero(model)+appMetrics+actionCards(model)+homeChats()+
+ const markup=hero(model)+appMetrics+actionCards(model)+homeChats()+extraNews(model)+
  '<nav class="hq-discover-links" aria-label="Explore SEC features">'+
  '<button type="button" data-hq-route="news">📰 <strong>SEC News</strong><small>Latest headlines</small></button>'+
  '<button type="button" data-hq-route="trophies">🏆 <strong>Trophies</strong><small>Awards &amp; history</small></button>'+
@@ -393,7 +393,7 @@ function render(model){
     '<div class="hq-quick-links"><button type="button" data-hq-route="trophies">🏆 Trophy Room <span>→</span></button>'+
     '<button type="button" data-hq-route="news">📰 SEC News <span>→</span></button>'+
     '<button type="button" data-hq-route="teams">⭐ Favorite Teams <span>→</span></button></div></section>'+
-  '</div>'+extraNews(model)+discovery(model)+
+  '</div>'+discovery(model)+
   '<button class="hq-mobile-expand" type="button" data-hq-expand aria-expanded="false" aria-controls="sec-home-extras">More from your league &amp; SEC <span aria-hidden="true">⌄</span></button>'+
   '<div class="hq-bottom-grid" id="sec-home-extras">'+rivalCard(model)+'</div>'+
   '<p class="hq-disclaimer">Independent SEC fan game · No live score is shown until confirmed by the score feed. '+
