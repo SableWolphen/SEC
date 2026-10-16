@@ -292,7 +292,7 @@ assert.ok(html.indexOf('id="sec-fun-global"')<html.indexOf('id="home-view"'),
  "global roast must live outside any hidden routed view");
 assert.match(html,/sec-screen-consistency\.css\?v=20261014-ui-continuity-v3/);
 assert.match(read("sw.js"),/sec-screen-consistency\.css\?v=20261014-ui-continuity-v3/);
-assert.match(read("sw.js"),/sec-pickem-v113/);
+assert.match(read("sw.js"),/sec-pickem-v115/);
 assert.match(read("sec-screen-consistency.css"),/#sec-fun-global\[hidden\]/);
 assert.match(read("sec-screen-consistency.css"),/\.sdsx-brandline/);
 
