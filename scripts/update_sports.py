@@ -185,11 +185,20 @@ def fixture_signature(game):
 
 
 def merge_game(saved, game):
-    """Do not undo a verified final when upstream schedules temporarily regress."""
+    """Keep authoritative game IDs, final results, and existing pick references."""
     old = saved.get(game['id'])
-    if old and old.get('game_status') == 'final' and game['game_status'] != 'final':
-        game = {**game, 'game_status': 'final', 'winner_code': old.get('winner_code'),
-                'home_score': old.get('home_score'), 'away_score': old.get('away_score')}
+    if old:
+        if old.get('game_status') == 'final' and game['game_status'] != 'final':
+            game = {**game, 'game_status': 'final', 'winner_code': old.get('winner_code'),
+                    'home_score': old.get('home_score'), 'away_score': old.get('away_score')}
+        # A changed tipoff must never silently replace the original pick lock.
+        # The UI reads kickoff_at; retain its previously published value and
+        # expose the proposed reschedule for follow-up verification.
+        if (old.get('kickoff_at') and game.get('kickoff_at')
+                and old['kickoff_at'] != game['kickoff_at']
+                and old.get('source') != 'ESPN'):
+            game = {**game, 'kickoff_at': old['kickoff_at'],
+                    'reschedule_pending': game['kickoff_at']}
     saved[game['id']] = game
 
 
