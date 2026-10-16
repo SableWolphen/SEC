@@ -20,6 +20,11 @@ for(const label of ["Trophies","My Team","All Teams","Standings"]){
 }
 assert.match(home,/homeChats\(\)\+extraNews\(model\)/);
 assert.match(home,/hq-calm-links/);
+for(const label of ["News","Trophies","Scores","League & Chat","My Results","My Team","All Teams"]){
+ assert.ok(home.includes(label),"Missing visible feature: "+label);
+}
+assert.match(home,/data-sec-find/);
+assert.match(home,/hq-explore/);
 assert.match(html,/class="sec-trophy-shortcut" data-nav="trophies"/);
 assert.match(html,/id="trophies-view"/);
 assert.match(html,/window\.SDSTrophyCase\?\.mount/);
