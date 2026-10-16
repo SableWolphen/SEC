@@ -45,8 +45,16 @@ jobs:
               print(sport, len(d['sports'][sport]['games']), 'public games,',d['sports'][sport].get('verified_database_games',0),'from verified database')
               if d['sports'][sport].get('source_windows',0) == 0:
                   print('::warning::All '+sport+' live schedule queries failed; historical verified fixtures retained.')
-              if sport == 'basketball' and len(d['sports'][sport]['games']) < 100:
-                  print('::warning::Basketball schedule coverage is low; investigate missing SEC team fixtures.')
+              if sport == 'basketball':
+                  counts=d['sports'][sport].get('sec_team_game_counts',{})
+                  low={team:count for team,count in counts.items() if count < 25}
+                  if low:
+                      print('::warning::SEC basketball schedule incomplete for '+str(len(low))+' schools: '+str(low))
+                  coverage=d['sports'][sport].get('team_coverage',{})
+                  if len(coverage) < 16:
+                      print('::warning::Only '+str(len(coverage))+' of 16 individual SEC team schedule feeds responded.')
+                  if d['sports'][sport].get('warning'):
+                      print('::warning::'+d['sports'][sport]['warning'])
               if not d['sports'][sport]['games']:
                   print('::warning::No verified individual '+sport+' matchups available; retain existing fixture records and show the empty state.')
           print('Validated published sports schedule with secure-game IDs preserved')
