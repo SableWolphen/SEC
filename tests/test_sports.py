@@ -109,6 +109,14 @@ class SportFeedTests(unittest.TestCase):
   sport.merge_game(saved,revised)
   self.assertEqual(saved[original['id']]['kickoff_at'],original['kickoff_at'])
   self.assertEqual(saved[original['id']]['reschedule_pending'],revised['kickoff_at'])
+ def test_reschedule_conflict_survives_later_refreshes(self):
+  original={'id':'basketball-2027-lock','kickoff_at':'2026-11-05T22:00:00Z',
+            'game_status':'scheduled','source':'SEC confirmed'}
+  saved={original['id']:original}
+  sport.merge_game(saved,{**original,'kickoff_at':'2026-11-05T23:00:00Z','source':'ESPN'})
+  sport.merge_game(saved,{**original,'source':'SEC confirmed'})
+  self.assertEqual(saved[original['id']]['kickoff_at'],original['kickoff_at'])
+  self.assertEqual(saved[original['id']]['reschedule_pending'],'2026-11-05T23:00:00Z')
  def test_offline_reuses_only_verified_old_fixture(self):
   existing={'sports':{'basketball':{'games':[
    {'id':'basketball-2027-old','season':2027,'kickoff_at':'2026-11-06T17:00:00Z','game_status':'scheduled'},
