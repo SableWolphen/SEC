@@ -15,6 +15,33 @@ class SportFeedTests(unittest.TestCase):
   self.assertEqual(sport.season(NOW),2027)
   self.assertEqual(sport.start('basketball',2027).strftime('%Y-%m-%d'),'2026-11-01')
   self.assertEqual(sport.start('baseball',2027).strftime('%Y-%m-%d'),'2027-02-01')
+ def test_espn_valid_calendar_months_cover_entire_basketball_season(self):
+  months=list(sport.windows('basketball',2027,NOW))
+  self.assertEqual(months,['202611','202612','202701','202702','202703','202704'])
+  url=sport.scoreboard_url(sport.SPORTS['basketball'],months[0])
+  self.assertIn('dates=202611',url)
+  self.assertNotIn('20261101-',url)
+
+ def test_fetches_sec_and_nonconference_boards_without_deleting_confirmed_fixtures(self):
+  calls=[]
+  def get(url):
+   calls.append(url)
+   if 'basketball/' not in url:return {'events':[]}
+   if 'dates=202611' in url and 'groups=8' in url:
+    return {'events':[event('league',333,2,'2026-11-04T23:00:00Z')]}
+   if 'dates=202611' in url and 'groups=50' in url:
+    return {'events':[
+     event('league',333,2,'2026-11-04T23:00:00Z'),
+     event('nonconf',55,333,'2026-11-08T23:00:00Z')]}
+   return {'events':[]}
+  data=sport.build(now=NOW,get=get,fallback=lambda s,y:[])
+  bb=data['sports']['basketball']
+  self.assertEqual(len(bb['games']),2,'Nonconference SEC opponents must be present')
+  self.assertEqual({x['id'] for x in bb['games']},
+   {'basketball-2027-league','basketball-2027-nonconf'})
+  self.assertTrue(any('groups=50' in x for x in calls))
+  self.assertTrue(any('dates=202704' in x for x in calls))
+  self.assertFalse(any('dates=20261101-' in x for x in calls))
  def test_only_sec_and_verified_final(self):
   example={'events':[
    event('1001',333,2,'2026-11-04T23:00:00Z',True,'65','73'),
