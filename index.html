@@ -186,6 +186,13 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 .sec-news-sport-choice:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .sec-news-sport-tag{color:#b5d79a;font-size:10px;font-weight:850;border:1px solid #466958;border-radius:6px;padding:4px 7px}
 @media(max-width:440px){.sec-news-sports{gap:5px;padding:6px}.sec-news-sport-choice{font-size:11px;padding:9px 2px;min-height:50px}}
+
+/* Keep trophies discoverable without another full navigation tab. */
+.sec-trophy-shortcut{display:inline-flex;align-items:center;gap:5px;border:1px solid #607083;background:#152a38;color:#f4ce83;border-radius:11px;padding:9px 11px;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap}
+.sec-trophy-shortcut:focus-visible,.sec-settings-shortcuts button:focus-visible{outline:3px solid #f4ce83;outline-offset:2px}
+.sec-settings-shortcuts{display:flex;flex-wrap:wrap;gap:9px;margin:10px 0 17px}
+.sec-settings-shortcuts button{border:1px solid #4e6275;background:#142b3c;color:#e8f1f5;padding:11px 14px;border-radius:11px;font-weight:750;cursor:pointer}
+@media(max-width:720px){.sec-trophy-shortcut{font-size:19px;min-width:40px;padding:7px;justify-content:center}.sec-trophy-shortcut span{display:none}}
 </style>
   <title>Gamedays Down South · SEC Pick'em</title>
 <link rel="stylesheet" href="./multi-sport.css?v=20261016-nextpick">
@@ -226,6 +233,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       <button type="button" data-nav="game-center" class="nav-link">Scores</button>
       <button type="button" data-nav="settings" class="nav-link">You</button>
     </nav>
+    <button type="button" class="sec-trophy-shortcut" data-nav="trophies" aria-label="Open Trophy Room">🏆 <span>Trophies</span></button>
     <button type="button" id="sec-access-trigger" class="sec-access-trigger" data-sec-find aria-haspopup="dialog" aria-controls="sec-access-dialog" aria-label="Find any SEC page or feature"><span aria-hidden="true">⌕</span><strong>Find</strong></button>
     <button type="button" class="profile-chip" data-nav="settings" aria-label="Edit your profile"><span id="header-avatar">Y</span><span id="header-name">You</span><span id="header-school-pride" aria-live="polite"></span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m7 8 3 3 3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </header>
@@ -383,6 +391,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
       <div class="page-intro"><div><h1 id="more-heading">The rest of the <em>clubhouse.</em></h1><p>All your news, teams and account controls, without cluttering game day.</p></div></div>
       <div id="sec-access-more" class="sec-access-more" aria-label="Complete app directory">
         <div class="sec-access-fallback" aria-label="Basic navigation">
+          <button type="button" data-nav="trophies">🏆 Trophy Room</button>
           <button type="button" data-nav="news">SEC News</button>
           <button type="button" data-nav="teams">All 16 Teams</button>
           <button type="button" data-nav="settings">Settings</button>
@@ -392,7 +401,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     <section id="settings-view" class="view hidden" aria-labelledby="settings-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> MAKE IT YOURS</div>
       <div class="page-intro"><div><h1 id="settings-heading">Your <em>playbook.</em></h1><p>Manage your account, reminders, and how you play.</p></div></div>
-      <div id="sds-settings-notifications"></div><div id="sec-next-push"></div>
+      <div class="sec-settings-shortcuts" aria-label="Quick access"><button type="button" data-nav="trophies">🏆 Trophy Room</button><button type="button" data-nav="news">📰 SEC News</button><button type="button" data-nav="teams">SEC Teams</button></div><div id="sds-settings-notifications"></div><div id="sec-next-push"></div>
       <div id="settings-content"></div>
     </section>
   </main>
@@ -659,7 +668,13 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     if(v==='basketball'||v==='baseball')window.SEC_SPORTS?.mount(v);
     if(v==='picks')renderPicks();
     if(v==='league')renderLeague();
-    if(v==='trophies')window.SDSTrophyCase?.mount();
+    if(v==='trophies'){
+      if(window.SDSTrophyCase?.mount)window.SDSTrophyCase.mount();
+      else{
+        const target=document.getElementById('sds-trophy-case');
+        if(target)target.innerHTML='<div class="content-card"><h2>Trophy Room is temporarily unavailable</h2><p>Your existing trophies have not been deleted. Try refreshing this page.</p><button type="button" data-nav="trophies" class="ghost-btn">Retry Trophy Room</button></div>';
+      }
+    }
     if(v==='news')window.SEC_NEWS?.mount();
     if(v==='teams'){renderTeams();window.SEC_TEAM_RECORDS?.refresh?.();}
     if(v==='settings'){renderSettings();window.SDS_PREFERENCES?.mount?.();}
