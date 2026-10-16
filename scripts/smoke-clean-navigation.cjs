@@ -15,20 +15,17 @@ for(const bar of [desktop,mobile]){
 for(const route of ["game-center","settings","league"]){
  assert.match(html,new RegExp("'"+route+"'"));
 }
-for(const label of ["SEC News","Trophies","My Team","All Teams"]){
- assert.ok(home.includes(label),"Missing visible home shortcut: "+label);
+for(const label of ["Trophies","My Team","All Teams","Standings"]){
+ assert.ok(home.includes(label),"Missing visible home link: "+label);
 }
-assert.match(home,/<\/nav>'\+/);
-assert.ok(home.indexOf("extraNews(model)+discovery(model)") >= 0,
-  "News preview must remain outside collapsed extras");
-assert.match(home,/MAKE PICKS/);
+assert.match(home,/homeChats\(\)\+extraNews\(model\)/);
+assert.match(home,/hq-calm-links/);
+assert.match(home,/Make my picks/);
 assert.match(home,/function homeChats\(/);
 assert.match(home,/data-hq-chat-league/);
 assert.match(home,/data-hq-open-chat/);
 assert.match(home,/sec_league_messages/);
 assert.match(home,/getLeagues/);
-assert.match(home,/LEAGUE RACE/);
-assert.match(home,/LIVE SCORES/);
 assert.match(app,/Pick saved securely online/);
 assert.match(app,/sport-schedule-health/);
 console.log("PASS: five-tab navigation, primary home actions, pick save confirmation and schedule health");
