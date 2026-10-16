@@ -296,7 +296,21 @@ def build(now=None, get=download, existing=None, fallback=None):
             if espn_id in official_espn_ids or same_match:
                 del saved[game_id]
 
-        games = sorted(saved.values(), key=lambda g: (g['kickoff_at'], g['id']))
+        # Different feeds can assign different IDs to one fixture. Keep the
+        # official/server ID (which existing picks reference) whenever known;
+        # never create two cards for the same scheduled matchup.
+        unique = {}
+        official_ids = {g['id'] for g in official}
+        for game in saved.values():
+            signature = fixture_signature(game)
+            prior = unique.get(signature)
+            if prior is None:
+                unique[signature] = game
+            elif game['id'] in official_ids and prior['id'] not in official_ids:
+                unique[signature] = game
+            elif prior['game_status'] != 'final' and game['game_status'] == 'final':
+                unique[signature] = game
+        games = sorted(unique.values(), key=lambda g: (g['kickoff_at'], g['id']))
         sec_counts = {tid: sum(g['away_code'] == tid or g['home_code'] == tid for g in games)
                       for tid in SEC_IDS}
         issue = None
