@@ -434,3 +434,11 @@
 #sec-home-root .hq-home-chats{margin:0 0 14px}
 #sec-home-root .hq-around-news{margin:0 0 12px}
 @media(max-width:640px){#sec-home-root .hq-calm-links{grid-template-columns:repeat(2,minmax(0,1fr))}#sec-home-root .hq-calm-links button:last-child{grid-column:1 / -1}#sec-home-root .hq-calm-picks{padding:17px}#sec-home-root .hq-sport-tabs button{min-height:46px;padding:8px 10px;font-size:12px}}
+
+/* One obvious, always-visible feature directory instead of hidden menus. */
+.hq-explore{margin:18px 0;padding:15px;border:1px solid #355368;border-radius:15px;background:#102435}
+.hq-explore .hq-panel-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.hq-explore .hq-find-all{border:1px solid #a78e5b;background:#243749;color:#f4ce83;border-radius:10px;padding:9px 12px;font-weight:800;min-height:40px;cursor:pointer}
+.hq-explore .hq-calm-links{margin:0;grid-template-columns:repeat(4,minmax(0,1fr))}
+.hq-explore button:focus-visible{outline:3px solid #f4ce83;outline-offset:2px}
+@media(max-width:640px){.hq-explore{padding:12px}.hq-explore .hq-calm-links{grid-template-columns:repeat(2,minmax(0,1fr))}.hq-explore .hq-calm-links button:last-child{grid-column:auto}}
