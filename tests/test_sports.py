@@ -117,6 +117,16 @@ class SportFeedTests(unittest.TestCase):
   sport.merge_game(saved,{**original,'source':'SEC confirmed'})
   self.assertEqual(saved[original['id']]['kickoff_at'],original['kickoff_at'])
   self.assertEqual(saved[original['id']]['reschedule_pending'],'2026-11-05T23:00:00Z')
+ def test_basketball_same_match_from_two_feeds_is_single_game(self):
+  def mock(url):
+   if '/teams/' in url:return {'events':[]}
+   if 'basketball/' in url and 'scoreboard?' in url:
+    return {'events':[event('duplicate',333,2,'2026-11-04T23:00:00Z')]}
+   return {'events':[]}
+  result=sport.build(now=NOW,get=mock)
+  rows=[g for g in result['sports']['basketball']['games'] if g['away_code']=='333'
+        and g['home_code']=='2']
+  self.assertEqual(len(rows),1)
  def test_offline_reuses_only_verified_old_fixture(self):
   existing={'sports':{'basketball':{'games':[
    {'id':'basketball-2027-old','season':2027,'kickoff_at':'2026-11-06T17:00:00Z','game_status':'scheduled'},
