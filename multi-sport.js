@@ -212,6 +212,14 @@ function renderSport(s){
      .map(([id,n])=>esc(id)+': '+Number(n)).join(' · ')+'</p>':'')+
    '<button type="button" class="ghost-btn" data-sport-action="refresh" data-sport="'+s+'">Recheck schedule</button>'+
    '</div></details>';
+ const due=allGames(s).filter(g=>g.game_status==="scheduled"&&Date.parse(g.kickoff_at)>Date.now())
+   .sort((a,b)=>Date.parse(a.kickoff_at)-Date.parse(b.kickoff_at));
+ const needsPick=due.filter(g=>!picks[g.id]?.pick_code);
+ const nextPick=needsPick[0];
+ const quickAction=nextPick?'<section class="sport-next-pick" aria-label="Your next unpicked game">'+
+   '<div><strong>'+needsPick.length+' upcoming games need picks</strong>'+
+   '<small>Next: '+esc(nextPick.away_name)+' at '+esc(nextPick.home_name)+' · '+esc(prettyTime(nextPick.kickoff_at))+'</small></div>'+
+   '<button type="button" data-sport-week="'+nextPick.week+'" data-sport="'+s+'">Pick now →</button></section>':'';
  const note=feedStatus.warning?banner(feedStatus.warning,"sport-warning"):"";
  const status=feedIssue?banner(feedIssue,"sport-warning"):"";
  const stale=data.error?banner(data.error,"sport-warning"):"";
@@ -243,7 +251,7 @@ function renderSport(s){
    '</div>'+
    renderTiebreak(s,w,active,saved);
  }
- root.innerHTML=header+note+status+stale+loadingText+health+sportStrip+leagues+games+renderSeries(s)+
+ root.innerHTML=header+note+status+stale+loadingText+quickAction+health+sportStrip+leagues+games+renderSeries(s)+
   '<p class="sport-data-note">Official SEC and university schedules, with ESPN updates where available · Central time. '+ 
   'When a tipoff is not announced, a conservative 10 AM Central provisional lock is shown. '+
   'Basketball and baseball leagues have their own memberships and standings, separate from football.</p>';
