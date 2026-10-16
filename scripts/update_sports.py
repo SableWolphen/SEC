@@ -258,6 +258,13 @@ def build(now=None, get=download, existing=None, fallback=None):
                 del saved[game_id]
 
         games = sorted(saved.values(), key=lambda g: (g['kickoff_at'], g['id']))
+        # The SEC has already published 144 regular-season conference games.
+        # A lower number in this feed is an incomplete import, not proof that
+        # the missing matchups do not exist. Nonconference games are additional.
+        conference_count = (sum(
+            1 for g in games if sport == 'basketball' and
+            g['away_code'] in SEC_IDS and g['home_code'] in SEC_IDS
+        ) if sport == 'basketball' else None)
         issue = None
         if not games:
             issue = ('No verified individual first-pitch times yet; SEC baseball '
@@ -267,8 +274,15 @@ def build(now=None, get=download, existing=None, fallback=None):
             issue = 'Live schedule sources unavailable; retaining previously confirmed games.'
         elif not successes and database_ok:
             issue = 'Live ESPN feed unavailable; displaying verified SEC/university fixtures.'
+        if sport == 'basketball' and conference_count < 144:
+            missing = ('Only ' + str(conference_count) +
+                       ' of 144 published SEC conference games loaded so far. ' +
+                       'The full schedule is still being refreshed.')
+            issue = (issue + ' ' if issue else '') + missing
         result['sports'][sport] = {
             'season': year, 'games': games,
+            'conference_games_loaded': conference_count,
+            'published_conference_games': 144 if sport == 'basketball' else None,
             'source': 'Verified SEC/university fixtures + ESPN',
             'source_windows': successes, 'verified_database_games': len(official),
             'database_connected': database_ok, 'warning': issue
