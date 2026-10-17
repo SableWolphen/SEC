@@ -139,36 +139,62 @@ function hero(m){
   esc(niceTime(game.clock))+' CT</small><button type="button" data-hq-route="picks" data-hq-focus="upcoming">View matchup →</button></div>':"")+
  '</section>';
 }
-let chatState={account:null,rows:[],selected:null,previews:{},loadedAt:0,busy:false};
+let chatState={account:null,rows:[],selected:null,previews:{},errors:{},loadedAt:0,busy:false};
+let chatRequest=0;
+function chatSelectionKey(uid){return "ss-sec-home-chat-"+uid;}
 async function loadHomeChats(force=false){
  const me=user(),api=window.secOnline,client=api?.getClient?.();
  const uid=me?.id||null,leagues=uid?(api.getLeagues?.()||[]):[];
- if(chatState.account!==uid){chatState={account:uid,rows:[],selected:null,previews:{},loadedAt:0,busy:false};}
- const ids=leagues.map(l=>l.id).filter(Boolean).sort().join(",");
- if(!client||!uid||!leagues.length){chatState.rows=[];chatState.previews={};refresh();return;}
+ if(chatState.account!==uid){
+  ++chatRequest;
+  chatState={account:uid,rows:[],selected:null,previews:{},errors:{},loadedAt:0,busy:false};
+ }
+ // Supabase restores the session before it finishes loading memberships.
+ // An empty list at that point is NOT proof the user's conversations vanished.
+ if(!client||!uid||!leagues.length){
+  if(chatState.rows.length){chatState.rows=[];chatState.previews={};chatState.errors={};refresh();}
+  return;
+ }
+ const visible=leagues.slice(0,20);
+ const ids=visible.map(l=>l.id).filter(Boolean).sort().join(",");
  if(chatState.busy||(!force&&chatState.loadedAt&&Date.now()-chatState.loadedAt<45000&&
   chatState.rows.map(l=>l.id).sort().join(",")===ids))return;
+ const token=++chatRequest;
  chatState.busy=true;
  try{
-  const previews={};
-  await Promise.all(leagues.slice(0,20).map(async l=>{
-   const {data,error}=await client.from("sec_league_messages")
-    .select("body,created_at,user_id").eq("league_id",l.id)
-    .order("created_at",{ascending:false}).limit(1);
-   if(!error&&data?.[0])previews[l.id]=data[0];
+  const previews={},errors={};
+  await Promise.all(visible.map(async l=>{
+   const previous=chatState.previews[l.id];
+   try{
+    const result=await client.from("sec_league_messages")
+     .select("body,created_at,user_id").eq("league_id",l.id)
+     .order("created_at",{ascending:false}).limit(1);
+    if(result.error)throw result.error;
+    if(result.data?.[0])previews[l.id]=result.data[0];
+   }catch(_error){
+    errors[l.id]=true;
+    // Never claim messages were deleted because of a temporary fetch failure.
+    if(previous)previews[l.id]=previous;
+   }
   }));
-  if(user()?.id!==uid)return;
-  chatState.rows=leagues.slice(0,20);
+  if(token!==chatRequest||user()?.id!==uid)return;
+  chatState.rows=visible;
   chatState.previews=previews;
-  if(!chatState.rows.some(l=>l.id===chatState.selected))
-   chatState.selected=api.getLeague?.()?.id||chatState.rows[0]?.id;
-  chatState.loadedAt=Date.now();refresh();
- }catch(_error){chatState.loadedAt=Date.now();}finally{chatState.busy=false;}
+  chatState.errors=errors;
+  if(!visible.some(l=>l.id===chatState.selected)){
+   let saved=null;
+   try{saved=sessionStorage.getItem(chatSelectionKey(uid));}catch(_error){}
+   chatState.selected=visible.some(l=>l.id===saved)?saved:
+    (visible.some(l=>l.id===api.getLeague?.()?.id)?api.getLeague().id:visible[0].id);
+  }
+  chatState.loadedAt=Object.keys(errors).length?0:Date.now();
+  refresh();
+ }finally{if(token===chatRequest)chatState.busy=false;}
 }
 function homeChats(){
  const rows=chatState.rows;
  if(!user())return '<section class="hq-panel hq-home-chats"><div class="hq-panel-header"><span>LEAGUE CHATS</span></div><p>Sign in and join a league to chat with friends.</p><button type="button" data-hq-route="league" class="hq-secondary">Find my leagues →</button></section>';
- if(!rows.length)return '<section class="hq-panel hq-home-chats"><div class="hq-panel-header"><span>LEAGUE CHATS</span></div><p>Your private league conversations will appear here.</p><button type="button" data-hq-route="league" class="hq-secondary">Join a league →</button></section>';
+ if(!rows.length)return '<section class="hq-panel hq-home-chats"><div class="hq-panel-header"><span>LEAGUE CHATS</span></div><p>'+(window.secOnline?.isAuthReady?.()===false?'Restoring your league conversations…':'Join a league to start chatting with friends.')+'</p><button type="button" data-hq-route="league" class="hq-secondary">View my leagues →</button></section>';
  const selected=rows.find(l=>l.id===chatState.selected)||rows[0];
  const msg=chatState.previews[selected.id];
  return '<section class="hq-panel hq-home-chats" aria-label="Switch between your league chats">'+
@@ -176,7 +202,9 @@ function homeChats(){
  '<div class="hq-chat-tabs" role="group" aria-label="Choose league conversation">'+rows.map(l=>
  '<button type="button" data-hq-chat-league="'+esc(l.id)+'" aria-pressed="'+(l.id===selected.id)+'" class="'+(l.id===selected.id?'active':'')+'">'+esc(l.name||"My league")+'</button>').join("")+'</div>'+
  '<div class="hq-chat-preview"><strong>'+esc(selected.name||"League chat")+'</strong>'+
- (msg?'<p>'+esc(msg.body).slice(0,180)+'</p>':'<p>No messages yet. Start the conversation.</p>')+'</div>'+
+ (msg?'<p>'+esc(String(msg.body).slice(0,180))+'</p>':
+  (chatState.errors[selected.id]?'<p>Messages temporarily unavailable. We’ll retry; nothing was deleted.</p>':
+   '<p>No messages yet. Start the conversation.</p>'))+'</div>'+
  '<button type="button" class="hq-secondary" data-hq-open-chat="'+esc(selected.id)+'">Open this league chat →</button></section>';
 }
 function actionCards(m){
@@ -401,13 +429,13 @@ function mount(){
  if(window.secOnline?.isAuthReady?.()===false){
   const id=user()?.id||null;
   window.secOnline.whenAuthReady?.().then(()=>{
-   if(app()?.view?.()==="home"&&(user()?.id||null)!==id)refresh();
+   if(app()?.view?.()==="home"&&(user()?.id||null)!==id){refresh();void loadHomeChats();}
   }).catch(()=>{});
  }
  void loadHomeChats();
  if(!ticking){
   ticking=true;
-  setInterval(()=>{if(document.visibilityState==="visible")refresh();},30000);
+  setInterval(()=>{if(document.visibilityState==="visible"){refresh();void loadHomeChats();}},30000);
  }
  // Share the existing verified feeds; never run a second independent news scraper.
  void window.SEC_LIVE_SCORES?.refresh?.();
@@ -432,7 +460,9 @@ document.addEventListener("click",e=>{
  }
  const tab=e.target.closest?.("[data-hq-chat-league]");
  if(tab&&chatState.rows.some(l=>l.id===tab.dataset.hqChatLeague)){
-  chatState.selected=tab.dataset.hqChatLeague;refresh();return;
+  chatState.selected=tab.dataset.hqChatLeague;
+  try{sessionStorage.setItem(chatSelectionKey(chatState.account),chatState.selected);}catch(_error){}
+  refresh();return;
  }
  const open=e.target.closest?.("[data-hq-open-chat]");
  if(open&&chatState.rows.some(l=>l.id===open.dataset.hqOpenChat)){
@@ -453,6 +483,6 @@ document.addEventListener("click",e=>{
  }
 });
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"){refresh();void loadHomeChats();}});
-window.SEC_HOME=Object.freeze({mount,refresh,snapshot,pickProgress,gameState,nextKickoff,countdown});
+window.SEC_HOME=Object.freeze({mount,refresh,onOnlineState:()=>{if(app()?.view?.()==="home")void loadHomeChats();},snapshot,pickProgress,gameState,nextKickoff,countdown});
 if(app()?.view?.()==="home")mount();
 })();
