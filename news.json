@@ -1,11 +1,138 @@
 {
-  "updated_at": "2026-10-16T22:06:40.323558Z",
-  "checked_at": "2026-10-16T22:06:40.323558Z",
+  "updated_at": "2026-10-17T00:31:19.023572Z",
+  "checked_at": "2026-10-17T00:31:19.023572Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "e748cfa593526b64",
+      "title": "Mississippi State QB Kamario Taylor, RB Fluff Bothwell doubtful vs. LSU",
+      "summary": "Mississippi State star quarterback Kamario Taylor has been downgraded from questionable to doubtful on the SEC's availability report going into Saturday's game at LSU.",
+      "url": "https://www.espn.com/college-football/story/_/id/50198790/mississippi-state-qb-kamario-taylor-rb-fluff-bothwell-doubtful-vs-lsu",
+      "source": "ESPN",
+      "published_at": "2026-10-17T00:26:31Z",
+      "sport": "football",
+      "teams": [
+        "LSU",
+        "Mississippi State"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "91b39bd0847fc2b3",
+      "title": "Hagan, Basketball Hall of Famer and Kentucky legend, dies at 94",
+      "summary": "Hall of Fame forward Cliff Hagan, a five-time All-Star who spent his entire NBA career with the St. Louis Hawks, has died at age 94.",
+      "url": "https://www.espn.com/nba/story/_/id/50198707/hagan-basketball-hall-famer-kentucky-legend-dies-94",
+      "source": "ESPN",
+      "published_at": "2026-10-17T00:02:11Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e79400d9795847c6",
+      "title": "Tim Tebow previews ranked SEC matchups ahead of Week 7",
+      "summary": "Tebow joins The Paul Finebaum Show to preview some of the most highly-anticipated matchups and discuss his expectations with Week 7 play almost underway.",
+      "url": "https://www.espn.com/video/clip/_/id/50198734/tim-tebow-previews-ranked-sec-matchups-ahead-week-7",
+      "source": "ESPN",
+      "published_at": "2026-10-16T23:38:06Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "430f327a889a260f",
+      "title": "Chris Doering takes a look at some big SEC Week 7 matchups",
+      "summary": "SEC Network's Doering joins The Paul Finebaum Show and gives insight on some games in the conference that may not have as much noise but could have big implications.",
+      "url": "https://www.espn.com/video/clip/_/id/50198720/chris-doering-takes-look-some-big-sec-week-7-matchups",
+      "source": "ESPN",
+      "published_at": "2026-10-16T23:24:16Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "437bc71f64a63ecc",
+      "title": "Donde Plowman expresses excitement around Tennessee's expansion project",
+      "summary": "Chancellor Plowman reveals the expansion project around Neyland Stadium as she discusses how this plan will enhance the gameday experience for Vols fans and students alike.",
+      "url": "https://www.espn.com/video/clip/_/id/50198710/donde-plowman-expresses-excitement-tennessee-expansion-project",
+      "source": "ESPN",
+      "published_at": "2026-10-16T23:20:12Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "33aef0a074698e74",
+      "title": "What will Arch Manning's redemption performance look like vs. Florida?",
+      "summary": "Kris Budden joins The Paul Finebaum Show to reveal Manning's mindset ahead of Week 7 play and discuss how the Gators are preparing for the No. 7 Longhorns.",
+      "url": "https://www.espn.com/video/clip/_/id/50198654/what-arch-manning-redemption-performance-look-vs-florida",
+      "source": "ESPN",
+      "published_at": "2026-10-16T23:19:28Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "81cc638753564ea7",
+      "title": "Ryan McGee discusses the concerns of the CFP expansion",
+      "summary": "With bowl games at risk of being eliminated due to the new proposed 24-team playoff format, SEC Network's McGee joins The Paul Finebaum Show to voice what this could mean for fans.",
+      "url": "https://www.espn.com/video/clip/_/id/50198595/ryan-mcgee-discusses-concerns-cfp-expansion",
+      "source": "ESPN",
+      "published_at": "2026-10-16T22:52:02Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "cb012eed85f2a926",
+      "title": "How will new CFP format impact regular-season play?",
+      "summary": "SEC Nation's Matt Barrie joins The Paul Finebaum Show to explain the 24-team CFP format and discuss how it will affect the significance of regular-season play.",
+      "url": "https://www.espn.com/video/clip/_/id/50198367/how-new-cfp-format-impact-regular-season-play",
+      "source": "ESPN",
+      "published_at": "2026-10-16T22:35:02Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "c9170dec1c6b0316",
+      "title": "Evaluating where Florida stands against Arch Manning, No. 7 Texas",
+      "summary": "Tim Tebow analyzes Manning's performance against Oklahoma as he looks ahead to Florida's preparedness and where they stand against the Longhorns in Week 7.",
+      "url": "https://www.espn.com/video/clip/_/id/50198512/evaluating-where-florida-stands-arch-manning-no-7-texas",
+      "source": "ESPN",
+      "published_at": "2026-10-16T22:19:27Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Oklahoma",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "37da29fe914eb457",
+      "title": "Revisiting the Georgia-Auburn 'Game Between the Hoses'",
+      "summary": "In 1986, Auburn sprayed hoses at Bulldogs fans, including current QB Gunner Stockton's grandfather, and they haven't forgotten it.",
+      "url": "https://www.espn.com/college-football/story/_/id/46519712/revisiting-1986-georgia-auburn-game-hoses",
+      "source": "ESPN",
+      "published_at": "2026-10-16T21:59:22Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "Georgia"
+      ],
+      "breaking": false
+    },
     {
       "id": "428f2a09a7399dec",
       "title": "Why Tennessee must count on its strong defense to beat Bama",
@@ -40,20 +167,6 @@
       "published_at": "2026-10-16T20:35:58Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "37da29fe914eb457",
-      "title": "Revisiting the Georgia-Auburn 'Game Between the Hoses'",
-      "summary": "In 1986, Auburn sprayed hoses at Bulldogs fans, including current QB Gunner Stockton's grandfather, and they haven't forgotten it.",
-      "url": "https://www.espn.com/college-football/story/_/id/46519712/revisiting-1986-georgia-auburn-game-hoses",
-      "source": "ESPN",
-      "published_at": "2026-10-16T18:05:30Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "Georgia"
-      ],
       "breaking": false
     },
     {
@@ -149,87 +262,6 @@
       "teams": [
         "Alabama",
         "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5a5e803647bfaa3b",
-      "title": "Alabama WR Ryan Coleman-Williams won't play at Tennessee",
-      "summary": "No. 6 Alabama star wide receiver Ryan Coleman-Williams has officially been ruled out of Saturday's game at No. 14 Tennessee.",
-      "url": "https://www.espn.com/college-football/story/_/id/50185713/alabama-wr-ryan-coleman-williams-knee-tennessee",
-      "source": "ESPN",
-      "published_at": "2026-10-15T12:32:55Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f969f248a43cf0e1",
-      "title": "Why Week 7 has all the makings of an epic rivalry week",
-      "summary": "From Alabama-Tennessee to Ohio State-Indiana, Week 7 is offering an early preview to rivalry week.",
-      "url": "https://www.espn.com/college-football/story/_/page/gamedaykickoff101526/2026-game-day-kickoff-college-football-week-7-alabama-tennessee",
-      "source": "ESPN",
-      "published_at": "2026-10-15T11:02:47Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "821631a1883a63af",
-      "title": "College football Week 7 best bets: SEC showdowns and totals worth targeting",
-      "summary": "Pamela Maldonado and Mark Zinno break down the best bets they see around college football for Week 7.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50182127/college-football-odds-best-bets-week-7-spreads-lines-2026",
-      "source": "ESPN",
-      "published_at": "2026-10-15T10:12:20Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "9b6addf2b47389c4",
-      "title": "Western Kentucky Hilltoppers vs. Sam Houston Bearkats: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50186841/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-15T03:36:18Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7fff5174a44e840c",
-      "title": "Tennessee assistant William Inge out of hospital, begins rehab from illness",
-      "summary": "Tennessee assistant coach William Inge, who was hospitalized three weeks ago with an undisclosed illness, has been released and started a rehab process.",
-      "url": "https://www.espn.com/college-football/story/_/id/50185887/tennessee-assistant-william-inge-hospital-illness",
-      "source": "ESPN",
-      "published_at": "2026-10-15T01:38:32Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e73363a067c73a2f",
-      "title": "Mississippi State QB Kamario Taylor, RB Fluff Bothwell questionable vs. LSU",
-      "summary": "Mississippi State quarterback Kamario Taylor is questionable to play against LSU because of a leg injury that forced him out of the Bulldogs' game against Alabama two weeks ago.",
-      "url": "https://www.espn.com/college-football/story/_/id/50185732/mississippi-state-kamario-taylor-fluff-bothwell-questionable-vs-lsu",
-      "source": "ESPN",
-      "published_at": "2026-10-15T01:11:18Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia",
-        "LSU",
-        "Mississippi State"
       ],
       "breaking": false
     },
