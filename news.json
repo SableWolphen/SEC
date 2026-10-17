@@ -1,114 +1,131 @@
 {
-  "updated_at": "2026-10-17T19:26:56.900286Z",
-  "checked_at": "2026-10-17T19:26:56.900286Z",
+  "updated_at": "2026-10-17T22:23:01.312688Z",
+  "checked_at": "2026-10-17T22:23:01.312688Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "8d4075fd0e6fa398",
-      "title": "Alabama WR Ryan Coleman-Williams, out vs. Vols, undergoes knee surgery",
-      "summary": "Alabama star wide receiver Ryan Coleman-Williams underwent arthroscopic knee surgery to repair a meniscus injury, according to ESPN's Katie George.",
-      "url": "https://www.espn.com/college-football/story/_/id/50202841/alabama-wr-ryan-coleman-williams-undergoes-knee-surgery",
+      "id": "ee3813dc4fe18ba8",
+      "title": "Kansas Jayhawks vs. Kansas State Wildcats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50204689/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-17T19:13:04Z",
+      "published_at": "2026-10-17T22:12:39Z",
       "sport": "football",
       "teams": [
-        "Alabama",
-        "Tennessee"
+        "Kentucky"
       ],
       "breaking": false
     },
     {
-      "id": "941be6fbe308448b",
-      "title": "Florida QB Tramell Jones Jr. gets first career start vs. Texas",
-      "summary": "Florida quarterback Tramell Jones Jr. made his first career start against No. 7 Texas.",
-      "url": "https://www.espn.com/college-football/story/_/id/50201352/sources-florida-qb-tramell-jones-jr-gets-start-vs-texas",
+      "id": "fbee7197925b0b74",
+      "title": "Mississippi State Bulldogs vs. LSU Tigers: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50203919/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-17T16:20:56Z",
+      "published_at": "2026-10-17T21:36:23Z",
       "sport": "football",
       "teams": [
-        "Florida",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e748cfa593526b64",
-      "title": "Mississippi State QB Kamario Taylor, RB Fluff Bothwell out vs. LSU",
-      "summary": "Mississippi State star quarterback Kamario Taylor and leading rusher Fluff Bothwell have been ruled out for Saturday's game at LSU.",
-      "url": "https://www.espn.com/college-football/story/_/id/50198790/mississippi-state-qb-kamario-taylor-rb-fluff-bothwell-doubtful-vs-lsu",
-      "source": "ESPN",
-      "published_at": "2026-10-17T15:28:07Z",
-      "sport": "football",
-      "teams": [
+        "Georgia",
         "LSU",
         "Mississippi State"
       ],
       "breaking": false
     },
     {
-      "id": "2a535a54ef5115b1",
-      "title": "SEC Now makes its picks for Week 7 conference matchups",
-      "summary": "SEC Network's Chris Doering and Benjamin Watson discuss the difference-making factors in each SEC matchup and pick the winners.",
-      "url": "https://www.espn.com/video/clip/_/id/50199038/sec-now-makes-picks-week-7-conference-matchups",
+      "id": "496234ee47575b5f",
+      "title": "Austin Peay Governors vs. West Georgia Wolves: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50204161/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-17T01:16:14Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "37adb5818db9b967",
-      "title": "Previewing SEC heavyweight matchup No. 13 Tigers vs. No. 9 Rebels",
-      "summary": "Aaron Murray joins SEC Now from Oxford to discuss how the former Rebels on Mizzou's roster are excited to return and how the game will be won in the trenches.",
-      "url": "https://www.espn.com/video/clip/_/id/50198980/previewing-sec-heavyweight-matchup-no-13-tigers-vs-no-9-rebels",
-      "source": "ESPN",
-      "published_at": "2026-10-17T01:11:21Z",
+      "published_at": "2026-10-17T21:28:18Z",
       "sport": "football",
       "teams": [
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "57dd6f376adf59b9",
-      "title": "How Auburn used the bye week to prepare for No. 1 Georgia",
-      "summary": "ESPN's Taylor McGregor joins SEC Now from Athens to discuss how the Tigers matchup against the nation's top ranked Bulldogs and who will need to step up for Auburn to get the upset.",
-      "url": "https://www.espn.com/video/clip/_/id/50198986/how-auburn-used-bye-week-prepare-no-1-georgia",
-      "source": "ESPN",
-      "published_at": "2026-10-17T01:11:10Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
         "Georgia"
       ],
       "breaking": false
     },
     {
-      "id": "712fbbb6e8377e60",
-      "title": "Analyzing how Xavier Gilliam and the Vols can disrupt Bama's offense",
-      "summary": "SEC Network's Benjamin Watson and Chris Doering break down how Gilliam has been so effective this season and how the Crimson Tide can slow the Tennessee defensive front.",
-      "url": "https://www.espn.com/video/clip/_/id/50198919/analyzing-how-xavier-gilliam-vols-disrupt-bama-offense",
+      "id": "98e8dde9af16ba1f",
+      "title": "West Alabama Tigers vs. West Florida Argonauts: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50204095/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-17T00:44:04Z",
+      "published_at": "2026-10-17T21:19:57Z",
       "sport": "football",
       "teams": [
         "Alabama",
-        "Tennessee"
+        "Florida"
       ],
       "breaking": false
     },
     {
-      "id": "c538bdf298aa8c64",
-      "title": "SEC Now faces their preseason predictions halfway through the season",
-      "summary": "SEC Network's Benjamin Watson and Chris Doering admit if they were wrong or right about predictions they made before the season started at this point in the year.",
-      "url": "https://www.espn.com/video/clip/_/id/50198880/sec-now-faces-their-preseason-predictions-halfway-season",
+      "id": "1fd446243d61772c",
+      "title": "Sam Leavitt throws for 4 TDs as LSU routs injury-depleted Mississippi State",
+      "summary": "Sam Leavitt threw for 289 yards and four touchdowns without an interception as No. 22 LSU raced to a three-touchdown first-half lead on its way to a 31-0 victory over injury-depleted, 16th-ranked Mississippi State.",
+      "url": "https://www.espn.com/college-football/story/_/id/50203328/lsu-routs-injury-depleted-mississippi-state-shutout",
       "source": "ESPN",
-      "published_at": "2026-10-17T00:38:06Z",
+      "published_at": "2026-10-17T21:03:44Z",
       "sport": "football",
-      "teams": [],
+      "teams": [
+        "LSU",
+        "Mississippi State"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "b8e5eb04faa0ed52",
+      "title": "The Citadel Bulldogs vs. Texas A&M Aggies: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50203512/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-17T20:39:58Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f2fc13c329adef38",
+      "title": "Morehead State Eagles vs. Davidson Wildcats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50203609/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-17T20:18:39Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b5cbacc3cd77bacb",
+      "title": "Dayton Flyers vs. Butler Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50203596/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-17T20:17:08Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0fd52cc8a9ce84bb",
+      "title": "Marist Red Foxes vs. Drake Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50203578/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-17T20:14:15Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
       "breaking": false
     },
     {
@@ -122,142 +139,6 @@
       "teams": [
         "Kentucky"
       ],
-      "breaking": false
-    },
-    {
-      "id": "e79400d9795847c6",
-      "title": "Tim Tebow previews ranked SEC matchups ahead of Week 7",
-      "summary": "Tebow joins The Paul Finebaum Show to preview some of the most highly-anticipated matchups and discuss his expectations with Week 7 play almost underway.",
-      "url": "https://www.espn.com/video/clip/_/id/50198734/tim-tebow-previews-ranked-sec-matchups-ahead-week-7",
-      "source": "ESPN",
-      "published_at": "2026-10-16T23:38:06Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "430f327a889a260f",
-      "title": "Chris Doering takes a look at some big SEC Week 7 matchups",
-      "summary": "SEC Network's Doering joins The Paul Finebaum Show and gives insight on some games in the conference that may not have as much noise but could have big implications.",
-      "url": "https://www.espn.com/video/clip/_/id/50198720/chris-doering-takes-look-some-big-sec-week-7-matchups",
-      "source": "ESPN",
-      "published_at": "2026-10-16T23:24:16Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "437bc71f64a63ecc",
-      "title": "Donde Plowman expresses excitement around Tennessee's expansion project",
-      "summary": "Chancellor Plowman reveals the expansion project around Neyland Stadium as she discusses how this plan will enhance the gameday experience for Vols fans and students alike.",
-      "url": "https://www.espn.com/video/clip/_/id/50198710/donde-plowman-expresses-excitement-tennessee-expansion-project",
-      "source": "ESPN",
-      "published_at": "2026-10-16T23:20:12Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "33aef0a074698e74",
-      "title": "What will Arch Manning's redemption performance look like vs. Florida?",
-      "summary": "Kris Budden joins The Paul Finebaum Show to reveal Manning's mindset ahead of Week 7 play and discuss how the Gators are preparing for the No. 7 Longhorns.",
-      "url": "https://www.espn.com/video/clip/_/id/50198654/what-arch-manning-redemption-performance-look-vs-florida",
-      "source": "ESPN",
-      "published_at": "2026-10-16T23:19:28Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "81cc638753564ea7",
-      "title": "Ryan McGee discusses the concerns of the CFP expansion",
-      "summary": "With bowl games at risk of being eliminated due to the new proposed 24-team playoff format, SEC Network's McGee joins The Paul Finebaum Show to voice what this could mean for fans.",
-      "url": "https://www.espn.com/video/clip/_/id/50198595/ryan-mcgee-discusses-concerns-cfp-expansion",
-      "source": "ESPN",
-      "published_at": "2026-10-16T22:52:02Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "cb012eed85f2a926",
-      "title": "How will new CFP format impact regular-season play?",
-      "summary": "SEC Nation's Matt Barrie joins The Paul Finebaum Show to explain the 24-team CFP format and discuss how it will affect the significance of regular-season play.",
-      "url": "https://www.espn.com/video/clip/_/id/50198367/how-new-cfp-format-impact-regular-season-play",
-      "source": "ESPN",
-      "published_at": "2026-10-16T22:35:02Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "c9170dec1c6b0316",
-      "title": "Evaluating where Florida stands against Arch Manning, No. 7 Texas",
-      "summary": "Tim Tebow analyzes Manning's performance against Oklahoma as he looks ahead to Florida's preparedness and where they stand against the Longhorns in Week 7.",
-      "url": "https://www.espn.com/video/clip/_/id/50198512/evaluating-where-florida-stands-arch-manning-no-7-texas",
-      "source": "ESPN",
-      "published_at": "2026-10-16T22:19:27Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Oklahoma",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "37da29fe914eb457",
-      "title": "Revisiting the Georgia-Auburn 'Game Between the Hoses'",
-      "summary": "In 1986, Auburn sprayed hoses at Bulldogs fans, including current QB Gunner Stockton's grandfather, and they haven't forgotten it.",
-      "url": "https://www.espn.com/college-football/story/_/id/46519712/revisiting-1986-georgia-auburn-game-hoses",
-      "source": "ESPN",
-      "published_at": "2026-10-16T21:59:22Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "428f2a09a7399dec",
-      "title": "Why Tennessee must count on its strong defense to beat Bama",
-      "summary": "SEC Network's Roman Harper joins The Paul Finebaum Show to discuss why it's imperative for the Volunteers to focus on their defense to defeat the Crimson Tide.",
-      "url": "https://www.espn.com/video/clip/_/id/50198215/why-tennessee-count-strong-defense-beat-bama",
-      "source": "ESPN",
-      "published_at": "2026-10-16T21:16:09Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "90e1003236f0b5b2",
-      "title": "Power ranking teams that need a win ahead of Week 7",
-      "summary": "SEC This Morning's Peter Burns puts his spin on the SEC Network Power Rankings as he ranks the five teams that are under pressure to bring home a victory.",
-      "url": "https://www.espn.com/video/clip/_/id/50198127/power-ranking-teams-need-win-ahead-week-7",
-      "source": "ESPN",
-      "published_at": "2026-10-16T20:55:08Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "3b77fd2d86905a77",
-      "title": "Heather Dinich gives insight on proposed 24-team CFP format",
-      "summary": "As sources are saying that the CFP is nearing a deal to expand the field, ESPN's Dinich describes on SEC This Morning how it could affect the college football landscape.",
-      "url": "https://www.espn.com/video/clip/_/id/50198009/heather-dinich-gives-insight-proposed-24-team-cfp-format",
-      "source": "ESPN",
-      "published_at": "2026-10-16T20:35:58Z",
-      "sport": "football",
-      "teams": [],
       "breaking": false
     },
     {
