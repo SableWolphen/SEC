@@ -1,11 +1,25 @@
 {
-  "updated_at": "2026-10-17T10:50:03.057909Z",
-  "checked_at": "2026-10-17T10:50:03.057909Z",
+  "updated_at": "2026-10-17T14:13:40.461539Z",
+  "checked_at": "2026-10-17T14:13:40.461539Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "e748cfa593526b64",
+      "title": "Mississippi State QB Kamario Taylor, RB Fluff Bothwell doubtful vs. LSU",
+      "summary": "Mississippi State star quarterback Kamario Taylor has been downgraded from questionable to doubtful on the SEC's availability report going into Saturday's game at LSU.",
+      "url": "https://www.espn.com/college-football/story/_/id/50198790/mississippi-state-qb-kamario-taylor-rb-fluff-bothwell-doubtful-vs-lsu",
+      "source": "ESPN",
+      "published_at": "2026-10-17T11:21:40Z",
+      "sport": "football",
+      "teams": [
+        "LSU",
+        "Mississippi State"
+      ],
+      "breaking": false
+    },
     {
       "id": "2a535a54ef5115b1",
       "title": "SEC Now makes its picks for Week 7 conference matchups",
@@ -67,20 +81,6 @@
       "published_at": "2026-10-17T00:38:06Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "e748cfa593526b64",
-      "title": "Mississippi State QB Kamario Taylor, RB Fluff Bothwell doubtful vs. LSU",
-      "summary": "Mississippi State star quarterback Kamario Taylor has been downgraded from questionable to doubtful on the SEC's availability report going into Saturday's game at LSU.",
-      "url": "https://www.espn.com/college-football/story/_/id/50198790/mississippi-state-qb-kamario-taylor-rb-fluff-bothwell-doubtful-vs-lsu",
-      "source": "ESPN",
-      "published_at": "2026-10-17T00:26:31Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Mississippi State"
-      ],
       "breaking": false
     },
     {
@@ -256,35 +256,6 @@
       "teams": [
         "Arkansas",
         "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "18ad2a0e3023dc5e",
-      "title": "UK's Will Stein turns the page to 'massive test' against Oklahoma",
-      "summary": "After Kentucky's huge overtime win over LSU, Stein shifts his focus to the various obstacles that the Sooners present for the Wildcats in Week 7.",
-      "url": "https://www.espn.com/video/clip/_/id/50192416/uk-stein-turns-page-massive-test-oklahoma",
-      "source": "ESPN",
-      "published_at": "2026-10-15T22:59:28Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "LSU",
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d126f088d2dc770c",
-      "title": "Eliah Drinkwitz previews Missouri's matchup against Ole Miss",
-      "summary": "Drinkwitz explains what to expect from No. 13 Mizzou's level of compete against a dynamic No. 9 Rebels' offense.",
-      "url": "https://www.espn.com/video/clip/_/id/50192409/eliah-drinkwitz-previews-missouri-matchup-ole-miss",
-      "source": "ESPN",
-      "published_at": "2026-10-15T22:59:21Z",
-      "sport": "football",
-      "teams": [
-        "Missouri",
-        "Ole Miss"
       ],
       "breaking": false
     },
