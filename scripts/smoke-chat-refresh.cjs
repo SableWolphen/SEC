@@ -19,14 +19,17 @@ let account=null,leagues=[],networkError=false,refreshes=0;
 const client={
  from(table){
   assert.equal(table,"sec_league_messages","Never fetch unrelated or public messages");
-  return {select(){return {eq(column,id){
-   assert.equal(column,"league_id","Only query one authorized league");
-   return {order(){return {async limit(n){
+  const q={
+   select(){return this;},
+   eq(column,id){assert.equal(column,"league_id");this.id=id;return this;},
+   order(){return this;},
+   async limit(n){
     assert.equal(n,1);
     return networkError?{error:new Error("Temporary offline")}:
-     {data:[{body:"Saved league message: "+id,created_at:"2026-10-16",user_id:"member"}]};
-   }}};
-  }}}};
+     {data:[{body:"Saved league message: "+this.id,created_at:"2026-10-16",user_id:"member"}]};
+   }
+  };
+  return q;
  }
 };
 const api={getClient:()=>client,getLeagues:()=>leagues,getLeague:()=>leagues[0]};
