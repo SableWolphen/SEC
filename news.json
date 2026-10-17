@@ -1,11 +1,74 @@
 {
-  "updated_at": "2026-10-17T00:31:19.023572Z",
-  "checked_at": "2026-10-17T00:31:19.023572Z",
+  "updated_at": "2026-10-17T05:38:05.800096Z",
+  "checked_at": "2026-10-17T05:38:05.800096Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "2a535a54ef5115b1",
+      "title": "SEC Now makes its picks for Week 7 conference matchups",
+      "summary": "SEC Network's Chris Doering and Benjamin Watson discuss the difference-making factors in each SEC matchup and pick the winners.",
+      "url": "https://www.espn.com/video/clip/_/id/50199038/sec-now-makes-picks-week-7-conference-matchups",
+      "source": "ESPN",
+      "published_at": "2026-10-17T01:16:14Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "37adb5818db9b967",
+      "title": "Previewing SEC heavyweight matchup No. 13 Tigers vs. No. 9 Rebels",
+      "summary": "Aaron Murray joins SEC Now from Oxford to discuss how the former Rebels on Mizzou's roster are excited to return and how the game will be won in the trenches.",
+      "url": "https://www.espn.com/video/clip/_/id/50198980/previewing-sec-heavyweight-matchup-no-13-tigers-vs-no-9-rebels",
+      "source": "ESPN",
+      "published_at": "2026-10-17T01:11:21Z",
+      "sport": "football",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "57dd6f376adf59b9",
+      "title": "How Auburn used the bye week to prepare for No. 1 Georgia",
+      "summary": "ESPN's Taylor McGregor joins SEC Now from Athens to discuss how the Tigers matchup against the nation's top ranked Bulldogs and who will need to step up for Auburn to get the upset.",
+      "url": "https://www.espn.com/video/clip/_/id/50198986/how-auburn-used-bye-week-prepare-no-1-georgia",
+      "source": "ESPN",
+      "published_at": "2026-10-17T01:11:10Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "712fbbb6e8377e60",
+      "title": "Analyzing how Xavier Gilliam and the Vols can disrupt Bama's offense",
+      "summary": "SEC Network's Benjamin Watson and Chris Doering break down how Gilliam has been so effective this season and how the Crimson Tide can slow the Tennessee defensive front.",
+      "url": "https://www.espn.com/video/clip/_/id/50198919/analyzing-how-xavier-gilliam-vols-disrupt-bama-offense",
+      "source": "ESPN",
+      "published_at": "2026-10-17T00:44:04Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c538bdf298aa8c64",
+      "title": "SEC Now faces their preseason predictions halfway through the season",
+      "summary": "SEC Network's Benjamin Watson and Chris Doering admit if they were wrong or right about predictions they made before the season started at this point in the year.",
+      "url": "https://www.espn.com/video/clip/_/id/50198880/sec-now-faces-their-preseason-predictions-halfway-season",
+      "source": "ESPN",
+      "published_at": "2026-10-17T00:38:06Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
     {
       "id": "e748cfa593526b64",
       "title": "Mississippi State QB Kamario Taylor, RB Fluff Bothwell doubtful vs. LSU",
@@ -248,20 +311,6 @@
       "sport": "basketball",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ccfd17f0c2c20692",
-      "title": "Sources: Tennessee QB George MacIntyre gets start against Alabama",
-      "summary": "Tennessee is set to turn to George MacIntyre as its starting quarterback for the second straight week when the No. 14 Volunteers host No. 6 Alabama, sources told ESPN.",
-      "url": "https://www.espn.com/college-football/story/_/id/50188522/sources-tennessee-qb-george-macintyre-start-vs-alabama",
-      "source": "ESPN",
-      "published_at": "2026-10-15T12:41:40Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Tennessee"
       ],
       "breaking": false
     },
