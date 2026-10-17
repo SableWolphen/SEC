@@ -7,11 +7,11 @@
       },
       "home": {
         "rank": 22,
-        "record": "4-2"
+        "record": "5-2"
       },
       "home_win_pct": 38.8,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856740",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-10-ARK-AUB": {
       "away": {
@@ -24,7 +24,7 @@
       },
       "home_win_pct": 82.5,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856738",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-10-OU-FLA": {
       "away": {
@@ -33,11 +33,11 @@
       },
       "home": {
         "rank": null,
-        "record": "4-2"
+        "record": "5-2"
       },
       "home_win_pct": 50.6,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856739",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-10-TAMU-SC": {
       "away": {
@@ -50,12 +50,12 @@
       },
       "home_win_pct": 50.2,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856744",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-10-TEX-MIZ": {
       "away": {
         "rank": 7,
-        "record": "4-1"
+        "record": "4-2"
       },
       "home": {
         "rank": 13,
@@ -63,7 +63,7 @@
       },
       "home_win_pct": 27.0,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856743",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-10-UGA-MISS": {
       "away": {
@@ -76,7 +76,7 @@
       },
       "home_win_pct": 20.7,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856741",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-10-UK-TENN": {
       "away": {
@@ -89,7 +89,7 @@
       },
       "home_win_pct": 71.2,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856745",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-10-VAN-MSST": {
       "away": {
@@ -98,11 +98,11 @@
       },
       "home": {
         "rank": 16,
-        "record": "4-1"
+        "record": "4-2"
       },
       "home_win_pct": 81.3,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856742",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-11-ALA-VAN": {
       "away": {
@@ -115,7 +115,7 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856889",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-11-AUB-MSST": {
       "away": {
@@ -124,16 +124,16 @@
       },
       "home": {
         "rank": 16,
-        "record": "4-1"
+        "record": "4-2"
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856886",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-11-FLA-UK": {
       "away": {
         "rank": null,
-        "record": "4-2"
+        "record": "5-2"
       },
       "home": {
         "rank": 15,
@@ -141,7 +141,7 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856884",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-11-MISS-OU": {
       "away": {
@@ -154,7 +154,7 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856887",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-11-MIZ-UGA": {
       "away": {
@@ -167,7 +167,7 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856883",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-11-SC-ARK": {
       "away": {
@@ -180,7 +180,7 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856882",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-11-TENN-TAMU": {
       "away": {
@@ -193,20 +193,20 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856888",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-11-TEX-LSU": {
       "away": {
         "rank": 7,
-        "record": "4-1"
+        "record": "4-2"
       },
       "home": {
         "rank": 22,
-        "record": "4-2"
+        "record": "5-2"
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856885",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-12-ARK-TEX": {
       "away": {
@@ -215,11 +215,11 @@
       },
       "home": {
         "rank": 7,
-        "record": "4-1"
+        "record": "4-2"
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856755",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-12-CHATT-ALA": {
       "away": {
@@ -232,12 +232,12 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856746",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-12-LSU-TENN": {
       "away": {
         "rank": 22,
-        "record": "4-2"
+        "record": "5-2"
       },
       "home": {
         "rank": 14,
@@ -245,7 +245,7 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856754",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-12-SAM-AUB": {
       "away": {
@@ -258,7 +258,7 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856747",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-12-TAMU-OU": {
       "away": {
@@ -271,7 +271,7 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856752",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-12-TNTECH-MSST": {
       "away": {
@@ -280,11 +280,11 @@
       },
       "home": {
         "rank": 16,
-        "record": "4-1"
+        "record": "4-2"
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856750",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-12-UGA-SC": {
       "away": {
@@ -297,7 +297,7 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856753",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-12-UK-MIZ": {
       "away": {
@@ -310,7 +310,7 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856751",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-12-VAN-FLA": {
       "away": {
@@ -319,11 +319,11 @@
       },
       "home": {
         "rank": null,
-        "record": "4-2"
+        "record": "5-2"
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856748",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-12-WOFF-MISS": {
       "away": {
@@ -336,7 +336,7 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856749",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-13-AUB-ALA": {
       "away": {
@@ -349,7 +349,7 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856757",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-13-GATECH-UGA": {
       "away": {
@@ -362,7 +362,7 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856760",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-13-LOU-UK": {
       "away": {
@@ -375,12 +375,12 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856761",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-13-LSU-ARK": {
       "away": {
         "rank": 22,
-        "record": "4-2"
+        "record": "5-2"
       },
       "home": {
         "rank": null,
@@ -388,7 +388,7 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856758",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-13-OU-MIZ": {
       "away": {
@@ -401,7 +401,7 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856763",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-13-SC-CLEM": {
       "away": {
@@ -410,11 +410,11 @@
       },
       "home": {
         "rank": null,
-        "record": "3-2"
+        "record": "4-2"
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856764",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-13-TENN-VAN": {
       "away": {
@@ -427,7 +427,7 @@
       },
       "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856765",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-6-LSU-UK": {
       "away": {
@@ -531,7 +531,7 @@
       },
       "home_win_pct": 28.6,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856723",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-7-ARK-VAN": {
       "away": {
@@ -544,7 +544,7 @@
       },
       "home_win_pct": 56.4,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856726",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-7-AUB-UGA": {
       "away": {
@@ -557,7 +557,7 @@
       },
       "home_win_pct": 90.5,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856719",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-7-CITADEL-TAMU": {
       "away": {
@@ -568,22 +568,22 @@
         "rank": null,
         "record": "3-3"
       },
-      "home_win_pct": 99.7,
+      "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856725",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-7-FLA-TEX": {
       "away": {
         "rank": null,
-        "record": "4-2"
+        "record": "5-2"
       },
       "home": {
         "rank": 7,
-        "record": "4-1"
+        "record": "4-2"
       },
-      "home_win_pct": 87.7,
+      "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856724",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-7-MIZ-MISS": {
       "away": {
@@ -596,20 +596,20 @@
       },
       "home_win_pct": 58.4,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856721",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-7-MSST-LSU": {
       "away": {
         "rank": 16,
-        "record": "4-1"
+        "record": "4-2"
       },
       "home": {
         "rank": 22,
-        "record": "4-2"
+        "record": "5-2"
       },
-      "home_win_pct": 76.9,
+      "home_win_pct": null,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856720",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-7-UK-OU": {
       "away": {
@@ -620,22 +620,22 @@
         "rank": null,
         "record": "3-2"
       },
-      "home_win_pct": 67.9,
+      "home_win_pct": 67.8,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856722",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-8-LSU-AUB": {
       "away": {
         "rank": 22,
-        "record": "4-2"
+        "record": "5-2"
       },
       "home": {
         "rank": null,
         "record": "3-2"
       },
-      "home_win_pct": 28.7,
+      "home_win_pct": 28.8,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856728",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-8-MISS-TEX": {
       "away": {
@@ -644,11 +644,11 @@
       },
       "home": {
         "rank": 7,
-        "record": "4-1"
+        "record": "4-2"
       },
       "home_win_pct": 82.3,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856732",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-8-OU-MSST": {
       "away": {
@@ -657,11 +657,11 @@
       },
       "home": {
         "rank": 16,
-        "record": "4-1"
+        "record": "4-2"
       },
       "home_win_pct": 48.2,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856730",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-8-TAMU-ALA": {
       "away": {
@@ -674,7 +674,7 @@
       },
       "home_win_pct": 86.8,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856727",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-8-TENN-SC": {
       "away": {
@@ -687,7 +687,7 @@
       },
       "home_win_pct": 44.5,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856731",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-8-VAN-UK": {
       "away": {
@@ -698,9 +698,9 @@
         "rank": 15,
         "record": "5-1"
       },
-      "home_win_pct": 82.5,
+      "home_win_pct": 82.6,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856729",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-9-AUB-MISS": {
       "away": {
@@ -711,14 +711,14 @@
         "rank": 9,
         "record": "4-1"
       },
-      "home_win_pct": 69.0,
+      "home_win_pct": 68.9,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856735",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-9-FLA-UGA": {
       "away": {
         "rank": null,
-        "record": "4-2"
+        "record": "5-2"
       },
       "home": {
         "rank": 1,
@@ -726,7 +726,7 @@
       },
       "home_win_pct": 88.5,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856734",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-9-MIZ-ARK": {
       "away": {
@@ -739,20 +739,20 @@
       },
       "home_win_pct": 18.9,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856733",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-9-MSST-TEX": {
       "away": {
         "rank": 16,
-        "record": "4-1"
+        "record": "4-2"
       },
       "home": {
         "rank": 7,
-        "record": "4-1"
+        "record": "4-2"
       },
       "home_win_pct": 87.7,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856737",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     },
     "2026-9-SC-OU": {
       "away": {
@@ -763,11 +763,11 @@
         "rank": null,
         "record": "3-2"
       },
-      "home_win_pct": 67.4,
+      "home_win_pct": 67.3,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856736",
-      "updated_at": "2026-10-17T01:20:07Z"
+      "updated_at": "2026-10-17T19:25:47Z"
     }
   },
-  "generated_at": "2026-10-17T01:20:07Z",
+  "generated_at": "2026-10-17T19:25:47Z",
   "source": "ESPN public college football scoreboard and matchup predictor when provided"
 }
