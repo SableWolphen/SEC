@@ -106,6 +106,8 @@
         card('Compete with friends','<p><strong>1.</strong> Create a free player account.<br><strong>2.</strong> Make a private league and share your invitation.<br><strong>3.</strong> Pick winners before kickoff.<br><strong>4.</strong> Follow the weekly and season leaderboard.</p><div class="help-note">All SEC games count, including nonconference matchups. One correct pick earns one point.</div>')+'</div>';
       return;
     }
+    var chatDraft=host.querySelector?.("#sec-chat-input")?.value;
+    var chatFeedScroll=host.querySelector?.("#sec-chat-feed")?.scrollTop||0;
     var toolsOpen=Boolean(host.querySelector?.(".fan-football-tools")?.open);
     var choice = currentLeague();
     var list = leagues.map(function(l){return '<option value="'+safe(l.id)+'" '+(active===l.id?'selected':'')+'>'+safe(l.name)+'</option>';}).join('');
@@ -151,6 +153,13 @@
          (window.SEC_LEAGUE_SETTINGS?standingsHtml:leaguesForm+standingsHtml))+
       '</div><div class="fan-football-advanced">'+secondary+'</div>'+
       '<p id="online-status" class="helper" role="status" aria-live="polite">'+safe(lastError)+'</p>';
+    // A background standings refresh must not silently discard an unsent chat.
+    if(chatDraft!==undefined){
+      var restoredInput=host.querySelector("#sec-chat-input");
+      if(restoredInput)restoredInput.value=chatDraft;
+    }
+    var restoredFeed=host.querySelector("#sec-chat-feed");
+    if(restoredFeed)restoredFeed.scrollTop=chatFeedScroll;
   }
   function renderSettings(){
     var host=document.getElementById("settings-content");
@@ -285,7 +294,7 @@
     if(app.view()==="picks")app.renderPicks();
     if(app.view()==="league")renderLeague();
     if(app.view()==="settings")renderSettings();
-    if(app.view()==="home")window.SEC_HOME?.refresh?.();
+    if(app.view()==="home"){window.SEC_HOME?.refresh?.();window.SEC_HOME?.onOnlineState?.();}
     var el=document.getElementById("online-banner");
     if(el)el.innerHTML=user?'<span class="eyebrow-dot"></span> ONLINE · '+safe(user.email||"Signed in")+' · '+safe(currentLeague()?.name||"Create or join a league"):
       '<button type="button" class="online-signin-cta" data-online="go-league">👤 Create account or log in · Make a league with friends ↗</button>';
