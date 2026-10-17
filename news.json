@@ -1,18 +1,32 @@
 {
-  "updated_at": "2026-10-17T14:13:40.461539Z",
-  "checked_at": "2026-10-17T14:13:40.461539Z",
+  "updated_at": "2026-10-17T17:15:10.714797Z",
+  "checked_at": "2026-10-17T17:15:10.714797Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "941be6fbe308448b",
+      "title": "Florida QB Tramell Jones Jr. gets first career start vs. Texas",
+      "summary": "Florida quarterback Tramell Jones Jr. made his first career start against No. 7 Texas.",
+      "url": "https://www.espn.com/college-football/story/_/id/50201352/sources-florida-qb-tramell-jones-jr-gets-start-vs-texas",
+      "source": "ESPN",
+      "published_at": "2026-10-17T16:20:56Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
       "id": "e748cfa593526b64",
-      "title": "Mississippi State QB Kamario Taylor, RB Fluff Bothwell doubtful vs. LSU",
-      "summary": "Mississippi State star quarterback Kamario Taylor has been downgraded from questionable to doubtful on the SEC's availability report going into Saturday's game at LSU.",
+      "title": "Mississippi State QB Kamario Taylor, RB Fluff Bothwell out vs. LSU",
+      "summary": "Mississippi State star quarterback Kamario Taylor and leading rusher Fluff Bothwell have been ruled out for Saturday's game at LSU.",
       "url": "https://www.espn.com/college-football/story/_/id/50198790/mississippi-state-qb-kamario-taylor-rb-fluff-bothwell-doubtful-vs-lsu",
       "source": "ESPN",
-      "published_at": "2026-10-17T11:21:40Z",
+      "published_at": "2026-10-17T15:28:07Z",
       "sport": "football",
       "teams": [
         "LSU",
@@ -230,33 +244,6 @@
       "published_at": "2026-10-16T20:35:58Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "11aabe8825bb7934",
-      "title": "Southern Nazarene safety Tyler Ulrich, 21, dies after in-game injury",
-      "summary": "Southern Nazarene University in Oklahoma announced that sophomore safety Tyler Ulrich has died five days after sustaining what the school called a \"traumatic injury\" during a game against Ouachita Baptist. Ulrich was 21.",
-      "url": "https://www.espn.com/college-football/story/_/id/50192570/southern-nazarene-safety-tyler-ulrich-dies-injury",
-      "source": "ESPN",
-      "published_at": "2026-10-16T13:01:03Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8ea0e4b434089bbf",
-      "title": "Clark Lea expects Vanderbilt to prove itself against Arkansas",
-      "summary": "Looking to get back in the win column against Arkansas, Lea explains why he expects the Commodores to have something to right the ship.",
-      "url": "https://www.espn.com/video/clip/_/id/50192561/clark-lea-expects-vanderbilt-prove-arkansas",
-      "source": "ESPN",
-      "published_at": "2026-10-15T23:54:05Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas",
-        "Vanderbilt"
-      ],
       "breaking": false
     },
     {
