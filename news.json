@@ -1,11 +1,25 @@
 {
-  "updated_at": "2026-10-17T17:15:10.714797Z",
-  "checked_at": "2026-10-17T17:15:10.714797Z",
+  "updated_at": "2026-10-17T19:26:56.900286Z",
+  "checked_at": "2026-10-17T19:26:56.900286Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "8d4075fd0e6fa398",
+      "title": "Alabama WR Ryan Coleman-Williams, out vs. Vols, undergoes knee surgery",
+      "summary": "Alabama star wide receiver Ryan Coleman-Williams underwent arthroscopic knee surgery to repair a meniscus injury, according to ESPN's Katie George.",
+      "url": "https://www.espn.com/college-football/story/_/id/50202841/alabama-wr-ryan-coleman-williams-undergoes-knee-surgery",
+      "source": "ESPN",
+      "published_at": "2026-10-17T19:13:04Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
     {
       "id": "941be6fbe308448b",
       "title": "Florida QB Tramell Jones Jr. gets first career start vs. Texas",
