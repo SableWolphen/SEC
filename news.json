@@ -1,59 +1,18 @@
 {
-  "updated_at": "2026-10-18T01:07:00.122984Z",
-  "checked_at": "2026-10-18T01:07:00.122984Z",
+  "updated_at": "2026-10-18T05:58:16.761207Z",
+  "checked_at": "2026-10-18T05:58:16.761207Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "6a5a4a68f8b2e941",
-      "title": "Sam Leavitt puts on season-best performance with 4 TDs vs. Mississippi State",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50206009/sam-leavitt-puts-season-best-performance-4-tds-vs-mississippi-state",
-      "source": "ESPN",
-      "published_at": "2026-10-18T00:46:51Z",
-      "sport": "football",
-      "teams": [
-        "Mississippi State"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c594f4fe62d99486",
-      "title": "Trinidad Chambliss accounts for 4 touchdowns in Ole Miss win",
-      "summary": "Quarterback Trinidad Chambliss threw for three touchdowns and ran for another Saturday afternoon as No.",
-      "url": "https://www.espn.com/college-football/story/_/id/50205624/trinidad-chambliss-accounts-4-touchdowns-ole-miss-win",
-      "source": "ESPN",
-      "published_at": "2026-10-18T00:45:32Z",
-      "sport": "football",
-      "teams": [
-        "Missouri",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "dd04900d8e409f3d",
-      "title": "Missouri Tigers vs. Ole Miss Rebels: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50205141/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-18T00:33:46Z",
-      "sport": "football",
-      "teams": [
-        "Missouri",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
       "id": "64f2eaa2d1a31b8b",
       "title": "Jon Sumrall, Auburn top trolls from Week 7 in college football",
       "summary": "After the upset, Sumrall was in a celebratory mood, donning a cowboy hat fit for a Texan while striding through the hallways of Darrell K Royal-Texas Memorial Stadium.",
       "url": "https://www.espn.com/college-football/story/_/id/50201050/college-football-trolls-week-7",
       "source": "ESPN",
-      "published_at": "2026-10-18T00:32:58Z",
+      "published_at": "2026-10-18T04:41:21Z",
       "sport": "football",
       "teams": [
         "Auburn",
@@ -62,57 +21,136 @@
       "breaking": false
     },
     {
-      "id": "f8bf4319f0684f43",
-      "title": "Auburn stuns No. 1 Georgia after Stockton's fumble leads to winning FG",
-      "summary": "Auburn, led by QB Byrum Brown's dominant running game, upset No. 1 Georgia after taking advantage of a key fumble by Gunner Stockton with 58 seconds left.",
-      "url": "https://www.espn.com/college-football/story/_/id/50205292/auburn-stuns-georgia-stockton-fumble-dooms-bulldogs",
+      "id": "d6bba57ffb64f3cb",
+      "title": "No. 15 Kentucky grabs share of SEC lead with comeback win over Oklahoma",
+      "summary": "Kentucky pulled even with No. 1 Georgia for the SEC lead after rallying to beat Oklahoma 21-13 on Saturday night.",
+      "url": "https://www.espn.com/college-football/story/_/id/50207703/kentucky-grabs-share-sec-lead-comeback-win-oklahoma",
       "source": "ESPN",
-      "published_at": "2026-10-18T00:29:06Z",
+      "published_at": "2026-10-18T04:25:18Z",
       "sport": "football",
       "teams": [
-        "Auburn",
-        "Georgia"
+        "Georgia",
+        "Kentucky",
+        "Oklahoma"
       ],
       "breaking": false
     },
     {
-      "id": "04c3c686e5d388d4",
-      "title": "All the numbers behind Auburn's stunning upset of No. 1 Georgia",
-      "summary": "Entering this week, unranked squads trailing the AP No. 1 team by at least 14 points had lost 195 consecutive games ... but Auburn had other plans.",
-      "url": "https://www.espn.com/college-football/story/_/id/50205300/auburn-georgia-upset-numbers",
-      "source": "ESPN",
-      "published_at": "2026-10-18T00:20:51Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "28e93ad80d155a00",
-      "title": "Alabama Crimson Tide vs. Tennessee Volunteers: Full Highlights",
+      "id": "8fa9bb9078902b8f",
+      "title": "Kentucky Wildcats vs. Oklahoma Sooners: Full Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50205435/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50207202/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-18T00:17:17Z",
+      "published_at": "2026-10-18T03:48:24Z",
       "sport": "football",
       "teams": [
-        "Alabama",
-        "Tennessee"
+        "Kentucky",
+        "Oklahoma"
       ],
       "breaking": false
     },
     {
-      "id": "b55416c7463db569",
-      "title": "No. 14 Tennessee hands No. 6 Alabama second straight loss",
-      "summary": "DeSean Bishop rushed for 159 yards and two touchdowns, lifting No. 14 Tennessee over No. 6 Alabama 26-10 on Saturday.",
-      "url": "https://www.espn.com/college-football/story/_/id/50205434/no-14-tennessee-hands-no-6-alabama-second-straight-loss",
+      "id": "b283a73977848731",
+      "title": "Arkansas Razorbacks vs. Vanderbilt Commodores: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50207018/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-18T00:09:36Z",
+      "published_at": "2026-10-18T03:13:48Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4ec7983cd49f53df",
+      "title": "Louisiana Tech Bulldogs vs. UL Monroe Warhawks: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50207420/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-18T03:13:04Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7b845d0da5a8bd2d",
+      "title": "UC Davis Aggies vs. Southern Utah Thunderbirds: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50207417/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-18T03:12:13Z",
+      "sport": "football",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "566fea2f2a4e52ff",
+      "title": "East Texas A&M Lions vs. Houston Baptist Huskies: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50207127/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-18T02:42:24Z",
+      "sport": "football",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ea564bf7475ca77b",
+      "title": "Central Arkansas Bears vs. Tarleton Texans: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50207056/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-18T02:37:50Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "dec7367fbbe3886e",
+      "title": "Abilene Christian Wildcats vs. North Alabama Lions: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50206989/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-18T02:26:10Z",
       "sport": "football",
       "teams": [
         "Alabama",
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b987d6b1a1da55a3",
+      "title": "Mercer Bears vs. Samford Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50206987/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-18T02:25:17Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c6fc82da3332d3f5",
+      "title": "Morgan State Bears vs. Tennessee State Tigers: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50206648/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-18T01:50:27Z",
+      "sport": "football",
+      "teams": [
         "Tennessee"
       ],
       "breaking": false
@@ -127,85 +165,6 @@
       "sport": "football",
       "teams": [
         "Auburn",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "9ee28704cecfe1d4",
-      "title": "Auburn stuns No. 1 Georgia 27-24 in Athens",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50205295/auburn-stuns-no-1-georgia-27-24-athens",
-      "source": "ESPN",
-      "published_at": "2026-10-17T23:23:07Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "45b1f4c558ee75ba",
-      "title": "Who has the most wins vs. No. 1 college football teams?",
-      "summary": "Alabama has won the most games vs. No. 1-ranked teams in college football history. See which teams make the rest of the list.",
-      "url": "https://www.espn.com/college-football/story/_/id/41698842/who-most-wins-vs-no-1-college-football-teams",
-      "source": "ESPN",
-      "published_at": "2026-10-17T23:06:56Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6aec2f18c35fd8aa",
-      "title": "Villanova Wildcats vs. Fordham Rams: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50205030/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-17T22:45:53Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "bf026536802be709",
-      "title": "Western Illinois Leathernecks vs. Southeast Missouri State Redhawks: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50204894/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-17T22:30:40Z",
-      "sport": "football",
-      "teams": [
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "cd9731dba5ad01fc",
-      "title": "Idaho State Bengals vs. Weber State Wildcats: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50204865/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-17T22:24:34Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f32bc3f8826f679c",
-      "title": "Gardner-Webb Bulldogs vs. UT Martin Skyhawks: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50204855/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-17T22:22:02Z",
-      "sport": "football",
-      "teams": [
         "Georgia"
       ],
       "breaking": false
@@ -367,19 +326,6 @@
       "sport": "basketball",
       "teams": [
         "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b22b2a3947d028f6",
-      "title": "Alabama's Aden Holloway begins 5-game ban following arrest",
-      "summary": "Alabama guard Aden Holloway will miss three exhibition games and two regular-season games during a five-game suspension following his arrest on a drug charge, coach Nate Oats said Thursday.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50137284/alabama-aden-holloway-begins-5-game-ban-following-arrest",
-      "source": "ESPN",
-      "published_at": "2026-10-09T03:01:43Z",
-      "sport": "basketball",
-      "teams": [
-        "Alabama"
       ],
       "breaking": false
     }
