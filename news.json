@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-18T20:48:49.687180Z",
-  "checked_at": "2026-10-18T20:48:49.687180Z",
+  "updated_at": "2026-10-18T23:17:11.534170Z",
+  "checked_at": "2026-10-18T23:17:11.534170Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -45,20 +45,6 @@
       "teams": [
         "Florida",
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "866210ff4ee78f90",
-      "title": "Chris Doering on Auburn: 'They out Georgia'd the Georgia Bulldogs'",
-      "summary": "SEC Network's Doering and Benjamin Watson analyze the factors that helped Auburn upset No. 1 Georgia on SEC Football Final.",
-      "url": "https://www.espn.com/video/clip/_/id/50211688/georgiad-georgia-bulldogs",
-      "source": "ESPN",
-      "published_at": "2026-10-18T18:12:48Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "Georgia"
       ],
       "breaking": false
     },
