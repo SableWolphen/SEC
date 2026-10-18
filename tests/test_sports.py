@@ -75,7 +75,7 @@ class SportFeedTests(unittest.TestCase):
   ids={g['id'] for g in result['sports']['basketball']['games']}
   self.assertIn('basketball-2027-team-only',ids)
   self.assertIn('basketball-2027-scoreboard',ids)
-  self.assertEqual(len([u for u in called if '/teams/' in u]),16)
+  self.assertEqual(len([u for u in called if '/basketball/' in u and '/teams/' in u]),16)
   self.assertIn('Incomplete SEC basketball coverage',result['sports']['basketball']['warning'])
  def test_baseball_team_schedule_supplements_scoreboard(self):
   def mock(url):
