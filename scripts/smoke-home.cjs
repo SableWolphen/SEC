@@ -112,7 +112,8 @@ const unknown={id:"fake",home:"TENN",away:"TEX",liveStatus:"scheduled",date:"202
 assert.equal(home.nextKickoff([home.gameState(unknown)],now),null,"never guess a kickoff time");
 assert.equal(home.countdown(now-1,now),null,"expired kickoff not advertised");
 assert.match(src,/SEC_LIVE_SCORES\?\.refresh/,"reuse the confirmed score feed");
-assert.doesNotMatch(src,/\.from\(|\.rpc\(|\.insert\(|\.update\(|\.delete\(/,"homepage does not write to or separately query database");
+assert.match(src,/\.from\("sec_league_messages"\)/,"Home can read authorized league-chat previews");
+assert.doesNotMatch(src,/\.rpc\(|\.insert\(|\.update\(|\.delete\(|\.upsert\(/,"Home never mutates league or player data");
 for(const view of ["home","more"])assert.ok(html.includes('id="'+view+'-view"'));
 assert.match(html,/const views=\['home'/,"router recognizes the home screen");
 assert.match(css,/repeat\(5,minmax\(0,1fr\)\)/,"mobile nav is five columns");
