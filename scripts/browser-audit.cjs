@@ -602,208 +602,108 @@ fs.mkdirSync(output,{recursive:true});
 
    // End of isolated browser-only fixture. The original CI still audits real
    // source-driven content without this test modifying anyone's account.
-   // Confirm the *real rendered* live strip and compressed matchup layout on
-   // narrow phones. This is a local browser-only fixture; no real score is
-   // submitted or modified in the production database.
+   // Local browser fixture: real score and play rendering under Scores only.
+   // No production scores, picks or accounts are modified.
    await page.evaluate(()=>{
-     window.SEC_BRIDGE.setView("picks");
-     // Audit every fixture on the complete slate: the real app now defaults
-     // to a context-aware tab, but this test intentionally exercises all games.
-     document.querySelector('#picks-view [data-slate-filter="all"]')?.click();
-     const a=window.SEC_BRIDGE,w=a.week();
-     if(w.games[1]){w.games[1].kickoff=new Date(Date.now()+3600000).toISOString();delete a.state().picks[w.games[1].id];}
-     // A published confirmed final cannot become a live match merely because
-     // the visual fixture overrides the local score; opt that fixture out.
-     window.__AUDIT_FINAL_DATA=window.SEC_FEATURES.finalData;
-     window.SEC_FEATURES.finalData=x=>x.liveStatus==="live"?null:window.__AUDIT_FINAL_DATA(x);
-     const g=w.games[0];g.liveStatus="live";g.awayScore=14;g.homeScore=10;
-     g.statusDetail="Q2 · 8:04";g.scoreUpdatedAt=new Date().toISOString();
-     g.kickoff=new Date(Date.now()-4*60000).toISOString();
-     g.livePossessionCode=g.away;g.liveDown=2;g.liveDistance=7;
-     g.liveFieldPercent=37;g.liveDriveSummary="5 plays, 24 yards";
-     g.liveLastPlay="Pass for 12 yards";g.liveSituationUpdatedAt=new Date().toISOString();
-     window.SEC_LIVE_SCORES?.renderStatus?.();
-     window.SEC_BRIDGE.renderPicks();
+    window.SEC_BRIDGE.setView("picks");
+    document.querySelector('#picks-view [data-slate-filter="all"]')?.click();
+    const a=window.SEC_BRIDGE,w=a.week();
+    window.__AUDIT_FINAL_DATA=window.SEC_FEATURES.finalData;
+    window.SEC_FEATURES.finalData=x=>x.liveStatus==="live"?null:window.__AUDIT_FINAL_DATA(x);
+    const g=w.games[0];g.liveStatus="live";g.awayScore=14;g.homeScore=10;
+    g.statusDetail="Q2 · 8:04";g.scoreUpdatedAt=new Date().toISOString();
+    g.kickoff=new Date(Date.now()-4*60000).toISOString();
+    g.livePossessionCode=g.away;g.liveDown=2;g.liveDistance=7;
+    g.liveFieldPercent=37;g.liveDriveSummary="5 plays, 24 yards";
+    g.liveLastPlay="Verified 12-yard pass";g.liveSituationUpdatedAt=new Date().toISOString();
+    window.SEC_BRIDGE.renderPicks();
+    window.SEC_PREMIUM.openGame(g.id);
    });
-   const live=await page.evaluate(()=>{
-     const strip=document.querySelector("#sec-live-score-strip"),r=strip.getBoundingClientRect();
-     return {visible:!strip.hidden&&r.width>0,score:strip.textContent.includes("14"),
-       next:!!strip.querySelector("[data-slate-next]"),
-       compressed:document.body.classList.contains("sec-game-day-active"),
-       width:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth};
+   const scoreAudit=await page.evaluate(()=>{
+    const w=window.SEC_BRIDGE.week();
+    const rail=document.querySelector("#game-center-view [data-score-rail]");
+    const first=rail?.querySelector("[data-score-match]");
+    const selected=window.SEC_PREMIUM.chooseGame();
+    const hero=document.querySelector("#game-center-view .sdsx-score-hero");
+    return {route:window.SEC_BRIDGE.view(),cards:rail?.querySelectorAll("[data-score-match]").length,
+     all:w.games.length,selected:selected?.id,first:first?.dataset.scoreMatch,
+     hero:hero?.textContent||"",scrollWidth:rail?.scrollWidth,clientWidth:rail?.clientWidth,
+     cssSnap:rail?getComputedStyle(rail).scrollSnapType:null,
+     picksCard:document.querySelector('#picks-view .sec-pick-locked-card')?.textContent,
+     width:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth};
    });
-   if(!live.visible||!live.score||!live.compressed||live.width>live.viewport+2)
-     problems.push(viewport.width+"px live strip clipped: "+JSON.stringify(live));
-   if(viewport.width<=390&&!live.next)
-     problems.push(viewport.width+"px missing mobile shortcut to remaining football picks");
-
-   const oneLive=await page.evaluate(()=>{
-     const id=window.SEC_BRIDGE.week().games[0].id;
-     const card=[...document.querySelectorAll("#games-list .game-card")].find(el=>el.dataset.gameId===id);
-     const row=card?.querySelector(".fan-center > summary");
-     return {
-       rendered:!!card,liveBadges:card?.querySelectorAll(".fan-center > summary .fan-live").length||0,
-       phase:row?.textContent.includes("Q2 · 8:04")||false,
-       score:row?.textContent.includes("14 – 10")||false,
-       duplicateStatus:!!card?.querySelector(".sec-live,.sec-score-phase"),
-       hasDetail:!!card?.querySelector(".fan-center-detail"),
-       compactFieldVisible:(()=>{const el=card?.querySelector(".fan-center > summary .fan-field-mini");return !!el&&el.getBoundingClientRect().height>0;})(),
-       compactMarker:!!card?.querySelector(".fan-center > summary .fan-football-marker"),
-       hasLiveDrive:!!card?.querySelector(".fan-drive"),
-       hasBall:!!card?.querySelector(".fan-drive .fan-football-marker"),
-       liveText:card?.querySelector(".fan-drive")?.textContent.includes("2nd & 7")||false
-     };
+   if(scoreAudit.route!=="game-center"||scoreAudit.cards!==scoreAudit.all||
+    !scoreAudit.hero.includes("14")||!scoreAudit.hero.includes("10")||
+    !scoreAudit.cssSnap?.includes("mandatory")||scoreAudit.width>scoreAudit.viewport+2||
+    !scoreAudit.picksCard?.includes("View score"))
+    problems.push(viewport.width+"px Scores full-slate swipe layout failed: "+JSON.stringify(scoreAudit));
+   // Arrow/tap navigation selects another matchup and changes the large game.
+   await page.locator("#game-center-view [data-score-shift='1']").click();
+   const changed=await page.evaluate(()=>{
+    const games=[...document.querySelectorAll("#game-center-view [data-score-match]")];
+    const selected=games.find(x=>x.getAttribute("aria-pressed")==="true");
+    return {selected:selected?.dataset.scoreMatch,first:games[0]?.dataset.scoreMatch,
+     label:document.querySelector(".sdsx-rail-controls")?.textContent||""};
    });
-   if(!oneLive.rendered||oneLive.liveBadges!==1||!oneLive.phase||
-      !oneLive.score||oneLive.duplicateStatus||!oneLive.hasDetail||
-      !oneLive.compactFieldVisible||!oneLive.compactMarker||
-      !oneLive.hasLiveDrive||!oneLive.hasBall||!oneLive.liveText)
-     problems.push(viewport.width+"px duplicate live game status: "+JSON.stringify(oneLive));
-   // Full in-card play timeline, filters and sourced drives must work without
-   // navigating away from Games or injecting unsanitized source HTML.
-   const livePbp=page.locator('#games-list .sec-games-active-card .sec-pbp-panel').first();
-   if(await livePbp.count()){
-    await livePbp.locator('summary').click();
-    try{
-     await page.waitForFunction(()=>document.querySelector(
-      '#games-list .sec-games-active-card .sec-pbp-play-body'
-     )?.textContent.includes("Verified 12-yard pass"),{timeout:8000});
-    }catch(e){problems.push(viewport.width+"px in-card play timeline did not load");}
-    const pbp=await page.evaluate(()=>{
-     const root=document.querySelector('#games-list .sec-games-active-card .sec-pbp-panel');
-     const all=root?.querySelectorAll('.sec-pbp-play').length||0;
-     const escaped=root?.textContent.includes('<img src=x onerror=alert(1)>')||false;
-     const injected=!!root?.querySelector('img');
-     root?.querySelector('[data-sec-pbp-filter="scoring"]')?.click();
-     const scoring=root?.querySelectorAll('.sec-pbp-play').length||0;
-     root?.querySelector('[data-sec-pbp-filter="drives"]')?.click();
-     const drives=root?.querySelectorAll('.sec-pbp-drive').length||0;
-     return {all,escaped,injected,scoring,drives};
-    });
-    if(pbp.all!==3||!pbp.escaped||pbp.injected||pbp.scoring!==1||pbp.drives!==1)
-     problems.push(viewport.width+"px play timeline filters/XSS issue: "+JSON.stringify(pbp));
-    await page.evaluate(()=>{
-     const id=window.SEC_BRIDGE.week().games[0].id;
-     window.SEC_PREMIUM.openGame(id);
-     document.querySelector('#sdsx-game-root [data-sdsx-tab="plays"]')?.click();
-    });
-    try{
-     await page.waitForFunction(()=>document.querySelector(
-      '#game-center-view .sec-pbp-play-body'
-     )?.textContent.includes("Verified 12-yard pass"),{timeout:8000});
-    }catch(e){problems.push(viewport.width+"px Game Center timeline not rendered");}
-    await page.evaluate(()=>window.SEC_BRIDGE.setView("picks"));
-   }else problems.push(viewport.width+"px live Games card missing play-by-play disclosure");
-   await page.screenshot({path:path.join(output,viewport.width+"-gameday.png")});
-
-   // Independently audit final-game layout (offline fixture; no private data
-   // is requested from the actual database or any user's picks modified).
+   if(!changed.selected||changed.selected===changed.first||!changed.label.includes("Game 2"))
+    problems.push(viewport.width+"px Scores next-game navigation failed: "+JSON.stringify(changed));
+   // Back to the locally seeded live matchup; Plays must be source-driven.
+   await page.locator("#game-center-view [data-score-shift='-1']").click();
+   await page.locator('#game-center-view [data-sdsx-tab="plays"]').click();
+   try{
+    await page.waitForFunction(()=>document.querySelector(
+     '#game-center-view .sec-pbp-play-body'
+    )?.textContent.includes("Verified 12-yard pass"),{timeout:8000});
+   }catch(e){problems.push(viewport.width+"px Scores live play timeline did not load");}
+   const plays=await page.evaluate(()=>{
+    const root=document.querySelector("#game-center-view .sec-pbp-panel");
+    const all=root?.querySelectorAll(".sec-pbp-play").length||0;
+    const safe=!root?.querySelector("img");
+    const escaped=root?.textContent.includes("<img src=x onerror=alert(1)>")||false;
+    root?.querySelector('[data-sec-pbp-filter="scoring"]')?.click();
+    const scoring=root?.querySelectorAll(".sec-pbp-play").length||0;
+    root?.querySelector('[data-sec-pbp-filter="drives"]')?.click();
+    const drives=root?.querySelectorAll(".sec-pbp-drive").length||0;
+    return {all,scoring,drives,safe,escaped};
+   });
+   if(plays.all!==3||plays.scoring!==1||plays.drives!==1||!plays.safe||!plays.escaped)
+    problems.push(viewport.width+"px Scores live play filters invalid: "+JSON.stringify(plays));
+   await page.screenshot({path:path.join(output,viewport.width+"-swipe-scores.png")});
+   // The final should show its pick outcome in Picks, while actual score
+   // and reviewable play timeline remain exclusively in Scores.
    await page.evaluate(()=>{
-     // A user-opened live timeline stays open by design. To test the default
-     // compact finished game, close it before the score becomes final.
-     const liveDisclosure=document.querySelector("#games-list .sec-games-active-card .sec-pbp-panel");
-     if(liveDisclosure)liveDisclosure.open=false;
-     const w=window.SEC_BRIDGE.week(),g=w.games[0];
-     g.liveStatus="final";g.awayScore=6;g.homeScore=27;
-     const second=w.games[1];
-     if(second){second.liveStatus="final";second.awayScore=38;second.homeScore=19;}
-     window.SEC_FEATURES.finalData=x=>{
-      if(x.id===g.id)return {
-       winner:g.home,pick:g.away,points:0,mode:"straight",
-       awayScore:6,homeScore:27,spread:-4.5,cover:g.home,push:false,
-       eventId:"401856716",majority:g.away,majorityCount:4,
-       missed:4,total:6,awayCount:4,homeCount:2,
-       reveal:Array.from({length:6},(_,i)=>({display_name:"Fan "+(i+1),
-        pick_code:i<4?g.away:g.home}))
-      };
-      if(second&&x.id===second.id)return {
-       winner:second.away,pick:second.away,points:1,mode:"straight",
-       awayScore:38,homeScore:19,spread:-10.5,cover:second.away,push:false,
-       eventId:"401856714",majority:second.home,majorityCount:5,
-       missed:5,total:6,awayCount:1,homeCount:5,reveal:[]
-      };
-      return null;
-     };
-     window.SEC_BRIDGE.renderPicks();
+    window.SEC_BRIDGE.setView("picks");
+    document.querySelector('#picks-view [data-slate-filter="all"]')?.click();
+    const w=window.SEC_BRIDGE.week(),g=w.games[0],second=w.games[1];
+    g.liveStatus="final";g.awayScore=6;g.homeScore=27;
+    if(second){second.liveStatus="final";second.awayScore=38;second.homeScore=19;}
+    window.SEC_FEATURES.finalData=x=>{
+     if(x.id===g.id)return {winner:g.home,pick:g.away,points:0,mode:"straight",
+      awayScore:6,homeScore:27,eventId:"401856716"};
+     if(second&&x.id===second.id)return {winner:second.away,pick:second.away,points:1,mode:"straight",
+      awayScore:38,homeScore:19,eventId:"401856714"};
+     return null;
+    };
+    window.SEC_BRIDGE.renderPicks();
    });
    const post=await page.evaluate(()=>{
-     const card=document.querySelector("#games-list .sec-final-card");
-     const friends=card?.querySelector(".sec-final-reveal");
-     const details=card?.querySelector(".sec-final-details");
-     const visible=el=>!!el&&el.getBoundingClientRect().height>0&&getComputedStyle(el).visibility!=="hidden";
-     return {hasCard:!!card,winner:!!card?.querySelector(".sec-final-team.is-winner"),
-      result:card?.textContent.includes("0 pts"),
-      recap:!!card?.querySelector('.sec-final-recap-link[href^="https://www.espn.com/"]'),
-      box:!!card?.querySelector('.sec-final-box-link[href^="https://www.espn.com/"]'),
-      leagueImpact:card?.textContent.includes("4 missed their pick"),
-      friendsClosed:!!friends&&!friends.open,
-      detailsClosed:!!details&&!details.open,
-      playTimelineClosed:!card?.querySelector(".sec-pbp-panel")?.open,
-      detailsPrompt:details?.querySelector("summary")?.textContent.includes("Game details")||false,
-      visibleLost:!!card?.querySelector(".sec-final-details > summary .sec-final-pick-badge.lost"),
-      visibleWon:!!document.querySelector("#games-list .sec-final-details > summary .sec-final-pick-badge.won"),
-      resultHidden:!visible(card?.querySelector(".sec-final-grade")),
-      linksHidden:!visible(card?.querySelector(".sec-final-actions")),
-      noDuplicateScore:!card?.querySelector(".sec-final-scoreline"),
-      compactHeight:Math.round(card?.getBoundingClientRect().height||0),
-      width:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth};
+    const card=document.querySelector("#games-list .sec-final-pick-summary");
+    return {hasCard:!!card,grade:card?.textContent.includes("Incorrect pick"),
+     link:!!card?.querySelector('[data-sdsx-game]'),
+     noScores:!card?.textContent.includes("27")&&!card?.querySelector(".sec-final-team-score"),
+     noPlays:!card?.querySelector(".sec-pbp-panel"),
+     width:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth};
    });
-   if(!post.hasCard||!post.winner||!post.result||!post.recap||!post.box||
-      !post.leagueImpact||!post.friendsClosed||!post.detailsClosed||
-      !post.detailsPrompt||!post.visibleLost||!post.visibleWon||!post.playTimelineClosed||
-      !post.resultHidden||!post.linksHidden||!post.noDuplicateScore||
-      post.compactHeight>210||post.width>post.viewport+2)
-     problems.push(viewport.width+"px final game not compact/collapsed: "+JSON.stringify(post));
-
-   const teamNames=await page.evaluate(()=>{
-    const all=[...document.querySelectorAll("#games-list .sec-final-team-copy > strong")];
-    const context=document.createElement("canvas").getContext("2d");
-    return all.map(el=>{
-     const style=getComputedStyle(el);
-     context.font=style.font;
-     const words=el.textContent.trim().split(/\s+/);
-     const widest=Math.max(...words.map(word=>context.measureText(word).width));
-     return {name:el.textContent,available:el.getBoundingClientRect().width,
-      widest:Math.round(widest*10)/10,wrap:style.overflowWrap,break:style.wordBreak,
-      scroll:el.scrollWidth,client:el.clientWidth};
-    });
-   });
-   for(const t of teamNames){
-    if(t.wrap!=="normal"||t.break!=="normal"||t.available+2<t.widest||
-       t.scroll>t.client+2){
-     problems.push(viewport.width+"px broken team name: "+JSON.stringify(t));
-    }
-   }
-   // The default week rolls forward during the season. Check its current
-   // actual teams rather than hard-coding two teams from a past week.
-   if(teamNames.length<4||teamNames.some(x=>!x.name.trim()))
-      problems.push(viewport.width+"px current-week team names missing: "+JSON.stringify(teamNames));
-
-   // The user can choose to see everything, and score refreshes must not
-   // unexpectedly collapse the game they've just opened.
-   const detailToggle=page.locator("#games-list .sec-final-card .sec-final-details > summary").first();
-   await detailToggle.click();
-   const opened=await page.evaluate(()=>{
-    const box=document.querySelector("#games-list .sec-final-card .sec-final-details");
-    const grade=box?.querySelector(".sec-final-grade");
-    return {open:!!box?.open,gradeHeight:Math.round(grade?.getBoundingClientRect().height||0)};
-   });
-   if(!opened.open||opened.gradeHeight===0)
-      problems.push(viewport.width+"px final Game details do not open: "+JSON.stringify(opened));
-   await page.evaluate(()=>window.SEC_BRIDGE.renderPicks());
-   const keptOpen=await page.evaluate(()=>document.querySelector(
-     "#games-list .sec-final-card .sec-final-details")?.open);
-   if(!keptOpen)
-      problems.push(viewport.width+"px score rerender unexpectedly collapsed opened final details");
-
-   const friendToggle=page.locator("#games-list .sec-final-card .sec-final-reveal > summary").first();
-   if(await friendToggle.count()){
-     await friendToggle.click();
-     const expanded=await page.evaluate(()=>document.querySelector(
-       "#games-list .sec-final-card .sec-final-reveal")?.open);
-     if(!expanded)problems.push(viewport.width+"px cannot reveal post-kickoff friend picks");
-   }
-   await page.screenshot({path:path.join(output,viewport.width+"-final-game.png")});
+   if(!post.hasCard||!post.grade||!post.link||!post.noScores||!post.noPlays||
+    post.width>post.viewport+2)
+    problems.push(viewport.width+"px compact Picks result incorrectly mixes scores: "+JSON.stringify(post));
+   await page.locator("#games-list .sec-final-pick-summary [data-sdsx-game]").first().click();
+   const final=await page.evaluate(()=>({
+    route:window.SEC_BRIDGE.view(),score:document.querySelector("#game-center-view .sdsx-center-score")?.textContent,
+    selected:window.SEC_PREMIUM.chooseGame()?.id}));
+   if(final.route!=="game-center"||!final.score?.includes("27")||!final.score?.includes("6"))
+    problems.push(viewport.width+"px final score not accessible under Scores: "+JSON.stringify(final));
+   await page.screenshot({path:path.join(output,viewport.width+"-final-scores.png")});
    await page.evaluate(()=>{
     window.SEC_FEATURES.finalData=window.__AUDIT_FINAL_DATA;
     delete window.__AUDIT_FINAL_DATA;
