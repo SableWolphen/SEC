@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-18T11:13:31.761532Z",
-  "checked_at": "2026-10-18T11:13:31.761532Z",
+  "updated_at": "2026-10-18T14:38:04.459183Z",
+  "checked_at": "2026-10-18T14:38:04.459183Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -72,32 +72,6 @@
       "sport": "football",
       "teams": [
         "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "566fea2f2a4e52ff",
-      "title": "East Texas A&M Lions vs. Houston Baptist Huskies: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50207127/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-18T02:42:24Z",
-      "sport": "football",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ea564bf7475ca77b",
-      "title": "Central Arkansas Bears vs. Tarleton Texans: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50207056/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-18T02:37:50Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas"
       ],
       "breaking": false
     },
