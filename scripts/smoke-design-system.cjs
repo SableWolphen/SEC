@@ -43,7 +43,7 @@ for(const file of ["index.html","multi-sport.css","sec-final-cards.css","trophy-
 }
 assert.match(icon,/#f0c775/,"app logo uses the same brand accent");
 assert.equal(manifest.name,"Saturdays Down South — SEC Pick'em",
- "preserve established app name");
+ "preserve current Gamedays Down South app name");
 assert.equal(manifest.theme_color,"#081321");
 assert.equal(manifest.background_color,"#081321");
 assert.match(html,/<meta name="theme-color" content="#081321"/);
