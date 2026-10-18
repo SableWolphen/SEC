@@ -67,7 +67,7 @@ assert.equal(model.leaderboard.length,2);
 assert.equal(model.leaderboard[0].user_id,"friend");
 current="home";home.mount();
 // Home is intentionally a calm pick/league dashboard; scores and plays live in Scores.
-assert.match(root.innerHTML,/Games are <em>live\\.<\\/em>/);
+assert.ok(root.innerHTML.includes("Games are <em>live.</em>"));
 assert.match(root.innerHTML,/GAMEDAYS DOWN SOUTH/);
 assert.match(root.innerHTML,/data-hq-route="game-center"[^>]*class="hq-primary">Watch live scores →/,
  "Live hero directs viewers to the dedicated Scores tab");

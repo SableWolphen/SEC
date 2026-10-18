@@ -19,6 +19,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Comprehensive smoke matrix
+        run: node scripts/run-smoke-matrix.cjs
       - name: JavaScript syntax
         run: |
           node --check multi-sport.js
