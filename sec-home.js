@@ -94,7 +94,7 @@ function closestRival(model){
 function hero(m){
  const game=m.favoriteUpcoming||m.nextKickoff;
  const p=m.progress;
- const action=m.moment==="finals"?"results":"picks";
+ const action=m.moment==="live"?"game-center":m.moment==="finals"?"results":"picks";
  const actionLabel={
   live:"Watch live scores →",picks:"Finish my picks →",
   finals:"See my results →",upcoming:"View upcoming games →",idle:"Browse games →"
@@ -110,7 +110,7 @@ function hero(m){
   "Pick your school and get ready for game day.";
  return '<section class="hq-stadium-hero'+(game?"":" hq-no-upcoming")+
   '" aria-label="Game Day HQ"'+(m.favoriteSchool?' data-sds-school="'+esc(m.favoriteSchool)+'"':'')+'>'+
- '<div class="hq-hero-copy"><span class="hq-eyebrow">SATURDAYS DOWN SOUTH</span>'+
+ '<div class="hq-hero-copy"><span class="hq-eyebrow">GAMEDAYS DOWN SOUTH</span>'+
  '<h2>'+title+'</h2>'+
  (m.favoriteSchool?'<div class="sds-home-favorite-mini" data-sds-school="'+esc(m.favoriteSchool)+'">'+
   (window.SDS_VISUALS?.mark?.(m.favoriteSchool,{className:"sdsx-crest"})||'<span>'+esc(m.favoriteSchool)+'</span>')+

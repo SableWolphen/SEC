@@ -83,6 +83,19 @@ function wasOpen(id,selector){
 function render(g,index,ctx){
  const d=window.SEC_FEATURES?.finalData?.(g);
  if(!d)return "";
+ if(ctx.summaryOnly){
+  const result=outcome(d),pick=d.pick?ctx.team(d.pick).name:"No pick";
+  const label=result.kind==="won"?"✓ Correct pick":result.kind==="lost"?"✕ Incorrect pick":
+   result.kind==="push"?"↔ Push":result.kind==="pending"?"Result pending":"No pick";
+  return '<article class="game-card sec-final-card sec-final-pick-summary" data-game-id="'+e(g.id)+
+   '" tabindex="-1"><div class="game-header"><div class="game-index"><strong>'+
+   String(index+1).padStart(2,"0")+'</strong> / PICK RESULT</div><span class="sec-final-status-label">✓ FINAL</span></div>'+
+   '<div class="sec-pick-final-teams">'+ctx.logo(g.away)+'<strong>'+e(ctx.team(g.away).name)+
+   ' vs '+e(ctx.team(g.home).name)+'</strong>'+ctx.logo(g.home)+'</div>'+
+   '<div class="sec-pick-final-foot"><span><small>YOUR PICK</small><b>'+e(pick)+
+   ' · '+e(label)+'</b></span><button type="button" data-sdsx-game="'+e(g.id)+
+   '">See final score &amp; plays →</button></div></article>';
+ }
  const event=String(d.eventId||""),hasLink=/^\d{6,14}$/.test(event);
  const url=hasLink?"https://www.espn.com/college-football/":null;
  const link=(name,desc,suffix,symbol,cls)=>'<'+(url?'a href="'+url+suffix+'/_/gameId/'+event+

@@ -66,64 +66,54 @@ assert.equal(model.moment,"live","real live scores take priority on Home");
 assert.equal(model.leaderboard.length,2);
 assert.equal(model.leaderboard[0].user_id,"friend");
 current="home";home.mount();
-assert.match(root.innerHTML,/24 – 21/,"confirmed score is shown, not a sample");
-assert.match(root.innerHTML,/Updated /,"score freshness is shown");
-assert.match(root.innerHTML,/4th · 02:36/);
-assert.match(root.innerHTML,/1 open and unpicked/);
-assert.match(root.innerHTML,/Friend &amp; Rival/,"league names are escaped");
-assert.match(root.innerHTML,/FOLLOWING YOUR SCHOOL/,"favorite is shown once in Game Day HQ");
-assert.doesNotMatch(root.innerHTML,/class="hq-hero-alt"/,"favorite Team Hub navigation is not duplicated");
-assert.doesNotMatch(root.innerHTML,/hq-school-spotlight/,"no duplicate favorite-school Home card");
-assert.match(root.innerHTML,/data-hq-route="team-hub">Team Hub →/,"Team Hub available inside hero");
-assert.match(root.innerHTML,/data-hq-route="teams">Edit school/,"Edit School accessible without duplicate card");
-assert.match(root.innerHTML,/Tennessee/,"the account favorite is visible");
-assert.match(root.innerHTML,/5-1 overall/,"verified favorite record is shown");
-assert.match(root.innerHTML,/SATURDAYS DOWN SOUTH/,"original brand is retained");
-assert.match(root.innerHTML,/Games are <em>live\.<\/em>/,"live game state changes Home headline");
-assert.match(root.innerHTML,/NEXT VERIFIED KICKOFF/,"countdown uses a scheduled kickoff");
-assert.match(root.innerHTML,/UGA/,"actual scheduled teams appear");
-assert.match(root.innerHTML,/hq-matchup-team/,"home scoreboard includes team abbreviation identities");
-assert.match(src,/This week’s matchups/,"matchups replace oversized decorative copy");
-assert.equal((root.innerHTML.match(/class="hq-action"/g)||[]).length,7,"seven quick actions");
-assert.match(root.innerHTML,/hq-rival-score/,"verified rival standings preview");
-assert.match(root.innerHTML,/class="hq-mobile-expand"/,"secondary mobile information has a show-more control");
-assert.match(root.innerHTML,/aria-controls="sec-home-extras"/,"expand control targets extra content");
-assert.match(src,/previousMarkup===markup/,"stable refresh keeps existing mobile page nodes when content is unchanged");
-assert.ok(css.includes('.hq-action:nth-child(4),'),"mobile shows League Race instead of the My Team shortcut");
-assert.ok(css.includes('.hq-action:nth-child(4){order:2}'),"mobile League Race appears second");
-assert.ok(css.includes('.hq-action:nth-child(3){order:3}'),"live scores remain third");
-assert.match(root.innerHTML,/LEAGUE RACE<\/strong><small>You&#39;re #2<\/small>/,
- "League Race uses actual authorized rank instead of a mock value");
-assert.ok(css.includes('.hq-headline:nth-child(n+2)'),"mobile news preview stays short");
-assert.ok(css.includes('.hq-matchup:nth-child(n+2)'),"mobile game preview stays short");
-assert.match(css,/.hq-mobile-expand/,"mobile details control has responsive styles");
-assert.match(root.innerHTML,/Our League/,"league identity is preserved");
-assert.ok(css.includes(".hq-stadium-hero.hq-no-upcoming"),"no oversized empty upcoming-game panel");
-assert.match(root.innerHTML,/class="hq-discover"/,"SEC news discovery remains");
-assert.doesNotMatch(root.innerHTML,/Follow your school/,"repeated follow-school heading removed");
-assert.match(root.innerHTML,/Headlines that matter/,"news is featured on Home");
-assert.match(root.innerHTML,/Tennessee wins late/,"real favorite-team story is shown");
-assert.match(root.innerHTML,/Other SEC roundup/,"broader SEC headlines appear alongside favorites");
-assert.ok(root.innerHTML.indexOf("Tennessee wins late")<root.innerHTML.indexOf("Other SEC roundup"),
- "favorite-team headlines are prioritized over generic news");
-assert.doesNotMatch(root.innerHTML,/Malicious headline|javascript:/,"untrusted news URLs are rejected");
+// Home is intentionally a calm pick/league dashboard; scores and plays live in Scores.
+assert.ok(root.innerHTML.includes("Games are <em>live.</em>"));
+assert.match(root.innerHTML,/GAMEDAYS DOWN SOUTH/);
+assert.match(root.innerHTML,/data-hq-route="game-center"[^>]*class="hq-primary">Watch live scores →/,
+ "Live hero directs viewers to the dedicated Scores tab");
+assert.doesNotMatch(root.innerHTML,/class="hq-game-score"/,
+ "Do not duplicate a live scoreboard below Picks or on the Home hero");
+assert.match(root.innerHTML,/FOLLOWING YOUR SCHOOL/);
+assert.match(root.innerHTML,/data-hq-route="team-hub">Team Hub →/);
+assert.match(root.innerHTML,/data-hq-route="teams">Edit school/);
+assert.match(root.innerHTML,/Tennessee/);
+assert.match(root.innerHTML,/5-1 overall/);
+assert.match(root.innerHTML,/NEXT VERIFIED KICKOFF/);
+assert.match(root.innerHTML,/UGA/);
+assert.match(root.innerHTML,/aria-label="Your next picks"/);
 assert.match(root.innerHTML,/aria-label="Picks completed"/);
+assert.match(root.innerHTML,/hq-home-chats/);
+assert.match(root.innerHTML,/aria-label="All the important SEC features"/);
+for(const route of ["picks","game-center","news","league","results","teams","trophies"]){
+ assert.ok(root.innerHTML.includes('data-hq-route="'+route+'"'),
+  "Important features remain navigable: "+route);
+}
 assert.match(root.innerHTML,/data-hq-route="basketball"/);
-assert.doesNotMatch(root.innerHTML,/Rival A|Sample preview|Sample standings/,"never show mock numbers");
+assert.match(root.innerHTML,/hq-around-news/,
+ "Recent verified news is kept in a single quiet Home panel");
+assert.doesNotMatch(root.innerHTML,/Malicious headline|javascript:/,
+ "Untrusted publisher links may not reach the DOM");
+assert.doesNotMatch(root.innerHTML,/Rival A|Sample preview|Sample standings/,
+ "Home must never present fabricated game or league data");
+assert.match(src,/previousMarkup===markup/,
+ "Refreshes preserve the active Home DOM if the state is unchanged");
+assert.ok(css.includes(".hq-stadium-hero.hq-no-upcoming"),
+ "A missing kickoff does not generate a giant placeholder");
 authed=null;
 model=home.snapshot(a,now);
 assert.equal(model.leaderboard.length,0,"guests must not see former user's league");
 current="home";home.refresh();
-assert.match(root.innerHTML,/Sign in to see your private league/);
+assert.match(root.innerHTML,/Sign in and join a league to chat with friends/);
 assert.match(root.innerHTML,/Choose Team/,"signed-out users never inherit a former account's school");
 assert.doesNotMatch(root.innerHTML,/5-1 overall/,"private favorite disappears on logout");
-assert.match(root.innerHTML,/Join a league with friends/,"guest sees honest rival empty state");
+assert.match(root.innerHTML,/Find my leagues →/,"guest receives a real league entry point");
 assert.doesNotMatch(root.innerHTML,/Friend &amp; Rival/,"former opponent not shown to guest");
 const unknown={id:"fake",home:"TENN",away:"TEX",liveStatus:"scheduled",date:"2026-10-11"};
 assert.equal(home.nextKickoff([home.gameState(unknown)],now),null,"never guess a kickoff time");
 assert.equal(home.countdown(now-1,now),null,"expired kickoff not advertised");
 assert.match(src,/SEC_LIVE_SCORES\?\.refresh/,"reuse the confirmed score feed");
-assert.doesNotMatch(src,/\.from\(|\.rpc\(|\.insert\(|\.update\(|\.delete\(/,"homepage does not write to or separately query database");
+assert.match(src,/\.from\("sec_league_messages"\)/,"Home can read authorized league-chat previews");
+assert.doesNotMatch(src,/\.rpc\(|\.insert\(|\.update\(|\.delete\(|\.upsert\(/,"Home never mutates league or player data");
 for(const view of ["home","more"])assert.ok(html.includes('id="'+view+'-view"'));
 assert.match(html,/const views=\['home'/,"router recognizes the home screen");
 assert.match(css,/repeat\(5,minmax\(0,1fr\)\)/,"mobile nav is five columns");

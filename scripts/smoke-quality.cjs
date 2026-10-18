@@ -10,7 +10,7 @@ for(const page of pages){
  assert.match(html,new RegExp('id="'+page+'-heading"'),"view title exists: "+page);
 }
 const nav=html.split('<nav class="bottom-nav"')[1].split('</nav>')[0];
-for(const page of ["home","current-sport","league","trophies","more"]){
+for(const page of ["home","current-sport","league","game-center","settings"]){
  assert.ok(nav.includes('data-nav="'+page+'"'),"mobile navigation includes "+page);
 }
 assert.equal((nav.match(/class="mobile-nav-btn/g)||[]).length,5,"five main destinations fit on small screens");
@@ -29,7 +29,7 @@ assert.match(css,/\.fan-sport-checkbox>span\{font-size:11px/,
 assert.match(css,/:focus-visible/,"keyboard focus remains visible");
 assert.match(html,/id="fan-league-create"/);
 assert.match(html,/id="fan-power-rankings"/);
-assert.match(html,/id="sec-live-score-strip"/,"compact football-only score strip exists");
+assert.match(html,/id="sdsx-game-root"/,"all live football scores have dedicated Scores screen");
 assert.match(html,/id="sec-home-root"/,"Game Day HQ exists");
 assert.match(html,/id="more-heading"/,"More navigation provides secondary tools");
 assert.match(html,/sec-home\.js\?v=/,"Game Day HQ script is loaded");

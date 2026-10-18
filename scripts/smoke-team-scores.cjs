@@ -10,13 +10,13 @@ const football={state:{picks:{},results:{}},window:{SEC_STATS:{pickContext:()=>"
 vm.runInNewContext(teamSource+"\nthis.showTeam=makeTeamButton;",football);
 const game={id:"TAMU-MIZ",away:"TAMU",home:"MIZ",liveStatus:"live",awayScore:17,homeScore:24};
 let a=football.showTeam(game,"TAMU"),b=football.showTeam(game,"MIZ");
-assert.match(a,/pick-team-score[^>]*>17<\/span>/);
-assert.match(b,/pick-team-score is-leading[^>]*>24<\/span>/);
+assert.doesNotMatch(a,/pick-team-score/,"football picks do not display live scores");
+assert.doesNotMatch(b,/pick-team-score/);
 assert.match(a,/select-mark/,"score does not remove pick indicator");
-assert.match(football.showTeam(game,"TAMU",true),/pick-team-score[^>]*>17<\/span>/,"featured game has score");
+assert.doesNotMatch(football.showTeam(game,"TAMU",true),/pick-team-score/);
 assert.doesNotMatch(football.showTeam({...game,liveStatus:"scheduled",awayScore:0,homeScore:0},"TAMU"),/pick-team-score/,"no scheduled placeholder 0-0");
-assert.match(football.showTeam({...game,liveStatus:"live",awayScore:0,homeScore:0},"TAMU"),/pick-team-score[^>]*>0<\/span>/,"genuine live 0-0 allowed");
-assert.match(football.showTeam({...game,liveStatus:"final",awayScore:7,homeScore:28},"MIZ"),/pick-team-score is-leading[^>]*>28<\/span>/,"final results appear on cards");
+assert.doesNotMatch(football.showTeam({...game,liveStatus:"live",awayScore:0,homeScore:0},"TAMU"),/pick-team-score/);
+assert.doesNotMatch(football.showTeam({...game,liveStatus:"final",awayScore:7,homeScore:28},"MIZ"),/pick-team-score/);
 assert.doesNotMatch(football.showTeam({...game,awayScore:null},"TAMU"),/pick-team-score/,"missing score not displayed");
 assert.doesNotMatch(football.showTeam({...game,awayScore:-1},"TAMU"),/pick-team-score/,"invalid score not displayed");
 const begin=sport.indexOf("const SEC_IDS="),end=sport.indexOf("function renderTiebreak(",begin);

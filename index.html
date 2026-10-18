@@ -217,6 +217,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <link rel="stylesheet" href="./sec-game-impact.css?v=20261013-impact-v1">
 <link rel="stylesheet" href="./sec-fan-moments.css?v=20261014-fun-v2">
 <link rel="stylesheet" href="./sec-screen-consistency.css?v=20261014-ui-continuity-v3">
+<link rel="stylesheet" href="./sec-score-hub.css?v=20261018-scores-carousel-v1">
 </head>
 <body>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
@@ -293,7 +294,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     </section>
     <section id="picks-view" class="view hidden" aria-labelledby="picks-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> 2026 SEC FOOTBALL SEASON <span class="eyebrow-slash">/</span> UNOFFICIAL FAN GAME</div>
-      <div class="page-intro"><div><h1 id="picks-heading">Your <em>games.</em></h1><p>One matchup, from your pick to the live score and final result.</p></div><div class="intro-side" id="countdown-badge"></div></div>
+      <div class="page-intro"><div><h1 id="picks-heading">Make your <em>picks.</em></h1><p>Choose winners here. All scores and live football plays are under Scores.</p></div><div class="intro-side" id="countdown-badge"></div></div>
       <nav class="global-sport-switch" id="global-sport-switch" aria-label="Choose SEC sport">
         <span class="global-sport-label">YOUR GAME</span>
         <div class="global-sport-options" role="group" aria-label="Sports pick'em">
@@ -710,9 +711,9 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     const scored=['live','final'].includes(status)&&validGameScore(away)&&validGameScore(home);
     const n=id===g.away?Number(away):Number(home);
     const lead=scored&&Number(away)!==Number(home)&&n>Number(id===g.away?home:away);
-    const scoreHtml=scored?`<span class="pick-team-score ${lead?'is-leading':''}" aria-label="${esc(t.name)} score ${n}">${n}</span>`:'';
+    const scoreHtml=''; // Scores belong exclusively in the Scores tab.
     if(hero)return `<button class="spotlight-team ${sel?'chosen':''} ${scored?'has-team-score':''}" type="button" data-pick="${g.id}" data-team="${id}" data-sds-school="${esc(id)}" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<span class="team-copy"><b>${esc(t.name)}</b>${context}</span><span class="pick-team-trailing">${scoreHtml}${sel?'<span class="pick-team-hero-check" aria-label="Your pick">✓</span>':''}</span></button>`;
-    return `<button type="button" class="team-choice ${sel?'selected':''} ${decided===id?'winner':''} ${decided&&decided!==id?'loser':''} ${scored?'has-team-score':''}" data-pick="${g.id}" data-team="${id}" data-sds-school="${esc(id)}" aria-label="Pick ${esc(t.name)} to win${scored?'; score '+n:''}" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<span class="team-copy"><span class="team-name">${esc(t.name)}</span><span class="team-nick">${esc(t.nick)}</span>${context}</span><span class="pick-team-trailing">${scoreHtml}<span class="select-mark">${sel?'✓':''}</span></span></button>`;
+    return `<button type="button" class="team-choice ${sel?'selected':''} ${decided===id?'winner':''} ${decided&&decided!==id?'loser':''} ${scored?'has-team-score':''}" data-pick="${g.id}" data-team="${id}" data-sds-school="${esc(id)}" aria-label="Pick ${esc(t.name)} to win" aria-pressed="${sel}" ${blocked?'disabled':''}>${logo(id)}<span class="team-copy"><span class="team-name">${esc(t.name)}</span><span class="team-nick">${esc(t.nick)}</span>${context}</span><span class="pick-team-trailing">${scoreHtml}<span class="select-mark">${sel?'✓':''}</span></span></button>`;
   }
   // Editorial fallback for weeks without ranking data. The featured matchup is NEVER selected from favorites.
   const EDITORIAL_FEATURED={
@@ -728,29 +729,20 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
   }
   function renderHero(w){const featured=featuredGame(w);document.getElementById('hero-slot').innerHTML=`<div class="spotlight"><div class="spotlight-inner"><div class="spotlight-top"><span class="line"></span>GAME OF THE WEEK <span class="line"></span></div><h2 class="spotlight-title">Big games. <span>Bigger calls.</span></h2><p class="spotlight-sub">${esc(team(featured.away).name)} vs ${esc(team(featured.home).name)} · ${esc(gameTime(featured))} · ${esc(featured.network)}${featured.neutral?' · '+esc(featured.neutral):''}</p><p class="spotlight-analyst">🎙️ ${esc(window.SEC_GAME_COMMUNITY?.narrative?.(featured,"football")?.text||"Verified matchup details coming soon.")}</p><div class="spotlight-game">${makeTeamButton(featured,featured.away,true)}<span class="spotlight-versus">VS</span>${makeTeamButton(featured,featured.home,true)}</div><div class="spotlight-label">${state.picks[featured.id]?'Your pick: '+esc(team(state.picks[featured.id]).name):'Who are you backing? Tap to choose.'} ${isLocked(featured)?' · Locked':''}</div></div></div>`;}
   function renderGame(g,index){
-    const post=window.SEC_FINAL_CARDS?.render?.(g,index,{team,logo,displayDate,gameTime,weekDate:week().date});
+    const post=window.SEC_FINAL_CARDS?.render?.(g,index,{team,logo,displayDate,gameTime,weekDate:week().date,summaryOnly:true});
     if(post)return post;
     const phase=String(g.liveStatus||"scheduled"),live=phase==="live",waiting=!live&&isLocked(g);
     if(live||waiting){
       const pick=state.picks[g.id],chosen=pick===g.away||pick===g.home;
-      const card=window.SEC_FAN?.gameCenter?.(g,window.SEC_STATS?.render?.(g)||"")||"";
-      const title=live?"🔴 LIVE":phase==="final"?"Final confirmation pending":"Awaiting score update";
-      const stateText=chosen?"Your locked pick: "+team(pick).name:"No pick · Picks locked";
-      const fallback=card||'<div class="sec-games-score-pending">'+
-        esc(team(g.away).name)+' vs '+esc(team(g.home).name)+
-        '<small>Verified scores are not yet available.</small></div>';
-      return '<article class="game-card sec-games-active-card'+(live?' is-live':' is-waiting')+
-        '" data-game-id="'+esc(g.id)+'" tabindex="-1">'+
-        '<div class="sec-games-active-top"><strong>'+title+'</strong><span>'+esc(displayDate(g.date,g.date!==week().date))+
-        ' · '+esc(g.network||"SEC game")+'</span></div>'+
-        fallback+((live||phase==="final")?(window.SEC_PLAYS?.placeholder?.(g,"games")||""):"")+
-        '<div class="sec-games-active-foot"><span>'+esc(stateText)+'</span>'+
-        '<button type="button" data-sdsx-game="'+esc(g.id)+'">Open game details →</button></div>'+
-        (window.SEC_FEATURES?.extras?.(g)?'<details class="sec-games-extras"><summary>More matchup information</summary>'+
-          window.SEC_FEATURES.extras(g)+'</details>':"")+
-        '</article>';
+      const title=live?"● LIVE":phase==="final"?"Final confirmation pending":"Picks locked";
+      const stateText=chosen?"Your pick: "+team(pick).name:"No pick made";
+      return '<article class="game-card sec-pick-locked-card" data-game-id="'+esc(g.id)+'" tabindex="-1">'+
+        '<div class="sec-pick-locked-top"><strong>'+title+'</strong><small>'+esc(displayDate(g.date,g.date!==week().date))+'</small></div>'+
+        '<div class="sec-pick-locked-teams">'+logo(g.away)+'<b>'+esc(team(g.away).name)+' vs '+esc(team(g.home).name)+'</b>'+logo(g.home)+'</div>'+
+        '<div class="sec-pick-locked-foot"><span>'+esc(stateText)+'</span>'+
+        '<button type="button" data-sdsx-game="'+esc(g.id)+'">View score &amp; plays →</button></div></article>';
     }
-    const pick=state.picks[g.id],winner=state.results[g.id];const fallbackNote=winner ? !pick ? 'Final result entered · no pick made' : pick===winner ? '<span class="earned">✓ Correct pick · +1 point</span>' : '<span class="missed">✕ Incorrect pick · 0 points</span>' : pick ? `Your pick: <span class="text-strong">${esc(team(pick).name)}</span>`:'Choose a team to make your pick';const note=window.SEC_FEATURES?.pickResult?.(g)??fallbackNote;return `<article class="game-card" data-game-id="${esc(g.id)}" tabindex="-1"><div class="game-header"><div class="game-index"><strong>${String(index+1).padStart(2,'0')}</strong> / MATCHUP</div><div class="game-meta"><span>${displayDate(g.date,g.date!==week().date)}</span><span class="meta-separator">·</span><span>${esc(gameTime(g))}</span><span class="meta-separator">·</span><span>${esc(g.network)}</span></div></div><div class="team-choices">${makeTeamButton(g,g.away)}<span class="versus">VS</span>${makeTeamButton(g,g.home)}</div><div class="game-note"><span>${note}</span><span class="lock-tag ${isLocked(g)?'locked':''}">${esc(timeNote(g))}</span></div>${g.neutral?`<div class="helper" style="margin-top:7px">${esc(g.neutral)}</div>`:''}${window.SEC_FAN?.gameCenter?.(g,window.SEC_STATS?.render?.(g)||'')||(window.SEC_STATS?window.SEC_STATS.render(g):'')}${window.SEC_FEATURES?.extras?.(g)||''}</article>`;}
+    const pick=state.picks[g.id],winner=state.results[g.id];const fallbackNote=winner ? !pick ? 'Final result entered · no pick made' : pick===winner ? '<span class="earned">✓ Correct pick · +1 point</span>' : '<span class="missed">✕ Incorrect pick · 0 points</span>' : pick ? `Your pick: <span class="text-strong">${esc(team(pick).name)}</span>`:'Choose a team to make your pick';const note=window.SEC_FEATURES?.pickResult?.(g)??fallbackNote;return `<article class="game-card" data-game-id="${esc(g.id)}" tabindex="-1"><div class="game-header"><div class="game-index"><strong>${String(index+1).padStart(2,'0')}</strong> / MATCHUP</div><div class="game-meta"><span>${displayDate(g.date,g.date!==week().date)}</span><span class="meta-separator">·</span><span>${esc(gameTime(g))}</span><span class="meta-separator">·</span><span>${esc(g.network)}</span></div></div><div class="team-choices">${makeTeamButton(g,g.away)}<span class="versus">VS</span>${makeTeamButton(g,g.home)}</div><div class="game-note"><span>${note}</span><span class="lock-tag ${isLocked(g)?'locked':''}">${esc(timeNote(g))}</span></div>${g.neutral?`<div class="helper" style="margin-top:7px">${esc(g.neutral)}</div>`:''}${window.SEC_FEATURES?.extras?.(g)||''}</article>`;}
   
   function renderWeeklyScoreStrip(w){
     const total=w.games.length,made=activePicks(w),finalGames=resultsCount(w);
@@ -987,7 +979,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./sec-game-community.js?v=20261010-calm-v2"></script>
 <script src="./sec-live-drive.js?v=20261010-field-visible-v2"></script>
 <script src="./fan-experience.js?v=20261010-field-visible-v2"></script>
-<script src="./sec-live-scores.js?v=20261011-premium-v2"></script>
+<script src="./sec-live-scores.js?v=20261018-scores-carousel-v1"></script>
 <script src="./league-settings.js?v=20261010-competition-v1"></script>
 <script src="./sec-power-rankings.js?v=20261010-standings-only-v1"></script>
 <script src="./sec-brackets.js?v=20261009-perleague-bracket-v3"></script>
@@ -996,10 +988,11 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./sec-gameday.js?v=20261010-standings-only-v1"></script>
 <script src="./league-tabs.js?v=20261010-standings-only-v1"></script>
 <script src="./sec-competitive-tools.js?v=20261010-path-fixed-v4"></script>
-<script src="./sec-final-cards.js?v=20261010-pick-result-v4"></script>
+<script src="./sec-final-cards.js?v=20261018-scores-carousel-v1"></script>
 <script src="./sec-home.js?v=20261016-chat-restore-v1"></script>
 <script src="./sds-showcase-preferences.js?v=20261011-ten-screens-v1"></script>
-<script src="./sec-premium.js?v=20261011-unified-v2"></script>
+<script src="./sec-premium.js?v=20261018-scores-carousel-v1"></script>
+<script src="./sec-score-hub.js?v=20261018-scores-carousel-v1"></script>
 <script src="./sec-next.js?v=20261014-recent-v1"></script>
 <script src="./sec-access.js?v=20261012-access-v1"></script>
 <script src="./sec-play-by-play.js?v=20261012-plays-v1"></script>

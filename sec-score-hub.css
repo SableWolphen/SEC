@@ -1,0 +1,47 @@
+/* Scores owns the entire football slate; swipe to a game without entering Picks. */
+#game-center-view .sdsx-score-browser{
+ display:grid;gap:11px;min-width:0;border:1px solid #476277;border-radius:15px;
+ padding:14px;background:linear-gradient(155deg,#132b40,#0b1c2d);
+}
+#game-center-view .sdsx-score-browser-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+#game-center-view .sdsx-score-browser-top h2{margin:0;color:#f6dfac;font-size:clamp(19px,3vw,25px);line-height:1.15}
+#game-center-view .sdsx-score-browser-top p{margin:6px 0 0;color:#baccda;font-size:12px}
+#game-center-view .sdsx-score-browser-top label{display:flex;align-items:center;gap:7px;color:#d7e3ed;font-size:12px;font-weight:800}
+#game-center-view [data-score-week]{min-height:43px;min-width:105px;border-radius:10px;border:1px solid #6c7790;background:#142a40;color:#fff0d0;font:inherit;padding:8px 10px}
+#game-center-view .sdsx-rail-controls{display:flex;align-items:center;justify-content:flex-end;gap:8px;color:#d5e0e9;font-size:12px;font-weight:800}
+#game-center-view .sdsx-rail-controls button{border-radius:9px;border:1px solid #66768a;color:#ffe1a4;background:#1b3348;font-size:25px;min-width:42px;min-height:42px;cursor:pointer}
+#game-center-view .sdsx-rail-controls button:disabled{opacity:.35;cursor:default}
+#game-center-view .sdsx-score-rail{display:flex;align-items:stretch;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scroll-padding-inline:2px;padding:2px 2px 12px;touch-action:pan-x pan-y;-webkit-overflow-scrolling:touch;min-width:0}
+#game-center-view .sdsx-rail-game{flex:0 0 clamp(194px,37vw,245px);min-width:0;scroll-snap-align:center;text-align:left;display:grid;gap:9px;border:1px solid #536b7f;border-radius:12px;background:#0b2235;color:#e6edf4;padding:12px;cursor:pointer}
+#game-center-view .sdsx-rail-game.active{border-color:#f4d18d;background:#1c3549;box-shadow:inset 0 0 0 1px #edc789}
+#game-center-view .sdsx-rail-game.is-live{border-left:4px solid #e55759}
+#game-center-view .sdsx-rail-game .sdsx-rail-top{display:flex;align-items:center;justify-content:space-between;gap:7px;color:#b7cad9}
+#game-center-view .sdsx-rail-game .sdsx-rail-top small{font-weight:800;font-size:10px;letter-spacing:.04em}
+#game-center-view .sdsx-rail-game.is-live .sdsx-rail-top small:first-child{color:#ffb4af}
+#game-center-view .sdsx-rail-team{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0}
+#game-center-view .sdsx-rail-team b{font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:750}
+#game-center-view .sdsx-rail-team strong{font-size:19px;font-variant-numeric:tabular-nums;color:#fce6bc}
+#game-center-view .sdsx-rail-game:focus-visible{outline:3px solid #f4d18d;outline-offset:2px}
+#picks-view #sec-live-score-strip{display:none!important}
+#picks-view .sec-pick-locked-card{padding:12px 14px;background:#10263a;border:1px solid #39556a;border-radius:12px}
+#picks-view .sec-pick-locked-top,#picks-view .sec-pick-locked-foot,#picks-view .sec-pick-final-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+#picks-view .sec-pick-locked-top{color:#c9d7e5;font-size:12px}
+#picks-view .sec-pick-locked-top strong{color:#f6d48b}
+#picks-view .sec-pick-locked-teams,#picks-view .sec-pick-final-teams{display:flex;justify-content:center;align-items:center;gap:10px;min-width:0;padding:12px 0}
+#picks-view .sec-pick-locked-teams b,#picks-view .sec-pick-final-teams strong{font-size:clamp(13px,3vw,18px);text-align:center;color:#f7f1e8}
+#picks-view .sec-pick-locked-teams .mini-logo,#picks-view .sec-pick-final-teams .mini-logo{flex:0 0 auto}
+#picks-view .sec-pick-locked-foot span,#picks-view .sec-pick-final-foot span{font-size:12px;color:#d4e1ea}
+#picks-view .sec-pick-final-foot span{display:grid;gap:3px}
+#picks-view .sec-pick-final-foot small{color:#b6cddd;font-size:10px}
+#picks-view .sec-pick-final-foot b{color:#f2e7cf;font-size:13px}
+#picks-view .sec-pick-locked-foot button,#picks-view .sec-pick-final-foot button{border:1px solid #ad956c;background:#233a4c;color:#f7d797;border-radius:9px;min-height:43px;padding:9px 13px;font-weight:800;cursor:pointer}
+#picks-view .sec-final-pick-summary{padding:12px 14px;min-width:0}
+@media(max-width:540px){
+ #game-center-view .sdsx-score-browser{padding:11px}
+ #game-center-view .sdsx-score-browser-top label{width:100%;justify-content:space-between}
+ #game-center-view .sdsx-score-rail{margin-inline:-3px;gap:8px}
+ #game-center-view .sdsx-rail-game{flex-basis:min(78vw,240px)}
+ #game-center-view .sdsx-score-top{align-items:flex-start}
+ #game-center-view .sdsx-score-top>span:last-child{text-align:right}
+}
+@media(prefers-reduced-motion:reduce){#game-center-view .sdsx-score-rail{scroll-behavior:auto}}

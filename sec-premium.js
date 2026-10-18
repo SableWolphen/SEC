@@ -89,8 +89,15 @@ function openTeam(code){
  app()?.setView?.("team-hub");
 }
 function openGame(id){
- if(typeof id==="string"&&gameList().some(g=>g.id===id))pickedGame=id;
+ if(typeof id==="string"&&gameList().some(g=>g.id===id)){
+  pickedGame=id;window.SEC_SCORE_HUB?.trackGame?.(id);
+ }
  app()?.setView?.("game-center");
+}
+function selectScoreGame(id){
+ if(typeof id!=="string"||!gameList().some(g=>g.id===id))return;
+ pickedGame=id;window.SEC_SCORE_HUB?.trackGame?.(id);
+ if(app()?.view?.()==="game-center")gameCenter();
 }
 function openResults(weekNo){
  if(Number.isInteger(weekNo)&&app()?.weeks?.some(w=>w.num===weekNo))selectedWeek=weekNo;
@@ -241,6 +248,7 @@ function gameCenter(){
   '<button type="button" class="sdsx-gold-button" data-sdsx-view="league">Go to my league →</button></section>')+
  '</div>';
  window.SEC_PLAYS?.hydrate?.(host);
+ window.SEC_SCORE_HUB?.decorate?.(host,g);
 }
 function leagueRows(){
  const selected=window.SEC_LEAGUE_SETTINGS?.getSelected?.();
@@ -410,7 +418,7 @@ document.addEventListener("visibilitychange",()=>{if(document.visibilityState===
  const v=app()?.view?.();if(["team-hub","game-center","results","team-news"].includes(v))mount(v);
 }});
 window.SEC_PREMIUM=Object.freeze({mount,openTeam,openGame,openResults,teamHub,gameCenter,teamNews,results,
- resultDetails,movers,storiesFor,chooseGame});
+ resultDetails,movers,storiesFor,chooseGame,selectScoreGame});
 const first=app()?.view?.();
 if(["team-hub","game-center","results","team-news"].includes(first))mount(first);
 })();

@@ -238,7 +238,7 @@ assert.equal(bound.cardVerdict().title,finished.title,
  "switching back to the original account restores its pinned roast");
 
 // Assert every grade receives the new stronger SEC trash talk while still
-// preserving the correct thresholds and 12 no-repeat sayings per tier.
+// preserving the correct thresholds and extended no-repeat roast decks.
 assert.match(src,/YOUR FOOTBALL LICENSE HAS BEEN REVOKED/);
 assert.match(src,/YOU'RE THE DEFINITION OF MID/);
 assert.match(src,/THE LEAGUE HAS FOUND ITS CLOWN/);
@@ -252,8 +252,8 @@ assert.equal(m.grade(1,4).kind,"roast","20% gets the brutal roast tier");
 assert.equal(m.grade(5,0).kind,"fire","100% celebrates dominating opponents");
 
 const counts=m.roastCounts();
-assert.deepEqual({...counts},{fire:12,great:12,okay:12,rough:12,roast:12},
- "every performance tier has twelve original roasts");
+assert.deepEqual({...counts},{fire:12,great:12,okay:12,rough:18,roast:22},
+ "expanded roast decks keep 18 rough and 22 savage sayings");
 const kinds=Object.keys(counts);
 for(const kind of kinds){
  // Card persistence tests already consume quotes; start the independent deck
@@ -280,8 +280,8 @@ assert.ok(chosen.title);
 assert.equal(store.has("sec-roast-deck-v1:device:rough"),true);
 assert.match(src,/data-fun-again/,"users can request a fresh saying right away");
 assert.match(src,/latestVerdict/,"share matches the displayed roast");
-assert.match(html,/sec-fan-moments\.js\?v=20261015-savage-v1/);
-assert.match(read("sw.js"),/sec-fan-moments\.js\?v=20261015-savage-v1/);
+assert.match(html,/sec-fan-moments\.js\?v=20261015-savage-v2/);
+assert.match(read("sw.js"),/sec-fan-moments\.js\?v=20261015-savage-v2/);
 
 assert.equal(m.safeUrl("https://www.secsports.com/news/2026/10/fake"),true);
 assert.equal(m.safeUrl("javascript:alert(1)"),false);
