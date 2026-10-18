@@ -63,7 +63,7 @@ async function refresh(force=false){
  // Unchanged pregame schedules need just an occasional recheck, never 30s.
  if(!force&&now()-lastRequest<(shouldFetchFast()?30000:180000))return;
  const selected=a.week?.();
- const primary=["home","picks","game-center"].includes(viewing)?(selected?.games||[]):[];
+ const primary=viewing==="game-center"?(window.SEC_SCORE_HUB?.scoreGames?.()||selected?.games||[]):["home","picks"].includes(viewing)?(selected?.games||[]):[];
  const focused=viewing==="game-center"?window.SEC_PREMIUM?.chooseGame?.():null;
  const games=["home","picks","game-center"].includes(viewing)?
   [...new Map([...primary,...(focused?[focused]:[])].map(g=>[g.id,g])).values()]:
@@ -71,7 +71,7 @@ async function refresh(force=false){
    .filter(g=>Math.abs(now()-clock(g))<12*3600000||g.liveStatus==="live");
  if(!games.length)return;
  const ids=games.map(g=>g.id);
- const selectedWeek=selected.num;
+ const selectedWeek=viewing==="game-center"?(window.SEC_SCORE_HUB?.scoreWeekNumber?.()||selected?.num):selected?.num;
  busy=true;lastRequest=now();const request=++activeRequest;
  try{
   const response=await c.from("sec_games").select(
@@ -83,7 +83,8 @@ async function refresh(force=false){
   const rows=response.data.filter(g=>ids.includes(g.id));
   // Never let a response from a previous view/week repaint a new one.
   if(request!==activeRequest||a.view?.()!==viewing||
-     (["home","picks","game-center"].includes(viewing)&&a.week?.()?.num!==selectedWeek))return;
+     (viewing==="game-center"?(window.SEC_SCORE_HUB?.scoreWeekNumber?.()||a.week?.()?.num)!==selectedWeek:
+      ["home","picks"].includes(viewing)&&a.week?.()?.num!==selectedWeek))return;
   const valid=rows.filter(g=>["scheduled","live","final","canceled","postponed"].includes(g.game_status));
   let changed=false,justFinal=false;
   for(const row of valid){
