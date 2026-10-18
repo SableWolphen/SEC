@@ -280,8 +280,8 @@ assert.ok(chosen.title);
 assert.equal(store.has("sec-roast-deck-v1:device:rough"),true);
 assert.match(src,/data-fun-again/,"users can request a fresh saying right away");
 assert.match(src,/latestVerdict/,"share matches the displayed roast");
-assert.match(html,/sec-fan-moments\.js\?v=20261015-savage-v1/);
-assert.match(read("sw.js"),/sec-fan-moments\.js\?v=20261015-savage-v1/);
+assert.match(html,/sec-fan-moments\.js\?v=20261015-savage-v2/);
+assert.match(read("sw.js"),/sec-fan-moments\.js\?v=20261015-savage-v2/);
 
 assert.equal(m.safeUrl("https://www.secsports.com/news/2026/10/fake"),true);
 assert.equal(m.safeUrl("javascript:alert(1)"),false);
