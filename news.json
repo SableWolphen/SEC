@@ -1,11 +1,39 @@
 {
-  "updated_at": "2026-10-18T14:38:04.459183Z",
-  "checked_at": "2026-10-18T14:38:04.459183Z",
+  "updated_at": "2026-10-18T18:09:39.395274Z",
+  "checked_at": "2026-10-18T18:09:39.395274Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "d6bba57ffb64f3cb",
+      "title": "No. 15 Kentucky grabs share of SEC lead with comeback win over Oklahoma",
+      "summary": "Kentucky pulled even with No. 1 Georgia for the SEC lead after rallying to beat Oklahoma 21-13.",
+      "url": "https://www.espn.com/college-football/story/_/id/50207703/kentucky-grabs-share-sec-lead-comeback-win-oklahoma",
+      "source": "ESPN",
+      "published_at": "2026-10-18T17:44:37Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Kentucky",
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ba24944a2417249e",
+      "title": "2027 NFL draft questions, latest intel, risers, CFB standouts",
+      "summary": "Is Trinidad Chambliss playing well enough to overcome his size? Which Tennessee defender is emerging among the DT group? Here's draft spin off CFB Week 7.",
+      "url": "https://www.espn.com/nfl/draft2027/story/_/id/49881131/2027-nfl-draft-risers-questions-college-football-prospects",
+      "source": "ESPN",
+      "published_at": "2026-10-18T17:25:20Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
     {
       "id": "64f2eaa2d1a31b8b",
       "title": "Jon Sumrall, Auburn top trolls from Week 7 in college football",
@@ -17,21 +45,6 @@
       "teams": [
         "Auburn",
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d6bba57ffb64f3cb",
-      "title": "No. 15 Kentucky grabs share of SEC lead with comeback win over Oklahoma",
-      "summary": "Kentucky pulled even with No. 1 Georgia for the SEC lead after rallying to beat Oklahoma 21-13 on Saturday night.",
-      "url": "https://www.espn.com/college-football/story/_/id/50207703/kentucky-grabs-share-sec-lead-comeback-win-oklahoma",
-      "source": "ESPN",
-      "published_at": "2026-10-18T04:25:18Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Kentucky",
-        "Oklahoma"
       ],
       "breaking": false
     },
