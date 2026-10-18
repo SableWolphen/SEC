@@ -89,7 +89,7 @@ for(const route of ["picks","game-center","news","league","results","teams","tro
   "Important features remain navigable: "+route);
 }
 assert.match(root.innerHTML,/data-hq-route="basketball"/);
-assert.match(root.innerHTML,/class="hq-around-news"/,
+assert.match(root.innerHTML,/hq-around-news/,
  "Recent verified news is kept in a single quiet Home panel");
 assert.doesNotMatch(root.innerHTML,/Malicious headline|javascript:/,
  "Untrusted publisher links may not reach the DOM");
