@@ -238,7 +238,7 @@ assert.equal(bound.cardVerdict().title,finished.title,
  "switching back to the original account restores its pinned roast");
 
 // Assert every grade receives the new stronger SEC trash talk while still
-// preserving the correct thresholds and 12 no-repeat sayings per tier.
+// preserving the correct thresholds and extended no-repeat roast decks.
 assert.match(src,/YOUR FOOTBALL LICENSE HAS BEEN REVOKED/);
 assert.match(src,/YOU'RE THE DEFINITION OF MID/);
 assert.match(src,/THE LEAGUE HAS FOUND ITS CLOWN/);
