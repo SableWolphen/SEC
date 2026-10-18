@@ -35,10 +35,28 @@ def start(sport, year):
                        11 if sport == 'basketball' else 2, 1, tzinfo=UTC)
 
 
+def events_from_feed(data):
+    """ESPN team schedule responses can expose events in several wrappers."""
+    if not isinstance(data, dict):
+        return []
+    candidates = [data.get('events'), data.get('schedule')]
+    for block in (data.get('team'), data.get('content')):
+        if isinstance(block, dict):
+            candidates.extend((block.get('events'), block.get('schedule')))
+    for candidate in candidates:
+        if isinstance(candidate, list):
+            return candidate
+        if isinstance(candidate, dict):
+            for key in ('events', 'items'):
+                if isinstance(candidate.get(key), list):
+                    return candidate[key]
+    return []
+
+
 def parse(data, sport, year):
     begin = start(sport, year)
     rows = []
-    for event in data.get('events', []):
+    for event in events_from_feed(data):
         try:
             competitors = event['competitions'][0]['competitors']
             away = next(i for i in competitors if i.get('homeAway') == 'away')
