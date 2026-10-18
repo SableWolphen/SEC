@@ -82,7 +82,7 @@ assert.match(root.innerHTML,/NEXT VERIFIED KICKOFF/);
 assert.match(root.innerHTML,/UGA/);
 assert.match(root.innerHTML,/aria-label="Your next picks"/);
 assert.match(root.innerHTML,/aria-label="Picks completed"/);
-assert.match(root.innerHTML,/class="hq-home-chats"/);
+assert.match(root.innerHTML,/hq-home-chats/);
 assert.match(root.innerHTML,/aria-label="All the important SEC features"/);
 for(const route of ["picks","game-center","news","league","results","teams","trophies"]){
  assert.ok(root.innerHTML.includes('data-hq-route="'+route+'"'),

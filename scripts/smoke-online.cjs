@@ -18,7 +18,7 @@ const fields={
   'online-new-league':{value:'Saturday Friends'},
   'online-invite':{value:''},
 };
-const host={innerHTML:''};
+const host={innerHTML:'',querySelector(){return null;}};
 elements['league-content']=host;
 const document={
  getElementById(id){return fields[id]||elements[id]||null;},

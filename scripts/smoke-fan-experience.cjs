@@ -46,7 +46,8 @@ assert.doesNotMatch(sport,/LIVE|FINAL/,"does not fake an active game");
 const html=fs.readFileSync("index.html","utf8"),sql=fs.readFileSync("supabase/migrations/20261009_unified_three_sport_leagues.sql","utf8");
 assert.ok(html.includes('id="fan-club-hub"'));
 assert.ok(html.includes('window.SEC_FAN?.onView?.(v)'));
-assert.ok(html.includes('window.SEC_FAN?.gameCenter'));
+assert.ok(fs.readFileSync('sec-premium.js','utf8').includes('window.SEC_SCORE_HUB?.decorate?.(host,g)'),
+ 'Football game details and verified scores are hosted in Scores, not Picks');
 assert.ok(html.includes('window.SEC_FAN?.sportCenter')===false||fs.readFileSync("multi-sport.js","utf8").includes('window.SEC_FAN?.sportCenter'));
 assert.ok(html.includes('fan-experience.js?v='));
 assert.match(sql,/enable row level security/);

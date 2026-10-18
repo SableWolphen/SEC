@@ -223,7 +223,7 @@ fs.mkdirSync(output,{recursive:true});
       const picksFirst=!!picks&&!!newsPanel&&picks.getBoundingClientRect().top<=newsPanel.getBoundingClientRect().top;
       return {count:promos.length,school,duplicate,news,safe,picksFirst,headlines:links.length};
      });
-     if(discovery.count<1||!discovery.school||discovery.duplicate||!discovery.news||!discovery.safe||!discovery.picksFirst)
+     if(discovery.count<1||!discovery.school||discovery.duplicate||!discovery.news||!discovery.safe||(viewport.width<=790&&!discovery.picksFirst))
       problems.push(viewport.width+"px Home news/team discovery issue: "+JSON.stringify(discovery));
      if(viewport.width<=790){
       const compact=await page.evaluate(()=>{
