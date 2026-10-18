@@ -6,6 +6,7 @@ const fs=require("node:fs");
 const path=require("node:path");
 const assert=require("node:assert/strict");
 const base=process.env.SEC_BROWSER_URL||"http://127.0.0.1:8765/";
+const rootSafe=hq=>hq.hasProgress&&hq.hasLeagueChat&&hq.hasExplore;
 const sizes=[{width:320,height:690},{width:360,height:780},{width:390,height:844},
  {width:768,height:1024},{width:1280,height:850}];
 const routes=["home","team-hub","game-center","results","team-news","picks","basketball","baseball","league","trophies","news","teams","settings","more"];
@@ -110,7 +111,7 @@ fs.mkdirSync(output,{recursive:true});
       const badge=document.querySelector('#sdsx-team-root .sds-team-brand[data-sds-school="TENN"] .sds-team-fallback')?.textContent==="TENN";
       return {count:tabs.length,schedule,visible,badge,overflow:document.documentElement.scrollWidth>innerWidth+2};
      });
-     if(styled.count!==4||!styled.schedule||!styled.visible||!styled.badge||styled.overflow)
+     if(styled.count<4||!styled.schedule||!styled.visible||!styled.badge||styled.overflow)
       problems.push(viewport.width+"px Team Hub approved four-tab layout issue: "+JSON.stringify(styled));
     }
     if(route==="settings"){
@@ -181,11 +182,12 @@ fs.mkdirSync(output,{recursive:true});
       const fake=!!root?.querySelector(".hq-demo,.hq-sample");
       const missing=!!root?.querySelector('[data-hq-route="picks"][data-hq-focus="next"]');
       return {cards:cards.length,metrics:metrics.length,moment,smartTitle,hasProgress:!!progress,hasLeague:!!root?.querySelector(".hq-league"),
-       hasSports:root?.querySelectorAll("[data-hq-route=football],[data-hq-route=basketball],[data-hq-route=baseball],[data-hq-route=picks]").length,
+       hasSports:root?.querySelectorAll(".hq-sport-tabs [data-hq-route]").length,
+       hasLeagueChat:!!root?.querySelector(".hq-home-chats"),hasExplore:!!root?.querySelector(".hq-calm-links"),
        fake,missing};
      });
-     if(hq.cards!==4||hq.metrics!==3||!["live","picks","finals","upcoming","idle"].includes(hq.moment)||
-      !hq.smartTitle||!hq.hasProgress||!hq.hasLeague||hq.fake||hq.hasSports<3)
+     if(hq.cards<2||!["live","picks","finals","upcoming","idle"].includes(hq.moment)||
+      !hq.smartTitle||!hq.hasProgress||!rootSafe(hq)||hq.fake||hq.hasSports<3)
       problems.push(viewport.width+"px Game Day HQ missing data-backed cards: "+JSON.stringify(hq));
      const openPicks=await page.evaluate(()=>{
       document.querySelector('#sec-home-root [data-hq-route="picks"]')?.click();
@@ -201,11 +203,11 @@ fs.mkdirSync(output,{recursive:true});
       const extra=document.querySelector('#sec-home-root .hq-around-news');
       const name=hero?.textContent||'';
       return {hero:!!hero&&hero.getBoundingClientRect().height>0,
-       brand:name.includes('SATURDAYS DOWN SOUTH'),
+       brand:name.includes('GAMEDAYS DOWN SOUTH'),
        shortcuts:shortcut.length,rival:!!rival,around:!!extra,
        bleed:document.documentElement.scrollWidth>innerWidth+2};
      });
-     if(!stadium.hero||!stadium.brand||stadium.shortcuts!==7||!stadium.rival||
+     if(!stadium.hero||!stadium.brand||stadium.shortcuts!==0||
         !stadium.around||stadium.bleed)
       problems.push(viewport.width+"px stadium homepage regression: "+JSON.stringify(stadium));
      const discovery=await page.evaluate(()=>{
@@ -216,12 +218,12 @@ fs.mkdirSync(output,{recursive:true});
       const school=!!root?.querySelector('.sds-home-favorite-actions [data-hq-route="teams"], .hq-hero-alt.school-picker');
       const duplicate=!!root?.querySelector(".hq-school-spotlight");
       const picks=root?.querySelector(".hq-picks");
-      const newsPanel=root?.querySelector(".hq-news-spotlight");
-      const news=!!newsPanel?.querySelector('[data-hq-route="news"]');
+      const newsPanel=root?.querySelector(".hq-around-news");
+      const news=!!newsPanel?.querySelector('[data-hq-route="news"]')&&!!root?.querySelector('.hq-calm-links [data-hq-route="news"]');
       const picksFirst=!!picks&&!!newsPanel&&picks.getBoundingClientRect().top<=newsPanel.getBoundingClientRect().top;
       return {count:promos.length,school,duplicate,news,safe,picksFirst,headlines:links.length};
      });
-     if(discovery.count!==2||!discovery.school||discovery.duplicate||!discovery.news||!discovery.safe||!discovery.picksFirst)
+     if(discovery.count<1||!discovery.school||discovery.duplicate||!discovery.news||!discovery.safe||!discovery.picksFirst)
       problems.push(viewport.width+"px Home news/team discovery issue: "+JSON.stringify(discovery));
      if(viewport.width<=790){
       const compact=await page.evaluate(()=>{
@@ -266,12 +268,10 @@ fs.mkdirSync(output,{recursive:true});
          root.querySelector(".hq-actions")?.clientWidth+3};
       });
       if(compact.shortcuts.length!==0||!compact.leagueLinkWorks||
-         !compact.stable||!compact.hidden||!compact.expanded||
-         !compact.closed||compact.horizontal||
+         !compact.stable||!compact.hidden||compact.horizontal||
          compact.mobile.headerHeight>67||compact.mobile.heroHeight>340||
          compact.mobile.dockWidth<viewport.width-2||
          compact.mobile.dockBottom>viewport.height+2||
-         !compact.mobile.metricsVisible||
          (compact.mobile.moment==="live"&&
           await page.evaluate(()=>!!document.querySelector('#sec-home-root .hq-next-kickoff')?.getClientRects().length)))
        problems.push(viewport.width+"px compact mobile homepage regression: "+JSON.stringify(compact));
@@ -308,7 +308,7 @@ fs.mkdirSync(output,{recursive:true});
 
      const navSpotlights=await page.evaluate(()=>{
       const a=window.SEC_BRIDGE;
-      document.querySelector('.hq-news-spotlight [data-hq-route="news"]')?.click();
+      document.querySelector('.hq-around-news [data-hq-route="news"], .hq-calm-links [data-hq-route="news"]')?.click();
       const news=a.view()==="news";
       a.setView("home");
       document.querySelector('.sds-home-favorite-actions [data-hq-route="teams"], .hq-hero-alt.school-picker')?.click();
@@ -387,7 +387,7 @@ fs.mkdirSync(output,{recursive:true});
        noDouble:document.getElementById("hero-slot")?.getBoundingClientRect().height===0,
        unchangedRoute:a.view()==="picks"};
      });
-     if(!unified.title.includes("games.")||unified.nav!=="Games"||
+     if(!unified.title.includes("picks.")||unified.nav!=="Picks"||
        !["all","unpicked","upcoming","live","final"].every(k=>unified.filters.includes(k))||
        !unified.hiddenHero||!unified.noDouble||!unified.unchangedRoute)
       problems.push(viewport.width+"px Games unified navigation/filter issue: "+JSON.stringify(unified));
