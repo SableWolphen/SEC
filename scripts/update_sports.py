@@ -326,7 +326,7 @@ def build(now=None, get=download, existing=None, fallback=None):
                                      'away_score': game['away_score'],
                                      'winner_code': game['winner_code']}
         games = sorted(unique.values(), key=lambda g: (g['kickoff_at'], g['id']))
-        sec_counts = {tid: sum(g['away_code'] == tid or g['home_code'] == tid for g in games)
+        sec_counts = {tid: sum(g.get('away_code') == tid or g.get('home_code') == tid for g in games)
                       for tid in SEC_IDS}
         issue = None
         if not games:
