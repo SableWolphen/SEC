@@ -51,7 +51,7 @@ assert.match(sw,/sec-pickem-v113/,"new cache version reaches Android installs");
 assert.match(sw,/sec-design-system\.css\?v=20261011-broadcast-v1/,
  "offline PWA pre-caches shared design system");
 for(const file of ["multi-sport.css","sec-final-cards.css","trophy-case.js"]){
- const ver=file==="trophy-case.js"?"20261011-neutral-v1":"20261011-broadcast-v1";
+ const ver=file==="trophy-case.js"?"20261011-neutral-v1":file==="multi-sport.css"?"20261016-nextpick":"20261011-broadcast-v1";
  assert.ok(html.includes("./"+file+"?v="+ver),"web loads latest "+file);
  assert.ok(sw.includes("./"+file+"?v="+ver),"offline cache recognizes latest "+file);
 }
