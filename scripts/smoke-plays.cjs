@@ -9,12 +9,12 @@ const html=read("index.html"),cards=read("sec-final-cards.js"),center=read("sec-
 new vm.Script(src,{filename:"sec-play-by-play.js"});
 assert.match(html,/sec-play-by-play\.js\?v=20261012-plays-v1/);
 assert.match(html,/sec-play-by-play\.css\?v=20261012-plays-v1/);
-assert.match(html,/SEC_PLAYS\?\.placeholder\?\.\(g,"games"\)/);
-assert.match(html,/SEC_PLAYS\?\.hydrate\?\.\(document\.getElementById\("games-list"\)\)/);
+assert.doesNotMatch(html,/SEC_PLAYS\?\.placeholder\?\.\(g,"games"\)/,"Picks do not render live plays");
+assert.match(center,/SEC_PLAYS\?\.hydrate\?\.\(host\)/,"Scores hydrates play timelines");
 assert.match(cards,/SEC_PLAYS\?\.placeholder\?\.\(g,"games"\)/);
 assert.match(center,/SEC_PLAYS\?\.placeholder\?\.\(g,"center",true\)/);
 assert.match(center,/SEC_PLAYS\?\.hydrate\?\.\(host\)/);
-assert.match(sw,/sec-pickem-v113/);
+assert.match(sw,/sec-pickem-v117/);
 assert.match(sw,/sec-play-by-play\.js\?v=20261012-plays-v1/);
 assert.match(css,/@media\(max-width:390px\)/);
 assert.match(edge,/req\.headers\.get\("apikey"\)!==PUBLISHABLE/);
