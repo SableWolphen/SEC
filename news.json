@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-18T05:58:16.761207Z",
-  "checked_at": "2026-10-18T05:58:16.761207Z",
+  "updated_at": "2026-10-18T11:13:31.761532Z",
+  "checked_at": "2026-10-18T11:13:31.761532Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -46,20 +46,6 @@
       "teams": [
         "Kentucky",
         "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b283a73977848731",
-      "title": "Arkansas Razorbacks vs. Vanderbilt Commodores: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50207018/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-18T03:13:48Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas",
-        "Vanderbilt"
       ],
       "breaking": false
     },
@@ -112,46 +98,6 @@
       "sport": "football",
       "teams": [
         "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "dec7367fbbe3886e",
-      "title": "Abilene Christian Wildcats vs. North Alabama Lions: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50206989/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-18T02:26:10Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b987d6b1a1da55a3",
-      "title": "Mercer Bears vs. Samford Bulldogs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50206987/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-18T02:25:17Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c6fc82da3332d3f5",
-      "title": "Morgan State Bears vs. Tennessee State Tigers: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50206648/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-18T01:50:27Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
       ],
       "breaking": false
     },
