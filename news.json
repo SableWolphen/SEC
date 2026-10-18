@@ -1,101 +1,170 @@
 {
-  "updated_at": "2026-10-17T22:23:01.312688Z",
-  "checked_at": "2026-10-17T22:23:01.312688Z",
+  "updated_at": "2026-10-18T01:07:00.122984Z",
+  "checked_at": "2026-10-18T01:07:00.122984Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "ee3813dc4fe18ba8",
-      "title": "Kansas Jayhawks vs. Kansas State Wildcats: Full Highlights",
+      "id": "6a5a4a68f8b2e941",
+      "title": "Sam Leavitt puts on season-best performance with 4 TDs vs. Mississippi State",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50204689/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50206009/sam-leavitt-puts-season-best-performance-4-tds-vs-mississippi-state",
       "source": "ESPN",
-      "published_at": "2026-10-17T22:12:39Z",
+      "published_at": "2026-10-18T00:46:51Z",
       "sport": "football",
       "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "fbee7197925b0b74",
-      "title": "Mississippi State Bulldogs vs. LSU Tigers: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50203919/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-17T21:36:23Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "LSU",
         "Mississippi State"
       ],
       "breaking": false
     },
     {
-      "id": "496234ee47575b5f",
-      "title": "Austin Peay Governors vs. West Georgia Wolves: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50204161/full-highlights",
+      "id": "c594f4fe62d99486",
+      "title": "Trinidad Chambliss accounts for 4 touchdowns in Ole Miss win",
+      "summary": "Quarterback Trinidad Chambliss threw for three touchdowns and ran for another Saturday afternoon as No.",
+      "url": "https://www.espn.com/college-football/story/_/id/50205624/trinidad-chambliss-accounts-4-touchdowns-ole-miss-win",
       "source": "ESPN",
-      "published_at": "2026-10-17T21:28:18Z",
+      "published_at": "2026-10-18T00:45:32Z",
       "sport": "football",
       "teams": [
+        "Missouri",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "dd04900d8e409f3d",
+      "title": "Missouri Tigers vs. Ole Miss Rebels: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50205141/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-18T00:33:46Z",
+      "sport": "football",
+      "teams": [
+        "Missouri",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "64f2eaa2d1a31b8b",
+      "title": "Jon Sumrall, Auburn top trolls from Week 7 in college football",
+      "summary": "After the upset, Sumrall was in a celebratory mood, donning a cowboy hat fit for a Texan while striding through the hallways of Darrell K Royal-Texas Memorial Stadium.",
+      "url": "https://www.espn.com/college-football/story/_/id/50201050/college-football-trolls-week-7",
+      "source": "ESPN",
+      "published_at": "2026-10-18T00:32:58Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f8bf4319f0684f43",
+      "title": "Auburn stuns No. 1 Georgia after Stockton's fumble leads to winning FG",
+      "summary": "Auburn, led by QB Byrum Brown's dominant running game, upset No. 1 Georgia after taking advantage of a key fumble by Gunner Stockton with 58 seconds left.",
+      "url": "https://www.espn.com/college-football/story/_/id/50205292/auburn-stuns-georgia-stockton-fumble-dooms-bulldogs",
+      "source": "ESPN",
+      "published_at": "2026-10-18T00:29:06Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
         "Georgia"
       ],
       "breaking": false
     },
     {
-      "id": "98e8dde9af16ba1f",
-      "title": "West Alabama Tigers vs. West Florida Argonauts: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50204095/full-highlights",
+      "id": "04c3c686e5d388d4",
+      "title": "All the numbers behind Auburn's stunning upset of No. 1 Georgia",
+      "summary": "Entering this week, unranked squads trailing the AP No. 1 team by at least 14 points had lost 195 consecutive games ... but Auburn had other plans.",
+      "url": "https://www.espn.com/college-football/story/_/id/50205300/auburn-georgia-upset-numbers",
       "source": "ESPN",
-      "published_at": "2026-10-17T21:19:57Z",
+      "published_at": "2026-10-18T00:20:51Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "28e93ad80d155a00",
+      "title": "Alabama Crimson Tide vs. Tennessee Volunteers: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50205435/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-18T00:17:17Z",
       "sport": "football",
       "teams": [
         "Alabama",
-        "Florida"
+        "Tennessee"
       ],
       "breaking": false
     },
     {
-      "id": "1fd446243d61772c",
-      "title": "Sam Leavitt throws for 4 TDs as LSU routs injury-depleted Mississippi State",
-      "summary": "Sam Leavitt threw for 289 yards and four touchdowns without an interception as No. 22 LSU raced to a three-touchdown first-half lead on its way to a 31-0 victory over injury-depleted, 16th-ranked Mississippi State.",
-      "url": "https://www.espn.com/college-football/story/_/id/50203328/lsu-routs-injury-depleted-mississippi-state-shutout",
+      "id": "b55416c7463db569",
+      "title": "No. 14 Tennessee hands No. 6 Alabama second straight loss",
+      "summary": "DeSean Bishop rushed for 159 yards and two touchdowns, lifting No. 14 Tennessee over No. 6 Alabama 26-10 on Saturday.",
+      "url": "https://www.espn.com/college-football/story/_/id/50205434/no-14-tennessee-hands-no-6-alabama-second-straight-loss",
       "source": "ESPN",
-      "published_at": "2026-10-17T21:03:44Z",
+      "published_at": "2026-10-18T00:09:36Z",
       "sport": "football",
       "teams": [
-        "LSU",
-        "Mississippi State"
-      ],
-      "breaking": true
-    },
-    {
-      "id": "b8e5eb04faa0ed52",
-      "title": "The Citadel Bulldogs vs. Texas A&M Aggies: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50203512/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-17T20:39:58Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Texas A&M"
+        "Alabama",
+        "Tennessee"
       ],
       "breaking": false
     },
     {
-      "id": "f2fc13c329adef38",
-      "title": "Morehead State Eagles vs. Davidson Wildcats: Full Highlights",
+      "id": "3063b874b02264e6",
+      "title": "Auburn upsets No. 1 Georgia with walk-off field goal",
+      "summary": "For the first time since October 1990, the No. 1 team in the country has lost in back-to-back weeks. No. 1 Georgia is the latest top-ranked team to fall after Auburn made a 34-yard field goal to win 27-24.",
+      "url": "https://www.ncaa.com/news/football/article/2026-10-17/auburn-upsets-no-1-georgia-walk-field-goal",
+      "source": "NCAA",
+      "published_at": "2026-10-17T23:37:57Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9ee28704cecfe1d4",
+      "title": "Auburn stuns No. 1 Georgia 27-24 in Athens",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50203609/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50205295/auburn-stuns-no-1-georgia-27-24-athens",
       "source": "ESPN",
-      "published_at": "2026-10-17T20:18:39Z",
+      "published_at": "2026-10-17T23:23:07Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "45b1f4c558ee75ba",
+      "title": "Who has the most wins vs. No. 1 college football teams?",
+      "summary": "Alabama has won the most games vs. No. 1-ranked teams in college football history. See which teams make the rest of the list.",
+      "url": "https://www.espn.com/college-football/story/_/id/41698842/who-most-wins-vs-no-1-college-football-teams",
+      "source": "ESPN",
+      "published_at": "2026-10-17T23:06:56Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6aec2f18c35fd8aa",
+      "title": "Villanova Wildcats vs. Fordham Rams: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50205030/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-17T22:45:53Z",
       "sport": "football",
       "teams": [
         "Kentucky"
@@ -103,25 +172,38 @@
       "breaking": false
     },
     {
-      "id": "b5cbacc3cd77bacb",
-      "title": "Dayton Flyers vs. Butler Bulldogs: Full Highlights",
+      "id": "bf026536802be709",
+      "title": "Western Illinois Leathernecks vs. Southeast Missouri State Redhawks: Full Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50203596/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50204894/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-17T20:17:08Z",
+      "published_at": "2026-10-17T22:30:40Z",
       "sport": "football",
       "teams": [
-        "Georgia"
+        "Missouri"
       ],
       "breaking": false
     },
     {
-      "id": "0fd52cc8a9ce84bb",
-      "title": "Marist Red Foxes vs. Drake Bulldogs: Full Highlights",
+      "id": "cd9731dba5ad01fc",
+      "title": "Idaho State Bengals vs. Weber State Wildcats: Full Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50203578/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50204865/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-17T20:14:15Z",
+      "published_at": "2026-10-17T22:24:34Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f32bc3f8826f679c",
+      "title": "Gardner-Webb Bulldogs vs. UT Martin Skyhawks: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50204855/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-17T22:22:02Z",
       "sport": "football",
       "teams": [
         "Georgia"
