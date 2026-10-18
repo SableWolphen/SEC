@@ -8,8 +8,8 @@ const html=read("index.html"),multi=read("multi-sport.js"),cards=read("sec-final
 for(const file of ["multi-sport.js","sec-final-cards.js","sec-home.js","sec-access.js"])
  new vm.Script(read(file),{filename:file});
 assert.match(html,/data-nav="current-sport" class="nav-link">Picks/);
-assert.match(html,/data-nav="current-sport" class="mobile-nav-btn"[\\s\\S]*?<span>Picks<\\/span>/);
-assert.match(html,/id="picks-heading">Make your <em>picks\\.<\\/em>/);
+assert.match(html,/data-nav="current-sport" class="mobile-nav-btn"[\s\S]*?<span>Picks<\/span>/);
+assert.match(html,/id="picks-heading">Make your <em>picks\.<\/em>/);
 assert.match(html,/slateFilter==='upcoming'/);
 assert.match(html,/slateFilter==='live'/);
 assert.match(html,/slateFilter==='final'/);
