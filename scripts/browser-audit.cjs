@@ -637,6 +637,8 @@ fs.mkdirSync(output,{recursive:true});
     !scoreAudit.cssSnap?.includes("mandatory")||scoreAudit.width>scoreAudit.viewport+2||
     !scoreAudit.picksCard?.includes("View score"))
     problems.push(viewport.width+"px Scores full-slate swipe layout failed: "+JSON.stringify(scoreAudit));
+   // Start at the chronologically first matchup, not fixture insertion order.
+   await page.locator("#game-center-view [data-score-match]").first().click();
    // Arrow/tap navigation selects another matchup and changes the large game.
    await page.locator("#game-center-view [data-score-shift='1']").click();
    const changed=await page.evaluate(()=>{
@@ -647,8 +649,9 @@ fs.mkdirSync(output,{recursive:true});
    });
    if(!changed.selected||changed.selected===changed.first||!changed.label.includes("Game 2"))
     problems.push(viewport.width+"px Scores next-game navigation failed: "+JSON.stringify(changed));
-   // Back to the locally seeded live matchup; Plays must be source-driven.
-   await page.locator("#game-center-view [data-score-shift='-1']").click();
+   // Return to the actual fixture ID, whose kickoff order can differ from
+   // the original schedule array; the play service will hydrate this game.
+   await page.evaluate(()=>window.SEC_PREMIUM.selectScoreGame(window.SEC_BRIDGE.week().games[0].id));
    await page.locator('#game-center-view [data-sdsx-tab="plays"]').click();
    try{
     await page.waitForFunction(()=>document.querySelector(
