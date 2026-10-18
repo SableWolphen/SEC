@@ -252,8 +252,8 @@ assert.equal(m.grade(1,4).kind,"roast","20% gets the brutal roast tier");
 assert.equal(m.grade(5,0).kind,"fire","100% celebrates dominating opponents");
 
 const counts=m.roastCounts();
-assert.deepEqual({...counts},{fire:12,great:12,okay:12,rough:12,roast:12},
- "every performance tier has twelve original roasts");
+assert.deepEqual({...counts},{fire:12,great:12,okay:12,rough:18,roast:22},
+ "expanded roast decks keep 18 rough and 22 savage sayings");
 const kinds=Object.keys(counts);
 for(const kind of kinds){
  // Card persistence tests already consume quotes; start the independent deck
