@@ -1,11 +1,25 @@
 {
-  "updated_at": "2026-10-18T23:17:11.534170Z",
-  "checked_at": "2026-10-18T23:17:11.534170Z",
+  "updated_at": "2026-10-19T01:20:28.967257Z",
+  "checked_at": "2026-10-19T01:20:28.967257Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "c37bfea43d24ffbf",
+      "title": "Tennessee fined $500K after fans storm field following win over Alabama",
+      "summary": "The Southeastern Conference fined Tennessee $500,000 on Sunday for allowing fans to storm the field following a 26-10 victory over then-No. 6 Alabama.",
+      "url": "https://www.espn.com/college-football/story/_/id/50214548/vols-fined-500k-fans-storm-field-win-alabama",
+      "source": "ESPN",
+      "published_at": "2026-10-19T00:27:55Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
     {
       "id": "bf4f434bc9c6d65c",
       "title": "How did Tennessee's defense dictate the win against Alabama?",
@@ -30,20 +44,6 @@
       "sport": "football",
       "teams": [
         "Alabama",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e53af167a2765c5d",
-      "title": "SEC Football Final dissects QB play in Florida's triumph over Texas",
-      "summary": "Chris Doering, Benjamin Watson, and Peter Burns analyze the Gators' and Longhorns' Week 7 offense through Arch Manning and Tramell Jones Jr.'s performance.",
-      "url": "https://www.espn.com/video/clip/_/id/50211708/sec-football-final-dissects-qb-play-florida-triumph-texas",
-      "source": "ESPN",
-      "published_at": "2026-10-18T18:13:21Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
         "Texas"
       ],
       "breaking": false
