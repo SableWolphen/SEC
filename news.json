@@ -1,11 +1,61 @@
 {
-  "updated_at": "2026-10-19T19:58:34.958968Z",
-  "checked_at": "2026-10-19T19:58:34.958968Z",
+  "updated_at": "2026-10-19T23:45:14.293418Z",
+  "checked_at": "2026-10-19T23:45:14.293418Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "74919f6415304e61",
+      "title": "Cole's Block Party: 'Out the club, belly'",
+      "summary": "Read & React's Cole Cubelic and Roman Harper break down some of the best pancake blocks around the SEC from Week 7 and award the golden hog to the top block of the week.",
+      "url": "https://www.espn.com/video/clip/_/id/50222081/club-belly",
+      "source": "ESPN",
+      "published_at": "2026-10-19T22:42:56Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "cceff54c6ff9993c",
+      "title": "Golesh reflects on UGA, Auburn rivalry and McPherson's unique story",
+      "summary": "Alex Golesh talks about the significance of the Tigers vs. Bulldogs rivalry and shares kicker Alex McPherson's inspiring story who had a walk-off FG in this year's game.",
+      "url": "https://www.espn.com/video/clip/_/id/50222080/golesh-reflects-uga-auburn-rivalry-mcpherson-unique-story",
+      "source": "ESPN",
+      "published_at": "2026-10-19T22:42:13Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8f7dbd9573cfc3ee",
+      "title": "Cole Cubelic looks ahead to No. 18 LSU vs. Auburn",
+      "summary": "Cubelic joins The Paul Finebaum Show to give insight on what Auburn has to do offensively and defensively to upset LSU at The Plains.",
+      "url": "https://www.espn.com/video/clip/_/id/50221991/cole-cubelic-looks-ahead-no-18-lsu-vs-auburn",
+      "source": "ESPN",
+      "published_at": "2026-10-19T22:17:00Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1a3d34e31e371a4a",
+      "title": "Bill Connelly characterizes chaotic stretch for SEC",
+      "summary": "Connelly joins The Paul Finebaum Show to give insight on the current standings and how the mysterious teams are shaking up the conference.",
+      "url": "https://www.espn.com/video/clip/_/id/50221630/bill-connelly-characterizes-chaotic-stretch-sec",
+      "source": "ESPN",
+      "published_at": "2026-10-19T21:20:46Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
     {
       "id": "870e27379f78eb0d",
       "title": "Doering, Burns reveal their SECTM Week 7 Power Rankings",
@@ -83,7 +133,7 @@
       "teams": [
         "Florida"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "4731c6b4ac97fce4",
@@ -270,21 +320,6 @@
       "teams": [
         "Oklahoma",
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f892a38128b18486",
-      "title": "South Carolina, North Carolina, UCLA and Kentucky pull off top-25 upsets in Week 6",
-      "summary": "There’s a lot of benefits that come with being a Top 25 team, but immunity isn’t one of them.",
-      "url": "https://www.ncaa.com/news/football/article/2026-10-10/south-carolina-north-carolina-ucla-and-kentucky-pull-top-25-upsets-week-6",
-      "source": "NCAA",
-      "published_at": "2026-10-10T20:38:35Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Kentucky",
-        "South Carolina"
       ],
       "breaking": false
     }
