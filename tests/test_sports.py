@@ -36,6 +36,20 @@ class SportFeedTests(unittest.TestCase):
   self.assertEqual(rows[0]['id'],'basketball-2027-1001')
   self.assertEqual(rows[0]['week'],1)
   self.assertIsNone(rows[1]['winner_code'])
+ def test_team_feed_schedule_wrappers_do_not_hide_games(self):
+  fixture=event('wrapped',333,55,'2026-11-11T23:00:00Z')
+  for payload in ({'schedule':[fixture]}, {'schedule':{'events':[fixture]}},
+                  {'team':{'schedule':[fixture]}}, {'content':{'events':[fixture]}}):
+   games=sport.parse(payload,'basketball',2027)
+   self.assertEqual(len(games),1)
+   self.assertEqual(games[0]['id'],'basketball-2027-wrapped')
+ def test_full_team_schedules_fill_nonconference_gaps(self):
+  fixture=event('extra-nonconference',333,55,'2026-12-11T23:00:00Z')
+  def mock(url):
+   if '/teams/333/schedule' in url:return {'schedule':{'events':[fixture]}}
+   return {'events':[]}
+  games=sport.build(now=NOW,get=mock)['sports']['basketball']['games']
+  self.assertIn('basketball-2027-extra-nonconference',{g['id'] for g in games})
  def test_real_sport_calendar_and_no_made_up_fixtures(self):
   def mock(url):
    if 'basketball/' in url:return {'events':[event('2027bb',333,2,'2026-11-09T01:00:00Z')]}
