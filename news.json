@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-19T01:20:28.967257Z",
-  "checked_at": "2026-10-19T01:20:28.967257Z",
+  "updated_at": "2026-10-19T06:19:11.524222Z",
+  "checked_at": "2026-10-19T06:19:11.524222Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -12,21 +12,7 @@
       "summary": "The Southeastern Conference fined Tennessee $500,000 on Sunday for allowing fans to storm the field following a 26-10 victory over then-No. 6 Alabama.",
       "url": "https://www.espn.com/college-football/story/_/id/50214548/vols-fined-500k-fans-storm-field-win-alabama",
       "source": "ESPN",
-      "published_at": "2026-10-19T00:27:55Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "bf4f434bc9c6d65c",
-      "title": "How did Tennessee's defense dictate the win against Alabama?",
-      "summary": "After forcing the No. 6 Crimson Tide to their second fewest yards in three seasons, SEC Now's Chris Doering and Benjamin Watson break down how the No. 14 Vols won defensively.",
-      "url": "https://www.espn.com/video/clip/_/id/50211802/how-did-tennessee-defense-dictate-win-alabama",
-      "source": "ESPN",
-      "published_at": "2026-10-18T18:48:01Z",
+      "published_at": "2026-10-19T01:58:06Z",
       "sport": "football",
       "teams": [
         "Alabama",
