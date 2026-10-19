@@ -1,11 +1,104 @@
 {
-  "updated_at": "2026-10-19T13:36:09.368421Z",
-  "checked_at": "2026-10-19T13:36:09.368421Z",
+  "updated_at": "2026-10-19T19:58:34.958968Z",
+  "checked_at": "2026-10-19T19:58:34.958968Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "870e27379f78eb0d",
+      "title": "Doering, Burns reveal their SECTM Week 7 Power Rankings",
+      "summary": "After a Week 7 full of marquee victories and defeats across the conference, SEC This Morning's Chris Doering ranks what went wrong while Peter Burns focuses on the positives.",
+      "url": "https://www.espn.com/video/clip/_/id/50220014/doering-burns-reveal-their-sectm-week-7-power-rankings",
+      "source": "ESPN",
+      "published_at": "2026-10-19T18:02:56Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "22d3e6a662c3a014",
+      "title": "Alabama coach DeBoer backs OC Ryan Grubb despite losses to Georgia, Tennessee",
+      "summary": "Alabama coach Kalen DeBoer backed offensive coordinator Ryan Grubb amid fan discontent following back-to-back losses to Georgia and Tennessee.",
+      "url": "https://www.espn.com/college-football/story/_/id/50219673/alabama-deboer-backs-oc-grubb-back-back-losses",
+      "source": "ESPN",
+      "published_at": "2026-10-19T17:53:02Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c8967a7c64c8a0e1",
+      "title": "Sources: Texas to give QB KJ Lacey Jr. increased first-team reps",
+      "summary": "Texas is expected to give an uptick in first-team quarterback reps to redshirt freshman KJ Lacey Jr. this week in practice, per ESPN sources.",
+      "url": "https://www.espn.com/college-football/story/_/id/50218991/sources-texas-give-qb-kj-lacey-jr-increased-first-team-reps",
+      "source": "ESPN",
+      "published_at": "2026-10-19T17:34:11Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f64f300edc4053f4",
+      "title": "Florida an overwhelming No. 1 in preseason AP Top 25 men's basketball poll",
+      "summary": "The Florida Gators are an overwhelming choice as the No. 1 team in the Associated Press preseason men's basketball poll released Monday.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50219265/florida-no-1-preseason-ap-top-25-men-basketball-poll",
+      "source": "ESPN",
+      "published_at": "2026-10-19T17:30:05Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "88bad5334694f151",
+      "title": "Ryan Silverfield discusses Arkansas' breakthrough win over Vanderbilt",
+      "summary": "After earning his first SEC win against Vanderbilt, Silverfield joins SEC This Morning to explain how Arkansas is beginning to find its identity.",
+      "url": "https://www.espn.com/video/clip/_/id/50219678/ryan-silverfield-discusses-arkansas-breakthrough-win-vanderbilt",
+      "source": "ESPN",
+      "published_at": "2026-10-19T17:20:14Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "2ccfffc6116f62db",
+      "title": "Breaking down the men's 2026-27 AP preseason Top 25 basketball poll",
+      "summary": "Biggest games and projected starting lineups for the AP preseason Top 25, from No. 1 Florida to No. 25 BYU.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50191393/ap-mens-preseason-top-25-poll-reaction-2026-27",
+      "source": "ESPN",
+      "published_at": "2026-10-19T16:27:35Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "4731c6b4ac97fce4",
+      "title": "Top 25 betting lines: Texas favored vs. Ole Miss, Utah the fave vs. Houston",
+      "summary": "This week's odds and FPI predictions for Texas-Ole Miss, Utah-Houston and every top 25 matchup.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50216670/2026-college-football-week-8-top-25-betting-lines-odds",
+      "source": "ESPN",
+      "published_at": "2026-10-19T15:43:21Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
     {
       "id": "c37bfea43d24ffbf",
       "title": "Tennessee fined $500K after fans storm field following win over Alabama",
@@ -192,19 +285,6 @@
         "Florida",
         "Kentucky",
         "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3fa43aa9fbbe8a96",
-      "title": "Ahmed Nur commits to Ole Miss for school's top recruit in decades",
-      "summary": "Top-20 senior Ahmed Nur has committed to Ole Miss, giving the Rebels their highest-ranked recruit in at least 20 years.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50149713/ahmed-nur-commits-ole-miss-school-top-recruit-decades",
-      "source": "ESPN",
-      "published_at": "2026-10-10T19:42:13Z",
-      "sport": "basketball",
-      "teams": [
-        "Ole Miss"
       ],
       "breaking": false
     }
