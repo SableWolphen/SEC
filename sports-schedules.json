@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-20T18:42:37.294287Z",
+  "updated_at": "2026-10-20T23:22:40.749890Z",
   "sports": {
     "basketball": {
       "season": 2027,
@@ -2000,22 +2000,22 @@
         "99": 0
       },
       "sec_team_game_counts": {
-        "57": 15,
         "2633": 18,
-        "2579": 12,
         "145": 11,
-        "61": 13,
-        "333": 11,
-        "99": 11,
+        "245": 10,
         "2": 20,
-        "8": 13,
-        "344": 11,
-        "251": 14,
-        "96": 12,
-        "201": 10,
-        "238": 12,
         "142": 13,
-        "245": 10
+        "251": 14,
+        "61": 13,
+        "2579": 12,
+        "99": 11,
+        "333": 11,
+        "344": 11,
+        "238": 12,
+        "201": 10,
+        "57": 15,
+        "8": 13,
+        "96": 12
       },
       "warning": "Live ESPN feed unavailable; displaying verified SEC/university fixtures. Incomplete SEC basketball coverage: 142 (13 games), 145 (11 games), 2 (20 games), 201 (10 games), 238 (12 games), 245 (10 games), 251 (14 games), 2579 (12 games), 2633 (18 games), 333 (11 games), 344 (11 games), 57 (15 games), 61 (13 games), 8 (13 games), 96 (12 games), 99 (11 games). Check all 16 team feeds before trusting the calendar. All 16 school-level basketball feeds failed or returned no events."
     },
@@ -2038,22 +2038,22 @@
         "99": 0
       },
       "sec_team_game_counts": {
-        "57": 0,
         "2633": 0,
-        "2579": 0,
         "145": 0,
-        "61": 0,
-        "333": 0,
-        "99": 0,
+        "245": 0,
         "2": 0,
-        "8": 0,
-        "344": 0,
-        "251": 0,
-        "96": 0,
-        "201": 0,
-        "238": 0,
         "142": 0,
-        "245": 0
+        "251": 0,
+        "61": 0,
+        "2579": 0,
+        "99": 0,
+        "333": 0,
+        "344": 0,
+        "238": 0,
+        "201": 0,
+        "57": 0,
+        "8": 0,
+        "96": 0
       },
       "warning": "No verified individual first-pitch times yet; SEC baseball weekend series previews remain available."
     }
