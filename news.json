@@ -1,11 +1,36 @@
 {
-  "updated_at": "2026-10-19T23:45:14.293418Z",
-  "checked_at": "2026-10-19T23:45:14.293418Z",
+  "updated_at": "2026-10-20T04:56:09.403087Z",
+  "checked_at": "2026-10-20T04:56:09.403087Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "82c056f1ed26393c",
+      "title": "Sources: Auburn dismisses star linebacker Xavier Atkins",
+      "summary": "Xavier Atkins was suspended for Auburn's win over then-No. 1 Georgia on Saturday, and his status had been uncertain.",
+      "url": "https://www.espn.com/college-football/story/_/id/50224689/auburn-dismissed-star-linebacker-xavier-atkins",
+      "source": "ESPN",
+      "published_at": "2026-10-20T04:47:19Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3233d89f31777396",
+      "title": "Harper, Cubelic analyze the CFP chances of SEC contenders",
+      "summary": "SEC Network's Roman Harper and Cole Cubelic look at the AllState Playoff Predictor numbers to analyze SEC teams with the highest chance to make the College Football Playoff.",
+      "url": "https://www.espn.com/video/clip/_/id/50222146/harper-cubelic-analyze-cfp-chances-sec-contenders",
+      "source": "ESPN",
+      "published_at": "2026-10-19T23:08:45Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
     {
       "id": "74919f6415304e61",
       "title": "Cole's Block Party: 'Out the club, belly'",
@@ -306,20 +331,6 @@
       "teams": [
         "Georgia",
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0602cf9ede3f2d23",
-      "title": "Oklahoma stuns No. 1 Texas in a Red River Rivalry thriller",
-      "summary": "Oklahoma stunned No. 1 Texas, 27-24, winning its biggest game of the season and shocking the top-ranked team in the country with a game-winning field goal. It's the first Red River Rivalry win for OU since 2023.",
-      "url": "https://www.ncaa.com/news/football/article/2026-10-10/oklahoma-stuns-no-1-texas-red-river-rivalry-thriller",
-      "source": "NCAA",
-      "published_at": "2026-10-10T23:54:02Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Texas"
       ],
       "breaking": false
     }
