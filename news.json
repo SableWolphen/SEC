@@ -1,11 +1,37 @@
 {
-  "updated_at": "2026-10-20T15:08:22.244894Z",
-  "checked_at": "2026-10-20T15:08:22.244894Z",
+  "updated_at": "2026-10-20T19:19:18.367053Z",
+  "checked_at": "2026-10-20T19:19:18.367053Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "f64f300edc4053f4",
+      "title": "Florida an overwhelming No. 1 in preseason AP Top 25 men's basketball poll",
+      "summary": "The Florida Gators are an overwhelming choice as the No. 1 team in the Associated Press preseason men's basketball poll released Monday.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50219265/florida-no-1-preseason-ap-top-25-men-basketball-poll",
+      "source": "ESPN",
+      "published_at": "2026-10-20T17:37:07Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "559687ca85f151eb",
+      "title": "Finebaum Show caller 'Legend' lets out epic Alabama rant",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50229330/finebaum-show-caller-legend-lets-epic-alabama-rant",
+      "source": "ESPN",
+      "published_at": "2026-10-20T16:58:11Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
     {
       "id": "c8967a7c64c8a0e1",
       "title": "Sources: Texas to give QB KJ Lacey Jr. increased first-team reps",
@@ -116,19 +142,6 @@
         "Alabama",
         "Georgia",
         "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f64f300edc4053f4",
-      "title": "Florida an overwhelming No. 1 in preseason AP Top 25 men's basketball poll",
-      "summary": "The Florida Gators are an overwhelming choice as the No. 1 team in the Associated Press preseason men's basketball poll released Monday.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50219265/florida-no-1-preseason-ap-top-25-men-basketball-poll",
-      "source": "ESPN",
-      "published_at": "2026-10-19T17:30:05Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
       ],
       "breaking": false
     },
@@ -315,20 +328,6 @@
       "published_at": "2026-10-13T20:15:10Z",
       "sport": "basketball",
       "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3943ae737a50ea28",
-      "title": "Georgia rises to No. 1, LSU and Oregon fall in latest AP Top 25 college football rankings",
-      "summary": "Here’s what you need to know about the latest college football AP Top 25 Poll.",
-      "url": "https://www.ncaa.com/news/football/article/2026-10-11/georgia-rises-no-1-lsu-and-oregon-fall-latest-ap-top-25-college-football-rankings",
-      "source": "NCAA",
-      "published_at": "2026-10-11T18:55:31Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
         "LSU"
       ],
       "breaking": false
