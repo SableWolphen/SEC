@@ -1,11 +1,24 @@
 {
-  "updated_at": "2026-10-20T19:19:18.367053Z",
-  "checked_at": "2026-10-20T19:19:18.367053Z",
+  "updated_at": "2026-10-20T22:23:56.808100Z",
+  "checked_at": "2026-10-20T22:23:56.808100Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "f08033b8c8423958",
+      "title": "Florida Bar suspends employee for social media comments to Miami football player",
+      "summary": "The Florida Bar has suspended an employee as it investigates social media comments that were sent to a Miami football player after the team's win over Florida State.",
+      "url": "https://www.espn.com/college-football/story/_/id/50231515/florida-bar-suspends-employee-comments-miami-football-player",
+      "source": "ESPN",
+      "published_at": "2026-10-20T21:23:16Z",
+      "sport": "football",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
     {
       "id": "f64f300edc4053f4",
       "title": "Florida an overwhelming No. 1 in preseason AP Top 25 men's basketball poll",
