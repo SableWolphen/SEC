@@ -1,11 +1,91 @@
 {
-  "updated_at": "2026-10-20T22:23:56.808100Z",
-  "checked_at": "2026-10-20T22:23:56.808100Z",
+  "updated_at": "2026-10-21T01:38:20.949682Z",
+  "checked_at": "2026-10-21T01:38:20.949682Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "1caeb1f3f31d1eeb",
+      "title": "Addressing notable storylines halfway through SEC season",
+      "summary": "SEC Network's Matt Stinchcomb and Fozzy Whittaker discuss the biggest storylines from the first half of the SEC season and share their expectations for the remainder of the season.",
+      "url": "https://www.espn.com/video/clip/_/id/50233407/addressing-notable-storylines-halfway-sec-season",
+      "source": "ESPN",
+      "published_at": "2026-10-21T00:41:37Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "be12744b29498186",
+      "title": "How will Auburn face the challenge of outrunning LSU's tough defense?",
+      "summary": "The SEC Now crew discusses the importance of Auburn carrying their momentum from Week 7 into Week 8 as they prepare to face No. 18 LSU and Sam Leavitt.",
+      "url": "https://www.espn.com/video/clip/_/id/50233376/how-auburn-face-challenge-outrunning-lsu-tough-defense",
+      "source": "ESPN",
+      "published_at": "2026-10-21T00:33:35Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f5127353ea88bf1f",
+      "title": "Marty spends the day with Stein to learn Kentucky's winning formula",
+      "summary": "SEC Network's Marty Smith spends the day in Lexington with Will Stein to understand what goes into turning a program around and giving your guys confidence.",
+      "url": "https://www.espn.com/video/clip/_/id/50233371/marty-spends-day-stein-learn-kentucky-winning-formula",
+      "source": "ESPN",
+      "published_at": "2026-10-21T00:31:36Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3dd920c0832efe29",
+      "title": "Who will win the run game: No. 11 Tennessee or South Carolina?",
+      "summary": "SEC Network's Matt Stinchcomb and Fozzy Whittaker analyze the Gamecocks' and Volunteers' strengths on the ground and discuss what each team must do to gain the upper hand.",
+      "url": "https://www.espn.com/video/clip/_/id/50233270/no-11-tennessee-south-carolina",
+      "source": "ESPN",
+      "published_at": "2026-10-21T00:20:16Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "09595fccbdd2a243",
+      "title": "What must Keelon Russell, No. 13 Bama keep in mind ahead of Texas A&M?",
+      "summary": "SEC Network's Matt Stinchcomb and Fozzy Whittaker discuss how Russell must show up if he wants to lead the Crimson Tide to a win against a strong Aggies defense.",
+      "url": "https://www.espn.com/video/clip/_/id/50233239/what-keelon-russell-no-13-bama-keep-mind-ahead-texas-am",
+      "source": "ESPN",
+      "published_at": "2026-10-21T00:10:49Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d1c433bf5e93c387",
+      "title": "Where does No. 19 Texas defense stand against No. 7 Ole Miss?",
+      "summary": "SEC Network's Matt Stinchcomb and Fozzy Whittaker evaluate the Longhorns' defense and break down the strengths of Ole Miss standouts Trinidad Chambliss and Kewan Lacy.",
+      "url": "https://www.espn.com/video/clip/_/id/50233172/where-does-no-19-texas-defense-stand-no-7-ole-miss",
+      "source": "ESPN",
+      "published_at": "2026-10-21T00:01:32Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
     {
       "id": "f08033b8c8423958",
       "title": "Florida Bar suspends employee for social media comments to Miami football player",
