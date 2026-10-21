@@ -1,11 +1,89 @@
 {
-  "updated_at": "2026-10-21T13:50:53.256891Z",
-  "checked_at": "2026-10-21T13:50:53.256891Z",
+  "updated_at": "2026-10-21T18:41:02.154882Z",
+  "checked_at": "2026-10-21T18:41:02.154882Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "f3e989a172c381f1",
+      "title": "Could Arch get benched if Texas starts slow vs. Ole Miss?",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50239781/could-arch-get-benched-texas-starts-slow-vs-ole-miss",
+      "source": "ESPN",
+      "published_at": "2026-10-21T17:57:57Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "2313a0e7c65d0234",
+      "title": "Spartans' Fears, Gators' Haugh near-unanimous picks as preseason All-Americans",
+      "summary": "Florida's Thomas Haugh and Michigan State's Jeremy Fears Jr. returned to make their teams among the front-runners to cut down the nets next spring and earned them preseason All-America honors from The Associated Press.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50239522/spartans-fears-gators-haugh-top-ap-preseason-all-americans",
+      "source": "ESPN",
+      "published_at": "2026-10-21T17:42:59Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "33d4b72e8f6c6b56",
+      "title": "The audacity of Kentucky Wildcats coach Will Stein",
+      "summary": "In his first year at Kentucky, Stein has the Wildcats in the College Football Playoff hunt.",
+      "url": "https://www.espn.com/college-football/story/_/id/50221219/will-stein-kentucky-coach",
+      "source": "ESPN",
+      "published_at": "2026-10-21T17:23:51Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d0a8f04bf3c7ea21",
+      "title": "Texas bans fan who made obscene gesture at Florida players",
+      "summary": "Texas AD Chris Del Conte said that a fan who was filmed making obscene gestures at Florida players on the field on Saturday has been permanently banned from Darrell K Royal-Texas Memorial Stadium.",
+      "url": "https://www.espn.com/college-football/story/_/id/50238721/texas-bans-fan-made-obscene-gesture-florida-players",
+      "source": "ESPN",
+      "published_at": "2026-10-21T16:50:18Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3efab69e111d7067",
+      "title": "Brandon Woodruff's lone NCAA baseball tournament appearance in 2014",
+      "summary": "Brandon Woodruff — two-time MLB All-Star with the Milwaukee Brewers — pitched at Mississippi State from 2012-14 and made one appearance in the NCAA baseball tournament in 2014.",
+      "url": "https://www.ncaa.com/video/baseball/2026-10-21/brandon-woodruffs-lone-ncaa-baseball-tournament-appearance-2014",
+      "source": "NCAA",
+      "published_at": "2026-10-21T16:13:36Z",
+      "sport": "baseball",
+      "teams": [
+        "Mississippi State"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "da7368b00406be7d",
+      "title": "CFB: Week 8 SEC on ABC Triple Header",
+      "summary": "CFB: Week 8 SEC on ABC Triple Header.",
+      "url": "https://www.espn.com/video/clip/_/id/50238074/week-8-sec-abc-triple-header",
+      "source": "ESPN",
+      "published_at": "2026-10-21T14:41:16Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
     {
       "id": "4731c6b4ac97fce4",
       "title": "Top 25 betting lines: Texas favored vs. Ole Miss, Utah the fave vs. Houston",
@@ -70,19 +148,6 @@
       "sport": "basketball",
       "teams": [
         "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "33d4b72e8f6c6b56",
-      "title": "The audacity of Kentucky Wildcats coach Will Stein",
-      "summary": "In his first year at Kentucky, Stein has the Wildcats in the College Football Playoff hunt.",
-      "url": "https://www.espn.com/college-football/story/_/id/50221219/will-stein-kentucky-coach",
-      "source": "ESPN",
-      "published_at": "2026-10-21T10:24:52Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
       ],
       "breaking": false
     },
@@ -206,19 +271,6 @@
       "breaking": false
     },
     {
-      "id": "c8967a7c64c8a0e1",
-      "title": "Sources: Texas to give QB KJ Lacey Jr. increased first-team reps",
-      "summary": "Texas is expected to give an uptick in first-team quarterback reps to redshirt freshman KJ Lacey Jr. this week in practice, per ESPN sources.",
-      "url": "https://www.espn.com/college-football/story/_/id/50218991/sources-texas-give-qb-kj-lacey-jr-increased-first-team-reps",
-      "source": "ESPN",
-      "published_at": "2026-10-20T14:26:18Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
       "id": "82c056f1ed26393c",
       "title": "Sources: Auburn dismisses star linebacker Xavier Atkins",
       "summary": "Auburn dismissed star linebacker Xavier Atkins, sources told ESPN on Monday night.",
@@ -301,21 +353,6 @@
       "published_at": "2026-10-19T18:02:56Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "22d3e6a662c3a014",
-      "title": "Alabama coach DeBoer backs OC Ryan Grubb despite losses to Georgia, Tennessee",
-      "summary": "Alabama coach Kalen DeBoer backed offensive coordinator Ryan Grubb amid fan discontent following back-to-back losses to Georgia and Tennessee.",
-      "url": "https://www.espn.com/college-football/story/_/id/50219673/alabama-deboer-backs-oc-grubb-back-back-losses",
-      "source": "ESPN",
-      "published_at": "2026-10-19T17:53:02Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia",
-        "Tennessee"
-      ],
       "breaking": false
     },
     {
