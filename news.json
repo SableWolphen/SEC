@@ -1,11 +1,24 @@
 {
-  "updated_at": "2026-10-21T18:41:02.154882Z",
-  "checked_at": "2026-10-21T18:41:02.154882Z",
+  "updated_at": "2026-10-21T22:23:31.087566Z",
+  "checked_at": "2026-10-21T22:23:31.087566Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "4b470ffacd026707",
+      "title": "Florida Bar fires employee over comments to Miami football player",
+      "summary": "The Florida Bar has fired an employee after a brief investigation into \"reprehensible\" direct messages that were sent via Instagram to a Miami football player.",
+      "url": "https://www.espn.com/college-football/story/_/id/50241871/florida-bar-fires-employee-comments-miami-lineman",
+      "source": "ESPN",
+      "published_at": "2026-10-21T21:55:24Z",
+      "sport": "football",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": true
+    },
     {
       "id": "f3e989a172c381f1",
       "title": "Could Arch get benched if Texas starts slow vs. Ole Miss?",
@@ -353,20 +366,6 @@
       "published_at": "2026-10-19T18:02:56Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "88bad5334694f151",
-      "title": "Ryan Silverfield discusses Arkansas' breakthrough win over Vanderbilt",
-      "summary": "After earning his first SEC win against Vanderbilt, Silverfield joins SEC This Morning to explain how Arkansas is beginning to find its identity.",
-      "url": "https://www.espn.com/video/clip/_/id/50219678/ryan-silverfield-discusses-arkansas-breakthrough-win-vanderbilt",
-      "source": "ESPN",
-      "published_at": "2026-10-19T17:20:14Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas",
-        "Vanderbilt"
-      ],
       "breaking": false
     },
     {
