@@ -1,11 +1,91 @@
 {
-  "updated_at": "2026-10-21T07:42:51.619097Z",
-  "checked_at": "2026-10-21T07:42:51.619097Z",
+  "updated_at": "2026-10-21T13:50:53.256891Z",
+  "checked_at": "2026-10-21T13:50:53.256891Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "4731c6b4ac97fce4",
+      "title": "Top 25 betting lines: Texas favored vs. Ole Miss, Utah the fave vs. Houston",
+      "summary": "This week's odds and FPI predictions for Texas-Ole Miss, Utah-Houston and every top 25 matchup.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50216670/2026-college-football-week-8-top-25-betting-lines-odds",
+      "source": "ESPN",
+      "published_at": "2026-10-21T12:17:21Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "cf14c03c4de059eb",
+      "title": "Oklahoma: John Mateer remains best QB option despite turnovers, inconsistency",
+      "summary": "Despite John Mateer's inconsistency this season, Oklahoma offensive coordinator Ben Arbuckle still believes he is the Sooners' best option at quarterback.",
+      "url": "https://www.espn.com/college-football/story/_/id/50236111/oklahoma-john-mateer-remains-best-qb-option",
+      "source": "ESPN",
+      "published_at": "2026-10-21T12:04:03Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "688642927a8947a2",
+      "title": "Texas-Ole Miss best bets: Chambliss, Manning and more keys to the SEC showdown",
+      "summary": "Pamela Maldonado dives into the numbers to find the best way to bet the Texas-Ole Miss matchup.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50229718/college-football-betting-how-bet-ole-miss-texas",
+      "source": "ESPN",
+      "published_at": "2026-10-21T11:15:47Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "601a35a74dbd922c",
+      "title": "Bottom 10: Week 7's rash of upsets turned everything upside down",
+      "summary": "From the Longhorns to the Dawgs, a bunch of top teams bottomed out in Week 7.",
+      "url": "https://www.espn.com/college-football/story/_/id/50233851/bottom-10-week-7-upsets-texas",
+      "source": "ESPN",
+      "published_at": "2026-10-21T10:42:43Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f64f300edc4053f4",
+      "title": "Florida an overwhelming No. 1 in preseason AP Top 25 men's basketball poll",
+      "summary": "The Florida Gators are an overwhelming choice as the No. 1 team in the Associated Press preseason men's basketball poll released Monday.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50219265/florida-no-1-preseason-ap-top-25-men-basketball-poll",
+      "source": "ESPN",
+      "published_at": "2026-10-21T10:35:13Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "33d4b72e8f6c6b56",
+      "title": "The audacity of Kentucky Wildcats coach Will Stein",
+      "summary": "In his first year at Kentucky, Stein has the Wildcats in the College Football Playoff hunt.",
+      "url": "https://www.espn.com/college-football/story/_/id/50221219/will-stein-kentucky-coach",
+      "source": "ESPN",
+      "published_at": "2026-10-21T10:24:52Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
     {
       "id": "adf6c20a2bced4b8",
       "title": "Missouri State Bears vs. Delaware Blue Hens: Full Highlights",
@@ -107,19 +187,6 @@
       "source": "ESPN",
       "published_at": "2026-10-20T21:23:16Z",
       "sport": "football",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f64f300edc4053f4",
-      "title": "Florida an overwhelming No. 1 in preseason AP Top 25 men's basketball poll",
-      "summary": "The Florida Gators are an overwhelming choice as the No. 1 team in the Associated Press preseason men's basketball poll released Monday.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50219265/florida-no-1-preseason-ap-top-25-men-basketball-poll",
-      "source": "ESPN",
-      "published_at": "2026-10-20T17:37:07Z",
-      "sport": "basketball",
       "teams": [
         "Florida"
       ],
@@ -275,20 +342,6 @@
       "sport": "basketball",
       "teams": [
         "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4731c6b4ac97fce4",
-      "title": "Top 25 betting lines: Texas favored vs. Ole Miss, Utah the fave vs. Houston",
-      "summary": "This week's odds and FPI predictions for Texas-Ole Miss, Utah-Houston and every top 25 matchup.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50216670/2026-college-football-week-8-top-25-betting-lines-odds",
-      "source": "ESPN",
-      "published_at": "2026-10-19T15:43:21Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
       ],
       "breaking": false
     },
