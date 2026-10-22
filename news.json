@@ -1,11 +1,62 @@
 {
-  "updated_at": "2026-10-22T07:38:34.972057Z",
-  "checked_at": "2026-10-22T07:38:34.972057Z",
+  "updated_at": "2026-10-22T13:50:02.369426Z",
+  "checked_at": "2026-10-22T13:50:02.369426Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "7a4fc730b9fdc73c",
+      "title": "College football best bets for Week 8 include Utah-Houston pick, Tennessee total",
+      "summary": "Pamela Maldonado and Mark Zinno break down the best bets they see around college football for Week 8.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50242913/college-football-odds-best-bets-week-8-spreads-lines-2026",
+      "source": "ESPN",
+      "published_at": "2026-10-22T13:47:32Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4731c6b4ac97fce4",
+      "title": "Top 25 betting lines: Texas favored vs. Ole Miss, Utah the fave vs. Houston",
+      "summary": "This week's odds and FPI predictions for Texas-Ole Miss, Utah-Houston and every top 25 matchup.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50216670/2026-college-football-week-8-top-25-betting-lines-odds",
+      "source": "ESPN",
+      "published_at": "2026-10-22T13:47:19Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "bcd48817a4cb4a35",
+      "title": "Can Week 8 up the ante again with more upsets and drama?",
+      "summary": "With plenty of SEC drama last week, could Week 8 bring even more chaos?",
+      "url": "https://www.espn.com/college-football/story/_/page/gamedaykickoff102226/week-8-top-games-upsets-preview",
+      "source": "ESPN",
+      "published_at": "2026-10-22T11:08:07Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "aff6dedd925163a3",
+      "title": "Can Steve Sarkisian and Arch Manning save Texas' season?",
+      "summary": "Coach Steve Sarkisian and quarterback Arch Manning were supposed to be a match made in heaven for Texas football.",
+      "url": "https://www.espn.com/college-football/story/_/id/50240573/arch-manning-steve-sarkisian-texas-pressure",
+      "source": "ESPN",
+      "published_at": "2026-10-22T11:04:04Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
     {
       "id": "4b470ffacd026707",
       "title": "Florida Bar fires employee over comments to Miami football player",
@@ -17,7 +68,7 @@
       "teams": [
         "Florida"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "6682fa1f7b425978",
@@ -206,20 +257,6 @@
       "published_at": "2026-10-21T14:41:16Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "4731c6b4ac97fce4",
-      "title": "Top 25 betting lines: Texas favored vs. Ole Miss, Utah the fave vs. Houston",
-      "summary": "This week's odds and FPI predictions for Texas-Ole Miss, Utah-Houston and every top 25 matchup.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50216670/2026-college-football-week-8-top-25-betting-lines-odds",
-      "source": "ESPN",
-      "published_at": "2026-10-21T12:17:21Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
       "breaking": false
     },
     {
