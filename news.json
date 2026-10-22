@@ -1,18 +1,100 @@
 {
-  "updated_at": "2026-10-22T01:33:27.560695Z",
-  "checked_at": "2026-10-22T01:33:27.560695Z",
+  "updated_at": "2026-10-22T07:38:34.972057Z",
+  "checked_at": "2026-10-22T07:38:34.972057Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "4b470ffacd026707",
+      "title": "Florida Bar fires employee over comments to Miami football player",
+      "summary": "The Florida Bar has fired an employee after a brief investigation into \"reprehensible\" direct messages that were sent via Instagram to a Miami football player.",
+      "url": "https://www.espn.com/college-football/story/_/id/50241871/florida-bar-fires-employee-comments-miami-lineman",
+      "source": "ESPN",
+      "published_at": "2026-10-22T04:23:13Z",
+      "sport": "football",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "6682fa1f7b425978",
+      "title": "New Mexico State Aggies vs. Sam Houston Bearkats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50245010/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-22T03:54:31Z",
+      "sport": "football",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "01e639fc2066a156",
+      "title": "Gene Chizik offers wisdom to fans of SEC heavyweights",
+      "summary": "SEC Network's Chizik explains why Georgia, Alabama and Texas fans should not panic after their teams' losses.",
+      "url": "https://www.espn.com/video/clip/_/id/50244843/gene-chizik-offers-wisdom-fans-sec-heavyweights",
+      "source": "ESPN",
+      "published_at": "2026-10-22T03:35:10Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0fbef6a32248d684",
+      "title": "Keys to victory as No. 12 Kentucky welcomes Vanderbilt",
+      "summary": "SEC Network's Gene Chizik breaks down why the Wildcats have been so tough to beat this season and discusses what the Commodores must do to steal a win on the road.",
+      "url": "https://www.espn.com/video/clip/_/id/50244803/keys-victory-no-12-kentucky-welcomes-vanderbilt",
+      "source": "ESPN",
+      "published_at": "2026-10-22T03:27:19Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8c8ade9a9b957f03",
+      "title": "Bryce Thornton on Gators' defensive turnaround, rivalry against Georgia",
+      "summary": "Thornton joins SEC Now to discuss how Florida's defense banded together through adversity and shares his experience growing up watching one of college football's biggest rivalries.",
+      "url": "https://www.espn.com/video/clip/_/id/50243408/bryce-thornton-gators-defensive-turnaround-rivalry-georgia",
+      "source": "ESPN",
+      "published_at": "2026-10-22T02:29:29Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "18a31fec2c41fec3",
+      "title": "Auburn's Alex McPherson tells story of his battle with Crohn's disease",
+      "summary": "McPherson discusses how his toughness was tested off the gridiron and how relieved he was to return to the field after so much time away.",
+      "url": "https://www.espn.com/video/clip/_/id/50243673/auburn-alex-mcpherson-tells-story-battle-crohn-disease",
+      "source": "ESPN",
+      "published_at": "2026-10-22T02:28:20Z",
+      "sport": "football",
+      "teams": [
+        "Auburn"
+      ],
+      "breaking": false
+    },
+    {
       "id": "0df0e1c2c8995215",
       "title": "LSU standout TE Trey'Dez Green poised for return vs. Auburn",
       "summary": "Trey'Dez Green, widely regarded as one of the top tight ends in the country, is poised to return Saturday after missing the past three games with a leg injury.",
       "url": "https://www.espn.com/college-football/story/_/id/50243513/lsu-tigers-treydez-green-leg-injury-return-auburn",
       "source": "ESPN",
-      "published_at": "2026-10-22T01:09:27Z",
+      "published_at": "2026-10-22T01:31:47Z",
       "sport": "football",
       "teams": [
         "Auburn",
@@ -47,19 +129,6 @@
         "Tennessee"
       ],
       "breaking": false
-    },
-    {
-      "id": "4b470ffacd026707",
-      "title": "Florida Bar fires employee over comments to Miami football player",
-      "summary": "The Florida Bar has fired an employee after a brief investigation into \"reprehensible\" direct messages that were sent via Instagram to a Miami football player.",
-      "url": "https://www.espn.com/college-football/story/_/id/50241871/florida-bar-fires-employee-comments-miami-lineman",
-      "source": "ESPN",
-      "published_at": "2026-10-21T21:55:24Z",
-      "sport": "football",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": true
     },
     {
       "id": "f3e989a172c381f1",
@@ -322,69 +391,6 @@
       "sport": "football",
       "teams": [
         "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "82c056f1ed26393c",
-      "title": "Sources: Auburn dismisses star linebacker Xavier Atkins",
-      "summary": "Auburn dismissed star linebacker Xavier Atkins, sources told ESPN on Monday night.",
-      "url": "https://www.espn.com/college-football/story/_/id/50224689/auburn-dismissed-star-linebacker-xavier-atkins",
-      "source": "ESPN",
-      "published_at": "2026-10-20T13:53:15Z",
-      "sport": "football",
-      "teams": [
-        "Auburn"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3233d89f31777396",
-      "title": "Harper, Cubelic analyze the CFP chances of SEC contenders",
-      "summary": "SEC Network's Roman Harper and Cole Cubelic look at the AllState Playoff Predictor numbers to analyze SEC teams with the highest chance to make the College Football Playoff.",
-      "url": "https://www.espn.com/video/clip/_/id/50222146/harper-cubelic-analyze-cfp-chances-sec-contenders",
-      "source": "ESPN",
-      "published_at": "2026-10-19T23:08:45Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "74919f6415304e61",
-      "title": "Cole's Block Party: 'Out the club, belly'",
-      "summary": "Read & React's Cole Cubelic and Roman Harper break down some of the best pancake blocks around the SEC from Week 7 and award the golden hog to the top block of the week.",
-      "url": "https://www.espn.com/video/clip/_/id/50222081/club-belly",
-      "source": "ESPN",
-      "published_at": "2026-10-19T22:42:56Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "cceff54c6ff9993c",
-      "title": "Golesh reflects on UGA, Auburn rivalry and McPherson's unique story",
-      "summary": "Alex Golesh talks about the significance of the Tigers vs. Bulldogs rivalry and shares kicker Alex McPherson's inspiring story who had a walk-off FG in this year's game.",
-      "url": "https://www.espn.com/video/clip/_/id/50222080/golesh-reflects-uga-auburn-rivalry-mcpherson-unique-story",
-      "source": "ESPN",
-      "published_at": "2026-10-19T22:42:13Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8f7dbd9573cfc3ee",
-      "title": "Cole Cubelic looks ahead to No. 18 LSU vs. Auburn",
-      "summary": "Cubelic joins The Paul Finebaum Show to give insight on what Auburn has to do offensively and defensively to upset LSU at The Plains.",
-      "url": "https://www.espn.com/video/clip/_/id/50221991/cole-cubelic-looks-ahead-no-18-lsu-vs-auburn",
-      "source": "ESPN",
-      "published_at": "2026-10-19T22:17:00Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "LSU"
       ],
       "breaking": false
     },
