@@ -1,11 +1,53 @@
 {
-  "updated_at": "2026-10-21T22:23:31.087566Z",
-  "checked_at": "2026-10-21T22:23:31.087566Z",
+  "updated_at": "2026-10-22T01:33:27.560695Z",
+  "checked_at": "2026-10-22T01:33:27.560695Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "0df0e1c2c8995215",
+      "title": "LSU standout TE Trey'Dez Green poised for return vs. Auburn",
+      "summary": "Trey'Dez Green, widely regarded as one of the top tight ends in the country, is poised to return Saturday after missing the past three games with a leg injury.",
+      "url": "https://www.espn.com/college-football/story/_/id/50243513/lsu-tigers-treydez-green-leg-injury-return-auburn",
+      "source": "ESPN",
+      "published_at": "2026-10-22T01:09:27Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "289ec6933a6d67d2",
+      "title": "Vols' DeSean Bishop stresses importance of dominating line of scrimmage",
+      "summary": "No. 11 Tennessee's Bishop joins SEC Now to preview the matchup at South Carolina and discuss why the Volunteers' run game has been so effective this season.",
+      "url": "https://www.espn.com/video/clip/_/id/50243230/vols-desean-bishop-stresses-importance-dominating-line-scrimmage",
+      "source": "ESPN",
+      "published_at": "2026-10-22T00:43:11Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "21ad366bbbcbcbcc",
+      "title": "Gene Chizik: No. 11 Vols vs. Gamecocks is 'what trap games are made of'",
+      "summary": "SEC Network's Chizik warns that Tennessee, riding high after a massive win, must be prepared for South Carolina to avoid falling into a trap at Williams-Brice Stadium.",
+      "url": "https://www.espn.com/video/clip/_/id/50243096/no-11-vols-vs-gamecocks-trap-games-made-of",
+      "source": "ESPN",
+      "published_at": "2026-10-22T00:25:45Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
     {
       "id": "4b470ffacd026707",
       "title": "Florida Bar fires employee over comments to Miami football player",
@@ -344,28 +386,6 @@
         "Auburn",
         "LSU"
       ],
-      "breaking": false
-    },
-    {
-      "id": "1a3d34e31e371a4a",
-      "title": "Bill Connelly characterizes chaotic stretch for SEC",
-      "summary": "Connelly joins The Paul Finebaum Show to give insight on the current standings and how the mysterious teams are shaking up the conference.",
-      "url": "https://www.espn.com/video/clip/_/id/50221630/bill-connelly-characterizes-chaotic-stretch-sec",
-      "source": "ESPN",
-      "published_at": "2026-10-19T21:20:46Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "870e27379f78eb0d",
-      "title": "Doering, Burns reveal their SECTM Week 7 Power Rankings",
-      "summary": "After a Week 7 full of marquee victories and defeats across the conference, SEC This Morning's Chris Doering ranks what went wrong while Peter Burns focuses on the positives.",
-      "url": "https://www.espn.com/video/clip/_/id/50220014/doering-burns-reveal-their-sectm-week-7-power-rankings",
-      "source": "ESPN",
-      "published_at": "2026-10-19T18:02:56Z",
-      "sport": "football",
-      "teams": [],
       "breaking": false
     },
     {
