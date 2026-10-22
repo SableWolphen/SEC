@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-22T18:34:26.754531Z",
-  "checked_at": "2026-10-22T18:34:26.754531Z",
+  "updated_at": "2026-10-22T22:22:20.718628Z",
+  "checked_at": "2026-10-22T22:22:20.718628Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -392,20 +392,6 @@
       "breaking": false
     },
     {
-      "id": "d1c433bf5e93c387",
-      "title": "Where does No. 19 Texas defense stand against No. 7 Ole Miss?",
-      "summary": "SEC Network's Matt Stinchcomb and Fozzy Whittaker evaluate the Longhorns' defense and break down the strengths of Ole Miss standouts Trinidad Chambliss and Kewan Lacy.",
-      "url": "https://www.espn.com/video/clip/_/id/50233172/where-does-no-19-texas-defense-stand-no-7-ole-miss",
-      "source": "ESPN",
-      "published_at": "2026-10-21T00:01:32Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
       "id": "2ccfffc6116f62db",
       "title": "Breaking down the men's 2026-27 AP preseason Top 25 basketball poll",
       "summary": "Biggest games and projected starting lineups for the AP preseason Top 25, from No. 1 Florida to No. 25 BYU.",
@@ -534,19 +520,6 @@
       "sport": "basketball",
       "teams": [
         "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a881d6d026e605da",
-      "title": "RJ Luis Jr. one of several not on LSU's roster amid eligibility concerns",
-      "summary": "Amid eligibility concerns, RJ Luis Jr. -- who had previously signed two contracts with NBA teams -- was not listed as a member of LSU's 2026-27 basketball team.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50176024/rj-luis-jr-not-lsu-roster-amid-eligibility-concerns",
-      "source": "ESPN",
-      "published_at": "2026-10-13T20:15:10Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
       ],
       "breaking": false
     }
