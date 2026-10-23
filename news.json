@@ -1,11 +1,155 @@
 {
-  "updated_at": "2026-10-23T18:24:05.585787Z",
-  "checked_at": "2026-10-23T18:24:05.585787Z",
+  "updated_at": "2026-10-23T22:14:20.296553Z",
+  "checked_at": "2026-10-23T22:14:20.296553Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "6e90c954b181d85e",
+      "title": "Matt Barrie on college football's best team: 'We don't know'",
+      "summary": "With upsets reshaping the season, SEC Nation's Matt Barrie joins The Paul Finebaum Show to explain why so many questions remain unanswered at the midway point.",
+      "url": "https://www.espn.com/video/clip/_/id/50260477/know",
+      "source": "ESPN",
+      "published_at": "2026-10-23T21:09:53Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "8b1057f664bae701",
+      "title": "Fowler describes Manning's urgency ahead of Texas vs. Ole Miss",
+      "summary": "ESPN's Chris Fowler joins The Paul Finebaum Show to discuss Arch Manning's added sense of urgency as the No. 19 Longhorns prepare to face the No. 7 Rebels.",
+      "url": "https://www.espn.com/video/clip/_/id/50260387/fowler-describes-manning-urgency-ahead-texas-vs-ole-miss",
+      "source": "ESPN",
+      "published_at": "2026-10-23T20:48:05Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "bb40cfdfef05fa01",
+      "title": "2010s SEC was different 💀(beastkoby/IG) #2010s #CFB #espnedits",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50260182/2010s-sec-was-different-beastkoby-ig-2010s-cfb-espnedits",
+      "source": "ESPN",
+      "published_at": "2026-10-23T20:39:21Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "0412bfaace9b9995",
+      "title": "Peter Burns' Week 8 Power Rankings carry added urgency",
+      "summary": "SEC This Morning's Burns lists the five teams in the conference that need a Week 8 win to keep their seasons on track.",
+      "url": "https://www.espn.com/video/clip/_/id/50260300/peter-burns-week-8-power-rankings-carry-added-urgency",
+      "source": "ESPN",
+      "published_at": "2026-10-23T20:26:31Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "a8aaea3fb86d4b07",
+      "title": "Dale Brown, LSU's winningest basketball coach, dies at 90",
+      "summary": "Dale Brown, who coached LSU to two Final Four appearances and whose players included Shaquille O'Neal and Mahmoud Abdul-Rauf, has died at the age of 90.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50259738/dale-brown-lsu-winningest-basketball-coach-dies-90",
+      "source": "ESPN",
+      "published_at": "2026-10-23T20:12:13Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e61e003c27b94d2b",
+      "title": "Paul Finebaum remembers former LSU coach Dale Brown",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50260222/paul-finebaum-remembers-former-lsu-coach-dale-brown",
+      "source": "ESPN",
+      "published_at": "2026-10-23T20:11:49Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "aac7190267961fbf",
+      "title": "Ole Miss served most punishments past two seasons for ex-assistant's violations",
+      "summary": "The NCAA has penalized Ole Miss's men's basketball program for tampering violations by former assistant coach Wes Flanigan, with most of the penalties served during the 2024-25 and 2025-26 school years.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50260160/ole-miss-sanctioned-ex-assistant-violations",
+      "source": "ESPN",
+      "published_at": "2026-10-23T20:01:18Z",
+      "sport": "basketball",
+      "teams": [
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "da84460d3313b187",
+      "title": "Taylor Zarzour analyzes struggles for No. 19 Texas, No. 13 Alabama",
+      "summary": "With offensive problems plaguing both the Longhorns and the Crimson Tide, ESPN's Taylor Zarzour explains on SEC This Morning what each team must improve to avoid those issues.",
+      "url": "https://www.espn.com/video/clip/_/id/50259991/taylor-zarzour-analyzes-struggles-no-19-texas-no-13-alabama",
+      "source": "ESPN",
+      "published_at": "2026-10-23T19:32:37Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "67b499bea8b42219",
+      "title": "Jason Campbell discusses Auburn's growing chemistry",
+      "summary": "Auburn great Jason Campbell joins SEC This Morning to discuss how Tigers alumni support Alex Golesh and how Auburn can carry its momentum into a matchup with No. 18 LSU.",
+      "url": "https://www.espn.com/video/clip/_/id/50259948/jason-campbell-discusses-auburn-growing-chemistry",
+      "source": "ESPN",
+      "published_at": "2026-10-23T19:27:37Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f918223324b3dfb1",
+      "title": "Taylor McGregor previews No. 11 Tennessee vs. South Carolina",
+      "summary": "After Auburn upset then-No. 1 Georgia, ESPN's Taylor McGregor joins SEC This Morning to discuss how Tennessee-South Carolina could carry similar implications this week.",
+      "url": "https://www.espn.com/video/clip/_/id/50259903/taylor-mcgregor-previews-no-11-tennessee-vs-south-carolina",
+      "source": "ESPN",
+      "published_at": "2026-10-23T19:17:40Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "Georgia",
+        "South Carolina",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4731c6b4ac97fce4",
+      "title": "Top 25 betting lines: Texas favored vs. Ole Miss, Utah the fave vs. Houston",
+      "summary": "This week's odds and FPI predictions for Texas-Ole Miss, Utah-Houston and every top 25 matchup.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50216670/2026-college-football-week-8-top-25-betting-lines-odds",
+      "source": "ESPN",
+      "published_at": "2026-10-23T18:50:37Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
     {
       "id": "96ba5815d5fdfbb5",
       "title": "Connelly previews Week 8: SEC elimination games, tests for top 2 and more",
@@ -104,20 +248,6 @@
       "breaking": false
     },
     {
-      "id": "4731c6b4ac97fce4",
-      "title": "Top 25 betting lines: Texas favored vs. Ole Miss, Utah the fave vs. Houston",
-      "summary": "This week's odds and FPI predictions for Texas-Ole Miss, Utah-Houston and every top 25 matchup.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50216670/2026-college-football-week-8-top-25-betting-lines-odds",
-      "source": "ESPN",
-      "published_at": "2026-10-22T13:47:19Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
       "id": "bcd48817a4cb4a35",
       "title": "Can Week 8 up the ante again with more upsets and drama?",
       "summary": "With plenty of SEC drama last week, could Week 8 bring even more chaos?",
@@ -126,19 +256,6 @@
       "published_at": "2026-10-22T11:08:07Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "4b470ffacd026707",
-      "title": "Florida Bar fires employee over comments to Miami football player",
-      "summary": "The Florida Bar has fired an employee after a brief investigation into \"reprehensible\" direct messages that were sent via Instagram to a Miami football player.",
-      "url": "https://www.espn.com/college-football/story/_/id/50241871/florida-bar-fires-employee-comments-miami-lineman",
-      "source": "ESPN",
-      "published_at": "2026-10-22T04:23:13Z",
-      "sport": "football",
-      "teams": [
-        "Florida"
-      ],
       "breaking": false
     },
     {
@@ -225,48 +342,6 @@
       "breaking": false
     },
     {
-      "id": "289ec6933a6d67d2",
-      "title": "Vols' DeSean Bishop stresses importance of dominating line of scrimmage",
-      "summary": "No. 11 Tennessee's Bishop joins SEC Now to preview the matchup at South Carolina and discuss why the Volunteers' run game has been so effective this season.",
-      "url": "https://www.espn.com/video/clip/_/id/50243230/vols-desean-bishop-stresses-importance-dominating-line-scrimmage",
-      "source": "ESPN",
-      "published_at": "2026-10-22T00:43:11Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "21ad366bbbcbcbcc",
-      "title": "Gene Chizik: No. 11 Vols vs. Gamecocks is 'what trap games are made of'",
-      "summary": "SEC Network's Chizik warns that Tennessee, riding high after a massive win, must be prepared for South Carolina to avoid falling into a trap at Williams-Brice Stadium.",
-      "url": "https://www.espn.com/video/clip/_/id/50243096/no-11-vols-vs-gamecocks-trap-games-made-of",
-      "source": "ESPN",
-      "published_at": "2026-10-22T00:25:45Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f3e989a172c381f1",
-      "title": "Could Arch get benched if Texas starts slow vs. Ole Miss?",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50239781/could-arch-get-benched-texas-starts-slow-vs-ole-miss",
-      "source": "ESPN",
-      "published_at": "2026-10-21T17:57:57Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
       "id": "2313a0e7c65d0234",
       "title": "Spartans' Fears, Gators' Haugh near-unanimous picks as preseason All-Americans",
       "summary": "Florida's Thomas Haugh and Michigan State's Jeremy Fears Jr. returned to make their teams among the front-runners to cut down the nets next spring and earned them preseason All-America honors from The Associated Press.",
@@ -276,20 +351,6 @@
       "sport": "basketball",
       "teams": [
         "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d0a8f04bf3c7ea21",
-      "title": "Texas bans fan who made obscene gesture at Florida players",
-      "summary": "Texas AD Chris Del Conte said that a fan who was filmed making obscene gestures at Florida players on the field on Saturday has been permanently banned from Darrell K Royal-Texas Memorial Stadium.",
-      "url": "https://www.espn.com/college-football/story/_/id/50238721/texas-bans-fan-made-obscene-gesture-florida-players",
-      "source": "ESPN",
-      "published_at": "2026-10-21T16:50:18Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Texas"
       ],
       "breaking": false
     },
@@ -409,19 +470,6 @@
       "sport": "basketball",
       "teams": [
         "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "363c2d5e699f22c9",
-      "title": "Chris Jans details confidence in MS State, transfer portal pandemonium",
-      "summary": "Jans explains the challenges coaches are experiencing from the rules, or lack thereof, in college sports while saying the Bulldogs learned a lot to get better from last season.",
-      "url": "https://www.espn.com/video/clip/_/id/50184327/chris-jans-details-confidence-ms-state-transfer-portal-pandemonium",
-      "source": "ESPN",
-      "published_at": "2026-10-14T20:45:17Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
       ],
       "breaking": false
     }
