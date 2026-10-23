@@ -1,11 +1,54 @@
 {
-  "updated_at": "2026-10-23T07:36:04.890920Z",
-  "checked_at": "2026-10-23T07:36:04.890920Z",
+  "updated_at": "2026-10-23T13:29:53.564869Z",
+  "checked_at": "2026-10-23T13:29:53.564869Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "b2fe7f837d4d1560",
+      "title": "What happens to Steve Sarkisian if Texas loses to Ole Miss?",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50257425/what-happens-steve-sarkisian-texas-loses-ole-miss",
+      "source": "ESPN",
+      "published_at": "2026-10-23T13:19:00Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1f62849e74f8fc90",
+      "title": "How important is a win for Ole Miss' and Texas' CFP hopes?",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50257103/how-important-win-ole-miss-texas-cfp-hopes",
+      "source": "ESPN",
+      "published_at": "2026-10-23T12:26:50Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "96ba5815d5fdfbb5",
+      "title": "Connelly previews Week 8: SEC elimination games, tests for top 2 and more",
+      "summary": "Ole Miss, Tennessee and LSU face road challenges, while Miami and BYU try to avoid the upset bug.",
+      "url": "https://www.espn.com/college-football/story/_/id/50249679/connelly-week-8-preview-ole-miss-texas",
+      "source": "ESPN",
+      "published_at": "2026-10-23T10:14:43Z",
+      "sport": "football",
+      "teams": [
+        "LSU",
+        "Ole Miss",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
     {
       "id": "15b2d22e57155cdc",
       "title": "Texas rules out Colin Simmons for Ole Miss clash",
@@ -237,19 +280,6 @@
       "breaking": false
     },
     {
-      "id": "33d4b72e8f6c6b56",
-      "title": "The audacity of Kentucky Wildcats coach Will Stein",
-      "summary": "In his first year at Kentucky, Stein has the Wildcats in the College Football Playoff hunt.",
-      "url": "https://www.espn.com/college-football/story/_/id/50221219/will-stein-kentucky-coach",
-      "source": "ESPN",
-      "published_at": "2026-10-21T17:23:51Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
       "id": "d0a8f04bf3c7ea21",
       "title": "Texas bans fan who made obscene gesture at Florida players",
       "summary": "Texas AD Chris Del Conte said that a fan who was filmed making obscene gestures at Florida players on the field on Saturday has been permanently banned from Darrell K Royal-Texas Memorial Stadium.",
@@ -285,46 +315,6 @@
       "published_at": "2026-10-21T14:41:16Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "cf14c03c4de059eb",
-      "title": "Oklahoma: John Mateer remains best QB option despite turnovers, inconsistency",
-      "summary": "Despite John Mateer's inconsistency this season, Oklahoma offensive coordinator Ben Arbuckle still believes he is the Sooners' best option at quarterback.",
-      "url": "https://www.espn.com/college-football/story/_/id/50236111/oklahoma-john-mateer-remains-best-qb-option",
-      "source": "ESPN",
-      "published_at": "2026-10-21T12:04:03Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "688642927a8947a2",
-      "title": "Texas-Ole Miss best bets: Chambliss, Manning and more keys to the SEC showdown",
-      "summary": "Pamela Maldonado dives into the numbers to find the best way to bet the Texas-Ole Miss matchup.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50229718/college-football-betting-how-bet-ole-miss-texas",
-      "source": "ESPN",
-      "published_at": "2026-10-21T11:15:47Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "601a35a74dbd922c",
-      "title": "Bottom 10: Week 7's rash of upsets turned everything upside down",
-      "summary": "From the Longhorns to the Dawgs, a bunch of top teams bottomed out in Week 7.",
-      "url": "https://www.espn.com/college-football/story/_/id/50233851/bottom-10-week-7-upsets-texas",
-      "source": "ESPN",
-      "published_at": "2026-10-21T10:42:43Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
       "breaking": false
     },
     {
