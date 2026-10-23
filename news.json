@@ -1,11 +1,39 @@
 {
-  "updated_at": "2026-10-22T22:22:20.718628Z",
-  "checked_at": "2026-10-22T22:22:20.718628Z",
+  "updated_at": "2026-10-23T01:33:49.465693Z",
+  "checked_at": "2026-10-23T01:33:49.465693Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "15b2d22e57155cdc",
+      "title": "Texas rules out Colin Simmons for Ole Miss clash",
+      "summary": "Texas edge rusher Colin Simmons, who leads the nation in sacks and tackles for loss, is out Saturday vs. No. 7 Ole Miss.",
+      "url": "https://www.espn.com/college-football/story/_/id/50253830/texas-rules-colin-simmons-ole-miss-clash",
+      "source": "ESPN",
+      "published_at": "2026-10-23T01:26:02Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4f0842600fce9514",
+      "title": "Kentucky RB CJ Baxter set to return vs. Vandy; WR Nic Anderson out",
+      "summary": "Kentucky is poised to get its leading rusher back vs. Vanderbilt on Saturday, but the Wildcats will be without a top receiving target.",
+      "url": "https://www.espn.com/college-football/story/_/id/50253670/uk-cj-baxter-set-return-vs-vandy-nic-anderson-out",
+      "source": "ESPN",
+      "published_at": "2026-10-23T01:24:23Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
     {
       "id": "aff6dedd925163a3",
       "title": "Can Steve Sarkisian and Arch Manning save Texas' season?",
@@ -351,47 +379,6 @@
       "breaking": false
     },
     {
-      "id": "f5127353ea88bf1f",
-      "title": "Marty spends the day with Stein to learn Kentucky's winning formula",
-      "summary": "SEC Network's Marty Smith spends the day in Lexington with Will Stein to understand what goes into turning a program around and giving your guys confidence.",
-      "url": "https://www.espn.com/video/clip/_/id/50233371/marty-spends-day-stein-learn-kentucky-winning-formula",
-      "source": "ESPN",
-      "published_at": "2026-10-21T00:31:36Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3dd920c0832efe29",
-      "title": "Who will win the run game: No. 11 Tennessee or South Carolina?",
-      "summary": "SEC Network's Matt Stinchcomb and Fozzy Whittaker analyze the Gamecocks' and Volunteers' strengths on the ground and discuss what each team must do to gain the upper hand.",
-      "url": "https://www.espn.com/video/clip/_/id/50233270/no-11-tennessee-south-carolina",
-      "source": "ESPN",
-      "published_at": "2026-10-21T00:20:16Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "09595fccbdd2a243",
-      "title": "What must Keelon Russell, No. 13 Bama keep in mind ahead of Texas A&M?",
-      "summary": "SEC Network's Matt Stinchcomb and Fozzy Whittaker discuss how Russell must show up if he wants to lead the Crimson Tide to a win against a strong Aggies defense.",
-      "url": "https://www.espn.com/video/clip/_/id/50233239/what-keelon-russell-no-13-bama-keep-mind-ahead-texas-am",
-      "source": "ESPN",
-      "published_at": "2026-10-21T00:10:49Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
       "id": "2ccfffc6116f62db",
       "title": "Breaking down the men's 2026-27 AP preseason Top 25 basketball poll",
       "summary": "Biggest games and projected starting lineups for the AP preseason Top 25, from No. 1 Florida to No. 25 BYU.",
@@ -507,19 +494,6 @@
       "sport": "basketball",
       "teams": [
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "2531d4c3d4220fa4",
-      "title": "Missouri coach to attend Mark Mitchell eligibility ruling",
-      "summary": "Missouri basketball coach Dennis Gates will support Mark Mitchell in court Wednesday as the two-time All-SEC selection seeks a fifth season of eligibility.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50175116/missouri-coach-attend-mark-mitchell-eligibility-ruling",
-      "source": "ESPN",
-      "published_at": "2026-10-13T22:34:07Z",
-      "sport": "basketball",
-      "teams": [
-        "Missouri"
       ],
       "breaking": false
     }
