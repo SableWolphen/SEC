@@ -1,11 +1,26 @@
 {
-  "updated_at": "2026-10-23T13:29:53.564869Z",
-  "checked_at": "2026-10-23T13:29:53.564869Z",
+  "updated_at": "2026-10-23T18:24:05.585787Z",
+  "checked_at": "2026-10-23T18:24:05.585787Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "96ba5815d5fdfbb5",
+      "title": "Connelly previews Week 8: SEC elimination games, tests for top 2 and more",
+      "summary": "Ole Miss, Tennessee and LSU face road challenges, while Miami and BYU try to avoid the upset bug.",
+      "url": "https://www.espn.com/college-football/story/_/id/50249679/connelly-week-8-preview-ole-miss-texas",
+      "source": "ESPN",
+      "published_at": "2026-10-23T16:07:28Z",
+      "sport": "football",
+      "teams": [
+        "LSU",
+        "Ole Miss",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
     {
       "id": "b2fe7f837d4d1560",
       "title": "What happens to Steve Sarkisian if Texas loses to Ole Miss?",
@@ -31,21 +46,6 @@
       "teams": [
         "Ole Miss",
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "96ba5815d5fdfbb5",
-      "title": "Connelly previews Week 8: SEC elimination games, tests for top 2 and more",
-      "summary": "Ole Miss, Tennessee and LSU face road challenges, while Miami and BYU try to avoid the upset bug.",
-      "url": "https://www.espn.com/college-football/story/_/id/50249679/connelly-week-8-preview-ole-miss-texas",
-      "source": "ESPN",
-      "published_at": "2026-10-23T10:14:43Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Ole Miss",
-        "Tennessee"
       ],
       "breaking": false
     },
@@ -307,17 +307,6 @@
       "breaking": false
     },
     {
-      "id": "da7368b00406be7d",
-      "title": "CFB: Week 8 SEC on ABC Triple Header",
-      "summary": "CFB: Week 8 SEC on ABC Triple Header.",
-      "url": "https://www.espn.com/video/clip/_/id/50238074/week-8-sec-abc-triple-header",
-      "source": "ESPN",
-      "published_at": "2026-10-21T14:41:16Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
       "id": "f64f300edc4053f4",
       "title": "Florida an overwhelming No. 1 in preseason AP Top 25 men's basketball poll",
       "summary": "The Florida Gators are an overwhelming choice as the No. 1 team in the Associated Press preseason men's basketball poll released Monday.",
@@ -433,19 +422,6 @@
       "sport": "basketball",
       "teams": [
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8257f08b08b986f7",
-      "title": "SEC in filing: LSU dispute remains 'live,' school lacks institutional control",
-      "summary": "The SEC is opposing LSU's request to dismiss the conference's lawsuit against the university and its officials, saying a live controversy still exists between the parties.",
-      "url": "https://www.espn.com/college-sports/story/_/id/50181308/sec-opposes-lsu-bid-end-lawsuit-dispute-remains-live",
-      "source": "ESPN",
-      "published_at": "2026-10-14T16:23:07Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
       ],
       "breaking": false
     }
