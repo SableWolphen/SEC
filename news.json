@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-23T01:33:49.465693Z",
-  "checked_at": "2026-10-23T01:33:49.465693Z",
+  "updated_at": "2026-10-23T07:36:04.890920Z",
+  "checked_at": "2026-10-23T07:36:04.890920Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -337,44 +337,6 @@
       "sport": "basketball",
       "teams": [
         "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "adf6c20a2bced4b8",
-      "title": "Missouri State Bears vs. Delaware Blue Hens: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50234300/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-21T02:44:23Z",
-      "sport": "football",
-      "teams": [
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1caeb1f3f31d1eeb",
-      "title": "Addressing notable storylines halfway through SEC season",
-      "summary": "SEC Network's Matt Stinchcomb and Fozzy Whittaker discuss the biggest storylines from the first half of the SEC season and share their expectations for the remainder of the season.",
-      "url": "https://www.espn.com/video/clip/_/id/50233407/addressing-notable-storylines-halfway-sec-season",
-      "source": "ESPN",
-      "published_at": "2026-10-21T00:41:37Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "be12744b29498186",
-      "title": "How will Auburn face the challenge of outrunning LSU's tough defense?",
-      "summary": "The SEC Now crew discusses the importance of Auburn carrying their momentum from Week 7 into Week 8 as they prepare to face No. 18 LSU and Sam Leavitt.",
-      "url": "https://www.espn.com/video/clip/_/id/50233376/how-auburn-face-challenge-outrunning-lsu-tough-defense",
-      "source": "ESPN",
-      "published_at": "2026-10-21T00:33:35Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "LSU"
       ],
       "breaking": false
     },
