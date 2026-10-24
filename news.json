@@ -1,18 +1,32 @@
 {
-  "updated_at": "2026-10-24T14:35:44.696048Z",
-  "checked_at": "2026-10-24T14:35:44.696048Z",
+  "updated_at": "2026-10-24T18:11:33.418942Z",
+  "checked_at": "2026-10-24T18:11:33.418942Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "1466f3be4b6373fa",
+      "title": "Sources: Mississippi State eyes return for QB Taylor, RB Bothwell",
+      "summary": "Mississippi State QB Kamario Taylor and RB Fluff Bothwell are both available vs. Oklahoma following injury absences, sources told ESPN.",
+      "url": "https://www.espn.com/college-football/story/_/id/50265129/sources-mississippi-state-eyes-return-taylor-bothwell",
+      "source": "ESPN",
+      "published_at": "2026-10-24T15:48:46Z",
+      "sport": "football",
+      "teams": [
+        "Mississippi State",
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
       "id": "55c2663e3f6dfd59",
       "title": "Texas RB Hollywood Smothers ruled out vs. Ole Miss",
       "summary": "Texas will be without top tailback Hollywood Smothers for Saturday's showdown vs. No. 7 Ole Miss as the No. 19 Longhorns try to avoid a third straight loss.",
       "url": "https://www.espn.com/college-football/story/_/id/50265566/texas-rb-hollywood-smothers-ruled-vs-ole-miss",
       "source": "ESPN",
-      "published_at": "2026-10-24T14:05:47Z",
+      "published_at": "2026-10-24T15:47:45Z",
       "sport": "football",
       "teams": [
         "Ole Miss",
@@ -31,20 +45,6 @@
       "teams": [
         "Florida",
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1466f3be4b6373fa",
-      "title": "Sources: Mississippi State eyes return for QB Taylor, RB Bothwell",
-      "summary": "Mississippi State QB Kamario Taylor is expected to attempt to play while RB Fluff Bothwell will be available vs. Oklahoma, sources told ESPN.",
-      "url": "https://www.espn.com/college-football/story/_/id/50265129/sources-mississippi-state-eyes-return-taylor-bothwell",
-      "source": "ESPN",
-      "published_at": "2026-10-24T12:27:36Z",
-      "sport": "football",
-      "teams": [
-        "Mississippi State",
-        "Oklahoma"
       ],
       "breaking": false
     },
@@ -384,41 +384,12 @@
       "breaking": false
     },
     {
-      "id": "96ba5815d5fdfbb5",
-      "title": "Connelly previews Week 8: SEC elimination games, tests for top 2 and more",
-      "summary": "Ole Miss, Tennessee and LSU face road challenges, while Miami and BYU try to avoid the upset bug.",
-      "url": "https://www.espn.com/college-football/story/_/id/50249679/connelly-week-8-preview-ole-miss-texas",
-      "source": "ESPN",
-      "published_at": "2026-10-23T16:07:28Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Ole Miss",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
       "id": "b2fe7f837d4d1560",
       "title": "What happens to Steve Sarkisian if Texas loses to Ole Miss?",
       "summary": "",
       "url": "https://www.espn.com/video/clip/_/id/50257425/what-happens-steve-sarkisian-texas-loses-ole-miss",
       "source": "ESPN",
       "published_at": "2026-10-23T13:19:00Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1f62849e74f8fc90",
-      "title": "How important is a win for Ole Miss' and Texas' CFP hopes?",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50257103/how-important-win-ole-miss-texas-cfp-hopes",
-      "source": "ESPN",
-      "published_at": "2026-10-23T12:26:50Z",
       "sport": "football",
       "teams": [
         "Ole Miss",
@@ -516,19 +487,6 @@
       "sport": "basketball",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3ad92720e1d6b20f",
-      "title": "Florida's Todd Golden: NCAA eligibility chaos self-inflicted",
-      "summary": "Florida coach Todd Golden says the chaos of college eligibility is caused by the NCAA.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50182031/florida-todd-golden-ncaa-eligibility-chaos-self-inflicted",
-      "source": "ESPN",
-      "published_at": "2026-10-15T15:32:23Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
       ],
       "breaking": false
     }
