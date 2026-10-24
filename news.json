@@ -1,11 +1,133 @@
 {
-  "updated_at": "2026-10-24T20:53:29.316292Z",
-  "checked_at": "2026-10-24T20:53:29.316292Z",
+  "updated_at": "2026-10-24T23:18:20.257766Z",
+  "checked_at": "2026-10-24T23:18:20.257766Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "6875be8464c3c9c6",
+      "title": "Charleston Southern Buccaneers vs. Tennessee State Tigers: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50271090/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-24T23:08:32Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "94b763a16af27ba5",
+      "title": "Oklahoma Sooners vs. Mississippi State Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50271046/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-24T23:01:39Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Mississippi State",
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "205eba4674a53547",
+      "title": "Lehigh Mountain Hawks vs. Villanova Wildcats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50270837/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-24T22:42:28Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e1660ce7a0aa68ed",
+      "title": "Southeast Missouri State Redhawks vs. Eastern Illinois Panthers: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50270550/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-24T22:22:15Z",
+      "sport": "football",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "63eaa6805340b640",
+      "title": "West Florida Argonauts vs. Eastern Kentucky Colonels: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50270465/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-24T22:11:36Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d721caf498e82b3b",
+      "title": "Kiffin says LSU back to what he envisioned after Auburn win",
+      "summary": "LSU coach Lane Kiffin said his team's performance in a blowout win at Auburn was what the team was \"supposed to look like.\"",
+      "url": "https://www.espn.com/college-football/story/_/id/50269729/kiffin-says-lsu-back-envisioned-auburn-win",
+      "source": "ESPN",
+      "published_at": "2026-10-24T21:27:55Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "490aa08e3f5865c4",
+      "title": "Tarleton Texans vs. West Georgia Wolves: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50269987/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-24T21:25:50Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8e496409527015fb",
+      "title": "Tennessee Tech Golden Eagles vs. The Citadel Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50269813/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-24T21:07:54Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6707ae1b8d749124",
+      "title": "Samford Bulldogs vs. Furman Paladins: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50269758/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-24T21:02:14Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
     {
       "id": "ecd55cd9538a20c5",
       "title": "Norfolk State Spartans vs. South Carolina State Bulldogs: Full Highlights",
@@ -17,112 +139,6 @@
       "teams": [
         "Georgia"
       ],
-      "breaking": false
-    },
-    {
-      "id": "1466f3be4b6373fa",
-      "title": "Mississippi State's Kamario Taylor, Fluff Bothwell return",
-      "summary": "Mississippi State QB Kamario Taylor and RB Fluff Bothwell both returned against Oklahoma on Saturday after missing a game with injuries.",
-      "url": "https://www.espn.com/college-football/story/_/id/50265129/sources-mississippi-state-eyes-return-taylor-bothwell",
-      "source": "ESPN",
-      "published_at": "2026-10-24T20:35:30Z",
-      "sport": "football",
-      "teams": [
-        "Mississippi State",
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3165892ea2a7d521",
-      "title": "East Tennessee State Buccaneers vs. VMI Keydets: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50269490/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-24T20:30:49Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0ed098fdbf873b7f",
-      "title": "LSU Tigers vs. Auburn Tigers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50269005/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-24T20:24:37Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c90b36b9b35de304",
-      "title": "Butler Bulldogs vs. Drake Bulldogs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50269321/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-24T20:19:28Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "941f07f85186f58c",
-      "title": "New Hampshire Wildcats vs. Merrimack Warriors: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50268421/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-24T19:23:34Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5c04ae3f379d586c",
-      "title": "Alabama without Zabien Brown, EJ Crowell, Racin Delgatty vs. Texas A&M",
-      "summary": "Alabama will be without starting cornerback Zabien Brown, tailback EJ Crowell and center Racin Delgatty when it tries to end a two-game losing streak against Texas A&M.",
-      "url": "https://www.espn.com/college-football/story/_/id/50267995/alabama-cb-brown-rb-crowell-c-delgatty-vs-texas-am",
-      "source": "ESPN",
-      "published_at": "2026-10-24T19:15:49Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "55c2663e3f6dfd59",
-      "title": "Texas RB Hollywood Smothers ruled out vs. Ole Miss",
-      "summary": "Texas will be without top tailback Hollywood Smothers for Saturday's showdown vs. No. 7 Ole Miss as the No. 19 Longhorns try to avoid a third straight loss.",
-      "url": "https://www.espn.com/college-football/story/_/id/50265566/texas-rb-hollywood-smothers-ruled-vs-ole-miss",
-      "source": "ESPN",
-      "published_at": "2026-10-24T18:33:13Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": true
-    },
-    {
-      "id": "dc29030d58144c83",
-      "title": "Drafting team of SEC units that have produced the most so far",
-      "summary": "The SEC Now crew puts together a team of different SEC units that have produced the most so far this season as they describe what makes these groups weapons on the field.",
-      "url": "https://www.espn.com/video/clip/_/id/50262857/drafting-team-sec-units-produced-most-far",
-      "source": "ESPN",
-      "published_at": "2026-10-24T03:16:35Z",
-      "sport": "football",
-      "teams": [],
       "breaking": false
     },
     {
