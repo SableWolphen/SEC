@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-24T05:57:07.235610Z",
-  "checked_at": "2026-10-24T05:57:07.235610Z",
+  "updated_at": "2026-10-24T11:07:33.296526Z",
+  "checked_at": "2026-10-24T11:07:33.296526Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -124,7 +124,7 @@
         "Auburn",
         "LSU"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "bad14e3eea02243f",
