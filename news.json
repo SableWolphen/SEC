@@ -1,22 +1,50 @@
 {
-  "updated_at": "2026-10-24T11:07:33.296526Z",
-  "checked_at": "2026-10-24T11:07:33.296526Z",
+  "updated_at": "2026-10-24T14:35:44.696048Z",
+  "checked_at": "2026-10-24T14:35:44.696048Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "55c2663e3f6dfd59",
+      "title": "Texas RB Hollywood Smothers ruled out vs. Ole Miss",
+      "summary": "Texas will be without top tailback Hollywood Smothers for Saturday's showdown vs. No. 7 Ole Miss as the No. 19 Longhorns try to avoid a third straight loss.",
+      "url": "https://www.espn.com/college-football/story/_/id/50265566/texas-rb-hollywood-smothers-ruled-vs-ole-miss",
+      "source": "ESPN",
+      "published_at": "2026-10-24T14:05:47Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": true
+    },
+    {
       "id": "526cecd26ecb1b85",
       "title": "Texas AD Del Conte clarifies AI use on key play that failed in loss to Florida",
-      "summary": "Texas AD Chris Del Conte on Friday sought to clarify a report that the team used a new AI-driven platform on a crucial play that failed in last week's loss to Florida.",
+      "summary": "Texas athletic director Chris Del Conte sought to clarify a report that the Longhorns used a new AI-driven platform on a crucial play that failed in last week's loss to Florida.",
       "url": "https://www.espn.com/college-football/story/_/id/50262750/texas-ad-clarifies-use-ai-key-play-loss-florida",
       "source": "ESPN",
-      "published_at": "2026-10-24T05:36:09Z",
+      "published_at": "2026-10-24T13:53:48Z",
       "sport": "football",
       "teams": [
         "Florida",
         "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1466f3be4b6373fa",
+      "title": "Sources: Mississippi State eyes return for QB Taylor, RB Bothwell",
+      "summary": "Mississippi State QB Kamario Taylor is expected to attempt to play while RB Fluff Bothwell will be available vs. Oklahoma, sources told ESPN.",
+      "url": "https://www.espn.com/college-football/story/_/id/50265129/sources-mississippi-state-eyes-return-taylor-bothwell",
+      "source": "ESPN",
+      "published_at": "2026-10-24T12:27:36Z",
+      "sport": "football",
+      "teams": [
+        "Mississippi State",
+        "Oklahoma"
       ],
       "breaking": false
     },
@@ -501,19 +529,6 @@
       "sport": "basketball",
       "teams": [
         "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7ead245e738b58bf",
-      "title": "Mark Pope embracing championship expectations at Kentucky",
-      "summary": "Kentucky men's basketball coach Mark Pope said he is embracing championship expectations entering Year 3 with the Wildcats.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50183414/mark-pope-embracing-championship-expectations-kentucky",
-      "source": "ESPN",
-      "published_at": "2026-10-15T13:13:05Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
       ],
       "breaking": false
     }
