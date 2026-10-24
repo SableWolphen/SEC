@@ -1,11 +1,145 @@
 {
-  "updated_at": "2026-10-24T00:45:34.222359Z",
-  "checked_at": "2026-10-24T00:45:34.222359Z",
+  "updated_at": "2026-10-24T05:57:07.235610Z",
+  "checked_at": "2026-10-24T05:57:07.235610Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "526cecd26ecb1b85",
+      "title": "Texas AD Del Conte clarifies AI use on key play that failed in loss to Florida",
+      "summary": "Texas AD Chris Del Conte on Friday sought to clarify a report that the team used a new AI-driven platform on a crucial play that failed in last week's loss to Florida.",
+      "url": "https://www.espn.com/college-football/story/_/id/50262750/texas-ad-clarifies-use-ai-key-play-loss-florida",
+      "source": "ESPN",
+      "published_at": "2026-10-24T05:36:09Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "dc29030d58144c83",
+      "title": "Drafting team of SEC units that have produced the most so far",
+      "summary": "The SEC Now crew puts together a team of different SEC units that have produced the most so far this season as they describe what makes these groups weapons on the field.",
+      "url": "https://www.espn.com/video/clip/_/id/50262857/drafting-team-sec-units-produced-most-far",
+      "source": "ESPN",
+      "published_at": "2026-10-24T03:16:35Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "8de122ef2b487b90",
+      "title": "Yale Bulldogs vs. Pennsylvania Quakers: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50262680/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-24T02:34:18Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "39c19638da738b21",
+      "title": "Kalen DeBoer discusses expectations for Bama vs. South Carolina",
+      "summary": "DeBoer describes Keelon Russell's strengths and areas of improvement opportunities as he discusses his expectations for the No. 13 Crimson Tide against the Gamecocks.",
+      "url": "https://www.espn.com/video/clip/_/id/50262495/kalen-deboer-discusses-expectations-bama-vs-south-carolina",
+      "source": "ESPN",
+      "published_at": "2026-10-24T02:10:04Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6593e3be81bc8575",
+      "title": "SEC Now crew previews OU vs. MS State as Bulldogs return key pieces",
+      "summary": "As Mississippi State welcomes back RB Fluff Bothwell and possibly QB Kamario Taylor to host Oklahoma, Chris Doering and Benjamin Watson break down each team's keys to win.",
+      "url": "https://www.espn.com/video/clip/_/id/50262408/sec-now-crew-previews-ou-vs-ms-state-bulldogs-return-key-pieces",
+      "source": "ESPN",
+      "published_at": "2026-10-24T02:01:32Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Mississippi State",
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a4f026856c14f701",
+      "title": "Will Stein evaluates Kentucky's successful run so far ahead of Vandy test",
+      "summary": "Stein discusses how the No. 12 Wildcats have been able to have consistent success so far this season as he explains what they must focus on ahead of the Commodores.",
+      "url": "https://www.espn.com/video/clip/_/id/50262070/will-stein-evaluates-kentucky-successful-run-far-ahead-vandy-test",
+      "source": "ESPN",
+      "published_at": "2026-10-24T01:25:42Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4b421e002b4c2fbe",
+      "title": "Which one-loss SEC teams are ready to prove they are for real?",
+      "summary": "SEC Network's Chris Doering and Benjamin Watson highlight the teams sitting atop the conference standings and pick who they trust to finish at the top.",
+      "url": "https://www.espn.com/video/clip/_/id/50262068/which-one-loss-sec-teams-ready-prove-real",
+      "source": "ESPN",
+      "published_at": "2026-10-24T01:19:15Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "fc97054eda9558f7",
+      "title": "Rowe takes us inside Texas minds, shares Chambliss' reaction",
+      "summary": "ESPN's Holly Rowe explores Arch Manning's perspective, Steve Sarkisian's take on his recent performances and shares Ole Miss QB Trinidad Chambliss' unexpected reaction.",
+      "url": "https://www.espn.com/video/clip/_/id/50261958/rowe-takes-us-texas-minds-shares-chambliss-reaction",
+      "source": "ESPN",
+      "published_at": "2026-10-24T01:10:37Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "793487f71a656a97",
+      "title": "Breaking down QB matchup: No. 18 LSU's Leavitt vs. Auburn's Brown",
+      "summary": "The SEC Nation crew sets the stage for LSU's trip to Auburn where Sam Leavitt and Byrum Brown will go head to head while discussing how both teams are improving week to week.",
+      "url": "https://www.espn.com/video/clip/_/id/50261957/no-18-lsu-leavitt-vs-auburn-brown",
+      "source": "ESPN",
+      "published_at": "2026-10-24T00:54:17Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "LSU"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "bad14e3eea02243f",
+      "title": "How does South Carolina match up against Tennessee's dynamic offense?",
+      "summary": "SEC Network's Dusty Dvoracek evaluates LaNorris Sellers' QB abilities and how the Gamecocks stand against DeSean Bishop and the No. 11 Volunteers' run game.",
+      "url": "https://www.espn.com/video/clip/_/id/50261952/how-does-south-carolina-match-tennessee-dynamic-offense",
+      "source": "ESPN",
+      "published_at": "2026-10-24T00:52:09Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
     {
       "id": "ec50c71a7d48f782",
       "title": "SEC Network's Chris Doering sets Week 8 predictions",
@@ -260,99 +394,6 @@
       "sport": "football",
       "teams": [
         "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "15b2d22e57155cdc",
-      "title": "Texas rules out Colin Simmons for Ole Miss clash",
-      "summary": "Texas edge rusher Colin Simmons, who leads the nation in sacks and tackles for loss, is out Saturday vs. No. 7 Ole Miss.",
-      "url": "https://www.espn.com/college-football/story/_/id/50253830/texas-rules-colin-simmons-ole-miss-clash",
-      "source": "ESPN",
-      "published_at": "2026-10-23T01:26:02Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4f0842600fce9514",
-      "title": "Kentucky RB CJ Baxter set to return vs. Vandy; WR Nic Anderson out",
-      "summary": "Kentucky is poised to get its leading rusher back vs. Vanderbilt on Saturday, but the Wildcats will be without a top receiving target.",
-      "url": "https://www.espn.com/college-football/story/_/id/50253670/uk-cj-baxter-set-return-vs-vandy-nic-anderson-out",
-      "source": "ESPN",
-      "published_at": "2026-10-23T01:24:23Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "aff6dedd925163a3",
-      "title": "Can Steve Sarkisian and Arch Manning save Texas' season?",
-      "summary": "Coach Steve Sarkisian and quarterback Arch Manning were supposed to be a match made in heaven for Texas football.",
-      "url": "https://www.espn.com/college-football/story/_/id/50240573/arch-manning-steve-sarkisian-texas-pressure",
-      "source": "ESPN",
-      "published_at": "2026-10-22T16:06:48Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7a4fc730b9fdc73c",
-      "title": "College football best bets for Week 8 include Houston-Utah pick, Tennessee total",
-      "summary": "Pamela Maldonado and Mark Zinno break down the best bets they see around college football for Week 8.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50242913/college-football-odds-best-bets-week-8-spreads-lines-2026",
-      "source": "ESPN",
-      "published_at": "2026-10-22T15:05:23Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "bcd48817a4cb4a35",
-      "title": "Can Week 8 up the ante again with more upsets and drama?",
-      "summary": "With plenty of SEC drama last week, could Week 8 bring even more chaos?",
-      "url": "https://www.espn.com/college-football/story/_/page/gamedaykickoff102226/week-8-top-games-upsets-preview",
-      "source": "ESPN",
-      "published_at": "2026-10-22T11:08:07Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "6682fa1f7b425978",
-      "title": "New Mexico State Aggies vs. Sam Houston Bearkats: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50245010/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-22T03:54:31Z",
-      "sport": "football",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "01e639fc2066a156",
-      "title": "Gene Chizik offers wisdom to fans of SEC heavyweights",
-      "summary": "SEC Network's Chizik explains why Georgia, Alabama and Texas fans should not panic after their teams' losses.",
-      "url": "https://www.espn.com/video/clip/_/id/50244843/gene-chizik-offers-wisdom-fans-sec-heavyweights",
-      "source": "ESPN",
-      "published_at": "2026-10-22T03:35:10Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia",
         "Texas"
       ],
       "breaking": false
