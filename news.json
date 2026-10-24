@@ -1,22 +1,102 @@
 {
-  "updated_at": "2026-10-24T18:11:33.418942Z",
-  "checked_at": "2026-10-24T18:11:33.418942Z",
+  "updated_at": "2026-10-24T20:53:29.316292Z",
+  "checked_at": "2026-10-24T20:53:29.316292Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "ecd55cd9538a20c5",
+      "title": "Norfolk State Spartans vs. South Carolina State Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50269670/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-24T20:51:19Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
       "id": "1466f3be4b6373fa",
-      "title": "Sources: Mississippi State eyes return for QB Taylor, RB Bothwell",
-      "summary": "Mississippi State QB Kamario Taylor and RB Fluff Bothwell are both available vs. Oklahoma following injury absences, sources told ESPN.",
+      "title": "Mississippi State's Kamario Taylor, Fluff Bothwell return",
+      "summary": "Mississippi State QB Kamario Taylor and RB Fluff Bothwell both returned against Oklahoma on Saturday after missing a game with injuries.",
       "url": "https://www.espn.com/college-football/story/_/id/50265129/sources-mississippi-state-eyes-return-taylor-bothwell",
       "source": "ESPN",
-      "published_at": "2026-10-24T15:48:46Z",
+      "published_at": "2026-10-24T20:35:30Z",
       "sport": "football",
       "teams": [
         "Mississippi State",
         "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3165892ea2a7d521",
+      "title": "East Tennessee State Buccaneers vs. VMI Keydets: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50269490/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-24T20:30:49Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0ed098fdbf873b7f",
+      "title": "LSU Tigers vs. Auburn Tigers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50269005/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-24T20:24:37Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c90b36b9b35de304",
+      "title": "Butler Bulldogs vs. Drake Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50269321/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-24T20:19:28Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "941f07f85186f58c",
+      "title": "New Hampshire Wildcats vs. Merrimack Warriors: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50268421/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-24T19:23:34Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5c04ae3f379d586c",
+      "title": "Alabama without Zabien Brown, EJ Crowell, Racin Delgatty vs. Texas A&M",
+      "summary": "Alabama will be without starting cornerback Zabien Brown, tailback EJ Crowell and center Racin Delgatty when it tries to end a two-game losing streak against Texas A&M.",
+      "url": "https://www.espn.com/college-football/story/_/id/50267995/alabama-cb-brown-rb-crowell-c-delgatty-vs-texas-am",
+      "source": "ESPN",
+      "published_at": "2026-10-24T19:15:49Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Texas A&M"
       ],
       "breaking": false
     },
@@ -26,27 +106,13 @@
       "summary": "Texas will be without top tailback Hollywood Smothers for Saturday's showdown vs. No. 7 Ole Miss as the No. 19 Longhorns try to avoid a third straight loss.",
       "url": "https://www.espn.com/college-football/story/_/id/50265566/texas-rb-hollywood-smothers-ruled-vs-ole-miss",
       "source": "ESPN",
-      "published_at": "2026-10-24T15:47:45Z",
+      "published_at": "2026-10-24T18:33:13Z",
       "sport": "football",
       "teams": [
         "Ole Miss",
         "Texas"
       ],
       "breaking": true
-    },
-    {
-      "id": "526cecd26ecb1b85",
-      "title": "Texas AD Del Conte clarifies AI use on key play that failed in loss to Florida",
-      "summary": "Texas athletic director Chris Del Conte sought to clarify a report that the Longhorns used a new AI-driven platform on a crucial play that failed in last week's loss to Florida.",
-      "url": "https://www.espn.com/college-football/story/_/id/50262750/texas-ad-clarifies-use-ai-key-play-loss-florida",
-      "source": "ESPN",
-      "published_at": "2026-10-24T13:53:48Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Texas"
-      ],
-      "breaking": false
     },
     {
       "id": "dc29030d58144c83",
@@ -57,128 +123,6 @@
       "published_at": "2026-10-24T03:16:35Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "8de122ef2b487b90",
-      "title": "Yale Bulldogs vs. Pennsylvania Quakers: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50262680/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-24T02:34:18Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "39c19638da738b21",
-      "title": "Kalen DeBoer discusses expectations for Bama vs. South Carolina",
-      "summary": "DeBoer describes Keelon Russell's strengths and areas of improvement opportunities as he discusses his expectations for the No. 13 Crimson Tide against the Gamecocks.",
-      "url": "https://www.espn.com/video/clip/_/id/50262495/kalen-deboer-discusses-expectations-bama-vs-south-carolina",
-      "source": "ESPN",
-      "published_at": "2026-10-24T02:10:04Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6593e3be81bc8575",
-      "title": "SEC Now crew previews OU vs. MS State as Bulldogs return key pieces",
-      "summary": "As Mississippi State welcomes back RB Fluff Bothwell and possibly QB Kamario Taylor to host Oklahoma, Chris Doering and Benjamin Watson break down each team's keys to win.",
-      "url": "https://www.espn.com/video/clip/_/id/50262408/sec-now-crew-previews-ou-vs-ms-state-bulldogs-return-key-pieces",
-      "source": "ESPN",
-      "published_at": "2026-10-24T02:01:32Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Mississippi State",
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a4f026856c14f701",
-      "title": "Will Stein evaluates Kentucky's successful run so far ahead of Vandy test",
-      "summary": "Stein discusses how the No. 12 Wildcats have been able to have consistent success so far this season as he explains what they must focus on ahead of the Commodores.",
-      "url": "https://www.espn.com/video/clip/_/id/50262070/will-stein-evaluates-kentucky-successful-run-far-ahead-vandy-test",
-      "source": "ESPN",
-      "published_at": "2026-10-24T01:25:42Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4b421e002b4c2fbe",
-      "title": "Which one-loss SEC teams are ready to prove they are for real?",
-      "summary": "SEC Network's Chris Doering and Benjamin Watson highlight the teams sitting atop the conference standings and pick who they trust to finish at the top.",
-      "url": "https://www.espn.com/video/clip/_/id/50262068/which-one-loss-sec-teams-ready-prove-real",
-      "source": "ESPN",
-      "published_at": "2026-10-24T01:19:15Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "fc97054eda9558f7",
-      "title": "Rowe takes us inside Texas minds, shares Chambliss' reaction",
-      "summary": "ESPN's Holly Rowe explores Arch Manning's perspective, Steve Sarkisian's take on his recent performances and shares Ole Miss QB Trinidad Chambliss' unexpected reaction.",
-      "url": "https://www.espn.com/video/clip/_/id/50261958/rowe-takes-us-texas-minds-shares-chambliss-reaction",
-      "source": "ESPN",
-      "published_at": "2026-10-24T01:10:37Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "793487f71a656a97",
-      "title": "Breaking down QB matchup: No. 18 LSU's Leavitt vs. Auburn's Brown",
-      "summary": "The SEC Nation crew sets the stage for LSU's trip to Auburn where Sam Leavitt and Byrum Brown will go head to head while discussing how both teams are improving week to week.",
-      "url": "https://www.espn.com/video/clip/_/id/50261957/no-18-lsu-leavitt-vs-auburn-brown",
-      "source": "ESPN",
-      "published_at": "2026-10-24T00:54:17Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "bad14e3eea02243f",
-      "title": "How does South Carolina match up against Tennessee's dynamic offense?",
-      "summary": "SEC Network's Dusty Dvoracek evaluates LaNorris Sellers' QB abilities and how the Gamecocks stand against DeSean Bishop and the No. 11 Volunteers' run game.",
-      "url": "https://www.espn.com/video/clip/_/id/50261952/how-does-south-carolina-match-tennessee-dynamic-offense",
-      "source": "ESPN",
-      "published_at": "2026-10-24T00:52:09Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ec50c71a7d48f782",
-      "title": "SEC Network's Chris Doering sets Week 8 predictions",
-      "summary": "Doering selects his expected winners of Week 8 after several stuns in Week 7, and emphasizes a bold belief in South Carolina.",
-      "url": "https://www.espn.com/video/clip/_/id/50261427/sec-network-chris-doering-sets-week-8-predictions",
-      "source": "ESPN",
-      "published_at": "2026-10-23T23:25:14Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina"
-      ],
       "breaking": false
     },
     {
@@ -195,100 +139,6 @@
       "breaking": false
     },
     {
-      "id": "a2d1e2ddbb37782d",
-      "title": "ESPN's Taylor Davis previews UK vs. Vandy, analyzes Ole Miss upset",
-      "summary": "Davis dives into Vanderbilt's journey to find its rhythm while discussing No. 15 Kentucky's confidence going into Week 8, and dissects Ole Miss' dominant upset over Mizzou.",
-      "url": "https://www.espn.com/video/clip/_/id/50260991/espn-taylor-davis-previews-uk-vs-vandy-analyzes-ole-miss-upset",
-      "source": "ESPN",
-      "published_at": "2026-10-23T22:38:09Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "Missouri",
-        "Ole Miss",
-        "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e554cae4cbbb9bd9",
-      "title": "Roman Harper stresses need for Bama to have fresh mentality vs. Texas A&M",
-      "summary": "Harper reflects on the No. 13 Crimson Tide's performance in Week 7 as he emphasizes the importance of putting the loss behind them and focusing on their matchup vs. the Aggies.",
-      "url": "https://www.espn.com/video/clip/_/id/50261123/roman-harper-stresses-need-bama-fresh-mentality-vs-texas-am",
-      "source": "ESPN",
-      "published_at": "2026-10-23T22:32:26Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c000f60dc906cb50",
-      "title": "Tebow analyzes impact of star quarterbacks Manning and Chambliss",
-      "summary": "SEC Network's Tim Tebow joins The Paul Finebaum Show to discuss how Arch Manning and the Texas offense can get back on track and Trinidad Chambliss' ability to raise Ole Miss' ceiling.",
-      "url": "https://www.espn.com/video/clip/_/id/50261126/tebow-analyzes-impact-star-quarterbacks-manning-chambliss",
-      "source": "ESPN",
-      "published_at": "2026-10-23T22:32:03Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f66c5116aa55ddb2",
-      "title": "Kris Budden eases Alabama panic ahead of matchup vs. Texas A&M",
-      "summary": "Budden joins The Paul Finebaum Show to preview the showdown between the Crimson Tide and Aggies while explaining how Alabama is staying calm through rough stretch.",
-      "url": "https://www.espn.com/video/clip/_/id/50261090/kris-budden-eases-alabama-panic-ahead-matchup-vs-texas-am",
-      "source": "ESPN",
-      "published_at": "2026-10-23T22:31:44Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6e90c954b181d85e",
-      "title": "Matt Barrie on college football's best team: 'We don't know'",
-      "summary": "With upsets reshaping the season, SEC Nation's Matt Barrie joins The Paul Finebaum Show to explain why so many questions remain unanswered at the midway point.",
-      "url": "https://www.espn.com/video/clip/_/id/50260477/know",
-      "source": "ESPN",
-      "published_at": "2026-10-23T21:09:53Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "8b1057f664bae701",
-      "title": "Fowler describes Manning's urgency ahead of Texas vs. Ole Miss",
-      "summary": "ESPN's Chris Fowler joins The Paul Finebaum Show to discuss Arch Manning's added sense of urgency as the No. 19 Longhorns prepare to face the No. 7 Rebels.",
-      "url": "https://www.espn.com/video/clip/_/id/50260387/fowler-describes-manning-urgency-ahead-texas-vs-ole-miss",
-      "source": "ESPN",
-      "published_at": "2026-10-23T20:48:05Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "bb40cfdfef05fa01",
-      "title": "2010s SEC was different 💀(beastkoby/IG) #2010s #CFB #espnedits",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50260182/2010s-sec-was-different-beastkoby-ig-2010s-cfb-espnedits",
-      "source": "ESPN",
-      "published_at": "2026-10-23T20:39:21Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
       "id": "aac7190267961fbf",
       "title": "Ole Miss served most punishments past two seasons for ex-assistant's violations",
       "summary": "The NCAA has penalized Ole Miss' men's basketball program for tampering violations by former assistant coach Wes Flanigan, with most of the penalties served during the 2024-25 and 2025-26 school years.",
@@ -302,17 +152,6 @@
       "breaking": false
     },
     {
-      "id": "0412bfaace9b9995",
-      "title": "Peter Burns' Week 8 Power Rankings carry added urgency",
-      "summary": "SEC This Morning's Burns lists the five teams in the conference that need a Week 8 win to keep their seasons on track.",
-      "url": "https://www.espn.com/video/clip/_/id/50260300/peter-burns-week-8-power-rankings-carry-added-urgency",
-      "source": "ESPN",
-      "published_at": "2026-10-23T20:26:31Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
       "id": "e61e003c27b94d2b",
       "title": "Paul Finebaum remembers former LSU coach Dale Brown",
       "summary": "",
@@ -322,78 +161,6 @@
       "sport": "basketball",
       "teams": [
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "da84460d3313b187",
-      "title": "Taylor Zarzour analyzes struggles for No. 19 Texas, No. 13 Alabama",
-      "summary": "With offensive problems plaguing both the Longhorns and the Crimson Tide, ESPN's Taylor Zarzour explains on SEC This Morning what each team must improve to avoid those issues.",
-      "url": "https://www.espn.com/video/clip/_/id/50259991/taylor-zarzour-analyzes-struggles-no-19-texas-no-13-alabama",
-      "source": "ESPN",
-      "published_at": "2026-10-23T19:32:37Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "67b499bea8b42219",
-      "title": "Jason Campbell discusses Auburn's growing chemistry",
-      "summary": "Auburn great Jason Campbell joins SEC This Morning to discuss how Tigers alumni support Alex Golesh and how Auburn can carry its momentum into a matchup with No. 18 LSU.",
-      "url": "https://www.espn.com/video/clip/_/id/50259948/jason-campbell-discusses-auburn-growing-chemistry",
-      "source": "ESPN",
-      "published_at": "2026-10-23T19:27:37Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f918223324b3dfb1",
-      "title": "Taylor McGregor previews No. 11 Tennessee vs. South Carolina",
-      "summary": "After Auburn upset then-No. 1 Georgia, ESPN's Taylor McGregor joins SEC This Morning to discuss how Tennessee-South Carolina could carry similar implications this week.",
-      "url": "https://www.espn.com/video/clip/_/id/50259903/taylor-mcgregor-previews-no-11-tennessee-vs-south-carolina",
-      "source": "ESPN",
-      "published_at": "2026-10-23T19:17:40Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "Georgia",
-        "South Carolina",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4731c6b4ac97fce4",
-      "title": "Top 25 betting lines: Texas favored vs. Ole Miss, Utah the fave vs. Houston",
-      "summary": "This week's odds and FPI predictions for Texas-Ole Miss, Utah-Houston and every top 25 matchup.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50216670/2026-college-football-week-8-top-25-betting-lines-odds",
-      "source": "ESPN",
-      "published_at": "2026-10-23T18:50:37Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b2fe7f837d4d1560",
-      "title": "What happens to Steve Sarkisian if Texas loses to Ole Miss?",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50257425/what-happens-steve-sarkisian-texas-loses-ole-miss",
-      "source": "ESPN",
-      "published_at": "2026-10-23T13:19:00Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
       ],
       "breaking": false
     },
