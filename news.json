@@ -1,11 +1,95 @@
 {
-  "updated_at": "2026-10-23T22:14:20.296553Z",
-  "checked_at": "2026-10-23T22:14:20.296553Z",
+  "updated_at": "2026-10-24T00:45:34.222359Z",
+  "checked_at": "2026-10-24T00:45:34.222359Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "ec50c71a7d48f782",
+      "title": "SEC Network's Chris Doering sets Week 8 predictions",
+      "summary": "Doering selects his expected winners of Week 8 after several stuns in Week 7, and emphasizes a bold belief in South Carolina.",
+      "url": "https://www.espn.com/video/clip/_/id/50261427/sec-network-chris-doering-sets-week-8-predictions",
+      "source": "ESPN",
+      "published_at": "2026-10-23T23:25:14Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a8aaea3fb86d4b07",
+      "title": "Dale Brown, LSU's winningest basketball coach, dies at 90",
+      "summary": "Dale Brown, who coached LSU to two Final Four appearances and whose players included Shaquille O'Neal and Mahmoud Abdul-Rauf, has died at the age of 90.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50259738/dale-brown-lsu-winningest-basketball-coach-dies-90",
+      "source": "ESPN",
+      "published_at": "2026-10-23T23:06:42Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a2d1e2ddbb37782d",
+      "title": "ESPN's Taylor Davis previews UK vs. Vandy, analyzes Ole Miss upset",
+      "summary": "Davis dives into Vanderbilt's journey to find its rhythm while discussing No. 15 Kentucky's confidence going into Week 8, and dissects Ole Miss' dominant upset over Mizzou.",
+      "url": "https://www.espn.com/video/clip/_/id/50260991/espn-taylor-davis-previews-uk-vs-vandy-analyzes-ole-miss-upset",
+      "source": "ESPN",
+      "published_at": "2026-10-23T22:38:09Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "Missouri",
+        "Ole Miss",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e554cae4cbbb9bd9",
+      "title": "Roman Harper stresses need for Bama to have fresh mentality vs. Texas A&M",
+      "summary": "Harper reflects on the No. 13 Crimson Tide's performance in Week 7 as he emphasizes the importance of putting the loss behind them and focusing on their matchup vs. the Aggies.",
+      "url": "https://www.espn.com/video/clip/_/id/50261123/roman-harper-stresses-need-bama-fresh-mentality-vs-texas-am",
+      "source": "ESPN",
+      "published_at": "2026-10-23T22:32:26Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c000f60dc906cb50",
+      "title": "Tebow analyzes impact of star quarterbacks Manning and Chambliss",
+      "summary": "SEC Network's Tim Tebow joins The Paul Finebaum Show to discuss how Arch Manning and the Texas offense can get back on track and Trinidad Chambliss' ability to raise Ole Miss' ceiling.",
+      "url": "https://www.espn.com/video/clip/_/id/50261126/tebow-analyzes-impact-star-quarterbacks-manning-chambliss",
+      "source": "ESPN",
+      "published_at": "2026-10-23T22:32:03Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f66c5116aa55ddb2",
+      "title": "Kris Budden eases Alabama panic ahead of matchup vs. Texas A&M",
+      "summary": "Budden joins The Paul Finebaum Show to preview the showdown between the Crimson Tide and Aggies while explaining how Alabama is staying calm through rough stretch.",
+      "url": "https://www.espn.com/video/clip/_/id/50261090/kris-budden-eases-alabama-panic-ahead-matchup-vs-texas-am",
+      "source": "ESPN",
+      "published_at": "2026-10-23T22:31:44Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
     {
       "id": "6e90c954b181d85e",
       "title": "Matt Barrie on college football's best team: 'We don't know'",
@@ -43,6 +127,19 @@
       "breaking": false
     },
     {
+      "id": "aac7190267961fbf",
+      "title": "Ole Miss served most punishments past two seasons for ex-assistant's violations",
+      "summary": "The NCAA has penalized Ole Miss' men's basketball program for tampering violations by former assistant coach Wes Flanigan, with most of the penalties served during the 2024-25 and 2025-26 school years.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50260160/ole-miss-sanctioned-ex-assistant-violations",
+      "source": "ESPN",
+      "published_at": "2026-10-23T20:27:42Z",
+      "sport": "basketball",
+      "teams": [
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
       "id": "0412bfaace9b9995",
       "title": "Peter Burns' Week 8 Power Rankings carry added urgency",
       "summary": "SEC This Morning's Burns lists the five teams in the conference that need a Week 8 win to keep their seasons on track.",
@@ -51,19 +148,6 @@
       "published_at": "2026-10-23T20:26:31Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "a8aaea3fb86d4b07",
-      "title": "Dale Brown, LSU's winningest basketball coach, dies at 90",
-      "summary": "Dale Brown, who coached LSU to two Final Four appearances and whose players included Shaquille O'Neal and Mahmoud Abdul-Rauf, has died at the age of 90.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50259738/dale-brown-lsu-winningest-basketball-coach-dies-90",
-      "source": "ESPN",
-      "published_at": "2026-10-23T20:12:13Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
       "breaking": false
     },
     {
@@ -76,19 +160,6 @@
       "sport": "basketball",
       "teams": [
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "aac7190267961fbf",
-      "title": "Ole Miss served most punishments past two seasons for ex-assistant's violations",
-      "summary": "The NCAA has penalized Ole Miss's men's basketball program for tampering violations by former assistant coach Wes Flanigan, with most of the penalties served during the 2024-25 and 2025-26 school years.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50260160/ole-miss-sanctioned-ex-assistant-violations",
-      "source": "ESPN",
-      "published_at": "2026-10-23T20:01:18Z",
-      "sport": "basketball",
-      "teams": [
-        "Ole Miss"
       ],
       "breaking": false
     },
@@ -287,61 +358,6 @@
       "breaking": false
     },
     {
-      "id": "0fbef6a32248d684",
-      "title": "Keys to victory as No. 12 Kentucky welcomes Vanderbilt",
-      "summary": "SEC Network's Gene Chizik breaks down why the Wildcats have been so tough to beat this season and discusses what the Commodores must do to steal a win on the road.",
-      "url": "https://www.espn.com/video/clip/_/id/50244803/keys-victory-no-12-kentucky-welcomes-vanderbilt",
-      "source": "ESPN",
-      "published_at": "2026-10-22T03:27:19Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8c8ade9a9b957f03",
-      "title": "Bryce Thornton on Gators' defensive turnaround, rivalry against Georgia",
-      "summary": "Thornton joins SEC Now to discuss how Florida's defense banded together through adversity and shares his experience growing up watching one of college football's biggest rivalries.",
-      "url": "https://www.espn.com/video/clip/_/id/50243408/bryce-thornton-gators-defensive-turnaround-rivalry-georgia",
-      "source": "ESPN",
-      "published_at": "2026-10-22T02:29:29Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "18a31fec2c41fec3",
-      "title": "Auburn's Alex McPherson tells story of his battle with Crohn's disease",
-      "summary": "McPherson discusses how his toughness was tested off the gridiron and how relieved he was to return to the field after so much time away.",
-      "url": "https://www.espn.com/video/clip/_/id/50243673/auburn-alex-mcpherson-tells-story-battle-crohn-disease",
-      "source": "ESPN",
-      "published_at": "2026-10-22T02:28:20Z",
-      "sport": "football",
-      "teams": [
-        "Auburn"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0df0e1c2c8995215",
-      "title": "LSU standout TE Trey'Dez Green poised for return vs. Auburn",
-      "summary": "Trey'Dez Green, widely regarded as one of the top tight ends in the country, is poised to return Saturday after missing the past three games with a leg injury.",
-      "url": "https://www.espn.com/college-football/story/_/id/50243513/lsu-tigers-treydez-green-leg-injury-return-auburn",
-      "source": "ESPN",
-      "published_at": "2026-10-22T01:31:47Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
       "id": "2313a0e7c65d0234",
       "title": "Spartans' Fears, Gators' Haugh near-unanimous picks as preseason All-Americans",
       "summary": "Florida's Thomas Haugh and Michigan State's Jeremy Fears Jr. returned to make their teams among the front-runners to cut down the nets next spring and earned them preseason All-America honors from The Associated Press.",
@@ -457,19 +473,6 @@
       "sport": "basketball",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "91e33ad0486c746c",
-      "title": "John Calipari takes questions on development of young Razorbacks",
-      "summary": "Calipari takes the podium at SEC Tipoff '27 to break down how Arkansas has put in the work to improve over the offseason and what to expect from talented youngsters.",
-      "url": "https://www.espn.com/video/clip/_/id/50185246/john-calipari-takes-questions-development-young-razorbacks",
-      "source": "ESPN",
-      "published_at": "2026-10-14T23:18:25Z",
-      "sport": "basketball",
-      "teams": [
-        "Arkansas"
       ],
       "breaking": false
     }
