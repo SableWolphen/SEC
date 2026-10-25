@@ -1,11 +1,38 @@
 {
-  "updated_at": "2026-10-25T19:41:28.006382Z",
-  "checked_at": "2026-10-25T19:41:28.006382Z",
+  "updated_at": "2026-10-25T22:36:25.623635Z",
+  "checked_at": "2026-10-25T22:36:25.623635Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "c4d92c7260a82133",
+      "title": "Sources: Texas' Trevor Goosby has season-ending knee injury",
+      "summary": "Texas star left tackle Trevor Goosby will miss the rest of the season after suffering a knee injury vs. Ole Miss, sources told ESPN's Pete Thamel on Sunday.",
+      "url": "https://www.espn.com/college-football/story/_/id/50280834/sources-texas-trevor-goosby-season-ending-knee-injury",
+      "source": "ESPN",
+      "published_at": "2026-10-25T21:54:45Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "ec4e2854c00a729d",
+      "title": "Missouri RB Ahmad Hardy to practice for first time since getting shot",
+      "summary": "Missouri consensus All-America RB Ahmad Hardy, who was shot at a concert in May and has yet to play this season, will return to practice this week.",
+      "url": "https://www.espn.com/college-football/story/_/id/50280668/mizzou-rb-hardy-practice-1st-getting-shot",
+      "source": "ESPN",
+      "published_at": "2026-10-25T21:41:45Z",
+      "sport": "football",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
     {
       "id": "1c2ed52da59307b9",
       "title": "Texas soars, BYU and Texas Tech fall in latest AP Top 25 rankings",
@@ -16,208 +43,6 @@
       "sport": "football",
       "teams": [
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "63ee3d0fe7dce910",
-      "title": "Diving into Arch Manning, Texas' upset over Ole Miss",
-      "summary": "As Manning navigates external noise, SEC Network's Chris Doering and Benjamin Washington emphasize his positive Week 8 response and the No. 19 Longhorns' improvements.",
-      "url": "https://www.espn.com/video/clip/_/id/50278185/diving-arch-manning-texas-upset-ole-miss",
-      "source": "ESPN",
-      "published_at": "2026-10-25T17:34:21Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c9c1c9e498d5f051",
-      "title": "Doering calls Minchey 'unflappable', says Kentucky has no panic",
-      "summary": "SEC Network's Chris Doering says No. 12 Kentucky have confidence after coming from behind for six of their last seven wins, and notes it shines in QB Kenney Minchey's poise.",
-      "url": "https://www.espn.com/video/clip/_/id/50278098/doering-calls-minchey-unflappable-says-kentucky-no-panic",
-      "source": "ESPN",
-      "published_at": "2026-10-25T17:23:22Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d7530ba770045b2f",
-      "title": "Highlighting Bama's offensive perseverance vs. Texas A&M",
-      "summary": "After the No. 13 Crimson Tide push through adversity to beat Texas A&M in Week 8, the SEC Football Final crew outlines its offensive improvements and momentum-shifting plays.",
-      "url": "https://www.espn.com/video/clip/_/id/50277990/highlighting-bama-offensive-perseverance-vs-texas-am",
-      "source": "ESPN",
-      "published_at": "2026-10-25T17:03:53Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0f39d431f15ce640",
-      "title": "Steve Sarkisian lauds 'edgy' Arch Manning after Texas holds off Ole Miss",
-      "summary": "No. 19 Texas pulled out a wild victory over No. 7 Ole Miss after blowing a 21-point lead in the second half.",
-      "url": "https://www.espn.com/college-football/story/_/id/50273796/texas-manning-hold-ole-miss-rally-snap-two-game-skid",
-      "source": "ESPN",
-      "published_at": "2026-10-25T16:58:44Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "601dea969e3f8b47",
-      "title": "Where are Arch Manning and Texas projected in the CFP field after defeating Ole Miss?",
-      "summary": "SportsCenter recaps the latest college football action, including the Texas Longhorns' win over the Ole Miss Rebels, and weighs in on the projected CFP field.",
-      "url": "https://www.espn.com/video/clip/_/id/50277458/where-arch-manning-texas-projected-cfp-field-defeating-ole-miss",
-      "source": "ESPN",
-      "published_at": "2026-10-25T16:43:39Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "87b7b6d291048ea4",
-      "title": "Cincinnati's Cody Campbell tag leads top trolls from CFB Week 8",
-      "summary": "UCF and South Carolina also delivered trolls after their respective upset victories.",
-      "url": "https://www.espn.com/college-football/story/_/id/50266147/college-football-trolls-week-8",
-      "source": "ESPN",
-      "published_at": "2026-10-25T04:45:35Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a82e778c43e35218",
-      "title": "Utah State Aggies vs. Texas State Bobcats: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50273350/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-25T03:46:12Z",
-      "sport": "football",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6ef62cfc8ea72e0a",
-      "title": "Texas survives with thrilling 34-27 win over Ole Miss",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50273680/texas-survives-thrilling-34-27-win-ole-miss",
-      "source": "ESPN",
-      "published_at": "2026-10-25T03:44:32Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "9992f6293b3583a2",
-      "title": "Vanderbilt Commodores vs. Kentucky Wildcats: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50273311/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-25T03:30:38Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8f3fa6fac1934dc1",
-      "title": "QB Kenny Minchey agrees he played his best game, praises UK's approach",
-      "summary": "Minchey finds satisfaction in Kentucky's offensive execution in the win over Vanderbilt and credits the Wildcats \"one-play\" mentality plus intense preparation.",
-      "url": "https://www.espn.com/video/clip/_/id/50273581/qb-kenny-minchey-agrees-played-best-game-praises-uk-approach",
-      "source": "ESPN",
-      "published_at": "2026-10-25T03:28:12Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "86fa55e0fb323c3c",
-      "title": "Stein gives Wildcats their flowers after Minchey's best outing",
-      "summary": "Will Stein insists No. 12 Kentucky's success belongs to his players, praising their grit and determination as Kenny Minchey delivers his best outing of the season.",
-      "url": "https://www.espn.com/video/clip/_/id/50273567/stein-gives-wildcats-their-flowers-minchey-best-outing",
-      "source": "ESPN",
-      "published_at": "2026-10-25T03:25:09Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5ce07a44e375ce82",
-      "title": "Iowa State Cyclones vs. Arizona Wildcats: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50273431/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-25T03:12:46Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "490696b9828b0495",
-      "title": "Northern Colorado Bears vs. UC Davis Aggies: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50272990/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-25T02:24:44Z",
-      "sport": "football",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "27774361df45fdf8",
-      "title": "Prairie View A&M Panthers vs. East Texas A&M Lions: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50272942/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-25T02:20:33Z",
-      "sport": "football",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b6823c1e5fa50777",
-      "title": "Every SEC team can be an issue, SEC Now dissects the Gamecocks turn",
-      "summary": "SEC Network's Dari Nowkhah makes it clear that no SEC games are guaranteed while Chris Doering and Benjamin Watson discuss why the Gamecocks are the latest example.",
-      "url": "https://www.espn.com/video/clip/_/id/50272787/every-sec-team-issue-sec-now-dissects-gamecocks-turn",
-      "source": "ESPN",
-      "published_at": "2026-10-25T02:04:31Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina"
       ],
       "breaking": false
     },
