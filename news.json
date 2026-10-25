@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-25T01:16:39.660902Z",
-  "checked_at": "2026-10-25T01:16:39.660902Z",
+  "updated_at": "2026-10-25T06:12:29.625333Z",
+  "checked_at": "2026-10-25T06:12:29.625333Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -12,7 +12,7 @@
       "summary": "UCF and South Carolina also delivered trolls after their respective upset victories.",
       "url": "https://www.espn.com/college-football/story/_/id/50266147/college-football-trolls-week-8",
       "source": "ESPN",
-      "published_at": "2026-10-25T01:00:45Z",
+      "published_at": "2026-10-25T04:45:35Z",
       "sport": "football",
       "teams": [
         "South Carolina"
@@ -20,16 +20,163 @@
       "breaking": false
     },
     {
-      "id": "94b763a16af27ba5",
-      "title": "Oklahoma Sooners vs. Mississippi State Bulldogs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50271046/full-highlights",
+      "id": "0f39d431f15ce640",
+      "title": "Texas, Manning hold off Ole Miss rally to snap two-game skid",
+      "summary": "No. 19 Texas held on for a wild victory over No. 7 Ole Miss after blowing a 21-point lead in the second half Saturday night.",
+      "url": "https://www.espn.com/college-football/story/_/id/50273796/texas-manning-hold-ole-miss-rally-snap-two-game-skid",
       "source": "ESPN",
-      "published_at": "2026-10-25T00:48:36Z",
+      "published_at": "2026-10-25T04:32:40Z",
       "sport": "football",
       "teams": [
-        "Georgia",
-        "Mississippi State",
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a82e778c43e35218",
+      "title": "Utah State Aggies vs. Texas State Bobcats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50273350/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-25T03:46:12Z",
+      "sport": "football",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6ef62cfc8ea72e0a",
+      "title": "Texas survives with thrilling 34-27 win over Ole Miss",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50273680/texas-survives-thrilling-34-27-win-ole-miss",
+      "source": "ESPN",
+      "published_at": "2026-10-25T03:44:32Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9992f6293b3583a2",
+      "title": "Vanderbilt Commodores vs. Kentucky Wildcats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50273311/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-25T03:30:38Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8f3fa6fac1934dc1",
+      "title": "QB Kenny Minchey agrees he played his best game, praises UK's approach",
+      "summary": "Minchey finds satisfaction in Kentucky's offensive execution in the win over Vanderbilt and credits the Wildcats \"one-play\" mentality plus intense preparation.",
+      "url": "https://www.espn.com/video/clip/_/id/50273581/qb-kenny-minchey-agrees-played-best-game-praises-uk-approach",
+      "source": "ESPN",
+      "published_at": "2026-10-25T03:28:12Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "86fa55e0fb323c3c",
+      "title": "Stein gives Wildcats their flowers after Minchey's best outing",
+      "summary": "Will Stein insists No. 12 Kentucky's success belongs to his players, praising their grit and determination as Kenny Minchey delivers his best outing of the season.",
+      "url": "https://www.espn.com/video/clip/_/id/50273567/stein-gives-wildcats-their-flowers-minchey-best-outing",
+      "source": "ESPN",
+      "published_at": "2026-10-25T03:25:09Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5ce07a44e375ce82",
+      "title": "Iowa State Cyclones vs. Arizona Wildcats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50273431/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-25T03:12:46Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "490696b9828b0495",
+      "title": "Northern Colorado Bears vs. UC Davis Aggies: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50272990/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-25T02:24:44Z",
+      "sport": "football",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "27774361df45fdf8",
+      "title": "Prairie View A&M Panthers vs. East Texas A&M Lions: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50272942/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-25T02:20:33Z",
+      "sport": "football",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b6823c1e5fa50777",
+      "title": "Every SEC team can be an issue, SEC Now dissects the Gamecocks turn",
+      "summary": "SEC Network's Dari Nowkhah makes it clear that no SEC games are guaranteed while Chris Doering and Benjamin Watson discuss why the Gamecocks are the latest example.",
+      "url": "https://www.espn.com/video/clip/_/id/50272787/every-sec-team-issue-sec-now-dissects-gamecocks-turn",
+      "source": "ESPN",
+      "published_at": "2026-10-25T02:04:31Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "283c3de52a0198a8",
+      "title": "No. 18 LSU shows signs of reaching its lofty ceiling",
+      "summary": "SEC Now crew explores whether the Tigers are on the rise after its game plan stifled Auburn and Byrum Brown's ground game, with Alabama looming after an open week.",
+      "url": "https://www.espn.com/video/clip/_/id/50272411/no-18-lsu-shows-signs-reaching-lofty-ceiling",
+      "source": "ESPN",
+      "published_at": "2026-10-25T01:30:15Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Auburn",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6ce1639c4a666de5",
+      "title": "SEC Now crew finds Oklahoma offensive performance impressive",
+      "summary": "After QB John Mateer throws for 283 yards, two touchdowns and no interceptions, SEC Network's Chris Doering and Benjamin Watson analyze the Sooners' offensive rhythm.",
+      "url": "https://www.espn.com/video/clip/_/id/50272404/sec-now-crew-finds-oklahoma-offensive-performance-impressive",
+      "source": "ESPN",
+      "published_at": "2026-10-25T01:27:23Z",
+      "sport": "football",
+      "teams": [
         "Oklahoma"
       ],
       "breaking": false
@@ -41,20 +188,6 @@
       "url": "https://www.espn.com/video/clip/_/id/50271896/full-highlights",
       "source": "ESPN",
       "published_at": "2026-10-25T00:47:04Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4bb6e05a44fae493",
-      "title": "Tennessee Volunteers vs. South Carolina Gamecocks: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50271209/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-25T00:46:23Z",
       "sport": "football",
       "teams": [
         "South Carolina",
@@ -100,114 +233,6 @@
       "sport": "football",
       "teams": [
         "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e8d726c5dcce397e",
-      "title": "Old Dominion Monarchs vs. Louisiana Tech Bulldogs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50271713/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-25T00:19:18Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a1965a0a71764cf9",
-      "title": "South Carolina rallies past No. 11 Tennessee on walk-off FG",
-      "summary": "Malik Orsan nailed a 48-yard field goal as time expired to lift South Carolina past No. 11 Tennessee 27-24 on Saturday night.",
-      "url": "https://www.espn.com/college-football/story/_/id/50271330/south-carolina-rallies-no-11-tennessee-walk-fg",
-      "source": "ESPN",
-      "published_at": "2026-10-24T23:51:06Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ed5ecab2bffed8d3",
-      "title": "Brent Venables hails Oklahma hard-nosed win over MS State",
-      "summary": "Venables praises the Sooners' physical and mental toughness as he and his players battle through the flu to earn a gritty 23-15 win over the Bulldogs.",
-      "url": "https://www.espn.com/video/clip/_/id/50271418/brent-venables-hails-oklahma-hard-nosed-win-ms-state",
-      "source": "ESPN",
-      "published_at": "2026-10-24T23:49:34Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f8679fb819f83ef5",
-      "title": "John Mateer on OU bouncing back: 'You prepare all week...to play free'",
-      "summary": "Mateer credits a week of preparation for helping him \"play free\" through the highs and lows as Oklahoma shakes off last week's loss with a win over MS State.",
-      "url": "https://www.espn.com/video/clip/_/id/50271409/prepare-all-weekto-play-free",
-      "source": "ESPN",
-      "published_at": "2026-10-24T23:44:46Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "20cbb5edc6c0aa31",
-      "title": "Texas A&M Aggies vs. Alabama Crimson Tide: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50271157/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-24T23:38:13Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c1a18aa2180bb706",
-      "title": "Kansas State Wildcats vs. Arizona State Sun Devils: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50271326/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-24T23:36:36Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "85e73f1677496a29",
-      "title": "Kalen DeBoer stresses execution in Alabama's win over Texas A&M",
-      "summary": "After the No. 13 Crimson Tide rally from a first-half deficit to beat the Aggies, DeBoer emphasizes the significance of executing in key moments down the stretch.",
-      "url": "https://www.espn.com/video/clip/_/id/50271283/kalen-deboer-stresses-execution-alabama-win-texas-am",
-      "source": "ESPN",
-      "published_at": "2026-10-24T23:36:15Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6875be8464c3c9c6",
-      "title": "Charleston Southern Buccaneers vs. Tennessee State Tigers: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50271090/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-24T23:08:32Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
       ],
       "breaking": false
     },
