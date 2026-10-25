@@ -1,18 +1,86 @@
 {
-  "updated_at": "2026-10-25T16:27:56.949413Z",
-  "checked_at": "2026-10-25T16:27:56.949413Z",
+  "updated_at": "2026-10-25T19:41:28.006382Z",
+  "checked_at": "2026-10-25T19:41:28.006382Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "1c2ed52da59307b9",
+      "title": "Texas soars, BYU and Texas Tech fall in latest AP Top 25 rankings",
+      "summary": "Seven ranked college football teams lost in Week 8, with five of them coming against unranked foes. Here’s what you need to know about the latest AP Top 25 Poll.",
+      "url": "https://www.ncaa.com/news/football/article/2026-10-25/texas-soars-byu-and-texas-tech-fall-latest-ap-top-25-rankings",
+      "source": "NCAA",
+      "published_at": "2026-10-25T18:59:27Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "63ee3d0fe7dce910",
+      "title": "Diving into Arch Manning, Texas' upset over Ole Miss",
+      "summary": "As Manning navigates external noise, SEC Network's Chris Doering and Benjamin Washington emphasize his positive Week 8 response and the No. 19 Longhorns' improvements.",
+      "url": "https://www.espn.com/video/clip/_/id/50278185/diving-arch-manning-texas-upset-ole-miss",
+      "source": "ESPN",
+      "published_at": "2026-10-25T17:34:21Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c9c1c9e498d5f051",
+      "title": "Doering calls Minchey 'unflappable', says Kentucky has no panic",
+      "summary": "SEC Network's Chris Doering says No. 12 Kentucky have confidence after coming from behind for six of their last seven wins, and notes it shines in QB Kenney Minchey's poise.",
+      "url": "https://www.espn.com/video/clip/_/id/50278098/doering-calls-minchey-unflappable-says-kentucky-no-panic",
+      "source": "ESPN",
+      "published_at": "2026-10-25T17:23:22Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d7530ba770045b2f",
+      "title": "Highlighting Bama's offensive perseverance vs. Texas A&M",
+      "summary": "After the No. 13 Crimson Tide push through adversity to beat Texas A&M in Week 8, the SEC Football Final crew outlines its offensive improvements and momentum-shifting plays.",
+      "url": "https://www.espn.com/video/clip/_/id/50277990/highlighting-bama-offensive-perseverance-vs-texas-am",
+      "source": "ESPN",
+      "published_at": "2026-10-25T17:03:53Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
       "id": "0f39d431f15ce640",
-      "title": "Sarkisian lauds 'edgy' Arch Manning after Texas holds off Ole Miss",
-      "summary": "No. 19 Texas pulled out a wild victory over No. 7 Ole Miss after blowing a 21-point lead in the second half Saturday night.",
+      "title": "Steve Sarkisian lauds 'edgy' Arch Manning after Texas holds off Ole Miss",
+      "summary": "No. 19 Texas pulled out a wild victory over No. 7 Ole Miss after blowing a 21-point lead in the second half.",
       "url": "https://www.espn.com/college-football/story/_/id/50273796/texas-manning-hold-ole-miss-rally-snap-two-game-skid",
       "source": "ESPN",
-      "published_at": "2026-10-25T07:33:06Z",
+      "published_at": "2026-10-25T16:58:44Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "601dea969e3f8b47",
+      "title": "Where are Arch Manning and Texas projected in the CFP field after defeating Ole Miss?",
+      "summary": "SportsCenter recaps the latest college football action, including the Texas Longhorns' win over the Ole Miss Rebels, and weighs in on the projected CFP field.",
+      "url": "https://www.espn.com/video/clip/_/id/50277458/where-arch-manning-texas-projected-cfp-field-defeating-ole-miss",
+      "source": "ESPN",
+      "published_at": "2026-10-25T16:43:39Z",
       "sport": "football",
       "teams": [
         "Ole Miss",
@@ -150,48 +218,6 @@
       "sport": "football",
       "teams": [
         "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "283c3de52a0198a8",
-      "title": "No. 18 LSU shows signs of reaching its lofty ceiling",
-      "summary": "SEC Now crew explores whether the Tigers are on the rise after its game plan stifled Auburn and Byrum Brown's ground game, with Alabama looming after an open week.",
-      "url": "https://www.espn.com/video/clip/_/id/50272411/no-18-lsu-shows-signs-reaching-lofty-ceiling",
-      "source": "ESPN",
-      "published_at": "2026-10-25T01:30:15Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Auburn",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6ce1639c4a666de5",
-      "title": "SEC Now crew finds Oklahoma offensive performance impressive",
-      "summary": "After QB John Mateer throws for 283 yards, two touchdowns and no interceptions, SEC Network's Chris Doering and Benjamin Watson analyze the Sooners' offensive rhythm.",
-      "url": "https://www.espn.com/video/clip/_/id/50272404/sec-now-crew-finds-oklahoma-offensive-performance-impressive",
-      "source": "ESPN",
-      "published_at": "2026-10-25T01:27:23Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "972da2f8bf7cdb47",
-      "title": "LaNorris Sellers praises Gamecocks' refusal to quit vs. No. 11 Vols",
-      "summary": "Amid the field storm, Sellers praises the Gamecocks' fight and Dylan Stewart's timely plays while crediting patience for helping him pick his spots to attack on the ground.",
-      "url": "https://www.espn.com/video/clip/_/id/50272007/lanorris-sellers-praises-gamecocks-refusal-quit-vs-no-11-vols",
-      "source": "ESPN",
-      "published_at": "2026-10-25T00:42:39Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina",
-        "Tennessee"
       ],
       "breaking": false
     },
