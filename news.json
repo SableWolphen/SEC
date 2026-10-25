@@ -1,11 +1,203 @@
 {
-  "updated_at": "2026-10-24T23:18:20.257766Z",
-  "checked_at": "2026-10-24T23:18:20.257766Z",
+  "updated_at": "2026-10-25T01:16:39.660902Z",
+  "checked_at": "2026-10-25T01:16:39.660902Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "87b7b6d291048ea4",
+      "title": "Cincinnati's Cody Campbell tag leads top trolls from CFB Week 8",
+      "summary": "UCF and South Carolina also delivered trolls after their respective upset victories.",
+      "url": "https://www.espn.com/college-football/story/_/id/50266147/college-football-trolls-week-8",
+      "source": "ESPN",
+      "published_at": "2026-10-25T01:00:45Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "94b763a16af27ba5",
+      "title": "Oklahoma Sooners vs. Mississippi State Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50271046/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-25T00:48:36Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Mississippi State",
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e309f027b5277ea9",
+      "title": "Tennessee Volunteers vs. South Carolina Gamecocks: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50271896/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-25T00:47:04Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4bb6e05a44fae493",
+      "title": "Tennessee Volunteers vs. South Carolina Gamecocks: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50271209/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-25T00:46:23Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "dfb5e7052dc3a37e",
+      "title": "Alabama OL Sanders out multiple weeks with lower body injury",
+      "summary": "Alabama starting left guard William Sanders is expected to be sidelined for at least two weeks as he deals with a lower-leg injury he suffered during Saturday's win over Texas A&M.",
+      "url": "https://www.espn.com/college-football/story/_/id/50271868/alabama-ol-sanders-multiple-weeks-lower-body-injury",
+      "source": "ESPN",
+      "published_at": "2026-10-25T00:45:41Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Texas A&M"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "972da2f8bf7cdb47",
+      "title": "LaNorris Sellers praises Gamecocks' refusal to quit vs. No. 11 Vols",
+      "summary": "Amid the field storm, Sellers praises the Gamecocks' fight and Dylan Stewart's timely plays while crediting patience for helping him pick his spots to attack on the ground.",
+      "url": "https://www.espn.com/video/clip/_/id/50272007/lanorris-sellers-praises-gamecocks-refusal-quit-vs-no-11-vols",
+      "source": "ESPN",
+      "published_at": "2026-10-25T00:42:39Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8cc4d9c4c38f1ab0",
+      "title": "UT Rio Grande Valley Vaqueros vs. Central Arkansas Bears: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50271867/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-25T00:28:35Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e8d726c5dcce397e",
+      "title": "Old Dominion Monarchs vs. Louisiana Tech Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50271713/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-25T00:19:18Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a1965a0a71764cf9",
+      "title": "South Carolina rallies past No. 11 Tennessee on walk-off FG",
+      "summary": "Malik Orsan nailed a 48-yard field goal as time expired to lift South Carolina past No. 11 Tennessee 27-24 on Saturday night.",
+      "url": "https://www.espn.com/college-football/story/_/id/50271330/south-carolina-rallies-no-11-tennessee-walk-fg",
+      "source": "ESPN",
+      "published_at": "2026-10-24T23:51:06Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ed5ecab2bffed8d3",
+      "title": "Brent Venables hails Oklahma hard-nosed win over MS State",
+      "summary": "Venables praises the Sooners' physical and mental toughness as he and his players battle through the flu to earn a gritty 23-15 win over the Bulldogs.",
+      "url": "https://www.espn.com/video/clip/_/id/50271418/brent-venables-hails-oklahma-hard-nosed-win-ms-state",
+      "source": "ESPN",
+      "published_at": "2026-10-24T23:49:34Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f8679fb819f83ef5",
+      "title": "John Mateer on OU bouncing back: 'You prepare all week...to play free'",
+      "summary": "Mateer credits a week of preparation for helping him \"play free\" through the highs and lows as Oklahoma shakes off last week's loss with a win over MS State.",
+      "url": "https://www.espn.com/video/clip/_/id/50271409/prepare-all-weekto-play-free",
+      "source": "ESPN",
+      "published_at": "2026-10-24T23:44:46Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "20cbb5edc6c0aa31",
+      "title": "Texas A&M Aggies vs. Alabama Crimson Tide: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50271157/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-24T23:38:13Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c1a18aa2180bb706",
+      "title": "Kansas State Wildcats vs. Arizona State Sun Devils: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50271326/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-24T23:36:36Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "85e73f1677496a29",
+      "title": "Kalen DeBoer stresses execution in Alabama's win over Texas A&M",
+      "summary": "After the No. 13 Crimson Tide rally from a first-half deficit to beat the Aggies, DeBoer emphasizes the significance of executing in key moments down the stretch.",
+      "url": "https://www.espn.com/video/clip/_/id/50271283/kalen-deboer-stresses-execution-alabama-win-texas-am",
+      "source": "ESPN",
+      "published_at": "2026-10-24T23:36:15Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
     {
       "id": "6875be8464c3c9c6",
       "title": "Charleston Southern Buccaneers vs. Tennessee State Tigers: Full Highlights",
@@ -16,128 +208,6 @@
       "sport": "football",
       "teams": [
         "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "94b763a16af27ba5",
-      "title": "Oklahoma Sooners vs. Mississippi State Bulldogs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50271046/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-24T23:01:39Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Mississippi State",
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "205eba4674a53547",
-      "title": "Lehigh Mountain Hawks vs. Villanova Wildcats: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50270837/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-24T22:42:28Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e1660ce7a0aa68ed",
-      "title": "Southeast Missouri State Redhawks vs. Eastern Illinois Panthers: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50270550/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-24T22:22:15Z",
-      "sport": "football",
-      "teams": [
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "63eaa6805340b640",
-      "title": "West Florida Argonauts vs. Eastern Kentucky Colonels: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50270465/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-24T22:11:36Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d721caf498e82b3b",
-      "title": "Kiffin says LSU back to what he envisioned after Auburn win",
-      "summary": "LSU coach Lane Kiffin said his team's performance in a blowout win at Auburn was what the team was \"supposed to look like.\"",
-      "url": "https://www.espn.com/college-football/story/_/id/50269729/kiffin-says-lsu-back-envisioned-auburn-win",
-      "source": "ESPN",
-      "published_at": "2026-10-24T21:27:55Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "490aa08e3f5865c4",
-      "title": "Tarleton Texans vs. West Georgia Wolves: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50269987/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-24T21:25:50Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8e496409527015fb",
-      "title": "Tennessee Tech Golden Eagles vs. The Citadel Bulldogs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50269813/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-24T21:07:54Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6707ae1b8d749124",
-      "title": "Samford Bulldogs vs. Furman Paladins: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50269758/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-24T21:02:14Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ecd55cd9538a20c5",
-      "title": "Norfolk State Spartans vs. South Carolina State Bulldogs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50269670/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-24T20:51:19Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
       ],
       "breaking": false
     },
