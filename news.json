@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-25T11:37:49.895053Z",
-  "checked_at": "2026-10-25T11:37:49.895053Z",
+  "updated_at": "2026-10-25T16:27:56.949413Z",
+  "checked_at": "2026-10-25T16:27:56.949413Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -178,20 +178,6 @@
       "sport": "football",
       "teams": [
         "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e309f027b5277ea9",
-      "title": "Tennessee Volunteers vs. South Carolina Gamecocks: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50271896/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-25T00:47:04Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina",
-        "Tennessee"
       ],
       "breaking": false
     },
