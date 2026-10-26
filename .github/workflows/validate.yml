@@ -31,6 +31,7 @@ jobs:
           node scripts/smoke-chat-refresh.cjs
           node --check scripts/smoke-multi-sport.cjs
           node scripts/smoke-multi-sport.cjs
+          node scripts/smoke-basketball-reliability.cjs
           node --check scripts/smoke-team-scores.cjs
           node scripts/smoke-team-scores.cjs
           python3 -m unittest discover -s tests -p test_sports.py -v

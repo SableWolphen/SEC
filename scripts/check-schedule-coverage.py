@@ -16,6 +16,8 @@ def report(payload, now=None):
         counts = {team: sum(team in (str(g.get('away_code')),str(g.get('home_code'))) for g in games)
                   for team in SEC}
         school_feeds = data.get('team_coverage') or {}
+        usable_feeds = sum(isinstance(school_feeds.get(team), (int, float)) and school_feeds[team] > 0
+                           for team in SEC)
         season = int(data.get('season', now.year))
         basketball_active = now >= dt.datetime(season-1,10,1,tzinfo=dt.timezone.utc)
         baseball_active = now >= dt.datetime(season,2,1,tzinfo=dt.timezone.utc)
@@ -26,12 +28,12 @@ def report(payload, now=None):
             issues.append(f'Low published fixture coverage for {len(low)} SEC schools')
         if is_active and not games:
             issues.append('No confirmed individual fixtures')
-        if is_active and len(school_feeds) < len(SEC):
-            issues.append(f'Only {len(school_feeds)}/16 school feeds returned usable data')
+        if is_active and usable_feeds < len(SEC):
+            issues.append(f'Only {usable_feeds}/16 school feeds returned usable data')
         if data.get('warning'):
             issues.append(str(data['warning']))
         details[sport] = {'season':season,'games':len(games),'per_school':counts,
-                          'school_feeds':len(school_feeds),'issues':issues,
+                          'school_feeds':usable_feeds,'issues':issues,
                           'coverage_verified':not issues and is_active}
     return {'generated_at':now.isoformat(),'sports':details,
             'needs_review':any(v['issues'] for v in details.values())}
