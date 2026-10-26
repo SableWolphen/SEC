@@ -1,11 +1,38 @@
 {
-  "updated_at": "2026-10-25T22:36:25.623635Z",
-  "checked_at": "2026-10-25T22:36:25.623635Z",
+  "updated_at": "2026-10-26T01:14:58.148798Z",
+  "checked_at": "2026-10-26T01:14:58.148798Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "79ee02ed4c4c8384",
+      "title": "QB recruit Bo Bryan, son of country star Luke Bryan, commits to Georgia",
+      "summary": "Class of 2027 quarterback Bo Bryan, the son of country music star Luke Bryan, announced his commitment to Georgia on Sunday.",
+      "url": "https://www.espn.com/college-football/story/_/id/50282450/qb-recruit-bo-bryan-son-country-star-commits-georgia",
+      "source": "ESPN",
+      "published_at": "2026-10-26T00:49:02Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "cdd21e0d83dc7a3f",
+      "title": "Gamecocks fined $500K after fans rush field in win over Vols",
+      "summary": "The Southeastern Conference fined South Carolina $500,000 on Sunday for allowing fans to storm the field following a 27-24 victory over then-No. 11 Tennessee.",
+      "url": "https://www.espn.com/college-football/story/_/id/50281754/gamecocks-fined-500k-fans-rush-field-win-vols",
+      "source": "ESPN",
+      "published_at": "2026-10-25T23:33:23Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
     {
       "id": "c4d92c7260a82133",
       "title": "Sources: Texas' Trevor Goosby has season-ending knee injury",
@@ -162,19 +189,6 @@
       "teams": [
         "Auburn",
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "91b39bd0847fc2b3",
-      "title": "Hagan, Basketball Hall of Famer and Kentucky legend, dies at 94",
-      "summary": "Hall of Fame forward Cliff Hagan, a five-time All-Star who spent his entire NBA career with the St. Louis Hawks, has died at age 94.",
-      "url": "https://www.espn.com/nba/story/_/id/50198707/hagan-basketball-hall-famer-kentucky-legend-dies-94",
-      "source": "ESPN",
-      "published_at": "2026-10-17T00:02:11Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
       ],
       "breaking": false
     }
