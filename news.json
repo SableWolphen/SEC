@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-26T06:18:48.422601Z",
-  "checked_at": "2026-10-26T06:18:48.422601Z",
+  "updated_at": "2026-10-26T13:17:23.825473Z",
+  "checked_at": "2026-10-26T13:17:23.825473Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -17,7 +17,7 @@
       "teams": [
         "Georgia"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "cdd21e0d83dc7a3f",
