@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-26T01:14:58.148798Z",
-  "checked_at": "2026-10-26T01:14:58.148798Z",
+  "updated_at": "2026-10-26T06:18:48.422601Z",
+  "checked_at": "2026-10-26T06:18:48.422601Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -45,7 +45,7 @@
         "Ole Miss",
         "Texas"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "ec4e2854c00a729d",
