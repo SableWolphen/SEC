@@ -1,11 +1,145 @@
 {
-  "updated_at": "2026-10-26T13:17:23.825473Z",
-  "checked_at": "2026-10-26T13:17:23.825473Z",
+  "updated_at": "2026-10-26T19:22:47.023367Z",
+  "checked_at": "2026-10-26T19:22:47.023367Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "355083021388f582",
+      "title": "Ryan Silverfield talks Arkansas' urgency to keep a forward focus",
+      "summary": "Silverfield says the Razorbacks are constantly focused on taking intentional steps to raise the program towards its goals while stressing looking ahead to looming rivalry game.",
+      "url": "https://www.espn.com/video/clip/_/id/50289258/ryan-silverfield-talks-arkansas-urgency-keep-forward-focus",
+      "source": "ESPN",
+      "published_at": "2026-10-26T18:45:50Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3c1c6f686e4df87b",
+      "title": "Jon Sumrall emphasizes focus for Florida vs. Georgia",
+      "summary": "Sumrall explains how he wants No. 17 Florida to embrace the matchup with No. 3 Georgia while staying focused on the fundamentals.",
+      "url": "https://www.espn.com/video/clip/_/id/50289101/jon-sumrall-emphasizes-focus-florida-vs-georgia",
+      "source": "ESPN",
+      "published_at": "2026-10-26T18:21:26Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "02afb6e5410b66a4",
+      "title": "MS State's Jeff Lebby on Week 8: 'They made those plays we didn't'",
+      "summary": "Lebby reflects on Mississippi State's one-possession loss to Oklahoma, emphasizing improving execution on third downs and protecting the ball before looking ahead to No. 11 Texas.",
+      "url": "https://www.espn.com/video/clip/_/id/50289091/made-plays",
+      "source": "ESPN",
+      "published_at": "2026-10-26T18:21:20Z",
+      "sport": "football",
+      "teams": [
+        "Mississippi State",
+        "Oklahoma",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d1c0867b0d09b328",
+      "title": "Ole Miss RB Kewan Lacy out after dislocating shoulder",
+      "summary": "Ole Miss running back Kewan Lacy suffered a dislocated shoulder in the Rebels' loss to Texas and has been ruled out for Saturday's game against Auburn.",
+      "url": "https://www.espn.com/college-football/story/_/id/50288926/ole-miss-rb-kewan-lacy-dislocating-shoulder",
+      "source": "ESPN",
+      "published_at": "2026-10-26T18:17:09Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "Ole Miss",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a29e2592903b42f8",
+      "title": "15-year-old arrested in shooting that injured 11 at Florida A&M homecoming game",
+      "summary": "A 15-year-old boy has been charged in Saturday's shooting that wounded 11 people at Florida A&M following the school's homecoming football game.",
+      "url": "https://www.espn.com/college-football/story/_/id/50287441/15-year-old-arrested-shooting-florida-homecoming-game",
+      "source": "ESPN",
+      "published_at": "2026-10-26T17:56:12Z",
+      "sport": "football",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "e00b1dcb095ad197",
+      "title": "Peter Burns on SEC landscape: 'This year is another 2007'",
+      "summary": "SEC This Morning's Peter Burns and Chris Doering share their thoughts on the season so far, including the possibility of a multiple-loss team winning it all.",
+      "url": "https://www.espn.com/video/clip/_/id/50288687/year-another-2007",
+      "source": "ESPN",
+      "published_at": "2026-10-26T17:29:01Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "5dc05ecaddeda7b0",
+      "title": "SEC chaos, Texas top the list of Week 8 Power Ranking Ups and Downs",
+      "summary": "SEC This Morning's Peter Burns and Chris Doering reflect on the ups and downs of Week 8 SEC play, highlighting a hearty upset from the Longhorns and noting the conference's chaos.",
+      "url": "https://www.espn.com/video/clip/_/id/50288671/sec-chaos-texas-top-list-week-8-power-ranking-ups-downs",
+      "source": "ESPN",
+      "published_at": "2026-10-26T17:23:53Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9d2b6eb4fc2cab41",
+      "title": "Florida's Sumrall won't name Philo or Jones as QB1 until later in week",
+      "summary": "Florida quarterbacks Aaron Philo and Tramell Jones Jr. both took first-team reps in Monday's practice, but Gators coach Jon Sumrall says he won't name a starter until later in the week",
+      "url": "https://www.espn.com/college-football/story/_/id/50287876/florida-name-philo-jones-qb1-later-week",
+      "source": "ESPN",
+      "published_at": "2026-10-26T15:58:11Z",
+      "sport": "football",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5e6c4f38ac44b59d",
+      "title": "Stephen A. and Finebaum disagree over Arch Manning's performance vs. Ole Miss",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50287910/stephen-finebaum-disagree-arch-manning-performance-vs-ole-miss",
+      "source": "ESPN",
+      "published_at": "2026-10-26T15:40:40Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "84d89b32f9be6c70",
+      "title": "Top 25 betting lines: Georgia double-digit favorites vs. Florida",
+      "summary": "This week's odds and FPI predictions for Georgia-Florida, Tech Tech-Arizona and every top 25 matchup.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50284745/2026-college-football-week-9-top-25-betting-lines-odds",
+      "source": "ESPN",
+      "published_at": "2026-10-26T13:17:00Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
+    },
     {
       "id": "79ee02ed4c4c8384",
       "title": "QB recruit Bo Bryan, son of country star Luke Bryan, commits to Georgia",
