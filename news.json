@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-27T05:11:27.053755Z",
-  "checked_at": "2026-10-27T05:11:27.053755Z",
+  "updated_at": "2026-10-27T10:38:29.581507Z",
+  "checked_at": "2026-10-27T10:38:29.581507Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -17,7 +17,7 @@
       "teams": [
         "Auburn"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "24087f4d71d67a54",
