@@ -1,36 +1,62 @@
 {
-  "updated_at": "2026-10-27T16:42:17.274087Z",
-  "checked_at": "2026-10-27T16:42:17.274087Z",
+  "updated_at": "2026-10-27T21:22:04.113129Z",
+  "checked_at": "2026-10-27T21:22:04.113129Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "2c54941e704294b1",
-      "title": "Alabama's Kirkpatrick charged with allegedly threatening officer",
-      "summary": "Alabama defensive back Dre Kirkpatrick Jr. is facing misdemeanor charges related to allegedly threatening communications with a police officer involved in his arrest in 2025.",
-      "url": "https://www.espn.com/college-football/story/_/id/50298800/alabama-kirkpatrick-charged-allegedly-threatening-officer",
+      "id": "c5417377587bdef2",
+      "title": "What does Kamario Taylor's season-ending injury mean for Mississippi State?",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50300991/what-does-kamario-taylor-season-ending-injury-mean-mississippi-state",
       "source": "ESPN",
-      "published_at": "2026-10-27T16:35:49Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d6da479e454d18e6",
-      "title": "Sources: Mississippi State QB Kamario Taylor out for season",
-      "summary": "Mississippi State QB Kamario Taylor, college football season's breakout star this season, is facing season-ending surgery on his injured toe, sources told ESPN.",
-      "url": "https://www.espn.com/college-football/story/_/id/50298455/sources-mississippi-state-qb-kamario-taylor-season",
-      "source": "ESPN",
-      "published_at": "2026-10-27T16:10:37Z",
+      "published_at": "2026-10-27T20:51:54Z",
       "sport": "football",
       "teams": [
         "Mississippi State"
       ],
       "breaking": true
+    },
+    {
+      "id": "d6da479e454d18e6",
+      "title": "Mississippi State QB Kamario Taylor out for season",
+      "summary": "Mississippi State QB Kamario Taylor, college football's breakout star this season, needs surgery on his injured toe and will miss the remainder of the season.",
+      "url": "https://www.espn.com/college-football/story/_/id/50298455/sources-mississippi-state-qb-kamario-taylor-season",
+      "source": "ESPN",
+      "published_at": "2026-10-27T20:49:33Z",
+      "sport": "football",
+      "teams": [
+        "Mississippi State"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "db4bbf25ea6754ba",
+      "title": "Kenny Minchey reveals 'secret sauce' to Kentucky's success so far",
+      "summary": "Minchey discusses the factors that led him to being a Wildcat as he describes how their one-play focus and mentality has contributed to their consistent wins so far this season.",
+      "url": "https://www.espn.com/video/clip/_/id/50300919/kenny-minchey-reveals-secret-sauce-kentucky-success-far",
+      "source": "ESPN",
+      "published_at": "2026-10-27T20:33:36Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "2c54941e704294b1",
+      "title": "Alabama's Kirkpatrick charged with allegedly threatening officer",
+      "summary": "Alabama defensive back Dre Kirkpatrick Jr. is facing misdemeanor charges related to allegedly threatening communications with a police officer involved in his arrest in 2025.",
+      "url": "https://www.espn.com/college-football/story/_/id/50298800/alabama-kirkpatrick-charged-allegedly-threatening-officer",
+      "source": "ESPN",
+      "published_at": "2026-10-27T17:29:39Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
     },
     {
       "id": "40864b86e22eb6de",
@@ -411,20 +437,6 @@
       "sport": "basketball",
       "teams": [
         "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6b4c8e7cfa929136",
-      "title": "Miami rises to No. 1, Texas and Alabama plummet in latest AP poll",
-      "summary": "Fourteen ranked college football teams lost in Week 7, with five of them being in the AP poll's top eight. Here’s what you need to know about the latest AP Top 25 Poll.",
-      "url": "https://www.ncaa.com/news/football/article/2026-10-18/miami-rises-no-1-texas-and-alabama-plummet-latest-ap-poll",
-      "source": "NCAA",
-      "published_at": "2026-10-18T18:40:15Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Texas"
       ],
       "breaking": false
     }
