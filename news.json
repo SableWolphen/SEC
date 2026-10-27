@@ -1,11 +1,63 @@
 {
-  "updated_at": "2026-10-27T10:38:29.581507Z",
-  "checked_at": "2026-10-27T10:38:29.581507Z",
+  "updated_at": "2026-10-27T16:42:17.274087Z",
+  "checked_at": "2026-10-27T16:42:17.274087Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "2c54941e704294b1",
+      "title": "Alabama's Kirkpatrick charged with allegedly threatening officer",
+      "summary": "Alabama defensive back Dre Kirkpatrick Jr. is facing misdemeanor charges related to allegedly threatening communications with a police officer involved in his arrest in 2025.",
+      "url": "https://www.espn.com/college-football/story/_/id/50298800/alabama-kirkpatrick-charged-allegedly-threatening-officer",
+      "source": "ESPN",
+      "published_at": "2026-10-27T16:35:49Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d6da479e454d18e6",
+      "title": "Sources: Mississippi State QB Kamario Taylor out for season",
+      "summary": "Mississippi State QB Kamario Taylor, college football season's breakout star this season, is facing season-ending surgery on his injured toe, sources told ESPN.",
+      "url": "https://www.espn.com/college-football/story/_/id/50298455/sources-mississippi-state-qb-kamario-taylor-season",
+      "source": "ESPN",
+      "published_at": "2026-10-27T16:10:37Z",
+      "sport": "football",
+      "teams": [
+        "Mississippi State"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "40864b86e22eb6de",
+      "title": "NCAA Bracketology: Predicting the 2027 men's March Madness field",
+      "summary": "The consensus No. 1 Gators don't scream national champion with any certainty. The Illini, however, could.",
+      "url": "https://www.espn.com/espn/feature/story/_/page/bracketology/ncaa-bracketology-2027-march-madness-men-field-predictions",
+      "source": "ESPN",
+      "published_at": "2026-10-27T11:52:51Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "160655ce47a5a74b",
+      "title": "Heisman race after Week 8: Miami's Malachi Toney is gaining ground",
+      "summary": "As the Hurricanes receiver picks up steam, LSU's Sam Leavitt is also rounding into form.",
+      "url": "https://www.espn.com/college-football/story/_/id/50288159/heisman-race-week-8-miami-malachi-toney",
+      "source": "ESPN",
+      "published_at": "2026-10-27T10:08:13Z",
+      "sport": "football",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
     {
       "id": "d26fae39da8347c4",
       "title": "Auburn fires GM Brian Kloman over Rubstavicius' eligibility case, source says",
