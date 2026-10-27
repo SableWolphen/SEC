@@ -1,11 +1,24 @@
 {
-  "updated_at": "2026-10-26T23:55:34.186443Z",
-  "checked_at": "2026-10-26T23:55:34.186443Z",
+  "updated_at": "2026-10-27T05:11:27.053755Z",
+  "checked_at": "2026-10-27T05:11:27.053755Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "d26fae39da8347c4",
+      "title": "Auburn fires GM Brian Kloman over Rubstavicius' eligibility case, source says",
+      "summary": "Auburn fired general manager Brian Kloman after alleging he withheld information vital to Mantas Rubstavicius' eligibility case, a source told ESPN.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50291435/auburn-fires-gm-brian-kloman-rubstavicius-eligibility-case",
+      "source": "ESPN",
+      "published_at": "2026-10-26T23:44:09Z",
+      "sport": "basketball",
+      "teams": [
+        "Auburn"
+      ],
+      "breaking": true
+    },
     {
       "id": "24087f4d71d67a54",
       "title": "Cole Cubelic previews Florida vs. Georgia possibilities",
@@ -19,19 +32,6 @@
         "Georgia"
       ],
       "breaking": false
-    },
-    {
-      "id": "d26fae39da8347c4",
-      "title": "Auburn fires GM Brian Kloman over Rubstavicius' eligibility case, source says",
-      "summary": "Auburn fired general manager Brian Kloman after alleging he withheld information vital to Mantas Rubstavicius' eligibility case, a source told ESPN.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50291435/auburn-fires-gm-brian-kloman-rubstavicius-eligibility-case",
-      "source": "ESPN",
-      "published_at": "2026-10-26T22:56:09Z",
-      "sport": "basketball",
-      "teams": [
-        "Auburn"
-      ],
-      "breaking": true
     },
     {
       "id": "0994a59bfe45ac54",
@@ -138,7 +138,7 @@
       "teams": [
         "Florida"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "e00b1dcb095ad197",
