@@ -1,18 +1,57 @@
 {
-  "updated_at": "2026-10-28T08:38:02.920451Z",
-  "checked_at": "2026-10-28T08:38:02.920451Z",
+  "updated_at": "2026-10-28T16:06:52.851222Z",
+  "checked_at": "2026-10-28T16:06:52.851222Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "53525496f82a0848",
+      "title": "Sources: Texas LT Trevor Goosby has successful knee surgery",
+      "summary": "Texas left tackle and top NFL draft prospect Trevor Goosby underwent a successful repair of his left torn patellar tendon on Tuesday, sources told ESPN's Pete Thamel.",
+      "url": "https://www.espn.com/college-football/story/_/id/50307620/sources-texas-lt-trevor-goosby-successful-knee-surgery",
+      "source": "ESPN",
+      "published_at": "2026-10-28T13:40:40Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "850e45298a254450",
+      "title": "Why Jordan Rodgers says Arch Manning should transfer from Texas",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50307427/why-jordan-rodgers-says-arch-manning-transfer-texas",
+      "source": "ESPN",
+      "published_at": "2026-10-28T13:15:16Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "8b45c51e680e9976",
+      "title": "Davis hot starts puts out Wildcats",
+      "summary": "It was Kendric Davis' first has blitz that helped the Sydney Kings defeat a stubborn Perth Wildcats side in the NBL Ignite Cup",
+      "url": "https://www.espn.com/video/clip/_/id/50307102/davis-hot-starts-puts-wildcats",
+      "source": "ESPN",
+      "published_at": "2026-10-28T12:36:56Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
       "id": "9fb9158914bd207c",
       "title": "Lawyers ask judge to block SEC from punishing LSU if RJ Luis Jr. added to roster",
       "summary": "Lawyers for RJ Luis Jr., who was briefly under contract with two NBA teams in 2025 but never played in a game, are asking a Louisiana judge to block the SEC from punishing LSU if Luis is added to the Tigers' roster.",
       "url": "https://www.espn.com/mens-college-basketball/story/_/id/50304054/lawyers-ask-judge-block-sec-punishing-lsu-rj-luis-jr-added-roster",
       "source": "ESPN",
-      "published_at": "2026-10-28T04:43:55Z",
+      "published_at": "2026-10-28T12:19:41Z",
       "sport": "basketball",
       "teams": [
         "LSU"
@@ -257,19 +296,6 @@
       "breaking": false
     },
     {
-      "id": "a29e2592903b42f8",
-      "title": "15-year-old arrested in shooting that injured 11 at Florida A&M homecoming game",
-      "summary": "A 15-year-old boy has been charged in Saturday's shooting that wounded 11 people at Florida A&M following the school's homecoming football game.",
-      "url": "https://www.espn.com/college-football/story/_/id/50287441/15-year-old-arrested-shooting-florida-homecoming-game",
-      "source": "ESPN",
-      "published_at": "2026-10-26T17:56:12Z",
-      "sport": "football",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
       "id": "e00b1dcb095ad197",
       "title": "Peter Burns on SEC landscape: 'This year is another 2007'",
       "summary": "SEC This Morning's Peter Burns and Chris Doering share their thoughts on the season so far, including the possibility of a multiple-loss team winning it all.",
@@ -290,46 +316,6 @@
       "sport": "football",
       "teams": [
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "9d2b6eb4fc2cab41",
-      "title": "Florida's Sumrall won't name Philo or Jones as QB1 until later in week",
-      "summary": "Florida quarterbacks Aaron Philo and Tramell Jones Jr. both took first-team reps in Monday's practice, but Gators coach Jon Sumrall says he won't name a starter until later in the week",
-      "url": "https://www.espn.com/college-football/story/_/id/50287876/florida-name-philo-jones-qb1-later-week",
-      "source": "ESPN",
-      "published_at": "2026-10-26T15:58:11Z",
-      "sport": "football",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5e6c4f38ac44b59d",
-      "title": "Stephen A. and Finebaum disagree over Arch Manning's performance vs. Ole Miss",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50287910/stephen-finebaum-disagree-arch-manning-performance-vs-ole-miss",
-      "source": "ESPN",
-      "published_at": "2026-10-26T15:40:40Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "84d89b32f9be6c70",
-      "title": "Top 25 betting lines: Georgia double-digit favorites vs. Florida",
-      "summary": "This week's odds and FPI predictions for Georgia-Florida, Tech Tech-Arizona and every top 25 matchup.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50284745/2026-college-football-week-9-top-25-betting-lines-odds",
-      "source": "ESPN",
-      "published_at": "2026-10-26T13:17:00Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
       ],
       "breaking": false
     },
