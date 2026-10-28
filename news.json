@@ -1,11 +1,49 @@
 {
-  "updated_at": "2026-10-27T21:22:04.113129Z",
-  "checked_at": "2026-10-27T21:22:04.113129Z",
+  "updated_at": "2026-10-28T01:25:41.914135Z",
+  "checked_at": "2026-10-28T01:25:41.914135Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "2c54941e704294b1",
+      "title": "Alabama DB Kirkpatrick dismissed from program, DeBoer says",
+      "summary": "Alabama defensive back Dre Kirkpatrick Jr., who is facing misdemeanor charges related to allegedly threatening communications with a police officer, has been dismissed from the program.",
+      "url": "https://www.espn.com/college-football/story/_/id/50298800/alabama-kirkpatrick-charged-allegedly-threatening-officer",
+      "source": "ESPN",
+      "published_at": "2026-10-27T23:40:49Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "533bfa4f4061a54e",
+      "title": "Which SEC teams are in the best position for the CFP?",
+      "summary": "Heather Dinich reveals which teams would make it in the CFP if it were scheduled for today as she discusses who's looking good and ones that are too early to tell.",
+      "url": "https://www.espn.com/video/clip/_/id/50302012/which-sec-teams-best-position-cfp",
+      "source": "ESPN",
+      "published_at": "2026-10-27T22:45:26Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "db4bb20ba8e1b0a5",
+      "title": "Shane Beamer on how South Carolina must navigate OU's tough defense",
+      "summary": "Beamer joins SEC Now to describe what makes LaNorris Sellers such an asset in the pocket as he discusses the strategies SC must use to outsmart the Sooners' defense.",
+      "url": "https://www.espn.com/video/clip/_/id/50301707/shane-beamer-how-south-carolina-navigate-ou-tough-defense",
+      "source": "ESPN",
+      "published_at": "2026-10-27T22:18:44Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
     {
       "id": "c5417377587bdef2",
       "title": "What does Kamario Taylor's season-ending injury mean for Mississippi State?",
@@ -42,19 +80,6 @@
       "sport": "football",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "2c54941e704294b1",
-      "title": "Alabama's Kirkpatrick charged with allegedly threatening officer",
-      "summary": "Alabama defensive back Dre Kirkpatrick Jr. is facing misdemeanor charges related to allegedly threatening communications with a police officer involved in his arrest in 2025.",
-      "url": "https://www.espn.com/college-football/story/_/id/50298800/alabama-kirkpatrick-charged-allegedly-threatening-officer",
-      "source": "ESPN",
-      "published_at": "2026-10-27T17:29:39Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
       ],
       "breaking": false
     },
@@ -306,33 +331,6 @@
       "teams": [
         "South Carolina",
         "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c4d92c7260a82133",
-      "title": "Sources: Texas' Trevor Goosby has season-ending knee injury",
-      "summary": "Texas star left tackle Trevor Goosby will miss the rest of the season after suffering a knee injury vs. Ole Miss, sources told ESPN's Pete Thamel on Sunday.",
-      "url": "https://www.espn.com/college-football/story/_/id/50280834/sources-texas-trevor-goosby-season-ending-knee-injury",
-      "source": "ESPN",
-      "published_at": "2026-10-25T21:54:45Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ec4e2854c00a729d",
-      "title": "Missouri RB Ahmad Hardy to practice for first time since getting shot",
-      "summary": "Missouri consensus All-America RB Ahmad Hardy, who was shot at a concert in May and has yet to play this season, will return to practice this week.",
-      "url": "https://www.espn.com/college-football/story/_/id/50280668/mizzou-rb-hardy-practice-1st-getting-shot",
-      "source": "ESPN",
-      "published_at": "2026-10-25T21:41:45Z",
-      "sport": "football",
-      "teams": [
-        "Missouri"
       ],
       "breaking": false
     },
