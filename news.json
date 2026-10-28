@@ -1,11 +1,24 @@
 {
-  "updated_at": "2026-10-28T16:06:52.851222Z",
-  "checked_at": "2026-10-28T16:06:52.851222Z",
+  "updated_at": "2026-10-28T21:08:21.004585Z",
+  "checked_at": "2026-10-28T21:08:21.004585Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "e3d1157544e894f0",
+      "title": "Rapper Rod Wave signs Arkansas hoops prospect Abdou Toure to his new agency",
+      "summary": "Toure, who plays guard and forward, is about to begin his freshman season with the Arkansas Razorbacks.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50308650/rod-wave-abdou-toure-arkansas",
+      "source": "ESPN",
+      "published_at": "2026-10-28T16:15:20Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas"
+      ],
+      "breaking": false
+    },
     {
       "id": "53525496f82a0848",
       "title": "Sources: Texas LT Trevor Goosby has successful knee surgery",
@@ -30,7 +43,7 @@
       "teams": [
         "Texas"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "8b45c51e680e9976",
@@ -307,19 +320,6 @@
       "breaking": false
     },
     {
-      "id": "5dc05ecaddeda7b0",
-      "title": "SEC chaos, Texas top the list of Week 8 Power Ranking Ups and Downs",
-      "summary": "SEC This Morning's Peter Burns and Chris Doering reflect on the ups and downs of Week 8 SEC play, highlighting a hearty upset from the Longhorns and noting the conference's chaos.",
-      "url": "https://www.espn.com/video/clip/_/id/50288671/sec-chaos-texas-top-list-week-8-power-ranking-ups-downs",
-      "source": "ESPN",
-      "published_at": "2026-10-26T17:23:53Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
       "id": "1c2ed52da59307b9",
       "title": "Texas soars, BYU and Texas Tech fall in latest AP Top 25 rankings",
       "summary": "Seven ranked college football teams lost in Week 8, with five of them coming against unranked foes. Here’s what you need to know about the latest AP Top 25 Poll.",
@@ -404,19 +404,6 @@
       "url": "https://www.espn.com/mens-college-basketball/story/_/id/50219265/florida-no-1-preseason-ap-top-25-men-basketball-poll",
       "source": "ESPN",
       "published_at": "2026-10-21T10:35:13Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "2ccfffc6116f62db",
-      "title": "Breaking down the men's 2026-27 AP preseason Top 25 basketball poll",
-      "summary": "Biggest games and projected starting lineups for the AP preseason Top 25, from No. 1 Florida to No. 25 BYU.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50191393/ap-mens-preseason-top-25-poll-reaction-2026-27",
-      "source": "ESPN",
-      "published_at": "2026-10-19T16:27:35Z",
       "sport": "basketball",
       "teams": [
         "Florida"
