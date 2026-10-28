@@ -1,11 +1,37 @@
 {
-  "updated_at": "2026-10-28T01:25:41.914135Z",
-  "checked_at": "2026-10-28T01:25:41.914135Z",
+  "updated_at": "2026-10-28T08:38:02.920451Z",
+  "checked_at": "2026-10-28T08:38:02.920451Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "9fb9158914bd207c",
+      "title": "Lawyers ask judge to block SEC from punishing LSU if RJ Luis Jr. added to roster",
+      "summary": "Lawyers for RJ Luis Jr., who was briefly under contract with two NBA teams in 2025 but never played in a game, are asking a Louisiana judge to block the SEC from punishing LSU if Luis is added to the Tigers' roster.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50304054/lawyers-ask-judge-block-sec-punishing-lsu-rj-luis-jr-added-roster",
+      "source": "ESPN",
+      "published_at": "2026-10-28T04:43:55Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8e6edb7408845847",
+      "title": "Sam Houston Bearkats vs. Missouri State Bears: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50303909/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-28T04:38:28Z",
+      "sport": "football",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
     {
       "id": "2c54941e704294b1",
       "title": "Alabama DB Kirkpatrick dismissed from program, DeBoer says",
@@ -55,7 +81,7 @@
       "teams": [
         "Mississippi State"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "d6da479e454d18e6",
@@ -68,7 +94,7 @@
       "teams": [
         "Mississippi State"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "db4bbf25ea6754ba",
@@ -304,33 +330,6 @@
       "teams": [
         "Florida",
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "79ee02ed4c4c8384",
-      "title": "QB recruit Bo Bryan, son of country star Luke Bryan, commits to Georgia",
-      "summary": "Class of 2027 quarterback Bo Bryan, the son of country music star Luke Bryan, announced his commitment to Georgia on Sunday.",
-      "url": "https://www.espn.com/college-football/story/_/id/50282450/qb-recruit-bo-bryan-son-country-star-commits-georgia",
-      "source": "ESPN",
-      "published_at": "2026-10-26T00:49:02Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "cdd21e0d83dc7a3f",
-      "title": "Gamecocks fined $500K after fans rush field in win over Vols",
-      "summary": "The Southeastern Conference fined South Carolina $500,000 on Sunday for allowing fans to storm the field following a 27-24 victory over then-No. 11 Tennessee.",
-      "url": "https://www.espn.com/college-football/story/_/id/50281754/gamecocks-fined-500k-fans-rush-field-win-vols",
-      "source": "ESPN",
-      "published_at": "2026-10-25T23:33:23Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina",
-        "Tennessee"
       ],
       "breaking": false
     },
