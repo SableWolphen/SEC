@@ -1,11 +1,65 @@
 {
-  "updated_at": "2026-10-29T20:20:41.033543Z",
-  "checked_at": "2026-10-29T20:20:41.033543Z",
+  "updated_at": "2026-10-29T23:59:29.255816Z",
+  "checked_at": "2026-10-29T23:59:29.255816Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "37e3413bbd8bae99",
+      "title": "LSU coach Will Wade refuses to discuss RJ Luis Jr.'s eligibility status",
+      "summary": "LSU coach Will Wade declined to take questions Thursday on the status of RJ Luis Jr., who a day earlier won a temporary restraining order opening the door to play for the Tigers.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50321858/lsu-coach-wade-refuses-discuss-rj-luis-jr-status",
+      "source": "ESPN",
+      "published_at": "2026-10-29T22:15:11Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7d85a663f1a3d1e5",
+      "title": "Sources: Missouri RB Hardy to make season debut vs. Arkansas",
+      "summary": "Missouri All-America tailback Ahmad Hardy is set to make his season debut for the Tigers this weekend at Arkansas, sources told ESPN.",
+      "url": "https://www.espn.com/college-football/story/_/id/50321651/sources-missouri-rb-hardy-make-season-debut-vs-arkansas",
+      "source": "ESPN",
+      "published_at": "2026-10-29T21:30:36Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas",
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "95ba0305f78ad49c",
+      "title": "Georgia AD Josh Brooks shares Florida rivalry scheduling process",
+      "summary": "Brooks joins The Paul Finebaum Show to discuss the winding process of organizing the approaching No. 17 Florida vs. No. 3 Georgia rivalry matchup.",
+      "url": "https://www.espn.com/video/clip/_/id/50322012/georgia-ad-josh-brooks-shares-florida-rivalry-scheduling-process",
+      "source": "ESPN",
+      "published_at": "2026-10-29T21:26:33Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "2f8e497d61c661ce",
+      "title": "Reese Alston, prized PG recruit and son of streetball legend, commits to LSU",
+      "summary": "Five-star point guard Reese Alston announced he has committed to LSU, giving Tigers coach Will Wade his third top-25 recruit in the 2027 class.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50321518/reese-alston-no-13-overall-recruit-commits-lsu",
+      "source": "ESPN",
+      "published_at": "2026-10-29T21:18:04Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": true
+    },
     {
       "id": "fd3ea65cdf672b27",
       "title": "Northwestern's Chip Kelly went into the history books to build an offense",
@@ -263,19 +317,6 @@
       "breaking": false
     },
     {
-      "id": "2c54941e704294b1",
-      "title": "Alabama DB Kirkpatrick dismissed from program, DeBoer says",
-      "summary": "Alabama defensive back Dre Kirkpatrick Jr., who is facing misdemeanor charges related to allegedly threatening communications with a police officer, has been dismissed from the program.",
-      "url": "https://www.espn.com/college-football/story/_/id/50298800/alabama-kirkpatrick-charged-allegedly-threatening-officer",
-      "source": "ESPN",
-      "published_at": "2026-10-27T23:40:49Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
       "id": "533bfa4f4061a54e",
       "title": "Which SEC teams are in the best position for the CFP?",
       "summary": "Heather Dinich reveals which teams would make it in the CFP if it were scheduled for today as she discusses who's looking good and ones that are too early to tell.",
@@ -307,19 +348,6 @@
       "url": "https://www.espn.com/video/clip/_/id/50300991/what-does-kamario-taylor-season-ending-injury-mean-mississippi-state",
       "source": "ESPN",
       "published_at": "2026-10-27T20:51:54Z",
-      "sport": "football",
-      "teams": [
-        "Mississippi State"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d6da479e454d18e6",
-      "title": "Mississippi State QB Kamario Taylor out for season",
-      "summary": "Mississippi State QB Kamario Taylor, college football's breakout star this season, needs surgery on his injured toe and will miss the remainder of the season.",
-      "url": "https://www.espn.com/college-football/story/_/id/50298455/sources-mississippi-state-qb-kamario-taylor-season",
-      "source": "ESPN",
-      "published_at": "2026-10-27T20:49:33Z",
       "sport": "football",
       "teams": [
         "Mississippi State"
