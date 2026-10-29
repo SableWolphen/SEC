@@ -1,11 +1,48 @@
 {
-  "updated_at": "2026-10-28T21:08:21.004585Z",
-  "checked_at": "2026-10-28T21:08:21.004585Z",
+  "updated_at": "2026-10-29T01:00:31.800938Z",
+  "checked_at": "2026-10-29T01:00:31.800938Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "e9b9a57fa349d74b",
+      "title": "Judge OK's RJ Luis Jr. to join LSU; lawyer says Will Wade now in 'crosshairs'",
+      "summary": "RJ Luis Jr. is eligible to play and practice with LSU through a temporary injunction signed by a Louisiana judge Wednesday.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50312271/rj-luis-jr-eligible-join-lsu-judge-injunction",
+      "source": "ESPN",
+      "published_at": "2026-10-29T00:00:32Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "33e06c328325aed2",
+      "title": "Laying the roadmap for No. 9 Kentucky to reach CFP",
+      "summary": "As the No. 9 Wildcats regroup during a bye week after climbing to the top of the conference standings, SEC Now's Alyssa Lang and Gene Chizik analyze their progress and what lies ahead.",
+      "url": "https://www.espn.com/video/clip/_/id/50311897/laying-roadmap-no-9-kentucky-reach-cfp",
+      "source": "ESPN",
+      "published_at": "2026-10-28T23:13:23Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1616b05c66c18ad7",
+      "title": "Alyssa Lang changes her mind about CFP, analyzes power rankings",
+      "summary": "Lang says witnessing the chaos of the SEC opens her mind about the College Football Playoff expansion and addresses shifts in her power rankings list, including a new number one.",
+      "url": "https://www.espn.com/video/clip/_/id/50311047/alyssa-lang-changes-mind-cfp-analyzes-power-rankings",
+      "source": "ESPN",
+      "published_at": "2026-10-28T21:14:31Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
     {
       "id": "e3d1157544e894f0",
       "title": "Rapper Rod Wave signs Arkansas hoops prospect Abdou Toure to his new agency",
@@ -249,74 +286,6 @@
       "teams": [
         "Kentucky"
       ],
-      "breaking": false
-    },
-    {
-      "id": "355083021388f582",
-      "title": "Ryan Silverfield talks Arkansas' urgency to keep a forward focus",
-      "summary": "Silverfield says the Razorbacks are constantly focused on taking intentional steps to raise the program towards its goals while stressing looking ahead to looming rivalry game.",
-      "url": "https://www.espn.com/video/clip/_/id/50289258/ryan-silverfield-talks-arkansas-urgency-keep-forward-focus",
-      "source": "ESPN",
-      "published_at": "2026-10-26T18:45:50Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3c1c6f686e4df87b",
-      "title": "Jon Sumrall emphasizes focus for Florida vs. Georgia",
-      "summary": "Sumrall explains how he wants No. 17 Florida to embrace the matchup with No. 3 Georgia while staying focused on the fundamentals.",
-      "url": "https://www.espn.com/video/clip/_/id/50289101/jon-sumrall-emphasizes-focus-florida-vs-georgia",
-      "source": "ESPN",
-      "published_at": "2026-10-26T18:21:26Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "02afb6e5410b66a4",
-      "title": "MS State's Jeff Lebby on Week 8: 'They made those plays we didn't'",
-      "summary": "Lebby reflects on Mississippi State's one-possession loss to Oklahoma, emphasizing improving execution on third downs and protecting the ball before looking ahead to No. 11 Texas.",
-      "url": "https://www.espn.com/video/clip/_/id/50289091/made-plays",
-      "source": "ESPN",
-      "published_at": "2026-10-26T18:21:20Z",
-      "sport": "football",
-      "teams": [
-        "Mississippi State",
-        "Oklahoma",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d1c0867b0d09b328",
-      "title": "Ole Miss RB Kewan Lacy out after dislocating shoulder",
-      "summary": "Ole Miss running back Kewan Lacy suffered a dislocated shoulder in the Rebels' loss to Texas and has been ruled out for Saturday's game against Auburn.",
-      "url": "https://www.espn.com/college-football/story/_/id/50288926/ole-miss-rb-kewan-lacy-dislocating-shoulder",
-      "source": "ESPN",
-      "published_at": "2026-10-26T18:17:09Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "Ole Miss",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e00b1dcb095ad197",
-      "title": "Peter Burns on SEC landscape: 'This year is another 2007'",
-      "summary": "SEC This Morning's Peter Burns and Chris Doering share their thoughts on the season so far, including the possibility of a multiple-loss team winning it all.",
-      "url": "https://www.espn.com/video/clip/_/id/50288687/year-another-2007",
-      "source": "ESPN",
-      "published_at": "2026-10-26T17:29:01Z",
-      "sport": "football",
-      "teams": [],
       "breaking": false
     },
     {
