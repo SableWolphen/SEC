@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-29T14:24:50.316024Z",
-  "checked_at": "2026-10-29T14:24:50.316024Z",
+  "updated_at": "2026-10-29T20:20:41.033543Z",
+  "checked_at": "2026-10-29T20:20:41.033543Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -12,11 +12,22 @@
       "summary": "The Wildcats are playing their best offense in a decade. All it took was an old-school scheme and mad tinkerer.",
       "url": "https://www.espn.com/college-football/story/_/id/50309287/chip-kelly-northwestern-offense",
       "source": "ESPN",
-      "published_at": "2026-10-29T14:09:11Z",
+      "published_at": "2026-10-29T17:35:17Z",
       "sport": "football",
       "teams": [
         "Kentucky"
       ],
+      "breaking": false
+    },
+    {
+      "id": "b0262762794ea689",
+      "title": "The chaotic SEC football championship race, explained by the data",
+      "summary": "More than half of the SEC is ranked in college football, yet every team has at least one loss in conference play.",
+      "url": "https://www.ncaa.com/news/football/article/2026-10-29/chaotic-sec-football-championship-race-explained-data",
+      "source": "NCAA",
+      "published_at": "2026-10-29T16:10:00Z",
+      "sport": "football",
+      "teams": [],
       "breaking": false
     },
     {
@@ -329,6 +340,19 @@
       "breaking": false
     },
     {
+      "id": "fdfe504f56e0610f",
+      "title": "Utah's unlikely journey to the 1944 NCAA men's basketball title",
+      "summary": "Utah’s journey to the 1944 NCAA men’s basketball tournament didn’t start in the Bee Hive state, but instead along U.S. Route 71, about 20 miles south of Fayetteville, Arkansas.",
+      "url": "https://www.ncaa.com/news/basketball-men/article/2026-10-27/utahs-unlikely-journey-1944-ncaa-mens-basketball-title",
+      "source": "NCAA",
+      "published_at": "2026-10-27T13:34:59Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas"
+      ],
+      "breaking": false
+    },
+    {
       "id": "40864b86e22eb6de",
       "title": "NCAA Bracketology: Predicting the 2027 men's March Madness field",
       "summary": "The consensus No. 1 Gators don't scream national champion with any certainty. The Illini, however, could.",
@@ -338,19 +362,6 @@
       "sport": "basketball",
       "teams": [
         "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "160655ce47a5a74b",
-      "title": "Heisman race after Week 8: Miami's Malachi Toney is gaining ground",
-      "summary": "As the Hurricanes receiver picks up steam, LSU's Sam Leavitt is also rounding into form.",
-      "url": "https://www.espn.com/college-football/story/_/id/50288159/heisman-race-week-8-miami-malachi-toney",
-      "source": "ESPN",
-      "published_at": "2026-10-27T10:08:13Z",
-      "sport": "football",
-      "teams": [
-        "LSU"
       ],
       "breaking": false
     },
