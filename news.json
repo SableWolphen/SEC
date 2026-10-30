@@ -1,31 +1,32 @@
 {
-  "updated_at": "2026-10-30T13:01:42.644089Z",
-  "checked_at": "2026-10-30T13:01:42.644089Z",
+  "updated_at": "2026-10-30T18:38:34.745516Z",
+  "checked_at": "2026-10-30T18:38:34.745516Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "6ccf5ab175e495ef",
-      "title": "College football ghost stories, from Death Valley to Tennessee's 'Body Farm'",
-      "summary": "With Halloween falling on a football Saturday, we take a haunted trip to the sport's spookiest places.",
-      "url": "https://www.espn.com/college-football/story/_/id/50320619/ghost-stories-death-valley-tennessee-camp-randall",
+      "id": "915fb8ab3509b269",
+      "title": "Sources: Florida's Aaron Philo resumes QB1 role vs. Georgia",
+      "summary": "Florida will start QB Aaron Philo over Tramell Jones Jr. when the No. 17 Gators try to end a five-game losing streak vs. No. 3 Georgia, sources told ESPN.",
+      "url": "https://www.espn.com/college-football/story/_/id/50328979/sources-florida-aaron-philo-resumes-qb1-role-vs-georgia",
       "source": "ESPN",
-      "published_at": "2026-10-30T12:34:20Z",
+      "published_at": "2026-10-30T17:41:48Z",
       "sport": "football",
       "teams": [
-        "Tennessee"
+        "Florida",
+        "Georgia"
       ],
       "breaking": false
     },
     {
-      "id": "13c50cf2b2736048",
-      "title": "What does Florida-Georgia matchup mean for both teams' CFP chances?",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50327430/what-does-florida-georgia-matchup-mean-teams-cfp-chances",
+      "id": "b3fd6d17889eedd1",
+      "title": "Florida vs. Georgia rivalry through the lens of former players",
+      "summary": "Former Georgia offensive lineman George Foster and former Florida linebacker Brandon Spikes are challenged to say something nice about their rivals while previewing the upcoming rivalry game.",
+      "url": "https://www.espn.com/video/clip/_/id/50328877/florida-vs-georgia-rivalry-lens-former-players",
       "source": "ESPN",
-      "published_at": "2026-10-30T12:20:16Z",
+      "published_at": "2026-10-30T17:19:05Z",
       "sport": "football",
       "teams": [
         "Florida",
@@ -39,11 +40,103 @@
       "summary": "Is it Utah's turn to go down? Can Georgia and Ole Miss avoid disaster? Will Ohio State's backup plan work?",
       "url": "https://www.espn.com/college-football/story/_/id/50318896/connelly-week-9-upset-alert",
       "source": "ESPN",
-      "published_at": "2026-10-30T11:18:17Z",
+      "published_at": "2026-10-30T17:02:13Z",
       "sport": "football",
       "teams": [
         "Georgia",
         "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b3df6566428b7cb3",
+      "title": "NCAA loses Kentucky appeals ruling; players remain eligible",
+      "summary": "A Kentucky Court of Appeals judge denied the NCAA emergency relief on Friday, allowing a group of players including Texas Tech quarterback Thomas Castellanos to remain eligible.",
+      "url": "https://www.espn.com/college-football/story/_/id/50328513/ncaa-loses-kentucky-appeals-ruling-players-remain-eligible",
+      "source": "ESPN",
+      "published_at": "2026-10-30T15:33:34Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b3df6566428b7cb3",
+      "title": "NCAA loses Kentucky appeals ruling; players remain eligible",
+      "summary": "A Kentucky Court of Appeals judge denied the NCAA emergency relief on Friday, allowing a group of players including Texas Tech quarterback Thomas Castellanos to remain eligible.",
+      "url": "https://www.espn.com/college-football/story/_/id/50328513/ncaa-loses-kentucky-appeals-ruling-players-remain-eligible",
+      "source": "ESPN",
+      "published_at": "2026-10-30T15:33:34Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1e421e57d594e674",
+      "title": "Burns, Doering elevate their look to deliver Week 9 power rankings",
+      "summary": "SEC This Morning's Peter Burns and Chris Doering get into the Halloween spirit with slightly large suits and blonde wigs to deliver the top-five SEC teams that need a Week 9 win.",
+      "url": "https://www.espn.com/video/clip/_/id/50328576/burns-doering-elevate-their-look-deliver-week-9-power-rankings",
+      "source": "ESPN",
+      "published_at": "2026-10-30T15:32:29Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "84d89b32f9be6c70",
+      "title": "Top 25 betting lines: Georgia double-digit favorites vs. Florida",
+      "summary": "This week's odds and FPI predictions for Georgia-Florida, Tech Tech-Arizona and every top 25 matchup.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50284745/2026-college-football-week-9-top-25-betting-lines-odds",
+      "source": "ESPN",
+      "published_at": "2026-10-30T15:11:39Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "13c50cf2b2736048",
+      "title": "What does Florida-Georgia matchup mean for both teams' CFP chances?",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50327430/what-does-florida-georgia-matchup-mean-teams-cfp-chances",
+      "source": "ESPN",
+      "published_at": "2026-10-30T13:44:09Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "aa05dd6dacc8971b",
+      "title": "Heather Dinich: Ole Miss is in 'must-win mode' vs. Auburn",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50327841/ole-miss-win-mode-vs-auburn",
+      "source": "ESPN",
+      "published_at": "2026-10-30T13:35:43Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6ccf5ab175e495ef",
+      "title": "College football ghost stories, from Death Valley to Tennessee's 'Body Farm'",
+      "summary": "With Halloween falling on a football Saturday, we take a haunted trip to the sport's spookiest places.",
+      "url": "https://www.espn.com/college-football/story/_/id/50320619/ghost-stories-death-valley-tennessee-camp-randall",
+      "source": "ESPN",
+      "published_at": "2026-10-30T12:34:20Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
       ],
       "breaking": false
     },
@@ -320,32 +413,6 @@
       "breaking": false
     },
     {
-      "id": "53525496f82a0848",
-      "title": "Sources: Texas LT Trevor Goosby has successful knee surgery",
-      "summary": "Texas left tackle and top NFL draft prospect Trevor Goosby underwent a successful repair of his left torn patellar tendon on Tuesday, sources told ESPN's Pete Thamel.",
-      "url": "https://www.espn.com/college-football/story/_/id/50307620/sources-texas-lt-trevor-goosby-successful-knee-surgery",
-      "source": "ESPN",
-      "published_at": "2026-10-28T13:40:40Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "850e45298a254450",
-      "title": "Why Jordan Rodgers says Arch Manning should transfer from Texas",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50307427/why-jordan-rodgers-says-arch-manning-transfer-texas",
-      "source": "ESPN",
-      "published_at": "2026-10-28T13:15:16Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
       "id": "8b45c51e680e9976",
       "title": "Davis hot starts puts out Wildcats",
       "summary": "It was Kendric Davis' first has blitz that helped the Sydney Kings defeat a stubborn Perth Wildcats side in the NBL Ignite Cup",
@@ -368,19 +435,6 @@
       "sport": "basketball",
       "teams": [
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8e6edb7408845847",
-      "title": "Sam Houston Bearkats vs. Missouri State Bears: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50303909/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-28T04:38:28Z",
-      "sport": "football",
-      "teams": [
-        "Missouri"
       ],
       "breaking": false
     },
@@ -472,32 +526,6 @@
       "sport": "basketball",
       "teams": [
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "2313a0e7c65d0234",
-      "title": "Spartans' Fears, Gators' Haugh near-unanimous picks as preseason All-Americans",
-      "summary": "Florida's Thomas Haugh and Michigan State's Jeremy Fears Jr. returned to make their teams among the front-runners to cut down the nets next spring and earned them preseason All-America honors from The Associated Press.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50239522/spartans-fears-gators-haugh-top-ap-preseason-all-americans",
-      "source": "ESPN",
-      "published_at": "2026-10-21T17:42:59Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3efab69e111d7067",
-      "title": "Brandon Woodruff's lone NCAA baseball tournament appearance in 2014",
-      "summary": "Brandon Woodruff — two-time MLB All-Star with the Milwaukee Brewers — pitched at Mississippi State from 2012-14 and made one appearance in the NCAA baseball tournament in 2014.",
-      "url": "https://www.ncaa.com/video/baseball/2026-10-21/brandon-woodruffs-lone-ncaa-baseball-tournament-appearance-2014",
-      "source": "NCAA",
-      "published_at": "2026-10-21T16:13:36Z",
-      "sport": "baseball",
-      "teams": [
-        "Mississippi State"
       ],
       "breaking": false
     }
