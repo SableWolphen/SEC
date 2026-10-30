@@ -296,12 +296,12 @@
     if(app.view()==="settings")renderSettings();
     if(app.view()==="home"){window.SEC_HOME?.refresh?.();window.SEC_HOME?.onOnlineState?.();}
     var el=document.getElementById("online-banner");
-    if(el)el.innerHTML=user?'<span class="eyebrow-dot"></span> ONLINE · '+safe(user.email||"Signed in")+' · '+safe(currentLeague()?.name||"Create or join a league"):
+    if(el)el.innerHTML=user?'<span class="eyebrow-dot"></span> ONLINE · '+safe(user.email||"Signed in")+' · '+safe(currentLeague()?.name||"My Picks · Solo"):
       '<button type="button" class="online-signin-cta" data-online="go-league">👤 Create account or log in · Make a league with friends ↗</button>';
   }
   async function choose(g,id){
     if(!client){app.toast("Online play is not configured yet.");app.setView("league");return false;}
-    if(!user){app.toast("Sign in to save league picks.");app.setView("league");return false;}
+    if(!user){app.toast("Sign in to save your picks.");app.setView("league");return false;}
     if(working)return false;
     working=true;
     try{
