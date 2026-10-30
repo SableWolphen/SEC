@@ -269,7 +269,7 @@ function renderLeaguePanel(s){
 function renderLeagues(s,signed,league){
  const data=cache[s],season=year(s);
  const available=data.leagues||[];
- const options=available.map(l=>'<option value="'+esc(l.id)+'" '+(l.id===data.active?'selected':'')+'>'+
+ const options='<option value="solo" '+(!data.active?'selected':'')+'>My Picks · Solo</option>'+available.map(l=>'<option value="'+esc(l.id)+'" '+(l.id===data.active?'selected':'')+'>'+
   esc(l.name)+' · '+esc(MODES[l.mode])+'</option>').join("");
  const notice=notices[s]?banner(notices[s],"sport-notice"):"";
  if(!signed){
@@ -280,7 +280,7 @@ function renderLeagues(s,signed,league){
    '<h3>Use your existing account.</h3><p>One login works for football, basketball and baseball. Sign in to continue; do not create another account.</p></div>'+
    '<button type="button" data-nav="league" class="primary-btn">Log in to your account</button></div></section>'+notice;
  }
- const dropdown=available.length?'<div class="sport-active-choice"><label class="input-label" for="sport-league-'+s+'">Playing in</label>'+
+ const dropdown=true?'<div class="sport-active-choice"><label class="input-label" for="sport-league-'+s+'">Playing in</label>'+
   '<select class="field" id="sport-league-'+s+'" data-change-sport="'+s+'">'+options+'</select></div>':"";
  const tools='<div class="sport-league-tools"><details><summary>Create a '+esc(SPORT[s].short)+' league</summary>'+
   '<label class="input-label" for="sport-name-'+s+'">League name</label>'+
@@ -296,12 +296,12 @@ function renderLeagues(s,signed,league){
   '<strong>'+esc(league.name)+'</strong><p>'+esc(modeDesc(league.mode))+'</p>'+
   '<div class="sport-league-actions"><button class="ghost-btn" type="button" data-sport-action="share" data-sport="'+s+'">Share invite</button>'+
   '<button class="ghost-btn" type="button" data-sport-action="refresh" data-sport="'+s+'">Refresh standings</button></div></div>':"";
- const standings=league?renderStandings(s,league):'<p class="helper">Create or join a league to start saving your picks online.</p>';
+ const standings=league?renderStandings(s,league):'<p class="helper">Solo picks are saved to your account. Join a league only to compete.</p>';
  return '<section class="sport-league-shell" aria-label="Online sports leagues">'+
   '<div class="sport-account-banner" role="status"><span aria-hidden="true">✓</span> Signed in as <strong>'+esc(user()?.email||"your SEC account")+'</strong>'+
   ' <span>· Same account for all three sports</span></div>'+
   '<div class="sport-league-top"><div><div class="card-kicker">YOUR '+esc(SPORT[s].short.toUpperCase())+' LEAGUE</div>'+
-  '<h3>Make your picks count.</h3><p>One player account across all sports. Leagues and scoreboards are organized by sport.</p></div>'+
+  '<h3>Make your picks count.</h3><p>Choose solo for personal picks, or a league to compete with friends.</p></div>'+
   (league?'<span class="sport-league-code">Invite: '+esc(league.invite_code)+'</span>':'')+'</div>'+
   dropdown+leagueMeta+standings+tools+'</section>'+notice;
 }
@@ -345,13 +345,13 @@ function gameCard(s,g,league,picks){
  const mode=league?.mode||"straight",old=picks[g.id];
  const start=new Date(g.kickoff_at).getTime();
  const locked=!(Number.isFinite(start)&&start>Date.now()&&g.game_status==="scheduled");
- const canPick=Boolean(league&&user()&&g.imported&&!locked&&(mode!=="spread"||g.spread_home!==null&&g.spread_home!==undefined));
+ const canPick=Boolean(user()&&g.imported&&!locked&&(mode!=="spread"||g.spread_home!==null&&g.spread_home!==undefined));
  const scored=["live","final"].includes(g.game_status)&&validSportScore(g.away_score)&&validSportScore(g.home_score);
  const phase=String(g.status_detail||"").slice(0,42);
  const result=g.game_status==="final"?(g.winner_code?"FINAL · "+(g.winner_code===g.home_code?g.home_name:g.away_name)+" wins":"FINAL") :
   g.game_status==="live"?"LIVE"+(phase?" · "+phase:""):g.game_status==="canceled"?"CANCELED":timeLabel(g.kickoff_at);
  const verdict=old&&g.game_status==="final"?(g.winner_code===old.pick_code?'✓ Correct pick':'✕ Incorrect pick'):"";
- const availability=!league?"Join a league to pick":!g.imported?"Syncing game to secure pick server":locked?"Picks locked":
+ const availability=!user()?"Sign in to pick":!g.imported?"Syncing game to secure pick server":locked?"Picks locked":
   mode==="spread"&&(g.spread_home===null||g.spread_home===undefined)?"Waiting for a published spread":"Choose a winner";
  const opt=code=>'<button type="button" class="sport-team-option '+(old?.pick_code===code?'selected':'')+
   '" data-sport-action="pick" data-sport="'+s+'" data-game="'+esc(g.id)+'" data-pick="'+esc(code)+'"'+(SEC_IDS[String(code)]?' data-sds-school="'+SEC_IDS[String(code)]+'"':'')+' '+
@@ -430,7 +430,8 @@ async function load(s,force=false){
   const games=(unwrap(g)||[]).filter(x=>x.sport===s&&x.season===yr);
   const leagues=(unwrap(l)||[]).filter(x=>x.sport===s&&x.season===yr);
   let active=cache[s].active||localStorage.getItem("ss-sec-sport-league-"+s+"-"+yr);
-  if(!leagues.some(item=>item.id===active))active=leagues[0]?.id||null;
+  if(active==="solo")active=null;
+   else if(!leagues.some(item=>item.id===active))active=leagues[0]?.id||null;
   const invitation=new URLSearchParams(location.search);
   if(invitation.get("sport")===s&&invitation.get("sportLeague")&&invitation.get("sportLeague")?.length===10){
    const invite=invitation.get("sportLeague");
@@ -444,6 +445,13 @@ async function load(s,force=false){
    }catch(e){notices[s]="Invite error: "+e.message;}
   }
   let picks={},standings=[],tiebreakers={},pairings=[];
+  if(!active){
+   const ids=games.map(g=>g.id);
+   const p=ids.length?unwrap(await c.from("sec_sport_personal_picks").select("game_id,pick_code").eq("user_id",u.id).in("game_id",ids)):[];
+   picks=Object.fromEntries((p||[]).map(x=>[x.game_id,x]));
+
+  }
+
   if(active){
    const [p,st,t]=await Promise.all([
     c.from("sec_sport_picks").select("game_id,pick_code,confidence_points").eq("league_id",active).eq("user_id",u.id),
@@ -462,7 +470,7 @@ async function load(s,force=false){
   if(seq!==updating[s])return;
   const oldSync=cache[s].lastServerSync;
   cache[s]={games,leagues,picks,standings,tiebreakers,pairings,active,lastServerSync:oldSync,error:""};
-  if(active)localStorage.setItem("ss-sec-sport-league-"+s+"-"+yr,active);
+  localStorage.setItem("ss-sec-sport-league-"+s+"-"+yr,active||"solo");
  }catch(e){cache[s].error=e.message||"This sport is temporarily unavailable";console.warn("SEC sports:",e);}
  finally{
   loading[s]=false;renderSport(s);renderHub();window.SEC_GAMEDAY?.renderSport?.(s);
@@ -492,15 +500,16 @@ async function action(btn){
    notices[s]="Welcome to your new league!";
    await load(s,true);return;
   }
-  if(!l)throw Error("Create or join a "+SPORT[s].short+" league first.");
+  if(!l&&what!=="pick")throw Error("Create or join a "+SPORT[s].short+" league first.");
   if(what==="pick"){
    const g=allGames(s).find(game=>game.id===btn.dataset.game);
    if(!g||!g.imported)throw Error("This game hasn't been validated by the server yet. Refresh.");
    if(Date.now()>=Date.parse(g.kickoff_at))throw Error("This game is locked.");
-   const conf=l.mode==="confidence"?Number(document.querySelector('[data-confidence="'+g.id+'"]')?.value):null;
-   if(l.mode==="confidence"&&!conf)throw Error("Choose a unique weekly confidence value first.");
-   unwrap(await c.rpc("sec_sport_save_pick",{p_league:l.id,p_game:g.id,p_pick:btn.dataset.pick,p_confidence:conf}));
-   notices[s]="Pick saved securely online.";
+   const conf=l?.mode==="confidence"?Number(document.querySelector('[data-confidence="'+g.id+'"]')?.value):null;
+   if(l?.mode==="confidence"&&!conf)throw Error("Choose a unique weekly confidence value first.");
+   if(l)unwrap(await c.rpc("sec_sport_save_pick",{p_league:l.id,p_game:g.id,p_pick:btn.dataset.pick,p_confidence:conf}));
+    else unwrap(await c.rpc("sec_sport_save_personal_pick",{p_game:g.id,p_pick:btn.dataset.pick}));
+   notices[s]=l?"League pick saved online.":"Personal pick saved online.";
    await load(s);return;
   }
   if(what==="total"){
@@ -543,7 +552,7 @@ document.addEventListener("click",ev=>{
 document.addEventListener("change",ev=>{
  const s=ev.target.dataset?.changeSport;
  if(!SPORT[s])return;
- cache[s].active=ev.target.value;
+ cache[s].active=ev.target.value==="solo"?null:ev.target.value;
  localStorage.setItem("ss-sec-sport-league-"+s+"-"+year(s),ev.target.value);
  void load(s,true);
 });
