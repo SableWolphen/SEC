@@ -1,11 +1,82 @@
 {
-  "updated_at": "2026-10-30T18:38:34.745516Z",
-  "checked_at": "2026-10-30T18:38:34.745516Z",
+  "updated_at": "2026-10-30T23:00:04.477549Z",
+  "checked_at": "2026-10-30T23:00:04.477549Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "d0fd73ec2cb465fb",
+      "title": "How consistent change of college football landscape impacts SEC",
+      "summary": "Matt Barrie joins The Paul Finebaum Show to discuss how continuous changes across the college football world has impacted the SEC as he previews the Florida vs. Georgia matchup.",
+      "url": "https://www.espn.com/video/clip/_/id/50331107/how-consistent-change-college-football-landscape-impacts-sec",
+      "source": "ESPN",
+      "published_at": "2026-10-30T22:03:50Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0a4ce93c4b8d89e1",
+      "title": "Tim Tebow reminisces on his time as a Gator, dissects Florida vs. UGA",
+      "summary": "Tebow shares stories about the significance of the Florida vs. Georgia rivalry through his perspective as a former player, then breaks down Saturday's keys to success.",
+      "url": "https://www.espn.com/video/clip/_/id/50331035/tim-tebow-reminisces-a-gator-dissects-florida-vs-uga",
+      "source": "ESPN",
+      "published_at": "2026-10-30T21:38:25Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "34be51a54ef48a42",
+      "title": "Roman Harper gives an interesting way Florida can win vs. Georgia",
+      "summary": "SEC Nation's Harper chimes in on The Paul Finebaum Show to explain how an unorthodox offensive approach could help the No. 17 Gators beat the No. 3 Bulldogs.",
+      "url": "https://www.espn.com/video/clip/_/id/50330974/roman-harper-gives-interesting-way-florida-win-vs-georgia",
+      "source": "ESPN",
+      "published_at": "2026-10-30T21:22:13Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "498ff45486e2fd8d",
+      "title": "Scott Stricklin explains why he loves UF and UGA's neutral-site rivalry",
+      "summary": "Florida athletic director Scott Stricklin joins The Paul Finebaum Show from Atlanta to preview the Gators' rivalry matchup against the Bulldogs and discuss the atmosphere surrounding the neutral-site game.",
+      "url": "https://www.espn.com/video/clip/_/id/50330934/scott-stricklin-explains-why-loves-uf-uga-neutral-site-rivalry",
+      "source": "ESPN",
+      "published_at": "2026-10-30T21:11:03Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5af6b911aabf450b",
+      "title": "Matt Stinchcomb says clean football helps UK, previews Bama vs. LSU",
+      "summary": "Stinchcomb credits Kentucky's disciplined play for its climb to the top of the SEC standings then discusses the significance of Alabama taking on LSU.",
+      "url": "https://www.espn.com/video/clip/_/id/50330594/matt-stinchcomb-says-clean-football-helps-uk-previews-bama-vs-lsu",
+      "source": "ESPN",
+      "published_at": "2026-10-30T20:40:01Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Kentucky",
+        "LSU"
+      ],
+      "breaking": false
+    },
     {
       "id": "915fb8ab3509b269",
       "title": "Sources: Florida's Aaron Philo resumes QB1 role vs. Georgia",
@@ -334,69 +405,6 @@
       "teams": [
         "Florida"
       ],
-      "breaking": false
-    },
-    {
-      "id": "c70aa12e40dc7616",
-      "title": "Trick-or-treat: SEC football edition",
-      "summary": "SEC Network's Gene Chizik and Alyssa Lang play a game of trick-or-treat to analyze SEC football contenders and answer classic questions.",
-      "url": "https://www.espn.com/video/clip/_/id/50313508/sec-football-edition",
-      "source": "ESPN",
-      "published_at": "2026-10-29T02:46:14Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "ecdaf0205a88db34",
-      "title": "A Georgia fan's last breath led to a Florida man a fresh start",
-      "summary": "A tragic loss connected rival fans for life when Georgia fan Megan Beth Twist's donated lungs gave Florida fan Richard Bremer a second chance at life.",
-      "url": "https://www.espn.com/video/clip/_/id/50313490/a-georgia-fan-last-breath-led-florida-man-fresh-start",
-      "source": "ESPN",
-      "published_at": "2026-10-29T02:45:39Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ebed6cb2c68e79e3",
-      "title": "LaNorris Sellers says comfort in Gamecocks' offense fueling hot streak",
-      "summary": "Sellers joins SEC Now to explain how he has been performing at an elite level in the past couple weeks while previewing keys to getting a win over Oklahoma.",
-      "url": "https://www.espn.com/video/clip/_/id/50311812/lanorris-sellers-says-comfort-gamecocks-offense-fueling-hot-streak",
-      "source": "ESPN",
-      "published_at": "2026-10-29T02:19:31Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "33e06c328325aed2",
-      "title": "Laying the roadmap for No. 9 Kentucky to reach CFP",
-      "summary": "As the No. 9 Wildcats regroup during a bye week after climbing to the top of the conference standings, SEC Now's Alyssa Lang and Gene Chizik analyze their progress and what lies ahead.",
-      "url": "https://www.espn.com/video/clip/_/id/50311897/laying-roadmap-no-9-kentucky-reach-cfp",
-      "source": "ESPN",
-      "published_at": "2026-10-28T23:13:23Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1616b05c66c18ad7",
-      "title": "Alyssa Lang changes her mind about CFP, analyzes power rankings",
-      "summary": "Lang says witnessing the chaos of the SEC opens her mind about the College Football Playoff expansion and addresses shifts in her power rankings list, including a new number one.",
-      "url": "https://www.espn.com/video/clip/_/id/50311047/alyssa-lang-changes-mind-cfp-analyzes-power-rankings",
-      "source": "ESPN",
-      "published_at": "2026-10-28T21:14:31Z",
-      "sport": "football",
-      "teams": [],
       "breaking": false
     },
     {
