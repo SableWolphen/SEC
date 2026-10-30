@@ -447,7 +447,9 @@ async function load(s,force=false){
   let picks={},standings=[],tiebreakers={},pairings=[];
   if(!active){
    const ids=games.map(g=>g.id);
-   const p=ids.length?unwrap(await c.from("sec_sport_personal_picks").select("game_id,pick_code").eq("user_id",u.id).in("game_id",ids)):[];
+   const result=ids.length?await c.from("sec_sport_personal_picks").select("game_id,pick_code").eq("user_id",u.id).in("game_id",ids):null;
+    if(result?.error){notices[s]="Solo cloud saving requires the personal-picks database migration.";}
+    const p=result&&!result.error?result.data:[];
    picks=Object.fromEntries((p||[]).map(x=>[x.game_id,x]));
 
   }
