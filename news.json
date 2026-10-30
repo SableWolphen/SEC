@@ -1,11 +1,52 @@
 {
-  "updated_at": "2026-10-29T23:59:29.255816Z",
-  "checked_at": "2026-10-29T23:59:29.255816Z",
+  "updated_at": "2026-10-30T05:54:21.371314Z",
+  "checked_at": "2026-10-30T05:54:21.371314Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "e8a559b3e02a0c2f",
+      "title": "South Carolina State Bulldogs vs. Morgan State Bears: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50324619/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-30T02:53:42Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7d85a663f1a3d1e5",
+      "title": "Sources: Missouri RB Hardy to make season debut vs. Arkansas",
+      "summary": "Missouri All-America tailback Ahmad Hardy is set to make his season debut for the Tigers this weekend at Arkansas, sources told ESPN.",
+      "url": "https://www.espn.com/college-football/story/_/id/50321651/sources-missouri-rb-hardy-make-season-debut-vs-arkansas",
+      "source": "ESPN",
+      "published_at": "2026-10-30T02:30:33Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas",
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0c58e278ee603488",
+      "title": "Mississippi State OL DJ Chester out vs. Texas in latest hit to offense",
+      "summary": "Mississippi State, two days after losing starting QB Kamario Taylor for the season, ruled out starting left guard DJ Chester for Saturday's game against Texas.",
+      "url": "https://www.espn.com/college-football/story/_/id/50323632/mississippi-state-ol-dj-chester-sidelined-saturday-vs-texas",
+      "source": "ESPN",
+      "published_at": "2026-10-30T01:30:46Z",
+      "sport": "football",
+      "teams": [
+        "Mississippi State",
+        "Texas"
+      ],
+      "breaking": false
+    },
     {
       "id": "37e3413bbd8bae99",
       "title": "LSU coach Will Wade refuses to discuss RJ Luis Jr.'s eligibility status",
@@ -16,20 +57,6 @@
       "sport": "basketball",
       "teams": [
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7d85a663f1a3d1e5",
-      "title": "Sources: Missouri RB Hardy to make season debut vs. Arkansas",
-      "summary": "Missouri All-America tailback Ahmad Hardy is set to make his season debut for the Tigers this weekend at Arkansas, sources told ESPN.",
-      "url": "https://www.espn.com/college-football/story/_/id/50321651/sources-missouri-rb-hardy-make-season-debut-vs-arkansas",
-      "source": "ESPN",
-      "published_at": "2026-10-29T21:30:36Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas",
-        "Missouri"
       ],
       "breaking": false
     },
@@ -58,7 +85,7 @@
       "teams": [
         "LSU"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "fd3ea65cdf672b27",
@@ -338,32 +365,6 @@
       "teams": [
         "Oklahoma",
         "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c5417377587bdef2",
-      "title": "What does Kamario Taylor's season-ending injury mean for Mississippi State?",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50300991/what-does-kamario-taylor-season-ending-injury-mean-mississippi-state",
-      "source": "ESPN",
-      "published_at": "2026-10-27T20:51:54Z",
-      "sport": "football",
-      "teams": [
-        "Mississippi State"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "db4bbf25ea6754ba",
-      "title": "Kenny Minchey reveals 'secret sauce' to Kentucky's success so far",
-      "summary": "Minchey discusses the factors that led him to being a Wildcat as he describes how their one-play focus and mentality has contributed to their consistent wins so far this season.",
-      "url": "https://www.espn.com/video/clip/_/id/50300919/kenny-minchey-reveals-secret-sauce-kentucky-success-far",
-      "source": "ESPN",
-      "published_at": "2026-10-27T20:33:36Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
       ],
       "breaking": false
     },
