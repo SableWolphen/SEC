@@ -1,11 +1,52 @@
 {
-  "updated_at": "2026-10-30T05:54:21.371314Z",
-  "checked_at": "2026-10-30T05:54:21.371314Z",
+  "updated_at": "2026-10-30T13:01:42.644089Z",
+  "checked_at": "2026-10-30T13:01:42.644089Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "6ccf5ab175e495ef",
+      "title": "College football ghost stories, from Death Valley to Tennessee's 'Body Farm'",
+      "summary": "With Halloween falling on a football Saturday, we take a haunted trip to the sport's spookiest places.",
+      "url": "https://www.espn.com/college-football/story/_/id/50320619/ghost-stories-death-valley-tennessee-camp-randall",
+      "source": "ESPN",
+      "published_at": "2026-10-30T12:34:20Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "13c50cf2b2736048",
+      "title": "What does Florida-Georgia matchup mean for both teams' CFP chances?",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50327430/what-does-florida-georgia-matchup-mean-teams-cfp-chances",
+      "source": "ESPN",
+      "published_at": "2026-10-30T12:20:16Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "890260fb864c2550",
+      "title": "Connelly previews Week 9: Utah, Georgia, Ole Miss on upset alert",
+      "summary": "Is it Utah's turn to go down? Can Georgia and Ole Miss avoid disaster? Will Ohio State's backup plan work?",
+      "url": "https://www.espn.com/college-football/story/_/id/50318896/connelly-week-9-upset-alert",
+      "source": "ESPN",
+      "published_at": "2026-10-30T11:18:17Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
     {
       "id": "e8a559b3e02a0c2f",
       "title": "South Carolina State Bulldogs vs. Morgan State Bears: Full Highlights",
@@ -344,31 +385,6 @@
       "breaking": false
     },
     {
-      "id": "533bfa4f4061a54e",
-      "title": "Which SEC teams are in the best position for the CFP?",
-      "summary": "Heather Dinich reveals which teams would make it in the CFP if it were scheduled for today as she discusses who's looking good and ones that are too early to tell.",
-      "url": "https://www.espn.com/video/clip/_/id/50302012/which-sec-teams-best-position-cfp",
-      "source": "ESPN",
-      "published_at": "2026-10-27T22:45:26Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "db4bb20ba8e1b0a5",
-      "title": "Shane Beamer on how South Carolina must navigate OU's tough defense",
-      "summary": "Beamer joins SEC Now to describe what makes LaNorris Sellers such an asset in the pocket as he discusses the strategies SC must use to outsmart the Sooners' defense.",
-      "url": "https://www.espn.com/video/clip/_/id/50301707/shane-beamer-how-south-carolina-navigate-ou-tough-defense",
-      "source": "ESPN",
-      "published_at": "2026-10-27T22:18:44Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
       "id": "fdfe504f56e0610f",
       "title": "Utah's unlikely journey to the 1944 NCAA men's basketball title",
       "summary": "Utah’s journey to the 1944 NCAA men’s basketball tournament didn’t start in the Bee Hive state, but instead along U.S. Route 71, about 20 miles south of Fayetteville, Arkansas.",
@@ -482,19 +498,6 @@
       "sport": "baseball",
       "teams": [
         "Mississippi State"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f64f300edc4053f4",
-      "title": "Florida an overwhelming No. 1 in preseason AP Top 25 men's basketball poll",
-      "summary": "The Florida Gators are an overwhelming choice as the No. 1 team in the Associated Press preseason men's basketball poll released Monday.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50219265/florida-no-1-preseason-ap-top-25-men-basketball-poll",
-      "source": "ESPN",
-      "published_at": "2026-10-21T10:35:13Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
       ],
       "breaking": false
     }
