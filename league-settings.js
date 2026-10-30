@@ -245,6 +245,18 @@ async function loadNow(force=false){
   if(item&&["basketball","baseball"].includes(item.kind)&&!olderSeason(item)&&
     win.SEC_SPORTS?.getState?.(item.kind)?.active!==item.id)
    win.SEC_SPORTS?.selectLeague?.(item.kind,item.id);
+  if(item?.kind==="club"){
+
+   const c=item.detail;
+
+   if(c.owner_id===id){try{unwrap(await db().rpc("sec_club_sync_members",{p_club:c.id}));}catch(err){console.warn("Membership sync pending:",err);}}
+
+   if(validSports(c).includes("football"))win.secOnline?.useLeague?.(c.football_league);
+
+   for(const sport of validSports(c).filter(x=>x!=="football"))win.SEC_SPORTS?.selectLeague?.(sport,c[sport+"_league"]);
+
+  }
+
   await standings();
   if(me()?.id!==id)return;
   lastLoad=Date.now();
@@ -261,7 +273,10 @@ async function choose(value){
  render();
  try{
   if(x.kind==="football")win.secOnline?.useLeague?.(x.id);
-  else if(x.kind!=="club"&&!olderSeason(x))win.SEC_SPORTS?.selectLeague?.(x.kind,x.id);
+   else if(x.kind==="club"){for(const sport of validSports(x.detail)){
+    if(sport==="football")win.secOnline?.useLeague?.(x.detail.football_league);
+    else win.SEC_SPORTS?.selectLeague?.(sport,x.detail[sport+"_league"]);
+   }}else if(!olderSeason(x))win.SEC_SPORTS?.selectLeague?.(x.kind,x.id);
   await standings();
  }catch(e){message="Could not refresh this league’s standings: "+(e.message||"Please retry.");}
  render();win.SEC_BRACKETS?.mount?.();
@@ -349,6 +364,7 @@ async function action(name,button){
    const picked=checked("edit");
    if(!picked.length)throw Error("Choose at least one sport.");
    unwrap(await db().rpc("sec_club_set_sports",{p_club:c.id,p_sports:picked}));
+    unwrap(await db().rpc("sec_club_sync_members",{p_club:c.id}));
    app()?.toast?.("This league now uses "+picked.length+" sport"+(picked.length===1?"":"s")+". Existing picks are safe.");
   }else if(name==="upgrade"){
    if(!item||item.kind==="club"||item.owner_id!==me().id)
@@ -360,6 +376,7 @@ async function action(name,button){
     p_sport:item.kind,p_league:item.id,p_sports:picked
    }));
    if(!id)throw Error("Upgrade did not return a league ID.");
+    unwrap(await db().rpc("sec_club_sync_members",{p_club:id}));
    selection="club:"+id;app()?.toast?.("Original league history saved! Invite members to the added sports.");
   }else if(name==="reload"){await load(true);return;}
   else if(name==="sync"){
