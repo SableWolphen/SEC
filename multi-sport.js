@@ -563,7 +563,7 @@ document.addEventListener("click",ev=>{
   renderSport(statusButton.dataset.sport);return;
  }
  const swipe=ev.target.closest?.("[data-swipe-step]");
- if(swipe){ev.preventDefault();const grid=document.querySelector('[data-swipe-grid="'+swipe.dataset.sport+'"]');if(grid){const cards=[...grid.querySelectorAll('.sport-game-card')];const current=Math.round(grid.scrollLeft/Math.max(grid.clientWidth,1));const target=Math.max(0,Math.min(cards.length-1,current+Number(swipe.dataset.swipeStep)));cards[target]?.scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'});}return;}
+ if(swipe){ev.preventDefault();const grid=document.querySelector('[data-swipe-grid="'+swipe.dataset.sport+'"]');if(grid){const cards=[...grid.querySelectorAll('.sport-game-card')];const current=Math.round(grid.scrollLeft/Math.max(grid.clientWidth,1));const target=Math.max(0,Math.min(cards.length-1,current+Number(swipe.dataset.swipeStep)));if(cards[target])grid.scrollTo({left:cards[target].offsetLeft-cards[0].offsetLeft,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}return;}
  const series=ev.target.closest?.("[data-series-week]");
  if(series){cache.baseball.seriesWeek=Number(series.dataset.seriesWeek);renderSport("baseball");return;}
   const week=ev.target.closest?.("[data-sport-week]");
