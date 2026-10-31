@@ -13,8 +13,9 @@ assert.match(home,/root\.dataset\)root\.dataset\.moment=model\.moment/);
 assert.match(home,/m\.moment==="finals"\?"results":"picks"/);
 assert.match(home,/m\.moment==="live".*data-hq-focus/);
 assert.match(home,/thirdLabel=model\.moment==="live"/);
-assert.match(html,/function suggestedGamesFilter\(\)/);
-assert.match(html,/if\(v==="picks"&&!slateFilterTouched\)slateFilter=suggestedGamesFilter\(\)/);
+// The football slate always opens on "All games" so a saved pick never hides its matchup.
+assert.match(html,/if\(v==="picks"&&!slateFilterTouched\)slateFilter="all"/);
+assert.doesNotMatch(html,/suggestedGamesFilter/,"no dead auto-filter helper");
 assert.match(html,/slateFilterTouched=true;renderPicks\(\)/);
 assert.match(html,/slateFilterTouched=false;slateFilter="all"/);
 assert.match(next,/root\.innerHTML=n\?'<div class="secnext-picks-bar"/);

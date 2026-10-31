@@ -622,14 +622,6 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     if(month>=7)return 'picks';                 // Aug–Oct: football
     return 'baseball';                         // Feb–Jul
   }
-  function suggestedGamesFilter(){
-    const games=week().games;
-    if(games.some(g=>g.liveStatus==="live"))return "live";
-    if(games.some(g=>!state.picks[g.id]&&!isLocked(g)&&
-      !window.SEC_FEATURES?.isUnavailable?.(g)))return "unpicked";
-    if(games.some(g=>window.SEC_FEATURES?.finalData?.(g)))return "final";
-    return "all";
-  }
   function setView(v){
     if(v==='sports')v=seasonLanding(); // Old #sports links skip the selection homepage.
     const views=['home','team-hub','game-center','results','team-news','sports','picks','basketball','baseball','league','trophies','news','teams','settings','more'];
@@ -980,7 +972,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
 <script src="./sec-rankings.js?v=20261011-premium-v2"></script>
 <script src="./matchup-stats.js?v=20261011-national-polls-v1"></script>
 <script src="./team-records.js?v=20261011-premium-v2"></script>
-<script src="./multi-sport.js?v=20261031-persist-picked-v8"></script>
+<script src="./multi-sport.js?v=20261031-provisional-lock-v9"></script>
 <script src="./sec-recaps.js?v=20261010-recaps-v1"></script>
 <script src="./sec-news.js?v=20261011-premium-v3"></script>
 <script src="./sec-league-insights.js?v=20261010-showcase-v1"></script>

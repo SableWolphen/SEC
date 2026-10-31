@@ -382,9 +382,11 @@ function gameCard(s,g,league,picks){
  const options=Array.from({length:num},(_,i)=>i+1).map(n=>
    '<option value="'+n+'" '+(n===old?.confidence_points?'selected':'')+' '+(used.has(n)?'disabled':'')+'>'+n+' point'+(n===1?'':'s')+'</option>').join("");
  const currentName=old?.pick_code===g.home_code?g.home_name:old?.pick_code===g.away_code?g.away_name:"";
- const lockText=locked?"Picks locked":g.imported?"Locks at start":"Awaiting verified game";
+ // An unconfirmed tipoff/first pitch is only a provisional pick lock, never a real start time.
+ const provisional=String(g.source||"").includes("provisional");
+ const lockText=locked?"Picks locked":provisional?"Provisional pick lock "+prettyTime(g.kickoff_at):g.imported?"Locks at start":"Awaiting verified game";
  return '<article class="sport-game-card sport-football-style"><div class="sport-game-top"><span>'+String(g.week).padStart(2,"0")+' / MATCHUP</span>'+
-  '<span class="'+(g.game_status==="live"?"sport-live":"")+'">'+esc(prettyTime(g.kickoff_at))+'</span></div>'+
+  '<span class="'+(g.game_status==="live"?"sport-live":"")+'">'+esc(provisional&&!locked?"Tipoff TBA":prettyTime(g.kickoff_at))+'</span></div>'+
   '<p class="sport-kickoff">'+esc(g.away_name)+' vs '+esc(g.home_name)+'</p>'+
   '<div class="sport-team-options">'+opt(g.away_code)+'<span class="sport-vs">VS</span>'+opt(g.home_code)+'</div>'+
   '<div class="sport-pick-status"><span>'+esc(currentName?"Your pick: "+currentName:verdict||availability)+'</span><span class="sport-lock-label">'+esc(lockText)+'</span></div>'+
