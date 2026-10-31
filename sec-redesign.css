@@ -64,3 +64,9 @@
 .sport-game-card.sec-card-enhanced{padding:16px}
 .sec-pick-modal:focus-within{outline:none}
 @media(max-width:650px){.sport-games-grid{gap:10px}.sport-game-card.sec-card-enhanced{border-radius:16px}}
+
+.sec-profile-sport-stats{display:grid;gap:9px;margin:12px 0 20px}
+.sec-profile-sport-stats h2{font-size:18px;margin:5px 0}
+.sec-profile-stat-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px;min-height:58px;border:1px solid #41576b;background:#172b3d;border-radius:13px;color:#fff;text-align:left}
+.sec-profile-stat-row strong{font-size:14px}.sec-profile-stat-row span{color:#edc677;font-size:12px;text-align:right}
+.sec-profile-stat-row:focus-visible{outline:3px solid #f0c775;outline-offset:2px}
