@@ -54,3 +54,13 @@
 .sec-league-sports{display:grid;gap:13px;padding:16px;background:#12293b;border:1px solid #3f586b;border-radius:16px;margin:14px 0}
 .sec-league-sports>strong{font-size:15px}
 .sec-progress-row:focus-visible,.sec-league-sports button:focus-visible{outline:3px solid #f0c775;outline-offset:2px}
+
+/* Single-action game cards; original buttons remain in DOM for server-backed saving. */
+.sport-game-card.sec-card-enhanced .sport-team-options{display:none}
+.sport-game-card.sec-card-enhanced .sec-open-pick{font-size:14px;min-height:54px;margin-top:12px;background:#203347}
+.sport-game-card.sec-card-enhanced .sport-game-top{font-size:12px}
+.sport-game-card.sec-card-enhanced .sport-kickoff{font-size:13px}
+.sport-game-card.sec-card-enhanced .sport-game-foot{margin-top:10px}
+.sport-game-card.sec-card-enhanced{padding:16px}
+.sec-pick-modal:focus-within{outline:none}
+@media(max-width:650px){.sport-games-grid{gap:10px}.sport-game-card.sec-card-enhanced{border-radius:16px}}
