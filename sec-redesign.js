@@ -126,6 +126,21 @@ function enhanceSecondary(){
   });more.querySelector('.page-intro')?.after(guide);
  }
 }
+function enhanceNextGame(){
+ const pane=document.getElementById('sec-simple-home');if(!pane)return;
+ let area=pane.querySelector('.sec-next-match');
+ if(!area){area=make('section','sec-next-match');pane.querySelector('.sec-simple-sports')?.after(area);}
+ const list=[['basketball','🏀'],['baseball','⚾']].flatMap(([sport,emoji])=>{
+  const data=window.SEC_SPORTS?.getState?.(sport);return (data?.games||[]).filter(g=>g.game_status==='scheduled'&&Date.parse(g.kickoff_at)>Date.now()&&!data.picks?.[g.id]?.pick_code)
+  .map(g=>({sport,emoji,...g}));
+ }).sort((a,b)=>Date.parse(a.kickoff_at)-Date.parse(b.kickoff_at));
+ const first=list[0];const signature=first?.id||'none';if(area.dataset.game===signature)return;area.dataset.game=signature;area.replaceChildren();
+ if(!first)return;
+ area.append(make('strong','', 'Next pick to make'));
+ const b=make('button','sec-next-match-button');b.type='button';b.dataset.simpleSport=first.sport;
+ b.append(make('span','',first.emoji+' '+first.away_name+' vs '+first.home_name),make('small','',new Date(first.kickoff_at).toLocaleString('en-US',{timeZone:'America/Chicago',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})+' CT · Open picks ›'));
+ area.append(b);
+}
 function enhanceDashboardProgress(){
  const pane=document.getElementById('sec-simple-home');if(!pane)return;
  let target=pane.querySelector('.sec-live-progress');
@@ -188,7 +203,7 @@ function enhanceLeagueSports(){
  league.querySelector('#sec-league-intro')?.after(wrapper);
 }
 function enhance(){
- enhanceSportCards();enhanceSecondary();enhanceDashboardProgress();enhanceLeagueSports();enhanceProfileStats();
+ enhanceSportCards();enhanceSecondary();enhanceDashboardProgress();enhanceNextGame();enhanceLeagueSports();enhanceProfileStats();
 }
 
 document.addEventListener('click',e=>{
