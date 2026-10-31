@@ -70,3 +70,11 @@
 .sec-profile-stat-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px;min-height:58px;border:1px solid #41576b;background:#172b3d;border-radius:13px;color:#fff;text-align:left}
 .sec-profile-stat-row strong{font-size:14px}.sec-profile-stat-row span{color:#edc677;font-size:12px;text-align:right}
 .sec-profile-stat-row:focus-visible{outline:3px solid #f0c775;outline-offset:2px}
+
+.sec-next-match{display:grid;gap:10px;padding:15px;border:1px solid #aa874b;background:linear-gradient(135deg,#1c3043,#172c3b);border-radius:16px}
+.sec-next-match>strong{font-size:14px;color:#f0ca7c}
+.sec-next-match-button{display:grid;gap:7px;padding:12px;text-align:left;border:1px solid #536478;border-radius:12px;background:#0d2233;color:#fff;min-height:65px}
+.sec-next-match-button span{font-size:15px;font-weight:850}
+.sec-next-match-button small{color:#edcb88;font-size:12px}
+.sec-next-match-button:focus-visible{outline:3px solid #f0c775;outline-offset:2px}
+.sport-team-option[aria-busy="true"]{opacity:.76;cursor:progress}
