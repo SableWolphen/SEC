@@ -242,7 +242,7 @@ function renderSport(s){
  const leagues=renderLeagues(s,signed,active);
  const statusOf=g=>g.game_status==="live"?"live":
    g.game_status==="final"?"final":"upcoming";
- const selectedStatus=statusFilters[s]||"all";
+ const selectedStatus=statusFilters[s]||"needs-pick";
  let games="";
  if(!weeks.length){
   games='<div class="sport-empty"><span>'+conf.emoji+'</span><h3>Waiting for the official schedule</h3>'+
@@ -256,13 +256,13 @@ function renderSport(s){
    '<div class="sport-slate-heading"><div><div class="card-kicker">THE SLATE</div><h3>Week '+w.num+' matchups <span>('+w.games.length+')</span></h3></div>'+
    '<div class="sport-mode-label">'+esc(active?MODES[active.mode]:"Straight Picks")+'</div></div>'+
    '<div class="sport-game-filters" role="group" aria-label="Filter '+conf.short+' games by status">'+
-   [["all","All"],["upcoming","Upcoming"],["live","Live"],["final","Final"]].map(([key,label])=>
+   [["needs-pick","To pick"],["all","All games"],["upcoming","Upcoming"],["live","Live"],["final","Final"]].map(([key,label])=>
     '<button type="button" class="sport-game-filter '+(selectedStatus===key?"active":"")+
     '" data-sport-filter="'+key+'" data-sport="'+s+'" aria-pressed="'+(selectedStatus===key)+'">'+
-    label+' <small>'+w.games.filter(g=>key==="all"||statusOf(g)===key).length+'</small></button>').join("")+'</div>'+
-   '<div class="sport-games-grid">'+(w.games.filter(g=>selectedStatus==="all"||statusOf(g)===selectedStatus)
+    label+' <small>'+w.games.filter(g=>key==="all"||(key==="needs-pick"?g.game_status==="scheduled"&&Date.parse(g.kickoff_at)>Date.now()&&!picks[g.id]?.pick_code:statusOf(g)===key)).length+'</small></button>').join("")+'</div>'+
+   '<div class="sport-games-grid">'+(w.games.filter(g=>selectedStatus==="all"||(selectedStatus==="needs-pick"?g.game_status==="scheduled"&&Date.parse(g.kickoff_at)>Date.now()&&!picks[g.id]?.pick_code:statusOf(g)===selectedStatus))
     .map(g=>gameCard(s,g,active,picks)).join("")||
-    '<p class="sport-games-no-status">No '+selectedStatus+' '+conf.short.toLowerCase()+' games in this week. Choose All to see the full slate.</p>')+
+    '<p class="sport-games-no-status">'+(selectedStatus==="needs-pick"?"All available picks are done for this week! Choose All games to review them.":"No games in this view. Choose All games to see the full slate.")+'</p>')+
    '</div>'+
    renderTiebreak(s,w,active,saved);
  }
@@ -548,7 +548,7 @@ document.addEventListener("click",ev=>{
  if(button){ev.preventDefault();void action(button);return;}
  const statusButton=ev.target.closest?.("[data-sport-filter]");
  if(statusButton&&SPORT[statusButton.dataset.sport]&&
-   ["all","upcoming","live","final"].includes(statusButton.dataset.sportFilter)){
+   ["needs-pick","all","upcoming","live","final"].includes(statusButton.dataset.sportFilter)){
   ev.preventDefault();
   statusFilters[statusButton.dataset.sport]=statusButton.dataset.sportFilter;
   renderSport(statusButton.dataset.sport);return;
