@@ -45,3 +45,12 @@
 .sec-more-row strong{font-size:14px}.sec-more-row small{font-size:12px;color:#acbeca}
 .sec-open-pick:focus-visible,.sec-pick-modal button:focus-visible,.sec-more-row:focus-visible,.sec-score-shortcut:focus-visible{outline:3px solid #f0c775;outline-offset:2px}
 @media(max-width:620px){.sec-pick-overlay{align-items:flex-end;padding:0}.sec-pick-modal{width:100%;max-height:94dvh;border-radius:23px 23px 0 0;padding:23px 18px calc(25px + env(safe-area-inset-bottom))}.sec-pick-modal-team{min-height:142px}}
+
+/* Unified picks progress and league shortcuts */
+.sec-live-progress{display:grid;gap:8px}
+.sec-progress-row{display:flex;align-items:center;justify-content:space-between;text-align:left;gap:12px;min-height:52px;width:100%;padding:12px 15px;color:#e7f0f7;background:#152a3a;border:1px solid #40556b;border-radius:13px}
+.sec-progress-row strong{color:#f0c775;font-size:12px;text-align:right}
+.sec-progress-row span{font-size:13px;font-weight:800}
+.sec-league-sports{display:grid;gap:13px;padding:16px;background:#12293b;border:1px solid #3f586b;border-radius:16px;margin:14px 0}
+.sec-league-sports>strong{font-size:15px}
+.sec-progress-row:focus-visible,.sec-league-sports button:focus-visible{outline:3px solid #f0c775;outline-offset:2px}
