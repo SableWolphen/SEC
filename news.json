@@ -1,11 +1,64 @@
 {
-  "updated_at": "2026-10-31T15:45:15.349032Z",
-  "checked_at": "2026-10-31T15:45:15.349032Z",
+  "updated_at": "2026-10-31T20:00:18.562298Z",
+  "checked_at": "2026-10-31T20:00:18.562298Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "ad7596a0b01c2a6a",
+      "title": "Arizona WR R.J. Mosley taken to hospital with knee injury",
+      "summary": "Arizona wide receiver R.J. Mosley was carted off the field and taken to an area hospital for evaluation after suffering a knee injury in the third quarter of the Wildcats' game against Texas Tech on Saturday.",
+      "url": "https://www.espn.com/college-football/story/_/id/50338560/arizona-wr-rj-mosley-taken-hospital-knee-injury",
+      "source": "ESPN",
+      "published_at": "2026-10-31T19:39:17Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "153bcca2b9ec2fff",
+      "title": "Yale Bulldogs vs. Columbia Lions: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50338599/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-31T19:30:34Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "915fb8ab3509b269",
+      "title": "Sources: Florida's Aaron Philo resumes QB1 role vs. Georgia",
+      "summary": "Florida will start QB Aaron Philo over Tramell Jones Jr. when the No. 17 Gators try to end a five-game losing streak vs. No. 3 Georgia, sources told ESPN.",
+      "url": "https://www.espn.com/college-football/story/_/id/50328979/sources-florida-aaron-philo-resumes-qb1-role-vs-georgia",
+      "source": "ESPN",
+      "published_at": "2026-10-31T18:29:18Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6ada8102370e311a",
+      "title": "LSU lands 5-star center Xavier Young for class of 2027",
+      "summary": "Five-star center Xavier Young has committed to LSU and plans to reclassify into the 2027 class. The 16-year-old will need to spend at least two years in college before he's eligible for the NBA draft.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50336401/lsu-lands-5-star-center-xavier-young-class-2027",
+      "source": "ESPN",
+      "published_at": "2026-10-31T17:52:04Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
     {
       "id": "323377cb10c1d895",
       "title": "Zion Green commits to Alabama hoops as Crimson Tide's second top-25 recruit",
@@ -18,20 +71,6 @@
         "Alabama"
       ],
       "breaking": true
-    },
-    {
-      "id": "a1888fa7b19d703e",
-      "title": "Tebow breaks down Florida's 'unique hope' vs. Georgia",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50335294/tebow-breaks-florida-unique-hope-vs-georgia",
-      "source": "ESPN",
-      "published_at": "2026-10-31T12:48:13Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
-      ],
-      "breaking": false
     },
     {
       "id": "4df70c315e621268",
@@ -180,20 +219,6 @@
       "breaking": false
     },
     {
-      "id": "915fb8ab3509b269",
-      "title": "Sources: Florida's Aaron Philo resumes QB1 role vs. Georgia",
-      "summary": "Florida will start QB Aaron Philo over Tramell Jones Jr. when the No. 17 Gators try to end a five-game losing streak vs. No. 3 Georgia, sources told ESPN.",
-      "url": "https://www.espn.com/college-football/story/_/id/50328979/sources-florida-aaron-philo-resumes-qb1-role-vs-georgia",
-      "source": "ESPN",
-      "published_at": "2026-10-30T17:41:48Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
       "id": "b3fd6d17889eedd1",
       "title": "Florida vs. Georgia rivalry through the lens of former players",
       "summary": "Former Georgia offensive lineman George Foster and former Florida linebacker Brandon Spikes are challenged to say something nice about their rivals while previewing the upcoming rivalry game.",
@@ -204,20 +229,6 @@
       "teams": [
         "Florida",
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "890260fb864c2550",
-      "title": "Connelly previews Week 9: Utah, Georgia, Ole Miss on upset alert",
-      "summary": "Is it Utah's turn to go down? Can Georgia and Ole Miss avoid disaster? Will Ohio State's backup plan work?",
-      "url": "https://www.espn.com/college-football/story/_/id/50318896/connelly-week-9-upset-alert",
-      "source": "ESPN",
-      "published_at": "2026-10-30T17:02:13Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Ole Miss"
       ],
       "breaking": false
     },
@@ -269,33 +280,6 @@
       "teams": [
         "Florida",
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "13c50cf2b2736048",
-      "title": "What does Florida-Georgia matchup mean for both teams' CFP chances?",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50327430/what-does-florida-georgia-matchup-mean-teams-cfp-chances",
-      "source": "ESPN",
-      "published_at": "2026-10-30T13:44:09Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6ccf5ab175e495ef",
-      "title": "College football ghost stories, from Death Valley to Tennessee's 'Body Farm'",
-      "summary": "With Halloween falling on a football Saturday, we take a haunted trip to the sport's spookiest places.",
-      "url": "https://www.espn.com/college-football/story/_/id/50320619/ghost-stories-death-valley-tennessee-camp-randall",
-      "source": "ESPN",
-      "published_at": "2026-10-30T12:34:20Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
       ],
       "breaking": false
     },
