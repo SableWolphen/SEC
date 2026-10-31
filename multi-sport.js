@@ -363,7 +363,7 @@ function gameCard(s,g,league,picks){
  const availability=!user()?"Sign in to pick":!g.imported?"Syncing game to secure pick server":locked?"Picks locked":
   mode==="spread"&&(g.spread_home===null||g.spread_home===undefined)?"Waiting for a published spread":"Choose a winner";
  const opt=code=>'<button type="button" class="sport-team-option '+(old?.pick_code===code?'selected':'')+
-  '" data-sport-action="pick" data-sport="'+s+'" data-game="'+esc(g.id)+'" data-pick="'+esc(code)+'"'+(SEC_IDS[String(code)]?' data-sds-school="'+SEC_IDS[String(code)]+'"':'')+' '+
+  '" data-sport-action="pick" data-sport="'+s+'" data-game="'+esc(g.id)+'" data-sport-pick="'+esc(code)+'"'+(SEC_IDS[String(code)]?' data-sds-school="'+SEC_IDS[String(code)]+'"':'')+' '+
   (!canPick?'disabled':'')+' aria-pressed="'+(old?.pick_code===code)+'">'+
   '<span class="sport-team-top"><span class="sport-team-label">'+schoolMark(code)+'<span class="sport-team-name">'+esc(code===g.away_code?g.away_name:g.home_name)+sportTeamContext(s,g,code)+'</span></span>'+
   (scored?'<span class="sport-team-score '+(Number(code===g.away_code?g.away_score:g.home_score)>Number(code===g.away_code?g.home_score:g.away_score)?"is-leading":"")+
@@ -518,8 +518,8 @@ async function action(btn){
    if(Date.now()>=Date.parse(g.kickoff_at))throw Error("This game is locked.");
    const conf=l?.mode==="confidence"?Number(document.querySelector('[data-confidence="'+g.id+'"]')?.value):null;
    if(l?.mode==="confidence"&&!conf)throw Error("Choose a unique weekly confidence value first.");
-   if(l)unwrap(await c.rpc("sec_sport_save_pick",{p_league:l.id,p_game:g.id,p_pick:btn.dataset.pick,p_confidence:conf}));
-    else unwrap(await c.rpc("sec_sport_save_personal_pick",{p_game:g.id,p_pick:btn.dataset.pick}));
+   if(l)unwrap(await c.rpc("sec_sport_save_pick",{p_league:l.id,p_game:g.id,p_pick:btn.dataset.sportPick,p_confidence:conf}));
+    else unwrap(await c.rpc("sec_sport_save_personal_pick",{p_game:g.id,p_pick:btn.dataset.sportPick}));
    notices[s]=l?"League pick saved online.":"Personal pick saved online.";
    await load(s);return;
   }
