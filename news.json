@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-10-31T20:00:18.562298Z",
-  "checked_at": "2026-10-31T20:00:18.562298Z",
+  "updated_at": "2026-10-31T23:25:59.707879Z",
+  "checked_at": "2026-10-31T23:25:59.707879Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "ad7596a0b01c2a6a",
-      "title": "Arizona WR R.J. Mosley taken to hospital with knee injury",
-      "summary": "Arizona wide receiver R.J. Mosley was carted off the field and taken to an area hospital for evaluation after suffering a knee injury in the third quarter of the Wildcats' game against Texas Tech on Saturday.",
-      "url": "https://www.espn.com/college-football/story/_/id/50338560/arizona-wr-rj-mosley-taken-hospital-knee-injury",
+      "id": "15049dc119bca552",
+      "title": "Northwestern safety Jon Jon Stevens exits loss with upper-body injury",
+      "summary": "Northwestern safety Jon Jon Stevens was carted off the field in the third quarter of the Wildcats' 34-26 loss at Oregon on Saturday after delivering a hard blow on a tackle, and the team later announced he was…",
+      "url": "https://www.espn.com/college-football/story/_/id/50340369/northwestern-s-jon-jon-stevens-exits-upper-body-injury",
       "source": "ESPN",
-      "published_at": "2026-10-31T19:39:17Z",
+      "published_at": "2026-10-31T23:24:48Z",
       "sport": "football",
       "teams": [
         "Kentucky"
@@ -20,12 +20,80 @@
       "breaking": true
     },
     {
-      "id": "153bcca2b9ec2fff",
-      "title": "Yale Bulldogs vs. Columbia Lions: Full Highlights",
+      "id": "2b05538cda767185",
+      "title": "Tennessee Tech Golden Eagles vs. East Tennessee State Buccaneers: Full Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50338599/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50341388/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-31T19:30:34Z",
+      "published_at": "2026-10-31T23:24:43Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5c9f4efe26570783",
+      "title": "Alabama State Hornets vs. Alabama A&M Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50341350/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-31T23:22:00Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0e3e3cb12d53475c",
+      "title": "West Georgia Wolves vs. Abilene Christian Wildcats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50341303/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-31T23:19:43Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "77a2a98e51c473d1",
+      "title": "Florida Gators vs. Georgia Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50341246/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-31T23:14:21Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "abd7b078e91b267c",
+      "title": "SE Louisiana Lions vs. East Texas A&M Lions: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50341159/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-31T23:06:37Z",
+      "sport": "football",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9126d1e9f7eb8bd8",
+      "title": "Louisiana Tech Bulldogs vs. South Alabama Jaguars: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50340587/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-31T22:27:01Z",
       "sport": "football",
       "teams": [
         "Georgia"
@@ -33,16 +101,43 @@
       "breaking": false
     },
     {
-      "id": "915fb8ab3509b269",
-      "title": "Sources: Florida's Aaron Philo resumes QB1 role vs. Georgia",
-      "summary": "Florida will start QB Aaron Philo over Tramell Jones Jr. when the No. 17 Gators try to end a five-game losing streak vs. No. 3 Georgia, sources told ESPN.",
-      "url": "https://www.espn.com/college-football/story/_/id/50328979/sources-florida-aaron-philo-resumes-qb1-role-vs-georgia",
+      "id": "7b9169b9752a47a1",
+      "title": "UC Davis Aggies vs. Weber State Wildcats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50340433/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-31T18:29:18Z",
+      "published_at": "2026-10-31T22:14:54Z",
       "sport": "football",
       "teams": [
-        "Florida",
+        "Kentucky",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f2256d881918d1dd",
+      "title": "The Citadel Bulldogs vs. Mercer Bears: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50340371/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-31T22:09:22Z",
+      "sport": "football",
+      "teams": [
         "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "db6b93a11119f2fc",
+      "title": "Gardner-Webb Bulldogs vs. Southeast Missouri State Redhawks: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50339904/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-10-31T21:18:51Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Missouri"
       ],
       "breaking": false
     },
@@ -70,179 +165,6 @@
       "teams": [
         "Alabama"
       ],
-      "breaking": true
-    },
-    {
-      "id": "4df70c315e621268",
-      "title": "What will be deciding factor for Florida vs. Georgia?",
-      "summary": "With the No. 17 Gators set to face the No. 3 Bulldogs, the SEC Nation crew breaks down the components on both sides of the ball that could decide the matchup.",
-      "url": "https://www.espn.com/video/clip/_/id/50333159/what-deciding-factor-florida-vs-georgia",
-      "source": "ESPN",
-      "published_at": "2026-10-31T03:58:58Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "47acef2e454a5158",
-      "title": "Saturday Stud: Who's going to have the longest team touchdown?",
-      "summary": "The SEC Now crew makes their predictions on which team in the conference will have the longest touchdown for Week 9.",
-      "url": "https://www.espn.com/video/clip/_/id/50332967/going-longest-team-touchdown",
-      "source": "ESPN",
-      "published_at": "2026-10-31T03:00:58Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "f35fd4402f91dbef",
-      "title": "Watson, Doering make their picks ahead of Week 9 action",
-      "summary": "SEC Network's Benjamin Watson and Chris Doering preview the most notable matchups as they pick the teams they believe will come out on top in Week 9.",
-      "url": "https://www.espn.com/video/clip/_/id/50332956/watson-doering-make-their-picks-ahead-week-9-action",
-      "source": "ESPN",
-      "published_at": "2026-10-31T03:00:28Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "f6b301414e5f22f1",
-      "title": "Doering, Watson draw up plans for success ahead of Georgia vs. Florida",
-      "summary": "SEC Network's Benjamin Watson puts together the perfect plan for the Bulldogs to be successful as Chris Doering emphasizes how the Gators can hold off their tough defense.",
-      "url": "https://www.espn.com/video/clip/_/id/50332943/doering-watson-draw-plans-success-ahead-georgia-vs-florida",
-      "source": "ESPN",
-      "published_at": "2026-10-31T02:53:14Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7fad82f8ea23c3ab",
-      "title": "Chris Doering previews key SEC Week 9 matchups",
-      "summary": "Doering joins The Paul Finebaum Show to preview Week 9's most notable matchups as he discusses key components and players to look out for in each game.",
-      "url": "https://www.espn.com/video/clip/_/id/50331728/chris-doering-previews-key-sec-week-9-matchups",
-      "source": "ESPN",
-      "published_at": "2026-10-30T23:49:02Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "c0624c188d17e9f7",
-      "title": "Benjamin Watson dissects Georgia's mindset vs. Florida",
-      "summary": "SEC Network's Watson joins The Paul Finebaum Show and explains how the No. 3 Bulldogs are approaching their rivalry matchup against the No. 17 Gators coming off a defeat.",
-      "url": "https://www.espn.com/video/clip/_/id/50331398/benjamin-watson-dissects-georgia-mindset-vs-florida",
-      "source": "ESPN",
-      "published_at": "2026-10-30T22:52:23Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d0fd73ec2cb465fb",
-      "title": "How consistent change of college football landscape impacts SEC",
-      "summary": "Matt Barrie joins The Paul Finebaum Show to discuss how continuous changes across the college football world has impacted the SEC as he previews the Florida vs. Georgia matchup.",
-      "url": "https://www.espn.com/video/clip/_/id/50331107/how-consistent-change-college-football-landscape-impacts-sec",
-      "source": "ESPN",
-      "published_at": "2026-10-30T22:03:50Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0a4ce93c4b8d89e1",
-      "title": "Tim Tebow reminisces on his time as a Gator, dissects Florida vs. UGA",
-      "summary": "Tebow shares stories about the significance of the Florida vs. Georgia rivalry through his perspective as a former player, then breaks down Saturday's keys to success.",
-      "url": "https://www.espn.com/video/clip/_/id/50331035/tim-tebow-reminisces-a-gator-dissects-florida-vs-uga",
-      "source": "ESPN",
-      "published_at": "2026-10-30T21:38:25Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "34be51a54ef48a42",
-      "title": "Roman Harper gives an interesting way Florida can win vs. Georgia",
-      "summary": "SEC Nation's Harper chimes in on The Paul Finebaum Show to explain how an unorthodox offensive approach could help the No. 17 Gators beat the No. 3 Bulldogs.",
-      "url": "https://www.espn.com/video/clip/_/id/50330974/roman-harper-gives-interesting-way-florida-win-vs-georgia",
-      "source": "ESPN",
-      "published_at": "2026-10-30T21:22:13Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "498ff45486e2fd8d",
-      "title": "Scott Stricklin explains why he loves UF and UGA's neutral-site rivalry",
-      "summary": "Florida athletic director Scott Stricklin joins The Paul Finebaum Show from Atlanta to preview the Gators' rivalry matchup against the Bulldogs and discuss the atmosphere surrounding the neutral-site game.",
-      "url": "https://www.espn.com/video/clip/_/id/50330934/scott-stricklin-explains-why-loves-uf-uga-neutral-site-rivalry",
-      "source": "ESPN",
-      "published_at": "2026-10-30T21:11:03Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5af6b911aabf450b",
-      "title": "Matt Stinchcomb says clean football helps UK, previews Bama vs. LSU",
-      "summary": "Stinchcomb credits Kentucky's disciplined play for its climb to the top of the SEC standings then discusses the significance of Alabama taking on LSU.",
-      "url": "https://www.espn.com/video/clip/_/id/50330594/matt-stinchcomb-says-clean-football-helps-uk-previews-bama-vs-lsu",
-      "source": "ESPN",
-      "published_at": "2026-10-30T20:40:01Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Kentucky",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b3fd6d17889eedd1",
-      "title": "Florida vs. Georgia rivalry through the lens of former players",
-      "summary": "Former Georgia offensive lineman George Foster and former Florida linebacker Brandon Spikes are challenged to say something nice about their rivals while previewing the upcoming rivalry game.",
-      "url": "https://www.espn.com/video/clip/_/id/50328877/florida-vs-georgia-rivalry-lens-former-players",
-      "source": "ESPN",
-      "published_at": "2026-10-30T17:19:05Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b3df6566428b7cb3",
-      "title": "NCAA loses Kentucky appeals ruling; players remain eligible",
-      "summary": "A Kentucky Court of Appeals judge denied the NCAA emergency relief on Friday, allowing a group of players including Texas Tech quarterback Thomas Castellanos to remain eligible.",
-      "url": "https://www.espn.com/college-football/story/_/id/50328513/ncaa-loses-kentucky-appeals-ruling-players-remain-eligible",
-      "source": "ESPN",
-      "published_at": "2026-10-30T15:33:34Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
       "breaking": false
     },
     {
@@ -255,31 +177,6 @@
       "sport": "basketball",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1e421e57d594e674",
-      "title": "Burns, Doering elevate their look to deliver Week 9 power rankings",
-      "summary": "SEC This Morning's Peter Burns and Chris Doering get into the Halloween spirit with slightly large suits and blonde wigs to deliver the top-five SEC teams that need a Week 9 win.",
-      "url": "https://www.espn.com/video/clip/_/id/50328576/burns-doering-elevate-their-look-deliver-week-9-power-rankings",
-      "source": "ESPN",
-      "published_at": "2026-10-30T15:32:29Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "84d89b32f9be6c70",
-      "title": "Top 25 betting lines: Georgia double-digit favorites vs. Florida",
-      "summary": "This week's odds and FPI predictions for Georgia-Florida, Tech Tech-Arizona and every top 25 matchup.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50284745/2026-college-football-week-9-top-25-betting-lines-odds",
-      "source": "ESPN",
-      "published_at": "2026-10-30T15:11:39Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
       ],
       "breaking": false
     },
