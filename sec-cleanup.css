@@ -34,3 +34,20 @@
  .sport-league-shell{padding:15px}
 }
 @media(prefers-reduced-motion:reduce){.sport-team-option{transition:none}}
+
+/* Make the pick task the primary focus, keeping secondary details optional. */
+.sport-game-filters{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:3px 0 10px}
+.sport-game-filters::-webkit-scrollbar{display:none}
+.sport-game-filter{flex:0 0 auto;min-height:43px;padding:10px 14px;border-radius:12px;font-size:12px;font-weight:750;white-space:nowrap}
+.sport-game-filter.active{border-color:#f0c775;background:#f0c775;color:#12202a}
+.sport-next-pick{border-radius:16px;padding:15px;border:1px solid #65734e}
+.sport-next-pick strong{font-size:14px}
+.sport-next-pick small{line-height:1.5}
+.sport-games-no-status{padding:28px 18px;text-align:center;font-size:14px;line-height:1.6;border:1px dashed #536879;border-radius:15px}
+@media(max-width:700px){
+ .sport-game-filters{margin:5px -3px 10px;padding-left:3px}
+ .sport-game-filter{min-height:46px}
+ .sport-slate-heading h3{font-size:20px}
+ .sport-game-provider{font-size:10px}
+ .sport-week-score{border-radius:15px}
+}
