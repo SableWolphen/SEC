@@ -67,3 +67,7 @@
 #basketball-view .sport-week-score,#baseball-view .sport-week-score{margin-top:22px}
 #basketball-view .sport-game-provider,#baseball-view .sport-game-provider{display:none}
 @media(max-width:650px){.sport-pick-context{align-items:flex-start;flex-direction:column;gap:5px}.sport-pick-context span{text-align:left}.sport-picks-extras{margin-bottom:20px}}
+
+.sport-quick-league{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:750;color:#c5d3dd}
+.sport-quick-league select{max-width:190px;min-height:42px;background:#21384a;color:#f6f8fa;border:1px solid #5d7690;border-radius:10px;padding:7px 8px;font-size:13px}
+@media(max-width:650px){.sport-quick-league{width:100%;justify-content:space-between}.sport-quick-league select{flex:1;max-width:75%}}
