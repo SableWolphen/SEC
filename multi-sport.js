@@ -146,8 +146,17 @@ function renderSeries(s){
 const allGames=(s)=>{
  const publicList=Array.isArray(feed.sports?.[s]?.games)?feed.sports[s].games:[];
  const dbList=(Array.isArray(cache[s].games)?cache[s].games:[]).filter(g=>g.sport===s&&g.season===year(s));
+ // Server rows are the canonical pick identity. The published fixture feed can
+ // use a different ID for the same matchup; reconcile before rendering cards.
  const merged=new Map(publicList.filter(g=>g.season===year(s)).map(g=>[g.id,{...g,imported:false}]));
- dbList.forEach(g=>merged.set(g.id,{...merged.get(g.id),...g,imported:true}));
+ const fixtureKey=g=>[g.sport||s,g.season,String(g.away_code),String(g.home_code)].join("|");
+ for(const g of dbList){
+  const candidates=[...merged.entries()].filter(([,x])=>fixtureKey(x)===fixtureKey(g)&&
+   Math.abs(Date.parse(x.kickoff_at)-Date.parse(g.kickoff_at))<=36*3600000);
+  // Only merge an unambiguous fixture: never reassign picks across doubleheaders.
+  if(candidates.length===1)merged.delete(candidates[0][0]);
+  merged.set(g.id,{...(candidates.length===1?candidates[0][1]:{}),...g,imported:true});
+ }
  return [...merged.values()].sort((a,b)=>new Date(a.kickoff_at)-new Date(b.kickoff_at));
 };
 const groups=s=>{
