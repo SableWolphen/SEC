@@ -260,7 +260,8 @@ function renderSport(s){
     '<button type="button" class="sport-game-filter '+(selectedStatus===key?"active":"")+
     '" data-sport-filter="'+key+'" data-sport="'+s+'" aria-pressed="'+(selectedStatus===key)+'">'+
     label+' <small>'+w.games.filter(g=>key==="all"||(key==="needs-pick"?g.game_status==="scheduled"&&Date.parse(g.kickoff_at)>Date.now()&&!picks[g.id]?.pick_code:statusOf(g)===key)).length+'</small></button>').join("")+'</div>'+
-   '<div class="sport-games-grid">'+(w.games.filter(g=>selectedStatus==="all"||(selectedStatus==="needs-pick"?g.game_status==="scheduled"&&Date.parse(g.kickoff_at)>Date.now()&&!picks[g.id]?.pick_code:statusOf(g)===selectedStatus))
+   '<div class="sport-swipe-tools"><span>Swipe between matchups</span><div><button type="button" data-swipe-step="-1" data-sport="'+s+'" aria-label="Previous matchup">‹</button><output class="sport-swipe-count" aria-live="polite">1 / '+w.games.length+'</output><button type="button" data-swipe-step="1" data-sport="'+s+'" aria-label="Next matchup">›</button></div></div>'+ 
+   '<div class="sport-games-grid sport-swipe-grid" data-swipe-grid="'+s+'">'+(w.games.filter(g=>selectedStatus==="all"||(selectedStatus==="needs-pick"?g.game_status==="scheduled"&&Date.parse(g.kickoff_at)>Date.now()&&!picks[g.id]?.pick_code:statusOf(g)===selectedStatus))
     .map(g=>gameCard(s,g,active,picks)).join("")||
     '<p class="sport-games-no-status">'+(selectedStatus==="needs-pick"?"All available picks are done for this week! Choose All games to review them.":"No games in this view. Choose All games to see the full slate.")+'</p>')+
    '</div>'+
@@ -561,6 +562,8 @@ document.addEventListener("click",ev=>{
   statusFilters[statusButton.dataset.sport]=statusButton.dataset.sportFilter;
   renderSport(statusButton.dataset.sport);return;
  }
+ const swipe=ev.target.closest?.("[data-swipe-step]");
+ if(swipe){ev.preventDefault();const grid=document.querySelector('[data-swipe-grid="'+swipe.dataset.sport+'"]');if(grid){const cards=[...grid.querySelectorAll('.sport-game-card')];const current=Math.round(grid.scrollLeft/Math.max(grid.clientWidth,1));const target=Math.max(0,Math.min(cards.length-1,current+Number(swipe.dataset.swipeStep)));cards[target]?.scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'});}return;}
  const series=ev.target.closest?.("[data-series-week]");
  if(series){cache.baseball.seriesWeek=Number(series.dataset.seriesWeek);renderSport("baseball");return;}
   const week=ev.target.closest?.("[data-sport-week]");
@@ -568,6 +571,7 @@ document.addEventListener("click",ev=>{
   try{sessionStorage.setItem("sec-week-"+week.dataset.sport+"-"+year(week.dataset.sport),String(selectedWeeks[week.dataset.sport]));}catch(_error){}
   renderSport(week.dataset.sport);void load(week.dataset.sport); }
 });
+document.addEventListener("scroll",ev=>{const grid=ev.target?.closest?.('[data-swipe-grid]');if(!grid)return;const cards=grid.querySelectorAll('.sport-game-card');if(!cards.length)return;const current=Math.min(cards.length,Math.max(1,Math.round(grid.scrollLeft/Math.max(grid.clientWidth,1))+1));const count=grid.previousElementSibling?.querySelector('.sport-swipe-count');if(count)count.textContent=current+' / '+cards.length;},true);
 document.addEventListener("change",ev=>{
  const s=ev.target.dataset?.changeSport;
  if(!SPORT[s])return;
