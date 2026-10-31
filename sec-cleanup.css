@@ -1,0 +1,36 @@
+/* SEC Pick'em mobile-first clarity pass. Presentation only; no data or pick rules changed. */
+:root{--pick-focus:#f0c775}
+.sport-game-card{background:#142536;border:1px solid #30465a;border-radius:20px;padding:18px;box-shadow:0 4px 18px #07121c24}
+.sport-game-card:focus-within{border-color:#a98a56}
+.sport-game-top{align-items:center;gap:12px;font-size:12px;letter-spacing:0}
+.sport-game-top span:last-child{font-size:12px;text-align:right}
+.sport-kickoff{font-size:13px;line-height:1.4;margin:10px 0 15px;color:#b9c9d4}
+.sport-team-options{gap:10px;align-items:stretch}
+.sport-team-option{min-height:112px;padding:14px;border-radius:14px;background:#182f40;border:1.5px solid #466078;gap:12px;transition:border-color .15s,background .15s}
+.sport-team-option:hover:not(:disabled){background:#223e50;border-color:#d4b576}
+.sport-team-option.selected{background:#443a29;border:2px solid #f0c775;box-shadow:inset 0 0 0 1px #f0c77533}
+.sport-team-option:disabled:not(.selected){opacity:.65}
+.sport-team-name{font-size:15px;line-height:1.3;font-weight:800}
+.sport-check{font-size:20px;line-height:1}
+.sport-vs{align-self:center;color:#9fb1bf;font-size:12px}
+.sport-game-foot{font-size:12px!important;color:#d7e3e8!important;font-weight:700;margin:12px 0 0!important}
+.sport-game-provider{font-size:10px;color:#8599a9;margin-top:7px}
+.sport-game-card details{border-radius:12px;overflow:hidden}
+.sport-game-card details summary{min-height:44px}
+.sport-heading{padding:17px;gap:12px;background:#172a36;border-color:#304c5e}
+.sport-heading-icon{font-size:32px}
+.sport-heading h2{font-size:22px;line-height:1.2}
+.sport-heading p{line-height:1.45}
+.sport-week-button,.sport-next-pick button{min-height:44px}
+@media(max-width:700px){
+ .sport-game-card{padding:16px;margin-bottom:4px}
+ .sport-team-option{min-height:118px;padding:12px 10px}
+ .sport-team-name{font-size:14px}
+ .sport-game-top{font-size:11px}
+ .sport-game-top span:last-child{font-size:11px}
+ .sport-heading{margin-bottom:12px}
+ .sport-heading p{display:none}
+ .sport-schedule-health{margin-top:12px}
+ .sport-league-shell{padding:15px}
+}
+@media(prefers-reduced-motion:reduce){.sport-team-option{transition:none}}
