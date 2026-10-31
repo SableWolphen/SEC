@@ -266,10 +266,15 @@ function renderSport(s){
    '</div>'+
    renderTiebreak(s,w,active,saved);
  }
- root.innerHTML=header+note+status+stale+loadingText+quickAction+health+sportStrip+leagues+games+renderSeries(s)+
-  '<p class="sport-data-note">Official SEC and university schedules, with ESPN updates where available · Central time. '+ 
-  'When a tipoff is not announced, a conservative 10 AM Central provisional lock is shown. '+
-  'Basketball and baseball leagues have their own memberships and standings, separate from football.</p>';
+ // Keep the basketball/baseball picks pages task-first, like football.
+ // League management and diagnostic information remain accessible, but do not
+ // interrupt the week picker and game cards.
+ const compactContext='<div class="sport-pick-context"><strong>'+conf.emoji+' '+esc(conf.name)+' Picks</strong>'+
+  '<span>'+esc(active?.name||"My Picks")+' · '+(w?'Week '+w.num:'Season '+year(s))+'</span></div>';
+ const extras='<details class="sport-picks-extras"><summary>League options &amp; schedule details</summary>'+
+  leagues+health+renderSeries(s)+'</details>';
+ root.innerHTML=compactContext+note+status+stale+loadingText+games+
+  (w?sportStrip:'')+extras;
 }
 function renderLeaguePanel(s){
  if(!SPORT[s])return "";
@@ -385,7 +390,7 @@ function gameCard(s,g,league,picks){
     '<option value="">Choose</option>'+options+'</select></div>':'')+
   (mode==="spread"&&g.spread_home!==null&&g.spread_home!==undefined?
    '<p class="sport-odds">Published home spread: '+Number(g.spread_home)+' · pick the team to cover</p>':'')+
-  (window.SEC_FAN?.sportCenter?.(s,g)||"")+
+  (window.SEC_FAN?.sportCenter?.(s,g)?'<details class="sport-game-more"><summary>Game details &amp; source</summary>'+window.SEC_FAN.sportCenter(s,g)+'</details>':"")+
   '<p class="sport-game-foot">'+esc(verdict||availability)+'</p>'+
   '<small class="sport-game-provider">Source: '+esc(g.source||"ESPN")+'</small></article>';
 }
