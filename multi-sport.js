@@ -380,20 +380,20 @@ function gameCard(s,g,league,picks){
  const used=new Set(Object.entries(picks).filter(([id,p])=>id!==g.id&&allGames(s).find(x=>x.id===id)?.week===g.week).map(([,p])=>p.confidence_points));
  const options=Array.from({length:num},(_,i)=>i+1).map(n=>
    '<option value="'+n+'" '+(n===old?.confidence_points?'selected':'')+' '+(used.has(n)?'disabled':'')+'>'+n+' point'+(n===1?'':'s')+'</option>').join("");
- return '<article class="sport-game-card"><div class="sport-game-top"><span>GAME · WEEK '+g.week+'</span>'+
-  '<span class="'+(g.game_status==="live"?"sport-live":"")+'">'+esc(result)+'</span></div>'+
-  '<p class="sport-kickoff">'+esc(String(g.source||"").includes("provisional")?
-   "Tipoff TBA · provisional pick lock "+prettyTime(g.kickoff_at):
-   prettyTime(g.kickoff_at))+
-  '</p>'+
+ const currentName=old?.pick_code===g.home_code?g.home_name:old?.pick_code===g.away_code?g.away_name:"";
+ const lockText=locked?"Picks locked":g.imported?"Locks at start":"Awaiting verified game";
+ return '<article class="sport-game-card sport-football-style"><div class="sport-game-top"><span>'+String(g.week).padStart(2,"0")+' / MATCHUP</span>'+
+  '<span class="'+(g.game_status==="live"?"sport-live":"")+'">'+esc(prettyTime(g.kickoff_at))+'</span></div>'+
+  '<p class="sport-kickoff">'+esc(g.away_name)+' vs '+esc(g.home_name)+'</p>'+
   '<div class="sport-team-options">'+opt(g.away_code)+'<span class="sport-vs">VS</span>'+opt(g.home_code)+'</div>'+
+  '<div class="sport-pick-status"><span>'+esc(currentName?"Your pick: "+currentName:verdict||availability)+'</span><span class="sport-lock-label">'+esc(lockText)+'</span></div>'+
   (mode==="confidence"&&canPick?'<div class="sport-confidence"><label>Confidence value</label>'+
     '<select data-confidence="'+esc(g.id)+'" aria-label="Confidence points for '+esc(g.away_name)+' vs '+esc(g.home_name)+'">'+
     '<option value="">Choose</option>'+options+'</select></div>':'')+
   (mode==="spread"&&g.spread_home!==null&&g.spread_home!==undefined?
    '<p class="sport-odds">Published home spread: '+Number(g.spread_home)+' · pick the team to cover</p>':'')+
   (window.SEC_FAN?.sportCenter?.(s,g)?'<details class="sport-game-more"><summary>Game details &amp; source</summary>'+window.SEC_FAN.sportCenter(s,g)+'</details>':"")+
-  '<p class="sport-game-foot">'+esc(verdict||availability)+'</p>'+
+  (verdict?'<p class="sport-game-foot">'+esc(verdict)+'</p>':"")+
   '<small class="sport-game-provider">Source: '+esc(g.source||"ESPN")+'</small></article>';
 }
 function renderTiebreak(s,w,league,saved){
