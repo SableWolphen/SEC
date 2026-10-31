@@ -202,8 +202,46 @@ function enhanceLeagueSports(){
  wrapper.append(nav);
  league.querySelector('#sec-league-intro')?.after(wrapper);
 }
+let footballGameId=null;
+function enhanceFootballSwipe(){
+ const grid=document.getElementById('games-list');
+ if(!grid||!grid.closest('#picks-view'))return;
+ const cards=[...grid.querySelectorAll('.game-card[data-game-id]')];
+ const tools=document.getElementById('slate-pick-tools');
+ if(!tools)return;
+ let nav=tools.querySelector('.sec-football-swipe');
+ if(!nav){
+  nav=make('div','sport-swipe-tools sec-football-swipe');
+  const hint=make('span','', 'Swipe between matchups');
+  const controls=make('div','');
+  const prev=make('button','','‹');prev.type='button';prev.setAttribute('aria-label','Previous football matchup');
+  const count=make('output','sport-swipe-count','');count.setAttribute('aria-live','polite');
+  const next=make('button','','›');next.type='button';next.setAttribute('aria-label','Next football matchup');
+  const move=step=>{
+   const all=[...grid.querySelectorAll('.game-card[data-game-id]')];if(!all.length)return;
+   const current=Math.max(0,all.findIndex(c=>c.dataset.gameId===footballGameId));
+   const target=all[Math.min(all.length-1,Math.max(0,current+step))];
+   if(target)grid.scrollTo({left:target.offsetLeft-all[0].offsetLeft,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+  };
+  prev.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
+  controls.append(prev,count,next);nav.append(hint,controls);tools.append(nav);
+ }
+ if(!cards.length){nav.hidden=true;footballGameId=null;return;}
+ nav.hidden=false;grid.classList.add('sec-football-swipe-grid');
+ const current=Math.max(0,cards.findIndex(c=>c.dataset.gameId===footballGameId));
+ const output=nav.querySelector('output');
+ const update=()=>{
+  const all=[...grid.querySelectorAll('.game-card[data-game-id]')];if(!all.length)return;
+  const i=all.reduce((best,card,index)=>Math.abs(card.offsetLeft-all[0].offsetLeft-grid.scrollLeft)<Math.abs(all[best].offsetLeft-all[0].offsetLeft-grid.scrollLeft)?index:best,0);
+  footballGameId=all[i].dataset.gameId;
+  const label=(i+1)+' / '+all.length;if(output.textContent!==label)output.textContent=label;
+ };
+ if(!grid.dataset.secSwipeBound){grid.dataset.secSwipeBound='1';grid.addEventListener('scroll',update,{passive:true});}
+ if(cards[current].dataset.gameId!==footballGameId&&footballGameId){footballGameId=cards[0].dataset.gameId;}
+ requestAnimationFrame(()=>{if(grid.scrollLeft===0&&current>0)grid.scrollLeft=cards[current].offsetLeft-cards[0].offsetLeft;update();});
+}
 function enhance(){
- enhanceSportCards();enhanceSecondary();enhanceDashboardProgress();enhanceNextGame();enhanceLeagueSports();enhanceProfileStats();
+ enhanceFootballSwipe();enhanceSportCards();enhanceSecondary();enhanceDashboardProgress();enhanceNextGame();enhanceLeagueSports();enhanceProfileStats();
 }
 
 document.addEventListener('click',e=>{
