@@ -61,7 +61,10 @@ class SportFeedTests(unittest.TestCase):
   ids={g['id'] for g in result['sports']['basketball']['games']}
   self.assertIn('basketball-2027-team-only',ids)
   self.assertIn('basketball-2027-scoreboard',ids)
-  self.assertEqual(len([u for u in called if '/basketball/' in u and '/teams/' in u]),16)
+  team_calls=[u for u in called if '/basketball/' in u and '/teams/' in u]
+  # Regular season and postseason for each of the 16 schools.
+  self.assertEqual(len(team_calls),32)
+  self.assertEqual(sum('seasontype=2' in u for u in team_calls),16)
   self.assertIn('Incomplete SEC basketball coverage',result['sports']['basketball']['warning'])
  def test_baseball_team_schedule_supplements_scoreboard(self):
   def mock(url):
@@ -72,6 +75,39 @@ class SportFeedTests(unittest.TestCase):
   ids={g['id'] for g in result['sports']['baseball']['games']}
   self.assertIn('baseball-2027-baseball-team',ids)
   self.assertEqual(result['sports']['baseball']['team_coverage'].get('333'),1)
+ def test_team_schedule_requests_regular_season_explicitly(self):
+  # ESPN returns zero events for a team schedule without seasontype during
+  # the preseason, and rejects multi-day basketball scoreboard ranges (400).
+  def mock(url):
+   if 'scoreboard' in url and 'basketball/' in url:
+    raise OSError('HTTP Error 400')
+   if '/basketball/' in url and '/teams/' in url and 'seasontype=2' in url:
+    team=url.split('/teams/')[1].split('/')[0]
+    return {'events':[event('reg-'+team,team,2747,'2026-11-05T00:00:00Z')]}
+   return {'events':[]}
+  data=sport.build(now=NOW,get=mock)['sports']['basketball']
+  self.assertEqual(sum(1 for v in data['team_coverage'].values() if v),16)
+  self.assertNotIn('All 16 school-level basketball feeds failed',data['warning'] or '')
+  self.assertNotIn('Live ESPN feed unavailable',data['warning'] or '')
+ def test_team_schedule_shape_status_and_tbd_time(self):
+  # Real ESPN team-schedule events: status only inside the competition,
+  # scores as objects, and timeValid=false for a TBD tipoff.
+  def ev(eid,status,away_pts=None,home_pts=None,time_valid=True):
+   e=event(eid,2,333,'2026-11-20T01:00Z')
+   e.pop('status');e['timeValid']=time_valid
+   c=e['competitions'][0];c['status']={'type':status}
+   if away_pts is not None:
+    c['competitors'][0]['score']={'value':away_pts,'displayValue':str(away_pts)}
+    c['competitors'][1]['score']={'value':home_pts,'displayValue':str(home_pts)}
+   return e
+  rows=sport.parse({'events':[
+   ev('fin',{'completed':True,'state':'post','name':'STATUS_FINAL'},70,81),
+   ev('tbd',{'completed':False,'state':'pre','name':'STATUS_SCHEDULED'},time_valid=False)]},'basketball',2027)
+  by={r['id']:r for r in rows}
+  self.assertEqual(by['basketball-2027-fin']['game_status'],'final')
+  self.assertEqual(by['basketball-2027-fin']['winner_code'],'333')
+  self.assertFalse(by['basketball-2027-fin']['provisional'])
+  self.assertTrue(by['basketball-2027-tbd']['provisional'])
  def test_missing_basketball_coverage_is_visible_even_with_healthy_requests(self):
   def mock(url):
    return {'events':[event('one',333,2,'2026-11-04T23:00:00Z')]}

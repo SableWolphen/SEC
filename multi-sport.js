@@ -383,7 +383,7 @@ function gameCard(s,g,league,picks){
    '<option value="'+n+'" '+(n===old?.confidence_points?'selected':'')+' '+(used.has(n)?'disabled':'')+'>'+n+' point'+(n===1?'':'s')+'</option>').join("");
  const currentName=old?.pick_code===g.home_code?g.home_name:old?.pick_code===g.away_code?g.away_name:"";
  // An unconfirmed tipoff/first pitch is only a provisional pick lock, never a real start time.
- const provisional=String(g.source||"").includes("provisional");
+ const provisional=g.provisional===true||String(g.source||"").includes("provisional");
  const lockText=locked?"Picks locked":provisional?"Provisional pick lock "+prettyTime(g.kickoff_at):g.imported?"Locks at start":"Awaiting verified game";
  return '<article class="sport-game-card sport-football-style"><div class="sport-game-top"><span>'+String(g.week).padStart(2,"0")+' / MATCHUP</span>'+
   '<span class="'+(g.game_status==="live"?"sport-live":"")+'">'+esc(provisional&&!locked?"Tipoff TBA":prettyTime(g.kickoff_at))+'</span></div>'+

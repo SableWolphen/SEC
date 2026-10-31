@@ -21,6 +21,19 @@ class CoverageTests(unittest.TestCase):
         self.assertFalse(r['sports']['basketball']['coverage_verified'])
         self.assertTrue(r['sports']['basketball']['issues'])
         self.assertEqual(r['sports']['baseball']['issues'],[])
+    def test_offseason_note_does_not_keep_alert_open(self):
+        full=[{'home_code':t,'away_code':'999'} for t in coverage.SEC for _ in range(30)]
+        payload={'sports':{
+            'basketball':{'season':2027,'games':full,'team_coverage':{t:30 for t in coverage.SEC}},
+            'baseball':{'season':2027,'games':[],'warning':'No verified individual first-pitch times yet'}}}
+        r=coverage.report(payload,dt.datetime(2026,11,1,tzinfo=dt.timezone.utc))
+        self.assertFalse(r['needs_review'])
+        self.assertTrue(r['sports']['basketball']['coverage_verified'])
+    def test_in_season_warning_is_reported(self):
+        payload={'sports':{'basketball':{'season':2027,'games':[],'warning':'feed down'},
+                           'baseball':{'season':2027,'games':[],'warning':'feed down'}}}
+        r=coverage.report(payload,dt.datetime(2027,3,1,tzinfo=dt.timezone.utc))
+        self.assertIn('feed down',r['sports']['baseball']['issues'])
     def test_report_counts_sec_against_nonconference(self):
         games=[{'home_code':'333','away_code':'999'}]
         r=coverage.report({'sports':{'basketball':{'season':2027,'games':games},

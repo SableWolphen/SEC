@@ -28,7 +28,9 @@ def report(payload, now=None):
             issues.append('No confirmed individual fixtures')
         if is_active and len(school_feeds) < len(SEC):
             issues.append(f'Only {len(school_feeds)}/16 school feeds returned usable data')
-        if data.get('warning'):
+        # Off-season notes (e.g. baseball first pitches not yet published)
+        # are expected and must not hold the alert open until the season.
+        if is_active and data.get('warning'):
             issues.append(str(data['warning']))
         details[sport] = {'season':season,'games':len(games),'per_school':counts,
                           'school_feeds':len(school_feeds),'issues':issues,
