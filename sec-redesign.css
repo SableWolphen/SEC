@@ -1,0 +1,20 @@
+/* Redesign shell: mobile-first accessible navigation and task-led dashboard */
+.sec-simple-home{display:grid;gap:15px;margin:0 0 24px}
+.sec-simple-heading{font-size:17px;font-weight:900;color:#fff}
+.sec-simple-club{display:flex;align-items:center;gap:15px;width:100%;border:1px solid #a78143;background:linear-gradient(115deg,#302a27,#182c42);border-radius:18px;padding:18px;color:#fff;text-align:left;min-height:85px}
+.sec-simple-club>span:first-child{font-size:29px}
+.sec-simple-club>span:nth-child(2){flex:1;display:grid;gap:5px}
+.sec-simple-club strong{font-size:18px}
+.sec-simple-club small,.sec-simple-hint{font-size:13px;color:#c4cbd4}
+.sec-simple-club>span:last-child{font-size:26px;color:#f0c775}
+.sec-simple-hint{margin:0}
+.sec-simple-sports{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.sec-simple-sport{display:grid;justify-items:center;align-content:center;gap:8px;padding:16px 8px;min-height:133px;border:1px solid #42576b;border-radius:17px;background:#152738;color:#fff}
+.sec-simple-sport .sec-simple-emoji{font-size:32px}
+.sec-simple-sport strong{font-size:13px}
+.sec-simple-sport small{color:#e8c37f;font-size:11px}
+.sec-simple-quick{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.sec-simple-link{border:1px solid #3b5265;background:#142331;color:#e5edf2;border-radius:12px;padding:13px 6px;min-height:48px;font-size:12px;font-weight:750}
+.sec-simple-home button:hover{border-color:#f0c775}
+.sec-simple-home button:focus-visible{outline:3px solid #f0c775;outline-offset:3px}
+@media(max-width:600px){.page-intro h1{font-size:32px!important;letter-spacing:-1.2px!important}.sec-simple-sport{min-height:124px}.bottom-nav{display:flex!important;justify-content:space-around}.mobile-nav-btn{min-height:54px;min-width:50px}.sec-simple-home{margin-top:6px}}
