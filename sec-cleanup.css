@@ -51,3 +51,19 @@
  .sport-game-provider{font-size:10px}
  .sport-week-score{border-radius:15px}
 }
+
+/* Football-style, task-first basketball and baseball picks */
+.sport-pick-context{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:4px 0 16px;padding:13px 15px;background:#17283a;border:1px solid #354a5e;border-radius:14px}
+.sport-pick-context strong{font-size:17px;color:#fff}
+.sport-pick-context span{font-size:12px;color:#e5c381;text-align:right}
+.sport-picks-extras{margin-top:18px;border:1px solid #344b61;border-radius:14px;padding:12px;background:#122131}
+.sport-picks-extras>summary{min-height:40px;display:list-item;cursor:pointer;font-size:13px;font-weight:800;color:#ccdbe5}
+.sport-picks-extras .sport-league-shell{margin-top:12px}
+.sport-game-more{margin-top:12px;border:1px solid #364b60;border-radius:11px;padding:0 12px}
+.sport-game-more>summary{padding:12px 0;cursor:pointer;color:#c1ceda;font-size:12px;font-weight:700}
+.sport-game-more .sport-game-center{margin-top:6px}
+#basketball-view>.eyebrow,#baseball-view>.eyebrow{display:none}
+#basketball-view>.page-intro,#baseball-view>.page-intro{margin-bottom:12px}
+#basketball-view .sport-week-score,#baseball-view .sport-week-score{margin-top:22px}
+#basketball-view .sport-game-provider,#baseball-view .sport-game-provider{display:none}
+@media(max-width:650px){.sport-pick-context{align-items:flex-start;flex-direction:column;gap:5px}.sport-pick-context span{text-align:left}.sport-picks-extras{margin-bottom:20px}}
