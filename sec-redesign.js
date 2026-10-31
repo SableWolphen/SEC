@@ -30,8 +30,86 @@ function simplify(){
  document.querySelectorAll('.bottom-nav [data-nav="settings"],.desktop-nav [data-nav="settings"]').forEach(b=>{
  b.dataset.nav='more';const span=b.querySelector('span');if(span)span.textContent='More';else b.textContent='More';
  });
- dashboard();
+ dashboard();enhance();
+ // Existing sport modules redraw asynchronously; enhance after those redraws.
+ const root=document.querySelector('main');if(root){let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;enhance();});}).observe(root,{childList:true,subtree:true});}
 }
+
+/* Pick details use the same authenticated save handler as the existing cards. */
+let dialog=null;
+function closeDetails(){if(dialog){dialog.remove();dialog=null;}}
+function details(card){
+ closeDetails();
+ const options=[...card.querySelectorAll('[data-sport-action="pick"]')];
+ if(options.length!==2)return;
+ const title=options.map(b=>b.querySelector('.sport-team-name')?.textContent?.trim()||'Team');
+ const meta=card.querySelector('.sport-kickoff')?.textContent?.trim()||'';
+ const time=card.querySelector('.sport-game-top span:last-child')?.textContent?.trim()||'';
+ const overlay=make('div','sec-pick-overlay');
+ const panel=make('section','sec-pick-modal');
+ panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');panel.setAttribute('aria-label','Pick a winner');
+ const header=make('div','sec-pick-modal-head');const heading=make('h2','',title.join(' vs '));
+ const close=make('button','sec-pick-close','✕');close.type='button';close.setAttribute('aria-label','Close pick details');close.addEventListener('click',closeDetails);
+ header.append(heading,close);panel.append(header);
+ const sub=make('p','sec-pick-meta',meta+' · '+time);panel.append(sub);
+ const msg=make('p','sec-pick-intro','Choose a team, then save your pick.');panel.append(msg);
+ const teamRow=make('div','sec-pick-modal-teams');let selected=null;
+ options.forEach((source,i)=>{
+  const b=make('button','sec-pick-modal-team',title[i]);b.type='button';b.disabled=source.disabled;
+  if(source.getAttribute('aria-pressed')==='true'){selected=source;b.classList.add('selected');}
+  b.addEventListener('click',()=>{selected=source;teamRow.querySelectorAll('button').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');});
+  teamRow.append(b);
+ });panel.append(teamRow);
+ const info=make('details','sec-pick-info');info.innerHTML='<summary>Game information</summary>';
+ const content=card.querySelector('.sport-game-provider');if(content)info.append(make('p','',content.textContent));
+ panel.append(info);
+ const save=make('button','sec-pick-save','Save pick');save.type='button';
+ save.addEventListener('click',()=>{
+  if(!selected){msg.textContent='Select a team first.';return;}
+  if(selected.disabled){msg.textContent='This matchup is unavailable for picks.';return;}
+  selected.click();closeDetails();
+ });panel.append(save);
+ overlay.append(panel);overlay.addEventListener('click',e=>{if(e.target===overlay)closeDetails();});
+ document.body.append(overlay);dialog=overlay;close.focus();
+}
+function enhanceSportCards(){
+ document.querySelectorAll('.sport-game-card').forEach(card=>{
+  if(card.querySelector('.sec-open-pick'))return;
+  const opts=card.querySelectorAll('[data-sport-action="pick"]');
+  if(opts.length!==2)return;
+  const open=make('button','sec-open-pick',opts[0].disabled&&opts[1].disabled?'View game details':'Open game & pick winner');
+  open.type='button';open.addEventListener('click',()=>details(card));
+  card.querySelector('.sport-team-options')?.after(open);
+ });
+}
+function enhanceSecondary(){
+ const league=document.getElementById('league-view');
+ if(league&&!document.getElementById('sec-league-intro')){
+  const t=make('div','sec-screen-intro');t.id='sec-league-intro';
+  t.innerHTML='<strong>🏆 Your league</strong><p>See your standings, members and competition in one place.</p>';
+  league.querySelector('.page-intro')?.after(t);
+ }
+ const scores=document.getElementById('game-center-view');
+ if(scores&&!document.getElementById('sec-score-shortcuts')){
+  const shortcuts=make('div','sec-score-shortcuts');shortcuts.id='sec-score-shortcuts';
+  [['football','🏈 Football'],['basketball','🏀 Basketball'],['baseball','⚾ Baseball']].forEach(([id,label])=>{
+   const b=make('button','sec-score-shortcut',label);b.type='button';b.dataset.simpleSport=id;shortcuts.append(b);
+  });
+  scores.querySelector('h1')?.after(shortcuts);
+ }
+ const more=document.getElementById('more-view');
+ if(more&&!document.getElementById('sec-more-guide')){
+  const guide=make('div','sec-more-guide');guide.id='sec-more-guide';
+  [['settings','👤 My profile & settings','Manage your account, reminders and preferences'],['trophies','🏆 Trophies','Your wins and achievements'],['news','📰 SEC news','Stay informed'],['teams','🏟️ Teams','Browse SEC schools']].forEach(([id,label,desc])=>{
+   const b=make('button','sec-more-row');b.type='button';b.dataset.nav=id;
+   const name=make('strong','',label);const sub=make('small','',desc);b.append(name,sub);guide.append(b);
+  });more.querySelector('.page-intro')?.after(guide);
+ }
+}
+function enhance(){
+ enhanceSportCards();enhanceSecondary();
+}
+
 document.addEventListener('click',e=>{
  const b=e.target.closest?.('[data-simple-sport]');if(!b)return;
  e.preventDefault();sport(b.dataset.simpleSport);
