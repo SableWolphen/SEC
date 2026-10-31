@@ -97,6 +97,12 @@ function enhanceSecondary(){
   });
   scores.querySelector('h1')?.after(shortcuts);
  }
+ const profile=document.getElementById('settings-view');
+ if(profile&&!document.getElementById('sec-profile-intro')){
+  const intro=make('div','sec-screen-intro');intro.id='sec-profile-intro';
+  intro.innerHTML='<strong>👤 Your profile</strong><p>Manage your account, notifications, preferences and game settings.</p>';
+  profile.querySelector('.page-intro')?.after(intro);
+ }
  const more=document.getElementById('more-view');
  if(more&&!document.getElementById('sec-more-guide')){
   const guide=make('div','sec-more-guide');guide.id='sec-more-guide';
