@@ -64,10 +64,20 @@ function details(card){
  const content=card.querySelector('.sport-game-provider');if(content)info.append(make('p','',content.textContent));
  panel.append(info);
  const save=make('button','sec-pick-save','Save pick');save.type='button';
+ const onResult=e=>{
+  if(!selected||e.detail?.game!==selected.dataset.game||e.detail?.sport!==selected.dataset.sport)return;
+  document.removeEventListener('sec-sport-pick-result',onResult);
+  if(e.detail.ok){closeDetails();return;}
+  save.disabled=false;save.textContent='Try saving again';
+  msg.textContent=e.detail.message||'Unable to save. Your previous pick was not changed.';
+ };
  save.addEventListener('click',()=>{
   if(!selected){msg.textContent='Select a team first.';return;}
   if(selected.disabled){msg.textContent='This matchup is unavailable for picks.';return;}
-  selected.click();closeDetails();
+  save.disabled=true;save.textContent='Saving…';msg.textContent='Waiting for secure confirmation';
+  document.removeEventListener('sec-sport-pick-result',onResult);
+  document.addEventListener('sec-sport-pick-result',onResult);
+  selected.click();
  });panel.append(save);
  overlay.append(panel);overlay.addEventListener('click',e=>{if(e.target===overlay)closeDetails();});
  document.body.append(overlay);dialog=overlay;close.focus();
