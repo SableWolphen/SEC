@@ -553,7 +553,7 @@ document.addEventListener("click",ev=>{
  const to=ev.target.closest?.("[data-go-sport]");
  if(to){ev.preventDefault();window.SEC_BRIDGE?.setView(to.dataset.goSport==="football"?"picks":to.dataset.goSport);return;}
  const button=ev.target.closest?.("[data-sport-action]");
- if(button){ev.preventDefault();void action(button);return;}
+ if(button){ev.preventDefault();if(button.dataset.sportAction==="pick"){if(button.dataset.saving==="1")return;button.dataset.saving="1";button.setAttribute("aria-busy","true");const card=button.closest(".sport-game-card");const status=card?.querySelector(".sport-pick-status > span");if(status)status.textContent="Saving pick…";void action(button).finally(()=>{button.dataset.saving="0";button.removeAttribute("aria-busy");});}else void action(button);return;}
  const statusButton=ev.target.closest?.("[data-sport-filter]");
  if(statusButton&&SPORT[statusButton.dataset.sport]&&
    ["needs-pick","all","upcoming","live","final"].includes(statusButton.dataset.sportFilter)){
