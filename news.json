@@ -1,11 +1,38 @@
 {
-  "updated_at": "2026-10-31T09:43:15.488022Z",
-  "checked_at": "2026-10-31T09:43:15.488022Z",
+  "updated_at": "2026-10-31T15:45:15.349032Z",
+  "checked_at": "2026-10-31T15:45:15.349032Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "323377cb10c1d895",
+      "title": "Zion Green commits to Alabama hoops as Crimson Tide's second top-25 recruit",
+      "summary": "Five-star forward Zion Green has committed to Alabama, joining fellow top-25 recruit Chase Lumpkin in heading to Tuscaloosa.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50336018/zion-green-commits-alabama-hoops",
+      "source": "ESPN",
+      "published_at": "2026-10-31T14:52:17Z",
+      "sport": "basketball",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "a1888fa7b19d703e",
+      "title": "Tebow breaks down Florida's 'unique hope' vs. Georgia",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50335294/tebow-breaks-florida-unique-hope-vs-georgia",
+      "source": "ESPN",
+      "published_at": "2026-10-31T12:48:13Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
+    },
     {
       "id": "4df70c315e621268",
       "title": "What will be deciding factor for Florida vs. Georgia?",
@@ -260,20 +287,6 @@
       "breaking": false
     },
     {
-      "id": "aa05dd6dacc8971b",
-      "title": "Heather Dinich: Ole Miss is in 'must-win mode' vs. Auburn",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50327841/ole-miss-win-mode-vs-auburn",
-      "source": "ESPN",
-      "published_at": "2026-10-30T13:35:43Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
       "id": "6ccf5ab175e495ef",
       "title": "College football ghost stories, from Death Valley to Tennessee's 'Body Farm'",
       "summary": "With Halloween falling on a football Saturday, we take a haunted trip to the sport's spookiest places.",
@@ -287,33 +300,6 @@
       "breaking": false
     },
     {
-      "id": "e8a559b3e02a0c2f",
-      "title": "South Carolina State Bulldogs vs. Morgan State Bears: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50324619/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-30T02:53:42Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0c58e278ee603488",
-      "title": "Mississippi State OL DJ Chester out vs. Texas in latest hit to offense",
-      "summary": "Mississippi State, two days after losing starting QB Kamario Taylor for the season, ruled out starting left guard DJ Chester for Saturday's game against Texas.",
-      "url": "https://www.espn.com/college-football/story/_/id/50323632/mississippi-state-ol-dj-chester-sidelined-saturday-vs-texas",
-      "source": "ESPN",
-      "published_at": "2026-10-30T01:30:46Z",
-      "sport": "football",
-      "teams": [
-        "Mississippi State",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
       "id": "37e3413bbd8bae99",
       "title": "LSU coach Will Wade refuses to discuss RJ Luis Jr.'s eligibility status",
       "summary": "LSU coach Will Wade declined to take questions Thursday on the status of RJ Luis Jr., who a day earlier won a temporary restraining order opening the door to play for the Tigers.",
@@ -323,20 +309,6 @@
       "sport": "basketball",
       "teams": [
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "95ba0305f78ad49c",
-      "title": "Georgia AD Josh Brooks shares Florida rivalry scheduling process",
-      "summary": "Brooks joins The Paul Finebaum Show to discuss the winding process of organizing the approaching No. 17 Florida vs. No. 3 Georgia rivalry matchup.",
-      "url": "https://www.espn.com/video/clip/_/id/50322012/georgia-ad-josh-brooks-shares-florida-rivalry-scheduling-process",
-      "source": "ESPN",
-      "published_at": "2026-10-29T21:26:33Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
       ],
       "breaking": false
     },
