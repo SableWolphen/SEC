@@ -1,11 +1,36 @@
 {
-  "updated_at": "2026-10-30T23:00:04.477549Z",
-  "checked_at": "2026-10-30T23:00:04.477549Z",
+  "updated_at": "2026-10-31T02:26:40.584331Z",
+  "checked_at": "2026-10-31T02:26:40.584331Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "7fad82f8ea23c3ab",
+      "title": "Chris Doering previews key SEC Week 9 matchups",
+      "summary": "Doering joins The Paul Finebaum Show to preview Week 9's most notable matchups as he discusses key components and players to look out for in each game.",
+      "url": "https://www.espn.com/video/clip/_/id/50331728/chris-doering-previews-key-sec-week-9-matchups",
+      "source": "ESPN",
+      "published_at": "2026-10-30T23:49:02Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "c0624c188d17e9f7",
+      "title": "Benjamin Watson dissects Georgia's mindset vs. Florida",
+      "summary": "SEC Network's Watson joins The Paul Finebaum Show and explains how the No. 3 Bulldogs are approaching their rivalry matchup against the No. 17 Gators coming off a defeat.",
+      "url": "https://www.espn.com/video/clip/_/id/50331398/benjamin-watson-dissects-georgia-mindset-vs-florida",
+      "source": "ESPN",
+      "published_at": "2026-10-30T22:52:23Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
+    },
     {
       "id": "d0fd73ec2cb465fb",
       "title": "How consistent change of college football landscape impacts SEC",
@@ -377,33 +402,6 @@
       "teams": [
         "South Carolina",
         "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "81a48da6e106d348",
-      "title": "Auburn vs. No. 12 Ole Miss preview, highlighting run game and defense",
-      "summary": "The SEC Now crew dives into the upcoming matchup between the Tigers and the Rebels as each program looks to respond after losses in Week 8.",
-      "url": "https://www.espn.com/video/clip/_/id/50313625/auburn-vs-no-12-ole-miss-preview-highlighting-run-game-defense",
-      "source": "ESPN",
-      "published_at": "2026-10-29T02:46:53Z",
-      "sport": "football",
-      "teams": [
-        "Auburn",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ab0e40f4107faeeb",
-      "title": "Gene Chizik delivers a Florida film breakdown",
-      "summary": "Chizik slows the game down with a film study on the No. 17 Gators' run game, analyzing pre-snap actions and post-snap reads.",
-      "url": "https://www.espn.com/video/clip/_/id/50313564/gene-chizik-delivers-florida-film-breakdown",
-      "source": "ESPN",
-      "published_at": "2026-10-29T02:46:25Z",
-      "sport": "football",
-      "teams": [
-        "Florida"
       ],
       "breaking": false
     },
