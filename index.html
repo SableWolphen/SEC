@@ -636,7 +636,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     const sportViews=['picks','basketball','baseball'];
     if(!views.includes(v))return;
     if(sportViews.includes(v))lastSportView=v;
-    if(v==="picks"&&!slateFilterTouched)slateFilter=suggestedGamesFilter();
+    if(v==="picks"&&!slateFilterTouched)slateFilter="all";
     currentView=v;
     for(const id of views)document.getElementById(id+'-view').classList.toggle('hidden',id!==v);
     // Draw persistent roast on every route transition BEFORE asynchronous
@@ -821,6 +821,7 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     slateFilter==='upcoming' ? g.liveStatus!=="live"&&!window.SEC_FEATURES?.finalData?.(g) : true
   );
   window.SEC_COMPETITIVE?.onPicks?.();
+  if(!slateFilterTouched&&slateFilter!=="all")slateFilter="all";
   document.getElementById('games-list').innerHTML=filtered.length?
    filtered.map((g)=>renderGame(g,w.games.indexOf(g))).join(''):
    '<div class="slate-empty"><strong>'+(slateFilter==='unpicked'?'All available games are picked!':
