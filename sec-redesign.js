@@ -122,8 +122,45 @@ function enhanceSecondary(){
   });more.querySelector('.page-intro')?.after(guide);
  }
 }
+function enhanceDashboardProgress(){
+ const pane=document.getElementById('sec-simple-home');if(!pane)return;
+ let target=pane.querySelector('.sec-live-progress');
+ if(!target){target=make('div','sec-live-progress');pane.querySelector('.sec-simple-hint')?.after(target);}
+ const sports=[['football','🏈','Football'],['basketball','🏀','Basketball'],['baseball','⚾','Baseball']];
+ const rows=sports.map(([id,emoji,name])=>{
+  const state=window.SEC_SPORTS?.getState?.(id);
+  if(!state?.games?.length)return null;
+  const now=Date.now();
+  const eligible=state.games.filter(g=>g.game_status==='scheduled'&&Date.parse(g.kickoff_at)>now);
+  const picks=state.picks||{};
+  const outstanding=eligible.filter(g=>!picks[g.id]?.pick_code).length;
+  return {id,emoji,name,outstanding,total:eligible.length};
+ }).filter(Boolean);
+ const signature=JSON.stringify(rows);
+ if(target.dataset.signature===signature)return;
+ target.dataset.signature=signature;
+ target.replaceChildren();
+ for(const row of rows){
+  const b=make('button','sec-progress-row');b.type='button';b.dataset.simpleSport=row.id;
+  const name=make('span','',row.emoji+' '+row.name);
+  const count=make('strong','',row.total===0?'No upcoming games':row.outstanding===0?'All caught up':row.outstanding+' picks remaining');
+  b.append(name,count);target.append(b);
+ }
+}
+function enhanceLeagueSports(){
+ const league=document.getElementById('league-view');
+ if(!league||document.getElementById('sec-league-sports'))return;
+ const wrapper=make('section','sec-league-sports');wrapper.id='sec-league-sports';
+ wrapper.append(make('strong','', 'Choose a sport to make picks'));
+ const nav=make('div','sec-score-shortcuts');
+ [['football','🏈 Football'],['basketball','🏀 Basketball'],['baseball','⚾ Baseball']].forEach(([id,label])=>{
+  const b=make('button','sec-score-shortcut',label);b.type='button';b.dataset.simpleSport=id;nav.append(b);
+ });
+ wrapper.append(nav);
+ league.querySelector('#sec-league-intro')?.after(wrapper);
+}
 function enhance(){
- enhanceSportCards();enhanceSecondary();
+ enhanceSportCards();enhanceSecondary();enhanceDashboardProgress();enhanceLeagueSports();
 }
 
 document.addEventListener('click',e=>{
