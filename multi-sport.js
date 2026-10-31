@@ -530,7 +530,9 @@ async function action(btn){
     else unwrap(await c.rpc("sec_sport_save_personal_pick",{p_game:g.id,p_pick:btn.dataset.sportPick}));
    notices[s]=l?"League pick saved online.":"Personal pick saved online.";
    document.dispatchEvent(new CustomEvent("sec-sport-pick-result",{detail:{sport:s,game:g.id,ok:true}}));
-   await load(s);return;
+   if(statusFilters[s]==="needs-pick")statusFilters[s]="all";
+   await load(s);
+   requestAnimationFrame(()=>{const grid=document.querySelector('[data-swipe-grid="'+s+'"]');const cards=[...grid?.querySelectorAll(".sport-game-card")||[]];const target=cards.find(card=>card.querySelector('[data-game="'+g.id+'"]'));if(grid&&target)grid.scrollLeft=target.offsetLeft-(cards[0]?.offsetLeft||0);});return;
   }
   if(what==="total"){
    const week=curWeek(s);if(!week)throw Error("No games this week.");
