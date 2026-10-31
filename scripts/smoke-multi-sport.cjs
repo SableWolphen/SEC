@@ -43,6 +43,7 @@ const window={
 };
 const document={
  addEventListener(type,handler){events[type]=handler;},
+ dispatched:[],dispatchEvent(event){this.dispatched.push(event);return true;},
  getElementById:id=>roots[id]||null,
  querySelector(){return null;},visibilityState:"visible",
  activeElement:{matches(){return false;}}
@@ -50,7 +51,8 @@ const document={
 const localStorage={getItem(){return null;},setItem(){}};
 const fixture={updated_at:"2026-10-09T20:00:00Z",
  sports:{basketball:{season:2027,games:[game]},baseball:{season:2027,games:[]}}};
-const context={window,document,localStorage,URL,URLSearchParams,Date,console,
+class CustomEvent{constructor(type,init){this.type=type;this.detail=init?.detail;}}
+const context={window,document,localStorage,CustomEvent,URL,URLSearchParams,Date,console,
  navigator:{clipboard:{writeText:async()=>{}}},location:{hash:"#sports",href:"https://sablewolphen.github.io/SEC/#sports"},
  history:{replaceState(){}},setInterval(){},setTimeout,
  fetch:async()=>({ok:true,json:async()=>fixture})};
@@ -84,7 +86,7 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
   assert.match(roots["sports-hub"].innerHTML,new RegExp('data-go-sport="'+sport+'"'));
  activeView="basketball";app.mount("basketball");await settle();
  assert.match(roots["sport-basketball-content"].innerHTML,/Alabama/,"real upcoming basketball fixture visible even to guests");
- assert.match(roots["sport-basketball-content"].innerHTML,/provisional pick lock/,"provisional lock clearly distinguished from actual tipoff");
+ assert.match(roots["sport-basketball-content"].innerHTML,/provisional pick lock/i,"provisional lock clearly distinguished from actual tipoff");
  assert.match(roots["sport-basketball-content"].innerHTML,/Log in to your account/,"signed-out user sees login rather than another account creation");
  // The saved session may still be restoring when the player switches sports.
  authIsReady=false;
@@ -101,7 +103,8 @@ async function settle(){for(let i=0;i<15;i++)await new Promise(resolve=>setImmed
  assert.match(roots["sport-basketball-content"].innerHTML,/Hoops Crew/,"player sees only basketball league");
  assert.match(roots["sport-basketball-content"].innerHTML,/League standings/,"new sport scoreboard visible");
  assert.match(roots["sport-basketball-content"].innerHTML,/SEC official/,"source attribution");
- const btn={dataset:{sportAction:"pick",sport:"basketball",game:game.id,pick:game.away_code}};
+ const btn={dataset:{sportAction:"pick",sport:"basketball",game:game.id,sportPick:game.away_code},attrs:{},
+  setAttribute(k,v){this.attrs[k]=v;},removeAttribute(k){delete this.attrs[k];},closest:()=>null};
  events.click({target:{closest:key=>key==="[data-sport-action]"?btn:null},preventDefault(){}});
  await settle();
  assert.equal(pickCalls.length,1,"basketball picks saved through server RPC");

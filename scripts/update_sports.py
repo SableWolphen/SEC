@@ -60,8 +60,11 @@ def parse(data, sport, year):
                 return int(float(value)) if value not in (None, '') else None
 
             ap, hp = pts(away), pts(home)
-            final = bool(event.get('status', {}).get('type', {}).get('completed')) and ap is not None and hp is not None
-            canceled = 'cancel' in event.get('status', {}).get('type', {}).get('name', '').lower()
+            # Scoreboards put status on the event; team schedules only nest it
+            # inside the competition. Read either so team-feed finals score.
+            status = (event.get('status') or event['competitions'][0].get('status') or {}).get('type', {})
+            final = bool(status.get('completed')) and ap is not None and hp is not None
+            canceled = 'cancel' in status.get('name', '').lower()
             rows.append({
                 'id': f'{sport}-{year}-{event["id"]}', 'sport': sport, 'season': year,
                 'week': max(1, int((tip - begin).total_seconds() // 604800) + 1),
@@ -72,8 +75,11 @@ def parse(data, sport, year):
                 'away_score': ap, 'home_score': hp,
                 'winner_code': h if final and hp > ap else a if final and ap > hp else None,
                 'game_status': 'canceled' if canceled else 'final' if final else
-                'live' if event.get('status', {}).get('type', {}).get('state') == 'in' else 'scheduled',
-                'source': 'ESPN'
+                'live' if status.get('state') == 'in' else 'scheduled',
+                'source': 'ESPN',
+                # ESPN marks a TBD tipoff with timeValid=false; never present
+                # its placeholder time as a real start.
+                'provisional': event.get('timeValid') is False
             })
         except (KeyError, ValueError, StopIteration, TypeError, IndexError):
             continue
@@ -257,14 +263,23 @@ def build(now=None, get=download, existing=None, fallback=None):
                 team_url = ('https://site.api.espn.com/apis/site/v2/sports/'
                             + slug + '/teams/' + team_id
                             + '/schedule?season=' + str(year))
+                # Without an explicit seasontype ESPN answers with the CURRENT
+                # season phase (e.g. preseason in October) and returns zero
+                # events. Ask for the regular season (2) and postseason (3).
                 try:
-                    team_games = parse(get(team_url), sport, year)
-                    for game in team_games:
-                        merge_game(saved, game)
-                    team_coverage[team_id] = len(team_games)
+                    team_games = parse(get(team_url + '&seasontype=2'), sport, year)
                 except Exception as ex:
                     print(sport, 'team schedule unavailable:', team_id,
                           type(ex).__name__)
+                    continue
+                try:
+                    team_games += parse(get(team_url + '&seasontype=3'), sport, year)
+                except Exception:
+                    pass  # Postseason is unpublished for most of the year.
+                team_games = list({g['id']: g for g in team_games}.values())
+                for game in team_games:
+                    merge_game(saved, game)
+                team_coverage[team_id] = len(team_games)
 
         official = []
         database_ok = False
@@ -328,14 +343,17 @@ def build(now=None, get=download, existing=None, fallback=None):
         games = sorted(unique.values(), key=lambda g: (g['kickoff_at'], g['id']))
         sec_counts = {tid: sum(g.get('away_code') == tid or g.get('home_code') == tid for g in games)
                       for tid in SEC_IDS}
+        # ESPN rejects multi-day basketball scoreboard ranges (HTTP 400), so the
+        # per-school schedules are the working ESPN source for that sport.
+        espn_ok = successes or any(team_coverage.values())
         issue = None
         if not games:
             issue = ('No verified individual first-pitch times yet; SEC baseball '
                      'weekend series previews remain available.' if sport == 'baseball' else
                      'No verified individual basketball matchups are available yet.')
-        elif not successes and not database_ok:
+        elif not espn_ok and not database_ok:
             issue = 'Live schedule sources unavailable; retaining previously confirmed games.'
-        elif not successes and database_ok:
+        elif not espn_ok and database_ok:
             issue = 'Live ESPN feed unavailable; displaying verified SEC/university fixtures.'
         if sport == 'basketball' and now >= dt.datetime(year - 1, 10, 1, tzinfo=UTC):
             low = [tid for tid, count in sec_counts.items() if count < 25]

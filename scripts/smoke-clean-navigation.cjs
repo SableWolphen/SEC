@@ -35,6 +35,6 @@ assert.match(home,/data-hq-chat-league/);
 assert.match(home,/data-hq-open-chat/);
 assert.match(home,/sec_league_messages/);
 assert.match(home,/getLeagues/);
-assert.match(app,/Pick saved securely online/);
+assert.match(app,/(League|Personal) pick saved online/);
 assert.match(app,/sport-schedule-health/);
 console.log("PASS: five-tab navigation, primary home actions, pick save confirmation and schedule health");

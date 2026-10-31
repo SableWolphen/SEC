@@ -6,6 +6,7 @@ const ids=["fan-league-choice","fan-league-create","fan-single-league","fan-club
  "fan-edit-sport-options","fan-upgrade-sport-options","fan-new-name"];
 const nodes=Object.fromEntries(ids.map(id=>[id,{innerHTML:"",hidden:false,value:"",querySelectorAll:()=>[]}]));
 const handlers={},local=new Map(),rpcCalls=[],pickWrites=[],selectedCalls=[],toasts=[];
+const syncedClubs=[];
 let pauseClubA=false,resolveClubA=null;
 let current={id:"owner-1",email:"owner@example.com"};
 let view="league";
@@ -58,6 +59,13 @@ const db={from:table,rpc:async(fn,args)=>{
    enabled_sports:[...args.p_sports],football_league:args.p_league,basketball_league:"bb-4",
    baseball_league:"bs-4",basketball_season:2027,baseball_season:2027});
   return {data:"club-D",error:null};
+ }
+ if(fn==="sec_club_sync_members"){
+  // Owner-only: copies existing members into newly enabled sports (20261030_shared_club_membership.sql).
+  const c=clubs.find(x=>x.id===args.p_club);
+  if(!c)return {error:{message:"League not found"}};
+  if(c.owner_id!==current.id)return {error:{message:"Owner only"}};
+  syncedClubs.push(c.id);return {data:null,error:null};
  }
  if(fn==="sec_club_join"){
   if(args.p_code==="ABCDEFGHIJ")return {data:"club-A",error:null};
@@ -148,6 +156,7 @@ const run=async()=>{
  chooseSet("upgrade",["football","baseball"]);
  await click("upgrade");
  assert.equal(manager.getClub().id,"club-D");
+ assert.ok(syncedClubs.includes("club-D"),"original members are carried into the upgraded league");
  assert.equal(clubs.at(-1).football_league,"fb-original","same original league ID preserved");
  assert.ok(football.some(f=>f.id==="fb-original"),"original club and picks not deleted");
  assert.deepEqual(clubs[1].enabled_sports,["basketball","baseball"]);

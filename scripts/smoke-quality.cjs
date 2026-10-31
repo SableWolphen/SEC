@@ -50,7 +50,7 @@ assert.match(worker,/const CACHE="sec-pickem-v[0-9]+"/,"service worker cache is 
 assert.match(html,/id="weekly-score-strip"/,"football score is visible before the slate");
 assert.match(html,/renderWeeklyScoreStrip\(w\)/,"weekly score updates with rerenders");
 assert.match(css,/#picks-view #hero-slot\{display:none\}/,"mobile layout removes duplicated featured matchup");
-assert.match(fs.readFileSync("multi-sport.js","utf8"),/sportStrip\+leagues\+games/,"other sports show the weekly score before leagues and games");
+assert.match(fs.readFileSync("multi-sport.js","utf8"),/games\+\s*\(w\?sportStrip:''\)\+extras/,"other sports are task-first: game cards, then weekly score, then folded league options");
 assert.match(worker,/20261010-showcase-v1/);
 assert.match(html,/20261011-national-polls-v1/,"current national poll and matchup stats assets are cache-busted");
 const league=fs.readFileSync("league-settings.js","utf8");
