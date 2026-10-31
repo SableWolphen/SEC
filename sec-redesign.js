@@ -37,7 +37,8 @@ function simplify(){
 
 /* Pick details use the same authenticated save handler as the existing cards. */
 let dialog=null;
-function closeDetails(){if(dialog){dialog.remove();dialog=null;}}
+let activePickListener=null;
+function closeDetails(){if(activePickListener){document.removeEventListener('sec-sport-pick-result',activePickListener);activePickListener=null;}if(dialog){dialog.remove();dialog=null;}}
 function details(card){
  closeDetails();
  const options=[...card.querySelectorAll('[data-sport-action="pick"]')];
@@ -66,7 +67,7 @@ function details(card){
  const save=make('button','sec-pick-save','Save pick');save.type='button';
  const onResult=e=>{
   if(!selected||e.detail?.game!==selected.dataset.game||e.detail?.sport!==selected.dataset.sport)return;
-  document.removeEventListener('sec-sport-pick-result',onResult);
+  document.removeEventListener('sec-sport-pick-result',onResult);activePickListener=null;
   if(e.detail.ok){closeDetails();return;}
   save.disabled=false;save.textContent='Try saving again';
   msg.textContent=e.detail.message||'Unable to save. Your previous pick was not changed.';
@@ -76,10 +77,11 @@ function details(card){
   if(selected.disabled){msg.textContent='This matchup is unavailable for picks.';return;}
   save.disabled=true;save.textContent='Saving…';msg.textContent='Waiting for secure confirmation';
   document.removeEventListener('sec-sport-pick-result',onResult);
-  document.addEventListener('sec-sport-pick-result',onResult);
+  document.addEventListener('sec-sport-pick-result',onResult);activePickListener=onResult;
   selected.click();
  });panel.append(save);
  overlay.append(panel);overlay.addEventListener('click',e=>{if(e.target===overlay)closeDetails();});
+ overlay.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();closeDetails();}if(e.key==='Tab'){const controls=[...panel.querySelectorAll('button:not(:disabled),summary,[tabindex]')].filter(x=>x.getClientRects().length);if(!controls.length)return;const first=controls[0],last=controls.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
  document.body.append(overlay);dialog=overlay;close.focus();
 }
 function enhanceSportCards(){
@@ -90,6 +92,7 @@ function enhanceSportCards(){
   const open=make('button','sec-open-pick',opts[0].disabled&&opts[1].disabled?'View game details':'Open game & pick winner');
   open.type='button';open.addEventListener('click',()=>details(card));
   card.querySelector('.sport-team-options')?.after(open);
+  card.classList.add('sec-card-enhanced');
  });
 }
 function enhanceSecondary(){
