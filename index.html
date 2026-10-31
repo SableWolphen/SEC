@@ -813,6 +813,12 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
    '<button type="button" class="slate-next" data-slate-next '+(!openUnpicked.length?'disabled':'')+'>Jump to next pick ↓</button></div>';
   const tieSlot=document.getElementById("weekly-tiebreaker-slot");
   if(tieSlot)tieSlot.innerHTML=window.SEC_FEATURES?.tiebreakerCard?.()||"";
+  // Picked matchups remain in the swipe deck after saving, even if the
+  // user was browsing the Need picks filter.
+  if(slateFilter==='unpicked'&&slateFilterTouched&&focusGameId&&state.picks[focusGameId]){
+    slateFilter='all';slateFilterTouched=false;
+  }
+  if(!slateFilterTouched)slateFilter='all';
   const filtered=w.games.filter(g=>
     slateFilter==='picked' ? Boolean(state.picks[g.id]) :
     slateFilter==='unpicked' ? openUnpicked.includes(g) :
@@ -821,7 +827,6 @@ main{padding:37px 0 64px}.eyebrow{font-size:10px;letter-spacing:2.35px;font-weig
     slateFilter==='upcoming' ? g.liveStatus!=="live"&&!window.SEC_FEATURES?.finalData?.(g) : true
   );
   window.SEC_COMPETITIVE?.onPicks?.();
-  if(!slateFilterTouched&&slateFilter!=="all")slateFilter="all";
   document.getElementById('games-list').innerHTML=filtered.length?
    filtered.map((g)=>renderGame(g,w.games.indexOf(g))).join(''):
    '<div class="slate-empty"><strong>'+(slateFilter==='unpicked'?'All available games are picked!':
