@@ -528,6 +528,7 @@ async function action(btn){
    if(l)unwrap(await c.rpc("sec_sport_save_pick",{p_league:l.id,p_game:g.id,p_pick:btn.dataset.sportPick,p_confidence:conf}));
     else unwrap(await c.rpc("sec_sport_save_personal_pick",{p_game:g.id,p_pick:btn.dataset.sportPick}));
    notices[s]=l?"League pick saved online.":"Personal pick saved online.";
+   document.dispatchEvent(new CustomEvent("sec-sport-pick-result",{detail:{sport:s,game:g.id,ok:true}}));
    await load(s);return;
   }
   if(what==="total"){
@@ -546,7 +547,7 @@ async function action(btn){
    await navigator.clipboard.writeText(url.href);
    notices[s]="Invite link copied!";renderSport(s);return;
   }
- }catch(error){inform(s,error.message||"Something went wrong");}
+ }catch(error){if(what==="pick")document.dispatchEvent(new CustomEvent("sec-sport-pick-result",{detail:{sport:s,game:btn.dataset.game,ok:false,message:error.message||"Could not save pick"}}));inform(s,error.message||"Something went wrong");}
 }
 document.addEventListener("click",ev=>{
  const to=ev.target.closest?.("[data-go-sport]");
