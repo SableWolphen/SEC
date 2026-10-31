@@ -23,7 +23,7 @@ function dashboard(){
  [['game-center','🏅 Scores'],['trophies','🏆 Trophies'],['more','⚙️ More']].forEach(([id,label])=>{
   const b=make('button','sec-simple-link',label);b.type='button';b.dataset.nav=id;row.append(b);
  });pane.append(row);
- host.prepend(pane);
+ host.parentNode.insertBefore(pane,host); // Keep dashboard persistent when live Home content refreshes.
 }
 function simplify(){
  // The main five destinations match the visual redesign; account settings live under More.
