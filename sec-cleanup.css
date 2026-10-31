@@ -100,3 +100,11 @@
 .sport-swipe-grid>.sport-games-no-status{flex:0 0 100%}
 @media(min-width:900px){.sport-swipe-grid>.sport-game-card{flex-basis:min(560px,calc(100% - 4px));width:min(560px,calc(100% - 4px))}}
 @media(prefers-reduced-motion:reduce){.sport-swipe-grid{scroll-behavior:auto}}
+
+/* Football uses the same one-matchup-at-a-time swipe experience. */
+#games-list.sec-football-swipe-grid{display:flex!important;overflow-x:auto;overflow-y:hidden;gap:12px;scroll-snap-type:x mandatory;scroll-padding-inline:2px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:4px 2px 18px}
+#games-list.sec-football-swipe-grid::-webkit-scrollbar{display:none}
+#games-list.sec-football-swipe-grid>.game-card{box-sizing:border-box;flex:0 0 calc(100% - 4px);width:calc(100% - 4px);min-width:0;scroll-snap-align:start;scroll-snap-stop:always}
+#games-list.sec-football-swipe-grid>.slate-empty{flex:0 0 100%}
+.sec-football-swipe[hidden]{display:none}
+@media(min-width:900px){#games-list.sec-football-swipe-grid>.game-card{flex-basis:min(640px,calc(100% - 4px));width:min(640px,calc(100% - 4px))}}
