@@ -86,6 +86,7 @@ function details(card){
 }
 function enhanceSportCards(){
  document.querySelectorAll('.sport-game-card').forEach(card=>{
+  if(card.classList.contains('sport-football-style'))return; // Direct team picks, identical to football.
   if(card.querySelector('.sec-open-pick'))return;
   const opts=card.querySelectorAll('[data-sport-action="pick"]');
   if(opts.length!==2)return;
