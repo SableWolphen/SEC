@@ -269,8 +269,10 @@ function renderSport(s){
  // Keep the basketball/baseball picks pages task-first, like football.
  // League management and diagnostic information remain accessible, but do not
  // interrupt the week picker and game cards.
+ const leagueOptions='<option value="solo" '+(!active?'selected':'')+'>My Picks · Solo</option>'+
+  (data.leagues||[]).map(l=>'<option value="'+esc(l.id)+'" '+(l.id===active?.id?'selected':'')+'>'+esc(l.name)+'</option>').join("");
  const compactContext='<div class="sport-pick-context"><strong>'+conf.emoji+' '+esc(conf.name)+' Picks</strong>'+
-  '<span>'+esc(active?.name||"My Picks")+' · '+(w?'Week '+w.num:'Season '+year(s))+'</span></div>';
+  '<label class="sport-quick-league">League <select data-change-sport="'+s+'" aria-label="Choose '+esc(conf.name)+' league">'+leagueOptions+'</select></label></div>';
  const extras='<details class="sport-picks-extras"><summary>League options &amp; schedule details</summary>'+
   leagues+health+renderSeries(s)+'</details>';
  root.innerHTML=compactContext+note+status+stale+loadingText+games+
