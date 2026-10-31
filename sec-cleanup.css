@@ -88,3 +88,15 @@
 .sport-football-style .sport-game-more>summary{font-size:14px;color:#edc47c}
 .sport-football-style .sport-game-provider{display:none}
 @media(max-width:600px){.sport-football-style{padding:14px}.sport-football-style .sport-team-option{min-height:118px;padding:12px 9px}.sport-football-style .sport-team-name{font-size:13px}.sport-pick-status{flex-wrap:wrap}}
+
+/* Swipeable one-game-at-a-time matchup picker */
+.sport-swipe-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:10px 0;color:#becbd6;font-size:12px}
+.sport-swipe-tools>div{display:flex;align-items:center;gap:10px}
+.sport-swipe-tools button{width:42px;height:42px;border-radius:11px;border:1px solid #60778c;background:#1a3448;color:#f5ce87;font-size:26px}
+.sport-swipe-count{min-width:52px;text-align:center;font-weight:800;color:#f0c775;font-variant-numeric:tabular-nums}
+.sport-swipe-grid{display:flex!important;gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:2px;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:4px 2px 16px}
+.sport-swipe-grid::-webkit-scrollbar{display:none}
+.sport-swipe-grid>.sport-game-card{flex:0 0 calc(100% - 4px);width:calc(100% - 4px);scroll-snap-align:start;scroll-snap-stop:always}
+.sport-swipe-grid>.sport-games-no-status{flex:0 0 100%}
+@media(min-width:900px){.sport-swipe-grid>.sport-game-card{flex-basis:min(560px,calc(100% - 4px));width:min(560px,calc(100% - 4px))}}
+@media(prefers-reduced-motion:reduce){.sport-swipe-grid{scroll-behavior:auto}}
