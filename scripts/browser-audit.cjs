@@ -323,8 +323,10 @@ fs.mkdirSync(output,{recursive:true});
      const secondary=await page.evaluate(()=>[
       ...document.querySelectorAll("#more-view [data-nav]")
      ].map(e=>e.dataset.nav));
-     if(secondary.join(",")!=="news,teams,settings")
-      problems.push(viewport.width+"px More menu lost news, teams or settings");
+     // More may hold extra links (Trophy Room, profile guide); it must never lose these.
+     const missing=["news","teams","settings"].filter(nav=>!secondary.includes(nav));
+     if(missing.length)
+      problems.push(viewport.width+"px More menu lost "+missing.join(", ")+": "+JSON.stringify(secondary));
      // Search, pins, accessibility and deep navigation must work on real phones,
      // not just in a Node DOM fixture. Leave account data and saved picks alone.
      const access=await page.evaluate(()=>{

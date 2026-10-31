@@ -78,3 +78,5 @@
 .sec-next-match-button small{color:#edcb88;font-size:12px}
 .sec-next-match-button:focus-visible{outline:3px solid #f0c775;outline-offset:2px}
 .sport-team-option[aria-busy="true"]{opacity:.76;cursor:progress}
+/* The forced flex nav above must still yield to the on-screen keyboard. */
+@media(max-width:790px){body:has(input:focus,textarea:focus,select:focus) .bottom-nav{display:none!important}}
