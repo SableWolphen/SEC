@@ -150,6 +150,30 @@ function enhanceDashboardProgress(){
   b.append(name,count);target.append(b);
  }
 }
+function enhanceProfileStats(){
+ const profile=document.getElementById('settings-view');if(!profile)return;
+ let area=profile.querySelector('#sec-profile-sport-stats');
+ if(!area){area=make('section','sec-profile-sport-stats');area.id='sec-profile-sport-stats';profile.querySelector('#sec-profile-intro')?.after(area);}
+ const rows=[['football','🏈','Football'],['basketball','🏀','Basketball'],['baseball','⚾','Baseball']].map(([id,icon,name])=>{
+  const state=window.SEC_SPORTS?.getState?.(id);
+  if(!state?.games?.length)return null;
+  const picks=state.picks||{};
+  const made=Object.values(picks).filter(p=>p?.pick_code).length;
+  const graded=state.games.filter(g=>g.game_status==='final'&&g.winner_code&&picks[g.id]?.pick_code);
+  const correct=graded.filter(g=>picks[g.id].pick_code===g.winner_code).length;
+  return {id,icon,name,made,graded:graded.length,correct};
+ }).filter(Boolean);
+ const signature=JSON.stringify(rows);if(area.dataset.signature===signature)return;
+ area.dataset.signature=signature;area.replaceChildren();
+ if(!rows.length)return;
+ area.append(make('h2','', 'Your picks by sport'));
+ rows.forEach(r=>{
+  const row=make('button','sec-profile-stat-row');row.type='button';row.dataset.simpleSport=r.id;
+  const title=make('strong','',r.icon+' '+r.name);
+  const desc=make('span','',r.made+' picks made · '+(r.graded?r.correct+' / '+r.graded+' correct':'Results pending'));
+  row.append(title,desc);area.append(row);
+ });
+}
 function enhanceLeagueSports(){
  const league=document.getElementById('league-view');
  if(!league||document.getElementById('sec-league-sports'))return;
@@ -163,7 +187,7 @@ function enhanceLeagueSports(){
  league.querySelector('#sec-league-intro')?.after(wrapper);
 }
 function enhance(){
- enhanceSportCards();enhanceSecondary();enhanceDashboardProgress();enhanceLeagueSports();
+ enhanceSportCards();enhanceSecondary();enhanceDashboardProgress();enhanceLeagueSports();enhanceProfileStats();
 }
 
 document.addEventListener('click',e=>{
