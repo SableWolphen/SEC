@@ -1,72 +1,129 @@
 {
-  "updated_at": "2026-10-31T23:25:59.707879Z",
-  "checked_at": "2026-10-31T23:25:59.707879Z",
+  "updated_at": "2026-11-01T06:14:26.106337Z",
+  "checked_at": "2026-11-01T06:14:26.106337Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "15049dc119bca552",
-      "title": "Northwestern safety Jon Jon Stevens exits loss with upper-body injury",
-      "summary": "Northwestern safety Jon Jon Stevens was carted off the field in the third quarter of the Wildcats' 34-26 loss at Oregon on Saturday after delivering a hard blow on a tackle, and the team later announced he was…",
-      "url": "https://www.espn.com/college-football/story/_/id/50340369/northwestern-s-jon-jon-stevens-exits-upper-body-injury",
+      "id": "b0b7893497365c30",
+      "title": "Georgia bounces back from upset, handles Florida in Atlanta",
+      "summary": "Playing in their state capital Saturday afternoon, the No. 3 Georgia Bulldogs raced past the No. 17 Florida Gators 27-8 in Atlanta, shedding the memory of an uncharacteristic home loss to unranked Auburn two weeks ago.",
+      "url": "https://www.espn.com/college-football/story/_/id/50342444/georgia-bounces-back-upset-handles-florida-atlanta",
       "source": "ESPN",
-      "published_at": "2026-10-31T23:24:48Z",
+      "published_at": "2026-11-01T04:50:03Z",
       "sport": "football",
       "teams": [
-        "Kentucky"
-      ],
-      "breaking": true
-    },
-    {
-      "id": "2b05538cda767185",
-      "title": "Tennessee Tech Golden Eagles vs. East Tennessee State Buccaneers: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50341388/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-31T23:24:43Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5c9f4efe26570783",
-      "title": "Alabama State Hornets vs. Alabama A&M Bulldogs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50341350/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-31T23:22:00Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
+        "Auburn",
+        "Florida",
         "Georgia"
       ],
       "breaking": false
     },
     {
-      "id": "0e3e3cb12d53475c",
-      "title": "West Georgia Wolves vs. Abilene Christian Wildcats: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50341303/full-highlights",
+      "id": "4f1b05101ae29567",
+      "title": "Missouri's Ahmad Hardy returns nearly 6 months after being shot in leg",
+      "summary": "Missouri RB Ahmad Hardy returned to the field on Saturday night, nearly six months after being wounded in the leg during a shooting at an outdoor concert.",
+      "url": "https://www.espn.com/college-football/story/_/id/50344541/missouri-ahmad-hardy-returns-nearly-6-months-being-shot-leg",
       "source": "ESPN",
-      "published_at": "2026-10-31T23:19:43Z",
+      "published_at": "2026-11-01T04:35:16Z",
       "sport": "football",
       "teams": [
-        "Georgia",
-        "Kentucky"
+        "Missouri"
       ],
       "breaking": false
     },
     {
-      "id": "77a2a98e51c473d1",
-      "title": "Florida Gators vs. Georgia Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50341246/game-highlights",
+      "id": "83d023484cef8cf9",
+      "title": "Jamal Roberts speaks on how the run game boosts No. 23 Mizzou",
+      "summary": "Coming off a 138-yard performance in the win against Arkansas, Roberts explains how he was able to run effectively thanks to the Tigers' offensive line.",
+      "url": "https://www.espn.com/video/clip/_/id/50344220/jamal-roberts-speaks-how-run-game-boosts-no-23-mizzou",
       "source": "ESPN",
-      "published_at": "2026-10-31T23:14:21Z",
+      "published_at": "2026-11-01T03:46:37Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas",
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5a336000d128bbad",
+      "title": "Missouri Tigers vs. Arkansas Razorbacks: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50343954/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-01T03:35:59Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas",
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "dac8381e27ade8f8",
+      "title": "Drinkwitz highlights RB Roberts, Mizzou's defense vs. Arkansas",
+      "summary": "Eliah Drinkwitz credits Jamal Roberts for his consistent production on the ground and praises the Tigers' defense for forcing four turnovers, including one returned for a touchdown.",
+      "url": "https://www.espn.com/video/clip/_/id/50344037/drinkwitz-highlights-rb-roberts-mizzou-defense-vs-arkansas",
+      "source": "ESPN",
+      "published_at": "2026-11-01T03:33:48Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas",
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4c158be9f633b933",
+      "title": "Mississippi State Bulldogs vs. Texas Longhorns: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50343804/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-01T03:18:33Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Mississippi State",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "41a6bd020d2c3f2c",
+      "title": "Texas' Sarkisian credits defensive playmakers, Manning following win",
+      "summary": "Steve Sarkisian explains how the Longhorns' focus throughout the week translated to defensive disruption and a complete performance from Arch Manning.",
+      "url": "https://www.espn.com/video/clip/_/id/50343870/texas-sarkisian-credits-defensive-playmakers-manning-following-win",
+      "source": "ESPN",
+      "published_at": "2026-11-01T03:08:02Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c39d8d37f43f4df3",
+      "title": "Wofford Terriers vs. Samford Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50343183/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-01T02:02:23Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d1c353e19d24ff83",
+      "title": "Doering, Watson highlight UGA's optimistic outlook on defense vs. UF",
+      "summary": "SEC Now's Benjamin Watson and Chris Doering explain how the No. 3 Bulldogs' forced turnovers and stout run defense got them the win over the No. 17 Gators.",
+      "url": "https://www.espn.com/video/clip/_/id/50343172/doering-watson-highlight-uga-optimistic-outlook-defense-vs-uf",
+      "source": "ESPN",
+      "published_at": "2026-11-01T01:59:45Z",
       "sport": "football",
       "teams": [
         "Florida",
@@ -75,69 +132,43 @@
       "breaking": false
     },
     {
-      "id": "abd7b078e91b267c",
-      "title": "SE Louisiana Lions vs. East Texas A&M Lions: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50341159/full-highlights",
+      "id": "e46cf651ff12bf38",
+      "title": "No. 12 Ole Miss' second half offers blueprint for stretch run",
+      "summary": "The SEC Now crew points out that Trinidad Chambliss and the Rebels' complete second half against the Tigers as a glimpse of how dangerous they can be against anyone.",
+      "url": "https://www.espn.com/video/clip/_/id/50342823/no-12-ole-miss-second-half-offers-blueprint-stretch-run",
       "source": "ESPN",
-      "published_at": "2026-10-31T23:06:37Z",
+      "published_at": "2026-11-01T01:20:24Z",
       "sport": "football",
       "teams": [
-        "Texas A&M"
+        "Ole Miss"
       ],
       "breaking": false
     },
     {
-      "id": "9126d1e9f7eb8bd8",
-      "title": "Louisiana Tech Bulldogs vs. South Alabama Jaguars: Full Highlights",
+      "id": "6a4d422e586e22dc",
+      "title": "South Carolina Gamecocks vs. Oklahoma Sooners: Full Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50340587/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50342144/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-31T22:27:01Z",
+      "published_at": "2026-11-01T00:45:40Z",
       "sport": "football",
       "teams": [
-        "Georgia"
+        "Oklahoma",
+        "South Carolina"
       ],
       "breaking": false
     },
     {
-      "id": "7b9169b9752a47a1",
-      "title": "UC Davis Aggies vs. Weber State Wildcats: Full Highlights",
+      "id": "25704b387657209c",
+      "title": "North Alabama Lions vs. Central Arkansas Bears: Full Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50340433/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50342006/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-10-31T22:14:54Z",
+      "published_at": "2026-11-01T00:11:12Z",
       "sport": "football",
       "teams": [
-        "Kentucky",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f2256d881918d1dd",
-      "title": "The Citadel Bulldogs vs. Mercer Bears: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50340371/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-31T22:09:22Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "db6b93a11119f2fc",
-      "title": "Gardner-Webb Bulldogs vs. Southeast Missouri State Redhawks: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50339904/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-10-31T21:18:51Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Missouri"
+        "Alabama",
+        "Arkansas"
       ],
       "breaking": false
     },
