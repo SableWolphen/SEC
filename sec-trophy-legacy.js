@@ -270,7 +270,7 @@
     if(added.length&&read(prefKey("initialized"))==="1"){
      const root=ctx.root;
      if(root){root.classList.remove("legacy-celebrate");void root.offsetWidth;root.classList.add("legacy-celebrate");}
-     window.SEC_BRIDGE?.toast?.("🏆 Trophy unlocked! Your achievement collection grew.");
+     window.SEC_BRIDGE?.toast?.("🏆 Trophy unlocked! Tap to see your achievements.","trophies");
     }
    }catch{}
   }
