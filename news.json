@@ -1,25 +1,23 @@
 {
-  "updated_at": "2026-11-01T06:14:26.106337Z",
-  "checked_at": "2026-11-01T06:14:26.106337Z",
+  "updated_at": "2026-11-01T13:30:29.268245Z",
+  "checked_at": "2026-11-01T13:30:29.268245Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "b0b7893497365c30",
-      "title": "Georgia bounces back from upset, handles Florida in Atlanta",
-      "summary": "Playing in their state capital Saturday afternoon, the No. 3 Georgia Bulldogs raced past the No. 17 Florida Gators 27-8 in Atlanta, shedding the memory of an uncharacteristic home loss to unranked Auburn two weeks ago.",
-      "url": "https://www.espn.com/college-football/story/_/id/50342444/georgia-bounces-back-upset-handles-florida-atlanta",
+      "id": "c054a729f34eabd3",
+      "title": "1 killed, 8 injured in shooting outside 'Magic City Classic' game in Alabama",
+      "summary": "One person was killed and eight others were wounded in a mass shooting just outside Legion Field after the annual \"Magic City Classic\" football game, police in Birmingham, Alabama, said.",
+      "url": "https://www.espn.com/college-football/story/_/id/50347222/1-killed-8-injured-shooting-magic-city-classic",
       "source": "ESPN",
-      "published_at": "2026-11-01T04:50:03Z",
+      "published_at": "2026-11-01T12:23:35Z",
       "sport": "football",
       "teams": [
-        "Auburn",
-        "Florida",
-        "Georgia"
+        "Alabama"
       ],
-      "breaking": false
+      "breaking": true
     },
     {
       "id": "4f1b05101ae29567",
@@ -145,99 +143,6 @@
       "breaking": false
     },
     {
-      "id": "6a4d422e586e22dc",
-      "title": "South Carolina Gamecocks vs. Oklahoma Sooners: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50342144/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-01T00:45:40Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "25704b387657209c",
-      "title": "North Alabama Lions vs. Central Arkansas Bears: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50342006/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-01T00:11:12Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6ada8102370e311a",
-      "title": "LSU lands 5-star center Xavier Young for class of 2027",
-      "summary": "Five-star center Xavier Young has committed to LSU and plans to reclassify into the 2027 class. The 16-year-old will need to spend at least two years in college before he's eligible for the NBA draft.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50336401/lsu-lands-5-star-center-xavier-young-class-2027",
-      "source": "ESPN",
-      "published_at": "2026-10-31T17:52:04Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "323377cb10c1d895",
-      "title": "Zion Green commits to Alabama hoops as Crimson Tide's second top-25 recruit",
-      "summary": "Five-star forward Zion Green has committed to Alabama, joining fellow top-25 recruit Chase Lumpkin in heading to Tuscaloosa.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50336018/zion-green-commits-alabama-hoops",
-      "source": "ESPN",
-      "published_at": "2026-10-31T14:52:17Z",
-      "sport": "basketball",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b3df6566428b7cb3",
-      "title": "NCAA loses Kentucky appeals ruling; players remain eligible",
-      "summary": "A Kentucky Court of Appeals judge denied the NCAA emergency relief on Friday, allowing a group of players including Texas Tech quarterback Thomas Castellanos to remain eligible.",
-      "url": "https://www.espn.com/college-football/story/_/id/50328513/ncaa-loses-kentucky-appeals-ruling-players-remain-eligible",
-      "source": "ESPN",
-      "published_at": "2026-10-30T15:33:34Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "37e3413bbd8bae99",
-      "title": "LSU coach Will Wade refuses to discuss RJ Luis Jr.'s eligibility status",
-      "summary": "LSU coach Will Wade declined to take questions Thursday on the status of RJ Luis Jr., who a day earlier won a temporary restraining order opening the door to play for the Tigers.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50321858/lsu-coach-wade-refuses-discuss-rj-luis-jr-status",
-      "source": "ESPN",
-      "published_at": "2026-10-29T22:15:11Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "2f8e497d61c661ce",
-      "title": "Reese Alston, prized PG recruit and son of streetball legend, commits to LSU",
-      "summary": "Five-star point guard Reese Alston announced he has committed to LSU, giving Tigers coach Will Wade his third top-25 recruit in the 2027 class.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50321518/reese-alston-no-13-overall-recruit-commits-lsu",
-      "source": "ESPN",
-      "published_at": "2026-10-29T21:18:04Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
       "id": "b0262762794ea689",
       "title": "The chaotic SEC football championship race, explained by the data",
       "summary": "More than half of the SEC is ranked in college football, yet every team has at least one loss in conference play.",
@@ -246,71 +151,6 @@
       "published_at": "2026-10-29T16:10:00Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "0fa04a6864eb35e6",
-      "title": "College basketball eligibility: What to know about latest rulings",
-      "summary": "With RJ Luis Jr. threatening to sue LSU, the eligibility uncertainty is far from over as the season begins. Here's what we know.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/49692764/college-basketball-eligibility-know-latest-rulings-ncaa",
-      "source": "ESPN",
-      "published_at": "2026-10-29T13:30:33Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e9b9a57fa349d74b",
-      "title": "Judge OK's RJ Luis Jr. to join LSU; lawyer says Will Wade now in 'crosshairs'",
-      "summary": "RJ Luis Jr. is eligible to play and practice with LSU through a temporary injunction signed by a Louisiana judge Wednesday.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50312271/rj-luis-jr-eligible-join-lsu-judge-injunction",
-      "source": "ESPN",
-      "published_at": "2026-10-29T12:25:23Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e3d1157544e894f0",
-      "title": "Rapper Rod Wave signs Arkansas hoops prospect Abdou Toure to his new agency",
-      "summary": "Toure, who plays guard and forward, is about to begin his freshman season with the Arkansas Razorbacks.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50308650/rod-wave-abdou-toure-arkansas",
-      "source": "ESPN",
-      "published_at": "2026-10-28T16:15:20Z",
-      "sport": "basketball",
-      "teams": [
-        "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8b45c51e680e9976",
-      "title": "Davis hot starts puts out Wildcats",
-      "summary": "It was Kendric Davis' first has blitz that helped the Sydney Kings defeat a stubborn Perth Wildcats side in the NBL Ignite Cup",
-      "url": "https://www.espn.com/video/clip/_/id/50307102/davis-hot-starts-puts-wildcats",
-      "source": "ESPN",
-      "published_at": "2026-10-28T12:36:56Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "9fb9158914bd207c",
-      "title": "Lawyers ask judge to block SEC from punishing LSU if RJ Luis Jr. added to roster",
-      "summary": "Lawyers for RJ Luis Jr., who was briefly under contract with two NBA teams in 2025 but never played in a game, are asking a Louisiana judge to block the SEC from punishing LSU if Luis is added to the Tigers' roster.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50304054/lawyers-ask-judge-block-sec-punishing-lsu-rj-luis-jr-added-roster",
-      "source": "ESPN",
-      "published_at": "2026-10-28T12:19:41Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
       "breaking": false
     },
     {
@@ -327,32 +167,6 @@
       "breaking": false
     },
     {
-      "id": "40864b86e22eb6de",
-      "title": "NCAA Bracketology: Predicting the 2027 men's March Madness field",
-      "summary": "The consensus No. 1 Gators don't scream national champion with any certainty. The Illini, however, could.",
-      "url": "https://www.espn.com/espn/feature/story/_/page/bracketology/ncaa-bracketology-2027-march-madness-men-field-predictions",
-      "source": "ESPN",
-      "published_at": "2026-10-27T11:52:51Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d26fae39da8347c4",
-      "title": "Auburn fires GM Brian Kloman over Rubstavicius' eligibility case, source says",
-      "summary": "Auburn fired general manager Brian Kloman after alleging he withheld information vital to Mantas Rubstavicius' eligibility case, a source told ESPN.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50291435/auburn-fires-gm-brian-kloman-rubstavicius-eligibility-case",
-      "source": "ESPN",
-      "published_at": "2026-10-26T23:44:09Z",
-      "sport": "basketball",
-      "teams": [
-        "Auburn"
-      ],
-      "breaking": false
-    },
-    {
       "id": "1c2ed52da59307b9",
       "title": "Texas soars, BYU and Texas Tech fall in latest AP Top 25 rankings",
       "summary": "Seven ranked college football teams lost in Week 8, with five of them coming against unranked foes. Here’s what you need to know about the latest AP Top 25 Poll.",
@@ -362,45 +176,6 @@
       "sport": "football",
       "teams": [
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a8aaea3fb86d4b07",
-      "title": "Dale Brown, LSU's winningest basketball coach, dies at 90",
-      "summary": "Dale Brown, who coached LSU to two Final Four appearances and whose players included Shaquille O'Neal and Mahmoud Abdul-Rauf, has died at the age of 90.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50259738/dale-brown-lsu-winningest-basketball-coach-dies-90",
-      "source": "ESPN",
-      "published_at": "2026-10-23T23:06:42Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "aac7190267961fbf",
-      "title": "Ole Miss served most punishments past two seasons for ex-assistant's violations",
-      "summary": "The NCAA has penalized Ole Miss' men's basketball program for tampering violations by former assistant coach Wes Flanigan, with most of the penalties served during the 2024-25 and 2025-26 school years.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50260160/ole-miss-sanctioned-ex-assistant-violations",
-      "source": "ESPN",
-      "published_at": "2026-10-23T20:27:42Z",
-      "sport": "basketball",
-      "teams": [
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e61e003c27b94d2b",
-      "title": "Paul Finebaum remembers former LSU coach Dale Brown",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50260222/paul-finebaum-remembers-former-lsu-coach-dale-brown",
-      "source": "ESPN",
-      "published_at": "2026-10-23T20:11:49Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
       ],
       "breaking": false
     }
