@@ -1,117 +1,35 @@
 {
-  "updated_at": "2026-11-01T18:58:03.733257Z",
-  "checked_at": "2026-11-01T18:58:03.733257Z",
+  "updated_at": "2026-11-01T22:52:14.458290Z",
+  "checked_at": "2026-11-01T22:52:14.458290Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "c054a729f34eabd3",
-      "title": "1 killed, 8 injured in shooting outside 'Magic City Classic' game in Alabama",
-      "summary": "One person was killed and eight others were wounded in a mass shooting just outside Legion Field after the annual \"Magic City Classic\" football game, police in Birmingham, Alabama, said.",
-      "url": "https://www.espn.com/college-football/story/_/id/50347222/1-killed-8-injured-shooting-magic-city-classic",
+      "id": "271e10690d8caf27",
+      "title": "Sian Hudson is proud of how LSU navigates the season's ebbs and flows",
+      "summary": "Hudson reflects on the season as she enters her seventh consecutive SEC tournament, discussing the desire for more early wins while taking pride in the Tigers' mindset.",
+      "url": "https://www.espn.com/video/clip/_/id/50351093/sian-hudson-proud-how-lsu-navigates-season-ebbs-flows",
       "source": "ESPN",
-      "published_at": "2026-11-01T15:09:54Z",
+      "published_at": "2026-11-01T21:13:46Z",
       "sport": "football",
       "teams": [
-        "Alabama"
-      ],
-      "breaking": true
-    },
-    {
-      "id": "4f1b05101ae29567",
-      "title": "Missouri's Ahmad Hardy returns nearly 6 months after being shot in leg",
-      "summary": "Missouri RB Ahmad Hardy returned to the field on Saturday night, nearly six months after being wounded in the leg during a shooting at an outdoor concert.",
-      "url": "https://www.espn.com/college-football/story/_/id/50344541/missouri-ahmad-hardy-returns-nearly-6-months-being-shot-leg",
-      "source": "ESPN",
-      "published_at": "2026-11-01T04:35:16Z",
-      "sport": "football",
-      "teams": [
-        "Missouri"
+        "LSU"
       ],
       "breaking": false
     },
     {
-      "id": "83d023484cef8cf9",
-      "title": "Jamal Roberts speaks on how the run game boosts No. 23 Mizzou",
-      "summary": "Coming off a 138-yard performance in the win against Arkansas, Roberts explains how he was able to run effectively thanks to the Tigers' offensive line.",
-      "url": "https://www.espn.com/video/clip/_/id/50344220/jamal-roberts-speaks-how-run-game-boosts-no-23-mizzou",
+      "id": "7eb5c87b3ced908f",
+      "title": "Early top-10 men's basketball recruiting class rankings",
+      "summary": "After a slew of top-20 decisions, LSU and Duke are the two best classes, while Alabama, Arizona State debut.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50242145/2027-mens-basketball-recruiting-class-rankings",
       "source": "ESPN",
-      "published_at": "2026-11-01T03:46:37Z",
-      "sport": "football",
+      "published_at": "2026-11-01T19:11:02Z",
+      "sport": "basketball",
       "teams": [
-        "Arkansas",
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5a336000d128bbad",
-      "title": "Missouri Tigers vs. Arkansas Razorbacks: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50343954/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-01T03:35:59Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas",
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "dac8381e27ade8f8",
-      "title": "Drinkwitz highlights RB Roberts, Mizzou's defense vs. Arkansas",
-      "summary": "Eliah Drinkwitz credits Jamal Roberts for his consistent production on the ground and praises the Tigers' defense for forcing four turnovers, including one returned for a touchdown.",
-      "url": "https://www.espn.com/video/clip/_/id/50344037/drinkwitz-highlights-rb-roberts-mizzou-defense-vs-arkansas",
-      "source": "ESPN",
-      "published_at": "2026-11-01T03:33:48Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas",
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4c158be9f633b933",
-      "title": "Mississippi State Bulldogs vs. Texas Longhorns: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50343804/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-01T03:18:33Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Mississippi State",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "41a6bd020d2c3f2c",
-      "title": "Texas' Sarkisian credits defensive playmakers, Manning following win",
-      "summary": "Steve Sarkisian explains how the Longhorns' focus throughout the week translated to defensive disruption and a complete performance from Arch Manning.",
-      "url": "https://www.espn.com/video/clip/_/id/50343870/texas-sarkisian-credits-defensive-playmakers-manning-following-win",
-      "source": "ESPN",
-      "published_at": "2026-11-01T03:08:02Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c39d8d37f43f4df3",
-      "title": "Wofford Terriers vs. Samford Bulldogs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50343183/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-01T02:02:23Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
+        "Alabama",
+        "LSU"
       ],
       "breaking": false
     },
