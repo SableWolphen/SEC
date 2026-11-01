@@ -292,7 +292,20 @@
  const style=document.createElement("style");style.textContent=rules.join("\n");document.head.appendChild(style);
  let verified=[],myPicks={},schedule={},records=[],permanent=[],derived=[],historyUser=null,signedIn=false,leagueId=null,leagueName="",tab="all",school="schools",expandedSchool=null,category="all",searchTerm="",rootId="sds-trophy-case",renderId=0,viewerLoading=false;
  function last(id){return records.filter(r=>r.trophyId===id).sort((a,b)=>b.year-a.year)[0];}
- function lastWin(id,schoolCode="all"){return records.filter(r=>r.trophyId===id&&r.correct&&r.pick===r.winner&&r.winner&&(schoolCode==="all"||r.winner===schoolCode)).sort((a,b)=>b.year-a.year)[0];}
+ function lastWin(id,schoolCode="all"){
+  // Personal prediction achievements still require an accurate winner pick.
+  if(schoolCode==="all")return records.filter(r=>r.trophyId===id&&r.correct).sort((a,b)=>b.year-a.year)[0];
+  // A school owns the rivalry trophy when that school actually won the verified final,
+  // regardless of which team this user predicted.
+  const t=byId.get(id);
+  if(!t||!t.codes.includes(schoolCode))return null;
+  const finals=verified.filter(r=>r?.game_status==="final"&&r.winner===schoolCode&&schedule[r.id]&&
+    t.codes.includes(schedule[r.id].home)&&t.codes.includes(schedule[r.id].away))
+   .map(r=>({year:Number(schedule[r.id].date?.slice(0,4)),winner:schoolCode,gameId:r.id}));
+  const historical=records.filter(r=>r.trophyId===id&&r.winner===schoolCode)
+   .map(r=>({year:r.year,winner:schoolCode,gameId:r.gameId}));
+  return [...finals,...historical].filter(r=>Number.isInteger(r.year)).sort((a,b)=>b.year-a.year)[0]||null;
+ }
  function owned(){return TROPHIES.filter(t=>Boolean(lastWin(t.id)));}
  function empty(message,withButton=false){
   const el=document.createElement("div");el.className="sds-trophy-empty";
