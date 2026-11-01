@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-31T20:33:16.313464Z",
+  "updated_at": "2026-11-01T02:24:20.444732Z",
   "source": "ESPN",
   "sources_used": [
     "ESPN",
@@ -12,7 +12,7 @@
   },
   "seasons": {
     "football": 2026,
-    "basketball": 2026,
+    "basketball": 2027,
     "baseball": 2026
   },
   "teams": {
@@ -24,16 +24,16 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/333",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "basketball": {
-        "overall": "23-9",
+        "overall": "0-0",
         "conference": null,
-        "season": 2026,
+        "season": 2027,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/333",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "baseball": {
         "overall": "42-21",
@@ -42,7 +42,7 @@
         "scope": "Final 2026 season",
         "source": "SEC",
         "source_url": "https://www.secsports.com/standings/baseball",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       }
     },
     "ARK": {
@@ -53,16 +53,16 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/8",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "basketball": {
-        "overall": "26-8",
+        "overall": "0-0",
         "conference": null,
-        "season": 2026,
+        "season": 2027,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/8",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "baseball": {
         "overall": "41-22",
@@ -71,7 +71,7 @@
         "scope": "Final 2026 season",
         "source": "SEC",
         "source_url": "https://www.secsports.com/standings/baseball",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       }
     },
     "AUB": {
@@ -82,16 +82,16 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/2",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "basketball": {
-        "overall": "17-16",
+        "overall": "0-0",
         "conference": null,
-        "season": 2026,
+        "season": 2027,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/2",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "baseball": {
         "overall": "42-22",
@@ -100,27 +100,27 @@
         "scope": "Final 2026 season",
         "source": "SEC",
         "source_url": "https://www.secsports.com/standings/baseball",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       }
     },
     "FLA": {
       "football": {
-        "overall": "5-2",
+        "overall": "5-3",
         "conference": null,
         "season": 2026,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/57",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "basketball": {
-        "overall": "26-7",
+        "overall": "0-0",
         "conference": null,
-        "season": 2026,
+        "season": 2027,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/57",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "baseball": {
         "overall": "41-21",
@@ -129,27 +129,27 @@
         "scope": "Final 2026 season",
         "source": "SEC",
         "source_url": "https://www.secsports.com/standings/baseball",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       }
     },
     "UGA": {
       "football": {
-        "overall": "6-1",
+        "overall": "7-1",
         "conference": null,
         "season": 2026,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/61",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "basketball": {
-        "overall": "22-10",
+        "overall": "0-0",
         "conference": null,
-        "season": 2026,
+        "season": 2027,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/61",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "baseball": {
         "overall": "53-14",
@@ -158,7 +158,7 @@
         "scope": "Final 2026 season",
         "source": "SEC",
         "source_url": "https://www.secsports.com/standings/baseball",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       }
     },
     "UK": {
@@ -169,16 +169,16 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/96",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "basketball": {
-        "overall": "21-13",
+        "overall": "0-0",
         "conference": null,
-        "season": 2026,
+        "season": 2027,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/96",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "baseball": {
         "overall": "33-23",
@@ -187,7 +187,7 @@
         "scope": "Final 2026 season",
         "source": "SEC",
         "source_url": "https://www.secsports.com/standings/baseball",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       }
     },
     "LSU": {
@@ -198,16 +198,16 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/99",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "basketball": {
-        "overall": "15-17",
+        "overall": "0-0",
         "conference": null,
-        "season": 2026,
+        "season": 2027,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/99",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "baseball": {
         "overall": "30-28",
@@ -216,7 +216,7 @@
         "scope": "Final 2026 season",
         "source": "SEC",
         "source_url": "https://www.secsports.com/standings/baseball",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       }
     },
     "MISS": {
@@ -227,16 +227,16 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/145",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "basketball": {
-        "overall": "15-20",
+        "overall": "0-0",
         "conference": null,
-        "season": 2026,
+        "season": 2027,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/145",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "baseball": {
         "overall": "41-23",
@@ -245,7 +245,7 @@
         "scope": "Final 2026 season",
         "source": "SEC",
         "source_url": "https://www.secsports.com/standings/baseball",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       }
     },
     "MSST": {
@@ -256,16 +256,16 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/344",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "basketball": {
-        "overall": "13-19",
+        "overall": "0-0",
         "conference": null,
-        "season": 2026,
+        "season": 2027,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/344",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "baseball": {
         "overall": "43-19",
@@ -274,7 +274,7 @@
         "scope": "Final 2026 season",
         "source": "SEC",
         "source_url": "https://www.secsports.com/standings/baseball",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       }
     },
     "MIZ": {
@@ -285,16 +285,16 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/142",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "basketball": {
-        "overall": "20-12",
+        "overall": "0-0",
         "conference": null,
-        "season": 2026,
+        "season": 2027,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/142",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "baseball": {
         "overall": "24-31",
@@ -303,27 +303,27 @@
         "scope": "Final 2026 season",
         "source": "SEC",
         "source_url": "https://www.secsports.com/standings/baseball",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       }
     },
     "OU": {
       "football": {
-        "overall": "4-3",
+        "overall": "4-4",
         "conference": null,
         "season": 2026,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/201",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "basketball": {
-        "overall": "19-15",
+        "overall": "0-0",
         "conference": null,
-        "season": 2026,
+        "season": 2027,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/201",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "baseball": {
         "overall": "43-23",
@@ -332,27 +332,27 @@
         "scope": "Final 2026 season",
         "source": "SEC",
         "source_url": "https://www.secsports.com/standings/baseball",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       }
     },
     "SC": {
       "football": {
-        "overall": "4-3",
+        "overall": "5-3",
         "conference": null,
         "season": 2026,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/2579",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "basketball": {
-        "overall": "13-19",
+        "overall": "0-0",
         "conference": null,
-        "season": 2026,
+        "season": 2027,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/2579",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "baseball": {
         "overall": "22-35",
@@ -361,7 +361,7 @@
         "scope": "Final 2026 season",
         "source": "SEC",
         "source_url": "https://www.secsports.com/standings/baseball",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       }
     },
     "TENN": {
@@ -372,16 +372,16 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/2633",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "basketball": {
-        "overall": "22-11",
+        "overall": "0-0",
         "conference": null,
-        "season": 2026,
+        "season": 2027,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/2633",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "baseball": {
         "overall": "38-22",
@@ -390,7 +390,7 @@
         "scope": "Final 2026 season",
         "source": "SEC",
         "source_url": "https://www.secsports.com/standings/baseball",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       }
     },
     "TEX": {
@@ -401,16 +401,16 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/251",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "basketball": {
-        "overall": "18-14",
+        "overall": "0-0",
         "conference": null,
-        "season": 2026,
+        "season": 2027,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/251",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "baseball": {
         "overall": "46-15",
@@ -419,7 +419,7 @@
         "scope": "Final 2026 season",
         "source": "SEC",
         "source_url": "https://www.secsports.com/standings/baseball",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       }
     },
     "TAMU": {
@@ -430,16 +430,16 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/245",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "basketball": {
-        "overall": "21-11",
+        "overall": "0-0",
         "conference": null,
-        "season": 2026,
+        "season": 2027,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/245",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "baseball": {
         "overall": "41-16",
@@ -448,7 +448,7 @@
         "scope": "Final 2026 season",
         "source": "SEC",
         "source_url": "https://www.secsports.com/standings/baseball",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       }
     },
     "VAN": {
@@ -459,16 +459,16 @@
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/college-football/team/_/id/238",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "basketball": {
-        "overall": "26-8",
+        "overall": "0-0",
         "conference": null,
-        "season": 2026,
+        "season": 2027,
         "scope": "Season",
         "source": "ESPN",
         "source_url": "https://www.espn.com/mens-college-basketball/team/_/id/238",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       },
       "baseball": {
         "overall": "33-25",
@@ -477,7 +477,7 @@
         "scope": "Final 2026 season",
         "source": "SEC",
         "source_url": "https://www.secsports.com/standings/baseball",
-        "verified_at": "2026-10-31T20:33:16.313464Z"
+        "verified_at": "2026-11-01T02:24:20.444732Z"
       }
     }
   },
