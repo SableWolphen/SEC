@@ -34,7 +34,7 @@
  function schoolTrophies(code){return TROPHIES.filter(t=>inSchool(t,code));}
  function schoolOverviewData(){return SEC_SCHOOLS.map(s=>({
   ...s,count:schoolTrophies(s.code).length,
-  earned:schoolTrophies(s.code).filter(t=>Boolean(lastWin(t.id))).length
+  earned:schoolTrophies(s.code).filter(t=>Boolean(lastWin(t.id,s.code))).length
  }));}
  function visibleTrophies(list){
   return list.filter(t=>inSchool(t,school)&&
@@ -49,7 +49,7 @@
  function schoolPreview(code){
   const all=schoolTrophies(code);
   // Show recognisable trophy silhouettes directly on the closed school row.
-  return all.slice(0,3).map(t=>({id:t.id,symbol:t.symbol,name:t.name,earned:Boolean(lastWin(t.id))}));
+  return all.slice(0,3).map(t=>({id:t.id,symbol:t.symbol,name:t.name,earned:Boolean(lastWin(t.id,code))}));
  }
  function toggleSchool(code){
   if(!SCHOOL_BY_CODE.has(code))return;
@@ -102,7 +102,7 @@
     const line=document.createElement("p");line.className="sds-school-panel-label";
     line.textContent=entry.name+" · "+entry.count+" rivalry collectibles";
     const grid=document.createElement("div");grid.className="sds-trophy-grid";
-    schoolTrophies(entry.code).forEach(t=>grid.append(trophyCard(t,version)));
+    schoolTrophies(entry.code).forEach(t=>grid.append(trophyCard(t,version,entry.code)));
     panel.append(line,grid);
     wrapper.append(panel);
    }
@@ -121,7 +121,7 @@
   back.addEventListener("click",()=>changeSchool("schools"));
   const heading=document.createElement("strong");
   const list=schoolTrophies(school);
-  const total=list.length,earned=list.filter(t=>Boolean(lastWin(t.id))).length;
+  const total=list.length,earned=list.filter(t=>Boolean(lastWin(t.id,school))).length;
   heading.textContent=school==="all"?"Complete Rivalry Archive":SCHOOL_BY_CODE.get(school).name+" Rivalries";
   const stats=document.createElement("span");stats.textContent=total+" rivalries · "+earned+" earned";
   row.append(back,heading,stats);return row;
@@ -292,7 +292,7 @@
  const style=document.createElement("style");style.textContent=rules.join("\n");document.head.appendChild(style);
  let verified=[],myPicks={},schedule={},records=[],permanent=[],derived=[],historyUser=null,signedIn=false,leagueId=null,leagueName="",tab="all",school="schools",expandedSchool=null,category="all",searchTerm="",rootId="sds-trophy-case",renderId=0,viewerLoading=false;
  function last(id){return records.filter(r=>r.trophyId===id).sort((a,b)=>b.year-a.year)[0];}
- function lastWin(id){return records.filter(r=>r.trophyId===id&&r.correct).sort((a,b)=>b.year-a.year)[0];}
+ function lastWin(id,schoolCode="all"){return records.filter(r=>r.trophyId===id&&r.correct&&r.pick===r.winner&&r.winner&&(schoolCode==="all"||r.winner===schoolCode)).sort((a,b)=>b.year-a.year)[0];}
  function owned(){return TROPHIES.filter(t=>Boolean(lastWin(t.id)));}
  function empty(message,withButton=false){
   const el=document.createElement("div");el.className="sds-trophy-empty";
@@ -328,8 +328,8 @@
    display.replaceChildren(model);
   }catch(err){/* Missing model: keep placeholder. */}
  }
- function trophyCard(t,version){
-  const result=last(t.id),won=lastWin(t.id),earned=Boolean(won);
+ function trophyCard(t,version,schoolCode=school){
+  const result=last(t.id),won=lastWin(t.id,schoolCode),earned=Boolean(won);
   const card=document.createElement("article");card.className="sds-trophy-card"+(earned?" earned":"");
   card.style.setProperty("--sds-trophy-accent",t.tone);
   const display=document.createElement("div");display.className="sds-trophy-display";display.append(placeholder(t));
@@ -337,7 +337,7 @@
   const title=document.createElement("div");title.className="sds-trophy-name";title.textContent=t.name;
   const teams=document.createElement("div");teams.className="sds-trophy-teams";teams.textContent=t.teams;
   const year=document.createElement("div");year.className="sds-trophy-year"+(earned?" sds-trophy-owned":"");
-  year.textContent=earned?"🏆 "+won.year+" · EARNED":result?"Last picked: "+result.year:"Not yet earned";
+  year.textContent=earned?"🏆 "+won.year+" · EARNED":result?"Last picked: "+result.year+(schoolCode!=="all"?" · Not won by this school":""):"Not yet earned";
   const category=document.createElement("div");category.className="sds-trophy-category";
   category.textContent=t.category==="SEC"?(t.kind==="trophy"?"SEC · Trophy game":"SEC · Traditional rivalry"):
     t.category==="Historic"?"Historic rivalry":(t.kind==="trophy"?"Nonconference · Trophy game":"Nonconference rivalry");
