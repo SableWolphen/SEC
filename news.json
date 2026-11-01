@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-01T13:30:29.268245Z",
-  "checked_at": "2026-11-01T13:30:29.268245Z",
+  "updated_at": "2026-11-01T18:58:03.733257Z",
+  "checked_at": "2026-11-01T18:58:03.733257Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -12,7 +12,7 @@
       "summary": "One person was killed and eight others were wounded in a mass shooting just outside Legion Field after the annual \"Magic City Classic\" football game, police in Birmingham, Alabama, said.",
       "url": "https://www.espn.com/college-football/story/_/id/50347222/1-killed-8-injured-shooting-magic-city-classic",
       "source": "ESPN",
-      "published_at": "2026-11-01T12:23:35Z",
+      "published_at": "2026-11-01T15:09:54Z",
       "sport": "football",
       "teams": [
         "Alabama"
@@ -112,33 +112,6 @@
       "sport": "football",
       "teams": [
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d1c353e19d24ff83",
-      "title": "Doering, Watson highlight UGA's optimistic outlook on defense vs. UF",
-      "summary": "SEC Now's Benjamin Watson and Chris Doering explain how the No. 3 Bulldogs' forced turnovers and stout run defense got them the win over the No. 17 Gators.",
-      "url": "https://www.espn.com/video/clip/_/id/50343172/doering-watson-highlight-uga-optimistic-outlook-defense-vs-uf",
-      "source": "ESPN",
-      "published_at": "2026-11-01T01:59:45Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e46cf651ff12bf38",
-      "title": "No. 12 Ole Miss' second half offers blueprint for stretch run",
-      "summary": "The SEC Now crew points out that Trinidad Chambliss and the Rebels' complete second half against the Tigers as a glimpse of how dangerous they can be against anyone.",
-      "url": "https://www.espn.com/video/clip/_/id/50342823/no-12-ole-miss-second-half-offers-blueprint-stretch-run",
-      "source": "ESPN",
-      "published_at": "2026-11-01T01:20:24Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss"
       ],
       "breaking": false
     },
