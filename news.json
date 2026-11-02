@@ -1,11 +1,92 @@
 {
-  "updated_at": "2026-11-02T11:17:14.203684Z",
-  "checked_at": "2026-11-02T11:17:14.203684Z",
+  "updated_at": "2026-11-02T20:48:49.228394Z",
+  "checked_at": "2026-11-02T20:48:49.228394Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "0f14ed9108b047c8",
+      "title": "Kiffin 'sad' annual LSU-Alabama game to take hiatus in 2027",
+      "summary": "LSU coach Lane Kiffin on Monday lamented the end of his program's rivalry game vs. Alabama being played annually.",
+      "url": "https://www.espn.com/college-football/story/_/id/50360298/kiffin-sad-annual-lsu-alabama-game-take-hiatus-2027",
+      "source": "ESPN",
+      "published_at": "2026-11-02T20:28:50Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c95fde77ab14d217",
+      "title": "Lane Kiffin calls the hiatus of LSU-Alabama game 'sad'",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50360523/lane-kiffin-calls-hiatus-lsu-alabama-game-sad",
+      "source": "ESPN",
+      "published_at": "2026-11-02T20:10:04Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "fea78b2a086bb1fa",
+      "title": "Ron Slay breaks down SEC contenders, sleepers ahead of tipoff",
+      "summary": "SEC Network's Slay explains why Florida could lead the conference race and tabs Vanderbilt and Missouri as potential sleepers capable of finishing in the SEC's top three.",
+      "url": "https://www.espn.com/video/clip/_/id/50360281/ron-slay-breaks-sec-contenders-sleepers-ahead-tipoff",
+      "source": "ESPN",
+      "published_at": "2026-11-02T19:36:50Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida",
+        "Missouri",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1296aa1e19b4ce6e",
+      "title": "What is selection committee looking for in first CFP rankings?",
+      "summary": "Ahead of the first CFP rankings on Tuesday, Nov. 3 at 7 p.m. ET, ESPN's Heather Dinich breaks down what the selection committee will prioritize and what it could mean for SEC teams.",
+      "url": "https://www.espn.com/video/clip/_/id/50360025/what-selection-committee-looking-first-cfp-rankings",
+      "source": "ESPN",
+      "published_at": "2026-11-02T19:10:08Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "7de244f935617c5b",
+      "title": "Sources: Oklahoma fires OC Ben Arbuckle, tabs Jason Witten as play caller",
+      "summary": "Oklahoma has fired offensive coordinator Ben Arbuckle after less than two seasons, sources told ESPN's Pete Thamel on Monday.",
+      "url": "https://www.espn.com/college-football/story/_/id/50359646/oklahoma-fires-second-year-oc-ben-arbuckle-jason-witten-call-plays",
+      "source": "ESPN",
+      "published_at": "2026-11-02T18:43:15Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "122732ac51763ce7",
+      "title": "Alabama 'headed in good direction' for key players to return from injury vs. LSU",
+      "summary": "Alabama is optimistic about the return of WR Ryan Coleman-Williams, CB Zabien Brown, C Racin Delgatty and DB Terrance Green for its game Saturday vs. LSU.",
+      "url": "https://www.espn.com/college-football/story/_/id/50359564/alabama-optimistic-return-key-starters-lsu-showdown",
+      "source": "ESPN",
+      "published_at": "2026-11-02T18:27:05Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": true
+    },
     {
       "id": "271e10690d8caf27",
       "title": "Sian Hudson is proud of how LSU navigates the season's ebbs and flows",
