@@ -35,10 +35,36 @@ def start(sport, year):
                        11 if sport == 'basketball' else 2, 1, tzinfo=UTC)
 
 
+def events_from_feed(data):
+    """ESPN school schedules use different wrappers than scoreboards."""
+    if not isinstance(data, dict):
+        return []
+    sources = [data.get('events'), data.get('schedule')]
+    for group in (data.get('team'), data.get('content')):
+        if isinstance(group, dict):
+            sources.extend((group.get('events'), group.get('schedule')))
+    for source in sources:
+        if isinstance(source, list):
+            return source
+        if isinstance(source, dict):
+            for key in ('events', 'items'):
+                if isinstance(source.get(key), list):
+                    return source[key]
+    return []
+
+
+def scoreboard_months(sport, year):
+    """Use ESPN-supported YYYYMM requests over the full sports season."""
+    if sport == 'basketball':
+        return [f'{year - 1}{m:02d}' for m in (11, 12)] + [
+            f'{year}{m:02d}' for m in (1, 2, 3, 4)]
+    return [f'{year}{m:02d}' for m in (2, 3, 4, 5, 6)]
+
+
 def parse(data, sport, year):
     begin = start(sport, year)
     rows = []
-    for event in data.get('events', []):
+    for event in events_from_feed(data):
         try:
             competitors = event['competitions'][0]['competitors']
             away = next(i for i in competitors if i.get('homeAway') == 'away')
@@ -221,38 +247,23 @@ def build(now=None, get=download, existing=None, fallback=None):
         old = ((existing or {}).get('sports') or {}).get(sport) or {}
         saved = {x['id']: x for x in old.get('games', []) if x.get('season') == year and x.get('id')}
         successes = 0
-        for left, right in windows(sport, year, now):
-            fmt = lambda day: day.strftime('%Y%m%d')
-            url = ('https://site.api.espn.com/apis/site/v2/sports/' + slug +
-                   '/scoreboard?dates=' + fmt(left) + '-' + fmt(right) +
-                   '&groups=8&limit=500')
-            try:
-                payload = get(url)
-                # The SEC conference filter sometimes fails upstream or returns
-                # an empty response for nonconference November games. Retry
-                # without groups so ALL SEC-vs-nonconference fixtures can load.
-                # A valid response may still contain only conference fixtures.
-                # Read BOTH filtered and unfiltered windows, including November.
-                all_payloads = [payload]
-                if sport == 'basketball':
-                    try:
-                        all_payloads.append(get(url.replace('&groups=8', '')))
-                    except Exception:
-                        pass
-                for candidate in all_payloads:
-                    for game in parse(candidate, sport, year):
+        # Month windows are supported by ESPN; YYYYMMDD-YYYYMMDD intervals
+        # frequently return HTTP 400. Read conference and unfiltered feeds
+        # so nonconference basketball matchups are not silently omitted.
+        for month in scoreboard_months(sport, year):
+            base = ('https://site.api.espn.com/apis/site/v2/sports/' + slug +
+                    '/scoreboard?dates=' + month + '&limit=3000')
+            urls = [base + '&groups=8', base] if sport == 'basketball' else [base + '&groups=8']
+            for url in urls:
+                try:
+                    payload = get(url)
+                    if not isinstance(payload, dict) or not isinstance(payload.get('events'), list):
+                        raise ValueError('Unexpected ESPN scoreboard response')
+                    for game in parse(payload, sport, year):
                         merge_game(saved, game)
-                successes += 1
-            except Exception as ex:
-                if sport == 'basketball':
-                    try:
-                        for game in parse(get(url.replace('&groups=8', '')), sport, year):
-                            merge_game(saved, game)
-                        successes += 1
-                        continue
-                    except Exception:
-                        pass
-                print(sport, 'ESPN source unavailable:', type(ex).__name__)
+                    successes += 1
+                except Exception as ex:
+                    print(sport, month, 'ESPN source unavailable:', type(ex).__name__)
 
         # Conference-filtered scoreboards omit many nonconference fixtures even
         # when requests succeed. Always sweep all sixteen SEC team schedules.
