@@ -217,7 +217,7 @@ function renderSport(s){
  const feedStatus=feed.sports?.[s]||{};
  const totalGames=allGames(s).length;
  const teamCounts=feedStatus.sec_team_game_counts||{};
- const coverageCount=Object.keys(feedStatus.team_coverage||{}).length;
+ const coverageCount=Object.entries(feedStatus.team_coverage||{}).filter(([id,n])=>SEC_IDS[id]&&Number(n)>0).length;
  const health='<details class="sport-schedule-health"><summary>Schedule health · '+totalGames+
    ' games · '+coverageCount+'/16 school feeds</summary><div class="sport-health-details">'+
    '<p>Last synced: '+esc(feedUpdated?prettyTime(feedUpdated):"Not yet synced")+
@@ -262,7 +262,7 @@ function renderSport(s){
     label+' <small>'+w.games.filter(g=>key==="all"||(key==="needs-pick"?g.game_status==="scheduled"&&Date.parse(g.kickoff_at)>Date.now()&&!picks[g.id]?.pick_code:statusOf(g)===key)).length+'</small></button>').join("")+'</div>'+
    '<div class="sport-swipe-tools"><span>Swipe between matchups</span><div><button type="button" data-swipe-step="-1" data-sport="'+s+'" aria-label="Previous matchup">‹</button><output class="sport-swipe-count" aria-live="polite">1 / '+w.games.length+'</output><button type="button" data-swipe-step="1" data-sport="'+s+'" aria-label="Next matchup">›</button></div></div>'+ 
    '<div class="sport-games-grid sport-swipe-grid" data-swipe-grid="'+s+'">'+(w.games.filter(g=>selectedStatus==="all"||(selectedStatus==="needs-pick"?g.game_status==="scheduled"&&Date.parse(g.kickoff_at)>Date.now()&&!picks[g.id]?.pick_code:statusOf(g)===selectedStatus))
-    .map(g=>gameCard(s,g,active,picks)).join("")||
+    .map(g=>gameCard(s,g,active,picks,w)).join("")||
     '<p class="sport-games-no-status">'+(selectedStatus==="needs-pick"?"All available picks are done for this week! Choose All games to review them.":"No games in this view. Choose All games to see the full slate.")+'</p>')+
    '</div>'+
    renderTiebreak(s,w,active,saved);
@@ -358,11 +358,11 @@ function sportTeamContext(s,g,code){
 function validSportScore(value){
  return value!==null&&value!==undefined&&value!==""&&Number.isInteger(Number(value))&&Number(value)>=0&&Number(value)<=999;
 }
-function gameCard(s,g,league,picks){
+function gameCard(s,g,league,picks,week){
  const mode=league?.mode||"straight",old=picks[g.id];
  const start=new Date(g.kickoff_at).getTime();
  const locked=!(Number.isFinite(start)&&start>Date.now()&&g.game_status==="scheduled");
- const canPick=Boolean(user()&&g.imported&&!locked&&(mode!=="spread"||g.spread_home!==null&&g.spread_home!==undefined));
+ const canPick=Boolean(user()&&g.imported&&!locked&&(mode!=="spread"||g.spread_home!==null&&g.spread_home!==undefined&&Number.isFinite(Number(g.spread_home))));
  const scored=["live","final"].includes(g.game_status)&&validSportScore(g.away_score)&&validSportScore(g.home_score);
  const phase=String(g.status_detail||"").slice(0,42);
  const result=g.game_status==="final"?(g.winner_code?"FINAL · "+(g.winner_code===g.home_code?g.home_name:g.away_name)+" wins":"FINAL") :
@@ -370,15 +370,16 @@ function gameCard(s,g,league,picks){
  const verdict=old&&g.game_status==="final"?(g.winner_code===old.pick_code?'✓ Correct pick':'✕ Incorrect pick'):"";
  const availability=!user()?"Sign in to pick":!g.imported?"Syncing game to secure pick server":locked?"Picks locked":
   mode==="spread"&&(g.spread_home===null||g.spread_home===undefined)?"Waiting for a published spread":"Choose a winner";
- const opt=code=>'<button type="button" class="sport-team-option '+(old?.pick_code===code?'selected':'')+
+ const opt=code=>'<button type="button" class="sport-team-option '+(String(old?.pick_code)===String(code)?'selected':'')+
   '" data-sport-action="pick" data-sport="'+s+'" data-game="'+esc(g.id)+'" data-sport-pick="'+esc(code)+'"'+(SEC_IDS[String(code)]?' data-sds-school="'+SEC_IDS[String(code)]+'"':'')+' '+
-  (!canPick?'disabled':'')+' aria-pressed="'+(old?.pick_code===code)+'">'+
+  (!canPick?'disabled':'')+' aria-pressed="'+(String(old?.pick_code)===String(code))+'">'+
   '<span class="sport-team-top"><span class="sport-team-label">'+schoolMark(code)+'<span class="sport-team-name">'+esc(code===g.away_code?g.away_name:g.home_name)+sportTeamContext(s,g,code)+'</span></span>'+
   (scored?'<span class="sport-team-score '+(Number(code===g.away_code?g.away_score:g.home_score)>Number(code===g.away_code?g.home_score:g.away_score)?"is-leading":"")+
    '" aria-label="'+esc(code===g.away_code?g.away_name:g.home_name)+' score">'+Number(code===g.away_code?g.away_score:g.home_score)+'</span>':"")+'</span>'+
-  '<span class="sport-check">'+(old?.pick_code===code?"✓":"○")+'</span></button>';
- const num=curWeek(s)?.games.length||1;
- const used=new Set(Object.entries(picks).filter(([id,p])=>id!==g.id&&allGames(s).find(x=>x.id===id)?.week===g.week).map(([,p])=>p.confidence_points));
+  '<span class="sport-check">'+(String(old?.pick_code)===String(code)?"✓":"○")+'</span></button>';
+ const num=week?.games.length||1;
+ const weekIds=new Set((week?.games||[]).map(x=>x.id));
+ const used=new Set(Object.entries(picks).filter(([id,p])=>id!==g.id&&weekIds.has(id)).map(([,p])=>p.confidence_points));
  const options=Array.from({length:num},(_,i)=>i+1).map(n=>
    '<option value="'+n+'" '+(n===old?.confidence_points?'selected':'')+' '+(used.has(n)?'disabled':'')+'>'+n+' point'+(n===1?'':'s')+'</option>').join("");
  const currentName=old?.pick_code===g.home_code?g.home_name:old?.pick_code===g.away_code?g.away_name:"";
@@ -488,7 +489,7 @@ async function load(s,force=false){
     pairings=unwrap(h)||[];
    }
   }
-  if(seq!==updating[s])return;
+  if(seq!==updating[s]||user()?.id!==u.id)return;
   const oldSync=cache[s].lastServerSync;
   cache[s]={games,leagues,picks,standings,tiebreakers,pairings,active,lastServerSync:oldSync,error:""};
   localStorage.setItem("ss-sec-sport-league-"+s+"-"+yr,active||"solo");
@@ -533,7 +534,12 @@ async function action(btn){
    notices[s]=l?"League pick saved online.":"Personal pick saved online.";
    document.dispatchEvent(new CustomEvent("sec-sport-pick-result",{detail:{sport:s,game:g.id,ok:true}}));
    if(statusFilters[s]==="needs-pick")statusFilters[s]="all";
-   await load(s);
+   // The server confirmed this pick; keep it in view without a full reload.
+   cache[s].picks={...(cache[s].picks||{}),[g.id]:{
+    game_id:g.id,pick_code:btn.dataset.sportPick,
+    ...(conf?{confidence_points:conf}:{})
+   }};
+   renderSport(s);
    requestAnimationFrame(()=>{const grid=document.querySelector('[data-swipe-grid="'+s+'"]');const cards=[...grid?.querySelectorAll(".sport-game-card")||[]];const target=cards.find(card=>card.querySelector('[data-game="'+g.id+'"]'));if(grid&&target)grid.scrollLeft=target.offsetLeft-(cards[0]?.offsetLeft||0);});return;
   }
   if(what==="total"){
@@ -573,29 +579,30 @@ document.addEventListener("click",ev=>{
   const week=ev.target.closest?.("[data-sport-week]");
  if(week){selectedWeeks[week.dataset.sport]=Number(week.dataset.sportWeek);
   try{sessionStorage.setItem("sec-week-"+week.dataset.sport+"-"+year(week.dataset.sport),String(selectedWeeks[week.dataset.sport]));}catch(_error){}
-  renderSport(week.dataset.sport);void load(week.dataset.sport); }
+  renderSport(week.dataset.sport); /* Avoid a full fetch on week navigation. */ }
 });
 document.addEventListener("scroll",ev=>{const grid=ev.target?.closest?.('[data-swipe-grid]');if(!grid)return;const cards=grid.querySelectorAll('.sport-game-card');if(!cards.length)return;const current=Math.min(cards.length,Math.max(1,Math.round(grid.scrollLeft/Math.max(grid.clientWidth,1))+1));const count=grid.previousElementSibling?.querySelector('.sport-swipe-count');if(count)count.textContent=current+' / '+cards.length;},true);
 document.addEventListener("change",ev=>{
  const s=ev.target.dataset?.changeSport;
  if(!SPORT[s])return;
- cache[s].active=ev.target.value==="solo"?null:ev.target.value;
- localStorage.setItem("ss-sec-sport-league-"+s+"-"+year(s),ev.target.value);
- void load(s,true);
+ selectLeague(s,ev.target.value);
 });
 function authChanged(){
  const next=user()?.id||null;
  if(lastAccountId===next)return;
  lastAccountId=next;
  // Keep all cached picks scoped to their player; never show the previous user's leagues.
- for(const sport of Object.keys(SPORT)){cache[sport]={};updating[sport]++;}
+ for(const sport of Object.keys(SPORT)){cache[sport]={};notices[sport]="";updating[sport]++;}
  const active=window.SEC_BRIDGE?.view?.();
  if(SPORT[active]){renderSport(active);void load(active,true);}
 }
 function selectLeague(s,id){
  if(!SPORT[s]||typeof id!=="string"||!id)return;
- cache[s].active=id;
+ updating[s]++;cache[s].picks={};cache[s].standings=[];
+ cache[s].tiebreakers={};cache[s].pairings=[];notices[s]="";
+ cache[s].active=id==="solo"?null:id;
  localStorage.setItem("ss-sec-sport-league-"+s+"-"+year(s),id);
+ renderSport(s);
  void load(s,true);
 }
 function mount(route){

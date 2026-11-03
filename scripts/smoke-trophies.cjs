@@ -139,7 +139,7 @@ assert.match(source,/camera-controls/,"3D models can be rotated");
 trophy.sync({games,picks,schedule,authenticated:true,leagueId:"league-a",leagueName:"Testing Crew",userId:"player-a"});
 trophy.setPermanentResults([{trophy_id:"red-river",season:2025,correct:true,game_id:"2025-OU-TEX",pick_code:"TEX",winner_code:"TEX",league_id:"older-league"}]);
 assert.equal(trophy.getResults().some(r=>r.trophyId==="red-river"&&r.year===2025&&r.correct),true,"past-season trophies persist");
-assert.equal(trophy.getSchoolOverview().find(t=>t.code==="OU").earned,1,"school card earns count from permanent trophy history");
+assert.equal(trophy.getSchoolOverview().find(t=>t.code==="OU").earned,0,"only the picked winning school earns a personal trophy");
 assert.equal(trophy.getSchoolOverview().find(t=>t.code==="TEX").earned,1,"shared Red River trophy correctly appears for Texas too");
 trophy.selectSchool("OU");
 assert.ok(trophy.getVisibleTrophies().find(t=>t.id==="red-river"),"historic earned trophy visible after selecting school");
