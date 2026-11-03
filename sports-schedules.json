@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03T10:00:38.172018Z",
+  "updated_at": "2026-11-03T20:36:36.092089Z",
   "sports": {
     "basketball": {
       "season": 2027,
@@ -189,7 +189,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921801"
         },
         {
           "id": "basketball-2027-401921819",
@@ -206,7 +206,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921819"
         },
         {
           "id": "basketball-2027-401906757",
@@ -223,7 +223,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906757"
         },
         {
           "id": "basketball-2027-401920806",
@@ -240,7 +240,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920806"
         },
         {
           "id": "basketball-2027-401921165",
@@ -257,7 +257,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921165"
         },
         {
           "id": "basketball-2027-401921808",
@@ -274,7 +274,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921808"
         },
         {
           "id": "basketball-2027-401929372",
@@ -291,7 +291,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401929372"
         },
         {
           "id": "basketball-2027-401920798",
@@ -308,7 +308,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920798"
         },
         {
           "id": "basketball-2027-401909726",
@@ -325,7 +325,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401909726"
         },
         {
           "id": "basketball-2027-sec-tv-20261105-nonsec-wake-forest-238",
@@ -393,7 +393,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906792"
         },
         {
           "id": "basketball-2027-401906770",
@@ -410,7 +410,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906770"
         },
         {
           "id": "basketball-2027-401906864",
@@ -427,7 +427,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906864"
         },
         {
           "id": "basketball-2027-401906780",
@@ -444,7 +444,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906780"
         },
         {
           "id": "basketball-2027-401911249",
@@ -461,7 +461,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401911249"
         },
         {
           "id": "basketball-2027-401921802",
@@ -478,7 +478,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921802"
         },
         {
           "id": "basketball-2027-401906758",
@@ -495,7 +495,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906758"
         },
         {
           "id": "basketball-2027-401906802",
@@ -512,7 +512,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906802"
         },
         {
           "id": "basketball-2027-401920807",
@@ -529,7 +529,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920807"
         },
         {
           "id": "basketball-2027-401921809",
@@ -546,7 +546,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921809"
         },
         {
           "id": "basketball-2027-401917914",
@@ -563,7 +563,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401917914"
         },
         {
           "id": "basketball-2027-401920424",
@@ -580,7 +580,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920424"
         },
         {
           "id": "basketball-2027-401921820",
@@ -597,7 +597,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921820"
         },
         {
           "id": "basketball-2027-sec-tv-20261108-8-nonsec-virginia",
@@ -614,7 +614,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "SEC official ESPN 2026-27 TV schedule · confirmed tipoff",
-          "espn_event_id": null
+          "espn_event_id": "sec-tv-20261108-8-nonsec-virginia"
         },
         {
           "id": "basketball-2027-sec-tv-20261109-nonsec-grambling-state-251",
@@ -631,7 +631,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "SEC official ESPN 2026-27 TV schedule · confirmed tipoff",
-          "espn_event_id": null
+          "espn_event_id": "sec-tv-20261109-nonsec-grambling-state-251"
         },
         {
           "id": "basketball-2027-sec-tv-20261109-nonsec-appalachian-state-2",
@@ -648,7 +648,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "SEC official ESPN 2026-27 TV schedule · confirmed tipoff",
-          "espn_event_id": null
+          "espn_event_id": "sec-tv-20261109-nonsec-appalachian-state-2"
         },
         {
           "id": "basketball-2027-401906781",
@@ -665,7 +665,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906781"
         },
         {
           "id": "basketball-2027-401906865",
@@ -682,7 +682,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906865"
         },
         {
           "id": "basketball-2027-sec-20261110-2515-2633",
@@ -716,7 +716,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906759"
         },
         {
           "id": "basketball-2027-401906793",
@@ -733,7 +733,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906793"
         },
         {
           "id": "basketball-2027-401906803",
@@ -750,7 +750,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906803"
         },
         {
           "id": "basketball-2027-401917978",
@@ -767,7 +767,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401917978"
         },
         {
           "id": "basketball-2027-401921810",
@@ -784,7 +784,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921810"
         },
         {
           "id": "basketball-2027-401921815",
@@ -801,7 +801,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921815"
         },
         {
           "id": "basketball-2027-401920799",
@@ -818,7 +818,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920799"
         },
         {
           "id": "basketball-2027-sec-tv-20261110-nonsec-kansas-96",
@@ -835,7 +835,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "SEC official ESPN 2026-27 TV schedule · confirmed tipoff",
-          "espn_event_id": null
+          "espn_event_id": "sec-tv-20261110-nonsec-kansas-96"
         },
         {
           "id": "basketball-2027-401906771",
@@ -852,7 +852,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906771"
         },
         {
           "id": "basketball-2027-sec-tv-20261110-57-nonsec-florida-state",
@@ -869,7 +869,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "SEC official ESPN 2026-27 TV schedule · confirmed tipoff",
-          "espn_event_id": null
+          "espn_event_id": "sec-tv-20261110-57-nonsec-florida-state"
         },
         {
           "id": "basketball-2027-401918987",
@@ -886,7 +886,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401918987"
         },
         {
           "id": "basketball-2027-401920817",
@@ -903,7 +903,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920817"
         },
         {
           "id": "basketball-2027-401909786",
@@ -920,7 +920,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401909786"
         },
         {
           "id": "basketball-2027-401921821",
@@ -937,7 +937,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921821"
         },
         {
           "id": "basketball-2027-401928824",
@@ -954,7 +954,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401928824"
         },
         {
           "id": "basketball-2027-sec-tv-20261113-61-nonsec-north-carolina",
@@ -971,7 +971,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "SEC official ESPN 2026-27 TV schedule · confirmed tipoff",
-          "espn_event_id": null
+          "espn_event_id": "sec-tv-20261113-61-nonsec-north-carolina"
         },
         {
           "id": "basketball-2027-sec-tv-20261113-nonsec-merrimack-57",
@@ -988,7 +988,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "SEC official ESPN 2026-27 TV schedule · confirmed tipoff",
-          "espn_event_id": null
+          "espn_event_id": "sec-tv-20261113-nonsec-merrimack-57"
         },
         {
           "id": "basketball-2027-401919041",
@@ -1005,7 +1005,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401919041"
         },
         {
           "id": "basketball-2027-sec-tv-20261113-nonsec-arizona-2",
@@ -1022,7 +1022,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "SEC official ESPN 2026-27 TV schedule · confirmed tipoff",
-          "espn_event_id": null
+          "espn_event_id": "sec-tv-20261113-nonsec-arizona-2"
         },
         {
           "id": "basketball-2027-sec-tv-20261113-nonsec-seton-hall-333",
@@ -1039,7 +1039,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "SEC official ESPN 2026-27 TV schedule · confirmed tipoff",
-          "espn_event_id": null
+          "espn_event_id": "sec-tv-20261113-nonsec-seton-hall-333"
         },
         {
           "id": "basketball-2027-401906772",
@@ -1056,7 +1056,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906772"
         },
         {
           "id": "basketball-2027-401906782",
@@ -1073,7 +1073,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906782"
         },
         {
           "id": "basketball-2027-401921803",
@@ -1090,7 +1090,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921803"
         },
         {
           "id": "basketball-2027-401921825",
@@ -1107,7 +1107,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921825"
         },
         {
           "id": "basketball-2027-sec-20261114-2634-2633",
@@ -1141,7 +1141,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906804"
         },
         {
           "id": "basketball-2027-401917916",
@@ -1158,7 +1158,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401917916"
         },
         {
           "id": "basketball-2027-401906760",
@@ -1175,7 +1175,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906760"
         },
         {
           "id": "basketball-2027-401906794",
@@ -1192,7 +1192,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906794"
         },
         {
           "id": "basketball-2027-401909741",
@@ -1209,7 +1209,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401909741"
         },
         {
           "id": "basketball-2027-401911392",
@@ -1226,7 +1226,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401911392"
         },
         {
           "id": "basketball-2027-401921689",
@@ -1243,7 +1243,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921689"
         },
         {
           "id": "basketball-2027-401909525",
@@ -1260,7 +1260,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401909525"
         },
         {
           "id": "basketball-2027-401906866",
@@ -1277,7 +1277,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906866"
         },
         {
           "id": "basketball-2027-sec-tv-20261115-nonsec-baylor-251",
@@ -1294,7 +1294,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "SEC official ESPN 2026-27 TV schedule · confirmed tipoff",
-          "espn_event_id": null
+          "espn_event_id": "sec-tv-20261115-nonsec-baylor-251"
         },
         {
           "id": "basketball-2027-sec-tv-20261116-nonsec-jacksonville-61",
@@ -1311,7 +1311,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "SEC official ESPN 2026-27 TV schedule · confirmed tipoff",
-          "espn_event_id": null
+          "espn_event_id": "sec-tv-20261116-nonsec-jacksonville-61"
         },
         {
           "id": "basketball-2027-401906783",
@@ -1328,7 +1328,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906783"
         },
         {
           "id": "basketball-2027-401921804",
@@ -1345,7 +1345,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921804"
         },
         {
           "id": "basketball-2027-401920808",
@@ -1362,7 +1362,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920808"
         },
         {
           "id": "basketball-2027-sec-tv-20261117-nonsec-michigan-state-2633",
@@ -1379,7 +1379,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "SEC official ESPN 2026-27 TV schedule · confirmed tipoff",
-          "espn_event_id": null
+          "espn_event_id": "sec-tv-20261117-nonsec-michigan-state-2633"
         },
         {
           "id": "basketball-2027-401906773",
@@ -1396,7 +1396,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906773"
         },
         {
           "id": "basketball-2027-sec-tv-20261117-57-nonsec-notre-dame",
@@ -1413,7 +1413,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "SEC official ESPN 2026-27 TV schedule · confirmed tipoff",
-          "espn_event_id": null
+          "espn_event_id": "sec-tv-20261117-57-nonsec-notre-dame"
         },
         {
           "id": "basketball-2027-401921756",
@@ -1430,7 +1430,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921756"
         },
         {
           "id": "basketball-2027-sec-tv-20261118-nonsec-elon-2579",
@@ -1447,7 +1447,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "SEC official ESPN 2026-27 TV schedule · confirmed tipoff",
-          "espn_event_id": null
+          "espn_event_id": "sec-tv-20261118-nonsec-elon-2579"
         },
         {
           "id": "basketball-2027-401906761",
@@ -1464,7 +1464,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906761"
         },
         {
           "id": "basketball-2027-401916289",
@@ -1481,7 +1481,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401916289"
         },
         {
           "id": "basketball-2027-401921826",
@@ -1498,7 +1498,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921826"
         },
         {
           "id": "basketball-2027-401925064",
@@ -1515,7 +1515,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401925064"
         },
         {
           "id": "basketball-2027-sec-20261118-127-2633",
@@ -1549,7 +1549,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "SEC official ESPN 2026-27 TV schedule · confirmed tipoff",
-          "espn_event_id": null
+          "espn_event_id": "sec-tv-20261118-nonsec-alcorn-state-142"
         },
         {
           "id": "basketball-2027-401920512",
@@ -1566,7 +1566,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920512"
         },
         {
           "id": "basketball-2027-401921141",
@@ -1583,7 +1583,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921141"
         },
         {
           "id": "basketball-2027-401906805",
@@ -1600,7 +1600,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906805"
         },
         {
           "id": "basketball-2027-401917982",
@@ -1617,7 +1617,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401917982"
         },
         {
           "id": "basketball-2027-401921816",
@@ -1634,7 +1634,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921816"
         },
         {
           "id": "basketball-2027-401906867",
@@ -1651,7 +1651,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906867"
         },
         {
           "id": "basketball-2027-401919050",
@@ -1668,7 +1668,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401919050"
         },
         {
           "id": "basketball-2027-sec-tv-20261120-61-nonsec-georgia-tech",
@@ -1685,7 +1685,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "SEC official ESPN 2026-27 TV schedule · confirmed tipoff",
-          "espn_event_id": null
+          "espn_event_id": "sec-tv-20261120-61-nonsec-georgia-tech"
         },
         {
           "id": "basketball-2027-sec-20261121-324-2633",
@@ -1719,7 +1719,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401925865"
         },
         {
           "id": "basketball-2027-401906784",
@@ -1736,7 +1736,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906784"
         },
         {
           "id": "basketball-2027-401916290",
@@ -1753,7 +1753,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401916290"
         },
         {
           "id": "basketball-2027-401919784",
@@ -1770,7 +1770,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401919784"
         },
         {
           "id": "basketball-2027-401921757",
@@ -1787,7 +1787,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921757"
         },
         {
           "id": "basketball-2027-401925740",
@@ -1804,7 +1804,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401925740"
         },
         {
           "id": "basketball-2027-401921811",
@@ -1838,7 +1838,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906868"
         },
         {
           "id": "basketball-2027-401918076",
@@ -1855,7 +1855,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401918076"
         },
         {
           "id": "basketball-2027-401906806",
@@ -1872,7 +1872,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906806"
         },
         {
           "id": "basketball-2027-401906853",
@@ -1889,7 +1889,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906853"
         },
         {
           "id": "basketball-2027-401906774",
@@ -1906,7 +1906,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906774"
         },
         {
           "id": "basketball-2027-401916319",
@@ -1923,7 +1923,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401916319"
         },
         {
           "id": "basketball-2027-401920709",
@@ -1940,7 +1940,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920709"
         },
         {
           "id": "basketball-2027-401921817",
@@ -1957,7 +1957,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921817"
         },
         {
           "id": "basketball-2027-401906762",
@@ -1974,7 +1974,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906762"
         },
         {
           "id": "basketball-2027-401921669",
@@ -1991,7 +1991,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921669"
         },
         {
           "id": "basketball-2027-401920809",
@@ -2008,7 +2008,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920809"
         },
         {
           "id": "basketball-2027-401921670",
@@ -2025,7 +2025,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921670"
         },
         {
           "id": "basketball-2027-401929287",
@@ -2042,7 +2042,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401929287"
         },
         {
           "id": "basketball-2027-401929281",
@@ -2059,7 +2059,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401929281"
         },
         {
           "id": "basketball-2027-401906807",
@@ -2076,7 +2076,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906807"
         },
         {
           "id": "basketball-2027-401921674",
@@ -2093,7 +2093,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921674"
         },
         {
           "id": "basketball-2027-401906869",
@@ -2110,7 +2110,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906869"
         },
         {
           "id": "basketball-2027-401925757",
@@ -2127,7 +2127,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401925757"
         },
         {
           "id": "basketball-2027-401918972",
@@ -2144,7 +2144,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401918972"
         },
         {
           "id": "basketball-2027-401921827",
@@ -2161,7 +2161,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921827"
         },
         {
           "id": "basketball-2027-401921818",
@@ -2178,7 +2178,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921818"
         },
         {
           "id": "basketball-2027-401920810",
@@ -2195,7 +2195,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920810"
         },
         {
           "id": "basketball-2027-401919033",
@@ -2212,7 +2212,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401919033"
         },
         {
           "id": "basketball-2027-401906785",
@@ -2229,7 +2229,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906785"
         },
         {
           "id": "basketball-2027-401906854",
@@ -2246,7 +2246,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906854"
         },
         {
           "id": "basketball-2027-401909710",
@@ -2263,7 +2263,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401909710"
         },
         {
           "id": "basketball-2027-401918077",
@@ -2280,7 +2280,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401918077"
         },
         {
           "id": "basketball-2027-401918962",
@@ -2297,7 +2297,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401918962"
         },
         {
           "id": "basketball-2027-401912712",
@@ -2314,7 +2314,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401912712"
         },
         {
           "id": "basketball-2027-401906808",
@@ -2331,7 +2331,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906808"
         },
         {
           "id": "basketball-2027-401906870",
@@ -2348,7 +2348,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906870"
         },
         {
           "id": "basketball-2027-401909731",
@@ -2365,7 +2365,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401909731"
         },
         {
           "id": "basketball-2027-401920383",
@@ -2382,7 +2382,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920383"
         },
         {
           "id": "basketball-2027-401906775",
@@ -2399,7 +2399,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906775"
         },
         {
           "id": "basketball-2027-401920430",
@@ -2416,7 +2416,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920430"
         },
         {
           "id": "basketball-2027-401921647",
@@ -2433,7 +2433,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921647"
         },
         {
           "id": "basketball-2027-401906763",
@@ -2450,7 +2450,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906763"
         },
         {
           "id": "basketball-2027-401906795",
@@ -2467,7 +2467,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906795"
         },
         {
           "id": "basketball-2027-401920811",
@@ -2484,7 +2484,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920811"
         },
         {
           "id": "basketball-2027-401906809",
@@ -2501,7 +2501,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906809"
         },
         {
           "id": "basketball-2027-401921805",
@@ -2518,7 +2518,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921805"
         },
         {
           "id": "basketball-2027-401921812",
@@ -2535,7 +2535,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921812"
         },
         {
           "id": "basketball-2027-401929374",
@@ -2552,7 +2552,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401929374"
         },
         {
           "id": "basketball-2027-401906776",
@@ -2569,7 +2569,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906776"
         },
         {
           "id": "basketball-2027-401921822",
@@ -2586,7 +2586,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921822"
         },
         {
           "id": "basketball-2027-401920800",
@@ -2603,7 +2603,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920800"
         },
         {
           "id": "basketball-2027-401920812",
@@ -2620,7 +2620,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920812"
         },
         {
           "id": "basketball-2027-401909791",
@@ -2637,7 +2637,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401909791"
         },
         {
           "id": "basketball-2027-401906855",
@@ -2654,7 +2654,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906855"
         },
         {
           "id": "basketball-2027-401918059",
@@ -2671,7 +2671,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401918059"
         },
         {
           "id": "basketball-2027-401906796",
@@ -2688,7 +2688,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906796"
         },
         {
           "id": "basketball-2027-401918458",
@@ -2705,7 +2705,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401918458"
         },
         {
           "id": "basketball-2027-401906810",
@@ -2722,7 +2722,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906810"
         },
         {
           "id": "basketball-2027-401906764",
@@ -2739,7 +2739,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906764"
         },
         {
           "id": "basketball-2027-401921806",
@@ -2756,7 +2756,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921806"
         },
         {
           "id": "basketball-2027-401906871",
@@ -2773,7 +2773,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906871"
         },
         {
           "id": "basketball-2027-401906786",
@@ -2790,7 +2790,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906786"
         },
         {
           "id": "basketball-2027-401928815",
@@ -2807,7 +2807,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401928815"
         },
         {
           "id": "basketball-2027-401906856",
@@ -2824,7 +2824,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906856"
         },
         {
           "id": "basketball-2027-401920313",
@@ -2841,7 +2841,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920313"
         },
         {
           "id": "basketball-2027-401917908",
@@ -2858,7 +2858,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401917908"
         },
         {
           "id": "basketball-2027-401917986",
@@ -2875,7 +2875,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401917986"
         },
         {
           "id": "basketball-2027-401906811",
@@ -2892,7 +2892,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906811"
         },
         {
           "id": "basketball-2027-401909701",
@@ -2909,7 +2909,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401909701"
         },
         {
           "id": "basketball-2027-401906765",
@@ -2926,7 +2926,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906765"
         },
         {
           "id": "basketball-2027-401918952",
@@ -2943,7 +2943,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401918952"
         },
         {
           "id": "basketball-2027-401920757",
@@ -2960,7 +2960,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920757"
         },
         {
           "id": "basketball-2027-401906872",
@@ -2977,7 +2977,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906872"
         },
         {
           "id": "basketball-2027-401906797",
@@ -2994,7 +2994,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906797"
         },
         {
           "id": "basketball-2027-401921690",
@@ -3011,7 +3011,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921690"
         },
         {
           "id": "basketball-2027-401906787",
@@ -3028,7 +3028,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906787"
         },
         {
           "id": "basketball-2027-401921705",
@@ -3045,7 +3045,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921705"
         },
         {
           "id": "basketball-2027-401920801",
@@ -3062,7 +3062,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920801"
         },
         {
           "id": "basketball-2027-401929360",
@@ -3079,7 +3079,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401929360"
         },
         {
           "id": "basketball-2027-401920754",
@@ -3096,7 +3096,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920754"
         },
         {
           "id": "basketball-2027-401906798",
@@ -3113,7 +3113,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906798"
         },
         {
           "id": "basketball-2027-401920802",
@@ -3130,7 +3130,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920802"
         },
         {
           "id": "basketball-2027-401918080",
@@ -3147,7 +3147,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401918080"
         },
         {
           "id": "basketball-2027-401906788",
@@ -3164,7 +3164,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906788"
         },
         {
           "id": "basketball-2027-401906766",
@@ -3181,7 +3181,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906766"
         },
         {
           "id": "basketball-2027-401906857",
@@ -3198,7 +3198,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906857"
         },
         {
           "id": "basketball-2027-401906873",
@@ -3215,7 +3215,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906873"
         },
         {
           "id": "basketball-2027-401920813",
@@ -3232,7 +3232,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920813"
         },
         {
           "id": "basketball-2027-401906812",
@@ -3249,7 +3249,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906812"
         },
         {
           "id": "basketball-2027-401921828",
@@ -3266,7 +3266,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921828"
         },
         {
           "id": "basketball-2027-401911353",
@@ -3283,7 +3283,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401911353"
         },
         {
           "id": "basketball-2027-401916294",
@@ -3300,7 +3300,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401916294"
         },
         {
           "id": "basketball-2027-401920419",
@@ -3317,7 +3317,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920419"
         },
         {
           "id": "basketball-2027-401916301",
@@ -3334,7 +3334,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401916301"
         },
         {
           "id": "basketball-2027-401912714",
@@ -3351,7 +3351,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401912714"
         },
         {
           "id": "basketball-2027-401920207",
@@ -3368,7 +3368,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920207"
         },
         {
           "id": "basketball-2027-401920803",
@@ -3385,7 +3385,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920803"
         },
         {
           "id": "basketball-2027-401909747",
@@ -3402,7 +3402,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401909747"
         },
         {
           "id": "basketball-2027-401918964",
@@ -3419,7 +3419,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401918964"
         },
         {
           "id": "basketball-2027-401906789",
@@ -3436,7 +3436,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906789"
         },
         {
           "id": "basketball-2027-401906858",
@@ -3453,7 +3453,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906858"
         },
         {
           "id": "basketball-2027-401913533",
@@ -3470,7 +3470,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401913533"
         },
         {
           "id": "basketball-2027-401920814",
@@ -3487,7 +3487,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920814"
         },
         {
           "id": "basketball-2027-401921829",
@@ -3504,7 +3504,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921829"
         },
         {
           "id": "basketball-2027-401906767",
@@ -3521,7 +3521,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906767"
         },
         {
           "id": "basketball-2027-401906777",
@@ -3538,7 +3538,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906777"
         },
         {
           "id": "basketball-2027-401906874",
@@ -3555,7 +3555,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906874"
         },
         {
           "id": "basketball-2027-401921807",
@@ -3572,7 +3572,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921807"
         },
         {
           "id": "basketball-2027-401921823",
@@ -3589,7 +3589,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921823"
         },
         {
           "id": "basketball-2027-401929376",
@@ -3606,7 +3606,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401929376"
         },
         {
           "id": "basketball-2027-401921813",
@@ -3623,7 +3623,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921813"
         },
         {
           "id": "basketball-2027-401911063",
@@ -3640,7 +3640,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401911063"
         },
         {
           "id": "basketball-2027-401919742",
@@ -3657,7 +3657,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401919742"
         },
         {
           "id": "basketball-2027-401906813",
@@ -3674,7 +3674,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906813"
         },
         {
           "id": "basketball-2027-401920804",
@@ -3691,7 +3691,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920804"
         },
         {
           "id": "basketball-2027-401911400",
@@ -3708,7 +3708,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401911400"
         },
         {
           "id": "basketball-2027-401921041",
@@ -3725,7 +3725,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921041"
         },
         {
           "id": "basketball-2027-401906799",
@@ -3742,7 +3742,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906799"
         },
         {
           "id": "basketball-2027-401906814",
@@ -3759,7 +3759,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906814"
         },
         {
           "id": "basketball-2027-401921814",
@@ -3776,7 +3776,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921814"
         },
         {
           "id": "basketball-2027-401921824",
@@ -3793,7 +3793,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921824"
         },
         {
           "id": "basketball-2027-401906778",
@@ -3810,7 +3810,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906778"
         },
         {
           "id": "basketball-2027-401906790",
@@ -3827,7 +3827,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906790"
         },
         {
           "id": "basketball-2027-401906859",
@@ -3844,7 +3844,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906859"
         },
         {
           "id": "basketball-2027-401906875",
@@ -3861,7 +3861,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906875"
         },
         {
           "id": "basketball-2027-401920815",
@@ -3878,7 +3878,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920815"
         },
         {
           "id": "basketball-2027-401921830",
@@ -3895,7 +3895,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401921830"
         },
         {
           "id": "basketball-2027-401925111",
@@ -3912,7 +3912,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401925111"
         },
         {
           "id": "basketball-2027-401920805",
@@ -3929,7 +3929,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401920805"
         },
         {
           "id": "basketball-2027-401906768",
@@ -3946,7 +3946,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401906768"
         },
         {
           "id": "basketball-2027-sec-20270102-142-8",
@@ -4099,7 +4099,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902311"
         },
         {
           "id": "basketball-2027-401902314",
@@ -4116,7 +4116,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902314"
         },
         {
           "id": "basketball-2027-401902316",
@@ -4133,7 +4133,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902316"
         },
         {
           "id": "basketball-2027-401902317",
@@ -4150,7 +4150,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902317"
         },
         {
           "id": "basketball-2027-401902315",
@@ -4167,7 +4167,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902315"
         },
         {
           "id": "basketball-2027-sec-20270106-2633-2",
@@ -4201,7 +4201,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902313"
         },
         {
           "id": "basketball-2027-401902318",
@@ -4218,7 +4218,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902318"
         },
         {
           "id": "basketball-2027-sec-20270109-238-57",
@@ -4388,7 +4388,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902328"
         },
         {
           "id": "basketball-2027-401902332",
@@ -4405,7 +4405,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902332"
         },
         {
           "id": "basketball-2027-401902330",
@@ -4422,7 +4422,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902330"
         },
         {
           "id": "basketball-2027-sec-20270112-2-251",
@@ -4456,7 +4456,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902329"
         },
         {
           "id": "basketball-2027-401902333",
@@ -4473,7 +4473,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902333"
         },
         {
           "id": "basketball-2027-401902327",
@@ -4490,7 +4490,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902327"
         },
         {
           "id": "basketball-2027-401902331",
@@ -4507,7 +4507,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902331"
         },
         {
           "id": "basketball-2027-sec-20270116-201-251",
@@ -4660,7 +4660,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902347"
         },
         {
           "id": "basketball-2027-sec-20270119-2-238",
@@ -4694,7 +4694,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902343"
         },
         {
           "id": "basketball-2027-401902345",
@@ -4711,7 +4711,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902345"
         },
         {
           "id": "basketball-2027-401902349",
@@ -4728,7 +4728,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902349"
         },
         {
           "id": "basketball-2027-401902348",
@@ -4745,7 +4745,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902348"
         },
         {
           "id": "basketball-2027-401902346",
@@ -4762,7 +4762,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902346"
         },
         {
           "id": "basketball-2027-sec-20270123-142-238",
@@ -4949,7 +4949,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902359"
         },
         {
           "id": "basketball-2027-sec-20270126-344-2",
@@ -4983,7 +4983,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902358"
         },
         {
           "id": "basketball-2027-401902360",
@@ -5000,7 +5000,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902360"
         },
         {
           "id": "basketball-2027-401902363",
@@ -5017,7 +5017,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902363"
         },
         {
           "id": "basketball-2027-401902362",
@@ -5034,7 +5034,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902362"
         },
         {
           "id": "basketball-2027-sec-20270130-145-142",
@@ -5221,7 +5221,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902372"
         },
         {
           "id": "basketball-2027-401902374",
@@ -5238,7 +5238,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902374"
         },
         {
           "id": "basketball-2027-401902376",
@@ -5255,7 +5255,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902376"
         },
         {
           "id": "basketball-2027-401902373",
@@ -5272,7 +5272,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902373"
         },
         {
           "id": "basketball-2027-401902375",
@@ -5289,7 +5289,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902375"
         },
         {
           "id": "basketball-2027-sec-20270205-145-99",
@@ -5476,7 +5476,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902387"
         },
         {
           "id": "basketball-2027-401902391",
@@ -5493,7 +5493,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902391"
         },
         {
           "id": "basketball-2027-sec-20270209-57-2",
@@ -5527,7 +5527,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902389"
         },
         {
           "id": "basketball-2027-401902390",
@@ -5544,7 +5544,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902390"
         },
         {
           "id": "basketball-2027-401902388",
@@ -5561,7 +5561,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902388"
         },
         {
           "id": "basketball-2027-sec-20270213-142-57",
@@ -5748,7 +5748,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902401"
         },
         {
           "id": "basketball-2027-401902404",
@@ -5765,7 +5765,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902404"
         },
         {
           "id": "basketball-2027-401902402",
@@ -5782,7 +5782,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902402"
         },
         {
           "id": "basketball-2027-sec-20270216-2-8",
@@ -5816,7 +5816,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902405"
         },
         {
           "id": "basketball-2027-401902403",
@@ -5833,7 +5833,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902403"
         },
         {
           "id": "basketball-2027-401902406",
@@ -5850,7 +5850,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902406"
         },
         {
           "id": "basketball-2027-sec-20270220-145-2579",
@@ -6105,7 +6105,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902420"
         },
         {
           "id": "basketball-2027-401902422",
@@ -6122,7 +6122,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902422"
         },
         {
           "id": "basketball-2027-401902417",
@@ -6139,7 +6139,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902417"
         },
         {
           "id": "basketball-2027-sec-20270224-99-2",
@@ -6173,7 +6173,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902418"
         },
         {
           "id": "basketball-2027-401902421",
@@ -6190,7 +6190,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902421"
         },
         {
           "id": "basketball-2027-sec-20270227-142-61",
@@ -6377,7 +6377,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902434"
         },
         {
           "id": "basketball-2027-401902435",
@@ -6394,7 +6394,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902435"
         },
         {
           "id": "basketball-2027-401902438",
@@ -6411,7 +6411,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902438"
         },
         {
           "id": "basketball-2027-401902431",
@@ -6428,7 +6428,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902431"
         },
         {
           "id": "basketball-2027-sec-20270302-2-145",
@@ -6462,7 +6462,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902436"
         },
         {
           "id": "basketball-2027-401902437",
@@ -6479,7 +6479,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902437"
         },
         {
           "id": "basketball-2027-401902432",
@@ -6496,7 +6496,7 @@
           "winner_code": null,
           "game_status": "scheduled",
           "source": "ESPN",
-          "provisional": false
+          "espn_event_id": "401902432"
         },
         {
           "id": "basketball-2027-sec-20270306-145-344",
@@ -6653,8 +6653,8 @@
         }
       ],
       "source": "Verified SEC/university fixtures + ESPN",
-      "source_windows": 0,
-      "verified_database_games": 100,
+      "source_windows": 12,
+      "verified_database_games": 367,
       "database_connected": true,
       "team_coverage": {
         "142": 32,
@@ -6675,22 +6675,22 @@
         "99": 32
       },
       "sec_team_game_counts": {
-        "57": 35,
-        "2": 32,
-        "251": 36,
-        "2579": 35,
-        "238": 35,
-        "2633": 33,
-        "344": 33,
-        "201": 34,
-        "99": 35,
-        "8": 36,
-        "61": 36,
-        "245": 34,
-        "145": 32,
-        "142": 36,
         "333": 34,
-        "96": 34
+        "344": 33,
+        "2": 32,
+        "238": 35,
+        "145": 32,
+        "2633": 33,
+        "2579": 35,
+        "57": 35,
+        "61": 36,
+        "99": 35,
+        "96": 34,
+        "142": 36,
+        "201": 34,
+        "245": 34,
+        "251": 36,
+        "8": 36
       },
       "warning": null
     },
@@ -6698,7 +6698,7 @@
       "season": 2027,
       "games": [],
       "source": "Verified SEC/university fixtures + ESPN",
-      "source_windows": 0,
+      "source_windows": 5,
       "verified_database_games": 0,
       "database_connected": true,
       "team_coverage": {
@@ -6713,22 +6713,22 @@
         "99": 0
       },
       "sec_team_game_counts": {
-        "57": 0,
-        "2": 0,
-        "251": 0,
-        "2579": 0,
-        "238": 0,
-        "2633": 0,
-        "344": 0,
-        "201": 0,
-        "99": 0,
-        "8": 0,
-        "61": 0,
-        "245": 0,
-        "145": 0,
-        "142": 0,
         "333": 0,
-        "96": 0
+        "344": 0,
+        "2": 0,
+        "238": 0,
+        "145": 0,
+        "2633": 0,
+        "2579": 0,
+        "57": 0,
+        "61": 0,
+        "99": 0,
+        "96": 0,
+        "142": 0,
+        "201": 0,
+        "245": 0,
+        "251": 0,
+        "8": 0
       },
       "warning": "No verified individual first-pitch times yet; SEC baseball weekend series previews remain available."
     }
