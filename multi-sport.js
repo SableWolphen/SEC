@@ -262,7 +262,7 @@ function renderSport(s){
     label+' <small>'+w.games.filter(g=>key==="all"||(key==="needs-pick"?g.game_status==="scheduled"&&Date.parse(g.kickoff_at)>Date.now()&&!picks[g.id]?.pick_code:statusOf(g)===key)).length+'</small></button>').join("")+'</div>'+
    '<div class="sport-swipe-tools"><span>Swipe between matchups</span><div><button type="button" data-swipe-step="-1" data-sport="'+s+'" aria-label="Previous matchup">‹</button><output class="sport-swipe-count" aria-live="polite">1 / '+w.games.length+'</output><button type="button" data-swipe-step="1" data-sport="'+s+'" aria-label="Next matchup">›</button></div></div>'+ 
    '<div class="sport-games-grid sport-swipe-grid" data-swipe-grid="'+s+'">'+(w.games.filter(g=>selectedStatus==="all"||(selectedStatus==="needs-pick"?g.game_status==="scheduled"&&Date.parse(g.kickoff_at)>Date.now()&&!picks[g.id]?.pick_code:statusOf(g)===selectedStatus))
-    .map(g=>gameCard(s,g,active,picks)).join("")||
+    .map(g=>gameCard(s,g,active,picks,w)).join("")||
     '<p class="sport-games-no-status">'+(selectedStatus==="needs-pick"?"All available picks are done for this week! Choose All games to review them.":"No games in this view. Choose All games to see the full slate.")+'</p>')+
    '</div>'+
    renderTiebreak(s,w,active,saved);
@@ -358,7 +358,7 @@ function sportTeamContext(s,g,code){
 function validSportScore(value){
  return value!==null&&value!==undefined&&value!==""&&Number.isInteger(Number(value))&&Number(value)>=0&&Number(value)<=999;
 }
-function gameCard(s,g,league,picks){
+function gameCard(s,g,league,picks,week){
  const mode=league?.mode||"straight",old=picks[g.id];
  const start=new Date(g.kickoff_at).getTime();
  const locked=!(Number.isFinite(start)&&start>Date.now()&&g.game_status==="scheduled");
@@ -377,8 +377,9 @@ function gameCard(s,g,league,picks){
   (scored?'<span class="sport-team-score '+(Number(code===g.away_code?g.away_score:g.home_score)>Number(code===g.away_code?g.home_score:g.away_score)?"is-leading":"")+
    '" aria-label="'+esc(code===g.away_code?g.away_name:g.home_name)+' score">'+Number(code===g.away_code?g.away_score:g.home_score)+'</span>':"")+'</span>'+
   '<span class="sport-check">'+(String(old?.pick_code)===String(code)?"✓":"○")+'</span></button>';
- const num=curWeek(s)?.games.length||1;
- const used=new Set(Object.entries(picks).filter(([id,p])=>id!==g.id&&allGames(s).find(x=>x.id===id)?.week===g.week).map(([,p])=>p.confidence_points));
+ const num=week?.games.length||1;
+ const weekIds=new Set((week?.games||[]).map(x=>x.id));
+ const used=new Set(Object.entries(picks).filter(([id,p])=>id!==g.id&&weekIds.has(id)).map(([,p])=>p.confidence_points));
  const options=Array.from({length:num},(_,i)=>i+1).map(n=>
    '<option value="'+n+'" '+(n===old?.confidence_points?'selected':'')+' '+(used.has(n)?'disabled':'')+'>'+n+' point'+(n===1?'':'s')+'</option>').join("");
  const currentName=old?.pick_code===g.home_code?g.home_name:old?.pick_code===g.away_code?g.away_name:"";
