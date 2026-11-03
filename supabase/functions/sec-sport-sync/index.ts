@@ -58,7 +58,7 @@ function reply(data:unknown,status=200){return new Response(JSON.stringify(data)
 Deno.serve(async(req:Request)=>{
  if(req.method==="OPTIONS")return reply({ok:true});
  if(req.method!=="POST")return reply({error:"Use POST"},405);
- if(!URL||!SERVICE||!ANON)return reply({error:"Schedule sync not configured"},503);
+ if(!URL||!SERVICE)return reply({error:"Schedule sync not configured"},503);
  try{
   const database=createClient(URL,SERVICE,{auth:{persistSession:false,autoRefreshToken:false}});
   const jobToken=req.headers.get("X-SEC-Job-Token")||"";
@@ -70,7 +70,9 @@ Deno.serve(async(req:Request)=>{
   if(!job){
    const token=req.headers.get("Authorization")||"";
    if(!token.startsWith("Bearer "))return reply({error:"Sign in before refreshing schedules"},401);
-   const session=createClient(URL,ANON,{auth:{persistSession:false,autoRefreshToken:false}});
+   // New Supabase projects may only expose publishable keys; the server-side
+   // service key can validate a supplied user JWT with auth.getUser(token).
+   const session=createClient(URL,ANON||SERVICE,{auth:{persistSession:false,autoRefreshToken:false}});
    const identity=await session.auth.getUser(token.slice(7));
    if(identity.error||!identity.data?.user)return reply({error:"Sign in before refreshing schedules"},401);
   }
@@ -105,13 +107,16 @@ Deno.serve(async(req:Request)=>{
    try{
     const response=await fetch("https://site.api.espn.com/apis/site/v2/sports/"+path,{
      headers:{"Accept":"application/json"},signal:AbortSignal.timeout(10000)});
-    if(!response.ok){providerErrors++;continue;}
+    if(!response.ok){providerErrors++;console.warn("sec-sport-sync: ESPN HTTP",response.status);continue;}
     const data=await response.json();
     for(const g of parseEvents(data,sport,season,start))unique.set(g.id,g);
     success++;
-   }catch(_){providerErrors++;/* Keep previously imported verified games. */}
+   }catch(error){providerErrors++;console.warn("sec-sport-sync: provider failure",String((error as Error)?.message||error).slice(0,150));/* Preserve verified games. */}
   }
-  if(success===0)return reply({error:"Schedule source unavailable; existing games have not been changed",providerErrors},503);
+  if(success===0){
+   console.error("sec-sport-sync: all ESPN windows failed",JSON.stringify({sport,providerErrors}));
+   return reply({error:"Schedule source unavailable; existing games have not been changed",providerErrors},503);
+  }
   const games=[...unique.values()];
   // Reconcile ESPN event IDs with the verified SEC / university fixture IDs.
   // Preserve existing IDs (and all player picks) when ESPN later publishes an
@@ -148,5 +153,5 @@ Deno.serve(async(req:Request)=>{
   await database.from("sec_sport_sync_state").upsert({sport,last_checked_at:now.toISOString(),
    last_success_at:now.toISOString(),imported:games.length},{onConflict:"sport"});
   return reply({ok:true,sport,season,imported:games.length,source_windows:success,active});
- }catch(_){return reply({error:"Could not refresh the verified sports schedule"},503);}
+ }catch(error){console.error("sec-sport-sync: server failure",String((error as Error)?.message||error).slice(0,250));return reply({error:"Could not refresh the verified sports schedule"},503);}
 });
