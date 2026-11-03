@@ -1,0 +1,110 @@
+name: Auto-merge verified SEC pull requests
+
+on:
+  workflow_run:
+    workflows:
+      - "Verify SEC Pick'em"
+      - "SEC real-browser mobile audit"
+    types: [completed]
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
+concurrency:
+  group: sec-verified-pr-automerge
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Merge one ready, fully verified PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.error, urllib.parse, urllib.request
+
+          repo=os.environ["GH_REPO"]
+          token=os.environ["GH_TOKEN"]
+          headers={
+              "Authorization":f"Bearer {token}",
+              "Accept":"application/vnd.github+json",
+              "X-GitHub-Api-Version":"2022-11-28",
+              "User-Agent":"sec-verified-auto-merge",
+          }
+          def api(path, method="GET", data=None):
+              url=f"https://api.github.com/repos/{repo}/{path}"
+              req=urllib.request.Request(
+                  url, headers=headers, method=method,
+                  data=json.dumps(data).encode() if data is not None else None,
+              )
+              try:
+                  with urllib.request.urlopen(req, timeout=20) as res:
+                      return json.load(res)
+              except urllib.error.HTTPError as error:
+                  print(f"{method} {path}: HTTP {error.code} {error.read().decode()[:450]}")
+                  return None
+
+          def verified(sha):
+              # Both independent checks must have passed on this exact commit.
+              for workflow in ("validate.yml", "browser-audit.yml"):
+                  params=urllib.parse.urlencode({
+                      "head_sha":sha, "event":"pull_request", "per_page":30,
+                  })
+                  result=api(f"actions/workflows/{workflow}/runs?{params}")
+                  if result is None:
+                      return False
+                  runs=[run for run in result.get("workflow_runs",[])
+                        if run.get("head_sha")==sha and run.get("event")=="pull_request"]
+                  if not runs:
+                      print(f"{sha[:8]}: missing {workflow} run")
+                      return False
+                  latest=max(runs,key=lambda run:(run.get("created_at",""),run.get("run_attempt",0)))
+                  if latest.get("status")!="completed" or latest.get("conclusion")!="success":
+                      print(f"{sha[:8]}: {workflow} is {latest.get('status')}/{latest.get('conclusion')}")
+                      return False
+              return True
+
+          # Merge at most one per run: each merge changes main and may affect
+          # the mergeability of every remaining PR.
+          for page in range(1,6):
+              prs=api(f"pulls?state=open&per_page=100&page={page}")
+              if prs is None:
+                  break
+              for pr in sorted(prs,key=lambda p:p["number"]):
+                  number=pr["number"]
+                  if pr.get("draft") or pr.get("base",{}).get("ref")!="main":
+                      continue
+                  if pr.get("head",{}).get("repo",{}).get("full_name")!=repo:
+                      print(f"PR #{number}: forked source; manual review required")
+                      continue
+                  if any(label.get("name","").lower() in ("do-not-merge","manual-review","hold") for label in pr.get("labels",[])):
+                      continue
+                  details=api(f"pulls/{number}")
+                  if not details or details.get("mergeable") is not True:
+                      print(f"PR #{number}: merge conflict or mergeability pending")
+                      continue
+                  sha=details["head"]["sha"]
+                  if not verified(sha):
+                      continue
+                  result=api(f"pulls/{number}/merge","PUT",{
+                      "sha":sha,
+                      "merge_method":"squash",
+                      "commit_title":f"{details['title']} (#{number})",
+                  })
+                  if result and result.get("merged"):
+                      print(f"Merged PR #{number} at {result.get('sha')}")
+                      raise SystemExit(0)
+                  print(f"PR #{number}: GitHub refused merge; leaving open")
+              if len(prs)<100:
+                  break
+          print("No PR currently meets all automatic-merge safety gates.")
+          PY
