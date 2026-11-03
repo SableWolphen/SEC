@@ -437,12 +437,10 @@ async function load(s,force=false){
    cache[s]={games,leagues:[],picks:{},standings:[],tiebreakers:{},pairings:[],active:null};
    return;
   }
-  // Authenticated data only; schedule writes are performed by the server, never by browser-supplied games.
-  if(force||Date.now()-(cache[s].lastServerSync||0)>16*60000){
-   const sync=await c.functions.invoke("sec-sport-sync",{body:{sport:s}});
-   if(sync.error)console.warn("Sport schedule sync:",sync.error.message);
-   cache[s].lastServerSync=Date.now();
-  }
+  // First load server-registered fixtures and saved picks immediately.
+  // ESPN sync is maintenance work, not a prerequisite for tapping a team:
+  // a failed/slow sync must never block pick interaction.
+  const shouldSync=force||Date.now()-(cache[s].lastServerSync||0)>16*60000;
   const [g,l]=await Promise.all([
    c.from("sec_sport_games").select("*").eq("sport",s).eq("season",yr).order("kickoff_at"),
    c.from("sec_sport_leagues").select("id,name,mode,invite_code,owner_id,sport,season").eq("sport",s).eq("season",yr).order("created_at")
@@ -491,8 +489,14 @@ async function load(s,force=false){
   }
   if(seq!==updating[s]||user()?.id!==u.id)return;
   const oldSync=cache[s].lastServerSync;
-  cache[s]={games,leagues,picks,standings,tiebreakers,pairings,active,lastServerSync:oldSync,error:""};
+  cache[s]={games,leagues,picks,standings,tiebreakers,pairings,active,lastServerSync:shouldSync?Date.now():oldSync,error:""};
   localStorage.setItem("ss-sec-sport-league-"+s+"-"+yr,active||"solo");
+  if(shouldSync&&typeof c.functions?.invoke==="function"){
+   // Never await sync here; it can return 503 without affecting existing picks.
+   void c.functions.invoke("sec-sport-sync",{body:{sport:s}})
+    .then(response=>{if(response?.error)console.warn("Sport schedule sync:",response.error.message);})
+    .catch(error=>console.warn("Sport schedule sync:",error?.message));
+  }
  }catch(e){cache[s].error=e.message||"This sport is temporarily unavailable";console.warn("SEC sports:",e);}
  finally{
   loading[s]=false;renderSport(s);renderHub();window.SEC_GAMEDAY?.renderSport?.(s);
