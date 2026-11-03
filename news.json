@@ -1,11 +1,335 @@
 {
-  "updated_at": "2026-11-02T20:48:49.228394Z",
-  "checked_at": "2026-11-02T20:48:49.228394Z",
+  "updated_at": "2026-11-03T02:56:33.082366Z",
+  "checked_at": "2026-11-03T02:56:33.082366Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "77d30c3bd70c5c45",
+      "title": "No. 1 Florida opens men's basketball season with win over No. 14 Miami",
+      "summary": "Thomas Haugh had 19 points and 10 rebounds to lead No. 1 Florida to a 77-67 win over No. 14 Miami on Monday night in the season opener for both programs.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50363673/no-1-florida-opens-season-win-no-14-miami",
+      "source": "ESPN",
+      "published_at": "2026-11-03T02:33:21Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9f5cf237272da728",
+      "title": "Bellarmine Knights vs. Vanderbilt Commodores: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50363490/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-03T02:18:25Z",
+      "sport": "basketball",
+      "teams": [
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f393c92686453104",
+      "title": "Howard Bison vs. Yale Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50363395/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-03T02:13:29Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "214fcee961947e42",
+      "title": "New Hampshire Wildcats vs. Brown Bears: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50363390/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-03T02:12:47Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "018240dd83899df6",
+      "title": "UNC Asheville Bulldogs vs. Richmond Spiders: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50363383/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-03T02:10:49Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8202a0e3f7db614d",
+      "title": "Lafayette Leopards vs. Butler Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50363378/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-03T02:09:55Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7f28651ce70048ea",
+      "title": "Miami Hurricanes vs. Florida Gators: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50363156/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-03T01:57:13Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "35a3daaafd841b55",
+      "title": "Building a CFP bracket that could unravel before Week 10",
+      "summary": "Read and React crew projects its CFP bracket before Tuesday's rankings reveal, weighing SEC schedule strength against unbeaten résumés as key weekend clashes loom.",
+      "url": "https://www.espn.com/video/clip/_/id/50362927/building-cfp-bracket-unravel-week-10",
+      "source": "ESPN",
+      "published_at": "2026-11-03T01:37:58Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "d6e55f07651a07a0",
+      "title": "Cole's Block Party: Mizzou makes clear case for the golden hog",
+      "summary": "Read & React's Cole Cubelic and Roman Harper call Missouri the obvious choice to win this weeks golden hog after reviewing some of the best blocks of Week 9.",
+      "url": "https://www.espn.com/video/clip/_/id/50362869/mizzou-makes-clear-case-golden-hog",
+      "source": "ESPN",
+      "published_at": "2026-11-03T01:27:07Z",
+      "sport": "football",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6fb0e02436f2640e",
+      "title": "Harper, Cubelic analyze ranked matchups in massive Week 10 slate",
+      "summary": "As the SEC makes history through a second week of four top-25 ranked matchups, Roman Harper and Cole Cubelic give an in-depth preview analysis on each one.",
+      "url": "https://www.espn.com/video/clip/_/id/50362529/harper-cubelic-analyze-ranked-matchups-massive-week-10-slate",
+      "source": "ESPN",
+      "published_at": "2026-11-03T01:02:29Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "7b852c6333d3044d",
+      "title": "Mike Elko details Texas A&M's attitude and effort while previewing SC",
+      "summary": "Elko discusses how the Aggies are trending in the right direction while discussing the challenges LaNorris Sellers and South Carolina present.",
+      "url": "https://www.espn.com/video/clip/_/id/50362528/mike-elko-details-texas-attitude-effort-previewing-sc",
+      "source": "ESPN",
+      "published_at": "2026-11-03T00:53:59Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "80eff722d290444c",
+      "title": "Cubelic, Harper detail how Kentucky can beat Tennessee",
+      "summary": "Read & React's Cole Cubelic and Roman Harper break down how the Wildcat defense and offense can win against the Volunteers while also explaining what could happen with Ole Miss facing Georgia.",
+      "url": "https://www.espn.com/video/clip/_/id/50362515/cubelic-harper-detail-how-kentucky-beat-tennessee",
+      "source": "ESPN",
+      "published_at": "2026-11-03T00:50:15Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Kentucky",
+        "Ole Miss",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c5475706bfc48b54",
+      "title": "Lane Kiffin gives perspective on LSU vs Bama then challenges fans",
+      "summary": "Kiffin discusses a common misconception about playing after a bye week as he shares his perspective on the Alabama vs LSU rivalry, then challenges fans to set a new energy record.",
+      "url": "https://www.espn.com/video/clip/_/id/50362283/lane-kiffin-gives-perspective-lsu-vs-bama-challenges-fans",
+      "source": "ESPN",
+      "published_at": "2026-11-03T00:24:25Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "67d2e40a05ab1f4a",
+      "title": "Rebels' Golding dissects what it's like facing Georgia's Bobo, Smart",
+      "summary": "Pete Golding explains how his experience facing Georgia offensive coordinator Mike Bobo and head coach Kirby Smart will help prepare Ole Miss for the matchup.",
+      "url": "https://www.espn.com/video/clip/_/id/50362154/rebels-golding-dissects-facing-georgia-bobo-smart",
+      "source": "ESPN",
+      "published_at": "2026-11-03T00:05:32Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "be278ad89d728a8a",
+      "title": "Auburn's Alex Golesh discusses balancing gameplan, previews Arkansas",
+      "summary": "Golesh harps on the Tigers unraveling at the end of Auburn's loss to Ole Miss and explains how they want to get the running backs involved more ahead of their matchup against the Razorbacks.",
+      "url": "https://www.espn.com/video/clip/_/id/50362121/auburn-alex-golesh-discusses-balancing-gameplan-previews-arkansas",
+      "source": "ESPN",
+      "published_at": "2026-11-03T00:02:38Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas",
+        "Auburn",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1d24d95ac490f5ad",
+      "title": "Steve Sarkisian sets Texas' identity: 'Tough, hard-nose football team'",
+      "summary": "Sarkisian discusses the Longhorns' gritty style, citing explosive plays and defensive pressure as factors that support the team's identity ahead of its matchup with Missouri.",
+      "url": "https://www.espn.com/video/clip/_/id/50362037/tough-hard-nose-football-team",
+      "source": "ESPN",
+      "published_at": "2026-11-02T23:48:21Z",
+      "sport": "football",
+      "teams": [
+        "Missouri",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c3c43017ec9fd126",
+      "title": "Ryan Silverfield says Arkansas must protect the ball vs. Auburn",
+      "summary": "Silverfield emphasizes that the Razorbacks must improve when it comes to protecting the football and preventing turnovers if they hope to have success against the Tigers.",
+      "url": "https://www.espn.com/video/clip/_/id/50361903/ryan-silverfield-says-arkansas-protect-ball-vs-auburn",
+      "source": "ESPN",
+      "published_at": "2026-11-02T23:31:35Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas",
+        "Auburn"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "06e949d377e11983",
+      "title": "Jon Sumrall on Florida: 'We have to be better around the quarterback'",
+      "summary": "Sumrall vies for the quarterback play to improve, but he emphasizes that the Gators must play better across the offense.",
+      "url": "https://www.espn.com/video/clip/_/id/50361876/be-better-quarterback",
+      "source": "ESPN",
+      "published_at": "2026-11-02T23:28:31Z",
+      "sport": "football",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6dfeca2dc2870e83",
+      "title": "Georgia's Smart highlights Chambliss' ability ahead of Ole Miss matchup",
+      "summary": "Kirby Smart praises Trinidad Chambliss for being an amazing quarterback and athlete that can stress defenses while addressing scheduling challenges.",
+      "url": "https://www.espn.com/video/clip/_/id/50361853/georgia-smart-highlights-chambliss-ability-ahead-ole-miss-matchup",
+      "source": "ESPN",
+      "published_at": "2026-11-02T23:26:56Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b56a9d52e28776c5",
+      "title": "Josh Heupel says Vols needs to focus on the little things to beat UK",
+      "summary": "Heupel emphasizes Tennessee's focus on the controllable and stresses \"doing the ordinary things at a really high level\" in order to halt Kentucky's momentum in Week 10.",
+      "url": "https://www.espn.com/video/clip/_/id/50361798/josh-heupel-says-vols-needs-focus-little-things-beat-uk",
+      "source": "ESPN",
+      "published_at": "2026-11-02T23:18:56Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "da91d56c6881de4c",
+      "title": "Alabama's DeBoer discusses Russell's keys to success at hostile LSU",
+      "summary": "Kalen DeBoer breaks down what he wants to see from Keelon Russell against the Tigers while offering injury updates for key players.",
+      "url": "https://www.espn.com/video/clip/_/id/50361757/alabama-deboer-discusses-russell-keys-success-hostile-lsu",
+      "source": "ESPN",
+      "published_at": "2026-11-02T23:12:47Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0425e3f604640b97",
+      "title": "Jeff Lebby says Mississippi State is eager to face Vanderbilt",
+      "summary": "Lebby discusses what went wrong in the Bulldogs' loss to Texas and how they are responding ahead of their matchup with the Commodores.",
+      "url": "https://www.espn.com/video/clip/_/id/50361750/jeff-lebby-says-mississippi-state-eager-face-vanderbilt",
+      "source": "ESPN",
+      "published_at": "2026-11-02T23:11:36Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Mississippi State",
+        "Texas",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0c199b20fc981e7f",
+      "title": "Kansas State QB Avery Johnson out vs. Oklahoma State, maybe for season",
+      "summary": "Wildcats coach Collin Klein said Monday that there is an \"outside chance\" Avery Johnson will be able to return this season.",
+      "url": "https://www.espn.com/college-football/story/_/id/50361137/kansas-state-avery-johnson-oklahoma-state-season",
+      "source": "ESPN",
+      "published_at": "2026-11-02T22:14:12Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7de244f935617c5b",
+      "title": "Oklahoma fires OC Ben Arbuckle, tabs Jason Witten as play caller",
+      "summary": "Oklahoma has fired offensive coordinator Ben Arbuckle after less than two seasons, the school announced on Monday.",
+      "url": "https://www.espn.com/college-football/story/_/id/50359646/oklahoma-fires-second-year-oc-ben-arbuckle-jason-witten-call-plays",
+      "source": "ESPN",
+      "published_at": "2026-11-02T22:07:35Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma"
+      ],
+      "breaking": true
+    },
     {
       "id": "0f14ed9108b047c8",
       "title": "Kiffin 'sad' annual LSU-Alabama game to take hiatus in 2027",
@@ -35,21 +359,6 @@
       "breaking": false
     },
     {
-      "id": "fea78b2a086bb1fa",
-      "title": "Ron Slay breaks down SEC contenders, sleepers ahead of tipoff",
-      "summary": "SEC Network's Slay explains why Florida could lead the conference race and tabs Vanderbilt and Missouri as potential sleepers capable of finishing in the SEC's top three.",
-      "url": "https://www.espn.com/video/clip/_/id/50360281/ron-slay-breaks-sec-contenders-sleepers-ahead-tipoff",
-      "source": "ESPN",
-      "published_at": "2026-11-02T19:36:50Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida",
-        "Missouri",
-        "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
       "id": "1296aa1e19b4ce6e",
       "title": "What is selection committee looking for in first CFP rankings?",
       "summary": "Ahead of the first CFP rankings on Tuesday, Nov. 3 at 7 p.m. ET, ESPN's Heather Dinich breaks down what the selection committee will prioritize and what it could mean for SEC teams.",
@@ -59,19 +368,6 @@
       "sport": "football",
       "teams": [],
       "breaking": false
-    },
-    {
-      "id": "7de244f935617c5b",
-      "title": "Sources: Oklahoma fires OC Ben Arbuckle, tabs Jason Witten as play caller",
-      "summary": "Oklahoma has fired offensive coordinator Ben Arbuckle after less than two seasons, sources told ESPN's Pete Thamel on Monday.",
-      "url": "https://www.espn.com/college-football/story/_/id/50359646/oklahoma-fires-second-year-oc-ben-arbuckle-jason-witten-call-plays",
-      "source": "ESPN",
-      "published_at": "2026-11-02T18:43:15Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma"
-      ],
-      "breaking": true
     },
     {
       "id": "122732ac51763ce7",
@@ -85,7 +381,7 @@
         "Alabama",
         "LSU"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "271e10690d8caf27",
@@ -96,20 +392,6 @@
       "published_at": "2026-11-01T21:13:46Z",
       "sport": "football",
       "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7eb5c87b3ced908f",
-      "title": "Early top-10 men's basketball recruiting class rankings",
-      "summary": "After a slew of top-20 decisions, LSU and Duke are the two best classes, while Alabama, Arizona State debut.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50242145/2027-mens-basketball-recruiting-class-rankings",
-      "source": "ESPN",
-      "published_at": "2026-11-01T19:11:02Z",
-      "sport": "basketball",
-      "teams": [
-        "Alabama",
         "LSU"
       ],
       "breaking": false
