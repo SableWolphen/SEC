@@ -32,7 +32,23 @@ function simplify(){
  });
  dashboard();enhance();
  // Existing sport modules redraw asynchronously; enhance after those redraws.
- const root=document.querySelector('main');if(root){let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;enhance();});}).observe(root,{childList:true,subtree:true});}
+ const root=document.querySelector('main');if(root){
+   // Coalesce bursts of async widget updates. Avoid running expensive card
+   // layout scans on every mutation or during background/hidden tabs.
+   let timer=0;
+   const observer=new MutationObserver(records=>{
+    if(document.visibilityState==='hidden')return;
+    if(!records.some(record=>[...record.addedNodes,...record.removedNodes].some(node=>
+     node.nodeType===1&&(
+      node.matches?.('#games-list,.game-card,.sport-game-card,#sec-home-root,#league-content,#sports-hub,[data-sport-game]')||
+      node.querySelector?.('.game-card,.sport-game-card,[data-sport-game],#games-list,#league-content')
+     ))))return;
+    clearTimeout(timer);
+    timer=setTimeout(()=>{timer=0;enhance();},120);
+   });
+   observer.observe(root,{childList:true,subtree:true});
+   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')enhance();});
+  }
 }
 
 /* Pick details use the same authenticated save handler as the existing cards. */
