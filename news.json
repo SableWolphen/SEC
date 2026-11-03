@@ -1,11 +1,65 @@
 {
-  "updated_at": "2026-11-03T10:56:56.698788Z",
-  "checked_at": "2026-11-03T10:56:56.698788Z",
+  "updated_at": "2026-11-03T18:28:08.736488Z",
+  "checked_at": "2026-11-03T18:28:08.736488Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "1c64ceffa50672ce",
+      "title": "Stephen A. has a strong message for Alabama ahead of LSU matchup",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50369394/stephen-strong-message-alabama-ahead-lsu-matchup",
+      "source": "ESPN",
+      "published_at": "2026-11-03T16:16:45Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "655d11d7246c19a3",
+      "title": "East Texas A&M, picked last in Southland Conference, stuns Oklahoma in opener",
+      "summary": "East Texas A&M, selected to finish last in the 12-team Southland Conference preseason poll this season, shocked Oklahoma with a 68-64 season-opening win Monday night, an effort that Sooners coach Porter Moser…",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50365925/moser-apologizes-east-texas-upset-oklahoma",
+      "source": "ESPN",
+      "published_at": "2026-11-03T13:21:28Z",
+      "sport": "basketball",
+      "teams": [
+        "Oklahoma",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b2c58888ee55cbeb",
+      "title": "How Will Wade and LSU became the centerpiece of the NCAA eligibility debate",
+      "summary": "The story of how LSU found itself embroiled in controversy goes back four years to Will Wade's first stint at LSU.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50363070/lsu-wade-line",
+      "source": "ESPN",
+      "published_at": "2026-11-03T12:34:33Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a5fb1b4c1a15a695",
+      "title": "Heisman of Week 9: LaNorris Sellers' throwback, Darian Mensah's move",
+      "summary": "While the overall race got a little cloudier, South Carolina's QB showed he's still got it.",
+      "url": "https://www.espn.com/college-football/story/_/id/50359490/heisman-week-9-lanorris-sellers-darian-mensah",
+      "source": "ESPN",
+      "published_at": "2026-11-03T11:28:18Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
     {
       "id": "ff3e5b9a0e65e666",
       "title": "Standouts, key wins, more reactions from men's hoops opening day",
@@ -16,20 +70,6 @@
       "sport": "basketball",
       "teams": [
         "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "655d11d7246c19a3",
-      "title": "East Texas A&M, picked last in Southland Conference, stuns Oklahoma in opener",
-      "summary": "East Texas A&M, selected to finish last in the 12-team Southland Conference preseason poll this season, shocked Oklahoma with a 68-64 season-opening win Monday night, an effort that Sooners coach Porter Moser…",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50365925/moser-apologizes-east-texas-upset-oklahoma",
-      "source": "ESPN",
-      "published_at": "2026-11-03T05:56:47Z",
-      "sport": "basketball",
-      "teams": [
-        "Oklahoma",
-        "Texas A&M"
       ],
       "breaking": false
     },
