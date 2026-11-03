@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-11-03T02:56:33.082366Z",
-  "checked_at": "2026-11-03T02:56:33.082366Z",
+  "updated_at": "2026-11-03T10:56:56.698788Z",
+  "checked_at": "2026-11-03T10:56:56.698788Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "77d30c3bd70c5c45",
-      "title": "No. 1 Florida opens men's basketball season with win over No. 14 Miami",
-      "summary": "Thomas Haugh had 19 points and 10 rebounds to lead No. 1 Florida to a 77-67 win over No. 14 Miami on Monday night in the season opener for both programs.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50363673/no-1-florida-opens-season-win-no-14-miami",
+      "id": "ff3e5b9a0e65e666",
+      "title": "Standouts, key wins, more reactions from men's hoops opening day",
+      "summary": "Big wins (Florida) and upsets (Arizona), coaching statements (Memphis) and bracket moves. College hoops is back!",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50361386/mens-college-basketball-2026-27-opening-day-takeaways",
       "source": "ESPN",
-      "published_at": "2026-11-03T02:33:21Z",
+      "published_at": "2026-11-03T06:54:19Z",
       "sport": "basketball",
       "teams": [
         "Florida"
@@ -20,80 +20,29 @@
       "breaking": false
     },
     {
-      "id": "9f5cf237272da728",
-      "title": "Bellarmine Knights vs. Vanderbilt Commodores: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50363490/game-highlights",
+      "id": "655d11d7246c19a3",
+      "title": "East Texas A&M, picked last in Southland Conference, stuns Oklahoma in opener",
+      "summary": "East Texas A&M, selected to finish last in the 12-team Southland Conference preseason poll this season, shocked Oklahoma with a 68-64 season-opening win Monday night, an effort that Sooners coach Porter Moser…",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50365925/moser-apologizes-east-texas-upset-oklahoma",
       "source": "ESPN",
-      "published_at": "2026-11-03T02:18:25Z",
+      "published_at": "2026-11-03T05:56:47Z",
       "sport": "basketball",
       "teams": [
-        "Vanderbilt"
+        "Oklahoma",
+        "Texas A&M"
       ],
       "breaking": false
     },
     {
-      "id": "f393c92686453104",
-      "title": "Howard Bison vs. Yale Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50363395/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-03T02:13:29Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "214fcee961947e42",
-      "title": "New Hampshire Wildcats vs. Brown Bears: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50363390/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-03T02:12:47Z",
+      "id": "dedc07db29b0b337",
+      "title": "Arizona's Ivan Kharchenkov scores 38 points in season opener vs. UCLA",
+      "summary": "Arizona's Ivan Kharchenkov netted 38 points and grabbed 10 rebounds for a double-double in the Wildcats' season opener vs. UCLA. Watch Kharchenkov's 2026 Hall of Fame Series opening game highlights here.",
+      "url": "https://www.ncaa.com/video/basketball-men/2026-11-03/arizonas-ivan-kharchenkov-scores-38-points-season-opener-vs-ucla",
+      "source": "NCAA",
+      "published_at": "2026-11-03T05:52:11Z",
       "sport": "basketball",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "018240dd83899df6",
-      "title": "UNC Asheville Bulldogs vs. Richmond Spiders: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50363383/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-03T02:10:49Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8202a0e3f7db614d",
-      "title": "Lafayette Leopards vs. Butler Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50363378/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-03T02:09:55Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7f28651ce70048ea",
-      "title": "Miami Hurricanes vs. Florida Gators: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50363156/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-03T01:57:13Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
       ],
       "breaking": false
     },
@@ -328,7 +277,7 @@
       "teams": [
         "Oklahoma"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "0f14ed9108b047c8",
