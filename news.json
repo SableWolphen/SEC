@@ -1,11 +1,128 @@
 {
-  "updated_at": "2026-11-03T18:28:08.736488Z",
-  "checked_at": "2026-11-03T18:28:08.736488Z",
+  "updated_at": "2026-11-04T00:00:16.278278Z",
+  "checked_at": "2026-11-04T00:00:16.278278Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "3fa798b10a6d1c6d",
+      "title": "Highlighting SEC transfers in positions to make an impact",
+      "summary": "SEC Network's Pat Bradley highlights some of the best men's college basketball transfers that fit their systems and are primed to make a difference.",
+      "url": "https://www.espn.com/video/clip/_/id/50373237/highlighting-sec-transfers-positions-make-impact",
+      "source": "ESPN",
+      "published_at": "2026-11-03T23:38:30Z",
+      "sport": "basketball",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "4738789b48ba7805",
+      "title": "Predicting best players, duos and surprises this SEC hoops season",
+      "summary": "SEC Network's Steffi Sorensen and Pat Bradley make their picks for which new and old players will shine around the conference this season.",
+      "url": "https://www.espn.com/video/clip/_/id/50373228/predicting-best-players-duos-surprises-sec-hoops-season",
+      "source": "ESPN",
+      "published_at": "2026-11-03T23:31:01Z",
+      "sport": "basketball",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "b85c35304aa9f7f2",
+      "title": "Missouri's Eli Drinkwitz: 'I'm not a candidate' for Florida State job",
+      "summary": "Missouri coach Eli Drinkwitz said in no uncertain terms Tuesday that he is \"not a candidate\" for the open Florida State job.",
+      "url": "https://www.espn.com/college-football/story/_/id/50371209/missouri-drinkwitz-not-candidate-florida-state-job",
+      "source": "ESPN",
+      "published_at": "2026-11-03T20:53:39Z",
+      "sport": "football",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0e7e65aa8d73c892",
+      "title": "Missouri HC Drinkwitz 'not a candidate at Florida State'",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50371744/missouri-hc-drinkwitz-not-candidate-florida-state",
+      "source": "ESPN",
+      "published_at": "2026-11-03T20:53:12Z",
+      "sport": "football",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e3572149c022c714",
+      "title": "Clark Lea emphasizes adjustments to get Vandy back on track",
+      "summary": "While praising Mississippi State's resilience amid injuries, Lea stresses the adjustments Vanderbilt must make to get back to playing winning football.",
+      "url": "https://www.espn.com/video/clip/_/id/50371568/clark-lea-emphasizes-adjustments-get-vandy-back-track",
+      "source": "ESPN",
+      "published_at": "2026-11-03T20:42:17Z",
+      "sport": "football",
+      "teams": [
+        "Mississippi State",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0a342990f6275467",
+      "title": "Kentucky's Stein praises Heupel, anticipates tough test at Tennessee",
+      "summary": "Ahead of Kentucky's trip to Neyland Stadium, Will Stein praises Josh Heupel and discusses the challenges of facing the Volunteers in one of college football's toughest environments.",
+      "url": "https://www.espn.com/video/clip/_/id/50371528/kentucky-stein-praises-heupel-anticipates-tough-test-tennessee",
+      "source": "ESPN",
+      "published_at": "2026-11-03T20:28:45Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "bf5119b9c0ea21ca",
+      "title": "Brent Venables addresses Sooners' offensive struggles, path forward",
+      "summary": "Ahead of Oklahoma's road matchup with Florida, Venables discusses coaching staff changes and his focus on finding solutions to help the Sooners score more touchdowns.",
+      "url": "https://www.espn.com/video/clip/_/id/50371468/brent-venables-addresses-sooners-offensive-struggles-path-forward",
+      "source": "ESPN",
+      "published_at": "2026-11-03T20:22:48Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f194cc66c1ca9546",
+      "title": "Shane Beamer praises Gamecocks' resilience through adversity",
+      "summary": "Despite a three-game losing streak early in the season, Beamer credits South Carolina's character and leadership for keeping the team united through adversity.",
+      "url": "https://www.espn.com/video/clip/_/id/50371346/shane-beamer-praises-gamecocks-resilience-adversity",
+      "source": "ESPN",
+      "published_at": "2026-11-03T20:15:53Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "67927b945b3fef89",
+      "title": "Eliah Drinkwitz details plan for Mizzou's dynamic RB duo",
+      "summary": "With Jamal Roberts and Ahmad Hardy both available, Drinkwitz explains how the Tigers plan to utilize their talented backfield against Texas.",
+      "url": "https://www.espn.com/video/clip/_/id/50371218/eliah-drinkwitz-details-plan-mizzou-dynamic-rb-duo",
+      "source": "ESPN",
+      "published_at": "2026-11-03T20:10:22Z",
+      "sport": "football",
+      "teams": [
+        "Missouri",
+        "Texas"
+      ],
+      "breaking": false
+    },
     {
       "id": "1c64ceffa50672ce",
       "title": "Stephen A. has a strong message for Alabama ahead of LSU matchup",
@@ -17,20 +134,6 @@
       "teams": [
         "Alabama",
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "655d11d7246c19a3",
-      "title": "East Texas A&M, picked last in Southland Conference, stuns Oklahoma in opener",
-      "summary": "East Texas A&M, selected to finish last in the 12-team Southland Conference preseason poll this season, shocked Oklahoma with a 68-64 season-opening win Monday night, an effort that Sooners coach Porter Moser…",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50365925/moser-apologizes-east-texas-upset-oklahoma",
-      "source": "ESPN",
-      "published_at": "2026-11-03T13:21:28Z",
-      "sport": "basketball",
-      "teams": [
-        "Oklahoma",
-        "Texas A&M"
       ],
       "breaking": false
     },
@@ -373,19 +476,6 @@
       "breaking": false
     },
     {
-      "id": "271e10690d8caf27",
-      "title": "Sian Hudson is proud of how LSU navigates the season's ebbs and flows",
-      "summary": "Hudson reflects on the season as she enters her seventh consecutive SEC tournament, discussing the desire for more early wins while taking pride in the Tigers' mindset.",
-      "url": "https://www.espn.com/video/clip/_/id/50351093/sian-hudson-proud-how-lsu-navigates-season-ebbs-flows",
-      "source": "ESPN",
-      "published_at": "2026-11-01T21:13:46Z",
-      "sport": "football",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
       "id": "b0262762794ea689",
       "title": "The chaotic SEC football championship race, explained by the data",
       "summary": "More than half of the SEC is ranked in college football, yet every team has at least one loss in conference play.",
@@ -406,19 +496,6 @@
       "sport": "basketball",
       "teams": [
         "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1c2ed52da59307b9",
-      "title": "Texas soars, BYU and Texas Tech fall in latest AP Top 25 rankings",
-      "summary": "Seven ranked college football teams lost in Week 8, with five of them coming against unranked foes. Here’s what you need to know about the latest AP Top 25 Poll.",
-      "url": "https://www.ncaa.com/news/football/article/2026-10-25/texas-soars-byu-and-texas-tech-fall-latest-ap-top-25-rankings",
-      "source": "NCAA",
-      "published_at": "2026-10-25T18:59:27Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
       ],
       "breaking": false
     }
