@@ -1,23 +1,37 @@
 {
-  "updated_at": "2026-11-04T15:28:20.300792Z",
-  "checked_at": "2026-11-04T15:28:20.300792Z",
+  "updated_at": "2026-11-04T21:54:56.905815Z",
+  "checked_at": "2026-11-04T21:54:56.905815Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "35df14d8f97cbe85",
+      "title": "Former MLB star Mark Teixeira wins U.S. House seat in Texas",
+      "summary": "Republican Mark Teixeira, a three-time Major League Baseball All-Star, has won election to the U.S.",
+      "url": "https://www.espn.com/mlb/story/_/id/50376245/former-mlb-star-mark-teixeira-wins-us-house-seat-texas",
+      "source": "ESPN",
+      "published_at": "2026-11-04T16:23:12Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
       "id": "14da7993277f1013",
       "title": "Cherif Millogo, 7-foot-5 center and No. 8 recruit in 2027, commits to Kentucky",
       "summary": "Kentucky has landed a commitment from 7-foot-5 center Cherif Millogo, the No. 8-ranked recruit in the 2027 class.",
       "url": "https://www.espn.com/mens-college-basketball/story/_/id/50378900/cherif-millogo-no-8-recruit-2027-commits-kentucky",
       "source": "ESPN",
-      "published_at": "2026-11-04T15:02:48Z",
+      "published_at": "2026-11-04T15:27:57Z",
       "sport": "basketball",
       "teams": [
         "Kentucky"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "c23edbf55011da3b",
@@ -42,20 +56,6 @@
       "sport": "football",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "35df14d8f97cbe85",
-      "title": "Former MLB star Mark Teixeira wins U.S. House seat in Texas",
-      "summary": "Republican Mark Teixeira, a three-time Major League Baseball All-Star, has won election to the U.S.",
-      "url": "https://www.espn.com/mlb/story/_/id/50376245/former-mlb-star-mark-teixeira-wins-us-house-seat-texas",
-      "source": "ESPN",
-      "published_at": "2026-11-04T12:04:55Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Texas"
       ],
       "breaking": false
     },
@@ -311,49 +311,6 @@
       "teams": [
         "Alabama",
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "67d2e40a05ab1f4a",
-      "title": "Rebels' Golding dissects what it's like facing Georgia's Bobo, Smart",
-      "summary": "Pete Golding explains how his experience facing Georgia offensive coordinator Mike Bobo and head coach Kirby Smart will help prepare Ole Miss for the matchup.",
-      "url": "https://www.espn.com/video/clip/_/id/50362154/rebels-golding-dissects-facing-georgia-bobo-smart",
-      "source": "ESPN",
-      "published_at": "2026-11-03T00:05:32Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "be278ad89d728a8a",
-      "title": "Auburn's Alex Golesh discusses balancing gameplan, previews Arkansas",
-      "summary": "Golesh harps on the Tigers unraveling at the end of Auburn's loss to Ole Miss and explains how they want to get the running backs involved more ahead of their matchup against the Razorbacks.",
-      "url": "https://www.espn.com/video/clip/_/id/50362121/auburn-alex-golesh-discusses-balancing-gameplan-previews-arkansas",
-      "source": "ESPN",
-      "published_at": "2026-11-03T00:02:38Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas",
-        "Auburn",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1d24d95ac490f5ad",
-      "title": "Steve Sarkisian sets Texas' identity: 'Tough, hard-nose football team'",
-      "summary": "Sarkisian discusses the Longhorns' gritty style, citing explosive plays and defensive pressure as factors that support the team's identity ahead of its matchup with Missouri.",
-      "url": "https://www.espn.com/video/clip/_/id/50362037/tough-hard-nose-football-team",
-      "source": "ESPN",
-      "published_at": "2026-11-02T23:48:21Z",
-      "sport": "football",
-      "teams": [
-        "Missouri",
-        "Texas"
       ],
       "breaking": false
     },
