@@ -1,11 +1,313 @@
 {
-  "updated_at": "2026-11-04T00:00:16.278278Z",
-  "checked_at": "2026-11-04T00:00:16.278278Z",
+  "updated_at": "2026-11-04T06:32:01.644254Z",
+  "checked_at": "2026-11-04T06:32:01.644254Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "0d569cd5a8f83d50",
+      "title": "Will Wade opens second LSU stint with blowout win, says he's 'back to dominate'",
+      "summary": "Will Wade began his second act as head coach of LSU with a 100-57 win over LSU-New Orleans on Tuesday night and said he was \"back to build a championship-caliber program.\"",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50376086/will-wade-opens-second-lsu-coaching-stint-blowout-win",
+      "source": "ESPN",
+      "published_at": "2026-11-04T05:43:57Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "20749e672920f1f9",
+      "title": "North Florida Ospreys vs. California Baptist Lancers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50376060/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-04T05:14:45Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "118eafb06069d378",
+      "title": "Alabama State Hornets vs. Texas A&M Aggies: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50375513/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-04T05:13:29Z",
+      "sport": "basketball",
+      "teams": [
+        "Alabama",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e86b9d12958f34e4",
+      "title": "London Jemison on No. 20 Alabama's newcomers, fast-paced style",
+      "summary": "After the Tide put up 96 points against Sam Houston, sophomore Jemison says fans can expect more high-scoring performances from their revamped squad this season.",
+      "url": "https://www.espn.com/video/clip/_/id/50375808/london-jemison-no-20-alabama-newcomers-fast-paced-style",
+      "source": "ESPN",
+      "published_at": "2026-11-04T04:24:01Z",
+      "sport": "basketball",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "750eeeeb7abe2935",
+      "title": "PJ Haggerty recaps Aggie debut, adjustment to 'Bucky Ball'",
+      "summary": "After scoring 22 in Texas A&M's season-opening victory, Kansas State transfer Haggerty explains how he's adapting to the tempo and expectations in College Station.",
+      "url": "https://www.espn.com/video/clip/_/id/50375753/pj-haggerty-recaps-aggie-debut-adjustment-bucky-ball",
+      "source": "ESPN",
+      "published_at": "2026-11-04T04:17:39Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7125be65c4aa9a5b",
+      "title": "Cleveland State Vikings vs. Missouri Tigers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50375496/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-04T04:12:05Z",
+      "sport": "basketball",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7c73e0f3331132a4",
+      "title": "New Orleans Privateers vs. LSU Tigers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50375500/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-04T04:11:05Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6e5fc9e0e627750c",
+      "title": "Manhattan Jaspers vs. Kentucky Wildcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50374529/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-04T04:09:16Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0cf7e179eeb2d3bd",
+      "title": "Alabama opens their season with big win over Sam Houston",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50374878/alabama-opens-their-season-big-win-sam-houston",
+      "source": "ESPN",
+      "published_at": "2026-11-04T04:05:43Z",
+      "sport": "basketball",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f3d6a7e5d503cf04",
+      "title": "Arkansas-Pine Bluff Golden Lions vs. Arkansas Razorbacks: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50375487/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-04T04:04:42Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d04a24c2e30d0846",
+      "title": "West New Mexico Mustangs vs. New Mexico State Aggies: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50375597/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-04T03:51:38Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c23edbf55011da3b",
+      "title": "Miami, Georgia, Utah, Indiana headline CFP's first rankings release",
+      "summary": "The 8-0 Miami Hurricanes, equipped with two Heisman Trophy contenders in quarterback Darian Mensah and wide receiver Malachi Toney, took the No.",
+      "url": "https://www.espn.com/college-football/story/_/id/50373576/miami-georgia-utah-indiana-headline-first-cfp-rankings",
+      "source": "ESPN",
+      "published_at": "2026-11-04T03:50:15Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "217aba499c49203e",
+      "title": "Jason Crowe Jr. says playing at Mizzou is a dream come true",
+      "summary": "Crowe Jr. expresses his joy to finally play in Mizzou Arena and credits his teammate with a smile after the Tigers' big win over Cleveland State.",
+      "url": "https://www.espn.com/video/clip/_/id/50375515/jason-crowe-jr-says-playing-mizzou-dream-come-true",
+      "source": "ESPN",
+      "published_at": "2026-11-04T03:43:00Z",
+      "sport": "basketball",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ca6496b671dbcba5",
+      "title": "South Dakota State Jackrabbits vs. Kansas State Wildcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50375421/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-04T03:34:49Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8e58269837eec99b",
+      "title": "Lincoln (MO) Blue Tigers vs. Missouri State Bears: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50375315/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-04T03:28:21Z",
+      "sport": "basketball",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "91489eeb0faba407",
+      "title": "Stetson Hatters vs. South Carolina Gamecocks: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50374494/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-04T02:56:52Z",
+      "sport": "basketball",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3203bf419c3c5567",
+      "title": "Milan Momcilovic reflects on UK debut as teammates heckle him",
+      "summary": "After scoring 24 with six 3-pointers in No. 23 Kentucky's season-opening victory, Momcilovic explains how he's meshing with the squad amid their postgame antics.",
+      "url": "https://www.espn.com/video/clip/_/id/50375030/milan-momcilovic-reflects-uk-debut-teammates-heckle-him",
+      "source": "ESPN",
+      "published_at": "2026-11-04T02:50:42Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8ef85c20019de3d9",
+      "title": "Country music star Walker Hayes shares Alabama superfan perspective",
+      "summary": "Hayes jokes with Paul Finebaum while explaining life lately as a Crimson Tide fan, saying he hopes Lane Kiffin and LSU are \"eating that rat poison.\"",
+      "url": "https://www.espn.com/video/clip/_/id/50374874/country-music-star-walker-hayes-shares-alabama-superfan-perspective",
+      "source": "ESPN",
+      "published_at": "2026-11-04T02:37:10Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1558303fd2a1ecd3",
+      "title": "Juan Fernández details his first game in America after Gamecocks' win",
+      "summary": "Fernández discusses how he is adjusting to American basketball after leading South Carolina with 20 points on 9-for-13 shooting in the win vs. Stetson.",
+      "url": "https://www.espn.com/video/clip/_/id/50374719/juan-fernandez-details-first-game-america-gamecocks-win",
+      "source": "ESPN",
+      "published_at": "2026-11-04T02:24:27Z",
+      "sport": "basketball",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "567f06fca2e38043",
+      "title": "Wofford Terriers vs. Tennessee Volunteers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50374067/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-04T02:04:06Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "cbce7ff338896b24",
+      "title": "Everything's on table for Oklahoma after Venables hands offense to Witten",
+      "summary": "Oklahoma coach Brent Venables, who has turned the offense over to interim coordinator Jason Witten, wants the struggling Sooners to score as many points as possible, any way they can, as they prepare for an…",
+      "url": "https://www.espn.com/college-football/story/_/id/50374329/everything-table-venables-witten-aim-fix-sooners",
+      "source": "ESPN",
+      "published_at": "2026-11-04T01:47:01Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a4964ab20e11fd30",
+      "title": "DeWayne Brown II details why the No. 8 Vols can 'go all the way'",
+      "summary": "Brown II breaks down how he has improved his game in the offseason to fit his role at Tennessee while assessing the potential of this Vols squad.",
+      "url": "https://www.espn.com/video/clip/_/id/50374246/dewayne-brown-ii-details-why-no-8-vols-go-all-way",
+      "source": "ESPN",
+      "published_at": "2026-11-04T01:31:26Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "67bb810e33410a1c",
+      "title": "Miami, Georgia lead the first College Football Playoff rankings of 2026",
+      "summary": "Here's everything you need to know from the first College Football Playoff rankings revealed on November 3, 2026.",
+      "url": "https://www.ncaa.com/news/football/article/2026-11-03/miami-georgia-lead-first-college-football-playoff-rankings-2026",
+      "source": "NCAA",
+      "published_at": "2026-11-04T00:40:00Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
     {
       "id": "3fa798b10a6d1c6d",
       "title": "Highlighting SEC transfers in positions to make an impact",
@@ -138,19 +440,6 @@
       "breaking": false
     },
     {
-      "id": "b2c58888ee55cbeb",
-      "title": "How Will Wade and LSU became the centerpiece of the NCAA eligibility debate",
-      "summary": "The story of how LSU found itself embroiled in controversy goes back four years to Will Wade's first stint at LSU.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50363070/lsu-wade-line",
-      "source": "ESPN",
-      "published_at": "2026-11-03T12:34:33Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
       "id": "a5fb1b4c1a15a695",
       "title": "Heisman of Week 9: LaNorris Sellers' throwback, Darian Mensah's move",
       "summary": "While the overall race got a little cloudier, South Carolina's QB showed he's still got it.",
@@ -160,19 +449,6 @@
       "sport": "football",
       "teams": [
         "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ff3e5b9a0e65e666",
-      "title": "Standouts, key wins, more reactions from men's hoops opening day",
-      "summary": "Big wins (Florida) and upsets (Arizona), coaching statements (Memphis) and bracket moves. College hoops is back!",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50361386/mens-college-basketball-2026-27-opening-day-takeaways",
-      "source": "ESPN",
-      "published_at": "2026-11-03T06:54:19Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
       ],
       "breaking": false
     },
@@ -410,64 +686,12 @@
       "breaking": false
     },
     {
-      "id": "7de244f935617c5b",
-      "title": "Oklahoma fires OC Ben Arbuckle, tabs Jason Witten as play caller",
-      "summary": "Oklahoma has fired offensive coordinator Ben Arbuckle after less than two seasons, the school announced on Monday.",
-      "url": "https://www.espn.com/college-football/story/_/id/50359646/oklahoma-fires-second-year-oc-ben-arbuckle-jason-witten-call-plays",
-      "source": "ESPN",
-      "published_at": "2026-11-02T22:07:35Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0f14ed9108b047c8",
-      "title": "Kiffin 'sad' annual LSU-Alabama game to take hiatus in 2027",
-      "summary": "LSU coach Lane Kiffin on Monday lamented the end of his program's rivalry game vs. Alabama being played annually.",
-      "url": "https://www.espn.com/college-football/story/_/id/50360298/kiffin-sad-annual-lsu-alabama-game-take-hiatus-2027",
-      "source": "ESPN",
-      "published_at": "2026-11-02T20:28:50Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
       "id": "c95fde77ab14d217",
       "title": "Lane Kiffin calls the hiatus of LSU-Alabama game 'sad'",
       "summary": "",
       "url": "https://www.espn.com/video/clip/_/id/50360523/lane-kiffin-calls-hiatus-lsu-alabama-game-sad",
       "source": "ESPN",
       "published_at": "2026-11-02T20:10:04Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1296aa1e19b4ce6e",
-      "title": "What is selection committee looking for in first CFP rankings?",
-      "summary": "Ahead of the first CFP rankings on Tuesday, Nov. 3 at 7 p.m. ET, ESPN's Heather Dinich breaks down what the selection committee will prioritize and what it could mean for SEC teams.",
-      "url": "https://www.espn.com/video/clip/_/id/50360025/what-selection-committee-looking-first-cfp-rankings",
-      "source": "ESPN",
-      "published_at": "2026-11-02T19:10:08Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "122732ac51763ce7",
-      "title": "Alabama 'headed in good direction' for key players to return from injury vs. LSU",
-      "summary": "Alabama is optimistic about the return of WR Ryan Coleman-Williams, CB Zabien Brown, C Racin Delgatty and DB Terrance Green for its game Saturday vs. LSU.",
-      "url": "https://www.espn.com/college-football/story/_/id/50359564/alabama-optimistic-return-key-starters-lsu-showdown",
-      "source": "ESPN",
-      "published_at": "2026-11-02T18:27:05Z",
       "sport": "football",
       "teams": [
         "Alabama",
