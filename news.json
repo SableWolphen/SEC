@@ -1,21 +1,21 @@
 {
-  "updated_at": "2026-11-05T02:30:07.223138Z",
-  "checked_at": "2026-11-05T02:30:07.223138Z",
+  "updated_at": "2026-11-05T11:01:29.054455Z",
+  "checked_at": "2026-11-05T11:01:29.054455Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "bc212549eaa4dc7e",
-      "title": "Erskine Flying Fleet vs. UNC Asheville Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50384251/game-highlights",
+      "id": "fbaaed971f59b5d8",
+      "title": "Will Stein reacts to Kentucky's ranking in CFP Top 25",
+      "summary": "Stein describes his excitement over the Wildcats' No. 6 spot in the CFP rankings as he discusses what must be done to solidify their spot and be successful the rest of the season.",
+      "url": "https://www.espn.com/video/clip/_/id/50384470/will-stein-reacts-kentucky-ranking-cfp-top-25",
       "source": "ESPN",
-      "published_at": "2026-11-05T02:16:58Z",
-      "sport": "basketball",
+      "published_at": "2026-11-05T02:49:10Z",
+      "sport": "football",
       "teams": [
-        "Georgia"
+        "Kentucky"
       ],
       "breaking": false
     },
@@ -30,19 +30,6 @@
       "teams": [
         "Alabama",
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0aed42e6d076e416",
-      "title": "Fairleigh Dickinson Knights vs. Butler Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50384187/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-05T02:06:24Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
       ],
       "breaking": false
     },
@@ -71,19 +58,6 @@
       "teams": [
         "Alabama",
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "14da7993277f1013",
-      "title": "Cherif Millogo, 7-foot-5 center and No. 8 recruit in 2027, commits to Kentucky",
-      "summary": "Kentucky has landed a commitment from 7-foot-5 center Cherif Millogo, the No. 8-ranked recruit in the 2027 class.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50378900/cherif-millogo-no-8-recruit-2027-commits-kentucky",
-      "source": "ESPN",
-      "published_at": "2026-11-04T15:27:57Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
       ],
       "breaking": false
     },
@@ -264,19 +238,6 @@
       "breaking": false
     },
     {
-      "id": "a5fb1b4c1a15a695",
-      "title": "Heisman of Week 9: LaNorris Sellers' throwback, Darian Mensah's move",
-      "summary": "While the overall race got a little cloudier, South Carolina's QB showed he's still got it.",
-      "url": "https://www.espn.com/college-football/story/_/id/50359490/heisman-week-9-lanorris-sellers-darian-mensah",
-      "source": "ESPN",
-      "published_at": "2026-11-03T11:28:18Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
       "id": "dedc07db29b0b337",
       "title": "Arizona's Ivan Kharchenkov scores 38 points in season opener vs. UCLA",
       "summary": "Arizona's Ivan Kharchenkov netted 38 points and grabbed 10 rebounds for a double-double in the Wildcats' season opener vs. UCLA. Watch Kharchenkov's 2026 Hall of Fame Series opening game highlights here.",
@@ -286,55 +247,6 @@
       "sport": "basketball",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "35a3daaafd841b55",
-      "title": "Building a CFP bracket that could unravel before Week 10",
-      "summary": "Read and React crew projects its CFP bracket before Tuesday's rankings reveal, weighing SEC schedule strength against unbeaten résumés as key weekend clashes loom.",
-      "url": "https://www.espn.com/video/clip/_/id/50362927/building-cfp-bracket-unravel-week-10",
-      "source": "ESPN",
-      "published_at": "2026-11-03T01:37:58Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "d6e55f07651a07a0",
-      "title": "Cole's Block Party: Mizzou makes clear case for the golden hog",
-      "summary": "Read & React's Cole Cubelic and Roman Harper call Missouri the obvious choice to win this weeks golden hog after reviewing some of the best blocks of Week 9.",
-      "url": "https://www.espn.com/video/clip/_/id/50362869/mizzou-makes-clear-case-golden-hog",
-      "source": "ESPN",
-      "published_at": "2026-11-03T01:27:07Z",
-      "sport": "football",
-      "teams": [
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6fb0e02436f2640e",
-      "title": "Harper, Cubelic analyze ranked matchups in massive Week 10 slate",
-      "summary": "As the SEC makes history through a second week of four top-25 ranked matchups, Roman Harper and Cole Cubelic give an in-depth preview analysis on each one.",
-      "url": "https://www.espn.com/video/clip/_/id/50362529/harper-cubelic-analyze-ranked-matchups-massive-week-10-slate",
-      "source": "ESPN",
-      "published_at": "2026-11-03T01:02:29Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "7b852c6333d3044d",
-      "title": "Mike Elko details Texas A&M's attitude and effort while previewing SC",
-      "summary": "Elko discusses how the Aggies are trending in the right direction while discussing the challenges LaNorris Sellers and South Carolina present.",
-      "url": "https://www.espn.com/video/clip/_/id/50362528/mike-elko-details-texas-attitude-effort-previewing-sc",
-      "source": "ESPN",
-      "published_at": "2026-11-03T00:53:59Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina",
-        "Texas A&M"
       ],
       "breaking": false
     },
