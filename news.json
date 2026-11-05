@@ -1,11 +1,65 @@
 {
-  "updated_at": "2026-11-04T21:54:56.905815Z",
-  "checked_at": "2026-11-04T21:54:56.905815Z",
+  "updated_at": "2026-11-05T02:30:07.223138Z",
+  "checked_at": "2026-11-05T02:30:07.223138Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "bc212549eaa4dc7e",
+      "title": "Erskine Flying Fleet vs. UNC Asheville Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50384251/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-05T02:16:58Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8ab08c72ed424c9d",
+      "title": "LSU's Whit Weeks doubtful to return against Alabama",
+      "summary": "LSU star linebacker Whit Weeks, who missed the past four games with a fractured leg, is doubtful to play Saturday vs. Alabama.",
+      "url": "https://www.espn.com/college-football/story/_/id/50384078/lsu-whit-weeks-doubtful-return-alabama",
+      "source": "ESPN",
+      "published_at": "2026-11-05T02:12:43Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0aed42e6d076e416",
+      "title": "Fairleigh Dickinson Knights vs. Butler Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50384187/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-05T02:06:24Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "35034ee49c82b64e",
+      "title": "Florida suspends DT Jeramiah McCloud 1 game for conduct detrimental to team",
+      "summary": "Florida defensive tackle Jeramiah McCloud has been suspended one game for conduct detrimental to the team and will miss Saturday's matchup against Oklahoma.",
+      "url": "https://www.espn.com/college-football/story/_/id/50383936/florida-suspends-jeramiah-mccloud-1-game-conduct-detrimental-team",
+      "source": "ESPN",
+      "published_at": "2026-11-05T02:03:09Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
     {
       "id": "35df14d8f97cbe85",
       "title": "Former MLB star Mark Teixeira wins U.S. House seat in Texas",
@@ -281,36 +335,6 @@
       "teams": [
         "South Carolina",
         "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "80eff722d290444c",
-      "title": "Cubelic, Harper detail how Kentucky can beat Tennessee",
-      "summary": "Read & React's Cole Cubelic and Roman Harper break down how the Wildcat defense and offense can win against the Volunteers while also explaining what could happen with Ole Miss facing Georgia.",
-      "url": "https://www.espn.com/video/clip/_/id/50362515/cubelic-harper-detail-how-kentucky-beat-tennessee",
-      "source": "ESPN",
-      "published_at": "2026-11-03T00:50:15Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Kentucky",
-        "Ole Miss",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c5475706bfc48b54",
-      "title": "Lane Kiffin gives perspective on LSU vs Bama then challenges fans",
-      "summary": "Kiffin discusses a common misconception about playing after a bye week as he shares his perspective on the Alabama vs LSU rivalry, then challenges fans to set a new energy record.",
-      "url": "https://www.espn.com/video/clip/_/id/50362283/lane-kiffin-gives-perspective-lsu-vs-bama-challenges-fans",
-      "source": "ESPN",
-      "published_at": "2026-11-03T00:24:25Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "LSU"
       ],
       "breaking": false
     },
