@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-04T20:54:43.680292Z",
+  "updated_at": "2026-11-05T09:49:43.020119Z",
   "sports": {
     "basketball": {
       "season": 2027,
@@ -303,10 +303,10 @@
           "home_code": "2",
           "away_name": "SE Louisiana Lions",
           "home_name": "Auburn Tigers",
-          "away_score": null,
-          "home_score": null,
-          "winner_code": null,
-          "game_status": "scheduled",
+          "away_score": 59,
+          "home_score": 92,
+          "winner_code": "2",
+          "game_status": "final",
           "source": "ESPN",
           "espn_event_id": "401920798"
         },
@@ -6675,22 +6675,22 @@
         "99": 32
       },
       "sec_team_game_counts": {
-        "333": 34,
-        "61": 36,
         "251": 36,
+        "245": 34,
+        "145": 32,
+        "2579": 35,
+        "2": 32,
+        "61": 36,
+        "201": 34,
+        "344": 33,
+        "238": 35,
         "8": 36,
         "2633": 33,
-        "99": 35,
-        "96": 34,
-        "245": 34,
-        "2579": 35,
-        "238": 35,
-        "201": 34,
-        "57": 35,
-        "344": 33,
         "142": 36,
-        "2": 32,
-        "145": 32
+        "96": 34,
+        "99": 35,
+        "333": 34,
+        "57": 35
       },
       "warning": null
     },
@@ -6713,22 +6713,22 @@
         "99": 0
       },
       "sec_team_game_counts": {
-        "333": 0,
-        "61": 0,
         "251": 0,
+        "245": 0,
+        "145": 0,
+        "2579": 0,
+        "2": 0,
+        "61": 0,
+        "201": 0,
+        "344": 0,
+        "238": 0,
         "8": 0,
         "2633": 0,
-        "99": 0,
-        "96": 0,
-        "245": 0,
-        "2579": 0,
-        "238": 0,
-        "201": 0,
-        "57": 0,
-        "344": 0,
         "142": 0,
-        "2": 0,
-        "145": 0
+        "96": 0,
+        "99": 0,
+        "333": 0,
+        "57": 0
       },
       "warning": "No verified individual first-pitch times yet; SEC baseball weekend series previews remain available."
     }
