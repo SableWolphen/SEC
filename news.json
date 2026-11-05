@@ -1,11 +1,65 @@
 {
-  "updated_at": "2026-11-05T11:01:29.054455Z",
-  "checked_at": "2026-11-05T11:01:29.054455Z",
+  "updated_at": "2026-11-05T18:47:18.264618Z",
+  "checked_at": "2026-11-05T18:47:18.264618Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "7eb5c87b3ced908f",
+      "title": "Early top-10 men's basketball recruiting class rankings",
+      "summary": "The highest-ranked commitment of Mark Pope's tenure at Kentucky means the Wildcats push Purdue out of the top 10.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50242145/2027-mens-basketball-recruiting-class-rankings",
+      "source": "ESPN",
+      "published_at": "2026-11-05T16:51:20Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "2b64f274eeb23819",
+      "title": "College football Week 10 best bets: Picks for Tennessee, Virginia Tech and more",
+      "summary": "Pamela Maldonado and Mark Zinno break down the best bets they see around college football for Week 10.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50379510/college-football-odds-best-bets-week-10-spreads-lines-2026",
+      "source": "ESPN",
+      "published_at": "2026-11-05T15:17:01Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3bd2a58c9d4ca6c6",
+      "title": "Source: Gators' Tramell Jones set to replace Aaron Philo as starter vs. Sooners",
+      "summary": "Tramell Jones Jr. is set to make his second career start for Florida when the No. 24 Gators host Oklahoma, a source confirmed to ESPN.",
+      "url": "https://www.espn.com/college-football/story/_/id/50388555/source-florida-start-qb-tramell-jones-jr-oklahoma",
+      "source": "ESPN",
+      "published_at": "2026-11-05T14:29:57Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "35034ee49c82b64e",
+      "title": "Florida suspends DT Jeramiah McCloud 1 game for detrimental conduct",
+      "summary": "Florida defensive tackle Jeramiah McCloud has been suspended one game for conduct detrimental to the team and will miss Saturday's matchup against Oklahoma.",
+      "url": "https://www.espn.com/college-football/story/_/id/50383936/florida-suspends-jeramiah-mccloud-1-game-conduct-detrimental-team",
+      "source": "ESPN",
+      "published_at": "2026-11-05T11:32:55Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
     {
       "id": "fbaaed971f59b5d8",
       "title": "Will Stein reacts to Kentucky's ranking in CFP Top 25",
@@ -30,20 +84,6 @@
       "teams": [
         "Alabama",
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "35034ee49c82b64e",
-      "title": "Florida suspends DT Jeramiah McCloud 1 game for conduct detrimental to team",
-      "summary": "Florida defensive tackle Jeramiah McCloud has been suspended one game for conduct detrimental to the team and will miss Saturday's matchup against Oklahoma.",
-      "url": "https://www.espn.com/college-football/story/_/id/50383936/florida-suspends-jeramiah-mccloud-1-game-conduct-detrimental-team",
-      "source": "ESPN",
-      "published_at": "2026-11-05T02:03:09Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Oklahoma"
       ],
       "breaking": false
     },
@@ -84,19 +124,6 @@
       "sport": "football",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b85c35304aa9f7f2",
-      "title": "Missouri's Eli Drinkwitz: 'I'm not a candidate' for Florida State job",
-      "summary": "Missouri coach Eli Drinkwitz said in no uncertain terms Tuesday that he is \"not a candidate\" for the open Florida State job.",
-      "url": "https://www.espn.com/college-football/story/_/id/50371209/missouri-drinkwitz-not-candidate-florida-state-job",
-      "source": "ESPN",
-      "published_at": "2026-11-04T11:59:44Z",
-      "sport": "football",
-      "teams": [
-        "Missouri"
       ],
       "breaking": false
     },
@@ -183,61 +210,6 @@
       "breaking": false
     },
     {
-      "id": "bf5119b9c0ea21ca",
-      "title": "Brent Venables addresses Sooners' offensive struggles, path forward",
-      "summary": "Ahead of Oklahoma's road matchup with Florida, Venables discusses coaching staff changes and his focus on finding solutions to help the Sooners score more touchdowns.",
-      "url": "https://www.espn.com/video/clip/_/id/50371468/brent-venables-addresses-sooners-offensive-struggles-path-forward",
-      "source": "ESPN",
-      "published_at": "2026-11-03T20:22:48Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f194cc66c1ca9546",
-      "title": "Shane Beamer praises Gamecocks' resilience through adversity",
-      "summary": "Despite a three-game losing streak early in the season, Beamer credits South Carolina's character and leadership for keeping the team united through adversity.",
-      "url": "https://www.espn.com/video/clip/_/id/50371346/shane-beamer-praises-gamecocks-resilience-adversity",
-      "source": "ESPN",
-      "published_at": "2026-11-03T20:15:53Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "67927b945b3fef89",
-      "title": "Eliah Drinkwitz details plan for Mizzou's dynamic RB duo",
-      "summary": "With Jamal Roberts and Ahmad Hardy both available, Drinkwitz explains how the Tigers plan to utilize their talented backfield against Texas.",
-      "url": "https://www.espn.com/video/clip/_/id/50371218/eliah-drinkwitz-details-plan-mizzou-dynamic-rb-duo",
-      "source": "ESPN",
-      "published_at": "2026-11-03T20:10:22Z",
-      "sport": "football",
-      "teams": [
-        "Missouri",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1c64ceffa50672ce",
-      "title": "Stephen A. has a strong message for Alabama ahead of LSU matchup",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50369394/stephen-strong-message-alabama-ahead-lsu-matchup",
-      "source": "ESPN",
-      "published_at": "2026-11-03T16:16:45Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
       "id": "dedc07db29b0b337",
       "title": "Arizona's Ivan Kharchenkov scores 38 points in season opener vs. UCLA",
       "summary": "Arizona's Ivan Kharchenkov netted 38 points and grabbed 10 rebounds for a double-double in the Wildcats' season opener vs. UCLA. Watch Kharchenkov's 2026 Hall of Fame Series opening game highlights here.",
@@ -259,19 +231,6 @@
       "published_at": "2026-10-29T16:10:00Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "fdfe504f56e0610f",
-      "title": "Utah's unlikely journey to the 1944 NCAA men's basketball title",
-      "summary": "Utah’s journey to the 1944 NCAA men’s basketball tournament didn’t start in the Bee Hive state, but instead along U.S. Route 71, about 20 miles south of Fayetteville, Arkansas.",
-      "url": "https://www.ncaa.com/news/basketball-men/article/2026-10-27/utahs-unlikely-journey-1944-ncaa-mens-basketball-title",
-      "source": "NCAA",
-      "published_at": "2026-10-27T13:34:59Z",
-      "sport": "basketball",
-      "teams": [
-        "Arkansas"
-      ],
       "breaking": false
     }
   ],
