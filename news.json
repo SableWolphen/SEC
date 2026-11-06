@@ -1,21 +1,126 @@
 {
-  "updated_at": "2026-11-06T00:20:38.235419Z",
-  "checked_at": "2026-11-06T00:20:38.235419Z",
+  "updated_at": "2026-11-06T06:59:56.231127Z",
+  "checked_at": "2026-11-06T06:59:56.231127Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "7eb5c87b3ced908f",
-      "title": "Early top-10 men's basketball recruiting class rankings",
-      "summary": "The highest-ranked commitment of Mark Pope's tenure at Kentucky means the Wildcats push Purdue out of the top 10.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50242145/2027-mens-basketball-recruiting-class-rankings",
+      "id": "0ace19527e6aa8ad",
+      "title": "Texas clobbers Gardner-Webb at home",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50396035/texas-clobbers-gardner-webb-home",
       "source": "ESPN",
-      "published_at": "2026-11-05T16:51:20Z",
+      "published_at": "2026-11-06T04:36:06Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c92813bc0ed45e47",
+      "title": "Bethune-Cookman Wildcats vs. Texas Tech Red Raiders: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50396623/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-06T04:32:55Z",
       "sport": "basketball",
       "teams": [
         "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b5c70cdc1d454c65",
+      "title": "Austin Goosby highlights No. 7 Texas' fast-paced play",
+      "summary": "As the Longhorns combine scoring over 200 points already this season, Goosby speaks on how the team is emphasizing striking quick and being dominate on defense.",
+      "url": "https://www.espn.com/video/clip/_/id/50396293/austin-goosby-highlights-no-7-texas-fast-paced-play",
+      "source": "ESPN",
+      "published_at": "2026-11-06T03:58:32Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "207e5da153767bae",
+      "title": "UF's Rueben Chinyelu thinks small to deliver a career night",
+      "summary": "Chinyelu credits attention to detail for his career-high double-double, sharing why the No. 1 Gators plan to bring that same mindset into their matchup with Florida State.",
+      "url": "https://www.espn.com/video/clip/_/id/50396234/uf-rueben-chinyelu-thinks-small-deliver-career-night",
+      "source": "ESPN",
+      "published_at": "2026-11-06T03:52:42Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "eed0b76159fdb178",
+      "title": "Jacksonville State Gamecocks vs. South Alabama Jaguars: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50396198/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-06T03:49:11Z",
+      "sport": "basketball",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5f237dc0ffb5f204",
+      "title": "MS State's King Grace breaks down how his confidence is building",
+      "summary": "After scoring 12 points in the win against Northwestern State, Grace speaks on how he's been able to adapt and improve for the Bulldogs in his second year in the program.",
+      "url": "https://www.espn.com/video/clip/_/id/50396149/ms-state-king-grace-breaks-how-confidence-building",
+      "source": "ESPN",
+      "published_at": "2026-11-06T03:47:09Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8c2696ca968723ff",
+      "title": "Source: Texas RB Hollywood Smothers done for season with torn MCL",
+      "summary": "Hollywood Smothers will miss the rest of the season for the Longhorns, who are seeing their injury issues mount.",
+      "url": "https://www.espn.com/college-football/story/_/id/50395712/texas-hollywood-smothers-done-season-torn-mcl",
+      "source": "ESPN",
+      "published_at": "2026-11-06T03:46:02Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "258a4da6db13e4e1",
+      "title": "East Texas A&M Lions vs. Rice Owls: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50396087/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-06T03:44:17Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c32150695b6e950f",
+      "title": "Georgia's Cole details preparation for Ole Miss' Chambliss",
+      "summary": "Chris Cole joins The Paul Finebaum Show to discuss how No. 2 Georgia is preparing to contain Trinidad Chambliss and the No. 10 Rebels ahead of their highly anticipated SEC showdown.",
+      "url": "https://www.espn.com/video/clip/_/id/50393872/georgia-cole-details-preparation-ole-miss-chambliss",
+      "source": "ESPN",
+      "published_at": "2026-11-06T00:20:45Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Ole Miss"
       ],
       "breaking": false
     },
@@ -98,19 +203,6 @@
       "teams": [
         "Alabama",
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c23edbf55011da3b",
-      "title": "Miami, Georgia, Utah, Indiana headline CFP's first rankings release",
-      "summary": "Miami, equipped with two Heisman Trophy contenders in quarterback Darian Mensah and wide receiver Malachi Toney, took the No. 1 spot in the College Football Playoff's first rankings release, followed by Georgia at No. 2.",
-      "url": "https://www.espn.com/college-football/story/_/id/50373576/miami-georgia-utah-indiana-headline-first-cfp-rankings",
-      "source": "ESPN",
-      "published_at": "2026-11-04T14:12:39Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
       ],
       "breaking": false
     },
