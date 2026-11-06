@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-05T18:47:18.264618Z",
-  "checked_at": "2026-11-05T18:47:18.264618Z",
+  "updated_at": "2026-11-06T00:20:38.235419Z",
+  "checked_at": "2026-11-06T00:20:38.235419Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -165,47 +165,6 @@
       "sport": "football",
       "teams": [
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0e7e65aa8d73c892",
-      "title": "Missouri HC Drinkwitz 'not a candidate at Florida State'",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50371744/missouri-hc-drinkwitz-not-candidate-florida-state",
-      "source": "ESPN",
-      "published_at": "2026-11-03T20:53:12Z",
-      "sport": "football",
-      "teams": [
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e3572149c022c714",
-      "title": "Clark Lea emphasizes adjustments to get Vandy back on track",
-      "summary": "While praising Mississippi State's resilience amid injuries, Lea stresses the adjustments Vanderbilt must make to get back to playing winning football.",
-      "url": "https://www.espn.com/video/clip/_/id/50371568/clark-lea-emphasizes-adjustments-get-vandy-back-track",
-      "source": "ESPN",
-      "published_at": "2026-11-03T20:42:17Z",
-      "sport": "football",
-      "teams": [
-        "Mississippi State",
-        "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0a342990f6275467",
-      "title": "Kentucky's Stein praises Heupel, anticipates tough test at Tennessee",
-      "summary": "Ahead of Kentucky's trip to Neyland Stadium, Will Stein praises Josh Heupel and discusses the challenges of facing the Volunteers in one of college football's toughest environments.",
-      "url": "https://www.espn.com/video/clip/_/id/50371528/kentucky-stein-praises-heupel-anticipates-tough-test-tennessee",
-      "source": "ESPN",
-      "published_at": "2026-11-03T20:28:45Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "Tennessee"
       ],
       "breaking": false
     },
