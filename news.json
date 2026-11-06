@@ -1,11 +1,48 @@
 {
-  "updated_at": "2026-11-06T15:06:52.708971Z",
-  "checked_at": "2026-11-06T15:06:52.708971Z",
+  "updated_at": "2026-11-06T20:55:27.335732Z",
+  "checked_at": "2026-11-06T20:55:27.335732Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "5b1c724a8bb89c1b",
+      "title": "Sources: SEC considering luxury tax for excessive spending on players",
+      "summary": "The SEC is mulling a luxury tax on programs that spend more on players than the allotted revenue-sharing cap under the House v. NCAA settlement.",
+      "url": "https://www.espn.com/college-football/story/_/id/50401639/sources-sec-mulls-luxury-tax-overspending-players",
+      "source": "ESPN",
+      "published_at": "2026-11-06T20:33:23Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "46236aea4845ea23",
+      "title": "Sources: QB Austin Simmons re-signs with Missouri for 2027",
+      "summary": "QB Austin Simmons, who is fourth in the SEC at 244 passing yards per game, has re-signed with Missouri for 2027, sources told ESPN, as his NFL stock rises.",
+      "url": "https://www.espn.com/college-football/story/_/id/50400199/sources-qb-austin-simmons-re-signs-missouri-2027",
+      "source": "ESPN",
+      "published_at": "2026-11-06T20:29:46Z",
+      "sport": "football",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8c2696ca968723ff",
+      "title": "Source: Texas RB Hollywood Smothers done for season with torn MCL",
+      "summary": "RB Hollywood Smothers has a torn MCL, a source told ESPN, and will miss the rest of the season for the Longhorns, who are seeing their injury issues mount.",
+      "url": "https://www.espn.com/college-football/story/_/id/50395712/texas-hollywood-smothers-done-season-torn-mcl",
+      "source": "ESPN",
+      "published_at": "2026-11-06T16:13:03Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
     {
       "id": "e14a26d99881a88a",
       "title": "Tennessee going 'dark mode' tops best college football Week 10 unis",
@@ -16,19 +53,6 @@
       "sport": "football",
       "teams": [
         "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8c2696ca968723ff",
-      "title": "Source: Texas RB Hollywood Smothers done for season with torn MCL",
-      "summary": "RB Hollywood Smothers has a torn MCL, a source told ESPN, and will miss the rest of the season for the Longhorns, who are seeing their injury issues mount.",
-      "url": "https://www.espn.com/college-football/story/_/id/50395712/texas-hollywood-smothers-done-season-torn-mcl",
-      "source": "ESPN",
-      "published_at": "2026-11-06T14:28:14Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
       ],
       "breaking": false
     },
@@ -111,19 +135,6 @@
       "teams": [
         "Alabama",
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "695a3c5b8884be4d",
-      "title": "Where the odds and rankings agree and disagree on Notre Dame, Kentucky in the CFP",
-      "summary": "Pamela Maldonado breaks down why the CFP oddsboard looks different than the committee's first rankings.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50373913/college-football-playoff-rankings-betting-odds-favorites",
-      "source": "ESPN",
-      "published_at": "2026-11-04T12:18:18Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
       ],
       "breaking": false
     },
