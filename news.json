@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-07T14:05:45.027915Z",
-  "checked_at": "2026-11-07T14:05:45.027915Z",
+  "updated_at": "2026-11-07T18:49:23.118993Z",
+  "checked_at": "2026-11-07T18:49:23.118993Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -9,14 +9,25 @@
     {
       "id": "a9c3b375699aef5c",
       "title": "Arizona grabs onside kick, hits late FG to pull out TCU win",
-      "summary": "Arizona recovers an onside kick to set up a 37-yard field goal with under a minute to go as the Wildcats stunned TCU 29-28.",
+      "summary": "Arizona recovered an onside kick to set up a 37-yard field goal with under a minute to go as the Wildcats stunned TCU 29-28.",
       "url": "https://www.espn.com/college-football/story/_/id/50406975/arizona-grabs-onside-kick-hits-late-fg-pull-tcu-win",
       "source": "ESPN",
-      "published_at": "2026-11-07T13:18:53Z",
+      "published_at": "2026-11-07T16:57:23Z",
       "sport": "football",
       "teams": [
         "Kentucky"
       ],
+      "breaking": false
+    },
+    {
+      "id": "cfbad10150c0af13",
+      "title": "Illinois coach Bret Bielema takes veiled shot at SEC, CFP",
+      "summary": "Big Ten coaches continue to be rankled by the initial College Football Playoff rankings, with Illinois coach Bret Bielema taking the latest veiled shot at the SEC.",
+      "url": "https://www.espn.com/college-football/story/_/id/50408410/illinois-coach-bret-bielema-takes-veiled-shot-sec-cfp",
+      "source": "ESPN",
+      "published_at": "2026-11-07T16:34:06Z",
+      "sport": "football",
+      "teams": [],
       "breaking": false
     },
     {
@@ -305,17 +316,6 @@
       "teams": [
         "Kentucky"
       ],
-      "breaking": false
-    },
-    {
-      "id": "b0262762794ea689",
-      "title": "The chaotic SEC football championship race, explained by the data",
-      "summary": "More than half of the SEC is ranked in college football, yet every team has at least one loss in conference play.",
-      "url": "https://www.ncaa.com/news/football/article/2026-10-29/chaotic-sec-football-championship-race-explained-data",
-      "source": "NCAA",
-      "published_at": "2026-10-29T16:10:00Z",
-      "sport": "football",
-      "teams": [],
       "breaking": false
     }
   ],
