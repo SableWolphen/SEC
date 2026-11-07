@@ -1,11 +1,24 @@
 {
-  "updated_at": "2026-11-07T07:14:55.119118Z",
-  "checked_at": "2026-11-07T07:14:55.119118Z",
+  "updated_at": "2026-11-07T14:05:45.027915Z",
+  "checked_at": "2026-11-07T14:05:45.027915Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "a9c3b375699aef5c",
+      "title": "Arizona grabs onside kick, hits late FG to pull out TCU win",
+      "summary": "Arizona recovers an onside kick to set up a 37-yard field goal with under a minute to go as the Wildcats stunned TCU 29-28.",
+      "url": "https://www.espn.com/college-football/story/_/id/50406975/arizona-grabs-onside-kick-hits-late-fg-pull-tcu-win",
+      "source": "ESPN",
+      "published_at": "2026-11-07T13:18:53Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
     {
       "id": "3f1fd4677e50c9b7",
       "title": "North Florida Ospreys vs. UCLA Bruins: Game Highlights",
@@ -30,19 +43,6 @@
       "teams": [
         "Missouri",
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b2f98f6ef089e605",
-      "title": "Patton Pinkins recalls Ole Miss' execution in blowout win over UCA",
-      "summary": "After contributing a game-high 19 points to the Rebels 92 overall, Pinkins reflects on his team's ability to execute the game plan and share the ball offensively.",
-      "url": "https://www.espn.com/video/clip/_/id/50404881/patton-pinkins-recalls-ole-miss-execution-blowout-win-uca",
-      "source": "ESPN",
-      "published_at": "2026-11-07T04:54:05Z",
-      "sport": "basketball",
-      "teams": [
-        "Ole Miss"
       ],
       "breaking": false
     },
@@ -75,32 +75,6 @@
       "breaking": false
     },
     {
-      "id": "c9fc6574a5ddfcc3",
-      "title": "CSU Northridge Matadors vs. Kansas State Wildcats: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50405003/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-07T04:34:50Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "2a5c2c06b2bc5192",
-      "title": "Middle Tennessee Blue Raiders vs. Kansas Jayhawks: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50404984/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-07T04:29:34Z",
-      "sport": "basketball",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
       "id": "2661e4c571f3ba5b",
       "title": "No. 14 LSU is built to exploit mismatches against No. 5 Alabama",
       "summary": "The SEC Now crew breaks down key matchups that favor the Tigers and how they can capitalize on those advantages against the Crimson Tide in Death Valley.",
@@ -126,20 +100,6 @@
       "breaking": false
     },
     {
-      "id": "6901e114af475559",
-      "title": "Central Arkansas Bears vs. Ole Miss Rebels: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50404771/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-07T03:59:40Z",
-      "sport": "basketball",
-      "teams": [
-        "Arkansas",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
       "id": "36c1459fbd95c37b",
       "title": "Film shows why Rebels' Chambliss will challenge Georgia's defense",
       "summary": "SEC Now's Benjamin Watson and Chris Doering break down how Trinidad Chambliss' skill set and No. 10 Ole Miss' offensive scheme could pose problems for No. 2 Georgia.",
@@ -150,32 +110,6 @@
       "teams": [
         "Georgia",
         "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "db13f400bab77ed3",
-      "title": "Texas A&M's Jordan Pope details journey of adjusting to Bucky Ball",
-      "summary": "Pope details the transition into his Aggie era, including noting that \"there's a difference between basketball conditioning and 'Bucky Ball' conditioning.",
-      "url": "https://www.espn.com/video/clip/_/id/50404693/texas-jordan-pope-details-journey-adjusting-bucky-ball",
-      "source": "ESPN",
-      "published_at": "2026-11-07T03:51:37Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "fb26046c693a90a6",
-      "title": "Texas A&M-CC Islanders vs. Louisiana Ragin' Cajuns: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50404614/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-07T03:41:02Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas A&M"
       ],
       "breaking": false
     },
@@ -335,19 +269,6 @@
       "breaking": false
     },
     {
-      "id": "8c2696ca968723ff",
-      "title": "Source: Texas RB Hollywood Smothers done for season with torn MCL",
-      "summary": "RB Hollywood Smothers has a torn MCL, a source told ESPN, and will miss the rest of the season for the Longhorns, who are seeing their injury issues mount.",
-      "url": "https://www.espn.com/college-football/story/_/id/50395712/texas-hollywood-smothers-done-season-torn-mcl",
-      "source": "ESPN",
-      "published_at": "2026-11-06T16:13:03Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
       "id": "e14a26d99881a88a",
       "title": "Tennessee going 'dark mode' tops best college football Week 10 unis",
       "summary": "Halloween was last week, but you wouldn't know it based on the Volunteers' uniforms for Saturday.",
@@ -357,20 +278,6 @@
       "sport": "football",
       "teams": [
         "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c32150695b6e950f",
-      "title": "Georgia's Cole details preparation for Ole Miss' Chambliss",
-      "summary": "Chris Cole joins The Paul Finebaum Show to discuss how No. 2 Georgia is preparing to contain Trinidad Chambliss and the No. 10 Rebels ahead of their highly anticipated SEC showdown.",
-      "url": "https://www.espn.com/video/clip/_/id/50393872/georgia-cole-details-preparation-ole-miss-chambliss",
-      "source": "ESPN",
-      "published_at": "2026-11-06T00:20:45Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Ole Miss"
       ],
       "breaking": false
     },
