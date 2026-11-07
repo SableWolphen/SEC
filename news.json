@@ -1,19 +1,176 @@
 {
-  "updated_at": "2026-11-06T20:55:27.335732Z",
-  "checked_at": "2026-11-06T20:55:27.335732Z",
+  "updated_at": "2026-11-07T00:57:16.437399Z",
+  "checked_at": "2026-11-07T00:57:16.437399Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "2b64f274eeb23819",
+      "title": "College football Week 10 best bets: Picks for Tennessee, Virginia Tech and more",
+      "summary": "Pamela Maldonado and Mark Zinno break down the best bets they see around college football for Week 10.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50379510/college-football-odds-best-bets-week-10-spreads-lines-2026",
+      "source": "ESPN",
+      "published_at": "2026-11-07T00:12:12Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b588054742612cff",
+      "title": "Chris Beard describes Ole Miss as 'melting pot', discusses SEC growth",
+      "summary": "Beard recalls the SEC developing from an NCAA tournament two-bid conference to \"arguably the best league of college basketball\" as he describes the mix of this year's Rebel talent.",
+      "url": "https://www.espn.com/video/clip/_/id/50402905/chris-beard-describes-ole-miss-melting-pot-discusses-sec-growth",
+      "source": "ESPN",
+      "published_at": "2026-11-06T23:58:09Z",
+      "sport": "basketball",
+      "teams": [
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "bb0af88cb6909f86",
+      "title": "Tim Tebow explains why LSU, Alabama are peaking at the right time",
+      "summary": "Tebow joins The Paul Finebaum Show to break down how the steady play of No. 14 LSU and No. 5 Alabama sets up a competitive matchup.",
+      "url": "https://www.espn.com/video/clip/_/id/50402727/tim-tebow-explains-why-lsu-alabama-peaking-right",
+      "source": "ESPN",
+      "published_at": "2026-11-06T23:36:27Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "458d184270c80141",
+      "title": "Finebaum, McDonough describe Ole Miss vs Georgia rivalry progression",
+      "summary": "Paul Finebaum and ESPN's Sean McDonough reflect on witnessing the different phases of the No. 10 Rebels vs. No. 2 Bulldogs feud ahead of their Week 10 contest.",
+      "url": "https://www.espn.com/video/clip/_/id/50402579/finebaum-mcdonough-describe-ole-miss-vs-georgia-rivalry-progression",
+      "source": "ESPN",
+      "published_at": "2026-11-06T23:02:50Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1d9b140b7a0ab93f",
+      "title": "Which ranked SEC team is most trusted?",
+      "summary": "With four ranked matchups in the SEC in Week 10, ESPN's Taylor Zarzour joins SEC This Morning to ask which team in the conference is best positioned to win.",
+      "url": "https://www.espn.com/video/clip/_/id/50402514/which-ranked-sec-team-most-trusted",
+      "source": "ESPN",
+      "published_at": "2026-11-06T22:57:08Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "eee42f6c2af30088",
+      "title": "Fowler says CFP committee undervalued LSU, previews matchup with Bama",
+      "summary": "Chris Fowler joins The Paul Finebaum Show to discuss what the Crimson Tide needs to do to get a win on the road at LSU who is looking to make a statement.",
+      "url": "https://www.espn.com/video/clip/_/id/50402485/fowler-says-cfp-committee-undervalued-lsu-previews-matchup-bama",
+      "source": "ESPN",
+      "published_at": "2026-11-06T22:55:20Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "fa0064d55bbb82f6",
+      "title": "Keith Carter loves that Ole Miss is booming with big matchups",
+      "summary": "Ole Miss Athletic Director Carter joins The Paul Finebaum Show ahead of the No. 10 Rebels monster game against No. 2 Georgia to discuss the program's recent success.",
+      "url": "https://www.espn.com/video/clip/_/id/50402366/keith-carter-loves-ole-miss-booming-big-matchups",
+      "source": "ESPN",
+      "published_at": "2026-11-06T22:38:54Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "233faf0e2422bb21",
+      "title": "Chris Doering expects five SEC teams to compete in 2026 CFP",
+      "summary": "SEC This Morning's Doering and Peter Burns use historical data and the Allstate Playoff Predictor to discuss the SEC presence in this year's College Football Playoffs.",
+      "url": "https://www.espn.com/video/clip/_/id/50402360/chris-doering-expects-five-sec-teams-compete-2026-cfp",
+      "source": "ESPN",
+      "published_at": "2026-11-06T22:37:33Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "8a4fd260da86cee0",
+      "title": "Peter Burns on Alabama at No. 5: 'Literally relax'",
+      "summary": "With the first College Football Playoff rankings out, SEC This Morning's Peter Burns says there is no need to overreact to No. 5 Alabama because the rankings will continue to change each week.",
+      "url": "https://www.espn.com/video/clip/_/id/50402299/literally-relax",
+      "source": "ESPN",
+      "published_at": "2026-11-06T22:29:09Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6bc72ca6b0bfbb41",
+      "title": "No. 13 Tennessee, No. 18 Mizzou lead the Peter Power Rankings list",
+      "summary": "SEC Network's Peter Burns lists Week 10's top-5 SEC teams that need a win, adding extra emphasis on No. 21 South Carolina and the Vols before naming Missouri as most dire.",
+      "url": "https://www.espn.com/video/clip/_/id/50402285/no-13-tennessee-no-18-mizzou-lead-peter-power-rankings-list",
+      "source": "ESPN",
+      "published_at": "2026-11-06T22:23:42Z",
+      "sport": "football",
+      "teams": [
+        "Missouri",
+        "South Carolina",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6e2c11de3616993b",
+      "title": "Alabama's Ryan Coleman-Williams among trio to return vs. LSU",
+      "summary": "Alabama will get a trio of injured starters -- WR Ryan Coleman-Williams, center Racin Delgatty and DT Terrance Green -- back for Saturday's game at LSU.",
+      "url": "https://www.espn.com/college-football/story/_/id/50401690/alabama-ryan-coleman-williams-trio-return-vs-lsu",
+      "source": "ESPN",
+      "published_at": "2026-11-06T21:33:06Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
       "id": "5b1c724a8bb89c1b",
       "title": "Sources: SEC considering luxury tax for excessive spending on players",
       "summary": "The SEC is mulling a luxury tax on programs that spend more on players than the allotted revenue-sharing cap under the House v. NCAA settlement.",
       "url": "https://www.espn.com/college-football/story/_/id/50401639/sources-sec-mulls-luxury-tax-overspending-players",
       "source": "ESPN",
-      "published_at": "2026-11-06T20:33:23Z",
+      "published_at": "2026-11-06T21:31:57Z",
       "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "5b1c724a8bb89c1b",
+      "title": "Sources: SEC considering luxury tax for excessive spending on players",
+      "summary": "The SEC is mulling a luxury tax on programs that spend more on players than the allotted revenue-sharing cap under the House v. NCAA settlement.",
+      "url": "https://www.espn.com/college-football/story/_/id/50401639/sources-sec-mulls-luxury-tax-overspending-players",
+      "source": "ESPN",
+      "published_at": "2026-11-06T21:31:57Z",
+      "sport": "basketball",
       "teams": [],
       "breaking": false
     },
@@ -71,19 +228,6 @@
       "breaking": false
     },
     {
-      "id": "2b64f274eeb23819",
-      "title": "College football Week 10 best bets: Picks for Tennessee, Virginia Tech and more",
-      "summary": "Pamela Maldonado and Mark Zinno break down the best bets they see around college football for Week 10.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50379510/college-football-odds-best-bets-week-10-spreads-lines-2026",
-      "source": "ESPN",
-      "published_at": "2026-11-05T15:17:01Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
       "id": "3bd2a58c9d4ca6c6",
       "title": "Source: Gators' Tramell Jones set to replace Aaron Philo as starter vs. Sooners",
       "summary": "Tramell Jones Jr. is set to make his second career start for Florida when the No. 24 Gators host Oklahoma, a source confirmed to ESPN.",
@@ -94,47 +238,6 @@
       "teams": [
         "Florida",
         "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "35034ee49c82b64e",
-      "title": "Florida suspends DT Jeramiah McCloud 1 game for detrimental conduct",
-      "summary": "Florida defensive tackle Jeramiah McCloud has been suspended one game for conduct detrimental to the team and will miss Saturday's matchup against Oklahoma.",
-      "url": "https://www.espn.com/college-football/story/_/id/50383936/florida-suspends-jeramiah-mccloud-1-game-conduct-detrimental-team",
-      "source": "ESPN",
-      "published_at": "2026-11-05T11:32:55Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "fbaaed971f59b5d8",
-      "title": "Will Stein reacts to Kentucky's ranking in CFP Top 25",
-      "summary": "Stein describes his excitement over the Wildcats' No. 6 spot in the CFP rankings as he discusses what must be done to solidify their spot and be successful the rest of the season.",
-      "url": "https://www.espn.com/video/clip/_/id/50384470/will-stein-reacts-kentucky-ranking-cfp-top-25",
-      "source": "ESPN",
-      "published_at": "2026-11-05T02:49:10Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8ab08c72ed424c9d",
-      "title": "LSU's Whit Weeks doubtful to return against Alabama",
-      "summary": "LSU star linebacker Whit Weeks, who missed the past four games with a fractured leg, is doubtful to play Saturday vs. Alabama.",
-      "url": "https://www.espn.com/college-football/story/_/id/50384078/lsu-whit-weeks-doubtful-return-alabama",
-      "source": "ESPN",
-      "published_at": "2026-11-05T02:12:43Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "LSU"
       ],
       "breaking": false
     },
