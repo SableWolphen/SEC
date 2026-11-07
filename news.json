@@ -1,18 +1,59 @@
 {
-  "updated_at": "2026-11-07T18:49:23.118993Z",
-  "checked_at": "2026-11-07T18:49:23.118993Z",
+  "updated_at": "2026-11-07T22:47:05.203712Z",
+  "checked_at": "2026-11-07T22:47:05.203712Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "a9c3b375699aef5c",
-      "title": "Arizona grabs onside kick, hits late FG to pull out TCU win",
-      "summary": "Arizona recovered an onside kick to set up a 37-yard field goal with under a minute to go as the Wildcats stunned TCU 29-28.",
-      "url": "https://www.espn.com/college-football/story/_/id/50406975/arizona-grabs-onside-kick-hits-late-fg-pull-tcu-win",
+      "id": "4c3fdb0380f3879d",
+      "title": "VMI Keydets vs. Tennessee Tech Golden Eagles: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50413133/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-07T16:57:23Z",
+      "published_at": "2026-11-07T22:45:08Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d0d26d8c7f360eb1",
+      "title": "Arkansas Razorbacks vs. Auburn Tigers: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50412219/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-07T21:42:51Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas",
+        "Auburn"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "246c8f108af95627",
+      "title": "Samford Bulldogs vs. East Tennessee State Buccaneers: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50412229/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-07T21:36:37Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c823bde12aad082b",
+      "title": "Stetson Hatters vs. Davidson Wildcats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50412007/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-07T21:15:56Z",
       "sport": "football",
       "teams": [
         "Kentucky"
@@ -20,14 +61,96 @@
       "breaking": false
     },
     {
-      "id": "cfbad10150c0af13",
-      "title": "Illinois coach Bret Bielema takes veiled shot at SEC, CFP",
-      "summary": "Big Ten coaches continue to be rankled by the initial College Football Playoff rankings, with Illinois coach Bret Bielema taking the latest veiled shot at the SEC.",
-      "url": "https://www.espn.com/college-football/story/_/id/50408410/illinois-coach-bret-bielema-takes-veiled-shot-sec-cfp",
+      "id": "f55445c451cc177b",
+      "title": "Arch Manning, defense help No. 7 Texas rally past Missouri",
+      "summary": "Arch Manning threw for three TDs, including the go-ahead score to Raleek Brown with just over five minutes to go, as No. 7 Texas rallied past No. 18 Missouri.",
+      "url": "https://www.espn.com/college-football/story/_/id/50411883/arch-manning-defense-help-no-7-texas-rally-missouri",
       "source": "ESPN",
-      "published_at": "2026-11-07T16:34:06Z",
+      "published_at": "2026-11-07T21:12:50Z",
       "sport": "football",
-      "teams": [],
+      "teams": [
+        "Missouri",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "47dc5b4cd47d33a1",
+      "title": "San Diego Toreros vs. Drake Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50411916/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-07T21:10:11Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0a0cb14db8b20292",
+      "title": "Texas Longhorns vs. Missouri Tigers: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50411646/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-07T21:08:28Z",
+      "sport": "football",
+      "teams": [
+        "Missouri",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9e6d3e12c65437bf",
+      "title": "Richmond Spiders vs. Villanova Wildcats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50411836/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-07T21:03:53Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e6bd2bef3aebc257",
+      "title": "Boyce Bulldogs vs. Liberty Flames: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50411682/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-07T20:54:42Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c54575bd3e803ac4",
+      "title": "North Carolina A&T Aggies vs. Ohio Bobcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50410922/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-07T20:18:54Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7a633698b52b7819",
+      "title": "Fighting Tigers vs. Georgia St Panthers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50410684/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-07T19:57:01Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
       "breaking": false
     },
     {
@@ -40,255 +163,6 @@
       "sport": "basketball",
       "teams": [
         "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "465971d8451dd163",
-      "title": "Analyzing how Mizzou's run offense has been successful",
-      "summary": "SEC Now's Benjamin Watson breaks down how the No. 19 Tigers has had success offensively while Chris Doering dives into how the No. 10 Longhorns can stop their momentum.",
-      "url": "https://www.espn.com/video/clip/_/id/50405143/analyzing-how-mizzou-run-offense-successful",
-      "source": "ESPN",
-      "published_at": "2026-11-07T04:59:21Z",
-      "sport": "football",
-      "teams": [
-        "Missouri",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a37d7b7ad621eeda",
-      "title": "Analyzing how new Oklahoma OC Jason Witten can help the offense",
-      "summary": "SEC Network's Chris Doering and Benjamin Watson discuss how the Sooners' offense could change while previewing their matchup against No. 24 Florida.",
-      "url": "https://www.espn.com/video/clip/_/id/50405060/analyzing-how-new-oklahoma-oc-jason-witten-help-offense",
-      "source": "ESPN",
-      "published_at": "2026-11-07T04:45:23Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "36b92211b8631ff4",
-      "title": "Run game and limiting mistakes key for No. 6 Wildcats and No. 13 Vols",
-      "summary": "The SEC Now crew says that Kentucky and Tennessee have similar keys to success while previewing the contest with huge CFP implications.",
-      "url": "https://www.espn.com/video/clip/_/id/50405014/run-game-limiting-mistakes-key-no-6-wildcats-no-13-vols",
-      "source": "ESPN",
-      "published_at": "2026-11-07T04:39:09Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "2661e4c571f3ba5b",
-      "title": "No. 14 LSU is built to exploit mismatches against No. 5 Alabama",
-      "summary": "The SEC Now crew breaks down key matchups that favor the Tigers and how they can capitalize on those advantages against the Crimson Tide in Death Valley.",
-      "url": "https://www.espn.com/video/clip/_/id/50404949/no-14-lsu-built-exploit-mismatches-no-5-alabama",
-      "source": "ESPN",
-      "published_at": "2026-11-07T04:24:50Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c6b8406b6d92e399",
-      "title": "SEC Now puts scenarios through the Allstate Playoff Predictor",
-      "summary": "The SEC Now crew plays around with different possibilities from Week 10 action to see who could be in and who could be out as the final month of the season begins.",
-      "url": "https://www.espn.com/video/clip/_/id/50404940/sec-now-puts-scenarios-allstate-playoff-predictor",
-      "source": "ESPN",
-      "published_at": "2026-11-07T04:24:07Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "36c1459fbd95c37b",
-      "title": "Film shows why Rebels' Chambliss will challenge Georgia's defense",
-      "summary": "SEC Now's Benjamin Watson and Chris Doering break down how Trinidad Chambliss' skill set and No. 10 Ole Miss' offensive scheme could pose problems for No. 2 Georgia.",
-      "url": "https://www.espn.com/video/clip/_/id/50404729/film-shows-why-rebels-chambliss-challenge-georgia-defense",
-      "source": "ESPN",
-      "published_at": "2026-11-07T03:55:24Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d9bbc7983684403e",
-      "title": "Chris Doering previews all the Week 10 SEC matchups",
-      "summary": "SEC Network's Doering joins The Paul Finebaum Show and whips around the conference highlighting each game of highly anticipated Week 10.",
-      "url": "https://www.espn.com/video/clip/_/id/50403330/chris-doering-previews-all-week-10-sec-matchups",
-      "source": "ESPN",
-      "published_at": "2026-11-07T00:49:58Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "bb0af88cb6909f86",
-      "title": "Tim Tebow explains why LSU, Alabama are peaking at the right time",
-      "summary": "Tebow joins The Paul Finebaum Show to break down how the steady play of No. 14 LSU and No. 5 Alabama sets up a competitive matchup.",
-      "url": "https://www.espn.com/video/clip/_/id/50402727/tim-tebow-explains-why-lsu-alabama-peaking-right",
-      "source": "ESPN",
-      "published_at": "2026-11-06T23:36:27Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "458d184270c80141",
-      "title": "Finebaum, McDonough describe Ole Miss vs Georgia rivalry progression",
-      "summary": "Paul Finebaum and ESPN's Sean McDonough reflect on witnessing the different phases of the No. 10 Rebels vs. No. 2 Bulldogs feud ahead of their Week 10 contest.",
-      "url": "https://www.espn.com/video/clip/_/id/50402579/finebaum-mcdonough-describe-ole-miss-vs-georgia-rivalry-progression",
-      "source": "ESPN",
-      "published_at": "2026-11-06T23:02:50Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1d9b140b7a0ab93f",
-      "title": "Which ranked SEC team is most trusted?",
-      "summary": "With four ranked matchups in the SEC in Week 10, ESPN's Taylor Zarzour joins SEC This Morning to ask which team in the conference is best positioned to win.",
-      "url": "https://www.espn.com/video/clip/_/id/50402514/which-ranked-sec-team-most-trusted",
-      "source": "ESPN",
-      "published_at": "2026-11-06T22:57:08Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "eee42f6c2af30088",
-      "title": "Fowler says CFP committee undervalued LSU, previews matchup with Bama",
-      "summary": "Chris Fowler joins The Paul Finebaum Show to discuss what the Crimson Tide needs to do to get a win on the road at LSU who is looking to make a statement.",
-      "url": "https://www.espn.com/video/clip/_/id/50402485/fowler-says-cfp-committee-undervalued-lsu-previews-matchup-bama",
-      "source": "ESPN",
-      "published_at": "2026-11-06T22:55:20Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "fa0064d55bbb82f6",
-      "title": "Keith Carter loves that Ole Miss is booming with big matchups",
-      "summary": "Ole Miss Athletic Director Carter joins The Paul Finebaum Show ahead of the No. 10 Rebels monster game against No. 2 Georgia to discuss the program's recent success.",
-      "url": "https://www.espn.com/video/clip/_/id/50402366/keith-carter-loves-ole-miss-booming-big-matchups",
-      "source": "ESPN",
-      "published_at": "2026-11-06T22:38:54Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "233faf0e2422bb21",
-      "title": "Chris Doering expects five SEC teams to compete in 2026 CFP",
-      "summary": "SEC This Morning's Doering and Peter Burns use historical data and the Allstate Playoff Predictor to discuss the SEC presence in this year's College Football Playoffs.",
-      "url": "https://www.espn.com/video/clip/_/id/50402360/chris-doering-expects-five-sec-teams-compete-2026-cfp",
-      "source": "ESPN",
-      "published_at": "2026-11-06T22:37:33Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "8a4fd260da86cee0",
-      "title": "Peter Burns on Alabama at No. 5: 'Literally relax'",
-      "summary": "With the first College Football Playoff rankings out, SEC This Morning's Peter Burns says there is no need to overreact to No. 5 Alabama because the rankings will continue to change each week.",
-      "url": "https://www.espn.com/video/clip/_/id/50402299/literally-relax",
-      "source": "ESPN",
-      "published_at": "2026-11-06T22:29:09Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6bc72ca6b0bfbb41",
-      "title": "No. 13 Tennessee, No. 18 Mizzou lead the Peter Power Rankings list",
-      "summary": "SEC Network's Peter Burns lists Week 10's top-5 SEC teams that need a win, adding extra emphasis on No. 21 South Carolina and the Vols before naming Missouri as most dire.",
-      "url": "https://www.espn.com/video/clip/_/id/50402285/no-13-tennessee-no-18-mizzou-lead-peter-power-rankings-list",
-      "source": "ESPN",
-      "published_at": "2026-11-06T22:23:42Z",
-      "sport": "football",
-      "teams": [
-        "Missouri",
-        "South Carolina",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6e2c11de3616993b",
-      "title": "Alabama's Ryan Coleman-Williams among trio to return vs. LSU",
-      "summary": "Alabama will get a trio of injured starters -- WR Ryan Coleman-Williams, center Racin Delgatty and DT Terrance Green -- back for Saturday's game at LSU.",
-      "url": "https://www.espn.com/college-football/story/_/id/50401690/alabama-ryan-coleman-williams-trio-return-vs-lsu",
-      "source": "ESPN",
-      "published_at": "2026-11-06T21:33:06Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5b1c724a8bb89c1b",
-      "title": "Sources: SEC considering luxury tax for excessive spending on players",
-      "summary": "The SEC is mulling a luxury tax on programs that spend more on players than the allotted revenue-sharing cap under the House v. NCAA settlement.",
-      "url": "https://www.espn.com/college-football/story/_/id/50401639/sources-sec-mulls-luxury-tax-overspending-players",
-      "source": "ESPN",
-      "published_at": "2026-11-06T21:31:57Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "46236aea4845ea23",
-      "title": "Sources: QB Austin Simmons re-signs with Missouri for 2027",
-      "summary": "QB Austin Simmons, who is fourth in the SEC at 244 passing yards per game, has re-signed with Missouri for 2027, sources told ESPN, as his NFL stock rises.",
-      "url": "https://www.espn.com/college-football/story/_/id/50400199/sources-qb-austin-simmons-re-signs-missouri-2027",
-      "source": "ESPN",
-      "published_at": "2026-11-06T20:29:46Z",
-      "sport": "football",
-      "teams": [
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e14a26d99881a88a",
-      "title": "Tennessee going 'dark mode' tops best college football Week 10 unis",
-      "summary": "Halloween was last week, but you wouldn't know it based on the Volunteers' uniforms for Saturday.",
-      "url": "https://www.espn.com/college-football/story/_/id/50392385/week-10-college-football-uniforms-tennessee",
-      "source": "ESPN",
-      "published_at": "2026-11-06T14:51:32Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
       ],
       "breaking": false
     },
