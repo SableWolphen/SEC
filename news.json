@@ -1,35 +1,193 @@
 {
-  "updated_at": "2026-11-07T00:57:16.437399Z",
-  "checked_at": "2026-11-07T00:57:16.437399Z",
+  "updated_at": "2026-11-07T07:14:55.119118Z",
+  "checked_at": "2026-11-07T07:14:55.119118Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "2b64f274eeb23819",
-      "title": "College football Week 10 best bets: Picks for Tennessee, Virginia Tech and more",
-      "summary": "Pamela Maldonado and Mark Zinno break down the best bets they see around college football for Week 10.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50379510/college-football-odds-best-bets-week-10-spreads-lines-2026",
+      "id": "3f1fd4677e50c9b7",
+      "title": "North Florida Ospreys vs. UCLA Bruins: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50405442/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-07T00:12:12Z",
+      "published_at": "2026-11-07T05:57:20Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "465971d8451dd163",
+      "title": "Analyzing how Mizzou's run offense has been successful",
+      "summary": "SEC Now's Benjamin Watson breaks down how the No. 19 Tigers has had success offensively while Chris Doering dives into how the No. 10 Longhorns can stop their momentum.",
+      "url": "https://www.espn.com/video/clip/_/id/50405143/analyzing-how-mizzou-run-offense-successful",
+      "source": "ESPN",
+      "published_at": "2026-11-07T04:59:21Z",
       "sport": "football",
+      "teams": [
+        "Missouri",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b2f98f6ef089e605",
+      "title": "Patton Pinkins recalls Ole Miss' execution in blowout win over UCA",
+      "summary": "After contributing a game-high 19 points to the Rebels 92 overall, Pinkins reflects on his team's ability to execute the game plan and share the ball offensively.",
+      "url": "https://www.espn.com/video/clip/_/id/50404881/patton-pinkins-recalls-ole-miss-execution-blowout-win-uca",
+      "source": "ESPN",
+      "published_at": "2026-11-07T04:54:05Z",
+      "sport": "basketball",
+      "teams": [
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a37d7b7ad621eeda",
+      "title": "Analyzing how new Oklahoma OC Jason Witten can help the offense",
+      "summary": "SEC Network's Chris Doering and Benjamin Watson discuss how the Sooners' offense could change while previewing their matchup against No. 24 Florida.",
+      "url": "https://www.espn.com/video/clip/_/id/50405060/analyzing-how-new-oklahoma-oc-jason-witten-help-offense",
+      "source": "ESPN",
+      "published_at": "2026-11-07T04:45:23Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "36b92211b8631ff4",
+      "title": "Run game and limiting mistakes key for No. 6 Wildcats and No. 13 Vols",
+      "summary": "The SEC Now crew says that Kentucky and Tennessee have similar keys to success while previewing the contest with huge CFP implications.",
+      "url": "https://www.espn.com/video/clip/_/id/50405014/run-game-limiting-mistakes-key-no-6-wildcats-no-13-vols",
+      "source": "ESPN",
+      "published_at": "2026-11-07T04:39:09Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c9fc6574a5ddfcc3",
+      "title": "CSU Northridge Matadors vs. Kansas State Wildcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50405003/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-07T04:34:50Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "2a5c2c06b2bc5192",
+      "title": "Middle Tennessee Blue Raiders vs. Kansas Jayhawks: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50404984/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-07T04:29:34Z",
+      "sport": "basketball",
       "teams": [
         "Tennessee"
       ],
       "breaking": false
     },
     {
-      "id": "b588054742612cff",
-      "title": "Chris Beard describes Ole Miss as 'melting pot', discusses SEC growth",
-      "summary": "Beard recalls the SEC developing from an NCAA tournament two-bid conference to \"arguably the best league of college basketball\" as he describes the mix of this year's Rebel talent.",
-      "url": "https://www.espn.com/video/clip/_/id/50402905/chris-beard-describes-ole-miss-melting-pot-discusses-sec-growth",
+      "id": "2661e4c571f3ba5b",
+      "title": "No. 14 LSU is built to exploit mismatches against No. 5 Alabama",
+      "summary": "The SEC Now crew breaks down key matchups that favor the Tigers and how they can capitalize on those advantages against the Crimson Tide in Death Valley.",
+      "url": "https://www.espn.com/video/clip/_/id/50404949/no-14-lsu-built-exploit-mismatches-no-5-alabama",
       "source": "ESPN",
-      "published_at": "2026-11-06T23:58:09Z",
+      "published_at": "2026-11-07T04:24:50Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c6b8406b6d92e399",
+      "title": "SEC Now puts scenarios through the Allstate Playoff Predictor",
+      "summary": "The SEC Now crew plays around with different possibilities from Week 10 action to see who could be in and who could be out as the final month of the season begins.",
+      "url": "https://www.espn.com/video/clip/_/id/50404940/sec-now-puts-scenarios-allstate-playoff-predictor",
+      "source": "ESPN",
+      "published_at": "2026-11-07T04:24:07Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "6901e114af475559",
+      "title": "Central Arkansas Bears vs. Ole Miss Rebels: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50404771/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-07T03:59:40Z",
       "sport": "basketball",
       "teams": [
+        "Arkansas",
         "Ole Miss"
       ],
+      "breaking": false
+    },
+    {
+      "id": "36c1459fbd95c37b",
+      "title": "Film shows why Rebels' Chambliss will challenge Georgia's defense",
+      "summary": "SEC Now's Benjamin Watson and Chris Doering break down how Trinidad Chambliss' skill set and No. 10 Ole Miss' offensive scheme could pose problems for No. 2 Georgia.",
+      "url": "https://www.espn.com/video/clip/_/id/50404729/film-shows-why-rebels-chambliss-challenge-georgia-defense",
+      "source": "ESPN",
+      "published_at": "2026-11-07T03:55:24Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "db13f400bab77ed3",
+      "title": "Texas A&M's Jordan Pope details journey of adjusting to Bucky Ball",
+      "summary": "Pope details the transition into his Aggie era, including noting that \"there's a difference between basketball conditioning and 'Bucky Ball' conditioning.",
+      "url": "https://www.espn.com/video/clip/_/id/50404693/texas-jordan-pope-details-journey-adjusting-bucky-ball",
+      "source": "ESPN",
+      "published_at": "2026-11-07T03:51:37Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "fb26046c693a90a6",
+      "title": "Texas A&M-CC Islanders vs. Louisiana Ragin' Cajuns: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50404614/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-07T03:41:02Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d9bbc7983684403e",
+      "title": "Chris Doering previews all the Week 10 SEC matchups",
+      "summary": "SEC Network's Doering joins The Paul Finebaum Show and whips around the conference highlighting each game of highly anticipated Week 10.",
+      "url": "https://www.espn.com/video/clip/_/id/50403330/chris-doering-previews-all-week-10-sec-matchups",
+      "source": "ESPN",
+      "published_at": "2026-11-07T00:49:58Z",
+      "sport": "football",
+      "teams": [],
       "breaking": false
     },
     {
@@ -164,17 +322,6 @@
       "breaking": false
     },
     {
-      "id": "5b1c724a8bb89c1b",
-      "title": "Sources: SEC considering luxury tax for excessive spending on players",
-      "summary": "The SEC is mulling a luxury tax on programs that spend more on players than the allotted revenue-sharing cap under the House v. NCAA settlement.",
-      "url": "https://www.espn.com/college-football/story/_/id/50401639/sources-sec-mulls-luxury-tax-overspending-players",
-      "source": "ESPN",
-      "published_at": "2026-11-06T21:31:57Z",
-      "sport": "basketball",
-      "teams": [],
-      "breaking": false
-    },
-    {
       "id": "46236aea4845ea23",
       "title": "Sources: QB Austin Simmons re-signs with Missouri for 2027",
       "summary": "QB Austin Simmons, who is fourth in the SEC at 244 passing yards per game, has re-signed with Missouri for 2027, sources told ESPN, as his NFL stock rises.",
@@ -224,20 +371,6 @@
       "teams": [
         "Georgia",
         "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3bd2a58c9d4ca6c6",
-      "title": "Source: Gators' Tramell Jones set to replace Aaron Philo as starter vs. Sooners",
-      "summary": "Tramell Jones Jr. is set to make his second career start for Florida when the No. 24 Gators host Oklahoma, a source confirmed to ESPN.",
-      "url": "https://www.espn.com/college-football/story/_/id/50388555/source-florida-start-qb-tramell-jones-jr-oklahoma",
-      "source": "ESPN",
-      "published_at": "2026-11-05T14:29:57Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Oklahoma"
       ],
       "breaking": false
     },
