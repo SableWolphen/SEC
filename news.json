@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-08T10:28:10.403172Z",
-  "checked_at": "2026-11-08T10:28:10.403172Z",
+  "updated_at": "2026-11-08T17:05:27.214356Z",
+  "checked_at": "2026-11-08T17:05:27.214356Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -9,15 +9,26 @@
     {
       "id": "a8cc2c5e6b7c1b4b",
       "title": "Georgia flips script on Trinidad Chambliss, dominates Ole Miss in statement win",
-      "summary": "No. 2 Georgia finally contained Ole Miss QB Trinidad Chambliss, holding him without a passing touchdown en route to a 42-7 blowout win over the No. 10 Rebels on Saturday.",
+      "summary": "No. 2 Georgia finally contained Ole Miss QB Trinidad Chambliss, holding him without a passing touchdown en route to a 42-7 blowout win over the No. 10 Rebels.",
       "url": "https://www.espn.com/college-football/story/_/id/50417639/georgia-flips-script-trinidad-chambliss-dominates-ole-miss-statement-win",
       "source": "ESPN",
-      "published_at": "2026-11-08T07:05:47Z",
+      "published_at": "2026-11-08T16:10:11Z",
       "sport": "football",
       "teams": [
         "Georgia",
         "Ole Miss"
       ],
+      "breaking": false
+    },
+    {
+      "id": "6a8ef3e8dd9f3ec5",
+      "title": "Heather Dinich: SEC has reasserted its dominance in CFP rankings",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50419602/sec-reasserted-dominance-cfp-rankings",
+      "source": "ESPN",
+      "published_at": "2026-11-08T13:57:30Z",
+      "sport": "football",
+      "teams": [],
       "breaking": false
     },
     {
