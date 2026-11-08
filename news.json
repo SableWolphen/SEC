@@ -1,225 +1,74 @@
 {
-  "updated_at": "2026-11-08T17:05:27.214356Z",
-  "checked_at": "2026-11-08T17:05:27.214356Z",
+  "updated_at": "2026-11-08T21:13:05.807501Z",
+  "checked_at": "2026-11-08T21:13:05.807501Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "a8cc2c5e6b7c1b4b",
-      "title": "Georgia flips script on Trinidad Chambliss, dominates Ole Miss in statement win",
-      "summary": "No. 2 Georgia finally contained Ole Miss QB Trinidad Chambliss, holding him without a passing touchdown en route to a 42-7 blowout win over the No. 10 Rebels.",
-      "url": "https://www.espn.com/college-football/story/_/id/50417639/georgia-flips-script-trinidad-chambliss-dominates-ole-miss-statement-win",
+      "id": "78404eb96f580a7f",
+      "title": "Kory Mincy on being versatile for South Carolina: 'I just let the game dictate itself'",
+      "summary": "After scoring 15 second-half points in the win against SEMO, Mincy discusses how the depth of the Gamecocks and his ability allows him to play the pace of the game.",
+      "url": "https://www.espn.com/video/clip/_/id/50424490/just-let-game-dictate-itself",
       "source": "ESPN",
-      "published_at": "2026-11-08T16:10:11Z",
-      "sport": "football",
+      "published_at": "2026-11-08T21:10:08Z",
+      "sport": "basketball",
       "teams": [
-        "Georgia",
-        "Ole Miss"
+        "South Carolina"
       ],
       "breaking": false
     },
     {
-      "id": "6a8ef3e8dd9f3ec5",
-      "title": "Heather Dinich: SEC has reasserted its dominance in CFP rankings",
+      "id": "493a7bc816d222eb",
+      "title": "Sacred Heart Pioneers vs. New Hampshire Wildcats: Game Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50419602/sec-reasserted-dominance-cfp-rankings",
+      "url": "https://www.espn.com/video/clip/_/id/50423622/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-08T13:57:30Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "59306a1495206e4e",
-      "title": "Venables lauds Witten after Sooners shine in Oklahoma playcaller's debut",
-      "summary": "In his debut as Oklahoma's offensive playcaller, Jason Witten, a former NFL tight end who coached high school in Texas last year, engineered an impressive Sooners attack that throttled No.",
-      "url": "https://www.espn.com/college-football/story/_/id/50417320/venables-lauds-witten-sooners-shine-play-caller-debut",
-      "source": "ESPN",
-      "published_at": "2026-11-08T06:27:11Z",
-      "sport": "football",
+      "published_at": "2026-11-08T20:26:02Z",
+      "sport": "basketball",
       "teams": [
-        "Florida",
-        "Oklahoma",
-        "Texas"
+        "Kentucky"
       ],
       "breaking": false
     },
     {
-      "id": "7176494e8614a4f4",
-      "title": "No. 13 Tennessee sets the tone from the first snap vs. No. 6 UK",
-      "summary": "The SEC Now crew shows how the Volunteers beat the Wildcats at their own game in a 34-6 win, leaning on the run and cashing in on turnovers forced by Tennessee's defense.",
-      "url": "https://www.espn.com/video/clip/_/id/50417337/no-13-tennessee-sets-tone-first-snap-vs-no-6-uk",
-      "source": "ESPN",
-      "published_at": "2026-11-08T05:24:02Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "abe9b3710cbc1c5d",
-      "title": "Chris Doering sees No. 2 Georgia as its own toughest opponent",
-      "summary": "SEC Network's Doering and Benjamin Watson make the case for the Bulldogs as the nation's best after they shut down Trinidad Chambliss and No. 10 Ole Miss.",
-      "url": "https://www.espn.com/video/clip/_/id/50417223/chris-doering-sees-no-2-georgia-own-toughest-opponent",
-      "source": "ESPN",
-      "published_at": "2026-11-08T05:12:05Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "88a9f26d6903e18e",
-      "title": "Fresno State Bulldogs vs. UC San Diego Tritons: Game Highlights",
+      "id": "9f90a699e4805ca1",
+      "title": "Arkansas Razorbacks vs. Virginia Cavaliers: Game Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50417181/game-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50423578/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-08T05:08:01Z",
+      "published_at": "2026-11-08T20:23:20Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b67ef1f13240dc80",
+      "title": "Southeast Missouri State Redhawks vs. South Carolina Gamecocks: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50423464/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-08T20:20:23Z",
+      "sport": "basketball",
+      "teams": [
+        "Missouri",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "05e31707da2032c5",
+      "title": "Fairfield Stags vs. Bryant Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50423327/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-08T20:05:06Z",
       "sport": "basketball",
       "teams": [
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5c05603552b8a836",
-      "title": "Alabama's execution exposes LSU's gap between effort and results",
-      "summary": "The SEC Now crew breaks down how the No. 5 Crimson Tide make their opportunities count in the win over LSU and what the No. 14 Tigers can do to turn all that effort into production.",
-      "url": "https://www.espn.com/video/clip/_/id/50417051/alabama-execution-exposes-lsu-gap-effort-results",
-      "source": "ESPN",
-      "published_at": "2026-11-08T04:50:07Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "72bc934e2d183456",
-      "title": "Oklahoma's Hansen credits Witten for stepping in as offensive play-caller",
-      "summary": "Hayden Hansen joins SEC Football Final to praise Jason Witten's impact as the Sooners' new offensive play-caller after Oklahoma's win over No. 24 Florida.",
-      "url": "https://www.espn.com/video/clip/_/id/50417027/oklahoma-hansen-credits-witten-stepping-offensive-play-caller",
-      "source": "ESPN",
-      "published_at": "2026-11-08T04:46:03Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f82230149b7751ac",
-      "title": "Gunner Stockton, Georgia dominate Ole Miss 42-7",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50416661/gunner-stockton-georgia-dominate-ole-miss-42-7",
-      "source": "ESPN",
-      "published_at": "2026-11-08T04:37:56Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "aefc641e1f76b9a0",
-      "title": "Oklahoma Sooners vs. Florida Gators: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50416812/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-08T04:37:21Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "45b1f4c558ee75ba",
-      "title": "Who has the most wins vs. No. 1 college football teams?",
-      "summary": "Alabama has won the most games vs. No. 1-ranked teams in college football history. See which teams make the rest of the list.",
-      "url": "https://www.espn.com/college-football/story/_/id/41698842/who-most-wins-vs-no-1-college-football-teams",
-      "source": "ESPN",
-      "published_at": "2026-11-08T04:08:42Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4f220cc5812f2ba6",
-      "title": "Utah Valley Wolverines vs. Weber State Wildcats: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50416643/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-08T04:07:00Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1216c5d5c89ded0e",
-      "title": "West Florida Argonauts vs. North Alabama Lions: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50416268/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-08T03:31:50Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0d58a3e8f8bcf078",
-      "title": "Tennessee wins big over Kentucky at home",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50416071/tennessee-wins-big-kentucky-home",
-      "source": "ESPN",
-      "published_at": "2026-11-08T03:30:20Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "35be55db4a95a2ab",
-      "title": "Utah Tech vs. UC Davis Aggies: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50416095/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-08T03:14:01Z",
-      "sport": "football",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "cda973a0e2107f4e",
-      "title": "Abilene Christian Wildcats vs. Tarleton Texans: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50416073/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-08T03:09:43Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
       ],
       "breaking": false
     },
