@@ -1,126 +1,100 @@
 {
-  "updated_at": "2026-11-07T22:47:05.203712Z",
-  "checked_at": "2026-11-07T22:47:05.203712Z",
+  "updated_at": "2026-11-08T02:31:16.401626Z",
+  "checked_at": "2026-11-08T02:31:16.401626Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "4c3fdb0380f3879d",
-      "title": "VMI Keydets vs. Tennessee Tech Golden Eagles: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50413133/full-highlights",
+      "id": "4831977eb5b97a78",
+      "title": "LSU flops on fourth downs in 'really disappointing' loss",
+      "summary": "In a matchup of CFP hopefuls, No. 14 LSU outgained No.",
+      "url": "https://www.espn.com/college-football/story/_/id/50415401/lsu-flops-fourth-downs-really-disappointing-loss",
       "source": "ESPN",
-      "published_at": "2026-11-07T22:45:08Z",
+      "published_at": "2026-11-08T02:26:48Z",
       "sport": "football",
       "teams": [
-        "Tennessee"
+        "Alabama",
+        "LSU"
       ],
       "breaking": false
     },
     {
-      "id": "d0d26d8c7f360eb1",
-      "title": "Arkansas Razorbacks vs. Auburn Tigers: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50412219/full-highlights",
+      "id": "a47c3dceeb12c26a",
+      "title": "Former coach Urban Meyer inducted into Florida's ring of honor",
+      "summary": "Former Florida coach Urban Meyer, whose teams won two national titles, was inducted into the Gators' ring of honor Saturday night.",
+      "url": "https://www.espn.com/college-football/story/_/id/50415468/former-coach-urban-meyer-inducted-florida-ring-honor",
       "source": "ESPN",
-      "published_at": "2026-11-07T21:42:51Z",
+      "published_at": "2026-11-08T02:21:17Z",
+      "sport": "football",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "45ca187d193d6c91",
+      "title": "Mercer Bears vs. Davidson Wildcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50415472/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-08T02:13:53Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d66014bd3522f510",
+      "title": "West Georgia Wolves vs. Central Arkansas Bears: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50414823/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-08T01:08:44Z",
       "sport": "football",
       "teams": [
         "Arkansas",
-        "Auburn"
+        "Georgia"
       ],
       "breaking": false
     },
     {
-      "id": "246c8f108af95627",
-      "title": "Samford Bulldogs vs. East Tennessee State Buccaneers: Full Highlights",
+      "id": "ee17856a5b28c262",
+      "title": "Missouri State Bears vs. Florida International Panthers: Full Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50412229/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50414820/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-07T21:36:37Z",
+      "published_at": "2026-11-08T01:08:37Z",
+      "sport": "football",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "fbe250ca48b92941",
+      "title": "Vanderbilt Commodores vs. Mississippi State Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50414560/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-08T00:58:14Z",
       "sport": "football",
       "teams": [
         "Georgia",
-        "Tennessee"
+        "Mississippi State",
+        "Vanderbilt"
       ],
       "breaking": false
     },
     {
-      "id": "c823bde12aad082b",
-      "title": "Stetson Hatters vs. Davidson Wildcats: Full Highlights",
+      "id": "3d3781f7ace6ffc0",
+      "title": "Western Carolina Catamounts vs. UNC Asheville Bulldogs: Game Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50412007/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50414652/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-07T21:15:56Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f55445c451cc177b",
-      "title": "Arch Manning, defense help No. 7 Texas rally past Missouri",
-      "summary": "Arch Manning threw for three TDs, including the go-ahead score to Raleek Brown with just over five minutes to go, as No. 7 Texas rallied past No. 18 Missouri.",
-      "url": "https://www.espn.com/college-football/story/_/id/50411883/arch-manning-defense-help-no-7-texas-rally-missouri",
-      "source": "ESPN",
-      "published_at": "2026-11-07T21:12:50Z",
-      "sport": "football",
-      "teams": [
-        "Missouri",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "47dc5b4cd47d33a1",
-      "title": "San Diego Toreros vs. Drake Bulldogs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50411916/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-07T21:10:11Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0a0cb14db8b20292",
-      "title": "Texas Longhorns vs. Missouri Tigers: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50411646/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-07T21:08:28Z",
-      "sport": "football",
-      "teams": [
-        "Missouri",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "9e6d3e12c65437bf",
-      "title": "Richmond Spiders vs. Villanova Wildcats: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50411836/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-07T21:03:53Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e6bd2bef3aebc257",
-      "title": "Boyce Bulldogs vs. Liberty Flames: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50411682/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-07T20:54:42Z",
+      "published_at": "2026-11-08T00:50:49Z",
       "sport": "basketball",
       "teams": [
         "Georgia"
@@ -128,41 +102,83 @@
       "breaking": false
     },
     {
-      "id": "c54575bd3e803ac4",
-      "title": "North Carolina A&T Aggies vs. Ohio Bobcats: Game Highlights",
+      "id": "172f368aa722c309",
+      "title": "East Texas A&M Lions vs. Nicholls Colonels: Full Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50410922/game-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50414583/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-07T20:18:54Z",
-      "sport": "basketball",
+      "published_at": "2026-11-08T00:44:20Z",
+      "sport": "football",
       "teams": [
         "Texas A&M"
       ],
       "breaking": false
     },
     {
-      "id": "7a633698b52b7819",
-      "title": "Fighting Tigers vs. Georgia St Panthers: Game Highlights",
+      "id": "d66b02f059569725",
+      "title": "Western Kentucky Hilltoppers vs. Middle Tennessee Blue Raiders: Full Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50410684/game-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50414519/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-07T19:57:01Z",
-      "sport": "basketball",
+      "published_at": "2026-11-08T00:40:13Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "330e1d05ee6fe927",
+      "title": "Louisiana Tech Bulldogs vs. Troy Trojans: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50414513/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-08T00:39:41Z",
+      "sport": "football",
       "teams": [
         "Georgia"
       ],
       "breaking": false
     },
     {
-      "id": "3f1fd4677e50c9b7",
-      "title": "North Florida Ospreys vs. UCLA Bruins: Game Highlights",
+      "id": "30dd1b86eebf532e",
+      "title": "Alabama trounces LSU 31-13 in Baton Rouge",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50405442/game-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50414109/alabama-trounces-lsu-31-13-baton-rouge",
       "source": "ESPN",
-      "published_at": "2026-11-07T05:57:20Z",
+      "published_at": "2026-11-08T00:32:04Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b5676411ccc21674",
+      "title": "Eastern Kentucky Colonels vs. Austin Peay Governors: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50414379/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-08T00:27:53Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5d533c1a0b9c0795",
+      "title": "New Mexico State Aggies vs. Gonzaga Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50414332/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-08T00:24:16Z",
       "sport": "basketball",
       "teams": [
-        "Florida"
+        "Georgia",
+        "Texas A&M"
       ],
       "breaking": false
     },
