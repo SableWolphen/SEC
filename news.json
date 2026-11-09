@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-09T00:56:34.988738Z",
-  "checked_at": "2026-11-09T00:56:34.988738Z",
+  "updated_at": "2026-11-09T08:00:31.119606Z",
+  "checked_at": "2026-11-09T08:00:31.119606Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -60,20 +60,6 @@
       "breaking": false
     },
     {
-      "id": "b67ef1f13240dc80",
-      "title": "Southeast Missouri State Redhawks vs. South Carolina Gamecocks: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50423464/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-08T21:32:14Z",
-      "sport": "basketball",
-      "teams": [
-        "Missouri",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
       "id": "78404eb96f580a7f",
       "title": "Kory Mincy on being versatile for South Carolina: 'I just let the game dictate itself'",
       "summary": "After scoring 15 second-half points in the win against SEMO, Mincy discusses how the depth of the Gamecocks and his ability allows him to play the pace of the game.",
@@ -96,19 +82,6 @@
       "sport": "basketball",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "05e31707da2032c5",
-      "title": "Fairfield Stags vs. Bryant Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50423327/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-08T20:05:06Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
       ],
       "breaking": false
     },
