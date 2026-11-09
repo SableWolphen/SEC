@@ -1,45 +1,32 @@
 {
-  "updated_at": "2026-11-09T08:00:31.119606Z",
-  "checked_at": "2026-11-09T08:00:31.119606Z",
+  "updated_at": "2026-11-09T18:51:00.943074Z",
+  "checked_at": "2026-11-09T18:51:00.943074Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "9f90a699e4805ca1",
-      "title": "Arkansas Razorbacks vs. Virginia Cavaliers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50423578/game-highlights",
+      "id": "db71ca19993ee51c",
+      "title": "UCLA hops into top 10 of men's AP Top 25 hoops poll, while Florida remains No. 1",
+      "summary": "UCLA jumped into the top 10 of the Associated Press Top 25 men's basketball poll, while Florida, Duke and Illinois topped the rankings.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50434211/ucla-climbs-top-10-men-ap-hoops-poll-florida-no-1",
       "source": "ESPN",
-      "published_at": "2026-11-08T23:36:04Z",
+      "published_at": "2026-11-09T18:32:11Z",
       "sport": "basketball",
       "teams": [
-        "Arkansas"
+        "Florida"
       ],
       "breaking": false
     },
     {
-      "id": "581a9b3d179a48ec",
-      "title": "Connelly: How Week 10's top games were won, what it means for CFP",
-      "summary": "From Notre Dame's CJ Carr to Alabama's consistency, we examine the keys to victory on a statement Saturday.",
-      "url": "https://www.espn.com/college-football/story/_/id/50420955/connelly-how-week-10-biggest-games-won",
+      "id": "a8288b0e388c7e26",
+      "title": "Tennessee loses top pass rusher Tyree Weathersby for season",
+      "summary": "Tennessee's most productive pass rusher, Tyree Weathersby, will miss the rest of the season after suffering a leg injury during Saturday's win over Kentucky.",
+      "url": "https://www.espn.com/college-football/story/_/id/50434137/tennessee-loses-top-pass-rusher-tyree-weathersby-season",
       "source": "ESPN",
-      "published_at": "2026-11-08T23:22:19Z",
+      "published_at": "2026-11-09T18:12:38Z",
       "sport": "football",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "99d87349350bd492",
-      "title": "Western Kentucky Hilltoppers vs. Tennessee Tech Golden Eagles: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50426242/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-08T23:03:17Z",
-      "sport": "basketball",
       "teams": [
         "Kentucky",
         "Tennessee"
@@ -47,43 +34,57 @@
       "breaking": false
     },
     {
-      "id": "babc1f2f58565f3c",
-      "title": "Southern Jaguars vs. Drake Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50425851/game-highlights",
+      "id": "df4be7b312171ae7",
+      "title": "Alabama TE Josh Ford out for season with lower-body injury",
+      "summary": "Alabama starting tight end Josh Ford, who played with a broken arm the last month, will likely miss the rest of the season with a lower-body injury, coach Kalen DeBoer told reporters on Monday.",
+      "url": "https://www.espn.com/college-football/story/_/id/50433953/alabama-te-josh-ford-season-lower-body-injury",
       "source": "ESPN",
-      "published_at": "2026-11-08T22:32:40Z",
+      "published_at": "2026-11-09T18:10:58Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "b64f787c173c0129",
+      "title": "Breaking down the men's 2026-27 AP week 1 Top 25 basketball poll",
+      "summary": "Stats, records and upcoming games for the top 25 teams in the men's AP Poll. Florida is No. 1.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50431758/ap-mens-top-25-poll-reaction-2026-27-week-1",
+      "source": "ESPN",
+      "published_at": "2026-11-09T18:10:47Z",
       "sport": "basketball",
       "teams": [
-        "Georgia"
+        "Florida"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "581a9b3d179a48ec",
+      "title": "Connelly: How Week 10's top games were won, what it means for CFP",
+      "summary": "From Notre Dame's CJ Carr to Alabama's consistency, we examine the keys to victory on a statement Saturday.",
+      "url": "https://www.espn.com/college-football/story/_/id/50420955/connelly-how-week-10-biggest-games-won",
+      "source": "ESPN",
+      "published_at": "2026-11-09T17:09:14Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
       ],
       "breaking": false
     },
     {
-      "id": "78404eb96f580a7f",
-      "title": "Kory Mincy on being versatile for South Carolina: 'I just let the game dictate itself'",
-      "summary": "After scoring 15 second-half points in the win against SEMO, Mincy discusses how the depth of the Gamecocks and his ability allows him to play the pace of the game.",
-      "url": "https://www.espn.com/video/clip/_/id/50424490/just-let-game-dictate-itself",
+      "id": "3d073cea3e33780c",
+      "title": "5-star tackle Mark Matthews commits to Georgia after dropping pledge to Texas A&M",
+      "summary": "5-star offensive tackle Mark Matthews has committed to Georgia 24 hours after decommitting from Texas A&M.",
+      "url": "https://www.espn.com/college-football/story/_/id/50433468/5-star-ot-espn-no-6-recruit-mark-matthews-commits-georgia",
       "source": "ESPN",
-      "published_at": "2026-11-08T21:10:08Z",
-      "sport": "basketball",
+      "published_at": "2026-11-09T16:50:55Z",
+      "sport": "football",
       "teams": [
-        "South Carolina"
+        "Georgia",
+        "Texas A&M"
       ],
-      "breaking": false
-    },
-    {
-      "id": "493a7bc816d222eb",
-      "title": "Sacred Heart Pioneers vs. New Hampshire Wildcats: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50423622/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-08T20:26:02Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
+      "breaking": true
     },
     {
       "id": "67bb810e33410a1c",
