@@ -1,11 +1,78 @@
 {
-  "updated_at": "2026-11-08T21:13:05.807501Z",
-  "checked_at": "2026-11-08T21:13:05.807501Z",
+  "updated_at": "2026-11-09T00:56:34.988738Z",
+  "checked_at": "2026-11-09T00:56:34.988738Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "9f90a699e4805ca1",
+      "title": "Arkansas Razorbacks vs. Virginia Cavaliers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50423578/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-08T23:36:04Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "581a9b3d179a48ec",
+      "title": "Connelly: How Week 10's top games were won, what it means for CFP",
+      "summary": "From Notre Dame's CJ Carr to Alabama's consistency, we examine the keys to victory on a statement Saturday.",
+      "url": "https://www.espn.com/college-football/story/_/id/50420955/connelly-how-week-10-biggest-games-won",
+      "source": "ESPN",
+      "published_at": "2026-11-08T23:22:19Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "99d87349350bd492",
+      "title": "Western Kentucky Hilltoppers vs. Tennessee Tech Golden Eagles: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50426242/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-08T23:03:17Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "babc1f2f58565f3c",
+      "title": "Southern Jaguars vs. Drake Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50425851/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-08T22:32:40Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b67ef1f13240dc80",
+      "title": "Southeast Missouri State Redhawks vs. South Carolina Gamecocks: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50423464/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-08T21:32:14Z",
+      "sport": "basketball",
+      "teams": [
+        "Missouri",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
     {
       "id": "78404eb96f580a7f",
       "title": "Kory Mincy on being versatile for South Carolina: 'I just let the game dictate itself'",
@@ -29,33 +96,6 @@
       "sport": "basketball",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "9f90a699e4805ca1",
-      "title": "Arkansas Razorbacks vs. Virginia Cavaliers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50423578/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-08T20:23:20Z",
-      "sport": "basketball",
-      "teams": [
-        "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b67ef1f13240dc80",
-      "title": "Southeast Missouri State Redhawks vs. South Carolina Gamecocks: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50423464/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-08T20:20:23Z",
-      "sport": "basketball",
-      "teams": [
-        "Missouri",
-        "South Carolina"
       ],
       "breaking": false
     },
