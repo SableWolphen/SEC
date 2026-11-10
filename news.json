@@ -1,11 +1,78 @@
 {
-  "updated_at": "2026-11-10T17:54:25.372147Z",
-  "checked_at": "2026-11-10T17:54:25.372147Z",
+  "updated_at": "2026-11-10T23:26:57.353347Z",
+  "checked_at": "2026-11-10T23:26:57.353347Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "47e1bac05af43318",
+      "title": "Venables relays Witten's immediate impact on Oklahoma's offense",
+      "summary": "Following the Sooners' Week 10 victory over Florida, Brent Venables offers an in-depth look at how interim offensive coordinator Jason Witten has quickly made his mark on Oklahoma's offensive identity.",
+      "url": "https://www.espn.com/video/clip/_/id/50446600/venables-relays-witten-immediate-impact-oklahoma-offense",
+      "source": "ESPN",
+      "published_at": "2026-11-10T22:10:54Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5221f606fb80b1f4",
+      "title": "Kentucky's Will Stein: 'I think it's important that we keep our swag'",
+      "summary": "Following the Wildcats' second loss of the season, Stein says Kentucky remains one of the SEC's best teams and emphasizes the importance of regaining momentum against Florida in Week 11.",
+      "url": "https://www.espn.com/video/clip/_/id/50446540/think-important-keep-our-swag",
+      "source": "ESPN",
+      "published_at": "2026-11-10T22:02:25Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "37c8c0bb8f2928dc",
+      "title": "Mizzou's Drinkwitz questions need for conferences with 24-team CFP 1 check-h reaction.",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50445298/mizzou-drinkwitz-questions-need-conferences-24-team-cfp-1-check-h-reaction",
+      "source": "ESPN",
+      "published_at": "2026-11-10T20:25:00Z",
+      "sport": "football",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "2c44f6bda0902249",
+      "title": "Missouri's Eli Drinkwitz questions need for conferences in 24-team CFP era",
+      "summary": "Missouri's Eli Drinkwitz became the latest coach from a Power 4 school to ask if conferences are necessary anymore without title games in the 24-team CFP era.",
+      "url": "https://www.espn.com/college-football/story/_/id/50445136/eli-drinkwitz-questions-need-conferences-24-team-cfp",
+      "source": "ESPN",
+      "published_at": "2026-11-10T20:24:55Z",
+      "sport": "football",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3c3f31d7adb6bfa8",
+      "title": "Florida cancels Notre Dame series; Irish then add games vs. Washington",
+      "summary": "Florida has canceled a future home-and-home series vs. Notre Dame, freeing up the Irish to book a two-game series against Washington.",
+      "url": "https://www.espn.com/college-football/story/_/id/50445022/florida-cancels-notre-dame-series-irish-add-washington",
+      "source": "ESPN",
+      "published_at": "2026-11-10T20:18:54Z",
+      "sport": "football",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
     {
       "id": "7653b601572e7b3b",
       "title": "Stephen A. reacts to Tennessee men's basketball CBA deal",
