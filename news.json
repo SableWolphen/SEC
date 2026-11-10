@@ -1,111 +1,18 @@
 {
-  "updated_at": "2026-11-10T09:55:59.773965Z",
-  "checked_at": "2026-11-10T09:55:59.773965Z",
+  "updated_at": "2026-11-10T17:54:25.372147Z",
+  "checked_at": "2026-11-10T17:54:25.372147Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "17fb77ac9c1cc487",
-      "title": "Texas A&M teammates call Tyshawn Archie the toughest guy in Texas",
-      "summary": "Archie credits his teammates for giving him the confidence to thrive in Bucky Ball and explains why the Aggies are taking the season one game at a time.",
-      "url": "https://www.espn.com/video/clip/_/id/50439732/texas-teammates-call-tyshawn-archie-toughest-guy-texas",
-      "source": "ESPN",
-      "published_at": "2026-11-10T05:28:07Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "828bb5da83266ae4",
-      "title": "Tahaad Pettiford details Auburn's flow and rhythm after win vs. App State",
-      "summary": "Pettiford recaps his 26-point performance as he discusses the driving force for the Tigers and how their consistent flow impacted the victory over the Mountaineers.",
-      "url": "https://www.espn.com/video/clip/_/id/50439645/tahaad-pettiford-details-auburn-flow-rhythm-win-vs-app-state",
-      "source": "ESPN",
-      "published_at": "2026-11-10T05:15:33Z",
-      "sport": "basketball",
-      "teams": [
-        "Auburn"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "160853e846332352",
-      "title": "OU's Xzayvier Brown gives the shooters around him their due",
-      "summary": "Brown walks through what he saw on the floor against North Alabama and why he feels blessed to have sharpshooters for the Sooners that he can count on when he is ready to attack.",
-      "url": "https://www.espn.com/video/clip/_/id/50439467/ou-xzayvier-brown-gives-shooters-their-due",
-      "source": "ESPN",
-      "published_at": "2026-11-10T05:13:33Z",
-      "sport": "basketball",
-      "teams": [
-        "Alabama",
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "056b7f31b4c9f208",
-      "title": "Appalachian St Mountaineers vs. Auburn Tigers: Game Highlights",
+      "id": "7653b601572e7b3b",
+      "title": "Stephen A. reacts to Tennessee men's basketball CBA deal",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50439358/game-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50443287/stephen-reacts-tennessee-men-basketball-cba-deal",
       "source": "ESPN",
-      "published_at": "2026-11-10T04:20:16Z",
-      "sport": "basketball",
-      "teams": [
-        "Auburn"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "bb71154f0ffd7b9a",
-      "title": "Mizzou's Jason Crowe Jr. on his focus point in win vs. SIU Edwardsville",
-      "summary": "Crowe Jr. describes how he was able to keep his momentum up as he discusses what his mentality and focus point was to help the Tigers defeat the Cougars.",
-      "url": "https://www.espn.com/video/clip/_/id/50439040/mizzou-jason-crowe-jr-focus-point-win-vs-siu-edwardsville",
-      "source": "ESPN",
-      "published_at": "2026-11-10T03:59:04Z",
-      "sport": "basketball",
-      "teams": [
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "af415a70399e0d72",
-      "title": "Bama's London Jemison explains why he let the shots come to him",
-      "summary": "Jemison explains how waiting for his looks led to 7-for-7 shooting and 6-for-6 from deep, and what made the No. 18 Crimson Tide's 30-assist night vs. Oakland so fun.",
-      "url": "https://www.espn.com/video/clip/_/id/50438933/bama-london-jemison-explains-why-let-shots-come-him",
-      "source": "ESPN",
-      "published_at": "2026-11-10T03:55:07Z",
-      "sport": "basketball",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c3ba9460bac7d807",
-      "title": "UL Monroe Warhawks vs. Texas A&M Aggies: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50438741/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-10T03:23:44Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "89057b3e82cb69cc",
-      "title": "Fisk vs. Tennessee State Tigers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50438693/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-10T03:21:04Z",
+      "published_at": "2026-11-10T16:53:21Z",
       "sport": "basketball",
       "teams": [
         "Tennessee"
@@ -113,12 +20,25 @@
       "breaking": false
     },
     {
-      "id": "e1a12caf0aa9b881",
-      "title": "Boston University Terriers vs. Northwestern Wildcats: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50438680/game-highlights",
+      "id": "6957dccd1321d87d",
+      "title": "Tennessee, men's basketball team work on CBA-like deal",
+      "summary": "Tennessee's men's basketball team released a collective bargaining term sheet negotiated with the school that show how a CBA-like structure might work.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50442427/tennessee-men-basketball-team-work-cba-deal",
       "source": "ESPN",
-      "published_at": "2026-11-10T03:18:25Z",
+      "published_at": "2026-11-10T16:49:51Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "cf237874b31cd607",
+      "title": "Champions Classic 2026: Previewing Michigan State-Duke, Kansas-Kentucky",
+      "summary": "Here's how Duke, Michigan State, Kentucky and Kansas could each walk away with a marquee win.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50436123/champions-classic-2026-duke-michigan-state-kansas-kentucky",
+      "source": "ESPN",
+      "published_at": "2026-11-10T15:08:59Z",
       "sport": "basketball",
       "teams": [
         "Kentucky"
@@ -126,109 +46,15 @@
       "breaking": false
     },
     {
-      "id": "497ddc70102e21c0",
-      "title": "Louisiana Tech Bulldogs vs. LSU Tigers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50438679/game-highlights",
+      "id": "56ff77a82e67c3b2",
+      "title": "Will Muschamp brought 'boom' back to Texas' defense as new coordinator",
+      "summary": "While much attention has been on the Horns' offense, a newly aggressive D has kept them in the CFP hunt.",
+      "url": "https://www.espn.com/college-football/story/_/id/50435088/will-muschamp-texas-defense-boom",
       "source": "ESPN",
-      "published_at": "2026-11-10T03:17:36Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7550158eaaaa542f",
-      "title": "North Alabama Lions vs. Oklahoma Sooners: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50438673/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-10T03:16:37Z",
-      "sport": "basketball",
-      "teams": [
-        "Alabama",
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b1dcd331e665fd53",
-      "title": "MS State's Josh Hubbard recaps his career performance vs. Jackson State",
-      "summary": "Hubbard reflects on reaching 2,000 career points as he describes what was the motivating factor in the Bulldogs' victory against the Tigers.",
-      "url": "https://www.espn.com/video/clip/_/id/50438661/ms-state-josh-hubbard-recaps-career-performance-vs-jackson-state",
-      "source": "ESPN",
-      "published_at": "2026-11-10T03:15:27Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "9c1a808dd6bb2b97",
-      "title": "Terrence Hill Jr. details how No. 11 Tennessee challenged Radford",
-      "summary": "Hill Jr. recaps his performance as he credits his teammates for having his back and discusses the factors that led the Volunteers to a 70-47 win over the Highlanders.",
-      "url": "https://www.espn.com/video/clip/_/id/50438503/terrence-hill-jr-details-how-no-11-tennessee-challenged-radford",
-      "source": "ESPN",
-      "published_at": "2026-11-10T03:07:51Z",
-      "sport": "basketball",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b676bd6d5ee8e119",
-      "title": "'You can never settle': Matas Vokietaitis sets the tone for Texas",
-      "summary": "Vokietaitis calls his 8-for-12 night vs. Grambling the standard and shares how he's working on his free throws as the No. 7 Longhorns look to improve every day.",
-      "url": "https://www.espn.com/video/clip/_/id/50438460/matas-vokietaitis-sets-tone-texas",
-      "source": "ESPN",
-      "published_at": "2026-11-10T02:56:56Z",
-      "sport": "basketball",
+      "published_at": "2026-11-10T11:21:35Z",
+      "sport": "football",
       "teams": [
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7c583b6b890870bb",
-      "title": "Florida A&M Rattlers vs. UAB Blazers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50438331/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-10T02:39:59Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6dbfd9290bf40e6e",
-      "title": "Oakland Golden Grizzlies vs. Alabama Crimson Tide: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50438325/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-10T02:38:30Z",
-      "sport": "basketball",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "53108c2af5922329",
-      "title": "Jackson State Tigers vs. Mississippi State Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50438272/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-10T02:33:12Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia",
-        "Mississippi State"
       ],
       "breaking": false
     },
