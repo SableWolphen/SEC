@@ -1,11 +1,184 @@
 {
-  "updated_at": "2026-11-10T23:26:57.353347Z",
-  "checked_at": "2026-11-10T23:26:57.353347Z",
+  "updated_at": "2026-11-11T06:32:52.266781Z",
+  "checked_at": "2026-11-11T06:32:52.266781Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "bbdb486cba5eb225",
+      "title": "SEC Now's initial reaction to the latest CFP rankings",
+      "summary": "SEC Network's Roman Harper, Matt Stinchcomb and Dari Nowkhah break down the College Football Playoff committee's newest rankings and discuss Bama sitting pretty and the Vols trying to climb.",
+      "url": "https://www.espn.com/video/clip/_/id/50450685/sec-now-initial-reaction-latest-cfp-rankings",
+      "source": "ESPN",
+      "published_at": "2026-11-11T06:03:37Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3bc08672569a3413",
+      "title": "Kansas Jayhawks vs. Kentucky Wildcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50450538/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-11T05:36:27Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0cc06da728f7dd71",
+      "title": "Showtime! Vanderbilt turns defense into offense in dazzling sequence",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50450434/show-vanderbilt-turns-defense-offense-dazzling-sequence",
+      "source": "ESPN",
+      "published_at": "2026-11-11T05:18:35Z",
+      "sport": "basketball",
+      "teams": [
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9b7cb9cbde31c452",
+      "title": "How No. 6 Texas can neutralize No. 21 LSU's defense with Raleek Brown",
+      "summary": "With Brown stepping into a larger role following Hollywood Smothers' injury, SEC Network's Roman Harper and Matt Stinchcomb explain how the Longhorns' run game can help loosen up the Tigers' defense.",
+      "url": "https://www.espn.com/video/clip/_/id/50450375/how-no-6-texas-neutralize-no-21-lsu-defense-raleek-brown",
+      "source": "ESPN",
+      "published_at": "2026-11-11T05:04:54Z",
+      "sport": "football",
+      "teams": [
+        "LSU",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "aeb90b2c34bbfa2b",
+      "title": "SEC Now crew tells fans which two-loss SEC teams will win out",
+      "summary": "SEC Network's Matt Stinchcomb, Roman Harper and Dari Nowkhah break down the flaws that could doom some of the SEC's top teams while picking which teams will avoid taking another loss.",
+      "url": "https://www.espn.com/video/clip/_/id/50450216/sec-now-crew-tells-fans-which-two-loss-sec-teams-win-out",
+      "source": "ESPN",
+      "published_at": "2026-11-11T05:02:45Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "549f8a86043e3496",
+      "title": "Analyzing the tape on Bama's Keelon Russell dicing up LSU",
+      "summary": "SEC Network's Roman Harper and Matt Stinchcomb break down the offensive gameplan that helped Russell produce big plays and touchdowns in a great game against the Tigers.",
+      "url": "https://www.espn.com/video/clip/_/id/50450258/analyzing-tape-bama-keelon-russell-dicing-lsu",
+      "source": "ESPN",
+      "published_at": "2026-11-11T05:02:32Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "97fea950145ba899",
+      "title": "Georgia jumps into CFP's top spot, followed by Utah, Alabama, UCLA",
+      "summary": "Kirby Smart and the Georgia Bulldogs, fresh off a convincing victory at Ole Miss on Saturday, leaped into the No.",
+      "url": "https://www.espn.com/college-football/story/_/id/50448424/georgia-takes-cfp-top-spot-notre-dame-leaps-no-5",
+      "source": "ESPN",
+      "published_at": "2026-11-11T04:58:58Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "fb8c185b0201a0bf",
+      "title": "Weber State Wildcats vs. Utah Utes: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50449964/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-11T04:19:42Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7c295dc4c6b839fb",
+      "title": "Budd Clark discusses why Ole Miss is having so much fun on the court",
+      "summary": "Clark speaks to the Rebels' emphasis on defense after his 23-point performance and says this squad has a lot of fun together.",
+      "url": "https://www.espn.com/video/clip/_/id/50449893/budd-clark-discusses-why-ole-miss-having-much-fun-court",
+      "source": "ESPN",
+      "published_at": "2026-11-11T04:10:39Z",
+      "sport": "basketball",
+      "teams": [
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "201fa64cea7e79b1",
+      "title": "SE Louisiana Lions vs. Ole Miss Rebels: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50449695/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-11T03:53:31Z",
+      "sport": "basketball",
+      "teams": [
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c345a3ad79f55bd2",
+      "title": "Georgia, Utah lead the second College Football Playoff rankings of 2026",
+      "summary": "Here's everything you need to know from the second College Football Playoff rankings revealed on November 10, 2026.",
+      "url": "https://www.ncaa.com/news/football/article/2026-11-10/georgia-utah-lead-second-college-football-playoff-rankings-2026",
+      "source": "NCAA",
+      "published_at": "2026-11-11T03:44:40Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "14f82e46887f05e0",
+      "title": "Shane Beamer: 'There's nothing like the SEC Championship Game'",
+      "summary": "South Carolina's Beamer shares SEC Championship stories from various points in his career, discussing how it's atmosphere outshines that of even the national title game.",
+      "url": "https://www.espn.com/video/clip/_/id/50447384/there-sec-championship-game",
+      "source": "ESPN",
+      "published_at": "2026-11-11T00:09:56Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "edd6b330495b9b89",
+      "title": "Mizzou's Drinkwitz: Smart's 'program is the benchmark for the SEC'",
+      "summary": "Eliah Drinkwitz says he's looking forward to seeing how the Tigers \"measure up vs. the No. 1 team in the country\" and details his deep respect for Kirby Smart and Georgia.",
+      "url": "https://www.espn.com/video/clip/_/id/50447145/smart-program-benchmark-sec",
+      "source": "ESPN",
+      "published_at": "2026-11-10T23:40:28Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Missouri"
+      ],
+      "breaking": false
+    },
     {
       "id": "47e1bac05af43318",
       "title": "Venables relays Witten's immediate impact on Oklahoma's offense",
@@ -70,45 +243,6 @@
       "sport": "football",
       "teams": [
         "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7653b601572e7b3b",
-      "title": "Stephen A. reacts to Tennessee men's basketball CBA deal",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50443287/stephen-reacts-tennessee-men-basketball-cba-deal",
-      "source": "ESPN",
-      "published_at": "2026-11-10T16:53:21Z",
-      "sport": "basketball",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6957dccd1321d87d",
-      "title": "Tennessee, men's basketball team work on CBA-like deal",
-      "summary": "Tennessee's men's basketball team released a collective bargaining term sheet negotiated with the school that show how a CBA-like structure might work.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50442427/tennessee-men-basketball-team-work-cba-deal",
-      "source": "ESPN",
-      "published_at": "2026-11-10T16:49:51Z",
-      "sport": "basketball",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "cf237874b31cd607",
-      "title": "Champions Classic 2026: Previewing Michigan State-Duke, Kansas-Kentucky",
-      "summary": "Here's how Duke, Michigan State, Kentucky and Kansas could each walk away with a marquee win.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50436123/champions-classic-2026-duke-michigan-state-kansas-kentucky",
-      "source": "ESPN",
-      "published_at": "2026-11-10T15:08:59Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
       ],
       "breaking": false
     },
@@ -294,71 +428,6 @@
       "sport": "football",
       "teams": [
         "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3b0bc433c1fc499f",
-      "title": "Steve Sarkisian on Texas: 'We can play with anybody'",
-      "summary": "Asked whether the Longhorns are one of college football's elite teams, Sarkisian points to other contenders but says Texas can play with anyone.",
-      "url": "https://www.espn.com/video/clip/_/id/50434824/play-anybody",
-      "source": "ESPN",
-      "published_at": "2026-11-09T20:10:23Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "71fbc50e4b340f69",
-      "title": "Which three-loss SEC team has the strongest CFP resume?",
-      "summary": "SEC This Morning's Chris Doering and Peter Burns compare blind resumes of four three-loss SEC teams, debating which has the strongest and weakest case for a College Football Playoff berth.",
-      "url": "https://www.espn.com/video/clip/_/id/50434816/which-three-loss-sec-team-strongest-cfp-resume",
-      "source": "ESPN",
-      "published_at": "2026-11-09T20:08:42Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "a8288b0e388c7e26",
-      "title": "Tennessee loses top pass rusher Tyree Weathersby for season",
-      "summary": "Tennessee's most productive pass rusher, Tyree Weathersby, will miss the rest of the season after suffering a leg injury during Saturday's win over Kentucky.",
-      "url": "https://www.espn.com/college-football/story/_/id/50434137/tennessee-loses-top-pass-rusher-tyree-weathersby-season",
-      "source": "ESPN",
-      "published_at": "2026-11-09T18:12:38Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "df4be7b312171ae7",
-      "title": "Alabama TE Josh Ford out for season with lower-body injury",
-      "summary": "Alabama starting tight end Josh Ford, who played with a broken arm the last month, will likely miss the rest of the season with a lower-body injury, coach Kalen DeBoer told reporters on Monday.",
-      "url": "https://www.espn.com/college-football/story/_/id/50433953/alabama-te-josh-ford-season-lower-body-injury",
-      "source": "ESPN",
-      "published_at": "2026-11-09T18:10:58Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3d073cea3e33780c",
-      "title": "5-star tackle Mark Matthews commits to Georgia after dropping pledge to Texas A&M",
-      "summary": "5-star offensive tackle Mark Matthews has committed to Georgia 24 hours after decommitting from Texas A&M.",
-      "url": "https://www.espn.com/college-football/story/_/id/50433468/5-star-ot-espn-no-6-recruit-mark-matthews-commits-georgia",
-      "source": "ESPN",
-      "published_at": "2026-11-09T16:50:55Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Texas A&M"
       ],
       "breaking": false
     },
