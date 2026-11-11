@@ -1,22 +1,88 @@
 {
-  "updated_at": "2026-11-11T06:32:52.266781Z",
-  "checked_at": "2026-11-11T06:32:52.266781Z",
+  "updated_at": "2026-11-11T15:17:44.121168Z",
+  "checked_at": "2026-11-11T15:17:44.121168Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "33873f4bbfb19b22",
+      "title": "Why Jordan Rodgers has an issue with Tennessee's CFP rank behind Bama",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50452612/why-jordan-rodgers-issue-tennessee-cfp-rank-bama",
+      "source": "ESPN",
+      "published_at": "2026-11-11T14:05:49Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "aeb90b2c34bbfa2b",
+      "title": "SEC Now crew tells fans which two-loss SEC teams will win out",
+      "summary": "SEC Network's Matt Stinchcomb, Roman Harper and Dari Nowkhah break down the flaws that could doom some of the SEC's top teams while picking which teams will avoid taking another loss.",
+      "url": "https://www.espn.com/video/clip/_/id/50450216/sec-now-crew-tells-fans-which-two-loss-sec-teams-win-out",
+      "source": "ESPN",
+      "published_at": "2026-11-11T13:48:59Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "9b7cb9cbde31c452",
+      "title": "How No. 6 Texas can neutralize No. 21 LSU's defense with Raleek Brown",
+      "summary": "With Brown stepping into a larger role following Hollywood Smothers' injury, SEC Network's Roman Harper and Matt Stinchcomb explain how the Longhorns' run game can help loosen up the Tigers' defense.",
+      "url": "https://www.espn.com/video/clip/_/id/50450375/how-no-6-texas-neutralize-no-21-lsu-defense-raleek-brown",
+      "source": "ESPN",
+      "published_at": "2026-11-11T13:48:06Z",
+      "sport": "football",
+      "teams": [
+        "LSU",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
       "id": "bbdb486cba5eb225",
       "title": "SEC Now's initial reaction to the latest CFP rankings",
       "summary": "SEC Network's Roman Harper, Matt Stinchcomb and Dari Nowkhah break down the College Football Playoff committee's newest rankings and discuss Bama sitting pretty and the Vols trying to climb.",
       "url": "https://www.espn.com/video/clip/_/id/50450685/sec-now-initial-reaction-latest-cfp-rankings",
       "source": "ESPN",
-      "published_at": "2026-11-11T06:03:37Z",
+      "published_at": "2026-11-11T13:47:15Z",
       "sport": "football",
       "teams": [
         "Alabama",
         "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c8e581c7de688fcb",
+      "title": "Kentucky native Tyran Stokes makes it 'personal' in Kansas' win over Wildcats",
+      "summary": "Tyran Stokes, Kansas' five-star recruit who grew up in Louisville, Kentucky, said his dominant performance in the Jayhawks' 89-69 victory over Kentucky on Tuesday night in the Champions Classic nightcap at…",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50450944/tyran-stokes-makes-personal-kansas-defeats-kentucky",
+      "source": "ESPN",
+      "published_at": "2026-11-11T13:10:46Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "eabfbd825a0242b0",
+      "title": "LSU-Texas best bets: Will Saturday in Baton Rouge be a defensive struggle?",
+      "summary": "Let's find the best betting angle for Texas and LSU in a game neither team can afford to lose.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50444351/college-football-betting-week-11-lsu-texas",
+      "source": "ESPN",
+      "published_at": "2026-11-11T12:01:46Z",
+      "sport": "football",
+      "teams": [
+        "LSU",
+        "Texas"
       ],
       "breaking": false
     },
@@ -47,31 +113,6 @@
       "breaking": false
     },
     {
-      "id": "9b7cb9cbde31c452",
-      "title": "How No. 6 Texas can neutralize No. 21 LSU's defense with Raleek Brown",
-      "summary": "With Brown stepping into a larger role following Hollywood Smothers' injury, SEC Network's Roman Harper and Matt Stinchcomb explain how the Longhorns' run game can help loosen up the Tigers' defense.",
-      "url": "https://www.espn.com/video/clip/_/id/50450375/how-no-6-texas-neutralize-no-21-lsu-defense-raleek-brown",
-      "source": "ESPN",
-      "published_at": "2026-11-11T05:04:54Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "aeb90b2c34bbfa2b",
-      "title": "SEC Now crew tells fans which two-loss SEC teams will win out",
-      "summary": "SEC Network's Matt Stinchcomb, Roman Harper and Dari Nowkhah break down the flaws that could doom some of the SEC's top teams while picking which teams will avoid taking another loss.",
-      "url": "https://www.espn.com/video/clip/_/id/50450216/sec-now-crew-tells-fans-which-two-loss-sec-teams-win-out",
-      "source": "ESPN",
-      "published_at": "2026-11-11T05:02:45Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
       "id": "549f8a86043e3496",
       "title": "Analyzing the tape on Bama's Keelon Russell dicing up LSU",
       "summary": "SEC Network's Roman Harper and Matt Stinchcomb break down the offensive gameplan that helped Russell produce big plays and touchdowns in a great game against the Tigers.",
@@ -96,45 +137,6 @@
       "teams": [
         "Alabama",
         "Georgia",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "fb8c185b0201a0bf",
-      "title": "Weber State Wildcats vs. Utah Utes: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50449964/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-11T04:19:42Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7c295dc4c6b839fb",
-      "title": "Budd Clark discusses why Ole Miss is having so much fun on the court",
-      "summary": "Clark speaks to the Rebels' emphasis on defense after his 23-point performance and says this squad has a lot of fun together.",
-      "url": "https://www.espn.com/video/clip/_/id/50449893/budd-clark-discusses-why-ole-miss-having-much-fun-court",
-      "source": "ESPN",
-      "published_at": "2026-11-11T04:10:39Z",
-      "sport": "basketball",
-      "teams": [
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "201fa64cea7e79b1",
-      "title": "SE Louisiana Lions vs. Ole Miss Rebels: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50449695/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-11T03:53:31Z",
-      "sport": "basketball",
-      "teams": [
         "Ole Miss"
       ],
       "breaking": false
@@ -365,69 +367,6 @@
         "Auburn",
         "Georgia",
         "Mississippi State"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "eee2654f60b9e67d",
-      "title": "Sedrick Alexander credits teammates as Vandy TD record nears",
-      "summary": "With 33 career touchdowns from scrimmage, just two shy of Ralph Webb's school record (35), Alexander credits his teammates for his success on SEC This Morning.",
-      "url": "https://www.espn.com/video/clip/_/id/50435754/sedrick-alexander-credits-teammates-vandy-td-record-nears",
-      "source": "ESPN",
-      "published_at": "2026-11-09T22:05:33Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "51fa846503aa6b57",
-      "title": "UGA's Smart details what stands out about Mizzou's Simmons",
-      "summary": "Kirby Smart praises Missouri's Austin Simmons for his confidence and mechanics while also explaining how he keeps Georgia levelheaded amid the College Football Playoff rankings.",
-      "url": "https://www.espn.com/video/clip/_/id/50435068/uga-smart-details-stands-mizzou-simmons",
-      "source": "ESPN",
-      "published_at": "2026-11-09T20:44:40Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "60f8ab86f0c83e01",
-      "title": "Bless their hearts: Texas A&M, LSU WBB foes and Chris Doering",
-      "summary": "SEC This Morning's Peter Burns and Doering spotlight Texas A&M's touchdown woes, LSU WBB's overmatched opponents and Doering's birthday-game struggles.",
-      "url": "https://www.espn.com/video/clip/_/id/50434896/texas-lsu-wbb-foes-chris-doering",
-      "source": "ESPN",
-      "published_at": "2026-11-09T20:26:10Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "49d7b63ea1b5659b",
-      "title": "Kalen DeBoer discusses his thoughts on new CFP format, SEC Championship",
-      "summary": "As the College Football Playoff will expand to 24 teams, DeBoer explains his thoughts on the elimination of conference championships and scheduling in the new format.",
-      "url": "https://www.espn.com/video/clip/_/id/50434890/kalen-deboer-discusses-thoughts-new-cfp-format-sec-championship",
-      "source": "ESPN",
-      "published_at": "2026-11-09T20:22:22Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "5bdee297df7b6551",
-      "title": "Heupel breaks down success of new package with Vols' Brandon",
-      "summary": "As Faizon Brandon unveils a new wrinkle in Tennessee's offense, Josh Heupel explains how the formation can help the Volunteers grow and keep opposing defenses off balance.",
-      "url": "https://www.espn.com/video/clip/_/id/50434839/heupel-breaks-success-new-package-vols-brandon",
-      "source": "ESPN",
-      "published_at": "2026-11-09T20:19:31Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
       ],
       "breaking": false
     },
