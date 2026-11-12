@@ -1,22 +1,152 @@
 {
-  "updated_at": "2026-11-11T22:00:57.701859Z",
-  "checked_at": "2026-11-11T22:00:57.701859Z",
+  "updated_at": "2026-11-12T03:04:25.005181Z",
+  "checked_at": "2026-11-12T03:04:25.005181Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "0e8665899754c3f8",
+      "title": "Robert Morris Colonials vs. Arkansas Razorbacks: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50457923/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-12T02:56:46Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "24e66d5fd4151533",
+      "title": "UNC Asheville Bulldogs vs. West Georgia Wolves: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50457685/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-12T02:27:01Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5a118e691363b1b8",
+      "title": "Campbellsville Tigers vs. Western Kentucky Hilltoppers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50457678/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-12T02:25:47Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b1ad846d40b01da3",
+      "title": "Saint Peter's Peacocks vs. South Carolina Gamecocks: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50457592/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-12T02:18:37Z",
+      "sport": "basketball",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "bc41358defcb7ba1",
+      "title": "South Carolina State Bulldogs vs. Notre Dame Fighting Irish: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50457555/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-12T02:12:57Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5ae203c03b210724",
+      "title": "Campbell Fighting Camels vs. East Tennessee State Buccaneers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50457531/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-12T02:10:59Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "93ddd26138b93228",
+      "title": "Bob Jones University Bruins vs. South Carolina Upstate Spartans: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50457180/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-12T01:37:14Z",
+      "sport": "basketball",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "fa7883679d625e2a",
+      "title": "Texas LB Rasheem Biles values being a threat on and off the field",
+      "summary": "Biles joins The Paul Finebaum Show to describe how he takes pride in being a \"three-level threat\" on the field while being an active force for positive change in the community.",
+      "url": "https://www.espn.com/video/clip/_/id/50456985/texas-lb-rasheem-biles-values-being-threat-the-field",
+      "source": "ESPN",
+      "published_at": "2026-11-12T01:24:17Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "2f867445e53ad0f2",
+      "title": "Thomas Thomas (Me) vs. New Hampshire Wildcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50456860/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-12T01:03:13Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
       "id": "4395fd31ffbf6e16",
       "title": "Sources: Kamario Taylor finalizing deal to return to Mississippi State in '27",
       "summary": "Mississippi State star quarterback Kamario Taylor is finalizing a deal Wednesday to return to the Bulldogs in 2027, sources told ESPN.",
       "url": "https://www.espn.com/college-football/story/_/id/50455234/sources-kamario-taylor-return-mississippi-state-27",
       "source": "ESPN",
-      "published_at": "2026-11-11T21:45:53Z",
+      "published_at": "2026-11-12T00:12:39Z",
       "sport": "football",
       "teams": [
         "Georgia",
         "Mississippi State"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9f1ff44ce7ab6764",
+      "title": "North Carolina A&T Aggies vs. East Carolina Pirates: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50456135/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-11T23:35:07Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas A&M"
       ],
       "breaking": false
     },
@@ -31,19 +161,6 @@
       "teams": [
         "LSU",
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a6ee1f9c0ceaf8ee",
-      "title": "Fairleigh Dickinson Knights vs. East Texas A&M Lions: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50454229/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-11T18:58:19Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas A&M"
       ],
       "breaking": false
     },
@@ -101,19 +218,6 @@
       "breaking": false
     },
     {
-      "id": "c8e581c7de688fcb",
-      "title": "Kentucky native Tyran Stokes makes it 'personal' in Kansas' win over Wildcats",
-      "summary": "Tyran Stokes, Kansas' five-star recruit who grew up in Louisville, Kentucky, said his dominant performance in the Jayhawks' 89-69 victory over Kentucky on Tuesday night in the Champions Classic nightcap at…",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50450944/tyran-stokes-makes-personal-kansas-defeats-kentucky",
-      "source": "ESPN",
-      "published_at": "2026-11-11T13:10:46Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
       "id": "eabfbd825a0242b0",
       "title": "LSU-Texas best bets: Will Saturday in Baton Rouge be a defensive struggle?",
       "summary": "Let's find the best betting angle for Texas and LSU in a game neither team can afford to lose.",
@@ -124,32 +228,6 @@
       "teams": [
         "LSU",
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3bc08672569a3413",
-      "title": "Kansas Jayhawks vs. Kentucky Wildcats: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50450538/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-11T05:36:27Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0cc06da728f7dd71",
-      "title": "Showtime! Vanderbilt turns defense into offense in dazzling sequence",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50450434/show-vanderbilt-turns-defense-offense-dazzling-sequence",
-      "source": "ESPN",
-      "published_at": "2026-11-11T05:18:35Z",
-      "sport": "basketball",
-      "teams": [
-        "Vanderbilt"
       ],
       "breaking": false
     },
@@ -286,46 +364,6 @@
       "sport": "football",
       "teams": [
         "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "56ff77a82e67c3b2",
-      "title": "Will Muschamp brought 'boom' back to Texas' defense as new coordinator",
-      "summary": "While much attention has been on the Horns' offense, a newly aggressive D has kept them in the CFP hunt.",
-      "url": "https://www.espn.com/college-football/story/_/id/50435088/will-muschamp-texas-defense-boom",
-      "source": "ESPN",
-      "published_at": "2026-11-10T11:21:35Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ffd0ae178b9b7473",
-      "title": "Block Party: Defense joins the party as Georgia puts belly on Ole Miss",
-      "summary": "SEC Network's Cole Cubelic invites everyone to the block party and gets entries from running backs and even a linebackers from a wild Week 10 in college football.",
-      "url": "https://www.espn.com/video/clip/_/id/50437031/defense-joins-party-georgia-puts-belly-ole-miss",
-      "source": "ESPN",
-      "published_at": "2026-11-10T00:20:41Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "dd0dc68f489e8a68",
-      "title": "Tennessee's Carter on facing Bishop in practice: 'Iron sharpens iron'",
-      "summary": "Carter explains how facing Bishop in practice sharpens the Vols and highlights Girls in Real Life Situations, the nonprofit he started with his mom to fund cancer research.",
-      "url": "https://www.espn.com/video/clip/_/id/50436970/iron-sharpens-iron",
-      "source": "ESPN",
-      "published_at": "2026-11-10T00:12:04Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
       ],
       "breaking": false
     },
