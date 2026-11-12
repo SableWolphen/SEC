@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-11T21:30:49.996443Z",
+  "updated_at": "2026-11-12T10:14:45.841103Z",
   "sports": {
     "basketball": {
       "season": 2027,
@@ -932,10 +932,10 @@
           "home_code": "2579",
           "away_name": "Saint Peter's Peacocks",
           "home_name": "South Carolina Gamecocks",
-          "away_score": null,
-          "home_score": null,
-          "winner_code": null,
-          "game_status": "scheduled",
+          "away_score": 41,
+          "home_score": 77,
+          "winner_code": "2579",
+          "game_status": "final",
           "source": "ESPN",
           "espn_event_id": "401921821"
         },
@@ -949,10 +949,10 @@
           "home_code": "8",
           "away_name": "Robert Morris Colonials",
           "home_name": "Arkansas Razorbacks",
-          "away_score": null,
-          "home_score": null,
-          "winner_code": null,
-          "game_status": "scheduled",
+          "away_score": 53,
+          "home_score": 76,
+          "winner_code": "8",
+          "game_status": "final",
           "source": "ESPN",
           "espn_event_id": "401928824"
         },
@@ -6675,22 +6675,22 @@
         "99": 32
       },
       "sec_team_game_counts": {
-        "201": 34,
-        "142": 36,
-        "2579": 35,
-        "245": 34,
         "99": 35,
+        "8": 36,
+        "142": 36,
+        "245": 34,
+        "57": 35,
+        "333": 34,
         "251": 36,
         "145": 32,
-        "333": 34,
-        "2": 32,
-        "8": 36,
-        "61": 36,
         "238": 35,
+        "96": 34,
+        "201": 34,
+        "2579": 35,
+        "2": 32,
         "2633": 33,
         "344": 33,
-        "57": 35,
-        "96": 34
+        "61": 36
       },
       "warning": null
     },
@@ -6713,22 +6713,22 @@
         "99": 0
       },
       "sec_team_game_counts": {
-        "201": 0,
-        "142": 0,
-        "2579": 0,
-        "245": 0,
         "99": 0,
+        "8": 0,
+        "142": 0,
+        "245": 0,
+        "57": 0,
+        "333": 0,
         "251": 0,
         "145": 0,
-        "333": 0,
-        "2": 0,
-        "8": 0,
-        "61": 0,
         "238": 0,
+        "96": 0,
+        "201": 0,
+        "2579": 0,
+        "2": 0,
         "2633": 0,
         "344": 0,
-        "57": 0,
-        "96": 0
+        "61": 0
       },
       "warning": "No verified individual first-pitch times yet; SEC baseball weekend series previews remain available."
     }
