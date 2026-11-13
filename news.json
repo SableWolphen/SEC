@@ -1,47 +1,74 @@
 {
-  "updated_at": "2026-11-13T08:03:41.140711Z",
-  "checked_at": "2026-11-13T08:03:41.140711Z",
+  "updated_at": "2026-11-13T16:29:26.402457Z",
+  "checked_at": "2026-11-13T16:29:26.402457Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "5bc3fa5bdb49ddf2",
-      "title": "Texas A&M's Josh Irving speaks on building confidence offensively",
-      "summary": "Coming off the first double-double performance from an Aggie freshman since 2020, Irving explains how he's becoming more confident in shooting outside.",
-      "url": "https://www.espn.com/video/clip/_/id/50468638/texas-josh-irving-speaks-building-confidence-offensively",
+      "id": "8fd0820a09ac55f3",
+      "title": "Oklahoma adds Kamieon Compton-Nero to 2028 recruiting class",
+      "summary": "Oklahoma continued its impressive run on the recruiting trail with a commitment from four-star prospect Kamieon Compton-Nero, ESPN's No. 1 athlete for 2028.",
+      "url": "https://www.espn.com/college-football/story/_/id/50472366/oklahoma-adds-kamieon-compton-nero-2028-recruiting-class",
       "source": "ESPN",
-      "published_at": "2026-11-13T04:54:41Z",
-      "sport": "basketball",
+      "published_at": "2026-11-13T16:03:41Z",
+      "sport": "football",
       "teams": [
-        "Texas A&M"
+        "Oklahoma"
       ],
       "breaking": false
     },
     {
-      "id": "3e0edb53d8d99e1a",
-      "title": "Oklahoma State Cowboys vs. Texas A&M Aggies: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50468015/game-highlights",
+      "id": "5cd7d36bd0ff8639",
+      "title": "Connelly previews Week 11: 32 make-or-break showdowns",
+      "summary": "Week 11 brings SEC drama, Big 12 elimination games, and order vs. chaos in the Big Ten and ACC.",
+      "url": "https://www.espn.com/college-football/story/_/id/50462413/connelly-previews-week-11-texas-lsu",
       "source": "ESPN",
-      "published_at": "2026-11-13T03:39:16Z",
-      "sport": "basketball",
+      "published_at": "2026-11-13T15:48:08Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "88e051cec48905cc",
+      "title": "Can Lane Kiffin and LSU save their playoff hopes?",
+      "summary": "There is understandably little patience at LSU this season. Lane Kiffin's chance to turn things around starts this weekend against Texas.",
+      "url": "https://www.espn.com/college-football/story/_/id/50462068/lane-kiffin-lsu-playoff-expectations",
+      "source": "ESPN",
+      "published_at": "2026-11-13T15:43:27Z",
+      "sport": "football",
       "teams": [
-        "Texas A&M"
+        "LSU",
+        "Texas"
       ],
       "breaking": false
     },
     {
-      "id": "961f325c78a45049",
-      "title": "Tennessee Tech Golden Eagles vs. Indiana Hoosiers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50466864/game-highlights",
+      "id": "4a694183b0d6599b",
+      "title": "Source: Vols RB Daune Morris out vs. Aggies after being injured in car accident",
+      "summary": "Tennessee running back Daune Morris will miss Saturday's game at Texas A&M as a result of an injury he sustained during a car accident this week, a source told ESPN.",
+      "url": "https://www.espn.com/college-football/story/_/id/50471707/source-tennessee-rb-daune-morris-vs-texas-am",
       "source": "ESPN",
-      "published_at": "2026-11-13T01:59:37Z",
-      "sport": "basketball",
+      "published_at": "2026-11-13T14:54:24Z",
+      "sport": "football",
       "teams": [
-        "Tennessee"
+        "Tennessee",
+        "Texas A&M"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "bda7e7cbbcbb49c3",
+      "title": "The CFP implications of Texas-LSU",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50471089/the-cfp-implications-texas-lsu",
+      "source": "ESPN",
+      "published_at": "2026-11-13T14:18:55Z",
+      "sport": "football",
+      "teams": [
+        "LSU",
+        "Texas"
       ],
       "breaking": false
     },
@@ -96,19 +123,6 @@
       "sport": "football",
       "teams": [
         "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "41626a78008542f6",
-      "title": "Men's college basketball Power Rankings: A whole new list after two weeks of games",
-      "summary": "After two weeks of play, Florida tops the rankings, while Kansas and UCLA made big jumps with signature wins.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50453526/mens-college-basketball-power-rankings",
-      "source": "ESPN",
-      "published_at": "2026-11-12T17:17:55Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
       ],
       "breaking": false
     },
@@ -239,34 +253,6 @@
       "url": "https://www.espn.com/video/clip/_/id/50452612/why-jordan-rodgers-issue-tennessee-cfp-rank-bama",
       "source": "ESPN",
       "published_at": "2026-11-11T14:05:49Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "9b7cb9cbde31c452",
-      "title": "How No. 6 Texas can neutralize No. 21 LSU's defense with Raleek Brown",
-      "summary": "With Brown stepping into a larger role following Hollywood Smothers' injury, SEC Network's Roman Harper and Matt Stinchcomb explain how the Longhorns' run game can help loosen up the Tigers' defense.",
-      "url": "https://www.espn.com/video/clip/_/id/50450375/how-no-6-texas-neutralize-no-21-lsu-defense-raleek-brown",
-      "source": "ESPN",
-      "published_at": "2026-11-11T13:48:06Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "bbdb486cba5eb225",
-      "title": "SEC Now's initial reaction to the latest CFP rankings",
-      "summary": "SEC Network's Roman Harper, Matt Stinchcomb and Dari Nowkhah break down the College Football Playoff committee's newest rankings and discuss Bama sitting pretty and the Vols trying to climb.",
-      "url": "https://www.espn.com/video/clip/_/id/50450685/sec-now-initial-reaction-latest-cfp-rankings",
-      "source": "ESPN",
-      "published_at": "2026-11-11T13:47:15Z",
       "sport": "football",
       "teams": [
         "Alabama",
