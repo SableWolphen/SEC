@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12T21:34:18.826422Z",
+  "updated_at": "2026-11-13T09:56:43.199459Z",
   "sports": {
     "basketball": {
       "season": 2027,
@@ -1000,10 +1000,10 @@
           "home_code": "245",
           "away_name": "Oklahoma State Cowboys",
           "home_name": "Texas A&M Aggies",
-          "away_score": null,
-          "home_score": null,
-          "winner_code": null,
-          "game_status": "scheduled",
+          "away_score": 69,
+          "home_score": 88,
+          "winner_code": "245",
+          "game_status": "final",
           "source": "ESPN",
           "espn_event_id": "401919041"
         },
@@ -6675,22 +6675,22 @@
         "99": 32
       },
       "sec_team_game_counts": {
-        "8": 36,
-        "145": 32,
-        "96": 34,
-        "238": 35,
+        "61": 36,
+        "2579": 35,
         "2": 32,
-        "333": 34,
+        "238": 35,
+        "145": 32,
+        "99": 35,
+        "201": 34,
+        "245": 34,
         "142": 36,
         "344": 33,
-        "201": 34,
-        "2633": 33,
-        "2579": 35,
         "251": 36,
-        "245": 34,
+        "8": 36,
+        "333": 34,
         "57": 35,
-        "61": 36,
-        "99": 35
+        "96": 34,
+        "2633": 33
       },
       "warning": null
     },
@@ -6713,22 +6713,22 @@
         "99": 0
       },
       "sec_team_game_counts": {
-        "8": 0,
-        "145": 0,
-        "96": 0,
-        "238": 0,
+        "61": 0,
+        "2579": 0,
         "2": 0,
-        "333": 0,
+        "238": 0,
+        "145": 0,
+        "99": 0,
+        "201": 0,
+        "245": 0,
         "142": 0,
         "344": 0,
-        "201": 0,
-        "2633": 0,
-        "2579": 0,
         "251": 0,
-        "245": 0,
+        "8": 0,
+        "333": 0,
         "57": 0,
-        "61": 0,
-        "99": 0
+        "96": 0,
+        "2633": 0
       },
       "warning": "No verified individual first-pitch times yet; SEC baseball weekend series previews remain available."
     }
