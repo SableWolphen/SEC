@@ -1,11 +1,160 @@
 {
-  "updated_at": "2026-11-14T17:10:46.209757Z",
-  "checked_at": "2026-11-14T17:10:46.209757Z",
+  "updated_at": "2026-11-14T21:32:05.327515Z",
+  "checked_at": "2026-11-14T21:32:05.327515Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "afcd5511e97777fb",
+      "title": "Injured Russell starts, throws 3 TDs as Alabama survives Vandy",
+      "summary": "No. 3 Alabama made a last-second decision to start Keelon Russell in a 21-6 win over Vanderbilt after the quarterback looked better than anticipated in pregame warmups.",
+      "url": "https://www.espn.com/college-football/story/_/id/50480988/alabama-makes-last-second-call-start-qb-keelon-russell",
+      "source": "ESPN",
+      "published_at": "2026-11-14T21:26:23Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Vanderbilt"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "aa0cced52abfc400",
+      "title": "Gardner-Webb Bulldogs vs. South Carolina Gamecocks: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50482921/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T21:17:57Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "13c70ca23415f1e1",
+      "title": "Alabama Crimson Tide vs. Vanderbilt Commodores: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50482886/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T21:14:22Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e1b676251dcbbcf6",
+      "title": "College of Coastal Georgia Mariner vs. Florida Atlantic Owls: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50482848/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T21:10:33Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e41043261218f29d",
+      "title": "The Citadel Bulldogs vs. VMI Keydets: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50482777/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T21:03:39Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "fa7bce18ad55deb1",
+      "title": "Villanova Wildcats vs. Holy Cross Crusaders: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50482687/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T20:53:14Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d3984ba29ebd0af2",
+      "title": "Georgia commit, DL Marcellus Young Casario died after 'sudden medical emergency'",
+      "summary": "Marcellus Young Casario, a Georgia football commit, died Friday after experiencing a \"sudden medical emergency,\" according to his high school.",
+      "url": "https://www.espn.com/college-football/story/_/id/50482223/georgia-football-commit-marcellus-young-casario-dies-suddenly",
+      "source": "ESPN",
+      "published_at": "2026-11-14T20:36:58Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3b57696040868629",
+      "title": "Oklahoma AD 'infuriated' with SEC, Ole Miss for Sunday game",
+      "summary": "AD Roger Denny took aim at the SEC and Ole Miss about Oklahoma's game being moved to Sunday, calling it an \"inexplicable\" situation that \"unfairly burdens\" the Sooners.",
+      "url": "https://www.espn.com/college-football/story/_/id/50482206/oklahoma-ad-infuriated-sec-ole-miss-sunday-game",
+      "source": "ESPN",
+      "published_at": "2026-11-14T20:28:29Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6398aabec6b343e2",
+      "title": "Butler Bulldogs vs. Marist Red Foxes: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50482144/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T20:14:55Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "34b1c95b4055c09b",
+      "title": "Central Oklahoma AD trolls Ole Miss amid FAA crisis-forced kickoff change",
+      "summary": "The Division II school offered Ole Miss fans attending its Oklahoma matchup free admission due to the kickoff date change.",
+      "url": "https://www.espn.com/college-football/story/_/id/50481529/central-oklahoma-troll-ole-miss-faa-decsion",
+      "source": "ESPN",
+      "published_at": "2026-11-14T20:09:11Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "806098463e8788cc",
+      "title": "Ole Miss-Oklahoma bumped to Sunday despite Sooners AD's 'strong objection'",
+      "summary": "Oklahoma AD Roger Denny was critical of the SEC's decision to move the Sooners' home game against Ole Miss to Sunday following Friday's nationwide ground stop.",
+      "url": "https://www.espn.com/college-football/story/_/id/50478281/ole-miss-oklahoma-bumped-sunday-sooners-ad-rips-decision",
+      "source": "ESPN",
+      "published_at": "2026-11-14T17:36:21Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
     {
       "id": "2b6340f69d9bbc74",
       "title": "The details behind Ole Miss-Oklahoma being moved to Sunday",
@@ -21,236 +170,6 @@
       "breaking": false
     },
     {
-      "id": "c49c54f8a745c1cc",
-      "title": "Sources: Alabama to start QB Austin Mack; Keelon Russell available",
-      "summary": "Alabama is expected to start quarterback Austin Mack vs. Vanderbilt, sources told ESPN, with starter Keelon Russell (ankle) set to be available, if needed.",
-      "url": "https://www.espn.com/college-football/story/_/id/50474755/sources-alabama-start-qb-austin-mack-russell-available",
-      "source": "ESPN",
-      "published_at": "2026-11-14T14:37:30Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "806098463e8788cc",
-      "title": "Ole Miss-Oklahoma bumped to Sunday despite Sooners AD's 'strong objection'",
-      "summary": "Oklahoma AD Roger Denny was critical of the SEC's decision to move the Sooners' home game against Ole Miss to Sunday following Friday's nationwide ground stop.",
-      "url": "https://www.espn.com/college-football/story/_/id/50478281/ole-miss-oklahoma-bumped-sunday-sooners-ad-rips-decision",
-      "source": "ESPN",
-      "published_at": "2026-11-14T14:05:42Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e3d2e6155ae58496",
-      "title": "Arkansas-Pine Bluff Golden Lions vs. California Baptist Lancers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50477769/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-14T05:54:34Z",
-      "sport": "basketball",
-      "teams": [
-        "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6f4811a5bb75b748",
-      "title": "East Texas A&M Lions vs. Portland Pilots: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50477755/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-14T05:52:08Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "55657cbd9d861f1e",
-      "title": "Where No. 22 Missouri stands against an electric No. 1 Georgia offense?",
-      "summary": "The SEC Nation crew analyze the dominance behind the Bulldogs' offensive unit as they discuss what the Tigers must keep in mind in order to have a chance to come out with a win.",
-      "url": "https://www.espn.com/video/clip/_/id/50477612/where-no-22-missouri-stands-electric-no-1-georgia-offense",
-      "source": "ESPN",
-      "published_at": "2026-11-14T05:35:29Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "75083d11162808e6",
-      "title": "Heather Dinich picks how many SEC teams make the CFP field",
-      "summary": "ESPN's Dinich joins SEC Now ahead of Week 11 to preview some of the most consequential matchups and discuss the path to the CFP for Kentucky, Ole Miss and LSU.",
-      "url": "https://www.espn.com/video/clip/_/id/50477607/heather-dinich-picks-how-many-sec-teams-make-cfp-field",
-      "source": "ESPN",
-      "published_at": "2026-11-14T05:33:29Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "LSU",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "779acb1d76e2bb75",
-      "title": "Analyzing where LSU must improve in red zone against Texas",
-      "summary": "SEC Network's Benjamin Watson takes a look at the No. 21 Tigers' performance in the red zone as he discusses where they must get better if they want to beat the No. 6 Longhorns.",
-      "url": "https://www.espn.com/video/clip/_/id/50477565/analyzing-where-lsu-improve-red-zone-texas",
-      "source": "ESPN",
-      "published_at": "2026-11-14T05:23:21Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ce0004fbfe8e985f",
-      "title": "Latest updates on how the FAA ground stop will affect college football",
-      "summary": "The SEC Now crew provides updates on how games are being affected by transportation issues as Chris Doering and Benjamin Watson analyze the impact on players.",
-      "url": "https://www.espn.com/video/clip/_/id/50477562/latest-updates-how-faa-ground-stop-affect-college-football",
-      "source": "ESPN",
-      "published_at": "2026-11-14T05:22:00Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "fb34cca3452473f9",
-      "title": "Chris Doering dissects key storylines in three Week 11 matchups",
-      "summary": "Doering weighs Saturday matchups and acknowledges key factors on both sides of the ball, highlighting \"one of the hottest team in the country right now\" in the No. 17 Gamecocks.",
-      "url": "https://www.espn.com/video/clip/_/id/50475708/chris-doering-dissects-key-storylines-three-week-11-matchups",
-      "source": "ESPN",
-      "published_at": "2026-11-14T00:51:22Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d319da9136109355",
-      "title": "Smart explains how Stockton has taught him more than X's and O's can",
-      "summary": "Kirby Smart joins The Paul Finebaum Show to preview the No. 1 Bulldogs' matchup against No. 22 Missouri and details how Gunner Stockton makes everyone around him better.",
-      "url": "https://www.espn.com/video/clip/_/id/50475646/smart-explains-how-stockton-taught-more-x-o-can",
-      "source": "ESPN",
-      "published_at": "2026-11-14T00:41:14Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4a56e7c4d8b4805c",
-      "title": "Holly Rowe previews No. 6 Texas vs. No. 21 LSU",
-      "summary": "With the Longhorns set to play the Tigers in Baton Rouge for the first time since 1953, ESPN's Rowe joins The Paul Finebaum Show to discuss the matchup and how the Tigers can regroup.",
-      "url": "https://www.espn.com/video/clip/_/id/50475567/holly-rowe-previews-no-6-texas-vs-no-21-lsu",
-      "source": "ESPN",
-      "published_at": "2026-11-14T00:26:13Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4f4478d8b53a180f",
-      "title": "Tim Tebow calling for bounce back performances from Ole Miss, Florida",
-      "summary": "SEC Network's Tebow joins The Paul Finebaum Show to explains how the Gators and Rebels can rebound from tough losses while saying the Vols better not overlook the Aggies.",
-      "url": "https://www.espn.com/video/clip/_/id/50475452/tim-tebow-calling-bounce-back-performances-ole-miss-florida",
-      "source": "ESPN",
-      "published_at": "2026-11-14T00:00:57Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Ole Miss",
-        "Tennessee",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "2fa042ad748faf99",
-      "title": "Ryan McGee supports preserving conferences in college football",
-      "summary": "SEC Network's McGee joins The Paul Finebaum Show to explain why regionalism remains essential to keeping conferences in college football.",
-      "url": "https://www.espn.com/video/clip/_/id/50475425/ryan-mcgee-supports-preserving-conferences-college-football",
-      "source": "ESPN",
-      "published_at": "2026-11-13T23:58:55Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "bf8ca10f42ea9ff7",
-      "title": "Roman Harper discusses how No. 3 Bama should win vs. Vandy",
-      "summary": "With Austin Mack starting against the Commodores, SEC Nation's Roman Harper discusses on The Paul Finebaum Show how the Crimson Tide should approach the game defensively to secure a win.",
-      "url": "https://www.espn.com/video/clip/_/id/50475384/roman-harper-discusses-how-no-3-bama-win-vs-vandy",
-      "source": "ESPN",
-      "published_at": "2026-11-13T23:47:25Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4f26b7fec03cd860",
-      "title": "Barrie and Finebaum predict chaos and upsets will take over Week 11",
-      "summary": "SEC Nation's Matt Barrie joins The Paul Finebaum Show to highlights some of the matchups that could go either way and discuss how the college football landscape will change with the 24-team playoff.",
-      "url": "https://www.espn.com/video/clip/_/id/50475382/barrie-finebaum-predict-chaos-upsets-take-week-11",
-      "source": "ESPN",
-      "published_at": "2026-11-13T23:46:45Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "38b8eefdd1221f3d",
-      "title": "Nowkhah on Witten's changes to OU, Aggies upset chances vs. Vols",
-      "summary": "SEC Network's Dari Nowkhah joins SEC This Morning to discuss how Jason Witten has improved the Sooners' offense while says Texas A&M is bound to make some noise by the end of the season.",
-      "url": "https://www.espn.com/video/clip/_/id/50475107/nowkhah-witten-changes-ou-aggies-upset-chances-vs-vols",
-      "source": "ESPN",
-      "published_at": "2026-11-13T22:55:58Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Tennessee",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1d00a6c5c8406f7f",
-      "title": "Sean McDonough on No. 1 UGA: 'The gold standard in college football'",
-      "summary": "McDonough joins The Paul Finebaum Show and discusses why the Bulldogs are the top team in the nation and why Alabama is at the No. 3 spot.",
-      "url": "https://www.espn.com/video/clip/_/id/50475096/gold-standard-college-football",
-      "source": "ESPN",
-      "published_at": "2026-11-13T22:52:53Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
       "id": "53e8257c6851da94",
       "title": "Every single shot from Darius Acuff Jr.'s 2026 March Madness run with Arkansas",
       "summary": "Relive Darius Acuff Jr.'s 2026 March Madness run with Arkansas with every single shot attempt from the tournament, scoring 88 points across three games.",
@@ -260,98 +179,6 @@
       "sport": "basketball",
       "teams": [
         "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4a694183b0d6599b",
-      "title": "Tennessee RB Daune Morris suffers broken leg in car accident",
-      "summary": "Tennessee running back Daune Morris sustained non-life-threatening injuries, including a broken leg, during a car accident Friday morning, the school announced.",
-      "url": "https://www.espn.com/college-football/story/_/id/50471707/source-tennessee-rb-daune-morris-vs-texas-am",
-      "source": "ESPN",
-      "published_at": "2026-11-13T17:58:16Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8fd0820a09ac55f3",
-      "title": "Oklahoma adds Kamieon Compton-Nero to 2028 recruiting class",
-      "summary": "Oklahoma continued its impressive run on the recruiting trail with a commitment from four-star prospect Kamieon Compton-Nero, ESPN's No. 1 athlete for 2028.",
-      "url": "https://www.espn.com/college-football/story/_/id/50472366/oklahoma-adds-kamieon-compton-nero-2028-recruiting-class",
-      "source": "ESPN",
-      "published_at": "2026-11-13T16:58:41Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "674e78111a7d1130",
-      "title": "Why Stephen A. says the wrong team is favored in Texas-LSU",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50472624/why-stephen-says-wrong-team-favored-texas-lsu",
-      "source": "ESPN",
-      "published_at": "2026-11-13T16:55:17Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5cd7d36bd0ff8639",
-      "title": "Connelly previews Week 11: 32 make-or-break showdowns",
-      "summary": "Week 11 brings SEC drama, Big 12 elimination games, and order vs. chaos in the Big Ten and ACC.",
-      "url": "https://www.espn.com/college-football/story/_/id/50462413/connelly-previews-week-11-texas-lsu",
-      "source": "ESPN",
-      "published_at": "2026-11-13T15:48:08Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "88e051cec48905cc",
-      "title": "Can Lane Kiffin and LSU save their playoff hopes?",
-      "summary": "There is understandably little patience at LSU this season. Lane Kiffin's chance to turn things around starts this weekend against Texas.",
-      "url": "https://www.espn.com/college-football/story/_/id/50462068/lane-kiffin-lsu-playoff-expectations",
-      "source": "ESPN",
-      "published_at": "2026-11-13T15:43:27Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "bda7e7cbbcbb49c3",
-      "title": "The CFP implications of Texas-LSU",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50471089/the-cfp-implications-texas-lsu",
-      "source": "ESPN",
-      "published_at": "2026-11-13T14:18:55Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1f1de736052d6bb0",
-      "title": "Kamario Taylor: Easy call to return to Mississippi St., unfinished business left",
-      "summary": "Kamario Taylor said Thursday that his decision to return to Mississippi State next season was an easy call.",
-      "url": "https://www.espn.com/college-football/story/_/id/50465866/kamario-taylor-easy-call-return-mississippi-st",
-      "source": "ESPN",
-      "published_at": "2026-11-13T00:31:40Z",
-      "sport": "football",
-      "teams": [
-        "Mississippi State"
       ],
       "breaking": false
     },
