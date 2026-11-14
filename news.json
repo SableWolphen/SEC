@@ -1,18 +1,46 @@
 {
-  "updated_at": "2026-11-14T10:40:30.558418Z",
-  "checked_at": "2026-11-14T10:40:30.558418Z",
+  "updated_at": "2026-11-14T17:10:46.209757Z",
+  "checked_at": "2026-11-14T17:10:46.209757Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "2b6340f69d9bbc74",
+      "title": "The details behind Ole Miss-Oklahoma being moved to Sunday",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50480134/the-details-ole-miss-oklahoma-being-moved-sunday",
+      "source": "ESPN",
+      "published_at": "2026-11-14T15:58:45Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c49c54f8a745c1cc",
+      "title": "Sources: Alabama to start QB Austin Mack; Keelon Russell available",
+      "summary": "Alabama is expected to start quarterback Austin Mack vs. Vanderbilt, sources told ESPN, with starter Keelon Russell (ankle) set to be available, if needed.",
+      "url": "https://www.espn.com/college-football/story/_/id/50474755/sources-alabama-start-qb-austin-mack-russell-available",
+      "source": "ESPN",
+      "published_at": "2026-11-14T14:37:30Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
       "id": "806098463e8788cc",
       "title": "Ole Miss-Oklahoma bumped to Sunday despite Sooners AD's 'strong objection'",
       "summary": "Oklahoma AD Roger Denny was critical of the SEC's decision to move the Sooners' home game against Ole Miss to Sunday following Friday's nationwide ground stop.",
       "url": "https://www.espn.com/college-football/story/_/id/50478281/ole-miss-oklahoma-bumped-sunday-sooners-ad-rips-decision",
       "source": "ESPN",
-      "published_at": "2026-11-14T08:12:31Z",
+      "published_at": "2026-11-14T14:05:42Z",
       "sport": "football",
       "teams": [
         "Oklahoma",
@@ -138,20 +166,6 @@
       "teams": [
         "LSU",
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c49c54f8a745c1cc",
-      "title": "Sources: Alabama to start QB Austin Mack; Keelon Russell available",
-      "summary": "Alabama is expected to start QB Austin Mack vs. Vanderbilt, sources told ESPN, with starter Keelon Russell (ankle) expected to be available, if needed.",
-      "url": "https://www.espn.com/college-football/story/_/id/50474755/sources-alabama-start-qb-austin-mack-russell-available",
-      "source": "ESPN",
-      "published_at": "2026-11-14T00:09:32Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Vanderbilt"
       ],
       "breaking": false
     },
@@ -338,33 +352,6 @@
       "sport": "football",
       "teams": [
         "Mississippi State"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a8e9082be0691d0e",
-      "title": "Top 25 betting lines: LSU favored over Texas, and Indiana over USC",
-      "summary": "This week's odds and FPI predictions for LSU-Texas, Indiana-USC and every top-25 matchup.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50434742/2026-college-football-week-11-top-25-betting-lines-odds",
-      "source": "ESPN",
-      "published_at": "2026-11-12T20:49:19Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d30d8847adf882e4",
-      "title": "Sources: Ole Miss RB Kewan Lacy to miss rest of season",
-      "summary": "Ole Miss running back Kewan Lacy, who has one year of eligiblity remaining, will miss the rest of the season with a left shoulder injury, sources told ESPN.",
-      "url": "https://www.espn.com/college-football/story/_/id/50463373/sources-ole-miss-rb-kewan-lacy-miss-rest-season",
-      "source": "ESPN",
-      "published_at": "2026-11-12T19:02:47Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss"
       ],
       "breaking": false
     },
