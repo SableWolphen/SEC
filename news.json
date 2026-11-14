@@ -1,18 +1,32 @@
 {
-  "updated_at": "2026-11-14T03:21:04.033160Z",
-  "checked_at": "2026-11-14T03:21:04.033160Z",
+  "updated_at": "2026-11-14T10:40:30.558418Z",
+  "checked_at": "2026-11-14T10:40:30.558418Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "16dbfa5ed6b48f0f",
-      "title": "Central Arkansas Bears vs. Arkansas Razorbacks: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50476790/game-highlights",
+      "id": "806098463e8788cc",
+      "title": "Ole Miss-Oklahoma bumped to Sunday despite Sooners AD's 'strong objection'",
+      "summary": "Oklahoma AD Roger Denny was critical of the SEC's decision to move the Sooners' home game against Ole Miss to Sunday following Friday's nationwide ground stop.",
+      "url": "https://www.espn.com/college-football/story/_/id/50478281/ole-miss-oklahoma-bumped-sunday-sooners-ad-rips-decision",
       "source": "ESPN",
-      "published_at": "2026-11-14T03:14:50Z",
+      "published_at": "2026-11-14T08:12:31Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e3d2e6155ae58496",
+      "title": "Arkansas-Pine Bluff Golden Lions vs. California Baptist Lancers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50477769/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T05:54:34Z",
       "sport": "basketball",
       "teams": [
         "Arkansas"
@@ -20,160 +34,70 @@
       "breaking": false
     },
     {
-      "id": "fb155c6cb86f28e4",
-      "title": "Wright State Raiders vs. Samford Bulldogs: Game Highlights",
+      "id": "6f4811a5bb75b748",
+      "title": "East Texas A&M Lions vs. Portland Pilots: Game Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50476573/game-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50477755/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-14T02:56:09Z",
+      "published_at": "2026-11-14T05:52:08Z",
       "sport": "basketball",
       "teams": [
-        "Georgia"
+        "Texas A&M"
       ],
       "breaking": false
     },
     {
-      "id": "68063c2f4dfaa4e7",
-      "title": "Terrence Hill Jr. details how he uses his dog mentality to boost Vols",
-      "summary": "Hill Jr. explains how he plays with an edge and looks to help his teammates do the same after dropping a team-high 19 points and looks ahead to their date with No. 5 Michigan State.",
-      "url": "https://www.espn.com/video/clip/_/id/50476555/terrence-hill-jr-details-how-uses-dog-mentality-boost-vols",
+      "id": "55657cbd9d861f1e",
+      "title": "Where No. 22 Missouri stands against an electric No. 1 Georgia offense?",
+      "summary": "The SEC Nation crew analyze the dominance behind the Bulldogs' offensive unit as they discuss what the Tigers must keep in mind in order to have a chance to come out with a win.",
+      "url": "https://www.espn.com/video/clip/_/id/50477612/where-no-22-missouri-stands-electric-no-1-georgia-offense",
       "source": "ESPN",
-      "published_at": "2026-11-14T02:55:59Z",
-      "sport": "basketball",
+      "published_at": "2026-11-14T05:35:29Z",
+      "sport": "football",
       "teams": [
-        "Tennessee"
+        "Georgia",
+        "Missouri"
       ],
       "breaking": false
     },
     {
-      "id": "64efe5ff2b70d681",
-      "title": "South Dakota Coyotes vs. Drake Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50476539/game-highlights",
+      "id": "75083d11162808e6",
+      "title": "Heather Dinich picks how many SEC teams make the CFP field",
+      "summary": "ESPN's Dinich joins SEC Now ahead of Week 11 to preview some of the most consequential matchups and discuss the path to the CFP for Kentucky, Ole Miss and LSU.",
+      "url": "https://www.espn.com/video/clip/_/id/50477607/heather-dinich-picks-how-many-sec-teams-make-cfp-field",
       "source": "ESPN",
-      "published_at": "2026-11-14T02:51:27Z",
-      "sport": "basketball",
+      "published_at": "2026-11-14T05:33:29Z",
+      "sport": "football",
       "teams": [
-        "Georgia"
+        "Kentucky",
+        "LSU",
+        "Ole Miss"
       ],
       "breaking": false
     },
     {
-      "id": "74525094c09262b0",
-      "title": "Southeast Missouri State Redhawks vs. Middle Tennessee Blue Raiders: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50476520/game-highlights",
+      "id": "779acb1d76e2bb75",
+      "title": "Analyzing where LSU must improve in red zone against Texas",
+      "summary": "SEC Network's Benjamin Watson takes a look at the No. 21 Tigers' performance in the red zone as he discusses where they must get better if they want to beat the No. 6 Longhorns.",
+      "url": "https://www.espn.com/video/clip/_/id/50477565/analyzing-where-lsu-improve-red-zone-texas",
       "source": "ESPN",
-      "published_at": "2026-11-14T02:48:11Z",
-      "sport": "basketball",
+      "published_at": "2026-11-14T05:23:21Z",
+      "sport": "football",
       "teams": [
-        "Missouri",
-        "Tennessee"
+        "LSU",
+        "Texas"
       ],
       "breaking": false
     },
     {
-      "id": "dcdee9b45d01c490",
-      "title": "Tennessee State Tigers vs. Tennessee Volunteers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50476395/game-highlights",
+      "id": "ce0004fbfe8e985f",
+      "title": "Latest updates on how the FAA ground stop will affect college football",
+      "summary": "The SEC Now crew provides updates on how games are being affected by transportation issues as Chris Doering and Benjamin Watson analyze the impact on players.",
+      "url": "https://www.espn.com/video/clip/_/id/50477562/latest-updates-how-faa-ground-stop-affect-college-football",
       "source": "ESPN",
-      "published_at": "2026-11-14T02:34:33Z",
-      "sport": "basketball",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "49ee4dd323ab2a33",
-      "title": "Alex Condon on No. 1 Florida's frontcourt: 'It's like a well-oiled machine'",
-      "summary": "Condon joins SEC Now and details how the Gators are working to be an intense defense while also describing how his relationships with Thomas Haugh and Rueben Chinyelu translate to success.",
-      "url": "https://www.espn.com/video/clip/_/id/50476338/well-oiled-machine",
-      "source": "ESPN",
-      "published_at": "2026-11-14T02:27:53Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a16c3488c57bbba4",
-      "title": "Kentucky State Thorobreds vs. Eastern Kentucky Colonels: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50476311/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-14T02:22:54Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "9e2406fd3c5ab95f",
-      "title": "Georgia Bulldogs vs. North Carolina Tar Heels: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50476292/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-14T02:19:18Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "45313278d346fadf",
-      "title": "Florida International Panthers vs. Florida Gulf Coast Eagles: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50476257/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-14T02:13:50Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "71ba5946cf24e834",
-      "title": "Northern Arizona Lumberjacks vs. Kentucky Wildcats: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50476154/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-14T02:04:02Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c338a50f6211f916",
-      "title": "Prairie View A&M Panthers vs. Vanderbilt Commodores: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50476134/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-14T02:01:07Z",
-      "sport": "basketball",
-      "teams": [
-        "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "afd7161f923c0f5f",
-      "title": "Merrimack Warriors vs. Florida Gators: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50476121/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-14T01:59:53Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
+      "published_at": "2026-11-14T05:22:00Z",
+      "sport": "football",
+      "teams": [],
       "breaking": false
     },
     {
@@ -197,20 +121,6 @@
       "source": "ESPN",
       "published_at": "2026-11-14T00:41:14Z",
       "sport": "football",
-      "teams": [
-        "Georgia",
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d319da9136109355",
-      "title": "Smart explains how Stockton has taught him more than X's and O's can",
-      "summary": "Kirby Smart joins The Paul Finebaum Show to preview the No. 1 Bulldogs' matchup against No. 22 Missouri and details how Gunner Stockton makes everyone around him better.",
-      "url": "https://www.espn.com/video/clip/_/id/50475646/smart-explains-how-stockton-taught-more-x-o-can",
-      "source": "ESPN",
-      "published_at": "2026-11-14T00:41:14Z",
-      "sport": "basketball",
       "teams": [
         "Georgia",
         "Missouri"
@@ -455,99 +365,6 @@
       "sport": "football",
       "teams": [
         "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6df2e78d06f10cfa",
-      "title": "Florida set to give QB Aaron Philo another start vs. Kentucky, source confirms",
-      "summary": "The Gators have alternated in recent weeks between quarterbacks Aaron Philo and Tramell Jones Jr. and this week will go with Philo for the start against No. 11 Kentucky, a source confirmed to ESPN.",
-      "url": "https://www.espn.com/college-football/story/_/id/50461725/source-florida-returns-aaron-philo-start-vs-kentucky",
-      "source": "ESPN",
-      "published_at": "2026-11-12T14:44:35Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "42614ecfbf4e92ef",
-      "title": "Best bets for Week 11: Picks for Texas A&M, Georgia, Notre Dame and more",
-      "summary": "Pamela Maldonado and Mark Zinno break down the best bets they see around college football for Week 11.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50452903/college-football-odds-best-bets-week-11-spreads-lines-2026",
-      "source": "ESPN",
-      "published_at": "2026-11-12T14:26:45Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0b87a2e7f89bf79f",
-      "title": "Gene Chizik's 'Words of Chizdom' to a few teams who may need a lift",
-      "summary": "Chizik provides reasons to keep believing to a few SEC programs navigating adversity as the College Football Playoffs approach.",
-      "url": "https://www.espn.com/video/clip/_/id/50459274/gene-chizik-words-chizdom-teams-need-lift",
-      "source": "ESPN",
-      "published_at": "2026-11-12T05:40:44Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "63f8149e926153d7",
-      "title": "Gene Chizik previews a must-see matchup within UGA vs Mizzou",
-      "summary": "Chizik spotlights a battle between top-ranked Georgia's offensive line and No. 22 Missouri's run defense as \"the matchup of the game\" as he advises each team with keys to win.",
-      "url": "https://www.espn.com/video/clip/_/id/50459234/gene-chizik-previews-see-matchup-uga-vs-mizzou",
-      "source": "ESPN",
-      "published_at": "2026-11-12T05:30:50Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8157b84b6238a623",
-      "title": "Marcus Spears sees a rivalry for the ages in Texas vs. LSU",
-      "summary": "With LSU roots and Longhorns kids, Spears tells SEC Now why he can't lose a rivalry that traces back to high school as he sizes up Kiffin's Tigers under the lights.",
-      "url": "https://www.espn.com/video/clip/_/id/50459200/marcus-spears-sees-rivalry-ages-texas-vs-lsu",
-      "source": "ESPN",
-      "published_at": "2026-11-12T05:30:15Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d14a2e9cbbbe047b",
-      "title": "Bama's Bray Hubbard introduces the cherished Crossing Points family",
-      "summary": "The Crimson Tide share an important piece of their family in the Crossing Points crew, a program that gives students with disabilities the full college experience.",
-      "url": "https://www.espn.com/video/clip/_/id/50459098/bama-bray-hubbard-introduces-cherished-crossing-points-family",
-      "source": "ESPN",
-      "published_at": "2026-11-12T05:17:10Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6417d2bcc467d890",
-      "title": "Gene Chizik dives into improved Oklahoma timing through film",
-      "summary": "Chizik takes us into the film room to demonstrate offensive improvements from the Sooners, acknowledging their commitment to the run game and a quicker release of the ball.",
-      "url": "https://www.espn.com/video/clip/_/id/50458601/gene-chizik-dives-improved-oklahoma-timing-film",
-      "source": "ESPN",
-      "published_at": "2026-11-12T04:17:32Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma"
       ],
       "breaking": false
     },
