@@ -1,22 +1,328 @@
 {
-  "updated_at": "2026-11-13T22:41:12.560921Z",
-  "checked_at": "2026-11-13T22:41:12.560921Z",
+  "updated_at": "2026-11-14T03:21:04.033160Z",
+  "checked_at": "2026-11-14T03:21:04.033160Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "16dbfa5ed6b48f0f",
+      "title": "Central Arkansas Bears vs. Arkansas Razorbacks: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50476790/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T03:14:50Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "fb155c6cb86f28e4",
+      "title": "Wright State Raiders vs. Samford Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50476573/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T02:56:09Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "68063c2f4dfaa4e7",
+      "title": "Terrence Hill Jr. details how he uses his dog mentality to boost Vols",
+      "summary": "Hill Jr. explains how he plays with an edge and looks to help his teammates do the same after dropping a team-high 19 points and looks ahead to their date with No. 5 Michigan State.",
+      "url": "https://www.espn.com/video/clip/_/id/50476555/terrence-hill-jr-details-how-uses-dog-mentality-boost-vols",
+      "source": "ESPN",
+      "published_at": "2026-11-14T02:55:59Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "64efe5ff2b70d681",
+      "title": "South Dakota Coyotes vs. Drake Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50476539/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T02:51:27Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "74525094c09262b0",
+      "title": "Southeast Missouri State Redhawks vs. Middle Tennessee Blue Raiders: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50476520/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T02:48:11Z",
+      "sport": "basketball",
+      "teams": [
+        "Missouri",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "dcdee9b45d01c490",
+      "title": "Tennessee State Tigers vs. Tennessee Volunteers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50476395/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T02:34:33Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "49ee4dd323ab2a33",
+      "title": "Alex Condon on No. 1 Florida's frontcourt: 'It's like a well-oiled machine'",
+      "summary": "Condon joins SEC Now and details how the Gators are working to be an intense defense while also describing how his relationships with Thomas Haugh and Rueben Chinyelu translate to success.",
+      "url": "https://www.espn.com/video/clip/_/id/50476338/well-oiled-machine",
+      "source": "ESPN",
+      "published_at": "2026-11-14T02:27:53Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a16c3488c57bbba4",
+      "title": "Kentucky State Thorobreds vs. Eastern Kentucky Colonels: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50476311/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T02:22:54Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9e2406fd3c5ab95f",
+      "title": "Georgia Bulldogs vs. North Carolina Tar Heels: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50476292/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T02:19:18Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "45313278d346fadf",
+      "title": "Florida International Panthers vs. Florida Gulf Coast Eagles: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50476257/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T02:13:50Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "71ba5946cf24e834",
+      "title": "Northern Arizona Lumberjacks vs. Kentucky Wildcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50476154/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T02:04:02Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c338a50f6211f916",
+      "title": "Prairie View A&M Panthers vs. Vanderbilt Commodores: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50476134/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T02:01:07Z",
+      "sport": "basketball",
+      "teams": [
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "afd7161f923c0f5f",
+      "title": "Merrimack Warriors vs. Florida Gators: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50476121/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T01:59:53Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "fb34cca3452473f9",
+      "title": "Chris Doering dissects key storylines in three Week 11 matchups",
+      "summary": "Doering weighs Saturday matchups and acknowledges key factors on both sides of the ball, highlighting \"one of the hottest team in the country right now\" in the No. 17 Gamecocks.",
+      "url": "https://www.espn.com/video/clip/_/id/50475708/chris-doering-dissects-key-storylines-three-week-11-matchups",
+      "source": "ESPN",
+      "published_at": "2026-11-14T00:51:22Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d319da9136109355",
+      "title": "Smart explains how Stockton has taught him more than X's and O's can",
+      "summary": "Kirby Smart joins The Paul Finebaum Show to preview the No. 1 Bulldogs' matchup against No. 22 Missouri and details how Gunner Stockton makes everyone around him better.",
+      "url": "https://www.espn.com/video/clip/_/id/50475646/smart-explains-how-stockton-taught-more-x-o-can",
+      "source": "ESPN",
+      "published_at": "2026-11-14T00:41:14Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d319da9136109355",
+      "title": "Smart explains how Stockton has taught him more than X's and O's can",
+      "summary": "Kirby Smart joins The Paul Finebaum Show to preview the No. 1 Bulldogs' matchup against No. 22 Missouri and details how Gunner Stockton makes everyone around him better.",
+      "url": "https://www.espn.com/video/clip/_/id/50475646/smart-explains-how-stockton-taught-more-x-o-can",
+      "source": "ESPN",
+      "published_at": "2026-11-14T00:41:14Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia",
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4a56e7c4d8b4805c",
+      "title": "Holly Rowe previews No. 6 Texas vs. No. 21 LSU",
+      "summary": "With the Longhorns set to play the Tigers in Baton Rouge for the first time since 1953, ESPN's Rowe joins The Paul Finebaum Show to discuss the matchup and how the Tigers can regroup.",
+      "url": "https://www.espn.com/video/clip/_/id/50475567/holly-rowe-previews-no-6-texas-vs-no-21-lsu",
+      "source": "ESPN",
+      "published_at": "2026-11-14T00:26:13Z",
+      "sport": "football",
+      "teams": [
+        "LSU",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
       "id": "c49c54f8a745c1cc",
       "title": "Sources: Alabama to start QB Austin Mack; Keelon Russell available",
       "summary": "Alabama is expected to start QB Austin Mack vs. Vanderbilt, sources told ESPN, with starter Keelon Russell (ankle) expected to be available, if needed.",
       "url": "https://www.espn.com/college-football/story/_/id/50474755/sources-alabama-start-qb-austin-mack-russell-available",
       "source": "ESPN",
-      "published_at": "2026-11-13T22:25:40Z",
+      "published_at": "2026-11-14T00:09:32Z",
       "sport": "football",
       "teams": [
         "Alabama",
         "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4f4478d8b53a180f",
+      "title": "Tim Tebow calling for bounce back performances from Ole Miss, Florida",
+      "summary": "SEC Network's Tebow joins The Paul Finebaum Show to explains how the Gators and Rebels can rebound from tough losses while saying the Vols better not overlook the Aggies.",
+      "url": "https://www.espn.com/video/clip/_/id/50475452/tim-tebow-calling-bounce-back-performances-ole-miss-florida",
+      "source": "ESPN",
+      "published_at": "2026-11-14T00:00:57Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Ole Miss",
+        "Tennessee",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "2fa042ad748faf99",
+      "title": "Ryan McGee supports preserving conferences in college football",
+      "summary": "SEC Network's McGee joins The Paul Finebaum Show to explain why regionalism remains essential to keeping conferences in college football.",
+      "url": "https://www.espn.com/video/clip/_/id/50475425/ryan-mcgee-supports-preserving-conferences-college-football",
+      "source": "ESPN",
+      "published_at": "2026-11-13T23:58:55Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "bf8ca10f42ea9ff7",
+      "title": "Roman Harper discusses how No. 3 Bama should win vs. Vandy",
+      "summary": "With Austin Mack starting against the Commodores, SEC Nation's Roman Harper discusses on The Paul Finebaum Show how the Crimson Tide should approach the game defensively to secure a win.",
+      "url": "https://www.espn.com/video/clip/_/id/50475384/roman-harper-discusses-how-no-3-bama-win-vs-vandy",
+      "source": "ESPN",
+      "published_at": "2026-11-13T23:47:25Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4f26b7fec03cd860",
+      "title": "Barrie and Finebaum predict chaos and upsets will take over Week 11",
+      "summary": "SEC Nation's Matt Barrie joins The Paul Finebaum Show to highlights some of the matchups that could go either way and discuss how the college football landscape will change with the 24-team playoff.",
+      "url": "https://www.espn.com/video/clip/_/id/50475382/barrie-finebaum-predict-chaos-upsets-take-week-11",
+      "source": "ESPN",
+      "published_at": "2026-11-13T23:46:45Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "38b8eefdd1221f3d",
+      "title": "Nowkhah on Witten's changes to OU, Aggies upset chances vs. Vols",
+      "summary": "SEC Network's Dari Nowkhah joins SEC This Morning to discuss how Jason Witten has improved the Sooners' offense while says Texas A&M is bound to make some noise by the end of the season.",
+      "url": "https://www.espn.com/video/clip/_/id/50475107/nowkhah-witten-changes-ou-aggies-upset-chances-vs-vols",
+      "source": "ESPN",
+      "published_at": "2026-11-13T22:55:58Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma",
+        "Tennessee",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1d00a6c5c8406f7f",
+      "title": "Sean McDonough on No. 1 UGA: 'The gold standard in college football'",
+      "summary": "McDonough joins The Paul Finebaum Show and discusses why the Bulldogs are the top team in the nation and why Alabama is at the No. 3 spot.",
+      "url": "https://www.espn.com/video/clip/_/id/50475096/gold-standard-college-football",
+      "source": "ESPN",
+      "published_at": "2026-11-13T22:52:53Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia"
       ],
       "breaking": false
     },
@@ -242,33 +548,6 @@
       "sport": "football",
       "teams": [
         "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "fa7883679d625e2a",
-      "title": "Texas LB Rasheem Biles values being a threat on and off the field",
-      "summary": "Biles joins The Paul Finebaum Show to describe how he takes pride in being a \"three-level threat\" on the field while being an active force for positive change in the community.",
-      "url": "https://www.espn.com/video/clip/_/id/50456985/texas-lb-rasheem-biles-values-being-threat-the-field",
-      "source": "ESPN",
-      "published_at": "2026-11-12T01:24:17Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4395fd31ffbf6e16",
-      "title": "Sources: Kamario Taylor finalizing deal to return to Mississippi State in '27",
-      "summary": "Mississippi State star quarterback Kamario Taylor is finalizing a deal Wednesday to return to the Bulldogs in 2027, sources told ESPN.",
-      "url": "https://www.espn.com/college-football/story/_/id/50455234/sources-kamario-taylor-return-mississippi-state-27",
-      "source": "ESPN",
-      "published_at": "2026-11-12T00:12:39Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Mississippi State"
       ],
       "breaking": false
     },
