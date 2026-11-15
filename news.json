@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-15T09:30:22.203518Z",
-  "checked_at": "2026-11-15T09:30:22.203518Z",
+  "updated_at": "2026-11-15T17:13:41.600963Z",
+  "checked_at": "2026-11-15T17:13:41.600963Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -8,11 +8,11 @@
   "articles": [
     {
       "id": "1bd61615eeca913f",
-      "title": "Kiffin understands frustration as LSU's playoff hopes dashed",
-      "summary": "LSU coach Lane Kiffin said it was fair to question the team's 6-4 record this season after losing to Texas on Saturday, a defeat that likely knocked LSU out of playoff contention.",
+      "title": "Lane Kiffin understands frustration as LSU's CFP hopes dashed with Texas loss",
+      "summary": "Lane Kiffin said it was fair to question LSU's 6-4 record after Saturday's loss to Texas, a defeat that likely knocked the Tigers out of playoff contention.",
       "url": "https://www.espn.com/college-football/story/_/id/50488081/kiffin-understands-frustration-lsu-playoff-hopes-dashed",
       "source": "ESPN",
-      "published_at": "2026-11-15T08:55:17Z",
+      "published_at": "2026-11-15T15:44:48Z",
       "sport": "football",
       "teams": [
         "LSU",
@@ -21,12 +21,25 @@
       "breaking": false
     },
     {
+      "id": "97ee5aa8fcaf0cfe",
+      "title": "Heather Dinich and Paul Finebaum disagree about Texas' spot in the CFP",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50489988/heather-dinich-paul-finebaum-disagree-texas-spot-cfp",
+      "source": "ESPN",
+      "published_at": "2026-11-15T13:55:31Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
       "id": "309baa85b1222d50",
       "title": "Arch Manning leads game-winning drive as Texas stuns LSU",
-      "summary": "Arch Manning found Raleek Brown for a 4-yard touchdown pass along the left sideline with 3 seconds left, and Texas escaped Tiger Stadium with a victory over LSU on Saturday night.",
+      "summary": "Arch Manning found Raleek Brown for a 4-yard touchdown pass along the left sideline with 3 seconds left as Texas escaped Tiger Stadium with a victory over LSU",
       "url": "https://www.espn.com/college-football/story/_/id/50487515/arch-manning-leads-game-winning-drive-texas-stuns-lsu",
       "source": "ESPN",
-      "published_at": "2026-11-15T08:00:09Z",
+      "published_at": "2026-11-15T13:13:49Z",
       "sport": "football",
       "teams": [
         "LSU",
@@ -152,58 +165,6 @@
       "sport": "basketball",
       "teams": [
         "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8fe716a5d9727163",
-      "title": "Howard Bison vs. Davidson Wildcats: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50485956/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-15T02:20:10Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "37a7fca0ffc76e3e",
-      "title": "West Georgia Wolves vs. Charleston Southern Buccaneers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50485954/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-15T02:19:27Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ddbf473dd60b4d61",
-      "title": "Rider Broncs vs. Villanova Wildcats: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50485897/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-15T02:14:07Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b8ef07b3f2856dfd",
-      "title": "UAB Blazers vs. Jacksonville State Gamecocks: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50485819/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-15T02:05:04Z",
-      "sport": "basketball",
-      "teams": [
-        "South Carolina"
       ],
       "breaking": false
     },
