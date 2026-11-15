@@ -1,24 +1,268 @@
 {
-  "updated_at": "2026-11-14T21:32:05.327515Z",
-  "checked_at": "2026-11-14T21:32:05.327515Z",
+  "updated_at": "2026-11-15T01:57:27.174572Z",
+  "checked_at": "2026-11-15T01:57:27.174572Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "afcd5511e97777fb",
-      "title": "Injured Russell starts, throws 3 TDs as Alabama survives Vandy",
-      "summary": "No. 3 Alabama made a last-second decision to start Keelon Russell in a 21-6 win over Vanderbilt after the quarterback looked better than anticipated in pregame warmups.",
-      "url": "https://www.espn.com/college-football/story/_/id/50480988/alabama-makes-last-second-call-start-qb-keelon-russell",
+      "id": "9492e75a703aee9e",
+      "title": "Auburn Tigers vs. Mississippi State Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50485206/full-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-14T21:26:23Z",
+      "published_at": "2026-11-15T01:47:39Z",
+      "sport": "football",
+      "teams": [
+        "Auburn",
+        "Georgia",
+        "Mississippi State"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a11620069cd479a5",
+      "title": "Southern Miss Golden Eagles vs. Louisiana Tech Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50485642/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-15T01:41:59Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0d7fec30bc9594ad",
+      "title": "Southern-New Orleans Knights vs. LSU New Orleans Privateers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50485350/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-15T01:07:35Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "71204b58770c0bb2",
+      "title": "Lincoln University (CA) Oaklanders vs. Weber State Wildcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50485174/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-15T00:49:29Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "20aadef4fd72d5f8",
+      "title": "Georgia wins big at home over Missouri",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50485005/georgia-wins-big-home-missouri",
+      "source": "ESPN",
+      "published_at": "2026-11-15T00:39:01Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ad709edf63fb2a0c",
+      "title": "After handling No. 22 Mizzou Smart says No. 1 UGA 'needs to ascend'",
+      "summary": "Kirby Smart says the Bulldogs need to keep getting better after another amazing performance against a ranked team while crediting his running backs for powering through adversity.",
+      "url": "https://www.espn.com/video/clip/_/id/50485089/after-handling-no-22-mizzou-smart-says-no-1-uga-needs-ascend",
+      "source": "ESPN",
+      "published_at": "2026-11-15T00:35:44Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c298a9cdb35e2604",
+      "title": "East Texas A&M Lions vs. Lamar Cardinals: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50485088/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-15T00:35:13Z",
+      "sport": "football",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "14c2b4d6ad5183cc",
+      "title": "No. 8 Tennessee run game and defense continue thriving vs. Texas A&M",
+      "summary": "SEC Network's Benjamin Watson and Chris Doering discuss how the Volunteers continue to roll over opponents with Jim Knowles' defense and DeSean Bishop running the rock as Marcel Reed's struggles continue.",
+      "url": "https://www.espn.com/video/clip/_/id/50484928/no-8-tennessee-run-game-defense-continue-thriving-vs-texas-am",
+      "source": "ESPN",
+      "published_at": "2026-11-15T00:16:15Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c1452395fe237755",
+      "title": "SEC Now discusses No. 3 Bama's defensive domination of Vanderbilt",
+      "summary": "SEC Network's Chris Doering and Benjamin Watson break down the Crimson Tide's win over the Commodores and highlight Keelon Russell powering through injury and Daniel Hill's big game on the ground.",
+      "url": "https://www.espn.com/video/clip/_/id/50484926/sec-now-discusses-no-3-bama-defensive-domination-vanderbilt",
+      "source": "ESPN",
+      "published_at": "2026-11-15T00:16:00Z",
       "sport": "football",
       "teams": [
         "Alabama",
         "Vanderbilt"
       ],
-      "breaking": true
+      "breaking": false
+    },
+    {
+      "id": "6bdb1e3ab411ded0",
+      "title": "Jacksonville State Gamecocks vs. Western Kentucky Hilltoppers: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50484786/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-15T00:06:36Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5a25c9466234c103",
+      "title": "Eastern Illinois Panthers vs. Tennessee State Tigers: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50484757/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-15T00:00:28Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "cd4aa88312b00572",
+      "title": "Western Carolina Catamounts vs. Samford Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50484673/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T23:51:20Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "dc22279360f170a5",
+      "title": "Tennessee Volunteers vs. Texas A&M Aggies: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50484339/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T23:50:47Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0162525741d53a14",
+      "title": "New Mexico State Aggies vs. Missouri State Bears: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50484606/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T23:45:42Z",
+      "sport": "football",
+      "teams": [
+        "Missouri",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "17462f0bfe0497e4",
+      "title": "UNC Asheville Bulldogs vs. Georgia Tech Yellow Jackets: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50484396/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T23:24:37Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "624ed73a261f45b2",
+      "title": "Aleksas Bieliauskas on South Carolina setting tone vs. Gardner-Webb",
+      "summary": "Bieliauskas recaps his performance and discusses what made the difference for the Gamecocks and how they were able to secure the win over the Runnin' Bulldogs.",
+      "url": "https://www.espn.com/video/clip/_/id/50484189/aleksas-bieliauskas-south-carolina-setting-tone-vs-gardner-webb",
+      "source": "ESPN",
+      "published_at": "2026-11-14T23:11:00Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0230ba230ad5e7b9",
+      "title": "Mercer Bears vs. Tennessee Tech Golden Eagles: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50484171/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T23:01:10Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "468dcd09165b003f",
+      "title": "Central Michigan Chippewas vs. Northern Kentucky Norse: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50483925/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T22:36:28Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f823c95165f8e122",
+      "title": "The Citadel Bulldogs vs. North Florida Ospreys: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50483086/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-14T21:33:31Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
     },
     {
       "id": "aa0cced52abfc400",
@@ -31,141 +275,6 @@
       "teams": [
         "Georgia",
         "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "13c70ca23415f1e1",
-      "title": "Alabama Crimson Tide vs. Vanderbilt Commodores: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50482886/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-14T21:14:22Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e1b676251dcbbcf6",
-      "title": "College of Coastal Georgia Mariner vs. Florida Atlantic Owls: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50482848/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-14T21:10:33Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e41043261218f29d",
-      "title": "The Citadel Bulldogs vs. VMI Keydets: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50482777/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-14T21:03:39Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "fa7bce18ad55deb1",
-      "title": "Villanova Wildcats vs. Holy Cross Crusaders: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50482687/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-14T20:53:14Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d3984ba29ebd0af2",
-      "title": "Georgia commit, DL Marcellus Young Casario died after 'sudden medical emergency'",
-      "summary": "Marcellus Young Casario, a Georgia football commit, died Friday after experiencing a \"sudden medical emergency,\" according to his high school.",
-      "url": "https://www.espn.com/college-football/story/_/id/50482223/georgia-football-commit-marcellus-young-casario-dies-suddenly",
-      "source": "ESPN",
-      "published_at": "2026-11-14T20:36:58Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3b57696040868629",
-      "title": "Oklahoma AD 'infuriated' with SEC, Ole Miss for Sunday game",
-      "summary": "AD Roger Denny took aim at the SEC and Ole Miss about Oklahoma's game being moved to Sunday, calling it an \"inexplicable\" situation that \"unfairly burdens\" the Sooners.",
-      "url": "https://www.espn.com/college-football/story/_/id/50482206/oklahoma-ad-infuriated-sec-ole-miss-sunday-game",
-      "source": "ESPN",
-      "published_at": "2026-11-14T20:28:29Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6398aabec6b343e2",
-      "title": "Butler Bulldogs vs. Marist Red Foxes: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50482144/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-14T20:14:55Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "34b1c95b4055c09b",
-      "title": "Central Oklahoma AD trolls Ole Miss amid FAA crisis-forced kickoff change",
-      "summary": "The Division II school offered Ole Miss fans attending its Oklahoma matchup free admission due to the kickoff date change.",
-      "url": "https://www.espn.com/college-football/story/_/id/50481529/central-oklahoma-troll-ole-miss-faa-decsion",
-      "source": "ESPN",
-      "published_at": "2026-11-14T20:09:11Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "806098463e8788cc",
-      "title": "Ole Miss-Oklahoma bumped to Sunday despite Sooners AD's 'strong objection'",
-      "summary": "Oklahoma AD Roger Denny was critical of the SEC's decision to move the Sooners' home game against Ole Miss to Sunday following Friday's nationwide ground stop.",
-      "url": "https://www.espn.com/college-football/story/_/id/50478281/ole-miss-oklahoma-bumped-sunday-sooners-ad-rips-decision",
-      "source": "ESPN",
-      "published_at": "2026-11-14T17:36:21Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "2b6340f69d9bbc74",
-      "title": "The details behind Ole Miss-Oklahoma being moved to Sunday",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50480134/the-details-ole-miss-oklahoma-being-moved-sunday",
-      "source": "ESPN",
-      "published_at": "2026-11-14T15:58:45Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Ole Miss"
       ],
       "breaking": false
     },
