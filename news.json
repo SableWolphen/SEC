@@ -1,11 +1,104 @@
 {
-  "updated_at": "2026-11-15T17:13:41.600963Z",
-  "checked_at": "2026-11-15T17:13:41.600963Z",
+  "updated_at": "2026-11-15T21:51:46.777199Z",
+  "checked_at": "2026-11-15T21:51:46.777199Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "40410026abed2963",
+      "title": "Oklahoma takes down Ole Miss for 2nd straight win",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50493941/oklahoma-takes-ole-miss-2nd-straight-win",
+      "source": "ESPN",
+      "published_at": "2026-11-15T21:46:26Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a8d0b331c6bd2602",
+      "title": "SEC fines Arkansas $500K for allowing fans to storm field vs. South Carolina",
+      "summary": "The Southeastern Conference fined Arkansas $500,000 on Sunday for allowing fans to storm the field following a 34-6 victory over No. 17 South Carolina.",
+      "url": "https://www.espn.com/college-football/story/_/id/50493903/sec-fines-arkansas-500k-allowing-fans-storm-field-vs-south-carolina",
+      "source": "ESPN",
+      "published_at": "2026-11-15T21:45:00Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f32c4eaf4d6b03df",
+      "title": "Emmanuel Lions vs. Yale Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50493455/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-15T21:00:53Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d1f0e7e7ad5e6f41",
+      "title": "New Hampshire Wildcats vs. Boston College Eagles: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50493076/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-15T20:38:14Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f9f74048be1c1841",
+      "title": "Norfolk State Spartans vs. Georgia St Panthers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50492619/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-15T20:01:31Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "acf2f10f61a01f0d",
+      "title": "Abraham Baldwin Agricultural Stallions vs. Florida Gulf Coast Eagles: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50491904/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-15T19:06:41Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "05bbe77a7b40ae49",
+      "title": "Jackson State Tigers vs. Alabama State Hornets: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50491492/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-15T17:57:44Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
     {
       "id": "1bd61615eeca913f",
       "title": "Lane Kiffin understands frustration as LSU's CFP hopes dashed with Texas loss",
@@ -126,45 +219,6 @@
       "sport": "football",
       "teams": [
         "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "daf194ffa011054d",
-      "title": "UC Davis Aggies vs. Sacramento State Hornets: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50486774/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-15T03:34:45Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a0ca8361a96fc6fb",
-      "title": "Louisiana Tech Bulldogs vs. Nicholls Colonels: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50486681/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-15T03:25:32Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "40d4a2a21b271927",
-      "title": "Dillard Blue Devils vs. Arkansas St Red Wolves: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50486397/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-15T03:04:06Z",
-      "sport": "basketball",
-      "teams": [
-        "Arkansas"
       ],
       "breaking": false
     },
