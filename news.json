@@ -1,21 +1,140 @@
 {
-  "updated_at": "2026-11-16T09:49:42.983436Z",
-  "checked_at": "2026-11-16T09:49:42.983436Z",
+  "updated_at": "2026-11-16T20:30:58.593809Z",
+  "checked_at": "2026-11-16T20:30:58.593809Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "a1533275f4aa7045",
-      "title": "Arkansas-Pine Bluff Golden Lions vs. USC Trojans: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50497601/game-highlights",
+      "id": "07aa8a39883759ba",
+      "title": "Texas' Manning to participate in senior day, mum on future",
+      "summary": "Texas quarterback Arch Manning said Monday he will participate in Saturday's senior day ceremonies despite having one year of eligibility remaining.",
+      "url": "https://www.espn.com/college-football/story/_/id/50503997/texas-arch-manning-participate-senior-day",
       "source": "ESPN",
-      "published_at": "2026-11-16T02:23:50Z",
+      "published_at": "2026-11-16T20:25:55Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "74f4b5d0ef426c2d",
+      "title": "Texas DL Hero Kanu undergoes season-ending surgery on arm",
+      "summary": "Texas starting defensive tackle Hero Kanu had season-ending surgery on his arm Monday, coach Steve Sarkisian announced.",
+      "url": "https://www.espn.com/college-football/story/_/id/50503942/texas-dl-hero-kanu-undergoes-season-ending-surgery-arm",
+      "source": "ESPN",
+      "published_at": "2026-11-16T20:01:36Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9173e974364d897d",
+      "title": "Breaking down the 2026-27 AP Top 25 men's basketball poll for Week 2",
+      "summary": "Stats, records and upcoming games for the Top 25 teams in the AP men's basketball poll. Florida, Michigan State, UConn lead.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50493491/ap-mens-top-25-poll-reaction-2026-27-week-2",
+      "source": "ESPN",
+      "published_at": "2026-11-16T19:28:44Z",
       "sport": "basketball",
       "teams": [
-        "Arkansas"
+        "Florida"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "4974163209aec072",
+      "title": "Sizing up college football's best races down the homestretch",
+      "summary": "From spots in the CFP and SEC title game to the hunt for bowl eligibility, there's still a lot on the line.",
+      "url": "https://www.espn.com/college-football/story/_/id/50491637/connelly-college-football-best-races",
+      "source": "ESPN",
+      "published_at": "2026-11-16T19:26:14Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "ae131c428d9db521",
+      "title": "Fisk vs. North Alabama Lions: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50503590/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-16T19:17:48Z",
+      "sport": "basketball",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f5c24ea132c8d783",
+      "title": "Tennessee leading receiver Mike Matthews out for season",
+      "summary": "Mike Matthews sustained the injury during Tennessee's win Saturday at Texas A&M.",
+      "url": "https://www.espn.com/college-football/story/_/id/50496356/tennessee-leading-receiver-mike-matthews-season",
+      "source": "ESPN",
+      "published_at": "2026-11-16T19:14:58Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee",
+        "Texas A&M"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "bf5a919339639e41",
+      "title": "Michigan State up to No. 2 in AP men's poll behind Florida",
+      "summary": "Michigan State is up to No. 2 in the AP men's basketball poll behind Florida. UConn, Virginia and Duke, which lost to the Spartans last week, round out the top five.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50503030/michigan-state-no-2-ap-men-poll-florida",
+      "source": "ESPN",
+      "published_at": "2026-11-16T18:54:22Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d914450cc555a7e1",
+      "title": "Where Stephen A. finds fault with Lane Kiffin in his debut LSU season",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50502363/where-stephen-finds-fault-lane-kiffin-debut-lsu-season",
+      "source": "ESPN",
+      "published_at": "2026-11-16T16:56:28Z",
+      "sport": "football",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "81cd9f748783f7d9",
+      "title": "Florida reclaims top spot in Andy Katz's men's basketball Power 44 rankings after Week 2",
+      "summary": "Florida reclaims the No. 1 spot in Andy Katz's Power 44 rankings after Week 2 of men's basketball. Check out who else made the list.",
+      "url": "https://www.ncaa.com/news/basketball-men/article/2026-11-16/florida-reclaims-top-spot-andy-katzs-mens-basketball-power-44-rankings-after",
+      "source": "NCAA",
+      "published_at": "2026-11-16T13:52:10Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d0120603fdce1686",
+      "title": "Top 25 betting lines: UGA big faves over Gamecocks, Vols slim favorites vs. LSU",
+      "summary": "This week's odds and FPI predictions for South Carolina-Georgia, Tennessee-LSU and more.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50498153/2026-college-football-week-12-top-25-betting-lines-odds",
+      "source": "ESPN",
+      "published_at": "2026-11-16T13:48:40Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "LSU",
+        "South Carolina",
+        "Tennessee"
       ],
       "breaking": false
     },
@@ -33,20 +152,6 @@
       "breaking": false
     },
     {
-      "id": "f5c24ea132c8d783",
-      "title": "Source: Tennessee leading receiver Mike Matthews out for season",
-      "summary": "Mike Matthews sustained the injury during Tennessee's win Saturday at Texas A&M.",
-      "url": "https://www.espn.com/college-football/story/_/id/50496356/tennessee-leading-receiver-mike-matthews-season",
-      "source": "ESPN",
-      "published_at": "2026-11-16T00:39:26Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
       "id": "2bdf2f70b3ac40d0",
       "title": "Oklahoma, boosted by crowd's ire at postponement, beats No. 19 Ole Miss",
       "summary": "The Oklahoma crowd let Ole Miss know what they thought of having their game delayed by a day, and the Sooners rode that energy to a 24-17 win over the Rebels.",
@@ -57,56 +162,6 @@
       "teams": [
         "Oklahoma",
         "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a3e1d86450c8c34f",
-      "title": "Isaiah Johnson emphasizes No. 7 Texas' preparation, growth mindset",
-      "summary": "After a season-high 26 points, Johnson shares the Longhorns' intentional preparation for Baylor, his focus on improvement and professional advice he received on staying poised.",
-      "url": "https://www.espn.com/video/clip/_/id/50495632/isaiah-johnson-emphasizes-no-7-texas-preparation-growth-mindset",
-      "source": "ESPN",
-      "published_at": "2026-11-15T23:22:35Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6ad33e1b6cb827b9",
-      "title": "Baylor Bears vs. Texas Longhorns: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50495122/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-15T22:43:57Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4974163209aec072",
-      "title": "Sizing up college football's best races down the homestretch",
-      "summary": "From spots in the CFP and SEC title game to the hunt for bowl eligibility, there's still a lot on the line.",
-      "url": "https://www.espn.com/college-football/story/_/id/50491637/connelly-college-football-best-races",
-      "source": "ESPN",
-      "published_at": "2026-11-15T22:17:31Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "846f41f7faea8355",
-      "title": "Wright State-Lake Lakers vs. Tennessee Tech Golden Eagles: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50494609/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-15T22:06:22Z",
-      "sport": "basketball",
-      "teams": [
-        "Tennessee"
       ],
       "breaking": false
     },
@@ -175,102 +230,6 @@
       "sport": "football",
       "teams": [
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "309baa85b1222d50",
-      "title": "Arch Manning leads game-winning drive as Texas stuns LSU",
-      "summary": "Arch Manning found Raleek Brown for a 4-yard touchdown pass along the left sideline with 3 seconds left as Texas escaped Tiger Stadium with a victory over LSU",
-      "url": "https://www.espn.com/college-football/story/_/id/50487515/arch-manning-leads-game-winning-drive-texas-stuns-lsu",
-      "source": "ESPN",
-      "published_at": "2026-11-15T13:13:49Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "12ce6432644fc028",
-      "title": "Arch Manning, Texas stun LSU 22-21",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50487259/arch-manning-texas-stun-lsu-22-21",
-      "source": "ESPN",
-      "published_at": "2026-11-15T04:57:57Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "490214af3d708adc",
-      "title": "Arch Manning discusses how he was able to recover and win for Texas",
-      "summary": "After leading the Longhorns to a win over the Tigers, Manning breaks down how he was able to block out the turnovers and get the game-winning touchdown.",
-      "url": "https://www.espn.com/video/clip/_/id/50487428/arch-manning-discusses-how-was-able-recover-win-texas",
-      "source": "ESPN",
-      "published_at": "2026-11-15T04:49:18Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d183e7f1f3b7f42f",
-      "title": "South Carolina Gamecocks vs. Arkansas Razorbacks: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50487250/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-15T04:47:31Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6cf4d91c80d423dc",
-      "title": "Ryan Silverfield dedicates win to the fans after Arkansas downs SC",
-      "summary": "Silverfield gets emotional after the Razorbacks take down No. 17 South Carolina in Fayetteville and credits his team for battling through adversity.",
-      "url": "https://www.espn.com/video/clip/_/id/50487411/ryan-silverfield-dedicates-win-fans-arkansas-downs-sc",
-      "source": "ESPN",
-      "published_at": "2026-11-15T04:44:34Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8dddab5725f00620",
-      "title": "Joker Johnson boasts Arkansas' resilience vs. South Carolina",
-      "summary": "Johnson expresses excitement in the Razorbacks' performance as he discusses why this win over the Gamecocks is so special and their plan for the rest of the season.",
-      "url": "https://www.espn.com/video/clip/_/id/50487405/joker-johnson-boasts-arkansas-resilience-vs-south-carolina",
-      "source": "ESPN",
-      "published_at": "2026-11-15T04:42:37Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d9cf6ae72a8e7af2",
-      "title": "UC Davis Aggies vs. Idaho Vandals: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50487224/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-15T04:24:01Z",
-      "sport": "football",
-      "teams": [
-        "Texas A&M"
       ],
       "breaking": false
     },
