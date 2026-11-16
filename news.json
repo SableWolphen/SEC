@@ -1,11 +1,24 @@
 {
-  "updated_at": "2026-11-16T02:12:22.008670Z",
-  "checked_at": "2026-11-16T02:12:22.008670Z",
+  "updated_at": "2026-11-16T09:49:42.983436Z",
+  "checked_at": "2026-11-16T09:49:42.983436Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "a1533275f4aa7045",
+      "title": "Arkansas-Pine Bluff Golden Lions vs. USC Trojans: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50497601/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-16T02:23:50Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas"
+      ],
+      "breaking": false
+    },
     {
       "id": "be412e72d2661c3d",
       "title": "Florida State's first turquoise football uniforms are a tribute to Seminole Tribe",
@@ -31,7 +44,7 @@
         "Tennessee",
         "Texas A&M"
       ],
-      "breaking": true
+      "breaking": false
     },
     {
       "id": "2bdf2f70b3ac40d0",
@@ -122,19 +135,6 @@
       "teams": [
         "Oklahoma",
         "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f32c4eaf4d6b03df",
-      "title": "Emmanuel Lions vs. Yale Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50493455/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-15T21:00:53Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
       ],
       "breaking": false
     },
