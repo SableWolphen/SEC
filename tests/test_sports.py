@@ -24,6 +24,18 @@ class SportFeedTests(unittest.TestCase):
   self.assertEqual(baseball[-1][1].date(),dt.date(2027,7,1))
   self.assertEqual(sport.season(dt.datetime(2027,10,16,tzinfo=dt.timezone.utc)),2028)
   self.assertEqual(sport.season(dt.datetime(2028,3,1,tzinfo=dt.timezone.utc)),2028)
+ def test_empty_top_level_events_does_not_hide_nested_team_schedule(self):
+  game=event('nested-2027',333,2,'2026-11-04T23:00:00Z')
+  for wrapped in [
+   {'events':[],'schedule':[game]},
+   {'events':[],'team':{'schedule':{'items':[game]}}},
+   {'events':[],'content':{'events':[game]}},
+  ]:
+   with self.subTest(wrapped=tuple(wrapped.keys())):
+    rows=sport.parse(wrapped,'basketball',2027)
+    self.assertEqual([row['id'] for row in rows],['basketball-2027-nested-2027'])
+  self.assertEqual(sport.events_from_feed({'events':[],'schedule':[]}),[])
+
  def test_only_sec_and_verified_final(self):
   example={'events':[
    event('1001',333,2,'2026-11-04T23:00:00Z',True,'65','73'),
