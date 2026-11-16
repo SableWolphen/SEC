@@ -43,13 +43,17 @@ def events_from_feed(data):
     for group in (data.get('team'), data.get('content')):
         if isinstance(group, dict):
             sources.extend((group.get('events'), group.get('schedule')))
+    # Some ESPN responses contain an empty top-level events array while the
+    # actual team fixtures are nested under schedule or content. Never treat
+    # that empty placeholder as proof that the entire feed has no games.
     for source in sources:
-        if isinstance(source, list):
+        if isinstance(source, list) and source:
             return source
         if isinstance(source, dict):
             for key in ('events', 'items'):
-                if isinstance(source.get(key), list):
-                    return source[key]
+                items = source.get(key)
+                if isinstance(items, list) and items:
+                    return items
     return []
 
 
