@@ -1220,3 +1220,59 @@ color:#ecf8ee;font-size:13px;font-weight:900;background:#1c353b}
 .sport-next-pick small{font-size:12px;color:#c5ddcd;line-height:1.4}
 .sport-next-pick button{flex:none;min-height:42px;padding:8px 12px;border:1px solid #e0d996;border-radius:10px;background:#e6dda1;color:#1c3028;font-weight:800;cursor:pointer}
 @media(max-width:460px){.sport-next-pick{align-items:stretch;flex-direction:column}.sport-next-pick button{width:100%}}
+
+
+/* 2026-11-16: Calm, accessible game-day polish. Presentation only: no league or pick mutations. */
+:root{--sec-ui-focus:#f0c775;--sec-ui-surface:#182938;--sec-ui-line:#415665}
+@media(prefers-reduced-motion:reduce){
+  .game-card,.team-choice,.sport-team-option,.global-sport-button,.week-pill,.sport-week-button{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+button:focus-visible,a:focus-visible,[role="button"]:focus-visible,select:focus-visible,input:focus-visible{
+  outline:3px solid var(--sec-ui-focus);outline-offset:3px
+}
+.game-card,.sport-game-card{
+  border-color:var(--sec-ui-line);
+  box-shadow:0 3px 14px rgba(3,12,21,.14)
+}
+.team-choice.selected,.sport-team-option.selected{
+  border:2px solid #f0c775;
+  background:#354c40;
+  box-shadow:0 0 0 2px rgba(240,199,117,.13)
+}
+.team-choice.selected .team-name,.sport-team-option.selected .sport-team-name{color:#fff9e9}
+.team-choice:disabled,.sport-team-option:disabled{cursor:not-allowed}
+.team-choice.selected:disabled,.sport-team-option.selected:disabled{opacity:1}
+.sport-kickoff,.game-meta,.game-note,.sport-game-foot{line-height:1.5}
+.sport-score-scroll{-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.sport-standings th{position:sticky;top:0;z-index:1}
+@media(max-width:790px){
+  .app-shell{padding-left:clamp(12px,4vw,22px);padding-right:clamp(12px,4vw,22px)}
+  .page-intro{align-items:start;gap:10px}
+  .page-intro h1{font-size:clamp(29px,8vw,42px);letter-spacing:-1.5px}
+  .page-intro p{font-size:13px;line-height:1.55}
+  .week-picker,.sport-week-list{scroll-padding-inline:8px;scroll-snap-type:x proximity}
+  .week-pill,.sport-week-button{scroll-snap-align:start;min-height:48px}
+  .game-card,.sport-game-card{padding:14px;border-radius:16px}
+  .team-choice,.sport-team-option{min-height:64px;touch-action:manipulation}
+  .sport-team-option{padding:12px;gap:9px}
+  .sport-team-name,.team-name{font-size:13px;line-height:1.4}
+  .team-nick,.sport-game-foot{font-size:11px}
+  .global-sport-switch{border-radius:15px;box-shadow:none}
+  .global-sport-button{min-height:52px}
+  .sport-league-tools details{background:#172a34}
+  .sport-empty{padding:30px 17px}
+  .bottom-nav{box-shadow:0 -7px 28px rgba(4,10,18,.55)}
+  .mobile-nav-btn{touch-action:manipulation}
+}
+@media(max-width:520px){
+  .sport-games-grid{grid-template-columns:minmax(0,1fr);gap:10px}
+  .sport-team-options{gap:7px}
+  .sport-team-option{min-width:0;overflow-wrap:anywhere}
+  .sport-week-list,.week-picker{margin-right:-4px}
+  .sport-league-shell{padding:14px}
+  .sport-heading{gap:10px}
+  .sport-heading h2{line-height:1.2}
+  .sport-score-scroll{max-width:100%;overflow-x:auto}
+  .sport-game-top{line-height:1.5}
+}
