@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-16T06:32:53Z",
+  "checked_at": "2026-11-16T19:37:50Z",
   "source": "ESPN",
   "sports": {
     "baseball": {
@@ -91,9 +91,9 @@
       }
     },
     "football": {
-      "poll": "AFCA Coaches Poll",
+      "poll": "AP Top 25",
       "poll_size": 25,
-      "published_at": "2026-11-15",
+      "published_at": "2026-11-16",
       "season": 2026,
       "source": "ESPN",
       "source_url": "https://www.espn.com/college-football/rankings",
@@ -104,15 +104,11 @@
         },
         "FLA": {
           "previous": null,
-          "rank": 25
-        },
-        "LSU": {
-          "previous": 22,
           "rank": 23
         },
         "MISS": {
-          "previous": 17,
-          "rank": 16
+          "previous": 19,
+          "rank": 25
         },
         "TENN": {
           "previous": 9,
@@ -128,7 +124,7 @@
         },
         "UK": {
           "previous": 13,
-          "rank": 18
+          "rank": 17
         }
       }
     }
