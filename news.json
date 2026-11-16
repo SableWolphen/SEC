@@ -1,11 +1,116 @@
 {
-  "updated_at": "2026-11-15T21:51:46.777199Z",
-  "checked_at": "2026-11-15T21:51:46.777199Z",
+  "updated_at": "2026-11-16T02:12:22.008670Z",
+  "checked_at": "2026-11-16T02:12:22.008670Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "be412e72d2661c3d",
+      "title": "Florida State's first turquoise football uniforms are a tribute to Seminole Tribe",
+      "summary": "Florida State's turquoise uniforms are a tribute to the Seminole Tribe of Florida.",
+      "url": "https://www.espn.com/college-football/story/_/id/50495730/florida-state-football-turquoise-uniforms-seminole-tribe",
+      "source": "ESPN",
+      "published_at": "2026-11-16T01:03:10Z",
+      "sport": "football",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f5c24ea132c8d783",
+      "title": "Source: Tennessee leading receiver Mike Matthews out for season",
+      "summary": "Mike Matthews sustained the injury during Tennessee's win Saturday at Texas A&M.",
+      "url": "https://www.espn.com/college-football/story/_/id/50496356/tennessee-leading-receiver-mike-matthews-season",
+      "source": "ESPN",
+      "published_at": "2026-11-16T00:39:26Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee",
+        "Texas A&M"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "2bdf2f70b3ac40d0",
+      "title": "Oklahoma, boosted by crowd's ire at postponement, beats No. 19 Ole Miss",
+      "summary": "The Oklahoma crowd let Ole Miss know what they thought of having their game delayed by a day, and the Sooners rode that energy to a 24-17 win over the Rebels.",
+      "url": "https://www.espn.com/college-football/story/_/id/50495687/sooners-boosted-crowd-ire-postponement-beat-rebels",
+      "source": "ESPN",
+      "published_at": "2026-11-16T00:22:20Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a3e1d86450c8c34f",
+      "title": "Isaiah Johnson emphasizes No. 7 Texas' preparation, growth mindset",
+      "summary": "After a season-high 26 points, Johnson shares the Longhorns' intentional preparation for Baylor, his focus on improvement and professional advice he received on staying poised.",
+      "url": "https://www.espn.com/video/clip/_/id/50495632/isaiah-johnson-emphasizes-no-7-texas-preparation-growth-mindset",
+      "source": "ESPN",
+      "published_at": "2026-11-15T23:22:35Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6ad33e1b6cb827b9",
+      "title": "Baylor Bears vs. Texas Longhorns: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50495122/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-15T22:43:57Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4974163209aec072",
+      "title": "Sizing up college football's best races down the homestretch",
+      "summary": "From spots in the CFP and SEC title game to the hunt for bowl eligibility, there's still a lot on the line.",
+      "url": "https://www.espn.com/college-football/story/_/id/50491637/connelly-college-football-best-races",
+      "source": "ESPN",
+      "published_at": "2026-11-15T22:17:31Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "846f41f7faea8355",
+      "title": "Wright State-Lake Lakers vs. Tennessee Tech Golden Eagles: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50494609/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-15T22:06:22Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a8d0b331c6bd2602",
+      "title": "SEC fines Arkansas $500K for allowing fans to storm field vs. South Carolina",
+      "summary": "The Southeastern Conference fined Arkansas $500,000 on Sunday for allowing fans to storm the field following a 34-6 victory over No. 17 South Carolina.",
+      "url": "https://www.espn.com/college-football/story/_/id/50493903/sec-fines-arkansas-500k-allowing-fans-storm-field-vs-south-carolina",
+      "source": "ESPN",
+      "published_at": "2026-11-15T22:01:10Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
     {
       "id": "40410026abed2963",
       "title": "Oklahoma takes down Ole Miss for 2nd straight win",
@@ -21,20 +126,6 @@
       "breaking": false
     },
     {
-      "id": "a8d0b331c6bd2602",
-      "title": "SEC fines Arkansas $500K for allowing fans to storm field vs. South Carolina",
-      "summary": "The Southeastern Conference fined Arkansas $500,000 on Sunday for allowing fans to storm the field following a 34-6 victory over No. 17 South Carolina.",
-      "url": "https://www.espn.com/college-football/story/_/id/50493903/sec-fines-arkansas-500k-allowing-fans-storm-field-vs-south-carolina",
-      "source": "ESPN",
-      "published_at": "2026-11-15T21:45:00Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
       "id": "f32c4eaf4d6b03df",
       "title": "Emmanuel Lions vs. Yale Bulldogs: Game Highlights",
       "summary": "",
@@ -44,45 +135,6 @@
       "sport": "basketball",
       "teams": [
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d1f0e7e7ad5e6f41",
-      "title": "New Hampshire Wildcats vs. Boston College Eagles: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50493076/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-15T20:38:14Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f9f74048be1c1841",
-      "title": "Norfolk State Spartans vs. Georgia St Panthers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50492619/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-15T20:01:31Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "acf2f10f61a01f0d",
-      "title": "Abraham Baldwin Agricultural Stallions vs. Florida Gulf Coast Eagles: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50491904/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-15T19:06:41Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
       ],
       "breaking": false
     },
