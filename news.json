@@ -1,11 +1,38 @@
 {
-  "updated_at": "2026-11-17T13:31:04.843025Z",
-  "checked_at": "2026-11-17T13:31:04.843025Z",
+  "updated_at": "2026-11-17T22:26:30.890583Z",
+  "checked_at": "2026-11-17T22:26:30.890583Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "f709265f6524c6ad",
+      "title": "UK's Will Stein discusses late adjustments, physicality, elevated standards",
+      "summary": "Stein reflects on weathering the homestretch of the season, emphasizes the need for more offensive line physicality and looks ahead with high expectations for No. 11 Kentucky.",
+      "url": "https://www.espn.com/video/clip/_/id/50514130/uk-stein-discusses-late-adjustments-physicality-elevated-standards",
+      "source": "ESPN",
+      "published_at": "2026-11-17T22:17:01Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "588e632ee07cc750",
+      "title": "Shane Beamer discusses priming for No. 1 UGA, tough conversations with seniors",
+      "summary": "Beamer dissects the obstacles awaiting No. 17 South Carolina in a challenging Week 12 test against the Bulldogs while expressing his connection with the Gamecocks' seniors.",
+      "url": "https://www.espn.com/video/clip/_/id/50514085/shane-beamer-discusses-priming-no-1-uga-tough-conversations-seniors",
+      "source": "ESPN",
+      "published_at": "2026-11-17T22:11:10Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
     {
       "id": "afaa459c639cd6fc",
       "title": "Block Party: Cubelic almost kicks Harper out of the party",
