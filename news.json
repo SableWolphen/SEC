@@ -1,33 +1,257 @@
 {
-  "updated_at": "2026-11-16T20:30:58.593809Z",
-  "checked_at": "2026-11-16T20:30:58.593809Z",
+  "updated_at": "2026-11-17T03:56:18.790089Z",
+  "checked_at": "2026-11-17T03:56:18.790089Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "07aa8a39883759ba",
-      "title": "Texas' Manning to participate in senior day, mum on future",
-      "summary": "Texas quarterback Arch Manning said Monday he will participate in Saturday's senior day ceremonies despite having one year of eligibility remaining.",
-      "url": "https://www.espn.com/college-football/story/_/id/50503997/texas-arch-manning-participate-senior-day",
+      "id": "f427f1510c48a3f1",
+      "title": "Montana Grizzlies vs. Kansas State Wildcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50507377/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-16T20:25:55Z",
-      "sport": "football",
+      "published_at": "2026-11-17T03:06:25Z",
+      "sport": "basketball",
       "teams": [
-        "Texas"
+        "Kentucky"
       ],
       "breaking": false
     },
     {
-      "id": "74f4b5d0ef426c2d",
-      "title": "Texas DL Hero Kanu undergoes season-ending surgery on arm",
-      "summary": "Texas starting defensive tackle Hero Kanu had season-ending surgery on his arm Monday, coach Steve Sarkisian announced.",
-      "url": "https://www.espn.com/college-football/story/_/id/50503942/texas-dl-hero-kanu-undergoes-season-ending-surgery-arm",
+      "id": "afc2815676b09e5f",
+      "title": "Tarleton Texans vs. Drake Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50507341/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-16T20:01:36Z",
+      "published_at": "2026-11-17T02:59:49Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "801669b60e16ebe5",
+      "title": "Kentucky's Malachi Moreno breaks down what led to career night",
+      "summary": "After recording a career-high 22 points and four steals in the win against Grambling, Moreno describes what went right for him and the Wildcats in the victory.",
+      "url": "https://www.espn.com/video/clip/_/id/50507261/kentucky-malachi-moreno-breaks-led-career-night",
+      "source": "ESPN",
+      "published_at": "2026-11-17T02:48:09Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0d8ee36d2a9bc3a6",
+      "title": "Western Kentucky Hilltoppers vs. Tulsa Golden Hurricane: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50507255/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-17T02:46:42Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8aa8700d399adfd9",
+      "title": "5-star senior Adan Diggs, top shooting guard in 2027 class, commits to Arizona",
+      "summary": "Five-star senior Adan Diggs, the No.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50506767/five-star-guard-adan-diggs-commits-arizona-wildcats-men-basketball",
+      "source": "ESPN",
+      "published_at": "2026-11-17T02:33:55Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas",
+        "Kentucky"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "69fd8bd41838a240",
+      "title": "Florida Memorial Lions vs. Stetson Hatters: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50506966/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-17T02:24:26Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "77ba5d1425c3b37a",
+      "title": "Grambling Tigers vs. Kentucky Wildcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50506909/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-17T02:20:14Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c93b5d1188924ce2",
+      "title": "Midway Eagles vs. Southeast Missouri State Redhawks: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50506908/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-17T02:19:58Z",
+      "sport": "basketball",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8fa67182b8178602",
+      "title": "The Citadel Bulldogs vs. Clemson Tigers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50506889/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-17T02:16:34Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "62957e578ad1a12e",
+      "title": "Eastern Kentucky Colonels vs. Kent State Golden Flashes: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50506851/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-17T02:10:07Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9bd785b7bf9f2235",
+      "title": "Jacksonville Dolphins vs. Georgia Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50506848/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-17T02:09:45Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c4a1ae202ac8459f",
+      "title": "DeSales Bulldogs vs. Pennsylvania Quakers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50506791/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-17T02:00:37Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3a87e690023571ce",
+      "title": "SEC will not punish LSU if it plays RJ Luis, attorneys say",
+      "summary": "The SEC has informed LSU that it will not punish the school for rostering RJ Luis, his attorneys said Monday.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50505162/sec-not-punish-lsu-playing-rj-luis-attorney-says",
+      "source": "ESPN",
+      "published_at": "2026-11-17T00:16:26Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "afaa459c639cd6fc",
+      "title": "Block Party: Cubelic almost kicks Harper out of the party",
+      "summary": "SEC Network's Cole Cubelic calls out Roman Harper's party foul at the block party while watching the big guys go to work in the trenches.",
+      "url": "https://www.espn.com/video/clip/_/id/50505792/cubelic-almost-kicks-harper-party",
+      "source": "ESPN",
+      "published_at": "2026-11-16T23:58:25Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "98e956228d9ef14f",
+      "title": "Which teams will end up in Atlanta for the final SEC Title game?",
+      "summary": "SEC Network's Cole Cubelic and Roman Harper take a look at the remaining schedules for the four SEC championship hopefuls and pick they think will finish strong and make the title game.",
+      "url": "https://www.espn.com/video/clip/_/id/50505691/which-teams-end-atlanta-final-sec-title-game",
+      "source": "ESPN",
+      "published_at": "2026-11-16T23:57:35Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "d0120603fdce1686",
+      "title": "Top 25 betting lines: UGA big faves over Gamecocks, Vols slim favorites vs. LSU",
+      "summary": "This week's odds and FPI predictions for South Carolina-Georgia, Tennessee-LSU and more.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50498153/2026-college-football-week-12-top-25-betting-lines-odds",
+      "source": "ESPN",
+      "published_at": "2026-11-16T23:15:08Z",
       "sport": "football",
       "teams": [
+        "Georgia",
+        "LSU",
+        "South Carolina",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4a8f9df623c8098f",
+      "title": "Clark Lea calls for Vandy's biggest improvement to be on offense",
+      "summary": "Lea explains the ups and downs the Commodores had against Alabama and how they need to get better offensively if they want to have a shot at making a bowl game.",
+      "url": "https://www.espn.com/video/clip/_/id/50505368/clark-lea-calls-vandy-biggest-improvement-offense",
+      "source": "ESPN",
+      "published_at": "2026-11-16T23:01:01Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a4368e58d689da26",
+      "title": "Jeff Lebby discusses making staff changes for Mississippi State",
+      "summary": "After making some changes to the offensive line and special teams coaching, Lebby breaks down the reason he made the changes now and how he wants the Bulldogs to get better.",
+      "url": "https://www.espn.com/video/clip/_/id/50505358/jeff-lebby-discusses-making-staff-changes-mississippi-state",
+      "source": "ESPN",
+      "published_at": "2026-11-16T22:58:57Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Mississippi State"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0bf7f1cacd084673",
+      "title": "Georgia stays golden, Texas rises in Burns, Doering's power rankings",
+      "summary": "SEC This Morning's Peter Burns and Chris Doering break down the SEC's biggest movers, with Georgia leading the risers and Texas making No. 2 on their list.",
+      "url": "https://www.espn.com/video/clip/_/id/50504753/georgia-stays-golden-texas-rises-burns-doering-power-rankings",
+      "source": "ESPN",
+      "published_at": "2026-11-16T22:00:51Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
         "Texas"
       ],
       "breaking": false
@@ -43,17 +267,6 @@
       "teams": [
         "Florida"
       ],
-      "breaking": true
-    },
-    {
-      "id": "4974163209aec072",
-      "title": "Sizing up college football's best races down the homestretch",
-      "summary": "From spots in the CFP and SEC title game to the hunt for bowl eligibility, there's still a lot on the line.",
-      "url": "https://www.espn.com/college-football/story/_/id/50491637/connelly-college-football-best-races",
-      "source": "ESPN",
-      "published_at": "2026-11-16T19:26:14Z",
-      "sport": "football",
-      "teams": [],
       "breaking": false
     },
     {
@@ -70,20 +283,6 @@
       "breaking": false
     },
     {
-      "id": "f5c24ea132c8d783",
-      "title": "Tennessee leading receiver Mike Matthews out for season",
-      "summary": "Mike Matthews sustained the injury during Tennessee's win Saturday at Texas A&M.",
-      "url": "https://www.espn.com/college-football/story/_/id/50496356/tennessee-leading-receiver-mike-matthews-season",
-      "source": "ESPN",
-      "published_at": "2026-11-16T19:14:58Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee",
-        "Texas A&M"
-      ],
-      "breaking": true
-    },
-    {
       "id": "bf5a919339639e41",
       "title": "Michigan State up to No. 2 in AP men's poll behind Florida",
       "summary": "Michigan State is up to No. 2 in the AP men's basketball poll behind Florida. UConn, Virginia and Duke, which lost to the Spartans last week, round out the top five.",
@@ -97,19 +296,6 @@
       "breaking": false
     },
     {
-      "id": "d914450cc555a7e1",
-      "title": "Where Stephen A. finds fault with Lane Kiffin in his debut LSU season",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50502363/where-stephen-finds-fault-lane-kiffin-debut-lsu-season",
-      "source": "ESPN",
-      "published_at": "2026-11-16T16:56:28Z",
-      "sport": "football",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
       "id": "81cd9f748783f7d9",
       "title": "Florida reclaims top spot in Andy Katz's men's basketball Power 44 rankings after Week 2",
       "summary": "Florida reclaims the No. 1 spot in Andy Katz's Power 44 rankings after Week 2 of men's basketball. Check out who else made the list.",
@@ -119,117 +305,6 @@
       "sport": "basketball",
       "teams": [
         "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d0120603fdce1686",
-      "title": "Top 25 betting lines: UGA big faves over Gamecocks, Vols slim favorites vs. LSU",
-      "summary": "This week's odds and FPI predictions for South Carolina-Georgia, Tennessee-LSU and more.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50498153/2026-college-football-week-12-top-25-betting-lines-odds",
-      "source": "ESPN",
-      "published_at": "2026-11-16T13:48:40Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "LSU",
-        "South Carolina",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "be412e72d2661c3d",
-      "title": "Florida State's first turquoise football uniforms are a tribute to Seminole Tribe",
-      "summary": "Florida State's turquoise uniforms are a tribute to the Seminole Tribe of Florida.",
-      "url": "https://www.espn.com/college-football/story/_/id/50495730/florida-state-football-turquoise-uniforms-seminole-tribe",
-      "source": "ESPN",
-      "published_at": "2026-11-16T01:03:10Z",
-      "sport": "football",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "2bdf2f70b3ac40d0",
-      "title": "Oklahoma, boosted by crowd's ire at postponement, beats No. 19 Ole Miss",
-      "summary": "The Oklahoma crowd let Ole Miss know what they thought of having their game delayed by a day, and the Sooners rode that energy to a 24-17 win over the Rebels.",
-      "url": "https://www.espn.com/college-football/story/_/id/50495687/sooners-boosted-crowd-ire-postponement-beat-rebels",
-      "source": "ESPN",
-      "published_at": "2026-11-16T00:22:20Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a8d0b331c6bd2602",
-      "title": "SEC fines Arkansas $500K for allowing fans to storm field vs. South Carolina",
-      "summary": "The Southeastern Conference fined Arkansas $500,000 on Sunday for allowing fans to storm the field following a 34-6 victory over No. 17 South Carolina.",
-      "url": "https://www.espn.com/college-football/story/_/id/50493903/sec-fines-arkansas-500k-allowing-fans-storm-field-vs-south-carolina",
-      "source": "ESPN",
-      "published_at": "2026-11-15T22:01:10Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "40410026abed2963",
-      "title": "Oklahoma takes down Ole Miss for 2nd straight win",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50493941/oklahoma-takes-ole-miss-2nd-straight-win",
-      "source": "ESPN",
-      "published_at": "2026-11-15T21:46:26Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "05bbe77a7b40ae49",
-      "title": "Jackson State Tigers vs. Alabama State Hornets: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50491492/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-15T17:57:44Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1bd61615eeca913f",
-      "title": "Lane Kiffin understands frustration as LSU's CFP hopes dashed with Texas loss",
-      "summary": "Lane Kiffin said it was fair to question LSU's 6-4 record after Saturday's loss to Texas, a defeat that likely knocked the Tigers out of playoff contention.",
-      "url": "https://www.espn.com/college-football/story/_/id/50488081/kiffin-understands-frustration-lsu-playoff-hopes-dashed",
-      "source": "ESPN",
-      "published_at": "2026-11-15T15:44:48Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "97ee5aa8fcaf0cfe",
-      "title": "Heather Dinich and Paul Finebaum disagree about Texas' spot in the CFP",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50489988/heather-dinich-paul-finebaum-disagree-texas-spot-cfp",
-      "source": "ESPN",
-      "published_at": "2026-11-15T13:55:31Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
       ],
       "breaking": false
     },
