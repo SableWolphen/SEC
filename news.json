@@ -1,11 +1,344 @@
 {
-  "updated_at": "2026-11-17T22:26:30.890583Z",
-  "checked_at": "2026-11-17T22:26:30.890583Z",
+  "updated_at": "2026-11-18T04:27:18.092733Z",
+  "checked_at": "2026-11-18T04:27:18.092733Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "e6795b7fe42f2630",
+      "title": "Wake Forest surges into CFP top 12; top 4 unchanged while Texas jumps Notre Dame",
+      "summary": "Alabama stayed at No. 3 despite some struggles on Saturday while two-loss Texas jumped one-loss Notre Dame for No. 5 in the CFP's latest rankings.",
+      "url": "https://www.espn.com/college-football/story/_/id/50515993/wake-forest-surges-cfp-top-12-texas-jumps-notre-dame",
+      "source": "ESPN",
+      "published_at": "2026-11-18T04:23:21Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6d6046f9188b7cce",
+      "title": "Anger Index: Why Texas Tech, Tennessee and the Group of 6 should be mad",
+      "summary": "Ranking the teams who should be most upset about their latest CFP ranking.",
+      "url": "https://www.espn.com/college-football/story/_/id/50510905/cfp-ranking-2026-anger-index-texas-tech",
+      "source": "ESPN",
+      "published_at": "2026-11-18T04:19:21Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a268e34893f1b258",
+      "title": "Sources: Michigan to hire Texas A&M's Trev Alberts as athletic director",
+      "summary": "Michigan has reached a deal to hire Texas A&M athletic director Trev Alberts to replace the departing Warde Manuel, sources told ESPN on Tuesday.",
+      "url": "https://www.espn.com/college-sports/story/_/id/50516550/michigan-hire-texas-trev-alberts-athletic-director",
+      "source": "ESPN",
+      "published_at": "2026-11-18T03:43:00Z",
+      "sport": "football",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a268e34893f1b258",
+      "title": "Sources: Michigan to hire Texas A&M's Trev Alberts as athletic director",
+      "summary": "Michigan has reached a deal to hire Texas A&M athletic director Trev Alberts to replace the departing Warde Manuel, sources told ESPN on Tuesday.",
+      "url": "https://www.espn.com/college-sports/story/_/id/50516550/michigan-hire-texas-trev-alberts-athletic-director",
+      "source": "ESPN",
+      "published_at": "2026-11-18T03:43:00Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9a835671d144ebdd",
+      "title": "Nicholls Colonels vs. Ole Miss Rebels: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50517062/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T03:41:51Z",
+      "sport": "basketball",
+      "teams": [
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ae60b85a15402ca0",
+      "title": "Texas A&M-CC Islanders vs. Rice Owls: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50517017/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T03:37:53Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d54da3b0ce498ec6",
+      "title": "Middle Tennessee Blue Raiders vs. Georgia Southern Eagles: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50516974/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T03:32:03Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6b1c21f53d34db8f",
+      "title": "Georgia leads, Texas enters top five of third College Football Playoff rankings of 2026",
+      "summary": "Here's everything you need to know from the third College Football Playoff rankings revealed on November 17, 2026.",
+      "url": "https://www.ncaa.com/news/football/article/2026-11-17/georgia-leads-texas-enters-top-five-third-college-football-playoff-rankings-2026",
+      "source": "NCAA",
+      "published_at": "2026-11-18T03:32:00Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "01f2cc78335241f8",
+      "title": "Bryant Bulldogs vs. UMass Minutemen: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50516862/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T03:19:46Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8faa836c64c92e2e",
+      "title": "Jaxon Richardson on No. 16 Bama's toughness vs. Kennesaw State",
+      "summary": "Richardson describes how he was able to be versatile on the court as he discusses how the Crimson Tide's ability to play as one led them to the win over the Owls.",
+      "url": "https://www.espn.com/video/clip/_/id/50516853/jaxon-richardson-no-16-bama-toughness-vs-kennesaw-state",
+      "source": "ESPN",
+      "published_at": "2026-11-18T03:19:18Z",
+      "sport": "basketball",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "44e602b0cd4cd48e",
+      "title": "Eastern Illinois Panthers vs. Vanderbilt Commodores: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50516710/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T03:06:47Z",
+      "sport": "basketball",
+      "teams": [
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "046a53d32c524125",
+      "title": "RJ Johnson says physicality helped right Bulldogs' slow start",
+      "summary": "Johnson explains how Mississippi State was able to comeback from a halftime deficit to get the job done on the road against UCF.",
+      "url": "https://www.espn.com/video/clip/_/id/50516600/rj-johnson-says-physicality-helped-right-bulldogs-slow-start",
+      "source": "ESPN",
+      "published_at": "2026-11-18T03:01:56Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia",
+        "Mississippi State"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "38b1537633caaea7",
+      "title": "Kennesaw State Owls vs. Alabama Crimson Tide: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50516544/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T02:57:51Z",
+      "sport": "basketball",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ceb17544382597ea",
+      "title": "Mississippi State Bulldogs vs. UCF Knights: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50516536/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T02:56:17Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia",
+        "Mississippi State"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6beb37cf351813d7",
+      "title": "Jacksonville State Gamecocks vs. Louisiana Tech Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50516504/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T02:52:31Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "964e559a85b88f4b",
+      "title": "Green Bay Phoenix vs. West Florida Argonauts: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50516207/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T02:33:41Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7baa74b35e663ea4",
+      "title": "Tennessee State Tigers vs. South Florida Bulls: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50516171/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T02:27:12Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "abd2337fd431d574",
+      "title": "Charlotte 49ers vs. Davidson Wildcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50516147/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T02:25:26Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6176378509a21b6c",
+      "title": "Fort Lauderdale Eagles vs. North Florida Ospreys: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50516080/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T02:19:18Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ecdf689957fc8647",
+      "title": "Villanova Wildcats vs. Pittsburgh Panthers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50516059/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T02:17:09Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ea269ee2618043e4",
+      "title": "East Tennessee State Buccaneers vs. Marshall Thundering Herd: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50516032/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T02:14:33Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7be798ce3fe562c8",
+      "title": "Western Carolina Catamounts vs. Butler Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50516016/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T02:12:12Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3dacf3441f700b70",
+      "title": "Gators' Boogie Fland aggravates shoulder injury, status vs. Houston in question",
+      "summary": "Boogie Fland left the Gators' 86-78 win over Notre Dame after aggravating a right shoulder injury and his availability for the Houston game is uncertain.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50515779/gators-boogie-fland-aggravates-shoulder-injury",
+      "source": "ESPN",
+      "published_at": "2026-11-18T02:01:16Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "7d6f60ad374d5c38",
+      "title": "Oklahoma coach Venables shouts out Love's after Buc-ee's comment",
+      "summary": "Venables showed love Sunday to Buc-ee's -- which is owned by an alumnus of the Sooners' next opponent, Texas A&M. So on Tuesday the coach repped the Oklahoma-based Love's.",
+      "url": "https://www.espn.com/college-football/story/_/id/50513199/oklahoma-brent-venables-loves-travel-stop",
+      "source": "ESPN",
+      "published_at": "2026-11-17T22:23:36Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e5f9da621446a32b",
+      "title": "Dari Nowkhah details his SEC Network Power Rankings placements",
+      "summary": "SEC Network's Nowkhah breaks down why he has more faith than his fellow panelists in Alabama and Oklahoma as Kentucky takes a tumble.",
+      "url": "https://www.espn.com/video/clip/_/id/50514226/dari-nowkhah-details-sec-network-power-rankings-placements",
+      "source": "ESPN",
+      "published_at": "2026-11-17T22:23:20Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Kentucky",
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
     {
       "id": "f709265f6524c6ad",
       "title": "UK's Will Stein discusses late adjustments, physicality, elevated standards",
