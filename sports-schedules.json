@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-18T10:40:25.207857Z",
+  "updated_at": "2026-11-18T22:18:15.451783Z",
   "sports": {
     "basketball": {
       "season": 2027,
@@ -1573,7 +1573,7 @@
           "sport": "basketball",
           "season": 2027,
           "week": 3,
-          "kickoff_at": "2026-11-18T21:30:00Z",
+          "kickoff_at": "2026-11-18T21:48:00Z",
           "away_code": "248",
           "home_code": "57",
           "away_name": "Houston Cougars",
@@ -1581,7 +1581,7 @@
           "away_score": null,
           "home_score": null,
           "winner_code": null,
-          "game_status": "scheduled",
+          "game_status": "live",
           "source": "ESPN",
           "provisional": false
         },
@@ -1844,8 +1844,8 @@
           "id": "basketball-2027-401921811",
           "sport": "basketball",
           "season": 2027,
-          "week": 4,
-          "kickoff_at": "2026-11-22T01:00:00Z",
+          "week": 3,
+          "kickoff_at": "2026-11-21T18:00:00Z",
           "away_code": "2511",
           "home_code": "99",
           "away_name": "Queens University Royals",
@@ -6709,22 +6709,22 @@
         "99": 32
       },
       "sec_team_game_counts": {
-        "61": 36,
-        "99": 35,
-        "201": 34,
-        "344": 33,
-        "238": 35,
-        "96": 34,
-        "2": 33,
-        "333": 34,
-        "145": 32,
-        "245": 34,
         "2579": 35,
-        "8": 36,
         "2633": 33,
-        "251": 36,
+        "344": 33,
+        "61": 36,
         "57": 36,
-        "142": 36
+        "333": 34,
+        "99": 35,
+        "142": 36,
+        "251": 36,
+        "245": 34,
+        "145": 32,
+        "238": 35,
+        "201": 34,
+        "8": 36,
+        "2": 33,
+        "96": 34
       },
       "warning": null
     },
@@ -6747,22 +6747,22 @@
         "99": 0
       },
       "sec_team_game_counts": {
-        "61": 0,
-        "99": 0,
-        "201": 0,
-        "344": 0,
-        "238": 0,
-        "96": 0,
-        "2": 0,
-        "333": 0,
-        "145": 0,
-        "245": 0,
         "2579": 0,
-        "8": 0,
         "2633": 0,
-        "251": 0,
+        "344": 0,
+        "61": 0,
         "57": 0,
-        "142": 0
+        "333": 0,
+        "99": 0,
+        "142": 0,
+        "251": 0,
+        "245": 0,
+        "145": 0,
+        "238": 0,
+        "201": 0,
+        "8": 0,
+        "2": 0,
+        "96": 0
       },
       "warning": "No verified individual first-pitch times yet; SEC baseball weekend series previews remain available."
     }
