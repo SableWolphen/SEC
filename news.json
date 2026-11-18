@@ -1,22 +1,116 @@
 {
-  "updated_at": "2026-11-18T04:27:18.092733Z",
-  "checked_at": "2026-11-18T04:27:18.092733Z",
+  "updated_at": "2026-11-18T14:05:49.519901Z",
+  "checked_at": "2026-11-18T14:05:49.519901Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "0dac46cdcf91a4e5",
+      "title": "Tom Izzo calls Michigan State's shooting woes an 'all-time low' as coach",
+      "summary": "The Spartans' 9-for-50 shooting in a loss to the Volunteers was the first time since 1949 that an AP top-20 team failed to make 10 field goals in a game.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50519618/michigan-state-held-77-year-low-fgs-top-20-team",
+      "source": "ESPN",
+      "published_at": "2026-11-18T13:02:38Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
       "id": "e6795b7fe42f2630",
       "title": "Wake Forest surges into CFP top 12; top 4 unchanged while Texas jumps Notre Dame",
-      "summary": "Alabama stayed at No. 3 despite some struggles on Saturday while two-loss Texas jumped one-loss Notre Dame for No. 5 in the CFP's latest rankings.",
+      "summary": "Alabama stayed at No. 3 despite some struggles while two-loss Texas jumped one-loss Notre Dame for No. 5 in the CFP's latest rankings.",
       "url": "https://www.espn.com/college-football/story/_/id/50515993/wake-forest-surges-cfp-top-12-texas-jumps-notre-dame",
       "source": "ESPN",
-      "published_at": "2026-11-18T04:23:21Z",
+      "published_at": "2026-11-18T12:37:24Z",
       "sport": "football",
       "teams": [
         "Alabama",
         "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d0120603fdce1686",
+      "title": "Top 25 betting lines: UGA big faves over Gamecocks, Vols slim favorites vs. LSU",
+      "summary": "This week's odds and FPI predictions for South Carolina-Georgia, Tennessee-LSU and more.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50498153/2026-college-football-week-12-top-25-betting-lines-odds",
+      "source": "ESPN",
+      "published_at": "2026-11-18T12:16:59Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "LSU",
+        "South Carolina",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "36ace3d5e3932e7c",
+      "title": "West Virginia Mountaineers vs. Auburn Tigers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50518582/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T07:53:28Z",
+      "sport": "basketball",
+      "teams": [
+        "Auburn"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a268e34893f1b258",
+      "title": "Sources: Michigan to hire Texas A&M's Trev Alberts as athletic director",
+      "summary": "Michigan has reached a deal to hire Texas A&M athletic director Trev Alberts to replace the departing Warde Manuel, sources told ESPN on Tuesday.",
+      "url": "https://www.espn.com/college-sports/story/_/id/50516550/michigan-hire-texas-trev-alberts-athletic-director",
+      "source": "ESPN",
+      "published_at": "2026-11-18T05:46:35Z",
+      "sport": "football",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a268e34893f1b258",
+      "title": "Sources: Michigan to hire Texas A&M's Trev Alberts as athletic director",
+      "summary": "Michigan has reached a deal to hire Texas A&M athletic director Trev Alberts to replace the departing Warde Manuel, sources told ESPN on Tuesday.",
+      "url": "https://www.espn.com/college-sports/story/_/id/50516550/michigan-hire-texas-trev-alberts-athletic-director",
+      "source": "ESPN",
+      "published_at": "2026-11-18T05:46:35Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6f7d0b8a29428adf",
+      "title": "Arkansas' Calipari laments not calling TO late in loss: 'Still learning about my team'",
+      "summary": "John Calipari lamented not calling a timeout to instruct Arkansas to extend the game late in Tuesday's loss to Indiana, saying it's a lesson in how young his team is.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50517648/arkansas-john-calipari-laments-not-calling-late-loss",
+      "source": "ESPN",
+      "published_at": "2026-11-18T04:58:51Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ffdb156ccc691e96",
+      "title": "Michigan State Spartans vs. Tennessee Volunteers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50517502/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-18T04:34:47Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
       ],
       "breaking": false
     },
@@ -26,36 +120,10 @@
       "summary": "Ranking the teams who should be most upset about their latest CFP ranking.",
       "url": "https://www.espn.com/college-football/story/_/id/50510905/cfp-ranking-2026-anger-index-texas-tech",
       "source": "ESPN",
-      "published_at": "2026-11-18T04:19:21Z",
+      "published_at": "2026-11-18T04:25:53Z",
       "sport": "football",
       "teams": [
         "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a268e34893f1b258",
-      "title": "Sources: Michigan to hire Texas A&M's Trev Alberts as athletic director",
-      "summary": "Michigan has reached a deal to hire Texas A&M athletic director Trev Alberts to replace the departing Warde Manuel, sources told ESPN on Tuesday.",
-      "url": "https://www.espn.com/college-sports/story/_/id/50516550/michigan-hire-texas-trev-alberts-athletic-director",
-      "source": "ESPN",
-      "published_at": "2026-11-18T03:43:00Z",
-      "sport": "football",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a268e34893f1b258",
-      "title": "Sources: Michigan to hire Texas A&M's Trev Alberts as athletic director",
-      "summary": "Michigan has reached a deal to hire Texas A&M athletic director Trev Alberts to replace the departing Warde Manuel, sources told ESPN on Tuesday.",
-      "url": "https://www.espn.com/college-sports/story/_/id/50516550/michigan-hire-texas-trev-alberts-athletic-director",
-      "source": "ESPN",
-      "published_at": "2026-11-18T03:43:00Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas A&M"
       ],
       "breaking": false
     },
@@ -285,32 +353,6 @@
       "breaking": false
     },
     {
-      "id": "7be798ce3fe562c8",
-      "title": "Western Carolina Catamounts vs. Butler Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50516016/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T02:12:12Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3dacf3441f700b70",
-      "title": "Gators' Boogie Fland aggravates shoulder injury, status vs. Houston in question",
-      "summary": "Boogie Fland left the Gators' 86-78 win over Notre Dame after aggravating a right shoulder injury and his availability for the Houston game is uncertain.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50515779/gators-boogie-fland-aggravates-shoulder-injury",
-      "source": "ESPN",
-      "published_at": "2026-11-18T02:01:16Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": true
-    },
-    {
       "id": "7d6f60ad374d5c38",
       "title": "Oklahoma coach Venables shouts out Love's after Buc-ee's comment",
       "summary": "Venables showed love Sunday to Buc-ee's -- which is owned by an alumnus of the Sooners' next opponent, Texas A&M. So on Tuesday the coach repped the Oklahoma-based Love's.",
@@ -386,22 +428,6 @@
       "published_at": "2026-11-16T23:57:35Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "d0120603fdce1686",
-      "title": "Top 25 betting lines: UGA big faves over Gamecocks, Vols slim favorites vs. LSU",
-      "summary": "This week's odds and FPI predictions for South Carolina-Georgia, Tennessee-LSU and more.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50498153/2026-college-football-week-12-top-25-betting-lines-odds",
-      "source": "ESPN",
-      "published_at": "2026-11-16T23:15:08Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "LSU",
-        "South Carolina",
-        "Tennessee"
-      ],
       "breaking": false
     },
     {
