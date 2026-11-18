@@ -1,21 +1,117 @@
 {
-  "updated_at": "2026-11-18T14:05:49.519901Z",
-  "checked_at": "2026-11-18T14:05:49.519901Z",
+  "updated_at": "2026-11-18T22:00:01.609692Z",
+  "checked_at": "2026-11-18T22:00:01.609692Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "0dac46cdcf91a4e5",
-      "title": "Tom Izzo calls Michigan State's shooting woes an 'all-time low' as coach",
-      "summary": "The Spartans' 9-for-50 shooting in a loss to the Volunteers was the first time since 1949 that an AP top-20 team failed to make 10 field goals in a game.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50519618/michigan-state-held-77-year-low-fgs-top-20-team",
+      "id": "c0659a59ef3b77e6",
+      "title": "Georgia AG asks SEC to take action against LSU's 'contempt for the rules'",
+      "summary": "The Georgia Attorney General blasted LSU in a letter to SEC commissioner Greg Sankey, encouraging sanctions against the Tigers, \"up to and including expulsion.\"",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50524054/georgia-ag-asks-sec-take-action-vs-lsu-expulsion",
       "source": "ESPN",
-      "published_at": "2026-11-18T13:02:38Z",
+      "published_at": "2026-11-18T21:43:34Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c0659a59ef3b77e6",
+      "title": "Georgia AG asks SEC to take action against LSU's 'contempt for the rules'",
+      "summary": "The Georgia Attorney General blasted LSU in a letter to SEC commissioner Greg Sankey, encouraging sanctions against the Tigers, \"up to and including expulsion.\"",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50524054/georgia-ag-asks-sec-take-action-vs-lsu-expulsion",
+      "source": "ESPN",
+      "published_at": "2026-11-18T21:43:34Z",
       "sport": "basketball",
       "teams": [
+        "Georgia",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "492243d4e53687c7",
+      "title": "Judge questions LSU's claims the SEC 'hallucinated' citations",
+      "summary": "At a hearing Wednesday in the SEC's lawsuit against LSU, a federal judge pushed back on LSU attorneys for using the word \"hallucinated\" in filing.",
+      "url": "https://www.espn.com/college-football/story/_/id/50522883/judge-questions-lsu-claims-sec-hallucinated-citations",
+      "source": "ESPN",
+      "published_at": "2026-11-18T19:20:36Z",
+      "sport": "football",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "492243d4e53687c7",
+      "title": "Judge questions LSU's claims the SEC 'hallucinated' citations",
+      "summary": "At a hearing Wednesday in the SEC's lawsuit against LSU, a federal judge pushed back on LSU attorneys for using the word \"hallucinated\" in filing.",
+      "url": "https://www.espn.com/college-football/story/_/id/50522883/judge-questions-lsu-claims-sec-hallucinated-citations",
+      "source": "ESPN",
+      "published_at": "2026-11-18T19:20:36Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "042e5fb27ae357f9",
+      "title": "Alabama running back prospect AK Dear no longer with team",
+      "summary": "Alabama tailback AK Dear, a former four-star prospect who was poised to make an impact before suffering an injury in the summer, is no longer on the team.",
+      "url": "https://www.espn.com/college-football/story/_/id/50523034/alabama-running-back-prospect-ak-dear-no-longer-team",
+      "source": "ESPN",
+      "published_at": "2026-11-18T19:16:16Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "81804852be193988",
+      "title": "Why Stephen A. has 'no problem' with Alabama ranked at No. 3",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50521655/why-stephen-no-problem-alabama-ranked-no-3",
+      "source": "ESPN",
+      "published_at": "2026-11-18T15:33:07Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d0120603fdce1686",
+      "title": "Top 25 betting lines: UGA big faves over Gamecocks, Vols slim favorites vs. LSU",
+      "summary": "This week's odds and FPI predictions for South Carolina-Georgia, Tennessee-LSU and more.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50498153/2026-college-football-week-12-top-25-betting-lines-odds",
+      "source": "ESPN",
+      "published_at": "2026-11-18T14:36:40Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "LSU",
+        "South Carolina",
         "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "43b4de773127e1b0",
+      "title": "Is Alabama too high in the CFP rankings?",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50520488/is-alabama-too-high-cfp-rankings",
+      "source": "ESPN",
+      "published_at": "2026-11-18T14:14:41Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
       ],
       "breaking": false
     },
@@ -34,35 +130,6 @@
       "breaking": false
     },
     {
-      "id": "d0120603fdce1686",
-      "title": "Top 25 betting lines: UGA big faves over Gamecocks, Vols slim favorites vs. LSU",
-      "summary": "This week's odds and FPI predictions for South Carolina-Georgia, Tennessee-LSU and more.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50498153/2026-college-football-week-12-top-25-betting-lines-odds",
-      "source": "ESPN",
-      "published_at": "2026-11-18T12:16:59Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "LSU",
-        "South Carolina",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "36ace3d5e3932e7c",
-      "title": "West Virginia Mountaineers vs. Auburn Tigers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50518582/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T07:53:28Z",
-      "sport": "basketball",
-      "teams": [
-        "Auburn"
-      ],
-      "breaking": false
-    },
-    {
       "id": "a268e34893f1b258",
       "title": "Sources: Michigan to hire Texas A&M's Trev Alberts as athletic director",
       "summary": "Michigan has reached a deal to hire Texas A&M athletic director Trev Alberts to replace the departing Warde Manuel, sources told ESPN on Tuesday.",
@@ -72,45 +139,6 @@
       "sport": "football",
       "teams": [
         "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a268e34893f1b258",
-      "title": "Sources: Michigan to hire Texas A&M's Trev Alberts as athletic director",
-      "summary": "Michigan has reached a deal to hire Texas A&M athletic director Trev Alberts to replace the departing Warde Manuel, sources told ESPN on Tuesday.",
-      "url": "https://www.espn.com/college-sports/story/_/id/50516550/michigan-hire-texas-trev-alberts-athletic-director",
-      "source": "ESPN",
-      "published_at": "2026-11-18T05:46:35Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6f7d0b8a29428adf",
-      "title": "Arkansas' Calipari laments not calling TO late in loss: 'Still learning about my team'",
-      "summary": "John Calipari lamented not calling a timeout to instruct Arkansas to extend the game late in Tuesday's loss to Indiana, saying it's a lesson in how young his team is.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50517648/arkansas-john-calipari-laments-not-calling-late-loss",
-      "source": "ESPN",
-      "published_at": "2026-11-18T04:58:51Z",
-      "sport": "basketball",
-      "teams": [
-        "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ffdb156ccc691e96",
-      "title": "Michigan State Spartans vs. Tennessee Volunteers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50517502/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T04:34:47Z",
-      "sport": "basketball",
-      "teams": [
-        "Tennessee"
       ],
       "breaking": false
     },
@@ -128,45 +156,6 @@
       "breaking": false
     },
     {
-      "id": "9a835671d144ebdd",
-      "title": "Nicholls Colonels vs. Ole Miss Rebels: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50517062/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T03:41:51Z",
-      "sport": "basketball",
-      "teams": [
-        "Ole Miss"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ae60b85a15402ca0",
-      "title": "Texas A&M-CC Islanders vs. Rice Owls: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50517017/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T03:37:53Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d54da3b0ce498ec6",
-      "title": "Middle Tennessee Blue Raiders vs. Georgia Southern Eagles: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50516974/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T03:32:03Z",
-      "sport": "basketball",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
       "id": "6b1c21f53d34db8f",
       "title": "Georgia leads, Texas enters top five of third College Football Playoff rankings of 2026",
       "summary": "Here's everything you need to know from the third College Football Playoff rankings revealed on November 17, 2026.",
@@ -177,178 +166,6 @@
       "teams": [
         "Georgia",
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "01f2cc78335241f8",
-      "title": "Bryant Bulldogs vs. UMass Minutemen: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50516862/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T03:19:46Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8faa836c64c92e2e",
-      "title": "Jaxon Richardson on No. 16 Bama's toughness vs. Kennesaw State",
-      "summary": "Richardson describes how he was able to be versatile on the court as he discusses how the Crimson Tide's ability to play as one led them to the win over the Owls.",
-      "url": "https://www.espn.com/video/clip/_/id/50516853/jaxon-richardson-no-16-bama-toughness-vs-kennesaw-state",
-      "source": "ESPN",
-      "published_at": "2026-11-18T03:19:18Z",
-      "sport": "basketball",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "44e602b0cd4cd48e",
-      "title": "Eastern Illinois Panthers vs. Vanderbilt Commodores: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50516710/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T03:06:47Z",
-      "sport": "basketball",
-      "teams": [
-        "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "046a53d32c524125",
-      "title": "RJ Johnson says physicality helped right Bulldogs' slow start",
-      "summary": "Johnson explains how Mississippi State was able to comeback from a halftime deficit to get the job done on the road against UCF.",
-      "url": "https://www.espn.com/video/clip/_/id/50516600/rj-johnson-says-physicality-helped-right-bulldogs-slow-start",
-      "source": "ESPN",
-      "published_at": "2026-11-18T03:01:56Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia",
-        "Mississippi State"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "38b1537633caaea7",
-      "title": "Kennesaw State Owls vs. Alabama Crimson Tide: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50516544/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T02:57:51Z",
-      "sport": "basketball",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ceb17544382597ea",
-      "title": "Mississippi State Bulldogs vs. UCF Knights: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50516536/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T02:56:17Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia",
-        "Mississippi State"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6beb37cf351813d7",
-      "title": "Jacksonville State Gamecocks vs. Louisiana Tech Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50516504/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T02:52:31Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "964e559a85b88f4b",
-      "title": "Green Bay Phoenix vs. West Florida Argonauts: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50516207/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T02:33:41Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7baa74b35e663ea4",
-      "title": "Tennessee State Tigers vs. South Florida Bulls: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50516171/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T02:27:12Z",
-      "sport": "basketball",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "abd2337fd431d574",
-      "title": "Charlotte 49ers vs. Davidson Wildcats: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50516147/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T02:25:26Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6176378509a21b6c",
-      "title": "Fort Lauderdale Eagles vs. North Florida Ospreys: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50516080/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T02:19:18Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ecdf689957fc8647",
-      "title": "Villanova Wildcats vs. Pittsburgh Panthers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50516059/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T02:17:09Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ea269ee2618043e4",
-      "title": "East Tennessee State Buccaneers vs. Marshall Thundering Herd: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50516032/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-18T02:14:33Z",
-      "sport": "basketball",
-      "teams": [
-        "Tennessee"
       ],
       "breaking": false
     },
@@ -405,70 +222,6 @@
       "teams": [
         "Georgia",
         "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "afaa459c639cd6fc",
-      "title": "Block Party: Cubelic almost kicks Harper out of the party",
-      "summary": "SEC Network's Cole Cubelic calls out Roman Harper's party foul at the block party while watching the big guys go to work in the trenches.",
-      "url": "https://www.espn.com/video/clip/_/id/50505792/cubelic-almost-kicks-harper-party",
-      "source": "ESPN",
-      "published_at": "2026-11-16T23:58:25Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "98e956228d9ef14f",
-      "title": "Which teams will end up in Atlanta for the final SEC Title game?",
-      "summary": "SEC Network's Cole Cubelic and Roman Harper take a look at the remaining schedules for the four SEC championship hopefuls and pick they think will finish strong and make the title game.",
-      "url": "https://www.espn.com/video/clip/_/id/50505691/which-teams-end-atlanta-final-sec-title-game",
-      "source": "ESPN",
-      "published_at": "2026-11-16T23:57:35Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "4a8f9df623c8098f",
-      "title": "Clark Lea calls for Vandy's biggest improvement to be on offense",
-      "summary": "Lea explains the ups and downs the Commodores had against Alabama and how they need to get better offensively if they want to have a shot at making a bowl game.",
-      "url": "https://www.espn.com/video/clip/_/id/50505368/clark-lea-calls-vandy-biggest-improvement-offense",
-      "source": "ESPN",
-      "published_at": "2026-11-16T23:01:01Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a4368e58d689da26",
-      "title": "Jeff Lebby discusses making staff changes for Mississippi State",
-      "summary": "After making some changes to the offensive line and special teams coaching, Lebby breaks down the reason he made the changes now and how he wants the Bulldogs to get better.",
-      "url": "https://www.espn.com/video/clip/_/id/50505358/jeff-lebby-discusses-making-staff-changes-mississippi-state",
-      "source": "ESPN",
-      "published_at": "2026-11-16T22:58:57Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Mississippi State"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "0bf7f1cacd084673",
-      "title": "Georgia stays golden, Texas rises in Burns, Doering's power rankings",
-      "summary": "SEC This Morning's Peter Burns and Chris Doering break down the SEC's biggest movers, with Georgia leading the risers and Texas making No. 2 on their list.",
-      "url": "https://www.espn.com/video/clip/_/id/50504753/georgia-stays-golden-texas-rises-burns-doering-power-rankings",
-      "source": "ESPN",
-      "published_at": "2026-11-16T22:00:51Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Texas"
       ],
       "breaking": false
     },
