@@ -1,73 +1,76 @@
 {
-  "updated_at": "2026-11-19T03:34:07.797548Z",
-  "checked_at": "2026-11-19T03:34:07.797548Z",
+  "updated_at": "2026-11-19T13:17:47.975780Z",
+  "checked_at": "2026-11-19T13:17:47.975780Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "b2c58888ee55cbeb",
-      "title": "How Will Wade, RJ Luis and LSU became the centerpiece of the NCAA eligibility debate",
-      "summary": "The story of how LSU found itself embroiled in controversy goes back four years to Will Wade's first stint at LSU.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50363070/lsu-wade-line",
+      "id": "a31f1e2e76b84543",
+      "title": "What we learned about new NC State coach Philip Rivers in Fairhope, Alabama",
+      "summary": "Rivers, the former NC State and NFL star quarterback, had been coaching high school football for six years.",
+      "url": "https://www.espn.com/college-football/story/_/id/50514617/philip-rivers-nc-state-fairhope-alabama",
       "source": "ESPN",
-      "published_at": "2026-11-19T03:31:31Z",
-      "sport": "basketball",
+      "published_at": "2026-11-19T12:19:43Z",
+      "sport": "football",
       "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ea25dac1661b7e1e",
+      "title": "CFB Week 12 best bets: Breaking down the numbers for Texas Tech, Kentucky and more",
+      "summary": "Pamela Maldonado and Mark Zinno break down the best bets they see around college football for Week 12.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50513003/college-football-odds-best-bets-week-12-spreads-lines-2026",
+      "source": "ESPN",
+      "published_at": "2026-11-19T11:45:14Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "c0659a59ef3b77e6",
+      "title": "Georgia AG asks SEC to take action against LSU's 'contempt for the rules'",
+      "summary": "The Georgia Attorney General blasted LSU in a letter to SEC commissioner Greg Sankey, encouraging sanctions against the Tigers, \"up to and including expulsion.\"",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50524054/georgia-ag-asks-sec-take-action-vs-lsu-expulsion",
+      "source": "ESPN",
+      "published_at": "2026-11-19T04:59:20Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
         "LSU"
       ],
       "breaking": false
     },
     {
-      "id": "8b75ab8511e21b66",
-      "title": "UNC Greensboro Spartans vs. Gardner-Webb Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50527398/game-highlights",
+      "id": "8f2959b9f2fe729c",
+      "title": "What Chizik knows, wants to know about Bama, UF, Ole Miss",
+      "summary": "There are things that Gene Chizik knows about SEC football, like the Crimson Tide's defensive power or the Gators' resiliency, but on the other hand he has lingering questions.",
+      "url": "https://www.espn.com/video/clip/_/id/50528108/what-chizik-knows-wants-know-bama-uf-ole-miss",
       "source": "ESPN",
-      "published_at": "2026-11-19T03:23:50Z",
-      "sport": "basketball",
+      "published_at": "2026-11-19T04:54:56Z",
+      "sport": "football",
       "teams": [
-        "Georgia"
+        "Alabama",
+        "Florida",
+        "Ole Miss"
       ],
       "breaking": false
     },
     {
-      "id": "a01d64ff0ac323f5",
-      "title": "UL Monroe Warhawks vs. LSU Tigers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50527383/game-highlights",
+      "id": "2f8a4d5f205d1de7",
+      "title": "Chizik breaks down the film for a dive into a Manning scouting report",
+      "summary": "SEC Network's Gene Chizik guides us through Texas QB Arch Manning's positive plays and areas of improvement in an in-depth film session.",
+      "url": "https://www.espn.com/video/clip/_/id/50528089/chizik-breaks-film-dive-manning-scouting-report",
       "source": "ESPN",
-      "published_at": "2026-11-19T03:22:27Z",
-      "sport": "basketball",
+      "published_at": "2026-11-19T04:54:29Z",
+      "sport": "football",
       "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5fe4a086cac6afb5",
-      "title": "Campbell Fighting Camels vs. Oklahoma Sooners: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50527353/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-19T03:21:25Z",
-      "sport": "basketball",
-      "teams": [
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5e7ef56fefb86359",
-      "title": "Florida A&M Rattlers vs. UTSA Roadrunners: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50527302/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-19T03:16:19Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
+        "Texas"
       ],
       "breaking": false
     },
@@ -82,98 +85,6 @@
       "teams": [
         "Georgia",
         "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "72a4bcd227c08764",
-      "title": "LSU New Orleans Privateers vs. Texas Tech Red Raiders: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50526885/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-19T02:40:03Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6498d707aae574e2",
-      "title": "Jakub Nečas says South Carolina needs to finish stronger following win",
-      "summary": "Nečas explains how intentional rebounding put him in positions to be successful and discusses how the Gamecocks need to play with more intensity after defeating Elon.",
-      "url": "https://www.espn.com/video/clip/_/id/50526822/jakub-neas-says-south-carolina-needs-finish-stronger-following-win",
-      "source": "ESPN",
-      "published_at": "2026-11-19T02:34:44Z",
-      "sport": "basketball",
-      "teams": [
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "bb02ecaed9e6c66c",
-      "title": "Vermont Catamounts vs. Yale Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50526821/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-19T02:33:04Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "34a75fd6a1020e13",
-      "title": "Florida Gulf Coast Eagles vs. Florida Atlantic Owls: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50526747/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-19T02:25:59Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a5a0f4fc811cc30f",
-      "title": "Elon Phoenix vs. South Carolina Gamecocks: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50526543/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-19T02:07:22Z",
-      "sport": "basketball",
-      "teams": [
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c4d0c7fa9ec6e65e",
-      "title": "Columbia College (SC) Fighting Koalas vs. West Georgia Wolves: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50526514/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-19T02:04:06Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d0e8243bbc8d5ec4",
-      "title": "Tennessee Tech Golden Eagles vs. UNC Asheville Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50526324/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-19T01:48:43Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia",
-        "Tennessee"
       ],
       "breaking": false
     },
@@ -202,20 +113,6 @@
       "teams": [
         "LSU",
         "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c0659a59ef3b77e6",
-      "title": "Georgia AG asks SEC to take action against LSU's 'contempt for the rules'",
-      "summary": "The Georgia Attorney General blasted LSU in a letter to SEC commissioner Greg Sankey, encouraging sanctions against the Tigers, \"up to and including expulsion.\"",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50524054/georgia-ag-asks-sec-take-action-vs-lsu-expulsion",
-      "source": "ESPN",
-      "published_at": "2026-11-19T01:26:24Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "LSU"
       ],
       "breaking": false
     },
@@ -401,62 +298,6 @@
       "teams": [
         "Georgia",
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7d6f60ad374d5c38",
-      "title": "Oklahoma coach Venables shouts out Love's after Buc-ee's comment",
-      "summary": "Venables showed love Sunday to Buc-ee's -- which is owned by an alumnus of the Sooners' next opponent, Texas A&M. So on Tuesday the coach repped the Oklahoma-based Love's.",
-      "url": "https://www.espn.com/college-football/story/_/id/50513199/oklahoma-brent-venables-loves-travel-stop",
-      "source": "ESPN",
-      "published_at": "2026-11-17T22:23:36Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e5f9da621446a32b",
-      "title": "Dari Nowkhah details his SEC Network Power Rankings placements",
-      "summary": "SEC Network's Nowkhah breaks down why he has more faith than his fellow panelists in Alabama and Oklahoma as Kentucky takes a tumble.",
-      "url": "https://www.espn.com/video/clip/_/id/50514226/dari-nowkhah-details-sec-network-power-rankings-placements",
-      "source": "ESPN",
-      "published_at": "2026-11-17T22:23:20Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Kentucky",
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f709265f6524c6ad",
-      "title": "UK's Will Stein discusses late adjustments, physicality, elevated standards",
-      "summary": "Stein reflects on weathering the homestretch of the season, emphasizes the need for more offensive line physicality and looks ahead with high expectations for No. 11 Kentucky.",
-      "url": "https://www.espn.com/video/clip/_/id/50514130/uk-stein-discusses-late-adjustments-physicality-elevated-standards",
-      "source": "ESPN",
-      "published_at": "2026-11-17T22:17:01Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "588e632ee07cc750",
-      "title": "Shane Beamer discusses priming for No. 1 UGA, tough conversations with seniors",
-      "summary": "Beamer dissects the obstacles awaiting No. 17 South Carolina in a challenging Week 12 test against the Bulldogs while expressing his connection with the Gamecocks' seniors.",
-      "url": "https://www.espn.com/video/clip/_/id/50514085/shane-beamer-discusses-priming-no-1-uga-tough-conversations-seniors",
-      "source": "ESPN",
-      "published_at": "2026-11-17T22:11:10Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "South Carolina"
       ],
       "breaking": false
     },
