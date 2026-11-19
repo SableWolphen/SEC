@@ -1,18 +1,217 @@
 {
-  "updated_at": "2026-11-18T22:00:01.609692Z",
-  "checked_at": "2026-11-18T22:00:01.609692Z",
+  "updated_at": "2026-11-19T03:34:07.797548Z",
+  "checked_at": "2026-11-19T03:34:07.797548Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "b2c58888ee55cbeb",
+      "title": "How Will Wade, RJ Luis and LSU became the centerpiece of the NCAA eligibility debate",
+      "summary": "The story of how LSU found itself embroiled in controversy goes back four years to Will Wade's first stint at LSU.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50363070/lsu-wade-line",
+      "source": "ESPN",
+      "published_at": "2026-11-19T03:31:31Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8b75ab8511e21b66",
+      "title": "UNC Greensboro Spartans vs. Gardner-Webb Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50527398/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-19T03:23:50Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a01d64ff0ac323f5",
+      "title": "UL Monroe Warhawks vs. LSU Tigers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50527383/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-19T03:22:27Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5fe4a086cac6afb5",
+      "title": "Campbell Fighting Camels vs. Oklahoma Sooners: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50527353/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-19T03:21:25Z",
+      "sport": "basketball",
+      "teams": [
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5e7ef56fefb86359",
+      "title": "Florida A&M Rattlers vs. UTSA Roadrunners: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50527302/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-19T03:16:19Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b783d71c8837fa29",
+      "title": "South Carolina star QB LaNorris Sellers set to play vs. No. 1 Georgia",
+      "summary": "South Carolina star QB LaNorris Sellers is set to play in Saturday's game vs. No. 1 Georgia after not appearing on the injury report Wednesday.",
+      "url": "https://www.espn.com/college-football/story/_/id/50526154/south-carolina-qb-lanorris-sellers-set-play-vs-georgia",
+      "source": "ESPN",
+      "published_at": "2026-11-19T03:01:31Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "72a4bcd227c08764",
+      "title": "LSU New Orleans Privateers vs. Texas Tech Red Raiders: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50526885/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-19T02:40:03Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6498d707aae574e2",
+      "title": "Jakub Nečas says South Carolina needs to finish stronger following win",
+      "summary": "Nečas explains how intentional rebounding put him in positions to be successful and discusses how the Gamecocks need to play with more intensity after defeating Elon.",
+      "url": "https://www.espn.com/video/clip/_/id/50526822/jakub-neas-says-south-carolina-needs-finish-stronger-following-win",
+      "source": "ESPN",
+      "published_at": "2026-11-19T02:34:44Z",
+      "sport": "basketball",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "bb02ecaed9e6c66c",
+      "title": "Vermont Catamounts vs. Yale Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50526821/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-19T02:33:04Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "34a75fd6a1020e13",
+      "title": "Florida Gulf Coast Eagles vs. Florida Atlantic Owls: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50526747/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-19T02:25:59Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a5a0f4fc811cc30f",
+      "title": "Elon Phoenix vs. South Carolina Gamecocks: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50526543/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-19T02:07:22Z",
+      "sport": "basketball",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c4d0c7fa9ec6e65e",
+      "title": "Columbia College (SC) Fighting Koalas vs. West Georgia Wolves: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50526514/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-19T02:04:06Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d0e8243bbc8d5ec4",
+      "title": "Tennessee Tech Golden Eagles vs. UNC Asheville Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50526324/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-19T01:48:43Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "01b87544ac4a747c",
+      "title": "SEC Now reviews Mizzou, UK recent outings, previews upcoming matchup",
+      "summary": "SEC Network's Alyssa Lang and Gene Chizik acknowledges the recent momentum swings of No. 16 Kentucky and Missouri as they preview key factors ahead of their Week 12 game.",
+      "url": "https://www.espn.com/video/clip/_/id/50526214/sec-now-reviews-mizzou-uk-recent-outings-previews-upcoming-matchup",
+      "source": "ESPN",
+      "published_at": "2026-11-19T01:42:20Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3f4ee243c99eee91",
+      "title": "Gene Chizik advises No. 9 Tennessee and LSU ahead of Week 12 matchup",
+      "summary": "Chizik urges the Vols to pressure Sam Leavitt and offensively focus on run game variety as he encourages the Tigers' defense to focus on disruption to find success on Saturday.",
+      "url": "https://www.espn.com/video/clip/_/id/50526174/gene-chizik-advises-no-9-tennessee-lsu-ahead-week-12-matchup",
+      "source": "ESPN",
+      "published_at": "2026-11-19T01:42:15Z",
+      "sport": "football",
+      "teams": [
+        "LSU",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
       "id": "c0659a59ef3b77e6",
       "title": "Georgia AG asks SEC to take action against LSU's 'contempt for the rules'",
       "summary": "The Georgia Attorney General blasted LSU in a letter to SEC commissioner Greg Sankey, encouraging sanctions against the Tigers, \"up to and including expulsion.\"",
       "url": "https://www.espn.com/mens-college-basketball/story/_/id/50524054/georgia-ag-asks-sec-take-action-vs-lsu-expulsion",
       "source": "ESPN",
-      "published_at": "2026-11-18T21:43:34Z",
+      "published_at": "2026-11-19T01:26:24Z",
       "sport": "football",
       "teams": [
         "Georgia",
@@ -21,17 +220,14 @@
       "breaking": false
     },
     {
-      "id": "c0659a59ef3b77e6",
-      "title": "Georgia AG asks SEC to take action against LSU's 'contempt for the rules'",
-      "summary": "The Georgia Attorney General blasted LSU in a letter to SEC commissioner Greg Sankey, encouraging sanctions against the Tigers, \"up to and including expulsion.\"",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50524054/georgia-ag-asks-sec-take-action-vs-lsu-expulsion",
+      "id": "5a4a4ea359a06b08",
+      "title": "Alyssa Lang analyzes, raises questions about recent CFP standings",
+      "summary": "Lang discusses the College Football Playoff committee's recent ranking decisions as she dissects her own SEC Network Power Rankings and the new challenges for contenders.",
+      "url": "https://www.espn.com/video/clip/_/id/50525545/alyssa-lang-analyzes-raises-questions-recent-cfp-standings",
       "source": "ESPN",
-      "published_at": "2026-11-18T21:43:34Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia",
-        "LSU"
-      ],
+      "published_at": "2026-11-19T00:38:06Z",
+      "sport": "football",
+      "teams": [],
       "breaking": false
     },
     {
@@ -40,7 +236,7 @@
       "summary": "At a hearing Wednesday in the SEC's lawsuit against LSU, a federal judge pushed back on LSU attorneys for using the word \"hallucinated\" in filing.",
       "url": "https://www.espn.com/college-football/story/_/id/50522883/judge-questions-lsu-claims-sec-hallucinated-citations",
       "source": "ESPN",
-      "published_at": "2026-11-18T19:20:36Z",
+      "published_at": "2026-11-18T22:40:51Z",
       "sport": "football",
       "teams": [
         "LSU"
@@ -48,15 +244,54 @@
       "breaking": false
     },
     {
-      "id": "492243d4e53687c7",
-      "title": "Judge questions LSU's claims the SEC 'hallucinated' citations",
-      "summary": "At a hearing Wednesday in the SEC's lawsuit against LSU, a federal judge pushed back on LSU attorneys for using the word \"hallucinated\" in filing.",
-      "url": "https://www.espn.com/college-football/story/_/id/50522883/judge-questions-lsu-claims-sec-hallucinated-citations",
+      "id": "82516f326b1b0ea8",
+      "title": "Vols top Matt Stinchcomb's list of top three SEC defensive units",
+      "summary": "Stinchcomb analyzes his top three teams with standout defensive performances, mentioning LSU to start and then climbing the list to No. 9 Tennessee.",
+      "url": "https://www.espn.com/video/clip/_/id/50524635/vols-top-matt-stinchcomb-list-top-three-sec-defensive-units",
       "source": "ESPN",
-      "published_at": "2026-11-18T19:20:36Z",
-      "sport": "basketball",
+      "published_at": "2026-11-18T22:32:04Z",
+      "sport": "football",
       "teams": [
-        "LSU"
+        "LSU",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5a9b368127a4a38f",
+      "title": "SEC Now crew dissects No. 1 Georgia's dominant ground game",
+      "summary": "South Carolina has a massive challenge ahead in its Week 12 matchup with the Bulldogs, SEC Now analyzes just how strong their run game has been on both sides of the ball.",
+      "url": "https://www.espn.com/video/clip/_/id/50524585/sec-now-crew-dissects-no-1-georgia-dominant-ground-game",
+      "source": "ESPN",
+      "published_at": "2026-11-18T22:31:41Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9126fa038546af93",
+      "title": "CFP SEC representation probabilities, teams that could be in jeopardy",
+      "summary": "The SEC Now crew analyzes the possible outlooks of SEC representation in the College Football Playoffs based on the latest rankings and remaining regular season slate.",
+      "url": "https://www.espn.com/video/clip/_/id/50518080/cfp-sec-representation-probabilities-teams-in-jeopardy",
+      "source": "ESPN",
+      "published_at": "2026-11-18T22:31:15Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "2f75c75ff565dbb3",
+      "title": "Matt Stinchcomb says OU showed the 'epitome of complimentary football'",
+      "summary": "After highlighting a Sooners QB John Mateer for spotless game streak, the SEC Now crew analyzes the improved Oklahoma offensive rhythm.",
+      "url": "https://www.espn.com/video/clip/_/id/50524508/matt-stinchcomb-says-ou-showed-epitome-complimentary-football",
+      "source": "ESPN",
+      "published_at": "2026-11-18T22:30:48Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma"
       ],
       "breaking": false
     },
