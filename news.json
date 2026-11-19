@@ -1,11 +1,77 @@
 {
-  "updated_at": "2026-11-19T13:17:47.975780Z",
-  "checked_at": "2026-11-19T13:17:47.975780Z",
+  "updated_at": "2026-11-19T21:38:52.667932Z",
+  "checked_at": "2026-11-19T21:38:52.667932Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "a1f4f645d0292082",
+      "title": "Will Georgia or the field win CFP title?",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50531216/will-georgia-field-win-cfp-title",
+      "source": "ESPN",
+      "published_at": "2026-11-19T19:03:56Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "74a96d8d4b9cbcab",
+      "title": "Wetzel: Welcome to Round 2 of LSU vs. the SEC",
+      "summary": "After a contentious battle over football in the fall, LSU and the SEC are at odds once again over hoops star RJ Luis.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50531746/lsu-sec-rj-luis-eligibility",
+      "source": "ESPN",
+      "published_at": "2026-11-19T18:36:13Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "461221ede89a3165",
+      "title": "Men's college basketball Power Rankings: Duke drops, Kansas is new No. 1",
+      "summary": "Among many Top 25 teams that suffered losses this week, including Duke and Florida, Kansas survived to take No. 1.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50523371/mens-college-basketball-power-rankings",
+      "source": "ESPN",
+      "published_at": "2026-11-19T16:25:00Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ea25dac1661b7e1e",
+      "title": "CFB Week 12 best bets: Breaking down the numbers for Texas Tech, Kentucky and more",
+      "summary": "Pamela Maldonado and Mark Zinno break down the best bets they see around college football for Week 12.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50513003/college-football-odds-best-bets-week-12-spreads-lines-2026",
+      "source": "ESPN",
+      "published_at": "2026-11-19T15:00:39Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "c0659a59ef3b77e6",
+      "title": "Georgia AG asks SEC to take action against LSU's 'contempt for the rules'",
+      "summary": "The Georgia Attorney General blasted LSU in a letter to SEC commissioner Greg Sankey, encouraging sanctions against the Tigers, \"up to and including expulsion.\"",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50524054/georgia-ag-asks-sec-take-action-vs-lsu-expulsion",
+      "source": "ESPN",
+      "published_at": "2026-11-19T14:06:38Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "LSU"
+      ],
+      "breaking": false
+    },
     {
       "id": "a31f1e2e76b84543",
       "title": "What we learned about new NC State coach Philip Rivers in Fairhope, Alabama",
@@ -16,33 +82,6 @@
       "sport": "football",
       "teams": [
         "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ea25dac1661b7e1e",
-      "title": "CFB Week 12 best bets: Breaking down the numbers for Texas Tech, Kentucky and more",
-      "summary": "Pamela Maldonado and Mark Zinno break down the best bets they see around college football for Week 12.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50513003/college-football-odds-best-bets-week-12-spreads-lines-2026",
-      "source": "ESPN",
-      "published_at": "2026-11-19T11:45:14Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": true
-    },
-    {
-      "id": "c0659a59ef3b77e6",
-      "title": "Georgia AG asks SEC to take action against LSU's 'contempt for the rules'",
-      "summary": "The Georgia Attorney General blasted LSU in a letter to SEC commissioner Greg Sankey, encouraging sanctions against the Tigers, \"up to and including expulsion.\"",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50524054/georgia-ag-asks-sec-take-action-vs-lsu-expulsion",
-      "source": "ESPN",
-      "published_at": "2026-11-19T04:59:20Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "LSU"
       ],
       "breaking": false
     },
@@ -169,17 +208,6 @@
       "breaking": false
     },
     {
-      "id": "9126fa038546af93",
-      "title": "CFP SEC representation probabilities, teams that could be in jeopardy",
-      "summary": "The SEC Now crew analyzes the possible outlooks of SEC representation in the College Football Playoffs based on the latest rankings and remaining regular season slate.",
-      "url": "https://www.espn.com/video/clip/_/id/50518080/cfp-sec-representation-probabilities-teams-in-jeopardy",
-      "source": "ESPN",
-      "published_at": "2026-11-18T22:31:15Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
       "id": "2f75c75ff565dbb3",
       "title": "Matt Stinchcomb says OU showed the 'epitome of complimentary football'",
       "summary": "After highlighting a Sooners QB John Mateer for spotless game streak, the SEC Now crew analyzes the improved Oklahoma offensive rhythm.",
@@ -244,46 +272,6 @@
       "sport": "football",
       "teams": [
         "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e6795b7fe42f2630",
-      "title": "Wake Forest surges into CFP top 12; top 4 unchanged while Texas jumps Notre Dame",
-      "summary": "Alabama stayed at No. 3 despite some struggles while two-loss Texas jumped one-loss Notre Dame for No. 5 in the CFP's latest rankings.",
-      "url": "https://www.espn.com/college-football/story/_/id/50515993/wake-forest-surges-cfp-top-12-texas-jumps-notre-dame",
-      "source": "ESPN",
-      "published_at": "2026-11-18T12:37:24Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a268e34893f1b258",
-      "title": "Sources: Michigan to hire Texas A&M's Trev Alberts as athletic director",
-      "summary": "Michigan has reached a deal to hire Texas A&M athletic director Trev Alberts to replace the departing Warde Manuel, sources told ESPN on Tuesday.",
-      "url": "https://www.espn.com/college-sports/story/_/id/50516550/michigan-hire-texas-trev-alberts-athletic-director",
-      "source": "ESPN",
-      "published_at": "2026-11-18T05:46:35Z",
-      "sport": "football",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6d6046f9188b7cce",
-      "title": "Anger Index: Why Texas Tech, Tennessee and the Group of 6 should be mad",
-      "summary": "Ranking the teams who should be most upset about their latest CFP ranking.",
-      "url": "https://www.espn.com/college-football/story/_/id/50510905/cfp-ranking-2026-anger-index-texas-tech",
-      "source": "ESPN",
-      "published_at": "2026-11-18T04:25:53Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
       ],
       "breaking": false
     },
