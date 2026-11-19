@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-19T10:43:38.560459Z",
+  "updated_at": "2026-11-19T22:25:53.735923Z",
   "sports": {
     "basketball": {
       "season": 2027,
@@ -1680,10 +1680,10 @@
           "home_code": "277",
           "away_name": "Florida Gators",
           "home_name": "West Virginia Mountaineers",
-          "away_score": null,
-          "home_score": null,
-          "winner_code": null,
-          "game_status": "scheduled",
+          "away_score": 85,
+          "home_score": 72,
+          "winner_code": "57",
+          "game_status": "final",
           "source": "ESPN",
           "provisional": false
         },
@@ -1700,7 +1700,7 @@
           "away_score": null,
           "home_score": null,
           "winner_code": null,
-          "game_status": "scheduled",
+          "game_status": "live",
           "source": "ESPN",
           "provisional": false
         },
@@ -6760,22 +6760,22 @@
         "99": 32
       },
       "sec_team_game_counts": {
-        "245": 34,
-        "238": 35,
+        "8": 36,
         "145": 32,
-        "2633": 33,
-        "57": 37,
         "142": 36,
-        "96": 34,
-        "99": 35,
+        "333": 34,
+        "2579": 35,
         "61": 37,
         "251": 36,
         "344": 33,
+        "238": 35,
+        "2633": 33,
         "2": 34,
+        "99": 35,
+        "96": 34,
+        "245": 34,
         "201": 34,
-        "8": 36,
-        "2579": 35,
-        "333": 34
+        "57": 37
       },
       "warning": null
     },
@@ -6798,22 +6798,22 @@
         "99": 0
       },
       "sec_team_game_counts": {
-        "245": 0,
-        "238": 0,
+        "8": 0,
         "145": 0,
-        "2633": 0,
-        "57": 0,
         "142": 0,
-        "96": 0,
-        "99": 0,
+        "333": 0,
+        "2579": 0,
         "61": 0,
         "251": 0,
         "344": 0,
+        "238": 0,
+        "2633": 0,
         "2": 0,
+        "99": 0,
+        "96": 0,
+        "245": 0,
         "201": 0,
-        "8": 0,
-        "2579": 0,
-        "333": 0
+        "57": 0
       },
       "warning": "No verified individual first-pitch times yet; SEC baseball weekend series previews remain available."
     }
