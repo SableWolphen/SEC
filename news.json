@@ -1,21 +1,76 @@
 {
-  "updated_at": "2026-11-20T12:59:00.891057Z",
-  "checked_at": "2026-11-20T12:59:00.891057Z",
+  "updated_at": "2026-11-20T21:11:02.617216Z",
+  "checked_at": "2026-11-20T21:11:02.617216Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "10785192cf6a63a2",
+      "title": "Temple Owls vs. Middle Tennessee Blue Raiders: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50543125/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-20T20:27:27Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
       "id": "95c72223df7feef5",
       "title": "Connelly on Week 12: Test for Tennessee; Big Ten favorites hit road",
       "summary": "Vols, Kiffin meet again and fringe CFP contenders try to stay alive on a sneaky-good Week 12 slate.",
       "url": "https://www.espn.com/college-football/story/_/id/50532397/connelly-week-12-preview-big-ten-tennessee",
       "source": "ESPN",
-      "published_at": "2026-11-20T11:41:25Z",
+      "published_at": "2026-11-20T16:44:38Z",
       "sport": "football",
       "teams": [
         "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "bf953899355e791d",
+      "title": "Kalen DeBoer says this is his most complete Alabama team",
+      "summary": "Alabama coach Kalen DeBoer said this is the most complete team he's had since taking over for Nick Saban prior to the 2024 season.",
+      "url": "https://www.espn.com/college-football/story/_/id/50541432/kalen-deboer-says-most-complete-alabama-team",
+      "source": "ESPN",
+      "published_at": "2026-11-20T16:07:14Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d0120603fdce1686",
+      "title": "Top 25 betting lines: UGA big faves over Gamecocks, Vols slim favorites vs. LSU",
+      "summary": "This week's odds and FPI predictions for South Carolina-Georgia, Tennessee-LSU and more.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50498153/2026-college-football-week-12-top-25-betting-lines-odds",
+      "source": "ESPN",
+      "published_at": "2026-11-20T15:55:41Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "LSU",
+        "South Carolina",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7eb5c87b3ced908f",
+      "title": "LSU leads top 25 men's basketball 2027 recruiting class rankings",
+      "summary": "The post-early signing window class rankings have LSU at the top, followed by Duke and UConn.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50242145/2027-mens-basketball-recruiting-class-rankings",
+      "source": "ESPN",
+      "published_at": "2026-11-20T14:17:22Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
       ],
       "breaking": false
     },
@@ -29,19 +84,6 @@
       "sport": "basketball",
       "teams": [
         "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1eb82d615071e1ff",
-      "title": "RJ Luis Jr. to 'stand down,' no longer pursue playing at LSU, attorney says",
-      "summary": "RJ Luis Jr. has decided to \"stand down\" in his fight to pursue another year of eligibility at LSU, his attorney told ESPN on Thursday night.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50536621/lsu-president-tells-wade-not-play-rj-luis-jr",
-      "source": "ESPN",
-      "published_at": "2026-11-20T05:18:09Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
       ],
       "breaking": false
     },
@@ -81,45 +123,6 @@
       "sport": "basketball",
       "teams": [
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d18273b917ffa4aa",
-      "title": "Tulane Green Wave vs. Louisiana Tech Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50536853/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-20T02:52:16Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ae757b6b71215d5b",
-      "title": "Tusculum Pioneers vs. North Alabama Lions: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50536835/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-20T02:48:27Z",
-      "sport": "basketball",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a039c8bed906136e",
-      "title": "Charleston Cougars vs. Drake Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50536668/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-20T02:35:25Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
       ],
       "breaking": false
     },
@@ -283,19 +286,6 @@
       "breaking": false
     },
     {
-      "id": "492243d4e53687c7",
-      "title": "Judge questions LSU's claims the SEC 'hallucinated' citations",
-      "summary": "At a hearing Wednesday in the SEC's lawsuit against LSU, a federal judge pushed back on LSU attorneys for using the word \"hallucinated\" in filing.",
-      "url": "https://www.espn.com/college-football/story/_/id/50522883/judge-questions-lsu-claims-sec-hallucinated-citations",
-      "source": "ESPN",
-      "published_at": "2026-11-18T22:40:51Z",
-      "sport": "football",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
       "id": "82516f326b1b0ea8",
       "title": "Vols top Matt Stinchcomb's list of top three SEC defensive units",
       "summary": "Stinchcomb analyzes his top three teams with standout defensive performances, mentioning LSU to start and then climbing the list to No. 9 Tennessee.",
@@ -333,32 +323,6 @@
       "sport": "football",
       "teams": [
         "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "042e5fb27ae357f9",
-      "title": "Alabama running back prospect AK Dear no longer with team",
-      "summary": "Alabama tailback AK Dear, a former four-star prospect who was poised to make an impact before suffering an injury in the summer, is no longer on the team.",
-      "url": "https://www.espn.com/college-football/story/_/id/50523034/alabama-running-back-prospect-ak-dear-no-longer-team",
-      "source": "ESPN",
-      "published_at": "2026-11-18T19:16:16Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "81804852be193988",
-      "title": "Why Stephen A. has 'no problem' with Alabama ranked at No. 3",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50521655/why-stephen-no-problem-alabama-ranked-no-3",
-      "source": "ESPN",
-      "published_at": "2026-11-18T15:33:07Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
       ],
       "breaking": false
     },
