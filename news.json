@@ -1,11 +1,89 @@
 {
-  "updated_at": "2026-11-20T03:23:31.360419Z",
-  "checked_at": "2026-11-20T03:23:31.360419Z",
+  "updated_at": "2026-11-20T12:59:00.891057Z",
+  "checked_at": "2026-11-20T12:59:00.891057Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "95c72223df7feef5",
+      "title": "Connelly on Week 12: Test for Tennessee; Big Ten favorites hit road",
+      "summary": "Vols, Kiffin meet again and fringe CFP contenders try to stay alive on a sneaky-good Week 12 slate.",
+      "url": "https://www.espn.com/college-football/story/_/id/50532397/connelly-week-12-preview-big-ten-tennessee",
+      "source": "ESPN",
+      "published_at": "2026-11-20T11:41:25Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a78cf5c24007932a",
+      "title": "UTEP Miners vs. New Mexico State Aggies: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50539050/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-20T07:08:54Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1eb82d615071e1ff",
+      "title": "RJ Luis Jr. to 'stand down,' no longer pursue playing at LSU, attorney says",
+      "summary": "RJ Luis Jr. has decided to \"stand down\" in his fight to pursue another year of eligibility at LSU, his attorney told ESPN on Thursday night.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50536621/lsu-president-tells-wade-not-play-rj-luis-jr",
+      "source": "ESPN",
+      "published_at": "2026-11-20T05:18:09Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3ae2664c709849ca",
+      "title": "East Texas A&M Lions vs. California Golden Bears: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50538239/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-20T05:11:10Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "86247ece30d31eca",
+      "title": "Texas' David Punch details what when into performance vs. Southern Utah",
+      "summary": "After scoring 22 points on 8-of-9 scoring in the victory over the Thunderbirds, Punch speaks on how the Longhorns were able to adapt and get the win.",
+      "url": "https://www.espn.com/video/clip/_/id/50537709/texas-david-punch-details-performance-vs-southern-utah",
+      "source": "ESPN",
+      "published_at": "2026-11-20T04:16:41Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b1aed83731537391",
+      "title": "Southern Utah Thunderbirds vs. Texas Longhorns: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50537223/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-20T03:36:35Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
     {
       "id": "d18273b917ffa4aa",
       "title": "Tulane Green Wave vs. Louisiana Tech Bulldogs: Game Highlights",
@@ -46,19 +124,6 @@
       "breaking": false
     },
     {
-      "id": "25be856c95188d18",
-      "title": "Berea vs. Northern Kentucky Norse: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50536333/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-20T02:04:39Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
       "id": "5ff9127faafbf2b7",
       "title": "SEC standardized NIL, revenue sharing contracts 'unfair' for players, agents say",
       "summary": "The SEC's new uniform NIL and revenue sharing agreements are causing an uproar among agents concerned that the contracts are loaded with terms that are unfair.",
@@ -67,56 +132,6 @@
       "published_at": "2026-11-20T01:16:03Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "5ff9127faafbf2b7",
-      "title": "SEC standardized NIL, revenue sharing contracts 'unfair' for players, agents say",
-      "summary": "The SEC's new uniform NIL and revenue sharing agreements are causing an uproar among agents concerned that the contracts are loaded with terms that are unfair.",
-      "url": "https://www.espn.com/college-football/story/_/id/50535591/sec-standardized-nil-contracts-unfair-players-agents-say",
-      "source": "ESPN",
-      "published_at": "2026-11-20T01:16:03Z",
-      "sport": "basketball",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "6d28adaed9256ebd",
-      "title": "LSU president tells Will Wade not to play RJ Luis Jr. amid eligibility battle",
-      "summary": "Wade Rousse said his decision -- a day after RJ Luis Jr. made his debut for the LSU men's basketball team -- came \"after further review.\"",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50535062/lsu-president-tells-wade-not-play-rj-luis-jr",
-      "source": "ESPN",
-      "published_at": "2026-11-20T00:51:30Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7ba42e748c447ade",
-      "title": "Florida Gators vs. West Virgina: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50534339/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-20T00:41:01Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "79cf012a0dd19400",
-      "title": "Notre Dame Fighting Irish vs. Auburn Tigers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50535611/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-20T00:36:57Z",
-      "sport": "basketball",
-      "teams": [
-        "Auburn"
-      ],
       "breaking": false
     },
     {
@@ -143,32 +158,6 @@
       "sport": "football",
       "teams": [
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "74a96d8d4b9cbcab",
-      "title": "Wetzel: Welcome to Round 2 of LSU vs. the SEC",
-      "summary": "After a contentious battle over football in the fall, LSU and the SEC are at odds once again over hoops star RJ Luis.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50531746/lsu-sec-rj-luis-eligibility",
-      "source": "ESPN",
-      "published_at": "2026-11-19T18:36:13Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "461221ede89a3165",
-      "title": "Men's college basketball Power Rankings: Duke drops, Kansas is new No. 1",
-      "summary": "Among many Top 25 teams that suffered losses this week, including Duke and Florida, Kansas survived to take No. 1.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50523371/mens-college-basketball-power-rankings",
-      "source": "ESPN",
-      "published_at": "2026-11-19T16:25:00Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
       ],
       "breaking": false
     },
@@ -374,35 +363,6 @@
       "breaking": false
     },
     {
-      "id": "d0120603fdce1686",
-      "title": "Top 25 betting lines: UGA big faves over Gamecocks, Vols slim favorites vs. LSU",
-      "summary": "This week's odds and FPI predictions for South Carolina-Georgia, Tennessee-LSU and more.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50498153/2026-college-football-week-12-top-25-betting-lines-odds",
-      "source": "ESPN",
-      "published_at": "2026-11-18T14:36:40Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "LSU",
-        "South Carolina",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "43b4de773127e1b0",
-      "title": "Is Alabama too high in the CFP rankings?",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50520488/is-alabama-too-high-cfp-rankings",
-      "source": "ESPN",
-      "published_at": "2026-11-18T14:14:41Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
       "id": "6b1c21f53d34db8f",
       "title": "Georgia leads, Texas enters top five of third College Football Playoff rankings of 2026",
       "summary": "Here's everything you need to know from the third College Football Playoff rankings revealed on November 17, 2026.",
@@ -439,19 +399,6 @@
       "sport": "basketball",
       "teams": [
         "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c345a3ad79f55bd2",
-      "title": "Georgia, Utah lead the second College Football Playoff rankings of 2026",
-      "summary": "Here's everything you need to know from the second College Football Playoff rankings revealed on November 10, 2026.",
-      "url": "https://www.ncaa.com/news/football/article/2026-11-10/georgia-utah-lead-second-college-football-playoff-rankings-2026",
-      "source": "NCAA",
-      "published_at": "2026-11-11T03:44:40Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
       ],
       "breaking": false
     }
