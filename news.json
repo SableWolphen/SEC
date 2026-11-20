@@ -1,11 +1,138 @@
 {
-  "updated_at": "2026-11-19T21:38:52.667932Z",
-  "checked_at": "2026-11-19T21:38:52.667932Z",
+  "updated_at": "2026-11-20T03:23:31.360419Z",
+  "checked_at": "2026-11-20T03:23:31.360419Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "d18273b917ffa4aa",
+      "title": "Tulane Green Wave vs. Louisiana Tech Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50536853/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-20T02:52:16Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ae757b6b71215d5b",
+      "title": "Tusculum Pioneers vs. North Alabama Lions: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50536835/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-20T02:48:27Z",
+      "sport": "basketball",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a039c8bed906136e",
+      "title": "Charleston Cougars vs. Drake Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50536668/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-20T02:35:25Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "25be856c95188d18",
+      "title": "Berea vs. Northern Kentucky Norse: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50536333/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-20T02:04:39Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5ff9127faafbf2b7",
+      "title": "SEC standardized NIL, revenue sharing contracts 'unfair' for players, agents say",
+      "summary": "The SEC's new uniform NIL and revenue sharing agreements are causing an uproar among agents concerned that the contracts are loaded with terms that are unfair.",
+      "url": "https://www.espn.com/college-football/story/_/id/50535591/sec-standardized-nil-contracts-unfair-players-agents-say",
+      "source": "ESPN",
+      "published_at": "2026-11-20T01:16:03Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "5ff9127faafbf2b7",
+      "title": "SEC standardized NIL, revenue sharing contracts 'unfair' for players, agents say",
+      "summary": "The SEC's new uniform NIL and revenue sharing agreements are causing an uproar among agents concerned that the contracts are loaded with terms that are unfair.",
+      "url": "https://www.espn.com/college-football/story/_/id/50535591/sec-standardized-nil-contracts-unfair-players-agents-say",
+      "source": "ESPN",
+      "published_at": "2026-11-20T01:16:03Z",
+      "sport": "basketball",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "6d28adaed9256ebd",
+      "title": "LSU president tells Will Wade not to play RJ Luis Jr. amid eligibility battle",
+      "summary": "Wade Rousse said his decision -- a day after RJ Luis Jr. made his debut for the LSU men's basketball team -- came \"after further review.\"",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50535062/lsu-president-tells-wade-not-play-rj-luis-jr",
+      "source": "ESPN",
+      "published_at": "2026-11-20T00:51:30Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7ba42e748c447ade",
+      "title": "Florida Gators vs. West Virgina: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50534339/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-20T00:41:01Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "79cf012a0dd19400",
+      "title": "Notre Dame Fighting Irish vs. Auburn Tigers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50535611/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-20T00:36:57Z",
+      "sport": "basketball",
+      "teams": [
+        "Auburn"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "43179db27c1f50b7",
+      "title": "Alshon Jeffery discusses energy around No. 21 South Carolina",
+      "summary": "Former Gamecock wide receiver Jeffery joins The Paul Finebaum Show to highlight the new energy he sees around the program as they prepare to face No. 1 Georgia.",
+      "url": "https://www.espn.com/video/clip/_/id/50535427/alshon-jeffery-discusses-energy-no-21-south-carolina",
+      "source": "ESPN",
+      "published_at": "2026-11-19T23:58:45Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
     {
       "id": "a1f4f645d0292082",
       "title": "Will Georgia or the field win CFP title?",
