@@ -1,11 +1,140 @@
 {
-  "updated_at": "2026-11-20T21:11:02.617216Z",
-  "checked_at": "2026-11-20T21:11:02.617216Z",
+  "updated_at": "2026-11-21T02:21:56.839719Z",
+  "checked_at": "2026-11-21T02:21:56.839719Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "7e6369d835556e5f",
+      "title": "South Carolina State Bulldogs vs. The Citadel Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50545726/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T02:17:48Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0d1371eba8e77e54",
+      "title": "Bellarmine Knights vs. Eastern Kentucky Colonels: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50545720/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T02:17:20Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "71efb8b3b46a9e1a",
+      "title": "Coastal Carolina Chanticleers vs. Tennessee Volunteers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50545710/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T02:16:27Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4b2243f0a1802f8a",
+      "title": "Worcester State Lancers vs. Bryant Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50545128/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T01:00:32Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "382af29bcf4f89b1",
+      "title": "Chris Doering offers insight into competitive Week 12 SEC matchups",
+      "summary": "Doering joins The Paul Finebaum Show to share his predictions for several Week 12 matchups around the conference.",
+      "url": "https://www.espn.com/video/clip/_/id/50544918/chris-doering-offers-insight-competitive-week-12-sec-matchups",
+      "source": "ESPN",
+      "published_at": "2026-11-21T00:24:13Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "b204207eea2ce43a",
+      "title": "Roman Harper dissects LSU's 'excellent chance' to upset Tennessee",
+      "summary": "SEC Network's Roman Harper points out an interesting fact about the Tigers as he illustrates why they are deemed likely to upset the No. 9 Vols.",
+      "url": "https://www.espn.com/video/clip/_/id/50544230/roman-harper-dissects-lsu-excellent-chance-upset-tennessee",
+      "source": "ESPN",
+      "published_at": "2026-11-20T23:02:31Z",
+      "sport": "football",
+      "teams": [
+        "LSU",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4187fddf7b7a9541",
+      "title": "Tebow praises South Carolina QB Sellers' athleticism",
+      "summary": "Tim Tebow says LaNorris Sellers is \"one of the most gifted players in the last several years,\" and illustrates what makes the Gamecocks' star so special.",
+      "url": "https://www.espn.com/video/clip/_/id/50544225/tebow-praises-south-carolina-qb-sellers-athleticism",
+      "source": "ESPN",
+      "published_at": "2026-11-20T23:01:18Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d10892d74e4fbad8",
+      "title": "Jeremiah Donati dives into South Carolina's renovations, outlook",
+      "summary": "South Carolina athletic director Donati discusses the program's facility projects and shares his perspective on navigating the shifting college football landscape.",
+      "url": "https://www.espn.com/video/clip/_/id/50544189/jeremiah-donati-dives-south-carolina-renovations-outlook",
+      "source": "ESPN",
+      "published_at": "2026-11-20T23:00:06Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "532bdac3d047829b",
+      "title": "Ron Slay evaluates Tennessee's ceiling with success so far this season",
+      "summary": "Slay joins SEC This Morning to discuss the Volunteers' strengths as he explains just how far they can go this season with a 4-0 start so far.",
+      "url": "https://www.espn.com/video/clip/_/id/50544019/ron-slay-evaluates-tennessee-ceiling-success-far-season",
+      "source": "ESPN",
+      "published_at": "2026-11-20T22:43:21Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "57bc872d1052ad6b",
+      "title": "Former Texas QB Colt McCoy stresses consistency, alignment",
+      "summary": "McCoy discusses the fun he has observing the ebbs and flows of the No. 5 Longhorns' season as he leaves advice for his alma mater and current QB Arch Manning.",
+      "url": "https://www.espn.com/video/clip/_/id/50543885/former-texas-qb-colt-mccoy-stresses-consistency-alignment",
+      "source": "ESPN",
+      "published_at": "2026-11-20T22:25:55Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
     {
       "id": "10785192cf6a63a2",
       "title": "Temple Owls vs. Middle Tennessee Blue Raiders: Game Highlights",
@@ -88,45 +217,6 @@
       "breaking": false
     },
     {
-      "id": "3ae2664c709849ca",
-      "title": "East Texas A&M Lions vs. California Golden Bears: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50538239/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-20T05:11:10Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "86247ece30d31eca",
-      "title": "Texas' David Punch details what when into performance vs. Southern Utah",
-      "summary": "After scoring 22 points on 8-of-9 scoring in the victory over the Thunderbirds, Punch speaks on how the Longhorns were able to adapt and get the win.",
-      "url": "https://www.espn.com/video/clip/_/id/50537709/texas-david-punch-details-performance-vs-southern-utah",
-      "source": "ESPN",
-      "published_at": "2026-11-20T04:16:41Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b1aed83731537391",
-      "title": "Southern Utah Thunderbirds vs. Texas Longhorns: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50537223/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-20T03:36:35Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
       "id": "5ff9127faafbf2b7",
       "title": "SEC standardized NIL, revenue sharing contracts 'unfair' for players, agents say",
       "summary": "The SEC's new uniform NIL and revenue sharing agreements are causing an uproar among agents concerned that the contracts are loaded with terms that are unfair.",
@@ -178,20 +268,6 @@
       "breaking": false
     },
     {
-      "id": "c0659a59ef3b77e6",
-      "title": "Georgia AG asks SEC to take action against LSU's 'contempt for the rules'",
-      "summary": "The Georgia Attorney General blasted LSU in a letter to SEC commissioner Greg Sankey, encouraging sanctions against the Tigers, \"up to and including expulsion.\"",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50524054/georgia-ag-asks-sec-take-action-vs-lsu-expulsion",
-      "source": "ESPN",
-      "published_at": "2026-11-19T14:06:38Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
       "id": "a31f1e2e76b84543",
       "title": "What we learned about new NC State coach Philip Rivers in Fairhope, Alabama",
       "summary": "Rivers, the former NC State and NFL star quarterback, had been coaching high school football for six years.",
@@ -233,20 +309,6 @@
       "breaking": false
     },
     {
-      "id": "b783d71c8837fa29",
-      "title": "South Carolina star QB LaNorris Sellers set to play vs. No. 1 Georgia",
-      "summary": "South Carolina star QB LaNorris Sellers is set to play in Saturday's game vs. No. 1 Georgia after not appearing on the injury report Wednesday.",
-      "url": "https://www.espn.com/college-football/story/_/id/50526154/south-carolina-qb-lanorris-sellers-set-play-vs-georgia",
-      "source": "ESPN",
-      "published_at": "2026-11-19T03:01:31Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
       "id": "01b87544ac4a747c",
       "title": "SEC Now reviews Mizzou, UK recent outings, previews upcoming matchup",
       "summary": "SEC Network's Alyssa Lang and Gene Chizik acknowledges the recent momentum swings of No. 16 Kentucky and Missouri as they preview key factors ahead of their Week 12 game.",
@@ -257,72 +319,6 @@
       "teams": [
         "Kentucky",
         "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3f4ee243c99eee91",
-      "title": "Gene Chizik advises No. 9 Tennessee and LSU ahead of Week 12 matchup",
-      "summary": "Chizik urges the Vols to pressure Sam Leavitt and offensively focus on run game variety as he encourages the Tigers' defense to focus on disruption to find success on Saturday.",
-      "url": "https://www.espn.com/video/clip/_/id/50526174/gene-chizik-advises-no-9-tennessee-lsu-ahead-week-12-matchup",
-      "source": "ESPN",
-      "published_at": "2026-11-19T01:42:15Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5a4a4ea359a06b08",
-      "title": "Alyssa Lang analyzes, raises questions about recent CFP standings",
-      "summary": "Lang discusses the College Football Playoff committee's recent ranking decisions as she dissects her own SEC Network Power Rankings and the new challenges for contenders.",
-      "url": "https://www.espn.com/video/clip/_/id/50525545/alyssa-lang-analyzes-raises-questions-recent-cfp-standings",
-      "source": "ESPN",
-      "published_at": "2026-11-19T00:38:06Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "82516f326b1b0ea8",
-      "title": "Vols top Matt Stinchcomb's list of top three SEC defensive units",
-      "summary": "Stinchcomb analyzes his top three teams with standout defensive performances, mentioning LSU to start and then climbing the list to No. 9 Tennessee.",
-      "url": "https://www.espn.com/video/clip/_/id/50524635/vols-top-matt-stinchcomb-list-top-three-sec-defensive-units",
-      "source": "ESPN",
-      "published_at": "2026-11-18T22:32:04Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5a9b368127a4a38f",
-      "title": "SEC Now crew dissects No. 1 Georgia's dominant ground game",
-      "summary": "South Carolina has a massive challenge ahead in its Week 12 matchup with the Bulldogs, SEC Now analyzes just how strong their run game has been on both sides of the ball.",
-      "url": "https://www.espn.com/video/clip/_/id/50524585/sec-now-crew-dissects-no-1-georgia-dominant-ground-game",
-      "source": "ESPN",
-      "published_at": "2026-11-18T22:31:41Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "2f75c75ff565dbb3",
-      "title": "Matt Stinchcomb says OU showed the 'epitome of complimentary football'",
-      "summary": "After highlighting a Sooners QB John Mateer for spotless game streak, the SEC Now crew analyzes the improved Oklahoma offensive rhythm.",
-      "url": "https://www.espn.com/video/clip/_/id/50524508/matt-stinchcomb-says-ou-showed-epitome-complimentary-football",
-      "source": "ESPN",
-      "published_at": "2026-11-18T22:30:48Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma"
       ],
       "breaking": false
     },
