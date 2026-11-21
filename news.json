@@ -1,21 +1,273 @@
 {
-  "updated_at": "2026-11-21T18:00:12.018400Z",
-  "checked_at": "2026-11-21T18:00:12.018400Z",
+  "updated_at": "2026-11-21T23:23:29.602269Z",
+  "checked_at": "2026-11-21T23:23:29.602269Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "e31230168b78dc86",
-      "title": "South Carolina legend Alshon Jeffery discusses Georgia rivalry",
-      "summary": "Jeffery joins SEC Network's Marion Crowder on SEC Nation to preview the Gamecocks' matchup against the Bulldogs and explain how Shane Beamer recruited him to South Carolina.",
-      "url": "https://www.espn.com/video/clip/_/id/50550852/south-carolina-legend-alshon-jeffery-discusses-georgia-rivalry",
+      "id": "14fbb6530a32e1f8",
+      "title": "Longwood Lancers vs. East Tennessee State Buccaneers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50555201/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-21T17:13:41Z",
+      "published_at": "2026-11-21T23:16:45Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "2d609f8f61fe58a5",
+      "title": "Central Arkansas Bears vs. Jacksonville Dolphins: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50555188/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T23:14:54Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9980ab7de940921d",
+      "title": "Utah Tech vs. Weber State Wildcats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50555186/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T23:13:52Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ddbbf997b5075279",
+      "title": "Prairie View A&M Panthers vs. Alabama State Hornets: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50555181/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T23:13:21Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "20f22c529bf0de50",
+      "title": "UT Martin Skyhawks vs. Southeast Missouri State Redhawks: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50554980/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T22:46:39Z",
+      "sport": "football",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f098f0f0ae558ed7",
+      "title": "Middle Tennessee Blue Raiders vs. Sam Houston Bearkats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50554875/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T22:33:47Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4b3368e8bfec2244",
+      "title": "Missouri State Bears vs. Jacksonville State Gamecocks: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50554843/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T22:30:14Z",
+      "sport": "football",
+      "teams": [
+        "Missouri",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "729c8a1463c5456a",
+      "title": "Chattanooga Mocs vs. Alabama Crimson Tide: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50554412/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T22:20:01Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "97aac640808dfb62",
+      "title": "West Florida Argonauts vs. West Georgia Wolves: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50554518/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T22:07:04Z",
+      "sport": "football",
+      "teams": [
+        "Florida",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "444bbbe78c09dea0",
+      "title": "Tennessee State Tigers vs. Gardner-Webb Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50554505/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T22:06:09Z",
       "sport": "football",
       "teams": [
         "Georgia",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a36ed10ca4c166e8",
+      "title": "Drake Bulldogs vs. Missouri State Bears: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50554443/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T22:04:11Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia",
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "86896668fe00077e",
+      "title": "Delaware State Hornets vs. South Carolina State Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50554415/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T22:02:04Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "270a0edd141c0023",
+      "title": "Little Rock vs. North Florida Ospreys: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50554244/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T21:44:58Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b7a4d52b8c241db6",
+      "title": "Tennessee Tech Golden Eagles vs. Mississippi State Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50553938/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T21:37:33Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Mississippi State",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "bcef2ca507ef4430",
+      "title": "Western Kentucky Hilltoppers vs. Liberty Flames: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50554004/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T21:28:30Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "06c97e074f319f77",
+      "title": "Marist Red Foxes vs. Davidson Wildcats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50553992/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T21:28:17Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "461ac67296d9780f",
+      "title": "The Citadel Bulldogs vs. Western Carolina Catamounts: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50553937/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T21:24:10Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "51c96510ca4a804c",
+      "title": "Georgetown Hoyas vs. Villanova Wildcats: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50553805/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T21:16:05Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ef37b77e0f423eef",
+      "title": "Queens NC Royals vs. LSU Tigers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50552881/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T20:41:25Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b4832ad0256a51f3",
+      "title": "South Carolina Upstate Spartans vs. UNC Greensboro Spartans: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50551349/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-21T18:03:23Z",
+      "sport": "basketball",
+      "teams": [
         "South Carolina"
       ],
       "breaking": false
@@ -30,366 +282,6 @@
       "sport": "basketball",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3bebb7a6fd6c2406",
-      "title": "Saturday Spin: Manning's return to Texas, Stockton nation's best QB?",
-      "summary": "The SEC Nation crew spins the wheel and answers questions about what could be next for the conference's best quarterbacks.",
-      "url": "https://www.espn.com/video/clip/_/id/50550261/manning-return-texas-stockton-nation-best-qb",
-      "source": "ESPN",
-      "published_at": "2026-11-21T16:04:42Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ebcb503f3bd59f1c",
-      "title": "Smith and Sellers reviews South Carolina's roller coaster season",
-      "summary": "LaNorris Sellers sits down with SEC Network's Marty Smith to discuss why he returned to the Gamecocks and his potential as one of the nation's most electric playmakers.",
-      "url": "https://www.espn.com/video/clip/_/id/50550047/smith-sellers-reviews-south-carolina-roller-coaster-season",
-      "source": "ESPN",
-      "published_at": "2026-11-21T15:33:05Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a35f5719ac7b09d8",
-      "title": "Sources: Texas A&M expected to bench Marcel Reed, start Brady Hart",
-      "summary": "Texas A&M is expected to make a change at quarterback, going with sophomore Brady Hart over Marcel Reed against Oklahoma, sources confirmed to ESPN.",
-      "url": "https://www.espn.com/college-football/story/_/id/50549670/sources-texas-expected-bench-marcel-reed-vs-sooners",
-      "source": "ESPN",
-      "published_at": "2026-11-21T15:29:18Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e2d34e0e89453a70",
-      "title": "Shane Beamer joins SEC Nation ahead of South Carolina vs. Georgia",
-      "summary": "Beamer joins the set from Columbia to preview the challenges Georgia presents for the Gamecocks and discuss how South Carolina can find success in the final stretch of the season.",
-      "url": "https://www.espn.com/video/clip/_/id/50549806/shane-beamer-joins-sec-nation-ahead-south-carolina-vs-georgia",
-      "source": "ESPN",
-      "published_at": "2026-11-21T14:51:40Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "41aad953d3c8fd24",
-      "title": "UGA's resilience, OU's efficiency highlight best of SEC Tournament first round",
-      "summary": "SEC Network's Mary Wise and Shelby Coppedge highlight Georgia's resilience and Oklahoma's efficiency as the top performances from the SEC Volleyball Tournament's opening round.",
-      "url": "https://www.espn.com/video/clip/_/id/50547212/uga-resilience-ou-efficiency-highlight-best-sec-tournament-first-round",
-      "source": "ESPN",
-      "published_at": "2026-11-21T05:16:35Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b238f95467900dae",
-      "title": "Blue Cain on how Georgia pulled off statement win vs. Georgia Tech",
-      "summary": "Cain describes the Bulldogs' overall performance as he discusses how they were able to hold the Yellow Jackets in the fourth quarter to come out on top.",
-      "url": "https://www.espn.com/video/clip/_/id/50547186/blue-cain-how-georgia-pulled-statement-win-vs-georgia-tech",
-      "source": "ESPN",
-      "published_at": "2026-11-21T05:02:50Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "29a8fc746a515912",
-      "title": "No. 5 Texas' November dominance spells trouble for Arkansas",
-      "summary": "Despite signs of improvement from the Razorbacks, the SEC Now crew breaks down why the Longhorns' impressive track record in November gives them the edge heading into Week 12.",
-      "url": "https://www.espn.com/video/clip/_/id/50547172/no-5-texas-november-dominance-spells-trouble-arkansas",
-      "source": "ESPN",
-      "published_at": "2026-11-21T04:59:38Z",
-      "sport": "football",
-      "teams": [
-        "Arkansas",
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d408b69ccfd5ee67",
-      "title": "Why is LSU favored on the road against No. 9 Tennessee?",
-      "summary": "Despite their four losses, the Tigers are being given the edge in Neyland Stadium as the SEC Now crew examines why the ninth-ranked Volunteers are being overlooked.",
-      "url": "https://www.espn.com/video/clip/_/id/50547060/why-lsu-favored-road-no-9-tennessee",
-      "source": "ESPN",
-      "published_at": "2026-11-21T04:50:33Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "66daf98338e91aca",
-      "title": "No. 1 Georgia has all the tools to dismantle No. 21 South Carolina",
-      "summary": "The SEC Now crew breaks down what makes the Bulldogs elite and why their strengths position them to deliver a convincing road win over the Gamecocks.",
-      "url": "https://www.espn.com/video/clip/_/id/50546989/no-1-georgia-all-tools-dismantle-no-21-south-carolina",
-      "source": "ESPN",
-      "published_at": "2026-11-21T04:40:59Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "99b02fd08c25caa1",
-      "title": "Georgia Bulldogs vs. Georgia Tech Yellow Jackets: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50546465/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T03:46:30Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "fbc4c4b6a038009c",
-      "title": "UCF Knights vs. Vanderbilt Commodores: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50546404/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T03:41:50Z",
-      "sport": "basketball",
-      "teams": [
-        "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "c5a9c53cb77d5da7",
-      "title": "Kentucky Wildcats vs. Indiana Hoosiers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50546234/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T03:27:46Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5ffc5a22e9497ce6",
-      "title": "Campbell Fighting Camels vs. Kansas State Wildcats: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50546215/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T03:12:48Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "de18a23b9fd7f74b",
-      "title": "Arkansas' Jeremiah Wilkinson describes fun-filled win vs. MVSU",
-      "summary": "Wilkinson breaks down his 28-point performance as he details what made the Razorbacks' offense click in order to power past the Delta Devils.",
-      "url": "https://www.espn.com/video/clip/_/id/50546167/arkansas-jeremiah-wilkinson-describes-fun-filled-win-vs-mvsu",
-      "source": "ESPN",
-      "published_at": "2026-11-21T03:09:51Z",
-      "sport": "basketball",
-      "teams": [
-        "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d45104ad6e0ce3e3",
-      "title": "MS State's Kimani Hamilton credits win vs. Tulsa thanks to high energy",
-      "summary": "After getting the win over the Golden Hurricanes in his hometown Jackson, MS, Hamilton speaks on the urgency the Bulldogs maintained throughout the game to get the victory.",
-      "url": "https://www.espn.com/video/clip/_/id/50546142/ms-state-kimani-hamilton-credits-win-vs-tulsa-thanks-high-energy",
-      "source": "ESPN",
-      "published_at": "2026-11-21T03:08:01Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "885ae47294da7357",
-      "title": "Le Moyne Dolphins vs. Missouri Tigers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50546105/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T03:02:29Z",
-      "sport": "basketball",
-      "teams": [
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d0c5a379e0857ea2",
-      "title": "DeWayne Brown III details Tennessee's efficiency vs. Coastal Carolina",
-      "summary": "Brown III recaps his 20-point performance as he discusses how the Vols remained efficient throughout both halves to secure the win over the Chanticleers.",
-      "url": "https://www.espn.com/video/clip/_/id/50546040/dewayne-brown-iii-details-tennessee-efficiency-vs-coastal-carolina",
-      "source": "ESPN",
-      "published_at": "2026-11-21T02:53:08Z",
-      "sport": "basketball",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5ca6ef54e47fc178",
-      "title": "Tulsa Golden Hurricane vs. Mississippi State Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50546041/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T02:52:39Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia",
-        "Mississippi State"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1118f21c08bb23ed",
-      "title": "Paine vs. West Georgia Wolves: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50545861/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T02:34:10Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "382af29bcf4f89b1",
-      "title": "Chris Doering offers insight into competitive Week 12 SEC matchups",
-      "summary": "Doering joins The Paul Finebaum Show to share his predictions for several Week 12 matchups around the conference.",
-      "url": "https://www.espn.com/video/clip/_/id/50544918/chris-doering-offers-insight-competitive-week-12-sec-matchups",
-      "source": "ESPN",
-      "published_at": "2026-11-21T00:24:13Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "b204207eea2ce43a",
-      "title": "Roman Harper dissects LSU's 'excellent chance' to upset Tennessee",
-      "summary": "SEC Network's Roman Harper points out an interesting fact about the Tigers as he illustrates why they are deemed likely to upset the No. 9 Vols.",
-      "url": "https://www.espn.com/video/clip/_/id/50544230/roman-harper-dissects-lsu-excellent-chance-upset-tennessee",
-      "source": "ESPN",
-      "published_at": "2026-11-20T23:02:31Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4187fddf7b7a9541",
-      "title": "Tebow praises South Carolina QB Sellers' athleticism",
-      "summary": "Tim Tebow says LaNorris Sellers is \"one of the most gifted players in the last several years,\" and illustrates what makes the Gamecocks' star so special.",
-      "url": "https://www.espn.com/video/clip/_/id/50544225/tebow-praises-south-carolina-qb-sellers-athleticism",
-      "source": "ESPN",
-      "published_at": "2026-11-20T23:01:18Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d10892d74e4fbad8",
-      "title": "Jeremiah Donati dives into South Carolina's renovations, outlook",
-      "summary": "South Carolina athletic director Donati discusses the program's facility projects and shares his perspective on navigating the shifting college football landscape.",
-      "url": "https://www.espn.com/video/clip/_/id/50544189/jeremiah-donati-dives-south-carolina-renovations-outlook",
-      "source": "ESPN",
-      "published_at": "2026-11-20T23:00:06Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "57bc872d1052ad6b",
-      "title": "Former Texas QB Colt McCoy stresses consistency, alignment",
-      "summary": "McCoy discusses the fun he has observing the ebbs and flows of the No. 5 Longhorns' season as he leaves advice for his alma mater and current QB Arch Manning.",
-      "url": "https://www.espn.com/video/clip/_/id/50543885/former-texas-qb-colt-mccoy-stresses-consistency-alignment",
-      "source": "ESPN",
-      "published_at": "2026-11-20T22:25:55Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "95c72223df7feef5",
-      "title": "Connelly on Week 12: Test for Tennessee; Big Ten favorites hit road",
-      "summary": "Vols, Kiffin meet again and fringe CFP contenders try to stay alive on a sneaky-good Week 12 slate.",
-      "url": "https://www.espn.com/college-football/story/_/id/50532397/connelly-week-12-preview-big-ten-tennessee",
-      "source": "ESPN",
-      "published_at": "2026-11-20T16:44:38Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "bf953899355e791d",
-      "title": "Kalen DeBoer says this is his most complete Alabama team",
-      "summary": "Alabama coach Kalen DeBoer said this is the most complete team he's had since taking over for Nick Saban prior to the 2024 season.",
-      "url": "https://www.espn.com/college-football/story/_/id/50541432/kalen-deboer-says-most-complete-alabama-team",
-      "source": "ESPN",
-      "published_at": "2026-11-20T16:07:14Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d0120603fdce1686",
-      "title": "Top 25 betting lines: UGA big faves over Gamecocks, Vols slim favorites vs. LSU",
-      "summary": "This week's odds and FPI predictions for South Carolina-Georgia, Tennessee-LSU and more.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50498153/2026-college-football-week-12-top-25-betting-lines-odds",
-      "source": "ESPN",
-      "published_at": "2026-11-20T15:55:41Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "LSU",
-        "South Carolina",
-        "Tennessee"
       ],
       "breaking": false
     },
