@@ -1,11 +1,92 @@
 {
-  "updated_at": "2026-11-21T11:12:49.202407Z",
-  "checked_at": "2026-11-21T11:12:49.202407Z",
+  "updated_at": "2026-11-21T18:00:12.018400Z",
+  "checked_at": "2026-11-21T18:00:12.018400Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "e31230168b78dc86",
+      "title": "South Carolina legend Alshon Jeffery discusses Georgia rivalry",
+      "summary": "Jeffery joins SEC Network's Marion Crowder on SEC Nation to preview the Gamecocks' matchup against the Bulldogs and explain how Shane Beamer recruited him to South Carolina.",
+      "url": "https://www.espn.com/video/clip/_/id/50550852/south-carolina-legend-alshon-jeffery-discusses-georgia-rivalry",
+      "source": "ESPN",
+      "published_at": "2026-11-21T17:13:41Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "620849f3b749cbf3",
+      "title": "With Indiana, Kentucky hoping to return to glory, Hoosiers look a step closer",
+      "summary": "Two college basketball giants faced off Friday night, and only the Hoosiers left one step closer to postseason glory.",
+      "url": "https://www.ncaa.com/news/basketball-men/article/2026-11-21/indiana-kentucky-hoping-return-glory-hoosiers-look-step-closer",
+      "source": "NCAA",
+      "published_at": "2026-11-21T17:08:03Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3bebb7a6fd6c2406",
+      "title": "Saturday Spin: Manning's return to Texas, Stockton nation's best QB?",
+      "summary": "The SEC Nation crew spins the wheel and answers questions about what could be next for the conference's best quarterbacks.",
+      "url": "https://www.espn.com/video/clip/_/id/50550261/manning-return-texas-stockton-nation-best-qb",
+      "source": "ESPN",
+      "published_at": "2026-11-21T16:04:42Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ebcb503f3bd59f1c",
+      "title": "Smith and Sellers reviews South Carolina's roller coaster season",
+      "summary": "LaNorris Sellers sits down with SEC Network's Marty Smith to discuss why he returned to the Gamecocks and his potential as one of the nation's most electric playmakers.",
+      "url": "https://www.espn.com/video/clip/_/id/50550047/smith-sellers-reviews-south-carolina-roller-coaster-season",
+      "source": "ESPN",
+      "published_at": "2026-11-21T15:33:05Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a35f5719ac7b09d8",
+      "title": "Sources: Texas A&M expected to bench Marcel Reed, start Brady Hart",
+      "summary": "Texas A&M is expected to make a change at quarterback, going with sophomore Brady Hart over Marcel Reed against Oklahoma, sources confirmed to ESPN.",
+      "url": "https://www.espn.com/college-football/story/_/id/50549670/sources-texas-expected-bench-marcel-reed-vs-sooners",
+      "source": "ESPN",
+      "published_at": "2026-11-21T15:29:18Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e2d34e0e89453a70",
+      "title": "Shane Beamer joins SEC Nation ahead of South Carolina vs. Georgia",
+      "summary": "Beamer joins the set from Columbia to preview the challenges Georgia presents for the Gamecocks and discuss how South Carolina can find success in the final stretch of the season.",
+      "url": "https://www.espn.com/video/clip/_/id/50549806/shane-beamer-joins-sec-nation-ahead-south-carolina-vs-georgia",
+      "source": "ESPN",
+      "published_at": "2026-11-21T14:51:40Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
     {
       "id": "41aad953d3c8fd24",
       "title": "UGA's resilience, OU's efficiency highlight best of SEC Tournament first round",
@@ -309,31 +390,6 @@
         "LSU",
         "South Carolina",
         "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5ff9127faafbf2b7",
-      "title": "SEC standardized NIL, revenue sharing contracts 'unfair' for players, agents say",
-      "summary": "The SEC's new uniform NIL and revenue sharing agreements are causing an uproar among agents concerned that the contracts are loaded with terms that are unfair.",
-      "url": "https://www.espn.com/college-football/story/_/id/50535591/sec-standardized-nil-contracts-unfair-players-agents-say",
-      "source": "ESPN",
-      "published_at": "2026-11-20T01:16:03Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "43179db27c1f50b7",
-      "title": "Alshon Jeffery discusses energy around No. 21 South Carolina",
-      "summary": "Former Gamecock wide receiver Jeffery joins The Paul Finebaum Show to highlight the new energy he sees around the program as they prepare to face No. 1 Georgia.",
-      "url": "https://www.espn.com/video/clip/_/id/50535427/alshon-jeffery-discusses-energy-no-21-south-carolina",
-      "source": "ESPN",
-      "published_at": "2026-11-19T23:58:45Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "South Carolina"
       ],
       "breaking": false
     },
