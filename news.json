@@ -1,165 +1,162 @@
 {
-  "updated_at": "2026-11-21T23:23:29.602269Z",
-  "checked_at": "2026-11-21T23:23:29.602269Z",
+  "updated_at": "2026-11-22T06:56:18.656295Z",
+  "checked_at": "2026-11-22T06:56:18.656295Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "14fbb6530a32e1f8",
-      "title": "Longwood Lancers vs. East Tennessee State Buccaneers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50555201/game-highlights",
+      "id": "350f429ca0c2a155",
+      "title": "Dissecting playoff predictor and College Football Playoff chances",
+      "summary": "Dari Nowkhah, Chris Doering and Benjamin Watson dive into the Allstate Playoff Predictor and break it down to SEC contender probabilities as they analyze the current standings.",
+      "url": "https://www.espn.com/video/clip/_/id/50559627/dissecting-playoff-predictor-college-football-playoff-chances",
       "source": "ESPN",
-      "published_at": "2026-11-21T23:16:45Z",
-      "sport": "basketball",
-      "teams": [
-        "Tennessee"
-      ],
+      "published_at": "2026-11-22T06:08:09Z",
+      "sport": "football",
+      "teams": [],
       "breaking": false
     },
     {
-      "id": "2d609f8f61fe58a5",
-      "title": "Central Arkansas Bears vs. Jacksonville Dolphins: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50555188/game-highlights",
+      "id": "0a75911db9bdac51",
+      "title": "Saturday Stud: Week 12's top touchdowns are must-see catches The SEC Now crew takes a look at some of the best catches of Week 12 including an athletic hurdle play and an athletic-bulldozer takeaway.",
+      "summary": "The SEC Now crew takes a look at some of the best catches of Week 12 including an athletic hurdle play and a bulldozer takeaway.",
+      "url": "https://www.espn.com/video/clip/_/id/50559796/week-12-top-touchdowns-see-catches-sec-now-crew-takes-look-some-best-catches-week-12-including-athletic-hurdle-play-athletic-bulldozer-takeaway",
       "source": "ESPN",
-      "published_at": "2026-11-21T23:14:54Z",
-      "sport": "basketball",
-      "teams": [
-        "Arkansas"
-      ],
+      "published_at": "2026-11-22T06:03:48Z",
+      "sport": "football",
+      "teams": [],
       "breaking": false
     },
     {
-      "id": "9980ab7de940921d",
-      "title": "Utah Tech vs. Weber State Wildcats: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50555186/full-highlights",
+      "id": "5d0536f1ac1183a3",
+      "title": "Georgia clinches SEC title game berth with win at South Carolina",
+      "summary": "Nate Frazier ran for 94 yards and two touchdowns, and No. 1 Georgia clinched a spot in the final SEC championship game with a victory over South Carolina on Saturday night.",
+      "url": "https://www.espn.com/college-football/story/_/id/50558713/georgia-clinches-sec-title-game-berth-win-south-carolina",
       "source": "ESPN",
-      "published_at": "2026-11-21T23:13:52Z",
+      "published_at": "2026-11-22T05:47:52Z",
       "sport": "football",
       "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ddbbf997b5075279",
-      "title": "Prairie View A&M Panthers vs. Alabama State Hornets: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50555181/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T23:13:21Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "20f22c529bf0de50",
-      "title": "UT Martin Skyhawks vs. Southeast Missouri State Redhawks: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50554980/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T22:46:39Z",
-      "sport": "football",
-      "teams": [
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f098f0f0ae558ed7",
-      "title": "Middle Tennessee Blue Raiders vs. Sam Houston Bearkats: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50554875/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T22:33:47Z",
-      "sport": "football",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4b3368e8bfec2244",
-      "title": "Missouri State Bears vs. Jacksonville State Gamecocks: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50554843/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T22:30:14Z",
-      "sport": "football",
-      "teams": [
-        "Missouri",
+        "Georgia",
         "South Carolina"
       ],
       "breaking": false
     },
     {
-      "id": "729c8a1463c5456a",
-      "title": "Chattanooga Mocs vs. Alabama Crimson Tide: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50554412/full-highlights",
+      "id": "dd53f82bfdd75675",
+      "title": "Doering, Watson describe Georgia's aggressiveness against South Carolina",
+      "summary": "SEC Now's Chris Doering and Benjamin Watson explain how the Bulldogs consistent aggression was a big factor in winning against the Gamecocks.",
+      "url": "https://www.espn.com/video/clip/_/id/50559597/doering-watson-describe-georgia-aggressiveness-south-carolina",
       "source": "ESPN",
-      "published_at": "2026-11-21T22:20:01Z",
-      "sport": "football",
-      "teams": [
-        "Alabama"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "97aac640808dfb62",
-      "title": "West Florida Argonauts vs. West Georgia Wolves: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50554518/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T22:07:04Z",
-      "sport": "football",
-      "teams": [
-        "Florida",
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "444bbbe78c09dea0",
-      "title": "Tennessee State Tigers vs. Gardner-Webb Bulldogs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50554505/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T22:06:09Z",
+      "published_at": "2026-11-22T05:43:20Z",
       "sport": "football",
       "teams": [
         "Georgia",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b7703427d799bb3f",
+      "title": "Evaulating strength of Tennessee's defense in win vs. LSU",
+      "summary": "SEC Network's Chris Doering and Benjamin Watson analyze the toughness behind the Volunteers' defense as they discuss how they were able to overpower the Tigers.",
+      "url": "https://www.espn.com/video/clip/_/id/50559374/evaulating-strength-tennessee-defense-win-vs-lsu",
+      "source": "ESPN",
+      "published_at": "2026-11-22T05:14:12Z",
+      "sport": "football",
+      "teams": [
+        "LSU",
         "Tennessee"
       ],
       "breaking": false
     },
     {
-      "id": "a36ed10ca4c166e8",
-      "title": "Drake Bulldogs vs. Missouri State Bears: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50554443/game-highlights",
+      "id": "cf6b2047a7fafb83",
+      "title": "Kirby Smart emphasizes patience in Georgia's dominance on the road",
+      "summary": "After getting a big victory against No. 21 South Carolina, Smart explains how the endurance of the No. 1 Bulldogs set them up for an emphatic victory in Columbia, SC.",
+      "url": "https://www.espn.com/video/clip/_/id/50558806/kirby-smart-emphasizes-patience-georgia-dominance-road",
       "source": "ESPN",
-      "published_at": "2026-11-21T22:04:11Z",
-      "sport": "basketball",
+      "published_at": "2026-11-22T04:16:45Z",
+      "sport": "football",
       "teams": [
         "Georgia",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9868cf94eb488b55",
+      "title": "Georgia Bulldogs vs. South Carolina Gamecocks: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50558598/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-22T04:09:21Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "521fbb5fa359ab09",
+      "title": "Missouri knocks off No. 16 Kentucky at home",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50558532/missouri-knocks-no-16-kentucky-home",
+      "source": "ESPN",
+      "published_at": "2026-11-22T03:54:57Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky",
         "Missouri"
       ],
       "breaking": false
     },
     {
-      "id": "86896668fe00077e",
-      "title": "Delaware State Hornets vs. South Carolina State Bulldogs: Full Highlights",
+      "id": "620276ffa3da9fcb",
+      "title": "Georgia dominates South Carolina 34-6 to improve to 10-1",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50554415/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50558528/georgia-dominates-south-carolina-34-6-improve-10-1",
       "source": "ESPN",
-      "published_at": "2026-11-21T22:02:04Z",
+      "published_at": "2026-11-22T03:52:59Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "2e7a3cf1d01b33d4",
+      "title": "2026 SEC Championship Game: Date, time, TV channel, history",
+      "summary": "Here's the quick guide to the 2026 SEC Football Championship Game.",
+      "url": "https://www.ncaa.com/news/football/article/2026-11-21/2026-sec-championship-game-date-time-tv-channel-history",
+      "source": "NCAA",
+      "published_at": "2026-11-22T03:45:05Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "6409808c23db7c9f",
+      "title": "Kentucky's Willie Rodriguez on making an impact on and off the field",
+      "summary": "Rodriguez describes the significance of being able to lead the Wildcats' mission to visit children's hospitals as he discusses how his little sister impacts his football career.",
+      "url": "https://www.espn.com/video/clip/_/id/50558429/kentucky-willie-rodriguez-making-impact-the-field",
+      "source": "ESPN",
+      "published_at": "2026-11-22T03:44:24Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b35c848689e02809",
+      "title": "Arkansas State Red Wolves vs. Louisiana Tech Bulldogs: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50558165/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-22T03:21:41Z",
       "sport": "football",
       "teams": [
         "Georgia"
@@ -167,108 +164,54 @@
       "breaking": false
     },
     {
-      "id": "270a0edd141c0023",
-      "title": "Little Rock vs. North Florida Ospreys: Game Highlights",
+      "id": "19ae8d3a8824dc7f",
+      "title": "Presbyterian Blue Hose vs. Tennessee Tech Golden Eagles: Game Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50554244/game-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50557775/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-21T21:44:58Z",
+      "published_at": "2026-11-22T02:54:35Z",
       "sport": "basketball",
       "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b7a4d52b8c241db6",
-      "title": "Tennessee Tech Golden Eagles vs. Mississippi State Bulldogs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50553938/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T21:37:33Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Mississippi State",
         "Tennessee"
       ],
       "breaking": false
     },
     {
-      "id": "bcef2ca507ef4430",
-      "title": "Western Kentucky Hilltoppers vs. Liberty Flames: Full Highlights",
+      "id": "e9064ca50bf9ad51",
+      "title": "Trinidad Chambliss makes SEC history in Ole Miss' big win over Wofford",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50554004/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50557683/trinidad-chambliss-makes-sec-history-ole-miss-big-win-wofford",
       "source": "ESPN",
-      "published_at": "2026-11-21T21:28:30Z",
+      "published_at": "2026-11-22T02:44:16Z",
       "sport": "football",
       "teams": [
-        "Kentucky"
+        "Ole Miss"
       ],
       "breaking": false
     },
     {
-      "id": "06c97e074f319f77",
-      "title": "Marist Red Foxes vs. Davidson Wildcats: Full Highlights",
+      "id": "85e7bab7a6e07fd9",
+      "title": "Gardner-Webb Bulldogs vs. VMI Keydets: Game Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50553992/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50557584/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-21T21:28:17Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "461ac67296d9780f",
-      "title": "The Citadel Bulldogs vs. Western Carolina Catamounts: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50553937/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T21:24:10Z",
-      "sport": "football",
+      "published_at": "2026-11-22T02:30:27Z",
+      "sport": "basketball",
       "teams": [
         "Georgia"
       ],
       "breaking": false
     },
     {
-      "id": "51c96510ca4a804c",
-      "title": "Georgetown Hoyas vs. Villanova Wildcats: Full Highlights",
+      "id": "9e57175388d7a095",
+      "title": "Michigan Wolverines vs. Villanova Wildcats: Game Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50553805/full-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50557583/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-21T21:16:05Z",
-      "sport": "football",
+      "published_at": "2026-11-22T02:30:14Z",
+      "sport": "basketball",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ef37b77e0f423eef",
-      "title": "Queens NC Royals vs. LSU Tigers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50552881/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T20:41:25Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b4832ad0256a51f3",
-      "title": "South Carolina Upstate Spartans vs. UNC Greensboro Spartans: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50551349/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-21T18:03:23Z",
-      "sport": "basketball",
-      "teams": [
-        "South Carolina"
       ],
       "breaking": false
     },
