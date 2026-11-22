@@ -1,11 +1,38 @@
 {
-  "updated_at": "2026-11-22T06:56:18.656295Z",
-  "checked_at": "2026-11-22T06:56:18.656295Z",
+  "updated_at": "2026-11-22T15:23:40.898484Z",
+  "checked_at": "2026-11-22T15:23:40.898484Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "5d0536f1ac1183a3",
+      "title": "Georgia clinches SEC title game berth with win at South Carolina",
+      "summary": "Nate Frazier ran for 94 yards and two touchdowns, and No. 1 Georgia clinched a spot in the final SEC championship game with a victory over South Carolina on Saturday night.",
+      "url": "https://www.espn.com/college-football/story/_/id/50558713/georgia-clinches-sec-title-game-berth-win-south-carolina",
+      "source": "ESPN",
+      "published_at": "2026-11-22T07:48:38Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "20f1fc15622de165",
+      "title": "Utah State Aggies vs. Oregon State Beavers: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50560166/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-22T07:14:51Z",
+      "sport": "football",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
     {
       "id": "350f429ca0c2a155",
       "title": "Dissecting playoff predictor and College Football Playoff chances",
@@ -26,20 +53,6 @@
       "published_at": "2026-11-22T06:03:48Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "5d0536f1ac1183a3",
-      "title": "Georgia clinches SEC title game berth with win at South Carolina",
-      "summary": "Nate Frazier ran for 94 yards and two touchdowns, and No. 1 Georgia clinched a spot in the final SEC championship game with a victory over South Carolina on Saturday night.",
-      "url": "https://www.espn.com/college-football/story/_/id/50558713/georgia-clinches-sec-title-game-berth-win-south-carolina",
-      "source": "ESPN",
-      "published_at": "2026-11-22T05:47:52Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "South Carolina"
-      ],
       "breaking": false
     },
     {
@@ -151,19 +164,6 @@
       "breaking": false
     },
     {
-      "id": "b35c848689e02809",
-      "title": "Arkansas State Red Wolves vs. Louisiana Tech Bulldogs: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50558165/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-22T03:21:41Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
       "id": "19ae8d3a8824dc7f",
       "title": "Presbyterian Blue Hose vs. Tennessee Tech Golden Eagles: Game Highlights",
       "summary": "",
@@ -173,19 +173,6 @@
       "sport": "basketball",
       "teams": [
         "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e9064ca50bf9ad51",
-      "title": "Trinidad Chambliss makes SEC history in Ole Miss' big win over Wofford",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50557683/trinidad-chambliss-makes-sec-history-ole-miss-big-win-wofford",
-      "source": "ESPN",
-      "published_at": "2026-11-22T02:44:16Z",
-      "sport": "football",
-      "teams": [
-        "Ole Miss"
       ],
       "breaking": false
     },
