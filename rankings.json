@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-22T11:28:13Z",
+  "checked_at": "2026-11-22T19:42:50Z",
   "source": "ESPN",
   "sports": {
     "baseball": {
@@ -93,38 +93,42 @@
     "football": {
       "poll": "AP Top 25",
       "poll_size": 25,
-      "published_at": "2026-11-16",
+      "published_at": "2026-11-22",
       "season": 2026,
       "source": "ESPN",
       "source_url": "https://www.espn.com/college-football/rankings",
       "teams": {
         "ALA": {
           "previous": 7,
-          "rank": 7
+          "rank": 6
         },
         "FLA": {
-          "previous": null,
-          "rank": 23
+          "previous": 23,
+          "rank": 20
         },
         "MISS": {
-          "previous": 19,
-          "rank": 25
+          "previous": 25,
+          "rank": 23
+        },
+        "MIZ": {
+          "previous": null,
+          "rank": 24
+        },
+        "OU": {
+          "previous": null,
+          "rank": 19
         },
         "TENN": {
           "previous": 9,
-          "rank": 9
+          "rank": 7
         },
         "TEX": {
           "previous": 8,
-          "rank": 8
+          "rank": 5
         },
         "UGA": {
           "previous": 1,
           "rank": 1
-        },
-        "UK": {
-          "previous": 13,
-          "rank": 17
         }
       }
     }
