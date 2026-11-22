@@ -1,22 +1,48 @@
 {
-  "updated_at": "2026-11-22T15:23:40.898484Z",
-  "checked_at": "2026-11-22T15:23:40.898484Z",
+  "updated_at": "2026-11-22T21:50:21.074750Z",
+  "checked_at": "2026-11-22T21:50:21.074750Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "7bb23bc591ebdab7",
+      "title": "Dayton Flyers vs. Northwestern Wildcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50564369/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-22T20:49:13Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
       "id": "5d0536f1ac1183a3",
       "title": "Georgia clinches SEC title game berth with win at South Carolina",
-      "summary": "Nate Frazier ran for 94 yards and two touchdowns, and No. 1 Georgia clinched a spot in the final SEC championship game with a victory over South Carolina on Saturday night.",
+      "summary": "Nate Frazier ran for 94 yards and two touchdowns, and No. 1 Georgia clinched a spot in the final SEC championship game with a victory over South Carolina.",
       "url": "https://www.espn.com/college-football/story/_/id/50558713/georgia-clinches-sec-title-game-berth-win-south-carolina",
       "source": "ESPN",
-      "published_at": "2026-11-22T07:48:38Z",
+      "published_at": "2026-11-22T18:41:14Z",
       "sport": "football",
       "teams": [
         "Georgia",
         "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1781f17593f69f4c",
+      "title": "Sources: Florida State's coaching search focused on Georgia DC Glenn Schumann",
+      "summary": "Florida State's coaching search is focused on Georgia defensive coordinator Glenn Schumann, sources told ESPN's Pete Thamel and Andrea Adelson.",
+      "url": "https://www.espn.com/college-football/story/_/id/50562506/sources-florida-st-coaching-search-focused-schumann",
+      "source": "ESPN",
+      "published_at": "2026-11-22T17:37:49Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
       ],
       "breaking": false
     },
@@ -98,48 +124,6 @@
       "breaking": false
     },
     {
-      "id": "9868cf94eb488b55",
-      "title": "Georgia Bulldogs vs. South Carolina Gamecocks: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50558598/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-22T04:09:21Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "521fbb5fa359ab09",
-      "title": "Missouri knocks off No. 16 Kentucky at home",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50558532/missouri-knocks-no-16-kentucky-home",
-      "source": "ESPN",
-      "published_at": "2026-11-22T03:54:57Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky",
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "620276ffa3da9fcb",
-      "title": "Georgia dominates South Carolina 34-6 to improve to 10-1",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50558528/georgia-dominates-south-carolina-34-6-improve-10-1",
-      "source": "ESPN",
-      "published_at": "2026-11-22T03:52:59Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
       "id": "2e7a3cf1d01b33d4",
       "title": "2026 SEC Championship Game: Date, time, TV channel, history",
       "summary": "Here's the quick guide to the 2026 SEC Football Championship Game.",
@@ -148,19 +132,6 @@
       "published_at": "2026-11-22T03:45:05Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "6409808c23db7c9f",
-      "title": "Kentucky's Willie Rodriguez on making an impact on and off the field",
-      "summary": "Rodriguez describes the significance of being able to lead the Wildcats' mission to visit children's hospitals as he discusses how his little sister impacts his football career.",
-      "url": "https://www.espn.com/video/clip/_/id/50558429/kentucky-willie-rodriguez-making-impact-the-field",
-      "source": "ESPN",
-      "published_at": "2026-11-22T03:44:24Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
       "breaking": false
     },
     {
@@ -239,19 +210,6 @@
       "sport": "basketball",
       "teams": [
         "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "53e8257c6851da94",
-      "title": "Every single shot from Darius Acuff Jr.'s 2026 March Madness run with Arkansas",
-      "summary": "Relive Darius Acuff Jr.'s 2026 March Madness run with Arkansas with every single shot attempt from the tournament, scoring 88 points across three games.",
-      "url": "https://www.ncaa.com/video/basketball-men/2026-11-13/every-single-shot-darius-acuff-jrs-2026-march-madness-run-arkansas",
-      "source": "NCAA",
-      "published_at": "2026-11-13T20:40:45Z",
-      "sport": "basketball",
-      "teams": [
-        "Arkansas"
       ],
       "breaking": false
     }
