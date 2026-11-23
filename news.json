@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T02:50:27.002832Z",
-  "checked_at": "2026-11-23T02:50:27.002832Z",
+  "updated_at": "2026-11-23T12:56:11.619014Z",
+  "checked_at": "2026-11-23T12:56:11.619014Z",
   "sources": [
     "NCAA",
     "ESPN"
@@ -69,19 +69,6 @@
       "sport": "basketball",
       "teams": [
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7bb23bc591ebdab7",
-      "title": "Dayton Flyers vs. Northwestern Wildcats: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50564369/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-22T20:49:13Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
       ],
       "breaking": false
     },
@@ -158,20 +145,6 @@
       "teams": [
         "LSU",
         "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "cf6b2047a7fafb83",
-      "title": "Kirby Smart emphasizes patience in Georgia's dominance on the road",
-      "summary": "After getting a big victory against No. 21 South Carolina, Smart explains how the endurance of the No. 1 Bulldogs set them up for an emphatic victory in Columbia, SC.",
-      "url": "https://www.espn.com/video/clip/_/id/50558806/kirby-smart-emphasizes-patience-georgia-dominance-road",
-      "source": "ESPN",
-      "published_at": "2026-11-22T04:16:45Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "South Carolina"
       ],
       "breaking": false
     },
