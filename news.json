@@ -1,11 +1,77 @@
 {
-  "updated_at": "2026-11-22T21:50:21.074750Z",
-  "checked_at": "2026-11-22T21:50:21.074750Z",
+  "updated_at": "2026-11-23T02:50:27.002832Z",
+  "checked_at": "2026-11-23T02:50:27.002832Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "e77bda1281e6871c",
+      "title": "Tennessee fined by SEC after fans throw golf balls on field",
+      "summary": "Tennessee was fined $250,000 by the SEC after fans threw golf balls and mustard bottles onto the football field late during Saturday's win over LSU.",
+      "url": "https://www.espn.com/college-football/story/_/id/50568028/tennessee-fined-sec-fans-throw-golf-balls-field",
+      "source": "ESPN",
+      "published_at": "2026-11-23T01:42:14Z",
+      "sport": "football",
+      "teams": [
+        "LSU",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d310804df73daaec",
+      "title": "UNC Asheville Bulldogs vs. Samford Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50567278/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-23T00:22:40Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a1347c63ec11217a",
+      "title": "Alice Lloyd College Eagles vs. Eastern Kentucky Colonels: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50566413/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-22T22:58:40Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "fbc2440f543fedb6",
+      "title": "West Florida Argonauts vs. South Alabama Jaguars: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50565806/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-22T22:12:19Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "1c7eada8bb851a64",
+      "title": "Southern Indiana Screaming Eagles vs. Texas Longhorns: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50565765/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-22T22:08:52Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
     {
       "id": "7bb23bc591ebdab7",
       "title": "Dayton Flyers vs. Northwestern Wildcats: Game Highlights",
@@ -16,20 +82,6 @@
       "sport": "basketball",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "5d0536f1ac1183a3",
-      "title": "Georgia clinches SEC title game berth with win at South Carolina",
-      "summary": "Nate Frazier ran for 94 yards and two touchdowns, and No. 1 Georgia clinched a spot in the final SEC championship game with a victory over South Carolina.",
-      "url": "https://www.espn.com/college-football/story/_/id/50558713/georgia-clinches-sec-title-game-berth-win-south-carolina",
-      "source": "ESPN",
-      "published_at": "2026-11-22T18:41:14Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "South Carolina"
       ],
       "breaking": false
     },
@@ -132,45 +184,6 @@
       "published_at": "2026-11-22T03:45:05Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "19ae8d3a8824dc7f",
-      "title": "Presbyterian Blue Hose vs. Tennessee Tech Golden Eagles: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50557775/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-22T02:54:35Z",
-      "sport": "basketball",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "85e7bab7a6e07fd9",
-      "title": "Gardner-Webb Bulldogs vs. VMI Keydets: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50557584/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-22T02:30:27Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "9e57175388d7a095",
-      "title": "Michigan Wolverines vs. Villanova Wildcats: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50557583/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-22T02:30:14Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
       "breaking": false
     },
     {
