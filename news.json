@@ -1,11 +1,321 @@
 {
-  "updated_at": "2026-11-23T12:56:11.619014Z",
-  "checked_at": "2026-11-23T12:56:11.619014Z",
+  "updated_at": "2026-11-24T00:56:36.360420Z",
+  "checked_at": "2026-11-24T00:56:36.360420Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "7c58782bc2472d61",
+      "title": "SEC to consider termination of LSU's membership at Dec. 3 meeting",
+      "summary": "For the second time this year, the SEC is threatening to hold a vote of its chancellors and presidents on whether to kick LSU out of the league, according to a filing in federal court in Alabama on Monday.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50577602/sec-consider-termination-lsu-membership",
+      "source": "ESPN",
+      "published_at": "2026-11-24T00:55:25Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3221434739750380",
+      "title": "Georgia defensive coordinator Glenn Schumann agrees to coach Florida State",
+      "summary": "Georgia's Glenn Schumann, one of the country's top defensive coordinators and part of a staff that has the Bulldogs at No.",
+      "url": "https://www.espn.com/college-football/story/_/id/50577665/uga-defensive-coordinator-schumann-coach-florida-state",
+      "source": "ESPN",
+      "published_at": "2026-11-24T00:49:30Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7c58782bc2472d61",
+      "title": "SEC to consider termination of LSU's membership at Dec. 3 meeting",
+      "summary": "For the second time this year, the SEC is threatening to hold a vote of its chancellors and presidents on whether to kick LSU out of the league, according to a filing in federal court in Alabama on Monday.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50577602/sec-consider-termination-lsu-membership",
+      "source": "ESPN",
+      "published_at": "2026-11-24T00:47:25Z",
+      "sport": "basketball",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8489be9b38a7ea25",
+      "title": "Key strategies Alabama, Auburn must remember ahead of Iron Bowl",
+      "summary": "Cole Cubelic joins The Paul Finebaum Show to discuss the strategies that the Tigers must utilize defensively if they hope to overcome the Crimson Tide's tough offense.",
+      "url": "https://www.espn.com/video/clip/_/id/50577801/key-strategies-alabama-auburn-remember-ahead-iron-bowl",
+      "source": "ESPN",
+      "published_at": "2026-11-24T00:04:17Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Auburn"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3e7e4c32c9128c24",
+      "title": "Roman, Are You Impressed? Week 12 showcases crazy plays",
+      "summary": "SEC Network's Roman Harper takes a look back at the best plays and moments from Week 12 and decides whether he's truly impressed by what he sees.",
+      "url": "https://www.espn.com/video/clip/_/id/50577614/roman-impressed-week-12-showcases-crazy-plays",
+      "source": "ESPN",
+      "published_at": "2026-11-23T23:45:05Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "3b0940f17f455280",
+      "title": "Southern Utah Thunderbirds vs. Arkansas St Red Wolves: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50577443/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-23T23:23:18Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b2c7c10d9fcbc26d",
+      "title": "David Sanders Jr. on how Tennessee gets creative with run-game tactics",
+      "summary": "Sanders Jr. describes how the Volunteers continue to spice up their run-game strategies as he discusses how they plan to use these elements to catch Vanderbilt off guard.",
+      "url": "https://www.espn.com/video/clip/_/id/50577382/david-sanders-jr-how-tennessee-gets-creative-run-game-tactics",
+      "source": "ESPN",
+      "published_at": "2026-11-23T23:21:10Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3bdf8b1c546ddbbe",
+      "title": "Middle Tennessee Blue Raiders vs. Southern Illinois Salukis: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50577286/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-23T23:00:10Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f8819bd0a5213116",
+      "title": "Yale Bulldogs vs. Belmont Bruins: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50577175/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-23T22:52:07Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "81953b390675d4f6",
+      "title": "Lane Kiffin stresses importance of finishing strong against Arkansas",
+      "summary": "After falling short in multiple one-score games, LSU's Kiffin emphasizes the need for the Tigers to close out tight matchups as they prepare to face the Razorbacks.",
+      "url": "https://www.espn.com/video/clip/_/id/50577096/lane-kiffin-stresses-importance-finishing-strong-arkansas",
+      "source": "ESPN",
+      "published_at": "2026-11-23T22:38:26Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "46d18b39ad8b31d7",
+      "title": "Josh Heupel highlights creativity behind Tennessee's offense",
+      "summary": "Heupel breaks down the Vols' ability to utilize different offensive schemes and the excitement of calling plays that keep opposing defenses guessing.",
+      "url": "https://www.espn.com/video/clip/_/id/50577033/josh-heupel-highlights-creativity-tennessee-offense",
+      "source": "ESPN",
+      "published_at": "2026-11-23T22:35:02Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d15d6e7292361a83",
+      "title": "Alex Golesh expresses consistency in preparing for Iron Bowl",
+      "summary": "Golesh discusses how the Tigers will look to prepare to face Alabama the right way and how look they embrace the rivalry and make their own history.",
+      "url": "https://www.espn.com/video/clip/_/id/50577010/alex-golesh-expresses-consistency-preparing-iron-bowl",
+      "source": "ESPN",
+      "published_at": "2026-11-23T22:34:35Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "94359b42b3fd1343",
+      "title": "Texas A&M names John Thornton interim athletic director effective Dec. 1",
+      "summary": "John Thornton will take over as interim athletic director at Texas A&M, effective Dec. 1, replacing the departed Trev Alberts.",
+      "url": "https://www.espn.com/college-football/story/_/id/50576559/texas-names-john-thornton-interim-ad-effective-dec-1",
+      "source": "ESPN",
+      "published_at": "2026-11-23T22:07:34Z",
+      "sport": "football",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "94359b42b3fd1343",
+      "title": "Texas A&M names John Thornton interim athletic director effective Dec. 1",
+      "summary": "John Thornton will take over as interim athletic director at Texas A&M, effective Dec. 1, replacing the departed Trev Alberts.",
+      "url": "https://www.espn.com/college-football/story/_/id/50576559/texas-names-john-thornton-interim-ad-effective-dec-1",
+      "source": "ESPN",
+      "published_at": "2026-11-23T22:07:34Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "f23d615d7ee52c44",
+      "title": "Steve Sarkisian details the Texas anticipating Texas A&M's defense",
+      "summary": "As the Longhorns will look to face the Aggies in Kyle Field, Sarkisian explains the magnitude of the rivalry and how Texas is just focused on this game.",
+      "url": "https://www.espn.com/video/clip/_/id/50576815/steve-sarkisian-details-texas-anticipating-texas-defense",
+      "source": "ESPN",
+      "published_at": "2026-11-23T22:02:44Z",
+      "sport": "football",
+      "teams": [
+        "Texas",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d6014244b1911a70",
+      "title": "Kalen DeBoer on Iron Bowl: 'Arguably the greatest rivalry in college football'",
+      "summary": "DeBoer emphasizes the significance of the Auburn vs. Alabama rivalry and how the Crimson Tide will look to finish the season strong.",
+      "url": "https://www.espn.com/video/clip/_/id/50576808/arguably-greatest-rivalry-college-football",
+      "source": "ESPN",
+      "published_at": "2026-11-23T22:01:59Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Auburn"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "372ec43635463bfc",
+      "title": "Ole Miss Rebels vs. Clemson Tigers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50576698/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-23T21:44:11Z",
+      "sport": "basketball",
+      "teams": [
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d4f044a23d24976e",
+      "title": "Kirby Smart describes the similarity between Georgia and Georgia Tech",
+      "summary": "Smart speaks on how some similarities between the Bulldogs and the Yellow Jackets makes this the most physical game Georgia has to compete in every year.",
+      "url": "https://www.espn.com/video/clip/_/id/50576487/kirby-smart-describes-similarity-georgia-georgia-tech",
+      "source": "ESPN",
+      "published_at": "2026-11-23T21:22:33Z",
+      "sport": "football",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "245ede47e1896971",
+      "title": "LSU's Lane Kiffin apologizes for using profanity during halftime interview",
+      "summary": "LSU coach Lane Kiffin has apologized for using profanity during a halftime interview with the school's radio network in Saturday's loss to Tennessee.",
+      "url": "https://www.espn.com/college-football/story/_/id/50575735/lsu-kiffin-apologizes-use-profanity-interview",
+      "source": "ESPN",
+      "published_at": "2026-11-23T20:12:55Z",
+      "sport": "football",
+      "teams": [
+        "LSU",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9984087de3a4302a",
+      "title": "Which SEC Championship matchup would be most exciting?",
+      "summary": "The SEC This Morning crew debates whether Texas, Tennessee or Alabama would make for the most compelling SEC Championship Game opponent for Georgia.",
+      "url": "https://www.espn.com/video/clip/_/id/50575880/which-sec-championship-matchup-most-exciting",
+      "source": "ESPN",
+      "published_at": "2026-11-23T20:12:23Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Georgia",
+        "Tennessee",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "4ae7084724cc9bfb",
+      "title": "Houston replaces Florida at No. 1 in men's AP Top 25",
+      "summary": "Houston jumped to No. 1 in the AP Top 25 men's college basketball poll Monday while Duke and Michigan State dropped out of the top 10.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50574973/houston-replaces-florida-new-no-1-men-ap-top-25",
+      "source": "ESPN",
+      "published_at": "2026-11-23T19:12:03Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7e6c698dfd402ef8",
+      "title": "Alabama's Kalen DeBoer expects QB Keelon Russell to be 'full go' vs. Auburn",
+      "summary": "Alabama coach Kalen DeBoer said Monday that he expects QB Keelon Russell, who is working his way back from an ankle injury, to be \"full go\" for rivalry week against Auburn.",
+      "url": "https://www.espn.com/college-football/story/_/id/50574915/alabama-deboer-expects-qb-russell-full-go-auburn",
+      "source": "ESPN",
+      "published_at": "2026-11-23T18:13:53Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Auburn"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "dd4da4464cc9bc16",
+      "title": "Top 25 betting lines: USC favored at UCLA, Texas double-digit faves at Texas A&M",
+      "summary": "This week's odds and FPI predictions for UCLA-USC, Texas A&M-Texas and more.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50571004/2026-college-football-week-13-top-25-betting-lines-odds",
+      "source": "ESPN",
+      "published_at": "2026-11-23T16:31:17Z",
+      "sport": "football",
+      "teams": [
+        "Texas",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
     {
       "id": "e77bda1281e6871c",
       "title": "Tennessee fined by SEC after fans throw golf balls on field",
@@ -21,58 +331,6 @@
       "breaking": false
     },
     {
-      "id": "d310804df73daaec",
-      "title": "UNC Asheville Bulldogs vs. Samford Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50567278/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-23T00:22:40Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a1347c63ec11217a",
-      "title": "Alice Lloyd College Eagles vs. Eastern Kentucky Colonels: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50566413/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-22T22:58:40Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "fbc2440f543fedb6",
-      "title": "West Florida Argonauts vs. South Alabama Jaguars: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50565806/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-22T22:12:19Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1c7eada8bb851a64",
-      "title": "Southern Indiana Screaming Eagles vs. Texas Longhorns: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50565765/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-22T22:08:52Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas"
-      ],
-      "breaking": false
-    },
-    {
       "id": "1781f17593f69f4c",
       "title": "Sources: Florida State's coaching search focused on Georgia DC Glenn Schumann",
       "summary": "Florida State's coaching search is focused on Georgia defensive coordinator Glenn Schumann, sources told ESPN's Pete Thamel and Andrea Adelson.",
@@ -82,69 +340,6 @@
       "sport": "football",
       "teams": [
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "20f1fc15622de165",
-      "title": "Utah State Aggies vs. Oregon State Beavers: Full Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50560166/full-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-22T07:14:51Z",
-      "sport": "football",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "350f429ca0c2a155",
-      "title": "Dissecting playoff predictor and College Football Playoff chances",
-      "summary": "Dari Nowkhah, Chris Doering and Benjamin Watson dive into the Allstate Playoff Predictor and break it down to SEC contender probabilities as they analyze the current standings.",
-      "url": "https://www.espn.com/video/clip/_/id/50559627/dissecting-playoff-predictor-college-football-playoff-chances",
-      "source": "ESPN",
-      "published_at": "2026-11-22T06:08:09Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "0a75911db9bdac51",
-      "title": "Saturday Stud: Week 12's top touchdowns are must-see catches The SEC Now crew takes a look at some of the best catches of Week 12 including an athletic hurdle play and an athletic-bulldozer takeaway.",
-      "summary": "The SEC Now crew takes a look at some of the best catches of Week 12 including an athletic hurdle play and a bulldozer takeaway.",
-      "url": "https://www.espn.com/video/clip/_/id/50559796/week-12-top-touchdowns-see-catches-sec-now-crew-takes-look-some-best-catches-week-12-including-athletic-hurdle-play-athletic-bulldozer-takeaway",
-      "source": "ESPN",
-      "published_at": "2026-11-22T06:03:48Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "dd53f82bfdd75675",
-      "title": "Doering, Watson describe Georgia's aggressiveness against South Carolina",
-      "summary": "SEC Now's Chris Doering and Benjamin Watson explain how the Bulldogs consistent aggression was a big factor in winning against the Gamecocks.",
-      "url": "https://www.espn.com/video/clip/_/id/50559597/doering-watson-describe-georgia-aggressiveness-south-carolina",
-      "source": "ESPN",
-      "published_at": "2026-11-22T05:43:20Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b7703427d799bb3f",
-      "title": "Evaulating strength of Tennessee's defense in win vs. LSU",
-      "summary": "SEC Network's Chris Doering and Benjamin Watson analyze the toughness behind the Volunteers' defense as they discuss how they were able to overpower the Tigers.",
-      "url": "https://www.espn.com/video/clip/_/id/50559374/evaulating-strength-tennessee-defense-win-vs-lsu",
-      "source": "ESPN",
-      "published_at": "2026-11-22T05:14:12Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Tennessee"
       ],
       "breaking": false
     },
