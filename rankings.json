@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-23T12:48:33Z",
+  "checked_at": "2026-11-24T02:14:01Z",
   "source": "ESPN",
   "sports": {
     "baseball": {
@@ -55,38 +55,34 @@
     "basketball": {
       "poll": "AP Top 25",
       "poll_size": 25,
-      "published_at": "2026-11-09",
+      "published_at": "2026-11-23",
       "season": 2027,
       "source": "ESPN",
       "source_url": "https://www.espn.com/mens-college-basketball/rankings",
       "teams": {
         "ALA": {
-          "previous": 20,
-          "rank": 18
-        },
-        "ARK": {
-          "previous": 12,
-          "rank": 19
+          "previous": 16,
+          "rank": 15
         },
         "FLA": {
           "previous": 1,
-          "rank": 1
+          "rank": 3
+        },
+        "LSU": {
+          "previous": 25,
+          "rank": 20
         },
         "TENN": {
-          "previous": 8,
-          "rank": 11
+          "previous": 14,
+          "rank": 9
         },
         "TEX": {
-          "previous": 7,
+          "previous": 6,
           "rank": 7
         },
-        "UK": {
-          "previous": 23,
-          "rank": 24
-        },
         "VAN": {
-          "previous": 24,
-          "rank": 22
+          "previous": 15,
+          "rank": 14
         }
       }
     },
