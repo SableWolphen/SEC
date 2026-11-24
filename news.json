@@ -1,19 +1,59 @@
 {
-  "updated_at": "2026-11-24T00:56:36.360420Z",
-  "checked_at": "2026-11-24T00:56:36.360420Z",
+  "updated_at": "2026-11-24T10:59:39.591314Z",
+  "checked_at": "2026-11-24T10:59:39.591314Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "d6a6e4b372ea3737",
+      "title": "Colorado State Rams vs. Arizona Wildcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50580486/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-24T07:07:41Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a86f23945ec9ccba",
+      "title": "Attorney: RJ Luis Jr. plans to sue SEC, Greg Sankey over LSU eligibility saga",
+      "summary": "RJ Luis Jr. will sue the SEC and commissioner Greg Sankey for damages in the days ahead, his attorney, Tony Clayton, told ESPN on Monday.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50578772/rj-luis-plans-sue-sec-greg-sankey-damages-lsu-eligibility-saga-attorney-says",
+      "source": "ESPN",
+      "published_at": "2026-11-24T05:14:55Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
       "id": "7c58782bc2472d61",
       "title": "SEC to consider termination of LSU's membership at Dec. 3 meeting",
       "summary": "For the second time this year, the SEC is threatening to hold a vote of its chancellors and presidents on whether to kick LSU out of the league, according to a filing in federal court in Alabama on Monday.",
       "url": "https://www.espn.com/mens-college-basketball/story/_/id/50577602/sec-consider-termination-lsu-membership",
       "source": "ESPN",
-      "published_at": "2026-11-24T00:55:25Z",
+      "published_at": "2026-11-24T02:55:51Z",
       "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7c58782bc2472d61",
+      "title": "SEC to consider termination of LSU's membership at Dec. 3 meeting",
+      "summary": "For the second time this year, the SEC is threatening to hold a vote of its chancellors and presidents on whether to kick LSU out of the league, according to a filing in federal court in Alabama on Monday.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50577602/sec-consider-termination-lsu-membership",
+      "source": "ESPN",
+      "published_at": "2026-11-24T02:55:51Z",
+      "sport": "basketball",
       "teams": [
         "Alabama",
         "LSU"
@@ -26,7 +66,7 @@
       "summary": "Georgia's Glenn Schumann, one of the country's top defensive coordinators and part of a staff that has the Bulldogs at No.",
       "url": "https://www.espn.com/college-football/story/_/id/50577665/uga-defensive-coordinator-schumann-coach-florida-state",
       "source": "ESPN",
-      "published_at": "2026-11-24T00:49:30Z",
+      "published_at": "2026-11-24T02:51:47Z",
       "sport": "football",
       "teams": [
         "Georgia"
@@ -34,16 +74,56 @@
       "breaking": false
     },
     {
-      "id": "7c58782bc2472d61",
-      "title": "SEC to consider termination of LSU's membership at Dec. 3 meeting",
-      "summary": "For the second time this year, the SEC is threatening to hold a vote of its chancellors and presidents on whether to kick LSU out of the league, according to a filing in federal court in Alabama on Monday.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50577602/sec-consider-termination-lsu-membership",
+      "id": "1e97af29dc36a1d5",
+      "title": "Texas A&M-CC Islanders vs. Wichita State Shockers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50578717/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-24T00:47:25Z",
+      "published_at": "2026-11-24T02:41:40Z",
       "sport": "basketball",
       "teams": [
-        "Alabama",
-        "LSU"
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "bd4dcfcc840fefe4",
+      "title": "Georgia Southern Eagles vs. Northern Kentucky Norse: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50578621/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-24T02:28:15Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "758edad927234320",
+      "title": "Central Arkansas Bears vs. North Florida Ospreys: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50578531/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-24T02:16:08Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas",
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a215208566e3c6a0",
+      "title": "Kentucky State Thorobreds vs. East Tennessee State Buccaneers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50578502/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-24T02:10:05Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky",
+        "Tennessee"
       ],
       "breaking": false
     },
@@ -73,19 +153,6 @@
       "breaking": false
     },
     {
-      "id": "3b0940f17f455280",
-      "title": "Southern Utah Thunderbirds vs. Arkansas St Red Wolves: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50577443/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-23T23:23:18Z",
-      "sport": "basketball",
-      "teams": [
-        "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
       "id": "b2c7c10d9fcbc26d",
       "title": "David Sanders Jr. on how Tennessee gets creative with run-game tactics",
       "summary": "Sanders Jr. describes how the Volunteers continue to spice up their run-game strategies as he discusses how they plan to use these elements to catch Vanderbilt off guard.",
@@ -96,32 +163,6 @@
       "teams": [
         "Tennessee",
         "Vanderbilt"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3bdf8b1c546ddbbe",
-      "title": "Middle Tennessee Blue Raiders vs. Southern Illinois Salukis: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50577286/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-23T23:00:10Z",
-      "sport": "basketball",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f8819bd0a5213116",
-      "title": "Yale Bulldogs vs. Belmont Bruins: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50577175/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-23T22:52:07Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
       ],
       "breaking": false
     },
@@ -179,19 +220,6 @@
       "breaking": false
     },
     {
-      "id": "94359b42b3fd1343",
-      "title": "Texas A&M names John Thornton interim athletic director effective Dec. 1",
-      "summary": "John Thornton will take over as interim athletic director at Texas A&M, effective Dec. 1, replacing the departed Trev Alberts.",
-      "url": "https://www.espn.com/college-football/story/_/id/50576559/texas-names-john-thornton-interim-ad-effective-dec-1",
-      "source": "ESPN",
-      "published_at": "2026-11-23T22:07:34Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
       "id": "f23d615d7ee52c44",
       "title": "Steve Sarkisian details the Texas anticipating Texas A&M's defense",
       "summary": "As the Longhorns will look to face the Aggies in Kyle Field, Sarkisian explains the magnitude of the rivalry and how Texas is just focused on this game.",
@@ -216,19 +244,6 @@
       "teams": [
         "Alabama",
         "Auburn"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "372ec43635463bfc",
-      "title": "Ole Miss Rebels vs. Clemson Tigers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50576698/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-23T21:44:11Z",
-      "sport": "basketball",
-      "teams": [
-        "Ole Miss"
       ],
       "breaking": false
     },
@@ -272,19 +287,6 @@
         "Georgia",
         "Tennessee",
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "4ae7084724cc9bfb",
-      "title": "Houston replaces Florida at No. 1 in men's AP Top 25",
-      "summary": "Houston jumped to No. 1 in the AP Top 25 men's college basketball poll Monday while Duke and Michigan State dropped out of the top 10.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50574973/houston-replaces-florida-new-no-1-men-ap-top-25",
-      "source": "ESPN",
-      "published_at": "2026-11-23T19:12:03Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
       ],
       "breaking": false
     },
