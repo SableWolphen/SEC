@@ -1,11 +1,90 @@
 {
-  "updated_at": "2026-11-24T10:59:39.591314Z",
-  "checked_at": "2026-11-24T10:59:39.591314Z",
+  "updated_at": "2026-11-24T21:17:07.330786Z",
+  "checked_at": "2026-11-24T21:17:07.330786Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "167b624ef0bb7d3a",
+      "title": "Thamel: There needs to be a 'pound of flesh' that comes from LSU over eligibility saga",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50584503/there-needs-pound-flesh-comes-lsu-eligibility-saga",
+      "source": "ESPN",
+      "published_at": "2026-11-24T18:32:06Z",
+      "sport": "football",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "167b624ef0bb7d3a",
+      "title": "Thamel: There needs to be a 'pound of flesh' that comes from LSU over eligibility saga",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50584503/there-needs-pound-flesh-comes-lsu-eligibility-saga",
+      "source": "ESPN",
+      "published_at": "2026-11-24T18:32:06Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d88b50c68e3d0f6f",
+      "title": "Stephen A. sounds off on SEC's stance vs. LSU in RJ Luis Jr. case",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50583623/stephen-sounds-sec-stance-vs-lsu-rj-luis-jr-case",
+      "source": "ESPN",
+      "published_at": "2026-11-24T16:46:25Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7c58782bc2472d61",
+      "title": "SEC to consider termination of LSU's membership at Dec. 3 meeting",
+      "summary": "For the second time this year, the SEC is threatening to hold a vote of its chancellors and presidents on whether to kick LSU out of the league, according to a filing in federal court in Alabama on Monday.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50577602/sec-consider-termination-lsu-membership",
+      "source": "ESPN",
+      "published_at": "2026-11-24T16:02:28Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e45610eb69eca2e1",
+      "title": "Finebaum: Something serious is going to happen to LSU",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50583096/serious-going-happen-lsu",
+      "source": "ESPN",
+      "published_at": "2026-11-24T15:20:16Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a86f23945ec9ccba",
+      "title": "Attorney: RJ Luis Jr. plans to sue SEC, Greg Sankey over LSU eligibility saga",
+      "summary": "RJ Luis Jr. will sue the SEC and commissioner Greg Sankey for damages in the days ahead, his attorney, Tony Clayton, told ESPN on Monday.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50578772/rj-luis-plans-sue-sec-greg-sankey-damages-lsu-eligibility-saga-attorney-says",
+      "source": "ESPN",
+      "published_at": "2026-11-24T13:24:27Z",
+      "sport": "basketball",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
     {
       "id": "d6a6e4b372ea3737",
       "title": "Colorado State Rams vs. Arizona Wildcats: Game Highlights",
@@ -16,47 +95,6 @@
       "sport": "basketball",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a86f23945ec9ccba",
-      "title": "Attorney: RJ Luis Jr. plans to sue SEC, Greg Sankey over LSU eligibility saga",
-      "summary": "RJ Luis Jr. will sue the SEC and commissioner Greg Sankey for damages in the days ahead, his attorney, Tony Clayton, told ESPN on Monday.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50578772/rj-luis-plans-sue-sec-greg-sankey-damages-lsu-eligibility-saga-attorney-says",
-      "source": "ESPN",
-      "published_at": "2026-11-24T05:14:55Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7c58782bc2472d61",
-      "title": "SEC to consider termination of LSU's membership at Dec. 3 meeting",
-      "summary": "For the second time this year, the SEC is threatening to hold a vote of its chancellors and presidents on whether to kick LSU out of the league, according to a filing in federal court in Alabama on Monday.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50577602/sec-consider-termination-lsu-membership",
-      "source": "ESPN",
-      "published_at": "2026-11-24T02:55:51Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7c58782bc2472d61",
-      "title": "SEC to consider termination of LSU's membership at Dec. 3 meeting",
-      "summary": "For the second time this year, the SEC is threatening to hold a vote of its chancellors and presidents on whether to kick LSU out of the league, according to a filing in federal court in Alabama on Monday.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50577602/sec-consider-termination-lsu-membership",
-      "source": "ESPN",
-      "published_at": "2026-11-24T02:55:51Z",
-      "sport": "basketball",
-      "teams": [
-        "Alabama",
-        "LSU"
       ],
       "breaking": false
     },
@@ -110,20 +148,6 @@
       "teams": [
         "Arkansas",
         "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a215208566e3c6a0",
-      "title": "Kentucky State Thorobreds vs. East Tennessee State Buccaneers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50578502/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-24T02:10:05Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky",
-        "Tennessee"
       ],
       "breaking": false
     },
@@ -329,19 +353,6 @@
       "teams": [
         "LSU",
         "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1781f17593f69f4c",
-      "title": "Sources: Florida State's coaching search focused on Georgia DC Glenn Schumann",
-      "summary": "Florida State's coaching search is focused on Georgia defensive coordinator Glenn Schumann, sources told ESPN's Pete Thamel and Andrea Adelson.",
-      "url": "https://www.espn.com/college-football/story/_/id/50562506/sources-florida-st-coaching-search-focused-schumann",
-      "source": "ESPN",
-      "published_at": "2026-11-22T17:37:49Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
       ],
       "breaking": false
     },
