@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T11:13:27.477133Z",
+  "updated_at": "2026-11-24T01:52:38.902119Z",
   "sports": {
     "basketball": {
       "season": 2027,
@@ -1918,10 +1918,10 @@
           "home_code": "228",
           "away_name": "Ole Miss Rebels",
           "home_name": "Clemson Tigers",
-          "away_score": null,
-          "home_score": null,
-          "winner_code": null,
-          "game_status": "scheduled",
+          "away_score": 82,
+          "home_score": 62,
+          "winner_code": "145",
+          "game_status": "final",
           "source": "ESPN",
           "espn_event_id": "401918076"
         },
@@ -1941,6 +1941,23 @@
           "game_status": "scheduled",
           "source": "ESPN",
           "espn_event_id": "401906806"
+        },
+        {
+          "id": "basketball-2027-401921709",
+          "sport": "basketball",
+          "season": 2027,
+          "week": 4,
+          "kickoff_at": "2026-11-24T19:30:00Z",
+          "away_code": "145",
+          "home_code": "252",
+          "away_name": "Ole Miss Rebels",
+          "home_name": "BYU Cougars",
+          "away_score": null,
+          "home_score": null,
+          "winner_code": null,
+          "game_status": "scheduled",
+          "source": "ESPN",
+          "provisional": false
         },
         {
           "id": "basketball-2027-401906853",
@@ -6743,7 +6760,7 @@
       "database_connected": true,
       "team_coverage": {
         "142": 32,
-        "145": 30,
+        "145": 31,
         "2": 32,
         "201": 32,
         "238": 32,
@@ -6760,22 +6777,22 @@
         "99": 32
       },
       "sec_team_game_counts": {
-        "96": 34,
-        "2": 34,
-        "245": 34,
-        "344": 33,
-        "333": 34,
-        "145": 32,
-        "99": 35,
         "61": 37,
+        "333": 34,
+        "99": 35,
+        "245": 34,
+        "145": 33,
+        "238": 35,
+        "2": 34,
+        "142": 36,
+        "2579": 35,
+        "251": 36,
         "201": 34,
         "2633": 33,
-        "2579": 35,
-        "8": 36,
         "57": 37,
-        "142": 36,
-        "251": 36,
-        "238": 35
+        "8": 36,
+        "344": 33,
+        "96": 34
       },
       "warning": null
     },
@@ -6798,22 +6815,22 @@
         "99": 0
       },
       "sec_team_game_counts": {
-        "96": 0,
-        "2": 0,
-        "245": 0,
-        "344": 0,
-        "333": 0,
-        "145": 0,
-        "99": 0,
         "61": 0,
+        "333": 0,
+        "99": 0,
+        "245": 0,
+        "145": 0,
+        "238": 0,
+        "2": 0,
+        "142": 0,
+        "2579": 0,
+        "251": 0,
         "201": 0,
         "2633": 0,
-        "2579": 0,
-        "8": 0,
         "57": 0,
-        "142": 0,
-        "251": 0,
-        "238": 0
+        "8": 0,
+        "344": 0,
+        "96": 0
       },
       "warning": "No verified individual first-pitch times yet; SEC baseball weekend series previews remain available."
     }
