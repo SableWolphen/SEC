@@ -1,11 +1,143 @@
 {
-  "updated_at": "2026-11-25T14:29:27.129416Z",
-  "checked_at": "2026-11-25T14:29:27.129416Z",
+  "updated_at": "2026-11-25T23:39:23.794499Z",
+  "checked_at": "2026-11-25T23:39:23.794499Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "76db44ab922d216b",
+      "title": "No. 8 Arizona tops Ole Miss for Maui Invitational title",
+      "summary": "Motiejus Krivas had 31 points and 17 rebounds to help No. 8 beat Ole Miss 84-73 on Wednesday and win the Maui Invitational championship.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50598244/no-8-arizona-tops-ole-miss-maui-invitational-title",
+      "source": "ESPN",
+      "published_at": "2026-11-25T23:10:38Z",
+      "sport": "basketball",
+      "teams": [
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "821414920fab5fd2",
+      "title": "Arkansas St Red Wolves vs. Florida International Panthers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50598474/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T23:07:39Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "6c061d4bd0ae516f",
+      "title": "Ole Miss Rebels vs. Arizona Wildcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50597712/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T22:12:30Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b8c2d5ca7e367ab9",
+      "title": "Warner Southern Royals vs. North Florida Ospreys: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50597030/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T21:04:39Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d6062b28d2c346a4",
+      "title": "Auburn manager announces he's cured of cancer at news conference",
+      "summary": "Auburn men's basketball student manager Sam Cunningham provided the news conference update of a lifetime Tuesday night.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50596014/auburn-basketball-student-manager-press-conference",
+      "source": "ESPN",
+      "published_at": "2026-11-25T20:17:03Z",
+      "sport": "basketball",
+      "teams": [
+        "Auburn"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "27de722a078400e2",
+      "title": "Eastern Kentucky Colonels vs. Miami (OH) Redhawks: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50596487/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T20:16:04Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "bb60f6c709cafd17",
+      "title": "Judge denies SEC's request for TRO against LSU in Dec. 3 vote",
+      "summary": "A federal judge denied the SEC's request for a temporary restraining order to keep LSU from interfering with a Dec. 3 vote of presidents and chancellors on whether to remove the school from the conference.",
+      "url": "https://www.espn.com/college-sports/story/_/id/50595702/judge-denies-sec-request-tro-lsu-dec-3-vote",
+      "source": "ESPN",
+      "published_at": "2026-11-25T20:02:54Z",
+      "sport": "football",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "136b82ebc62d2f18",
+      "title": "Yale Bulldogs vs. Wright State Raiders: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50596074/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T19:41:39Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "fca5d0b162e007e8",
+      "title": "Vanderbilt basketball eyeing new heights behind veteran guard Tyler Tanner",
+      "summary": "Coming off a heartbreaking March Madness loss in 2026, junior point guard Tyler Tanner chose to stay in Nashville to lead a young Vanderbilt roster hungry for a deep tournament run.",
+      "url": "https://www.ncaa.com/news/basketball-men/article/2026-11-25/vanderbilt-basketball-eyeing-new-heights-behind-veteran-guard-tyler-tanner",
+      "source": "NCAA",
+      "published_at": "2026-11-25T16:49:13Z",
+      "sport": "basketball",
+      "teams": [
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "dd4da4464cc9bc16",
+      "title": "Top 25 betting lines: USC favored at UCLA, Texas double-digit faves at Texas A&M",
+      "summary": "This week's odds and FPI predictions for UCLA-USC, Texas A&M-Texas and more.",
+      "url": "https://www.espn.com/espn/betting/story/_/id/50571004/2026-college-football-week-13-top-25-betting-lines-odds",
+      "source": "ESPN",
+      "published_at": "2026-11-25T15:00:51Z",
+      "sport": "football",
+      "teams": [
+        "Texas",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
     {
       "id": "f81b4b6acce990b0",
       "title": "Desmond Howard: CFP committee finally arranged the SEC teams right",
@@ -55,20 +187,6 @@
       "breaking": false
     },
     {
-      "id": "e8075ce0a1346344",
-      "title": "Gonzaga Bulldogs vs. Kansas State Wildcats: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50590938/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-25T07:56:41Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia",
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
       "id": "929a8ee8de47b679",
       "title": "Indiana falls from 12-team field in 4th CFP rankings; Horns, Vols leap Bama",
       "summary": "Defending champ Indiana fell six spots to No. 14, while Alabama was leaped by Texas and Tennessee and fell out of the top five in the latest CFP rankings Tuesday night.",
@@ -93,19 +211,6 @@
       "sport": "football",
       "teams": [
         "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a637bedc12169c4d",
-      "title": "Baylor knocks off No. 15 Alabama in Vegas",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50590231/baylor-knocks-no-15-alabama-vegas",
-      "source": "ESPN",
-      "published_at": "2026-11-25T05:45:12Z",
-      "sport": "basketball",
-      "teams": [
-        "Alabama"
       ],
       "breaking": false
     },
@@ -136,71 +241,6 @@
       "breaking": false
     },
     {
-      "id": "7805007d47fab550",
-      "title": "Auburn's George Kimble III disscusses foundation, explosive playmaking",
-      "summary": "Kimble III credits his playmaking abilities to \"learning from the best\" throughout his journey as he walks through a few explosive highlights in the Tigers win over Lipscomb.",
-      "url": "https://www.espn.com/video/clip/_/id/50589785/auburn-george-kimble-iii-disscusses-foundation-explosive-playmaking",
-      "source": "ESPN",
-      "published_at": "2026-11-25T04:42:31Z",
-      "sport": "basketball",
-      "teams": [
-        "Auburn"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d9eb570923769457",
-      "title": "Evansville Purple Aces vs. Missouri Tigers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50589738/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-25T04:31:04Z",
-      "sport": "basketball",
-      "teams": [
-        "Missouri"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b108f185b49319d4",
-      "title": "Rueben Chinyelu reflects on Florida's unity, game expansion",
-      "summary": "After hitting a career-high 25 points, Chinyelu credits his teammates for helping his flow as he discusses the interior battle and a brief expansion of his game beyond the arc.",
-      "url": "https://www.espn.com/video/clip/_/id/50589735/rueben-chinyelu-reflects-florida-unity-game-expansion",
-      "source": "ESPN",
-      "published_at": "2026-11-25T04:30:31Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f7f6d0f0ccd7f271",
-      "title": "UNC Asheville Bulldogs vs. Florida State Seminoles: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50589724/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-25T04:27:05Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "b54cf5e5fef632d9",
-      "title": "Louisiana College Wildcats vs. Louisiana Ragin' Cajuns: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50589487/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-25T03:54:59Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
       "id": "14d161a79a02373d",
       "title": "Tennessee rises, Alabama and Indiana fall in the fourth College Football Playoff rankings of 2026",
       "summary": "Here's everything you need to know from the fourth College Football Playoff rankings revealed on November 24, 2026.",
@@ -225,110 +265,6 @@
       "teams": [
         "South Carolina"
       ],
-      "breaking": false
-    },
-    {
-      "id": "768994520c30648f",
-      "title": "Will Stein emphasizes UK's standard, previews 'most important' game",
-      "summary": "Stein stresses an importance for the No. 16 Wildcats to return to playing at the set standard as he looks ahead to a big Week 13 rivalry game.",
-      "url": "https://www.espn.com/video/clip/_/id/50586762/will-stein-emphasizes-uk-standard-previews-most-important-game",
-      "source": "ESPN",
-      "published_at": "2026-11-24T23:10:02Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "43b4956c0877bfab",
-      "title": "No. 20 Florida shuts down WR Vernell Brown for season-ending knee surgery",
-      "summary": "No. 20 Florida is shutting down receiver Vernell Brown III for the remainder of the season.",
-      "url": "https://www.espn.com/college-football/story/_/id/50586755/no-20-florida-shuts-wr-vernell-brown-season-ending-knee-surgery",
-      "source": "ESPN",
-      "published_at": "2026-11-24T23:07:20Z",
-      "sport": "football",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "19a54e50aaae8404",
-      "title": "Venables on how Mateer shows up as a role model for Oklahoma",
-      "summary": "Brent Venables describes how John Mateer shows up as a leader on the field for the Sooners as he discusses the impact he will make on their performance in Week 13.",
-      "url": "https://www.espn.com/video/clip/_/id/50586670/venables-how-mateer-shows-role-model-oklahoma",
-      "source": "ESPN",
-      "published_at": "2026-11-24T22:56:55Z",
-      "sport": "football",
-      "teams": [
-        "Oklahoma"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "167b624ef0bb7d3a",
-      "title": "Thamel: There needs to be a 'pound of flesh' that comes from LSU over eligibility saga",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50584503/there-needs-pound-flesh-comes-lsu-eligibility-saga",
-      "source": "ESPN",
-      "published_at": "2026-11-24T18:32:06Z",
-      "sport": "football",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "7c58782bc2472d61",
-      "title": "SEC to consider termination of LSU's membership at Dec. 3 meeting",
-      "summary": "For the second time this year, the SEC is threatening to hold a vote of its chancellors and presidents on whether to kick LSU out of the league, according to a filing in federal court in Alabama on Monday.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50577602/sec-consider-termination-lsu-membership",
-      "source": "ESPN",
-      "published_at": "2026-11-24T16:02:28Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3221434739750380",
-      "title": "Georgia defensive coordinator Glenn Schumann agrees to coach Florida State",
-      "summary": "Georgia's Glenn Schumann, one of the country's top defensive coordinators and part of a staff that has the Bulldogs at No.",
-      "url": "https://www.espn.com/college-football/story/_/id/50577665/uga-defensive-coordinator-schumann-coach-florida-state",
-      "source": "ESPN",
-      "published_at": "2026-11-24T02:51:47Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "8489be9b38a7ea25",
-      "title": "Key strategies Alabama, Auburn must remember ahead of Iron Bowl",
-      "summary": "Cole Cubelic joins The Paul Finebaum Show to discuss the strategies that the Tigers must utilize defensively if they hope to overcome the Crimson Tide's tough offense.",
-      "url": "https://www.espn.com/video/clip/_/id/50577801/key-strategies-alabama-auburn-remember-ahead-iron-bowl",
-      "source": "ESPN",
-      "published_at": "2026-11-24T00:04:17Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Auburn"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "3e7e4c32c9128c24",
-      "title": "Roman, Are You Impressed? Week 12 showcases crazy plays",
-      "summary": "SEC Network's Roman Harper takes a look back at the best plays and moments from Week 12 and decides whether he's truly impressed by what he sees.",
-      "url": "https://www.espn.com/video/clip/_/id/50577614/roman-impressed-week-12-showcases-crazy-plays",
-      "source": "ESPN",
-      "published_at": "2026-11-23T23:45:05Z",
-      "sport": "football",
-      "teams": [],
       "breaking": false
     },
     {
