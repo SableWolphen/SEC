@@ -362,20 +362,20 @@
       },
       "home_win_pct": 98.3,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856760",
-      "updated_at": "2026-11-24T21:14:12Z"
+      "updated_at": "2026-11-25T05:27:08Z"
     },
     "2026-13-LOU-UK": {
       "away": {
-        "rank": 23,
+        "rank": 19,
         "record": "8-3"
       },
       "home": {
-        "rank": 16,
+        "rank": null,
         "record": "7-4"
       },
       "home_win_pct": 35.6,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856761",
-      "updated_at": "2026-11-24T21:14:12Z"
+      "updated_at": "2026-11-25T05:27:08Z"
     },
     "2026-13-LSU-ARK": {
       "away": {
@@ -388,24 +388,24 @@
       },
       "home_win_pct": 12.1,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856758",
-      "updated_at": "2026-11-24T21:14:12Z"
+      "updated_at": "2026-11-25T05:27:08Z"
     },
     "2026-13-OU-MIZ": {
       "away": {
-        "rank": 22,
+        "rank": 17,
         "record": "7-4"
       },
       "home": {
-        "rank": null,
+        "rank": 23,
         "record": "7-4"
       },
       "home_win_pct": 50.3,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856763",
-      "updated_at": "2026-11-24T21:14:12Z"
+      "updated_at": "2026-11-25T05:27:08Z"
     },
     "2026-13-SC-CLEM": {
       "away": {
-        "rank": 21,
+        "rank": null,
         "record": "6-5"
       },
       "home": {
@@ -414,7 +414,7 @@
       },
       "home_win_pct": 44.2,
       "source_url": "https://www.espn.com/college-football/game/_/gameId/401856764",
-      "updated_at": "2026-11-24T21:14:12Z"
+      "updated_at": "2026-11-25T05:27:08Z"
     },
     "2026-13-TENN-VAN": {
       "away": {
@@ -768,6 +768,6 @@
       "updated_at": "2026-11-03T18:27:40Z"
     }
   },
-  "generated_at": "2026-11-24T21:14:12Z",
+  "generated_at": "2026-11-25T05:27:08Z",
   "source": "ESPN public college football scoreboard and matchup predictor when provided"
 }
