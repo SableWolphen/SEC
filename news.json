@@ -1,11 +1,263 @@
 {
-  "updated_at": "2026-11-24T21:17:07.330786Z",
-  "checked_at": "2026-11-24T21:17:07.330786Z",
+  "updated_at": "2026-11-25T04:16:35.036449Z",
+  "checked_at": "2026-11-25T04:16:35.036449Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "b54cf5e5fef632d9",
+      "title": "Louisiana College Wildcats vs. Louisiana Ragin' Cajuns: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50589487/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T03:54:59Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "53e732d3c772739b",
+      "title": "Alabama A&M Bulldogs vs. North Alabama Lions: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50589209/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T03:21:46Z",
+      "sport": "basketball",
+      "teams": [
+        "Alabama",
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d2b61ae5edfd99b3",
+      "title": "Lipscomb Bisons vs. Auburn Tigers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50589004/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T02:58:23Z",
+      "sport": "basketball",
+      "teams": [
+        "Auburn"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "51704d10ea357157",
+      "title": "Florida A&M Rattlers vs. South Alabama Jaguars: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50588996/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T02:57:39Z",
+      "sport": "basketball",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "427ded3cc620ba81",
+      "title": "West Georgia Wolves vs. Tennessee Tech Golden Eagles: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50588942/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T02:51:04Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3ba17010033f2a99",
+      "title": "Alcorn State Braves vs. Louisiana Tech Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50588892/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T02:45:48Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "49de8186d17407f5",
+      "title": "Purdue Fort Wayne Mastodons vs. Southeast Missouri State Redhawks: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50588820/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T02:39:57Z",
+      "sport": "basketball",
+      "teams": [
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "eeac0f6dae997c95",
+      "title": "Arlington Baptist Patriots vs. East Texas A&M Lions: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50588792/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T02:36:47Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "929a8ee8de47b679",
+      "title": "Indiana falls from 12-team field in 4th CFP rankings; Horns, Vols leap Bama",
+      "summary": "Defending champ Indiana fell six spots to No. 14, while Alabama was leaped by Texas and Tennessee and fell out of the top five in the latest CFP rankings Tuesday night.",
+      "url": "https://www.espn.com/college-football/story/_/id/50588082/indiana-top-12-cfp-rankings-texas-tennessee-leap-alabama",
+      "source": "ESPN",
+      "published_at": "2026-11-25T02:34:35Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Tennessee",
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "65b079f57ef379ea",
+      "title": "Samford Bulldogs vs. Georgia Tech Yellow Jackets: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50588684/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T02:23:51Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5d649386fd94235a",
+      "title": "Gardner-Webb Bulldogs vs. Bowling Green Falcons: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50588672/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T02:22:37Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "10c6f25de4f38687",
+      "title": "Tarleton Texans vs. Weber State Wildcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50588665/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T02:21:36Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "5b1f4cec9654b2f6",
+      "title": "New Hampshire Wildcats vs. Seton Hall Pirates: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50588652/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-25T02:19:58Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ee0c26ed195dd016",
+      "title": "LSU asks judge to throw out SEC's 'unwarranted' suit against Tigers",
+      "summary": "LSU is asking a federal judge to dismiss the SEC's lawsuit against the Tigers, arguing that many of the plaintiffs in the case are protected by sovereign immunity as state officials and that the league doesn't…",
+      "url": "https://www.espn.com/college-football/story/_/id/50588015/lsu-asks-judge-throw-sec-unwarranted-suit-tigers",
+      "source": "ESPN",
+      "published_at": "2026-11-25T02:05:46Z",
+      "sport": "football",
+      "teams": [
+        "LSU"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "14d161a79a02373d",
+      "title": "Tennessee rises, Alabama and Indiana fall in the fourth College Football Playoff rankings of 2026",
+      "summary": "Here's everything you need to know from the fourth College Football Playoff rankings revealed on November 24, 2026.",
+      "url": "https://www.ncaa.com/news/football/article/2026-11-24/tennessee-rises-alabama-and-indiana-fall-fourth-college-football-playoff-rankings-2026",
+      "source": "NCAA",
+      "published_at": "2026-11-25T02:00:00Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "46182e12f25ea49d",
+      "title": "Gamecock's Shane Beamer previews challenge with ACC rival Clemson",
+      "summary": "Beamer discusses the obstacles that the Tigers pose, including multiple quarterback options, as he recalls the significance of this rivalry through his own journey.",
+      "url": "https://www.espn.com/video/clip/_/id/50586790/gamecock-shane-beamer-previews-challenge-acc-rival-clemson",
+      "source": "ESPN",
+      "published_at": "2026-11-24T23:11:28Z",
+      "sport": "football",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "768994520c30648f",
+      "title": "Will Stein emphasizes UK's standard, previews 'most important' game",
+      "summary": "Stein stresses an importance for the No. 16 Wildcats to return to playing at the set standard as he looks ahead to a big Week 13 rivalry game.",
+      "url": "https://www.espn.com/video/clip/_/id/50586762/will-stein-emphasizes-uk-standard-previews-most-important-game",
+      "source": "ESPN",
+      "published_at": "2026-11-24T23:10:02Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "43b4956c0877bfab",
+      "title": "No. 20 Florida shuts down WR Vernell Brown for season-ending knee surgery",
+      "summary": "No. 20 Florida is shutting down receiver Vernell Brown III for the remainder of the season.",
+      "url": "https://www.espn.com/college-football/story/_/id/50586755/no-20-florida-shuts-wr-vernell-brown-season-ending-knee-surgery",
+      "source": "ESPN",
+      "published_at": "2026-11-24T23:07:20Z",
+      "sport": "football",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "19a54e50aaae8404",
+      "title": "Venables on how Mateer shows up as a role model for Oklahoma",
+      "summary": "Brent Venables describes how John Mateer shows up as a leader on the field for the Sooners as he discusses the impact he will make on their performance in Week 13.",
+      "url": "https://www.espn.com/video/clip/_/id/50586670/venables-how-mateer-shows-role-model-oklahoma",
+      "source": "ESPN",
+      "published_at": "2026-11-24T22:56:55Z",
+      "sport": "football",
+      "teams": [
+        "Oklahoma"
+      ],
+      "breaking": false
+    },
     {
       "id": "167b624ef0bb7d3a",
       "title": "Thamel: There needs to be a 'pound of flesh' that comes from LSU over eligibility saga",
@@ -14,32 +266,6 @@
       "source": "ESPN",
       "published_at": "2026-11-24T18:32:06Z",
       "sport": "football",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "167b624ef0bb7d3a",
-      "title": "Thamel: There needs to be a 'pound of flesh' that comes from LSU over eligibility saga",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50584503/there-needs-pound-flesh-comes-lsu-eligibility-saga",
-      "source": "ESPN",
-      "published_at": "2026-11-24T18:32:06Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d88b50c68e3d0f6f",
-      "title": "Stephen A. sounds off on SEC's stance vs. LSU in RJ Luis Jr. case",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50583623/stephen-sounds-sec-stance-vs-lsu-rj-luis-jr-case",
-      "source": "ESPN",
-      "published_at": "2026-11-24T16:46:25Z",
-      "sport": "basketball",
       "teams": [
         "LSU"
       ],
@@ -60,45 +286,6 @@
       "breaking": false
     },
     {
-      "id": "e45610eb69eca2e1",
-      "title": "Finebaum: Something serious is going to happen to LSU",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50583096/serious-going-happen-lsu",
-      "source": "ESPN",
-      "published_at": "2026-11-24T15:20:16Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a86f23945ec9ccba",
-      "title": "Attorney: RJ Luis Jr. plans to sue SEC, Greg Sankey over LSU eligibility saga",
-      "summary": "RJ Luis Jr. will sue the SEC and commissioner Greg Sankey for damages in the days ahead, his attorney, Tony Clayton, told ESPN on Monday.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50578772/rj-luis-plans-sue-sec-greg-sankey-damages-lsu-eligibility-saga-attorney-says",
-      "source": "ESPN",
-      "published_at": "2026-11-24T13:24:27Z",
-      "sport": "basketball",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d6a6e4b372ea3737",
-      "title": "Colorado State Rams vs. Arizona Wildcats: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50580486/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-24T07:07:41Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
       "id": "3221434739750380",
       "title": "Georgia defensive coordinator Glenn Schumann agrees to coach Florida State",
       "summary": "Georgia's Glenn Schumann, one of the country's top defensive coordinators and part of a staff that has the Bulldogs at No.",
@@ -108,46 +295,6 @@
       "sport": "football",
       "teams": [
         "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "1e97af29dc36a1d5",
-      "title": "Texas A&M-CC Islanders vs. Wichita State Shockers: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50578717/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-24T02:41:40Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "bd4dcfcc840fefe4",
-      "title": "Georgia Southern Eagles vs. Northern Kentucky Norse: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50578621/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-24T02:28:15Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "758edad927234320",
-      "title": "Central Arkansas Bears vs. North Florida Ospreys: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50578531/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-24T02:16:08Z",
-      "sport": "basketball",
-      "teams": [
-        "Arkansas",
-        "Florida"
       ],
       "breaking": false
     },
@@ -325,34 +472,6 @@
       "teams": [
         "Alabama",
         "Auburn"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "dd4da4464cc9bc16",
-      "title": "Top 25 betting lines: USC favored at UCLA, Texas double-digit faves at Texas A&M",
-      "summary": "This week's odds and FPI predictions for UCLA-USC, Texas A&M-Texas and more.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50571004/2026-college-football-week-13-top-25-betting-lines-odds",
-      "source": "ESPN",
-      "published_at": "2026-11-23T16:31:17Z",
-      "sport": "football",
-      "teams": [
-        "Texas",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e77bda1281e6871c",
-      "title": "Tennessee fined by SEC after fans throw golf balls on field",
-      "summary": "Tennessee was fined $250,000 by the SEC after fans threw golf balls and mustard bottles onto the football field late during Saturday's win over LSU.",
-      "url": "https://www.espn.com/college-football/story/_/id/50568028/tennessee-fined-sec-fans-throw-golf-balls-field",
-      "source": "ESPN",
-      "published_at": "2026-11-23T01:42:14Z",
-      "sport": "football",
-      "teams": [
-        "LSU",
-        "Tennessee"
       ],
       "breaking": false
     },
