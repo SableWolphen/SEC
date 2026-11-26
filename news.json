@@ -1,58 +1,72 @@
 {
-  "updated_at": "2026-11-25T23:39:23.794499Z",
-  "checked_at": "2026-11-25T23:39:23.794499Z",
+  "updated_at": "2026-11-26T08:26:38.062772Z",
+  "checked_at": "2026-11-26T08:26:38.062772Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "76db44ab922d216b",
-      "title": "No. 8 Arizona tops Ole Miss for Maui Invitational title",
-      "summary": "Motiejus Krivas had 31 points and 17 rebounds to help No. 8 beat Ole Miss 84-73 on Wednesday and win the Maui Invitational championship.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50598244/no-8-arizona-tops-ole-miss-maui-invitational-title",
+      "id": "d0a476a8b34a695b",
+      "title": "Wake Forest Demon Deacons vs. Mississippi State Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50601862/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-25T23:10:38Z",
+      "published_at": "2026-11-26T05:00:24Z",
       "sport": "basketball",
       "teams": [
-        "Ole Miss"
+        "Georgia",
+        "Mississippi State"
       ],
       "breaking": false
     },
     {
-      "id": "821414920fab5fd2",
-      "title": "Arkansas St Red Wolves vs. Florida International Panthers: Game Highlights",
+      "id": "2fdddb20c7ea8ef4",
+      "title": "South Carolina Upstate Spartans vs. The Citadel Bulldogs: Game Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50598474/game-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50600483/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-25T23:07:39Z",
+      "published_at": "2026-11-26T02:25:16Z",
       "sport": "basketball",
       "teams": [
-        "Arkansas"
+        "Georgia",
+        "South Carolina"
       ],
       "breaking": false
     },
     {
-      "id": "6c061d4bd0ae516f",
-      "title": "Ole Miss Rebels vs. Arizona Wildcats: Game Highlights",
+      "id": "46f6765f517f65ad",
+      "title": "Bellarmine Knights vs. Northern Kentucky Norse: Game Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50597712/game-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50600369/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-25T22:12:30Z",
+      "published_at": "2026-11-26T02:13:09Z",
       "sport": "basketball",
       "teams": [
-        "Kentucky",
-        "Ole Miss"
+        "Kentucky"
       ],
       "breaking": false
     },
     {
-      "id": "b8c2d5ca7e367ab9",
-      "title": "Warner Southern Royals vs. North Florida Ospreys: Game Highlights",
+      "id": "872f8e3184ed01f0",
+      "title": "Bethune-Cookman Wildcats vs. Richmond Spiders: Game Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50597030/game-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50599840/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-25T21:04:39Z",
+      "published_at": "2026-11-26T01:12:43Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "76f6ca3cd22ddf64",
+      "title": "West Florida Argonauts vs. Northwestern State Demons: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50599798/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-26T01:09:18Z",
       "sport": "basketball",
       "teams": [
         "Florida"
@@ -60,25 +74,12 @@
       "breaking": false
     },
     {
-      "id": "d6062b28d2c346a4",
-      "title": "Auburn manager announces he's cured of cancer at news conference",
-      "summary": "Auburn men's basketball student manager Sam Cunningham provided the news conference update of a lifetime Tuesday night.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50596014/auburn-basketball-student-manager-press-conference",
-      "source": "ESPN",
-      "published_at": "2026-11-25T20:17:03Z",
-      "sport": "basketball",
-      "teams": [
-        "Auburn"
-      ],
-      "breaking": true
-    },
-    {
-      "id": "27de722a078400e2",
-      "title": "Eastern Kentucky Colonels vs. Miami (OH) Redhawks: Game Highlights",
+      "id": "75b937d19ee3609c",
+      "title": "CSU Northridge Matadors vs. Weber State Wildcats: Game Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50596487/game-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50599792/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-25T20:16:04Z",
+      "published_at": "2026-11-26T01:06:51Z",
       "sport": "basketball",
       "teams": [
         "Kentucky"
@@ -95,19 +96,6 @@
       "sport": "football",
       "teams": [
         "LSU"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "136b82ebc62d2f18",
-      "title": "Yale Bulldogs vs. Wright State Raiders: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50596074/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-25T19:41:39Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
       ],
       "breaking": false
     },
@@ -251,19 +239,6 @@
       "teams": [
         "Alabama",
         "Tennessee"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "46182e12f25ea49d",
-      "title": "Gamecock's Shane Beamer previews challenge with ACC rival Clemson",
-      "summary": "Beamer discusses the obstacles that the Tigers pose, including multiple quarterback options, as he recalls the significance of this rivalry through his own journey.",
-      "url": "https://www.espn.com/video/clip/_/id/50586790/gamecock-shane-beamer-previews-challenge-acc-rival-clemson",
-      "source": "ESPN",
-      "published_at": "2026-11-24T23:11:28Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina"
       ],
       "breaking": false
     },
