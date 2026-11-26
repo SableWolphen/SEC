@@ -1,88 +1,21 @@
 {
-  "updated_at": "2026-11-26T08:26:38.062772Z",
-  "checked_at": "2026-11-26T08:26:38.062772Z",
+  "updated_at": "2026-11-26T19:04:32.025344Z",
+  "checked_at": "2026-11-26T19:04:32.025344Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
-      "id": "d0a476a8b34a695b",
-      "title": "Wake Forest Demon Deacons vs. Mississippi State Bulldogs: Game Highlights",
+      "id": "fc1c6d51050b871e",
+      "title": "Georgia Bulldogs vs. Cincinnati Bearcats: Game Highlights",
       "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50601862/game-highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50605271/game-highlights",
       "source": "ESPN",
-      "published_at": "2026-11-26T05:00:24Z",
+      "published_at": "2026-11-26T18:33:21Z",
       "sport": "basketball",
       "teams": [
-        "Georgia",
-        "Mississippi State"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "2fdddb20c7ea8ef4",
-      "title": "South Carolina Upstate Spartans vs. The Citadel Bulldogs: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50600483/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-26T02:25:16Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia",
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "46f6765f517f65ad",
-      "title": "Bellarmine Knights vs. Northern Kentucky Norse: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50600369/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-26T02:13:09Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "872f8e3184ed01f0",
-      "title": "Bethune-Cookman Wildcats vs. Richmond Spiders: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50599840/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-26T01:12:43Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "76f6ca3cd22ddf64",
-      "title": "West Florida Argonauts vs. Northwestern State Demons: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50599798/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-26T01:09:18Z",
-      "sport": "basketball",
-      "teams": [
-        "Florida"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "75b937d19ee3609c",
-      "title": "CSU Northridge Matadors vs. Weber State Wildcats: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50599792/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-26T01:06:51Z",
-      "sport": "basketball",
-      "teams": [
-        "Kentucky"
+        "Georgia"
       ],
       "breaking": false
     },
@@ -212,19 +145,6 @@
       "sport": "football",
       "teams": [
         "Texas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "ee0c26ed195dd016",
-      "title": "LSU asks judge to throw out SEC's 'unwarranted' suit against Tigers",
-      "summary": "LSU is asking a federal judge to dismiss the SEC's lawsuit against the Tigers, arguing that many of the plaintiffs in the case are protected by sovereign immunity as state officials and that the league doesn't…",
-      "url": "https://www.espn.com/college-football/story/_/id/50588015/lsu-asks-judge-throw-sec-unwarranted-suit-tigers",
-      "source": "ESPN",
-      "published_at": "2026-11-25T05:10:29Z",
-      "sport": "football",
-      "teams": [
-        "LSU"
       ],
       "breaking": false
     },
