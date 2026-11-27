@@ -1,11 +1,89 @@
 {
-  "updated_at": "2026-11-27T10:56:25.343367Z",
-  "checked_at": "2026-11-27T10:56:25.343367Z",
+  "updated_at": "2026-11-27T19:59:28.478274Z",
+  "checked_at": "2026-11-27T19:59:28.478274Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "9c59a0080f9d9265",
+      "title": "Men's Feast Week guide: Breaking down Thursday's biggest games",
+      "summary": "Wins by Tennessee, Michigan State and Louisville highlighted a busy Thanksgiving slate.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50575102/feast-week-matchups-analysis",
+      "source": "ESPN",
+      "published_at": "2026-11-27T19:50:10Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "2f05cbb09b454694",
+      "title": "What the world looked like the last time Texas A&M beat Texas",
+      "summary": "It has been 15 years since Texas A&M came out on top on the gridiron against its rivals to the southwest.",
+      "url": "https://www.espn.com/college-football/story/_/id/47109982/texas-aggies-lone-star-showdown-last-win-2010",
+      "source": "ESPN",
+      "published_at": "2026-11-27T17:36:28Z",
+      "sport": "football",
+      "teams": [
+        "Texas",
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ba1e9ad57d93988c",
+      "title": "Future Headlines: Stein downs alma mater, Sellers ends Swinney era",
+      "summary": "SEC This Morning's Peter Burns and Chris Doering look into their crystal ball ahead of rivalry weekend and predict the conference will continue its impressive season.",
+      "url": "https://www.espn.com/video/clip/_/id/50612518/stein-downs-alma-mater-sellers-ends-swinney-era",
+      "source": "ESPN",
+      "published_at": "2026-11-27T17:18:28Z",
+      "sport": "football",
+      "teams": [],
+      "breaking": false
+    },
+    {
+      "id": "0e6ac55763941c91",
+      "title": "Arkansas' David Oke helps feed the Fayetteville community",
+      "summary": "Monique Jones shares the mission of Squire Jehagen Outreach Center Food Pantry and discusses how Oke and other amazing volunteers help strengthen their community.",
+      "url": "https://www.espn.com/video/clip/_/id/50612430/arkansas-david-oke-helps-feed-fayetteville-community",
+      "source": "ESPN",
+      "published_at": "2026-11-27T17:18:15Z",
+      "sport": "football",
+      "teams": [
+        "Arkansas",
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "7e0aa5b2667a01b4",
+      "title": "How much margin for error does Texas have?",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50612381/how-much-margin-error-does-texas-have",
+      "source": "ESPN",
+      "published_at": "2026-11-27T16:53:36Z",
+      "sport": "football",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "0ca825121674ae10",
+      "title": "Best friends Pat Surtain II, Jaylen Waddle ecstatic about reuniting on Broncos",
+      "summary": "Surtain and Waddle bonded immediately at Alabama six years ago and have embraced the chance to play together again in Denver on a team with Super Bowl hopes.",
+      "url": "https://www.espn.com/nfl/story/_/id/50595313/pat-surtain-ii-jaylen-waddle-broncos-alabama-best-friends",
+      "source": "ESPN",
+      "published_at": "2026-11-27T14:58:48Z",
+      "sport": "football",
+      "teams": [
+        "Alabama"
+      ],
+      "breaking": false
+    },
     {
       "id": "e44bb503056ac498",
       "title": "D.J. Jacobs decommits from Ohio State, sources say, making top DE available again",
@@ -69,69 +147,6 @@
       "published_at": "2026-11-25T14:17:25Z",
       "sport": "football",
       "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "01ece3b64d32e742",
-      "title": "What to expect from Week 13's rivalry week slate",
-      "summary": "SEC Network's Matt Stinchcomb and Fozzy Whittaker reminisce on their favorite rivalry week moments as college athletes as they discuss what to expect from Week 13.",
-      "url": "https://www.espn.com/video/clip/_/id/50590117/what-expect-week-13-rivalry-week-slate",
-      "source": "ESPN",
-      "published_at": "2026-11-25T13:29:07Z",
-      "sport": "football",
-      "teams": [],
-      "breaking": false
-    },
-    {
-      "id": "9de57d07f57d5064",
-      "title": "What SEC Championship contender issues could UGA face for the title?",
-      "summary": "The SEC Now crew dissects possible SEC Championship title obstacles for the shoo-in No. 1 Georgia Bulldogs through analyzing the biggest contenders.",
-      "url": "https://www.espn.com/video/clip/_/id/50590226/what-sec-championship-contender-issues-uga-face-title",
-      "source": "ESPN",
-      "published_at": "2026-11-25T13:28:45Z",
-      "sport": "football",
-      "teams": [
-        "Georgia"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "e29cfd556760ad95",
-      "title": "Analyzing the weight of the Louisville vs. UK Week 13 rivalry game",
-      "summary": "The SEC Now crew looks at the significance of a win for the Wildcats with an upcoming rivalry matchup against the No. 19 Cardinals while analyzing their past momentum.",
-      "url": "https://www.espn.com/video/clip/_/id/50590243/analyzing-weight-louisville-vs-uk-week-13-rivalry-game",
-      "source": "ESPN",
-      "published_at": "2026-11-25T13:28:14Z",
-      "sport": "football",
-      "teams": [
-        "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "d6764b919ba4a794",
-      "title": "What is the SEC Now crew thankful for?",
-      "summary": "With Thanksgiving approaching, the SEC Now crew discusses SEC players, coaches and play calls that they are thankful for, including South Carolina's LaNorris Sellers.",
-      "url": "https://www.espn.com/video/clip/_/id/50590174/what-sec-now-crew-thankful-for",
-      "source": "ESPN",
-      "published_at": "2026-11-25T05:55:44Z",
-      "sport": "football",
-      "teams": [
-        "South Carolina"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "38bec6f606ca00ee",
-      "title": "Evaluating where certain SEC teams stand based on Week 13 CFP rankings",
-      "summary": "The SEC Now crew analyze the latest CFP Week 13 rankings as they discuss where Texas' fate lies in the bracket with the College Football Playoffs drawing near.",
-      "url": "https://www.espn.com/video/clip/_/id/50590011/evaluating-where-certain-sec-teams-stand-based-week-13-cfp-rankings",
-      "source": "ESPN",
-      "published_at": "2026-11-25T05:12:16Z",
-      "sport": "football",
-      "teams": [
-        "Texas"
-      ],
       "breaking": false
     },
     {
