@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T11:23:08.269091Z",
+  "updated_at": "2026-11-27T22:54:24.940485Z",
   "sports": {
     "basketball": {
       "season": 2027,
@@ -2292,10 +2292,10 @@
           "home_code": "238",
           "away_name": "Southern Jaguars",
           "home_name": "Vanderbilt Commodores",
-          "away_score": null,
-          "home_score": null,
-          "winner_code": null,
-          "game_status": "scheduled",
+          "away_score": 56,
+          "home_score": 111,
+          "winner_code": "238",
+          "game_status": "final",
           "source": "ESPN",
           "espn_event_id": "401921827"
         },
@@ -2346,7 +2346,7 @@
           "away_score": null,
           "home_score": null,
           "winner_code": null,
-          "game_status": "scheduled",
+          "game_status": "live",
           "source": "ESPN",
           "provisional": false
         },
@@ -6896,22 +6896,22 @@
         "99": 32
       },
       "sec_team_game_counts": {
-        "333": 36,
         "238": 35,
-        "344": 34,
-        "99": 35,
-        "8": 36,
-        "57": 37,
-        "2633": 35,
-        "61": 37,
         "201": 34,
-        "2579": 35,
-        "96": 34,
-        "251": 37,
         "142": 36,
-        "145": 34,
+        "96": 34,
+        "99": 35,
+        "2579": 35,
+        "2633": 35,
         "2": 34,
-        "245": 34
+        "57": 37,
+        "251": 37,
+        "8": 36,
+        "245": 34,
+        "61": 37,
+        "344": 34,
+        "333": 36,
+        "145": 34
       },
       "warning": null
     },
@@ -6934,22 +6934,22 @@
         "99": 0
       },
       "sec_team_game_counts": {
-        "333": 0,
         "238": 0,
-        "344": 0,
-        "99": 0,
-        "8": 0,
-        "57": 0,
-        "2633": 0,
-        "61": 0,
         "201": 0,
-        "2579": 0,
-        "96": 0,
-        "251": 0,
         "142": 0,
-        "145": 0,
+        "96": 0,
+        "99": 0,
+        "2579": 0,
+        "2633": 0,
         "2": 0,
-        "245": 0
+        "57": 0,
+        "251": 0,
+        "8": 0,
+        "245": 0,
+        "61": 0,
+        "344": 0,
+        "333": 0,
+        "145": 0
       },
       "warning": "No verified individual first-pitch times yet; SEC baseball weekend series previews remain available."
     }
