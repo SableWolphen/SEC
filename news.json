@@ -1,11 +1,77 @@
 {
-  "updated_at": "2026-11-26T19:04:32.025344Z",
-  "checked_at": "2026-11-26T19:04:32.025344Z",
+  "updated_at": "2026-11-27T02:14:22.468485Z",
+  "checked_at": "2026-11-27T02:14:22.468485Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
+    {
+      "id": "ba90b8bdbe35a2f2",
+      "title": "USC Trojans vs. Utah State Aggies: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50607366/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-27T00:49:54Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas A&M"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "a5e325d9b8fbcae2",
+      "title": "Arkansas Razorbacks vs. Michigan State Spartans: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50607246/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-27T00:05:35Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9c59a0080f9d9265",
+      "title": "Men's Feast Week guide: Breaking down Thursday's biggest games",
+      "summary": "Tennessee's win kicked off a big day of Thanksgiving hoops.",
+      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50575102/feast-week-matchups-analysis",
+      "source": "ESPN",
+      "published_at": "2026-11-26T23:44:58Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "58f4945d78a03462",
+      "title": "Tennessee Volunteers vs. Iowa State Cyclones: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50607025/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-26T23:14:06Z",
+      "sport": "basketball",
+      "teams": [
+        "Tennessee"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "e44bb503056ac498",
+      "title": "D.J. Jacobs decommits from Ohio State, sources say, making top DE available again",
+      "summary": "D.J. Jacobs, the No. 2 overall recruit in the 2027 class, has decommitted from Ohio State, sources told ESPN, with Tennessee, Georgia and Miami among the leading contenders for the five-star defensive end.",
+      "url": "https://www.espn.com/college-football/story/_/id/50606035/sources-de-dj-jacobs-decommits-ohio-state",
+      "source": "ESPN",
+      "published_at": "2026-11-26T21:21:16Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Tennessee"
+      ],
+      "breaking": true
+    },
     {
       "id": "fc1c6d51050b871e",
       "title": "Georgia Bulldogs vs. Cincinnati Bearcats: Game Highlights",
@@ -104,21 +170,6 @@
       "sport": "football",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "929a8ee8de47b679",
-      "title": "Indiana falls from 12-team field in 4th CFP rankings; Horns, Vols leap Bama",
-      "summary": "Defending champ Indiana fell six spots to No. 14, while Alabama was leaped by Texas and Tennessee and fell out of the top five in the latest CFP rankings Tuesday night.",
-      "url": "https://www.espn.com/college-football/story/_/id/50588082/indiana-top-12-cfp-rankings-texas-tennessee-leap-alabama",
-      "source": "ESPN",
-      "published_at": "2026-11-25T07:42:16Z",
-      "sport": "football",
-      "teams": [
-        "Alabama",
-        "Tennessee",
-        "Texas"
       ],
       "breaking": false
     },
