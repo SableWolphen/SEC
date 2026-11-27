@@ -1,63 +1,11 @@
 {
-  "updated_at": "2026-11-27T02:14:22.468485Z",
-  "checked_at": "2026-11-27T02:14:22.468485Z",
+  "updated_at": "2026-11-27T10:56:25.343367Z",
+  "checked_at": "2026-11-27T10:56:25.343367Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
-    {
-      "id": "ba90b8bdbe35a2f2",
-      "title": "USC Trojans vs. Utah State Aggies: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50607366/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-27T00:49:54Z",
-      "sport": "basketball",
-      "teams": [
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "a5e325d9b8fbcae2",
-      "title": "Arkansas Razorbacks vs. Michigan State Spartans: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50607246/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-27T00:05:35Z",
-      "sport": "basketball",
-      "teams": [
-        "Arkansas"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "9c59a0080f9d9265",
-      "title": "Men's Feast Week guide: Breaking down Thursday's biggest games",
-      "summary": "Tennessee's win kicked off a big day of Thanksgiving hoops.",
-      "url": "https://www.espn.com/mens-college-basketball/story/_/id/50575102/feast-week-matchups-analysis",
-      "source": "ESPN",
-      "published_at": "2026-11-26T23:44:58Z",
-      "sport": "basketball",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": true
-    },
-    {
-      "id": "58f4945d78a03462",
-      "title": "Tennessee Volunteers vs. Iowa State Cyclones: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50607025/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-26T23:14:06Z",
-      "sport": "basketball",
-      "teams": [
-        "Tennessee"
-      ],
-      "breaking": false
-    },
     {
       "id": "e44bb503056ac498",
       "title": "D.J. Jacobs decommits from Ohio State, sources say, making top DE available again",
@@ -69,19 +17,6 @@
       "teams": [
         "Georgia",
         "Tennessee"
-      ],
-      "breaking": true
-    },
-    {
-      "id": "fc1c6d51050b871e",
-      "title": "Georgia Bulldogs vs. Cincinnati Bearcats: Game Highlights",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50605271/game-highlights",
-      "source": "ESPN",
-      "published_at": "2026-11-26T18:33:21Z",
-      "sport": "basketball",
-      "teams": [
-        "Georgia"
       ],
       "breaking": false
     },
@@ -234,20 +169,6 @@
       "sport": "basketball",
       "teams": [
         "Kentucky"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "6b1c21f53d34db8f",
-      "title": "Georgia leads, Texas enters top five of third College Football Playoff rankings of 2026",
-      "summary": "Here's everything you need to know from the third College Football Playoff rankings revealed on November 17, 2026.",
-      "url": "https://www.ncaa.com/news/football/article/2026-11-17/georgia-leads-texas-enters-top-five-third-college-football-playoff-rankings-2026",
-      "source": "NCAA",
-      "published_at": "2026-11-18T03:32:00Z",
-      "sport": "football",
-      "teams": [
-        "Georgia",
-        "Texas"
       ],
       "breaking": false
     }
