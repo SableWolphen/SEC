@@ -1,23 +1,318 @@
 {
-  "updated_at": "2026-11-27T19:59:28.478274Z",
-  "checked_at": "2026-11-27T19:59:28.478274Z",
+  "updated_at": "2026-11-28T02:43:45.515692Z",
+  "checked_at": "2026-11-28T02:43:45.515692Z",
   "sources": [
     "NCAA",
     "ESPN"
   ],
   "articles": [
     {
+      "id": "4547f29da0d7e176",
+      "title": "Tim Tebow reveals 'welcome to the rivalry moment' from time as a Gator",
+      "summary": "Tebow discusses the historical friction within the Florida State vs. Florida rivalry through a few standout personal experiences from his time as a player.",
+      "url": "https://www.espn.com/video/clip/_/id/50617539/tim-tebow-reveals-welcome-rivalry-moment-gator",
+      "source": "ESPN",
+      "published_at": "2026-11-28T02:39:41Z",
+      "sport": "football",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3fd6a1d4c8bde4fe",
+      "title": "UCF Knights vs. Georgia Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50617465/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-28T02:29:36Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
       "id": "9c59a0080f9d9265",
-      "title": "Men's Feast Week guide: Breaking down Thursday's biggest games",
-      "summary": "Wins by Tennessee, Michigan State and Louisville highlighted a busy Thanksgiving slate.",
+      "title": "Men's Feast Week guide: Breaking down Friday's biggest games",
+      "summary": "Texas outlasted Saint Mary's to win the Rady Invitational. The Players Era 16 backet finals are next.",
       "url": "https://www.espn.com/mens-college-basketball/story/_/id/50575102/feast-week-matchups-analysis",
       "source": "ESPN",
-      "published_at": "2026-11-27T19:50:10Z",
+      "published_at": "2026-11-28T02:26:37Z",
+      "sport": "basketball",
+      "teams": [
+        "Texas"
+      ],
+      "breaking": true
+    },
+    {
+      "id": "1e4944e8b17ac5f3",
+      "title": "Charleston Southern Buccaneers vs. East Tennessee State Buccaneers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50617328/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-28T02:11:57Z",
       "sport": "basketball",
       "teams": [
         "Tennessee"
       ],
+      "breaking": false
+    },
+    {
+      "id": "18670aa52124624a",
+      "title": "Lauren Sisler highlights what's at stake in the Governor's Cup",
+      "summary": "ESPN's Sisler emphasizes the significance of the No. 19 Louisville vs. Kentucky rivalry while revisiting Will Stein's perspective through his collegiate experience.",
+      "url": "https://www.espn.com/video/clip/_/id/50617024/lauren-sisler-highlights-stake-governor-cup",
+      "source": "ESPN",
+      "published_at": "2026-11-28T01:39:58Z",
+      "sport": "football",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "9c9025340a7372d4",
+      "title": "Taylor Davis reviews Vols' 'reinvented identity', Vandy's young talent",
+      "summary": "ESPN's Davis highlights the new aspects that are drawing attention within No. 5 Tennessee as she discusses Vanderbilt's young quarterback Jared Curtis.",
+      "url": "https://www.espn.com/video/clip/_/id/50616902/taylor-davis-reviews-vols-reinvented-identity-vandy-young-talent",
+      "source": "ESPN",
+      "published_at": "2026-11-28T01:16:41Z",
+      "sport": "football",
+      "teams": [
+        "Tennessee",
+        "Vanderbilt"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "ec76a635296ab13f",
+      "title": "South Wesleyan Warriors vs. South Carolina Upstate Spartans: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50616869/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-28T01:14:07Z",
+      "sport": "basketball",
+      "teams": [
+        "South Carolina"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8966df5699aec227",
+      "title": "Mississippi State Bulldogs vs. Ole Miss Rebels: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50613782/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-28T00:56:27Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Mississippi State",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "8ed77994540dba65",
+      "title": "Florida Gators vs. Florida State Seminoles: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50616576/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-28T00:55:08Z",
+      "sport": "football",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b6f7351ba86d8323",
+      "title": "Florida Gators vs. Florida State Seminoles: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50616567/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-28T00:52:44Z",
+      "sport": "football",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d6ed78c48ede1c64",
+      "title": "Florida QB Aaron Philo injured, exits in third quarter of win over Florida State",
+      "summary": "In the regular-season finale for both teams, Florida quarterback Aaron Philo was knocked out of the Gators' 26-10 win over the Florida State Seminoles in the third quarter after taking a hard hit following a…",
+      "url": "https://www.espn.com/college-football/story/_/id/50616023/injured-florida-quarterback-aaron-philo-exits-3rd-quarter",
+      "source": "ESPN",
+      "published_at": "2026-11-28T00:50:24Z",
+      "sport": "football",
+      "teams": [
+        "Florida"
+      ],
       "breaking": true
+    },
+    {
+      "id": "091dd75d85f42906",
+      "title": "Michigan Wolverines vs. Kansas State Wildcats: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50616592/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-28T00:46:23Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "acc829a460a6603e",
+      "title": "Villanova Wildcats vs. Kansas Jayhawks: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50616455/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-28T00:23:54Z",
+      "sport": "basketball",
+      "teams": [
+        "Kentucky"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "00f21f7d1979f7c1",
+      "title": "Florida Gators vs. Florida State Seminoles: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50616347/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-28T00:10:55Z",
+      "sport": "football",
+      "teams": [
+        "Florida"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "12f6169b35f58a5d",
+      "title": "Bryson Tiller describes Mizzou's versatility so far this season",
+      "summary": "After scoring 22 points in the win against Arkansas Pine-Bluff, Tiller discusses how the Tigers are using their physicality and high energy to win games.",
+      "url": "https://www.espn.com/video/clip/_/id/50616162/bryson-tiller-describes-mizzou-versatility-far-season",
+      "source": "ESPN",
+      "published_at": "2026-11-27T23:49:10Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas",
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "cfd300241ad9dbcc",
+      "title": "Arkansas-Pine Bluff Golden Lions vs. Missouri Tigers: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50615815/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-27T23:21:14Z",
+      "sport": "basketball",
+      "teams": [
+        "Arkansas",
+        "Missouri"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "19e762ce15010dce",
+      "title": "Matt Barrie analyzes the weight of upcoming Iron Bowl, CFP rankings",
+      "summary": "ESPN's Barrie previews rivalry week's primetime matchup between No. 6 Alabama and Auburn, illustrating the significance of the competition before diving into CFP rankings.",
+      "url": "https://www.espn.com/video/clip/_/id/50615793/matt-barrie-analyzes-weight-upcoming-iron-bowl-cfp-rankings",
+      "source": "ESPN",
+      "published_at": "2026-11-27T23:21:11Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Auburn"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "75081f65278f9022",
+      "title": "Taylor Hicks explains new song 'Iron Bowl Dreams'",
+      "summary": "Alabama singer Hicks joins The Paul Finebaum Show to discuss the backstory of his new single and how it could bring Auburn and Crimson Tide fans together.",
+      "url": "https://www.espn.com/video/clip/_/id/50615613/taylor-hicks-explains-new-song-iron-bowl-dreams",
+      "source": "ESPN",
+      "published_at": "2026-11-27T23:01:42Z",
+      "sport": "football",
+      "teams": [
+        "Alabama",
+        "Auburn"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "d6e709dbc427da23",
+      "title": "Mississippi State Bulldogs vs. Ole Miss Rebels: Full Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50615121/full-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-27T22:30:08Z",
+      "sport": "football",
+      "teams": [
+        "Georgia",
+        "Mississippi State",
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "b244c81a74decb0a",
+      "title": "Texas State Bobcats vs. Louisiana Tech Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50615063/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-27T22:21:20Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "99e20679a2c90648",
+      "title": "Bellarmine Knights vs. Butler Bulldogs: Game Highlights",
+      "summary": "",
+      "url": "https://www.espn.com/video/clip/_/id/50614843/game-highlights",
+      "source": "ESPN",
+      "published_at": "2026-11-27T22:04:20Z",
+      "sport": "basketball",
+      "teams": [
+        "Georgia"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "3afe81b90aafec58",
+      "title": "Trinidad Chambliss discusses what it means to play for Ole Miss",
+      "summary": "After leading the Rebels to their fourth-straight Egg Bowl victory, Chambliss describes what it means to suit up for Ole Miss.",
+      "url": "https://www.espn.com/video/clip/_/id/50614025/trinidad-chambliss-discusses-means-play-ole-miss",
+      "source": "ESPN",
+      "published_at": "2026-11-27T20:59:44Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss"
+      ],
+      "breaking": false
+    },
+    {
+      "id": "672acee884687c9a",
+      "title": "Ole Miss hits infamous 'urinating dog' celly after final TD",
+      "summary": "New Video",
+      "url": "https://www.espn.com/video/clip/_/id/50613810/ole-miss-hits-infamous-urinating-dog-celly-final-td",
+      "source": "ESPN",
+      "published_at": "2026-11-27T20:46:14Z",
+      "sport": "football",
+      "teams": [
+        "Ole Miss"
+      ],
+      "breaking": false
     },
     {
       "id": "2f05cbb09b454694",
@@ -99,19 +394,6 @@
       "breaking": false
     },
     {
-      "id": "bb60f6c709cafd17",
-      "title": "Judge denies SEC's request for TRO against LSU in Dec. 3 vote",
-      "summary": "A federal judge denied the SEC's request for a temporary restraining order to keep LSU from interfering with a Dec. 3 vote of presidents and chancellors on whether to remove the school from the conference.",
-      "url": "https://www.espn.com/college-sports/story/_/id/50595702/judge-denies-sec-request-tro-lsu-dec-3-vote",
-      "source": "ESPN",
-      "published_at": "2026-11-25T20:02:54Z",
-      "sport": "football",
-      "teams": [
-        "LSU"
-      ],
-      "breaking": false
-    },
-    {
       "id": "fca5d0b162e007e8",
       "title": "Vanderbilt basketball eyeing new heights behind veteran guard Tyler Tanner",
       "summary": "Coming off a heartbreaking March Madness loss in 2026, junior point guard Tyler Tanner chose to stay in Nashville to lead a young Vanderbilt roster hungry for a deep tournament run.",
@@ -122,31 +404,6 @@
       "teams": [
         "Vanderbilt"
       ],
-      "breaking": false
-    },
-    {
-      "id": "dd4da4464cc9bc16",
-      "title": "Top 25 betting lines: USC favored at UCLA, Texas double-digit faves at Texas A&M",
-      "summary": "This week's odds and FPI predictions for UCLA-USC, Texas A&M-Texas and more.",
-      "url": "https://www.espn.com/espn/betting/story/_/id/50571004/2026-college-football-week-13-top-25-betting-lines-odds",
-      "source": "ESPN",
-      "published_at": "2026-11-25T15:00:51Z",
-      "sport": "football",
-      "teams": [
-        "Texas",
-        "Texas A&M"
-      ],
-      "breaking": false
-    },
-    {
-      "id": "f81b4b6acce990b0",
-      "title": "Desmond Howard: CFP committee finally arranged the SEC teams right",
-      "summary": "",
-      "url": "https://www.espn.com/video/clip/_/id/50592800/cfp-committee-arranged-sec-teams-right",
-      "source": "ESPN",
-      "published_at": "2026-11-25T14:17:25Z",
-      "sport": "football",
-      "teams": [],
       "breaking": false
     },
     {
